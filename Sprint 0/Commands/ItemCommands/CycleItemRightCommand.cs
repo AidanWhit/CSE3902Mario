@@ -8,15 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace Sprint_0
-
+namespace Sprint_0.Commands.ItemCommands
 {
-    public class Sprite3Command : ICommands
+    public class CycleItemRightCommand : ICommands
     {
         private Game1 myGame;
         private Texture2D texture;
 
-        public Sprite3Command(Game1 game, Texture2D texture)
+        public CycleItemRightCommand(Game1 game, Texture2D texture)
         {
             myGame = game;
             this.texture = texture;
@@ -24,9 +23,7 @@ namespace Sprint_0
 
         public void Execute()
         {
-            myGame.SetSprite(new Sprite3(texture, 1, 2));
+            myGame.SetSprite(new Sprite1(texture, 1, 2));
         }
     }
 }
-
-

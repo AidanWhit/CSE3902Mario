@@ -2,6 +2,9 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Sprint_0.Commands;
+using Sprint_0.Commands.BlockCommands;
+using Sprint_0.Commands.LinkMovementCommands;
+using Sprint_0.Commands.ProgramCommands;
 using Sprint_0.Controls;
 using Sprint_0.Sprites;
 using System.Collections;
@@ -16,7 +19,6 @@ namespace Sprint_0
         private ISprite currentSprite;
         private ISprite fontSprite;
         private KeyboardControl keyControl;
-        private MouseControl mouseControl;
 
         public Game1()
         {
@@ -28,8 +30,6 @@ namespace Sprint_0
         protected override void Initialize()
         {
             keyControl = new KeyboardControl();
-            // Mouse Control still under construction
-            mouseControl = new MouseControl(this);
             base.Initialize();
         }
 
@@ -39,13 +39,12 @@ namespace Sprint_0
             Texture2D texture = Content.Load<Texture2D>("kirby 2");
             fontSprite = new TextSprite(Content.Load<SpriteFont>("Credit"));
             currentSprite = new Sprite1(texture, 1, 2);
-            mouseControl.getTexture(texture);
 
             keyControl.RegisterCommand(Keys.D0, new QuitCommand(this));
-            keyControl.RegisterCommand(Keys.D1, new Sprite1Command(this, texture));
-            keyControl.RegisterCommand(Keys.D2, new Sprite2Command(this, texture));
-            keyControl.RegisterCommand(Keys.D3, new Sprite3Command(this, texture));
-            keyControl.RegisterCommand(Keys.D4, new Sprite4Command(this, texture));
+            keyControl.RegisterCommand(Keys.D1, new LinkFacingUpCommand(this, texture));
+            keyControl.RegisterCommand(Keys.D2, new LinkFacingDownCommand(this, texture));
+            keyControl.RegisterCommand(Keys.D3, new LinkFacingRightCommand(this, texture));
+            keyControl.RegisterCommand(Keys.D4, new LinkFacingLeftCommand(this, texture));
         }
         protected override void UnloadContent()
         {
@@ -55,7 +54,6 @@ namespace Sprint_0
         protected override void Update(GameTime gameTime)
         {
             keyControl.Update();
-            mouseControl.Update();
             currentSprite.Update();
 
             base.Update(gameTime);

@@ -1,5 +1,4 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
-using Sprint_0.Commands;
 using Sprint_0.Sprites;
 using System;
 using System.Collections.Generic;
@@ -8,14 +7,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace Sprint_0
+namespace Sprint_0.Commands.LinkMovementCommands
 {
-    public class Sprite1Command : ICommands
+    public class LinkFacingUpCommand : ICommands
     {
         private Game1 myGame;
         private Texture2D texture;
 
-        public Sprite1Command(Game1 game, Texture2D texture)
+        public LinkFacingUpCommand(Game1 game, Texture2D texture)
         {
             myGame = game;
             this.texture = texture;
