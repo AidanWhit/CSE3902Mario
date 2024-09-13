@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Sprint_0.Sprites;
+using Sprint_2.Sprites;
 
 namespace Sprint_0.Commands.LinkMovementCommands
 {
@@ -23,7 +24,7 @@ namespace Sprint_0.Commands.LinkMovementCommands
 
         public void Execute()
         {
-            myGame.SetSprite(new Sprite4(texture, 1, 2));
+            myGame.SetSprite(new Sprite1(texture, 1, 2));
         }
     }
 }

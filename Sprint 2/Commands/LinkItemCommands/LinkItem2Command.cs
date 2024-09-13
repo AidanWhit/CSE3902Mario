@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
 using Sprint_0.Sprites;
+using Sprint_2.Sprites;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,7 +23,7 @@ namespace Sprint_0.Commands.LinkItemCommands
 
         public void Execute()
         {
-            myGame.SetSprite(new Sprite2(texture, 1, 2));
+            myGame.SetSprite(new Sprite1(texture, 1, 2));
         }
     }
 }

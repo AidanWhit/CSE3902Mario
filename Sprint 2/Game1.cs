@@ -21,13 +21,10 @@ namespace Sprint_0
         private SpriteBatch spriteBatch;
         private ISprite currentSprite;
         private ISprite fontSprite;
-<<<<<<< HEAD:Sprint 0/Game1.cs
 
 
         private Player mario;
-=======
         private KeyboardControl keyControl;
->>>>>>> 5860c042f2704c061f5b03a2c2ec607d85a04c8a:Sprint 2/Game1.cs
 
         public Game1()
         {
@@ -38,32 +35,27 @@ namespace Sprint_0
 
         protected override void Initialize()
         {
-<<<<<<< HEAD:Sprint 0/Game1.cs
-=======
             keyControl = new KeyboardControl();
->>>>>>> 5860c042f2704c061f5b03a2c2ec607d85a04c8a:Sprint 2/Game1.cs
+
             base.Initialize();
         }
 
         protected override void LoadContent()
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
-<<<<<<< HEAD:Sprint 0/Game1.cs
+
 
             MarioSpriteFactory.Instance.LoadAllContent(Content);
 
             mario = new Player(new Vector2(400, 200));
-=======
+            
             Texture2D texture = Content.Load<Texture2D>("kirby 2");
-            fontSprite = new TextSprite(Content.Load<SpriteFont>("Credit"));
-            currentSprite = new Sprite1(texture, 1, 2);
 
             keyControl.RegisterCommand(Keys.D0, new QuitCommand(this));
             keyControl.RegisterCommand(Keys.D1, new LinkFacingUpCommand(this, texture));
             keyControl.RegisterCommand(Keys.D2, new LinkFacingDownCommand(this, texture));
             keyControl.RegisterCommand(Keys.D3, new LinkFacingRightCommand(this, texture));
             keyControl.RegisterCommand(Keys.D4, new LinkFacingLeftCommand(this, texture));
->>>>>>> 5860c042f2704c061f5b03a2c2ec607d85a04c8a:Sprint 2/Game1.cs
         }
         protected override void UnloadContent()
         {
@@ -72,13 +64,10 @@ namespace Sprint_0
 
         protected override void Update(GameTime gameTime)
         {
-<<<<<<< HEAD:Sprint 0/Game1.cs
-            mario.Update(gameTime);
-=======
-            keyControl.Update();
-            currentSprite.Update();
 
->>>>>>> 5860c042f2704c061f5b03a2c2ec607d85a04c8a:Sprint 2/Game1.cs
+            keyControl.Update();
+            mario.Update(gameTime);
+
             base.Update(gameTime);
         }
 
