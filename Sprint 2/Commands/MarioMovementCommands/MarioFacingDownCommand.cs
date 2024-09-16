@@ -13,17 +13,17 @@ namespace Sprint_0.Commands.MarioMovementCommands
     public class MarioFacingDownCommand : ICommands
     {
         private Game1 myGame;
-        private Texture2D texture;
+        private Player mario;
 
-        public MarioFacingDownCommand(Game1 game, Texture2D texture)
+        public MarioFacingDownCommand(Game1 game, Player player)
         {
             myGame = game;
-            this.texture = texture;
+            mario = player;
         }
 
         public void Execute()
         {
-            myGame.SetSprite(new Sprite1(texture, 1, 2));
+            mario.Crouch();
         }
     }
 }

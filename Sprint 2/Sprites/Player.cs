@@ -43,5 +43,9 @@ namespace Sprint_0.Sprites
         {
 
         }
+        public void Crouch()
+        {
+
+        }
     }
 }
