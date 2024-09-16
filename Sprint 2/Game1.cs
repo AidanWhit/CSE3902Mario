@@ -3,7 +3,10 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Sprint_0.Commands;
 using Sprint_0.Commands.BlockCommands;
-using Sprint_0.Commands.LinkMovementCommands;
+using Sprint_0.Commands.ItemCommands;
+using Sprint_0.Commands.MarioItemCommands;
+using Sprint_0.Commands.MarioMovementCommands;
+using Sprint_0.Commands.MarioAttackCommands;
 using Sprint_0.Commands.ProgramCommands;
 using Sprint_0.Controls;
 using Sprint_0.Factories;
@@ -11,6 +14,7 @@ using Sprint_0.Sprites;
 using Sprint_0.Sprites.MarioStates.LeftFacing.Mario;
 using System.Collections;
 using System.Diagnostics;
+using Sprint_0.Commands.EnemyCommands;
 
 namespace Sprint_0
 {
@@ -49,13 +53,26 @@ namespace Sprint_0
 
             mario = new Player(new Vector2(400, 200));
             
-            Texture2D texture = Content.Load<Texture2D>("kirby 2");
+            Texture2D texture = Content.Load<Texture2D>("marioSpriteSheet");
 
-            keyControl.RegisterCommand(Keys.D0, new QuitCommand(this));
-            keyControl.RegisterCommand(Keys.D1, new LinkFacingUpCommand(this, texture));
-            keyControl.RegisterCommand(Keys.D2, new LinkFacingDownCommand(this, texture));
-            keyControl.RegisterCommand(Keys.D3, new LinkFacingRightCommand(this, texture));
-            keyControl.RegisterCommand(Keys.D4, new LinkFacingLeftCommand(this, texture));
+            keyControl.RegisterCommand(Keys.W, new MarioFacingUpCommand(this, texture));
+            keyControl.RegisterCommand(Keys.A, new MarioFacingDownCommand(this, texture));
+            keyControl.RegisterCommand(Keys.S, new MarioFacingRightCommand(this, texture));
+            keyControl.RegisterCommand(Keys.D, new MarioFacingLeftCommand(this, texture));
+            keyControl.RegisterCommand(Keys.Z, new MarioAttackNormalCommand(this, texture));
+            keyControl.RegisterCommand(Keys.N, new MarioAttackSpecialCommand(this, texture));
+            keyControl.RegisterCommand(Keys.D1, new MarioItem1Command(this, texture));
+            keyControl.RegisterCommand(Keys.D2, new MarioItem2Command(this, texture));
+            keyControl.RegisterCommand(Keys.D3, new MarioItem3Command(this, texture));
+            keyControl.RegisterCommand(Keys.E, new MarioHurtCommand(this, texture));
+            keyControl.RegisterCommand(Keys.T, new CycleBlockLeftCommand(this, texture));
+            keyControl.RegisterCommand(Keys.Y, new CycleBlockRightCommand(this, texture));
+            keyControl.RegisterCommand(Keys.U, new CycleItemLeftCommand(this, texture));
+            keyControl.RegisterCommand(Keys.I, new CycleItemRightCommand(this, texture));
+            keyControl.RegisterCommand(Keys.O, new CycleEnemyLeftCommand(this, texture));
+            keyControl.RegisterCommand(Keys.P, new CycleEnemyRightCommand(this, texture));
+            keyControl.RegisterCommand(Keys.Q, new QuitCommand(this));
+            keyControl.RegisterCommand(Keys.R, new ResetCommand(this));
         }
         protected override void UnloadContent()
         {

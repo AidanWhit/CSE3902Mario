@@ -8,14 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace Sprint_0.Commands.LinkItemCommands
+namespace Sprint_0.Commands.MarioItemCommands
 {
-    public class LinkItem3Command : ICommands
+    public class MarioItem1Command : ICommands
     {
         private Game1 myGame;
         private Texture2D texture;
 
-        public LinkItem3Command(Game1 game, Texture2D texture)
+        public MarioItem1Command(Game1 game, Texture2D texture)
         {
             myGame = game;
             this.texture = texture;

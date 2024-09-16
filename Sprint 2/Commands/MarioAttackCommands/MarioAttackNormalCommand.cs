@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
+using Sprint_0.Commands;
 using Sprint_0.Sprites;
 using Sprint_2.Sprites;
 using System;
@@ -8,14 +9,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace Sprint_0.Commands.LinkMovementCommands
+namespace Sprint_0.Commands.MarioAttackCommands
 {
-    public class LinkFacingUpCommand : ICommands
+    public class MarioAttackNormalCommand : ICommands
     {
         private Game1 myGame;
         private Texture2D texture;
 
-        public LinkFacingUpCommand(Game1 game, Texture2D texture)
+        public MarioAttackNormalCommand(Game1 game, Texture2D texture)
         {
             myGame = game;
             this.texture = texture;

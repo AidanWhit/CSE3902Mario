@@ -9,14 +9,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace Sprint_0.Commands.LinkCommands
+namespace Sprint_0.Commands.MarioAttackCommands
 {
-    public class LinkAttackSpecialCommand : ICommands
+    public class MarioHurtCommand : ICommands
     {
         private Game1 myGame;
         private Texture2D texture;
 
-        public LinkAttackSpecialCommand(Game1 game, Texture2D texture)
+        public MarioHurtCommand(Game1 game, Texture2D texture)
         {
             myGame = game;
             this.texture = texture;

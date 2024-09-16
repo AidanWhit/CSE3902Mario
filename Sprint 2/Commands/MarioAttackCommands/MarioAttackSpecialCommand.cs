@@ -1,21 +1,22 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework;
+using Sprint_0.Commands;
+using Sprint_0.Sprites;
+using Sprint_2.Sprites;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using Sprint_0.Sprites;
 
-namespace Sprint_0.Commands.LinkMovementCommands
+namespace Sprint_0.Commands.MarioAttackCommands
 {
-    public class LinkFacingLeftCommand : ICommands
+    public class MarioAttackSpecialCommand : ICommands
     {
         private Game1 myGame;
         private Texture2D texture;
 
-        public LinkFacingLeftCommand(Game1 game, Texture2D texture)
+        public MarioAttackSpecialCommand(Game1 game, Texture2D texture)
         {
             myGame = game;
             this.texture = texture;
@@ -23,7 +24,7 @@ namespace Sprint_0.Commands.LinkMovementCommands
 
         public void Execute()
         {
-            myGame.SetSprite(new Sprite4(texture, 1, 2));
+            myGame.SetSprite(new Sprite1(texture, 1, 2));
         }
     }
 }

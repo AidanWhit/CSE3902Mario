@@ -11,12 +11,12 @@ using System.Windows.Input;
 
 namespace Sprint_0.Commands.ItemCommands
 {
-    public class LinkFacingUpCommand : ICommands
+    public class CycleItemLeftCommand : ICommands
     {
         private Game1 myGame;
         private Texture2D texture;
 
-        public LinkFacingUpCommand(Game1 game, Texture2D texture)
+        public CycleItemLeftCommand(Game1 game, Texture2D texture)
         {
             myGame = game;
             this.texture = texture;

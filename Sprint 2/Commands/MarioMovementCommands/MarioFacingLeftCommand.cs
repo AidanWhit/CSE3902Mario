@@ -1,21 +1,22 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
-using Sprint_0.Sprites;
-using Sprint_2.Sprites;
+using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Sprint_0.Sprites;
+using Sprint_2.Sprites;
 
-namespace Sprint_0.Commands.LinkItemCommands
+namespace Sprint_0.Commands.MarioMovementCommands
 {
-    public class LinkItem2Command : ICommands
+    public class MarioFacingLeftCommand : ICommands
     {
         private Game1 myGame;
         private Texture2D texture;
 
-        public LinkItem2Command(Game1 game, Texture2D texture)
+        public MarioFacingLeftCommand(Game1 game, Texture2D texture)
         {
             myGame = game;
             this.texture = texture;

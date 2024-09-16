@@ -8,14 +8,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace Sprint_0.Commands.LinkMovementCommands
+namespace Sprint_0.Commands.MarioMovementCommands
+
 {
-    public class LinkFacingDownCommand : ICommands
+    public class MarioFacingRightCommand : ICommands
     {
         private Game1 myGame;
         private Texture2D texture;
 
-        public LinkFacingDownCommand(Game1 game, Texture2D texture)
+        public MarioFacingRightCommand(Game1 game, Texture2D texture)
         {
             myGame = game;
             this.texture = texture;
@@ -27,3 +28,5 @@ namespace Sprint_0.Commands.LinkMovementCommands
         }
     }
 }
+
+
