@@ -69,5 +69,9 @@ namespace Sprint_0.Sprites
         {
             State.PowerUp();
         }
+        public void Crouch()
+        {
+
+        }
     }
 }

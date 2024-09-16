@@ -24,8 +24,6 @@ namespace Sprint_0
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
         private ISprite currentSprite;
-        private ISprite fontSprite;
-
 
         private Player mario;
         private KeyboardControl keyControl;
@@ -55,10 +53,10 @@ namespace Sprint_0
             
             Texture2D texture = Content.Load<Texture2D>("marioSpriteSheet");
 
-            keyControl.RegisterCommand(Keys.W, new MarioFacingUpCommand(this, texture));
-            keyControl.RegisterCommand(Keys.A, new MarioFacingDownCommand(this, texture));
-            keyControl.RegisterCommand(Keys.S, new MarioFacingRightCommand(this, texture));
-            keyControl.RegisterCommand(Keys.D, new MarioFacingLeftCommand(this, texture));
+            keyControl.RegisterCommand(Keys.W, new MarioFacingUpCommand(this, mario));
+            keyControl.RegisterCommand(Keys.A, new MarioFacingDownCommand(this, mario));
+            keyControl.RegisterCommand(Keys.S, new MarioFacingRightCommand(this, mario));
+            keyControl.RegisterCommand(Keys.D, new MarioFacingLeftCommand(this, mario));
             keyControl.RegisterCommand(Keys.Z, new MarioAttackNormalCommand(this, texture));
             keyControl.RegisterCommand(Keys.N, new MarioAttackSpecialCommand(this, texture));
             keyControl.RegisterCommand(Keys.D1, new MarioItem1Command(this, texture));
