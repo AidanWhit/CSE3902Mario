@@ -33,7 +33,6 @@ namespace Sprint_0
         private KeyboardControl keyControl;
 
         private IEnemy goomba;
-
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -62,8 +61,6 @@ namespace Sprint_0
 
             // Modified on 9/16 by Jingyu Fu, create a Goomba 
             goomba = EnemyFactory.Instance.CreateGoomba(new Vector2(100, 100));
-
-
 
             Texture2D texture = Content.Load<Texture2D>("marioSpriteSheet");
 

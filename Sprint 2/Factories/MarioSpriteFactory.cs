@@ -76,7 +76,10 @@ namespace Sprint_0.Factories
         {
             return new AnimatedSprite(fireBallSpriteSheet, FireBallConstants.animationDelay, 2, 2, FireBallConstants.scale);
         }
-        
+        public ISprite FireballExplosion()
+        {
+            return new FireballExplosionSprite(explosionSpriteSheet, FireBallConstants.animationDelay, 1, 3, FireBallConstants.scale);
+        }
         public ISprite DeadMarioSprite()
         {
             marioSprites.TryGetValue("DeadMario", out Rectangle[] frames);
