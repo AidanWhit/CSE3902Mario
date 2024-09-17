@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Sprint_2.Sprites.MarioStates.RightFacing.Mario;
+using Sprint_2.MarioPhysicsStates;
 
 namespace Sprint_0.Sprites.MarioStates.RightFacing.Mario
 {
@@ -21,6 +22,7 @@ namespace Sprint_0.Sprites.MarioStates.RightFacing.Mario
         public RightMarioJumpingState(Player mario)
         {
             this.mario = mario;
+            this.mario.PhysicsState = new Jumping(mario);
             sprite = MarioSpriteFactory.Instance.RightMarioJumpingSprite();
         }
 

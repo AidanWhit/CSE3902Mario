@@ -11,6 +11,7 @@ using Sprint_0.Sprites.MarioStates.LeftFacing.Mario;
 using Sprint_0.Sprites.MarioStates.LeftFacing.FireMario;
 using Sprint_0.Sprites.MarioStates.RightFacing.FireMario;
 using Sprint_2.Sprites.MarioStates.LeftFacing.SuperMario;
+using Sprint_2.MarioPhysicsStates;
 
 namespace Sprint_0.Sprites.MarioStates.LeftFacing.SuperMario
 {
@@ -22,6 +23,7 @@ namespace Sprint_0.Sprites.MarioStates.LeftFacing.SuperMario
         public LeftSuperMarioJumpingState(Player mario)
         {
             this.mario = mario;
+            this.mario.PhysicsState = new Jumping(mario);
             sprite = MarioSpriteFactory.Instance.LeftSuperMarioJumpingSprite();
         }
 

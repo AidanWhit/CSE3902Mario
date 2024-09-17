@@ -46,7 +46,6 @@ namespace Sprint_0.Sprites.MarioStates.LeftFacing.SuperMario
         }
         public void Damage()
         {
-            mario.State = new LeftMarioCrouchingState(mario);
         }
         public void PowerUp()
         {

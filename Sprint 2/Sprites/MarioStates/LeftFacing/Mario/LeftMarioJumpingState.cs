@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Sprint_0.Factories;
 using Sprint_0.Interfaces;
 using Sprint_0.Sprites.MarioStates.LeftFacing.SuperMario;
+using Sprint_2.MarioPhysicsStates;
 using Sprint_2.Sprites.MarioStates.LeftFacing.Mario;
 using System;
 using System.Collections.Generic;
@@ -20,6 +21,7 @@ namespace Sprint_0.Sprites.MarioStates.LeftFacing.Mario
         public LeftMarioJumpingState(Player mario)
         {
             this.mario = mario;
+            this.mario.PhysicsState = new Jumping(mario);
             sprite = MarioSpriteFactory.Instance.LeftMarioJumpingSprite();
         }
 

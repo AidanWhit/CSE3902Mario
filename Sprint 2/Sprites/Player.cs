@@ -3,10 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Sprint_0.Interfaces;
 using Sprint_0.Sprites.MarioStates.LeftFacing.FireMario;
 using Sprint_0.Sprites.MarioStates.LeftFacing.Mario;
-using Sprint_0.Sprites.MarioStates.LeftFacing.SuperMario;
-using Sprint_0.Sprites.MarioStates.RightFacing.FireMario;
 using Sprint_0.Sprites.MarioStates.RightFacing.Mario;
-using Sprint_0.Sprites.MarioStates.RightFacing.SuperMario;
 using Sprint_2.Constants;
 using Sprint_2.Interfaces;
 using Sprint_2.MarioPhysicsStates;
@@ -31,8 +28,8 @@ namespace Sprint_0.Sprites
         {
             XPos = (int)StartingLocation.X;
             YPos = (int)StartingLocation.Y;
-            State = new LeftMarioJumpingState(this);
-            PhysicsState = new Jumping(this);
+            State = new RightMarioIdleState(this);
+            PhysicsState = new Grounded(this);
         }
         public void Update(GameTime gameTime)
         {
@@ -69,6 +66,10 @@ namespace Sprint_0.Sprites
         }
         public void Jump()
         {
+            if (!isJumping)
+            {
+                State.Jump();
+            }
             if (PlayerVelocity.Y > MarioPhysicsConstants.maxJumpVelocity)
             {
                 PlayerVelocity += MarioPhysicsConstants.marioJumpVelocity;
