@@ -31,6 +31,7 @@ namespace Sprint_0.Sprites.MarioStates.LeftFacing.SuperMario
         {
             mario.State = new LeftSuperMarioIdleState(mario);
         }
+        public void Fall() { }
         public void Crouch()
         {
 

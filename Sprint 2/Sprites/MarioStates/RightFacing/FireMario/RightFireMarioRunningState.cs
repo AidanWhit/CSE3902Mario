@@ -25,6 +25,7 @@ namespace Sprint_0.Sprites.MarioStates.RightFacing.FireMario
         }
         public void Update(GameTime gameTime)
         {
+            mario.MoveRight();
             sprite.Update(gameTime);
         }
 
@@ -36,6 +37,7 @@ namespace Sprint_0.Sprites.MarioStates.RightFacing.FireMario
         {
             mario.State = new RightFireMarioCrouchingState(mario);
         }
+        public void Fall() { }
 
         public void Jump()
         {

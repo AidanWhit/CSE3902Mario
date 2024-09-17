@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using Sprint_0.Sprites.MarioStates.LeftFacing.Mario;
 using Sprint_0.Sprites.MarioStates.LeftFacing.FireMario;
 using Sprint_0.Sprites.MarioStates.RightFacing.FireMario;
+using Sprint_2.Sprites.MarioStates.LeftFacing.SuperMario;
 
 namespace Sprint_0.Sprites.MarioStates.LeftFacing.SuperMario
 {
@@ -31,12 +32,17 @@ namespace Sprint_0.Sprites.MarioStates.LeftFacing.SuperMario
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location)
         {
+            mario.Jump();
             sprite.Draw(spriteBatch, location);
         }
 
         public void Jump()
         {
 
+        }
+        public void Fall()
+        {
+            mario.State = new LeftSuperMarioFallingState(mario);
         }
         public void Crouch()
         {

@@ -33,7 +33,7 @@ namespace Sprint_0.Sprites.MarioStates.LeftFacing.Mario
             Vector2 marioLocation = new Vector2(mario.XPos, mario.YPos);
             sprite.Draw(spriteBatch, marioLocation);
         }
-
+        public void Fall() { }
         public void Crouch()
         {
             mario.State = new LeftMarioCrouchingState(mario);

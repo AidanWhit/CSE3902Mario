@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Sprint_0.Factories;
 using Sprint_0.Interfaces;
 using Sprint_0.Sprites.MarioStates.LeftFacing.SuperMario;
+using Sprint_2.Sprites.MarioStates.LeftFacing.Mario;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +25,7 @@ namespace Sprint_0.Sprites.MarioStates.LeftFacing.Mario
 
         public void Update(GameTime gameTime)
         {
+            mario.Jump();
             sprite.Update(gameTime);
         }
 
@@ -36,17 +38,21 @@ namespace Sprint_0.Sprites.MarioStates.LeftFacing.Mario
         {
 
         }
+        public void Fall()
+        {
+            mario.State = new LeftMarioFallingState(mario);
+        }
         public void Crouch()
         {
             mario.State = new LeftMarioIdleState(mario);
         }
         public void MoveLeft()
         {
-            mario.XPos--;
+
         }
         public void MoveRight()
         {
-            mario.XPos++;
+
         }
 
         public void Damage()

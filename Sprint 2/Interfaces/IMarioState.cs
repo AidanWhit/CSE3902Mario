@@ -16,6 +16,10 @@ namespace Sprint_0.Interfaces
         {
             
         }
+        void Fall()
+        {
+
+        }
         void Crouch()
         {
 

@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Sprint_2.Sprites.MarioStates.RightFacing.Mario;
 
 namespace Sprint_0.Sprites.MarioStates.RightFacing.Mario
 {
@@ -25,6 +26,7 @@ namespace Sprint_0.Sprites.MarioStates.RightFacing.Mario
 
         public void Update(GameTime gameTime)
         {
+            mario.Jump();
             sprite.Update(gameTime);
         }
 
@@ -37,17 +39,21 @@ namespace Sprint_0.Sprites.MarioStates.RightFacing.Mario
         {
 
         }
+
+        public void Fall()
+        {
+            mario.State = new RightMarioFallingState(mario);
+        }
         public void Crouch()
         {
             mario.State = new RightMarioIdleState(mario);
         }
         public void MoveLeft()
         {
-            mario.XPos--;
+
         }
         public void MoveRight()
         {
-            mario.XPos++;
         }
 
         public void Damage()

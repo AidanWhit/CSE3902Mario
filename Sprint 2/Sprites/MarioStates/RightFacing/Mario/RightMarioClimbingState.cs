@@ -37,6 +37,7 @@ namespace Sprint_0.Sprites.MarioStates.RightFacing.Mario
         {
             mario.State = new RightMarioJumpingState(mario);
         }
+        public void Fall() { }
         void Crouch()
         {
 

@@ -28,6 +28,7 @@ namespace Sprint_0.Sprites.MarioStates.RightFacing.FireMario
         {
             sprite.Update(gameTime);
         }
+        public void Fall() { }
         public void Draw(SpriteBatch spriteBatch, Vector2 location)
         {
             sprite.Draw(spriteBatch, location);

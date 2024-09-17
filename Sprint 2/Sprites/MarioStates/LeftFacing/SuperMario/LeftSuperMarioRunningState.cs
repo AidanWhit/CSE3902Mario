@@ -24,6 +24,7 @@ namespace Sprint_0.Sprites.MarioStates.LeftFacing.SuperMario
         }
         public void Update(GameTime gameTime)
         {
+            mario.MoveLeft();
             sprite.Update(gameTime);
         }
 
@@ -31,6 +32,7 @@ namespace Sprint_0.Sprites.MarioStates.LeftFacing.SuperMario
         {
             sprite.Draw(spriteBatch, location);
         }
+        public void Fall() { }
         public void Crouch()
         {
             mario.State = new LeftSuperMarioCrouchingState(mario);
