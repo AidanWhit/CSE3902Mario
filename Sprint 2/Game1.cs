@@ -10,6 +10,7 @@ using Sprint_0.Commands.MarioAttackCommands;
 using Sprint_0.Commands.ProgramCommands;
 using Sprint_0.Controls;
 using Sprint_0.Factories;
+using Sprint_0.Interfaces;
 using Sprint_0.Sprites;
 using Sprint_0.Sprites.MarioStates.LeftFacing.Mario;
 using System.Collections;
@@ -27,6 +28,8 @@ namespace Sprint_0
 
         private Player mario;
         private KeyboardControl keyControl;
+
+        private IEnemy goomba;
 
         public Game1()
         {
@@ -49,8 +52,14 @@ namespace Sprint_0
 
             MarioSpriteFactory.Instance.LoadAllContent(Content);
 
+            // Modified on 9/16 by Jingyu Fu, added a factory for enemies
+            EnemyFactory.Instance.LoadAllContent(Content);
+
             mario = new Player(new Vector2(400, 200));
-            
+
+            // Modified on 9/16 by Jingyu Fu, create a Goomba 
+            goomba = EnemyFactory.Instance.CreateGoomba(new Vector2(200, 200));
+
             Texture2D texture = Content.Load<Texture2D>("marioSpriteSheet");
 
             keyControl.RegisterCommand(Keys.W, new MarioFacingUpCommand(this, mario));
@@ -83,6 +92,9 @@ namespace Sprint_0
             keyControl.Update();
             mario.Update(gameTime);
 
+            // Modified on 9/16 by Jingyu Fu, update enemy(goomba)
+            goomba.Update(gameTime);
+
             base.Update(gameTime);
         }
 
@@ -91,6 +103,11 @@ namespace Sprint_0
             GraphicsDevice.Clear(Color.CornflowerBlue);
             spriteBatch.Begin();
             mario.Draw(spriteBatch, new Vector2(mario.XPos, mario.YPos));
+
+            // Modified on 9/16 by Jingyu Fu, draw goomba
+            goomba.Draw(spriteBatch, new Vector2(200, 200)); 
+
+
             spriteBatch.End();
             base.Draw(gameTime);
         }
