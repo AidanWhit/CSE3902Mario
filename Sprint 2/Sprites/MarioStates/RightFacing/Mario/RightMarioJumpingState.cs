@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Sprint_2.Sprites.MarioStates.RightFacing.Mario;
 using Sprint_2.MarioPhysicsStates;
+using Sprint_0.Sprites.MarioStates.LeftFacing.Mario;
 
 namespace Sprint_0.Sprites.MarioStates.RightFacing.Mario
 {
@@ -52,10 +53,11 @@ namespace Sprint_0.Sprites.MarioStates.RightFacing.Mario
         }
         public void MoveLeft()
         {
-
+            mario.State = new LeftMarioJumpingState(mario);
         }
         public void MoveRight()
         {
+
         }
 
         public void Damage()

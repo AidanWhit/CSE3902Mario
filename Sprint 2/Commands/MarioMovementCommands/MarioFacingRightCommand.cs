@@ -3,6 +3,7 @@ using Sprint_0.Sprites;
 using Sprint_2.Sprites;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,7 +25,7 @@ namespace Sprint_0.Commands.MarioMovementCommands
 
         public void Execute()
         {
-            mario.MoveRight();
+            mario.State.MoveRight();
         }
     }
 }

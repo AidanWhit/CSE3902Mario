@@ -50,11 +50,11 @@ namespace Sprint_0.Sprites.MarioStates.LeftFacing.Mario
         }
         public void MoveLeft()
         {
-
+            mario.MoveLeft();
         }
         public void MoveRight()
         {
-
+            mario.MoveRight();
         }
 
         public void Damage()

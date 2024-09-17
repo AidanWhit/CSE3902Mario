@@ -24,7 +24,7 @@ namespace Sprint_0.Commands.MarioMovementCommands
 
         public void Execute()
         {
-            mario.MoveLeft();
+            mario.State.MoveLeft();
         }
     }
 }

@@ -30,9 +30,12 @@ namespace Sprint_2.MarioPhysicsStates
             {
                 mario.YPos += (int)(mario.PlayerVelocity.Y * gameTime.ElapsedGameTime.TotalSeconds);
                 mario.XPos += (int)(mario.PlayerVelocity.X * gameTime.ElapsedGameTime.TotalSeconds);
+                Debug.WriteLine("Mario XVelocity: " + mario.PlayerVelocity.X);
 
-                mario.PlayerVelocity *= MarioPhysicsConstants.velocityDecay;
 
+                mario.PlayerVelocity = new Vector2(mario.PlayerVelocity.X, mario.PlayerVelocity.Y * MarioPhysicsConstants.velocityDecay);
+                //mario.PlayerVelocity *= MarioPhysicsConstants.velocityDecay;
+                
                 if (Math.Abs(mario.YPos - originalMarioY) > MarioPhysicsConstants.maxJumpHeight)
                 {
                     mario.PlayerVelocity = new Vector2(mario.PlayerVelocity.X, 0);

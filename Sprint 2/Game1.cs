@@ -16,6 +16,9 @@ using Sprint_0.Sprites.MarioStates.LeftFacing.Mario;
 using System.Collections;
 using System.Diagnostics;
 using Sprint_0.Commands.EnemyCommands;
+using Sprint_2.Interfaces;
+using Sprint_2.GameObjects;
+using Sprint_2.Constants;
 
 namespace Sprint_0
 {
@@ -60,12 +63,14 @@ namespace Sprint_0
             // Modified on 9/16 by Jingyu Fu, create a Goomba 
             goomba = EnemyFactory.Instance.CreateGoomba(new Vector2(200, 200));
 
+
+
             Texture2D texture = Content.Load<Texture2D>("marioSpriteSheet");
 
             keyControl.RegisterCommand(Keys.W, new MarioFacingUpCommand(this, mario));
-            keyControl.RegisterCommand(Keys.A, new MarioFacingDownCommand(this, mario));
-            keyControl.RegisterCommand(Keys.S, new MarioFacingRightCommand(this, mario));
-            keyControl.RegisterCommand(Keys.D, new MarioFacingLeftCommand(this, mario));
+            keyControl.RegisterCommand(Keys.S, new MarioFacingDownCommand(this, mario));
+            keyControl.RegisterCommand(Keys.D, new MarioFacingRightCommand(this, mario));
+            keyControl.RegisterCommand(Keys.A, new MarioFacingLeftCommand(this, mario));
             keyControl.RegisterCommand(Keys.Z, new MarioAttackNormalCommand(this, texture));
             keyControl.RegisterCommand(Keys.N, new MarioAttackSpecialCommand(this, texture));
             keyControl.RegisterCommand(Keys.D1, new MarioItem1Command(this, texture));
@@ -105,8 +110,7 @@ namespace Sprint_0
             mario.Draw(spriteBatch, new Vector2(mario.XPos, mario.YPos));
 
             // Modified on 9/16 by Jingyu Fu, draw goomba
-            goomba.Draw(spriteBatch, new Vector2(200, 200)); 
-
+            goomba.Draw(spriteBatch, new Vector2(200, 200));
 
             spriteBatch.End();
             base.Draw(gameTime);

@@ -4,12 +4,17 @@ using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework.Content;
 using Sprint_0.Sprites.MarioSprites;
+using Sprint_2.Sprites;
+using Sprint_2.Constants;
 
 namespace Sprint_0.Factories
 {
     public class MarioSpriteFactory
     {
         private Texture2D marioSpriteSheet;
+        private Texture2D fireBallSpriteSheet;
+        private Texture2D explosionSpriteSheet;
+
         private static MarioSpriteFactory instance = new MarioSpriteFactory();
         private Vector2 marioSize = new Vector2(4*17, 4*16);
         private Vector2 superMarioSize = new Vector2(4 * 16, 4 * 32);
@@ -63,7 +68,15 @@ namespace Sprint_0.Factories
         public void LoadAllContent(ContentManager content)
         {
             marioSpriteSheet = content.Load<Texture2D>("marioSpriteSheet");
+            fireBallSpriteSheet = content.Load<Texture2D>("MarioFireBallSpriteSheet");
+            explosionSpriteSheet = content.Load<Texture2D>("MarioFireBallExplosionSpriteSheet");
+
         }
+        public ISprite FireBall()
+        {
+            return new AnimatedSprite(fireBallSpriteSheet, FireBallConstants.animationDelay, 2, 2, FireBallConstants.scale);
+        }
+        
         public ISprite DeadMarioSprite()
         {
             marioSprites.TryGetValue("DeadMario", out Rectangle[] frames);

@@ -23,7 +23,8 @@ namespace Sprint_0.Sprites
         public IMarioPhysicsStates PhysicsState { get; set; }
 
         private bool isCrouching = false;
-        private bool isJumping = false;
+        public bool isJumping = false;
+
         public Player(Vector2 StartingLocation) 
         {
             XPos = (int)StartingLocation.X;
@@ -66,10 +67,7 @@ namespace Sprint_0.Sprites
         }
         public void Jump()
         {
-            if (!isJumping)
-            {
-                State.Jump();
-            }
+            isJumping = true;
             if (PlayerVelocity.Y > MarioPhysicsConstants.maxJumpVelocity)
             {
                 PlayerVelocity += MarioPhysicsConstants.marioJumpVelocity;
@@ -86,7 +84,12 @@ namespace Sprint_0.Sprites
 
         public void Crouch()
         {
-            State.Crouch();
+            //Player can not crouch when jumping
+            if (!isJumping)
+            {
+                State.Crouch();
+            }
+            
         }
 
         public void Damage()

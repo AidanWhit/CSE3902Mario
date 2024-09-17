@@ -25,9 +25,10 @@ namespace Sprint_0.Commands.MarioMovementCommands
 
         public void Execute()
         {
-            Debug.WriteLine("Entered Jump Command");
-            mario.PhysicsState = new Jumping(mario);
-            mario.Jump();
+            //Testing Movement ~ Aidan Whitlatch
+           //Debug.WriteLine("Entered Jump Command");
+            //mario.PhysicsState = new Jumping(mario);
+            mario.State.Jump();
         }
     }
 }

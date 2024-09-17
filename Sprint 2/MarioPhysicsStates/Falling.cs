@@ -25,12 +25,15 @@ namespace Sprint_2.MarioPhysicsStates
         public void Update(GameTime gameTime)
         {
             mario.YPos += (int)(mario.PlayerVelocity.Y * gameTime.TotalGameTime.TotalSeconds);
-            mario.PlayerVelocity *= MarioPhysicsConstants.velocityDecay;
+            mario.XPos += (int)(mario.PlayerVelocity.X * gameTime.ElapsedGameTime.TotalSeconds);
+            mario.PlayerVelocity /= MarioPhysicsConstants.velocityDecay;
 
             if (mario.YPos > originalPlayerHeight)
             {
                 mario.PlayerVelocity = new Vector2(mario.PlayerVelocity.X, 0);
+                mario.YPos = originalPlayerHeight;
                 mario.PhysicsState = new Grounded(mario);
+                mario.isJumping = false;
                 mario.State.Crouch();
             }
 
