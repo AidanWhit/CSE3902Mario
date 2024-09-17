@@ -23,6 +23,7 @@ namespace Sprint_0.Sprites.MarioStates.LeftFacing.Mario
         }
         public void Update(GameTime gameTime)
         {
+            mario.MoveLeft();
             sprite.Update(gameTime);
         }
 

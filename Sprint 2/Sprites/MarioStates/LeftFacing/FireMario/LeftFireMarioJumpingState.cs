@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Sprint_0.Sprites.MarioStates.LeftFacing.SuperMario;
+using Sprint_2.Sprites.MarioStates.LeftFacing.FireMario;
 
 namespace Sprint_0.Sprites.MarioStates.LeftFacing.FireMario
 {
@@ -22,9 +23,10 @@ namespace Sprint_0.Sprites.MarioStates.LeftFacing.FireMario
             this.mario = mario;
             sprite = MarioSpriteFactory.Instance.LeftFireMarioJumpingSprite();
         }
-
+        
         public void Update(GameTime gameTime)
         {
+            mario.Jump();
             sprite.Update(gameTime);
         }
 
@@ -35,7 +37,11 @@ namespace Sprint_0.Sprites.MarioStates.LeftFacing.FireMario
 
         public void Jump()
         {
-
+            
+        }
+        public void Fall()
+        {
+            mario.State = new LeftFireMarioFallingState(mario);
         }
         public void Crouch()
         {

@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace Sprint_0.Interfaces
 {
-    internal interface IPlayer
+    public interface IPlayer
     {
         void MoveLeft();
         void MoveRight();
         void Jump();
-        enum health { regular=1, super, fire}
+        public enum Health { regular=1, super, fire}
     }
 }

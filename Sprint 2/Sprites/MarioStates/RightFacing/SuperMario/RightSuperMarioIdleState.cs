@@ -33,6 +33,7 @@ namespace Sprint_0.Sprites.MarioStates.RightFacing.SuperMario
         {
             sprite.Draw(spriteBatch, location);
         }
+        public void Fall() { }
 
         public void Crouch()
         {

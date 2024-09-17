@@ -33,6 +33,7 @@ namespace Sprint_0.Sprites.MarioStates.LeftFacing.SuperMario
         {
             sprite.Draw(spriteBatch, location);
         }
+        public void Fall() { }
         void Jump()
         {
             mario.State = new LeftSuperMarioJumpingState(mario);

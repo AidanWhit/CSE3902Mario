@@ -28,7 +28,7 @@ namespace Sprint_0.Sprites.MarioStates
         {
             sprite.Draw(spriteBatch, location);
         }
-
+        public void Fall() { }
         public void Crouch()
         {
 

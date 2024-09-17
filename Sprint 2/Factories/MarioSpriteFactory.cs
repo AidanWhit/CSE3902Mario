@@ -3,8 +3,6 @@ using Sprint_0.Sprites;
 using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework.Content;
-using System.Diagnostics;
-using System;
 using Sprint_0.Sprites.MarioSprites;
 
 namespace Sprint_0.Factories

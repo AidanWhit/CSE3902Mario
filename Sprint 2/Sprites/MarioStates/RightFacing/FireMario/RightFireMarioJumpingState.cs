@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Sprint_0.Sprites.MarioStates.RightFacing.SuperMario;
+using Sprint_2.Sprites.MarioStates.RightFacing.FireMario;
 
 namespace Sprint_0.Sprites.MarioStates.RightFacing.FireMario
 {
@@ -26,9 +27,14 @@ namespace Sprint_0.Sprites.MarioStates.RightFacing.FireMario
 
         public void Update(GameTime gameTime)
         {
+            mario.Jump();
             sprite.Update(gameTime);
         }
 
+        public void Fall()
+        {
+            mario.State = new RightFireMarioFallingState(mario);
+        }
         public void Draw(SpriteBatch spriteBatch, Vector2 location)
         {
             sprite.Draw(spriteBatch, location);

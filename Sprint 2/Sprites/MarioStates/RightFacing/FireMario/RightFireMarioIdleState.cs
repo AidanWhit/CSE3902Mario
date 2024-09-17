@@ -27,6 +27,7 @@ namespace Sprint_0.Sprites.MarioStates.RightFacing.FireMario
         {
             sprite.Draw(spriteBatch, location);
         }
+        public void Fall() { }
 
         public void Crouch()
         {

@@ -41,6 +41,7 @@ namespace Sprint_0.Sprites.MarioStates.RightFacing.SuperMario
         {
 
         }
+        public void Fall() { }
         public void MoveLeft()
         {
             mario.State = new LeftSuperMarioCrouchingState(mario);

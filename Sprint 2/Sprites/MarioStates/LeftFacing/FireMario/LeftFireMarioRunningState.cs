@@ -45,6 +45,7 @@ namespace Sprint_0.Sprites.MarioStates.LeftFacing.FireMario
         {
 
         }
+        public void Fall() { }
         public void MoveRight()
         {
             mario.State = new LeftFireMarioIdleState(mario);

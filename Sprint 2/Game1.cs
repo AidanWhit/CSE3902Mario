@@ -49,7 +49,7 @@ namespace Sprint_0
 
             MarioSpriteFactory.Instance.LoadAllContent(Content);
 
-            mario = new Player(new Vector2(400, 200));
+            mario = new Player(new Vector2(400, 300));
             
             Texture2D texture = Content.Load<Texture2D>("marioSpriteSheet");
 

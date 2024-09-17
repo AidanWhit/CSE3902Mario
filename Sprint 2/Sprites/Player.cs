@@ -1,8 +1,15 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint_0.Interfaces;
+using Sprint_0.Sprites.MarioStates.LeftFacing.FireMario;
+using Sprint_0.Sprites.MarioStates.LeftFacing.Mario;
+using Sprint_0.Sprites.MarioStates.LeftFacing.SuperMario;
 using Sprint_0.Sprites.MarioStates.RightFacing.FireMario;
+using Sprint_0.Sprites.MarioStates.RightFacing.Mario;
+using Sprint_0.Sprites.MarioStates.RightFacing.SuperMario;
 using Sprint_2.Constants;
+using Sprint_2.Interfaces;
+using Sprint_2.MarioPhysicsStates;
 using System.Diagnostics;
 
 
@@ -16,18 +23,21 @@ namespace Sprint_0.Sprites
         public int YPos { get; set; }
         public Vector2 PlayerVelocity { get; set; }
 
+        public IMarioPhysicsStates PhysicsState { get; set; }
+
         private bool isCrouching = false;
-        private bool isJumping = true;
+        private bool isJumping = false;
         public Player(Vector2 StartingLocation) 
         {
             XPos = (int)StartingLocation.X;
             YPos = (int)StartingLocation.Y;
-            State = new RightFireMarioRunningState(this);
+            State = new LeftMarioJumpingState(this);
+            PhysicsState = new Jumping(this);
         }
         public void Update(GameTime gameTime)
         {
-            XPos += (int)(PlayerVelocity.X * gameTime.ElapsedGameTime.TotalSeconds);
             State.Update(gameTime);
+            PhysicsState.Update(gameTime);
         }
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location)
@@ -39,7 +49,11 @@ namespace Sprint_0.Sprites
         {
             if (!isCrouching)
             {
-                XPos -= 3;
+                if (PlayerVelocity.X >  -MarioPhysicsConstants.maxXVelocity)
+                {
+                    PlayerVelocity -= MarioPhysicsConstants.marioXVelocity;
+                }
+
             }
         }
             
@@ -47,14 +61,27 @@ namespace Sprint_0.Sprites
         {
             if (!isCrouching)
             {
-                PlayerVelocity = new Vector2(PlayerVelocity.X + MarioPhysicsConstants.marioXVelocity, YPos);
-                Debug.WriteLine("Mario X Velcoity: " +PlayerVelocity.X);
+                if (PlayerVelocity.X < MarioPhysicsConstants.maxXVelocity)
+                {
+                    PlayerVelocity += MarioPhysicsConstants.marioXVelocity;
+                }
             }
         }
         public void Jump()
         {
-            YPos--;
+            if (PlayerVelocity.Y > MarioPhysicsConstants.maxJumpVelocity)
+            {
+                PlayerVelocity += MarioPhysicsConstants.marioJumpVelocity;
+            }
         }
+        public void Fall()
+        {
+            if (PlayerVelocity.Y < MarioPhysicsConstants.maxFallVelocity)
+            {
+                PlayerVelocity += MarioPhysicsConstants.marioFallVelocity;
+            }
+        }
+
 
         public void Crouch()
         {
@@ -68,10 +95,6 @@ namespace Sprint_0.Sprites
         public void PowerUp()
         {
             State.PowerUp();
-        }
-        public void Crouch()
-        {
-
         }
     }
 }
