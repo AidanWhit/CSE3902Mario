@@ -61,7 +61,7 @@ namespace Sprint_0
             mario = new Player(new Vector2(400, 200));
 
             // Modified on 9/16 by Jingyu Fu, create a Goomba 
-            goomba = EnemyFactory.Instance.CreateGoomba(new Vector2(200, 200));
+            goomba = EnemyFactory.Instance.CreateGoomba(new Vector2(100, 100));
 
 
 
@@ -110,7 +110,7 @@ namespace Sprint_0
             mario.Draw(spriteBatch, new Vector2(mario.XPos, mario.YPos));
 
             // Modified on 9/16 by Jingyu Fu, draw goomba
-            goomba.Draw(spriteBatch, new Vector2(200, 200));
+            goomba.Draw(spriteBatch, new Vector2(10, 10)); 
 
             spriteBatch.End();
             base.Draw(gameTime);
