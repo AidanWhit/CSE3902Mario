@@ -1,4 +1,5 @@
 ﻿using Sprint_0.Sprites;
+using Sprint_2.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +19,7 @@ namespace Sprint_0.Commands.ProgramCommands
 
         public void Execute()
         {
-            myGame = new Game1();
+            myGame.reload();
         }
     }
 }

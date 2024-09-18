@@ -1,6 +1,6 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using Sprint_0.Commands;
+using Sprint_2.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,6 +37,11 @@ namespace Sprint_0.Controls
             }
             oldKeys = pressedKeys;
 
+        }
+
+        public void ClearCommands()
+        {
+            controllerMappings.Clear();
         }
 
     }

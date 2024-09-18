@@ -68,7 +68,7 @@ namespace Sprint_0
             keyControl.RegisterCommand(Keys.S, new MarioFacingDownCommand(this, mario));
             keyControl.RegisterCommand(Keys.D, new MarioFacingRightCommand(this, mario));
             keyControl.RegisterCommand(Keys.A, new MarioFacingLeftCommand(this, mario));
-            keyControl.RegisterCommand(Keys.Z, new MarioAttackNormalCommand(this, texture));
+            keyControl.RegisterCommand(Keys.Z, new MarioAttackNormalCommand(this, mario));
             keyControl.RegisterCommand(Keys.N, new MarioAttackSpecialCommand(this, texture));
             keyControl.RegisterCommand(Keys.D1, new MarioItem1Command(this, texture));
             keyControl.RegisterCommand(Keys.D2, new MarioItem2Command(this, texture));
@@ -86,6 +86,7 @@ namespace Sprint_0
         protected override void UnloadContent()
         {
             Content.Unload();
+            keyControl.ClearCommands();
         }
 
         protected override void Update(GameTime gameTime)
@@ -113,9 +114,10 @@ namespace Sprint_0
             base.Draw(gameTime);
         }
 
-        public void SetSprite (ISprite sprite)
+        public void reload ()
         {
-            currentSprite = sprite;
+            this.UnloadContent();
+            this.LoadContent();
         }
     }
 }

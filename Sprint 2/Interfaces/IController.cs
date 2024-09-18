@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sprint_0.Controls
+namespace Sprint_2.Interfaces
 {
     internal interface IController
     {

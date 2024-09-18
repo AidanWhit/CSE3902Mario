@@ -1,6 +1,6 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
-using Sprint_0.Commands;
 using Sprint_0.Sprites;
+using Sprint_2.Interfaces;
 using Sprint_2.Sprites;
 using System;
 using System.Collections.Generic;
@@ -14,17 +14,17 @@ namespace Sprint_0.Commands.MarioAttackCommands
     public class MarioAttackNormalCommand : ICommands
     {
         private Game1 myGame;
-        private Texture2D texture;
+        private Player mario;
 
-        public MarioAttackNormalCommand(Game1 game, Texture2D texture)
+        public MarioAttackNormalCommand(Game1 game, Player player)
         {
             myGame = game;
-            this.texture = texture;
+            mario = player;
         }
 
         public void Execute()
         {
-            myGame.SetSprite(new Sprite1(texture, 1, 2));
+            mario.ShootFireball();
         }
     }
 }

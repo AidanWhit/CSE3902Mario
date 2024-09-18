@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sprint_0.Commands
+namespace Sprint_2.Interfaces
 {
-   public interface ICommands
+    public interface ICommands
     {
         void Execute();
     }

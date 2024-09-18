@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Sprint_0.Sprites;
 using Sprint_2.Sprites;
+using Sprint_2.Interfaces;
 
 namespace Sprint_0.Commands.MarioMovementCommands
 {
