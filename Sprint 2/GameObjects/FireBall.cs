@@ -24,6 +24,9 @@ namespace Sprint_2.GameObjects
         double distFromSource;
 
         private bool enteredExplosionState = false;
+
+        public bool FinishedExplosionAnimation = false;
+        private float timer;
         public FireBall(Player source, Vector2 speed)
         {
             this.source = source;
@@ -54,6 +57,15 @@ namespace Sprint_2.GameObjects
                 enteredExplosionState = true;
             }
             
+            if (enteredExplosionState)
+            {
+                /* Currently hardcoded need to find a better solution but it works for now ~ Aidan */
+                timer += (float)gameTime.ElapsedGameTime.TotalSeconds;
+                if (timer > 0.3f)
+                {
+                    FinishedExplosionAnimation = true;
+                }
+            }
             fireball.Update(gameTime);
 
         }
@@ -75,7 +87,7 @@ namespace Sprint_2.GameObjects
 
         public bool isExploded()
         {
-            return enteredExplosionState;
+            return FinishedExplosionAnimation;
         }
     }
 }

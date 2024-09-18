@@ -49,6 +49,10 @@ namespace Sprint_0.Sprites
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location)
         {
+            for(int i = 0; i < fireBalls.Count; i++)
+            {
+                fireBalls[i].Draw(spriteBatch);
+            }
             State.Draw(spriteBatch, new Vector2(XPos, YPos));
         }
 

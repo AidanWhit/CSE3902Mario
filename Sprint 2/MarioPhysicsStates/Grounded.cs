@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Sprint_0.Interfaces;
 using Sprint_0.Sprites;
 using Sprint_2.Constants;
 using Sprint_2.Interfaces;
@@ -12,8 +13,8 @@ namespace Sprint_2.MarioPhysicsStates
 {
     public class Grounded : IMarioPhysicsStates
     {
-        private Player mario;
-        public Grounded(Player mario) 
+        private IPlayer mario;
+        public Grounded(IPlayer mario) 
         {
             this.mario = mario;
         }

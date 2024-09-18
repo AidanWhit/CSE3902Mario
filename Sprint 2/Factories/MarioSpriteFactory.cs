@@ -72,6 +72,31 @@ namespace Sprint_0.Factories
             explosionSpriteSheet = content.Load<Texture2D>("MarioFireBallExplosionSpriteSheet");
 
         }
+
+        /* Next 3 functions are used to try and implement player without States */
+        public ISprite GetAnimatedMarioSprite(string key, Vector2 size)
+        {
+            marioSprites.TryGetValue(key, out Rectangle[] frames);
+            return new AnimatedMarioSprite(marioSpriteSheet, frames, size, runSpeed);
+        }
+        public ISprite GetStaticMarioSprite(string key, Vector2 size)
+        {
+            marioSprites.TryGetValue(key, out Rectangle[] frames);
+            return new StaticMarioSprite(marioSpriteSheet, frames, size);
+        }
+        public ISprite GetMarioSprite(string key, Vector2 size)
+        {
+            if (key.Contains("Run") || key.Contains("Climb"))
+            {
+                return GetAnimatedMarioSprite(key, size);
+            }
+            else
+            {
+                return GetStaticMarioSprite(key, size);
+            }
+        }
+
+        /* Do not mess with any of the below functions */
         public ISprite FireBall()
         {
             return new AnimatedSprite(fireBallSpriteSheet, FireBallConstants.animationDelay, 2, 2, FireBallConstants.scale);

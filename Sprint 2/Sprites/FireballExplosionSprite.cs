@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Sprint_0.Sprites;
 using System.Diagnostics;
+using Sprint_2.GameObjects;
 
 namespace Sprint_2.Sprites
 {
@@ -51,6 +52,7 @@ namespace Sprint_2.Sprites
                     {
                         //Do something so it doesn't draw on the screen anymore
                         drawable = false;
+                        
                     }
 
                     animationDelay = initalAnimationDelay;
