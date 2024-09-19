@@ -12,13 +12,8 @@ using Sprint_0.Controls;
 using Sprint_0.Factories;
 using Sprint_0.Interfaces;
 using Sprint_0.Sprites;
-using Sprint_0.Sprites.MarioStates.LeftFacing.Mario;
-using System.Collections;
-using System.Diagnostics;
 using Sprint_0.Commands.EnemyCommands;
-using Sprint_2.Interfaces;
-using Sprint_2.GameObjects;
-using Sprint_2.Constants;
+using Sprint_2.Sprites;
 
 namespace Sprint_0
 {

@@ -6,6 +6,8 @@ using Microsoft.Xna.Framework.Content;
 using Sprint_0.Sprites.MarioSprites;
 using Sprint_2.Sprites;
 using Sprint_2.Constants;
+using System.Diagnostics;
+using System.Net.Http.Headers;
 
 namespace Sprint_0.Factories
 {
@@ -16,7 +18,7 @@ namespace Sprint_0.Factories
         private Texture2D explosionSpriteSheet;
 
         private static MarioSpriteFactory instance = new MarioSpriteFactory();
-        private Vector2 marioSize = new Vector2(4*17, 4*16);
+        private Vector2 marioSize = new Vector2(4 * 17, 4 * 16);
         private Vector2 superMarioSize = new Vector2(4 * 16, 4 * 32);
 
         private float climbSpeed = 0.2f;
@@ -59,7 +61,15 @@ namespace Sprint_0.Factories
             {"RightSuperMarioRun", new Rectangle[]{new Rectangle(239, 52, 16, 32), new Rectangle(270, 52, 16, 32), new Rectangle(299, 53, 16, 32) } },
             {"LeftFireMarioRun", new Rectangle[]{new Rectangle(152, 122, 16, 32), new Rectangle(128, 122, 16, 32), new Rectangle(102, 123, 16, 32) } },
             {"RightFireMarioRun", new Rectangle[]{new Rectangle(237, 122, 16, 32), new Rectangle(263, 122, 16, 32), new Rectangle(287, 123, 16, 32) } },
-            {"DeadMario", new Rectangle[]{new Rectangle(0, 16, 16, 16)} }
+            {"DeadMario", new Rectangle[]{new Rectangle(0, 16, 16, 16)} },
+            {"LeftMarioSlide", new Rectangle[]{new Rectangle(60, 0, 16, 16)} },
+            {"RightMarioSlide", new Rectangle[]{new Rectangle(331,0, 16, 16)} },
+            {"LeftSuperMarioSlide", new Rectangle[]{new Rectangle(329, 52, 16, 32)} },
+            {"RigthSuperMarioSlide", new Rectangle[]{new Rectangle(60, 52, 16, 32)} },
+            {"LeftFireMarioSlide", new Rectangle[]{new Rectangle(337, 122, 16, 32)} },
+            {"RightFireMarioSlide", new Rectangle[]{new Rectangle(52, 122, 16, 32)} },
+            {"LeftFireMarioShoot", new Rectangle[]{new Rectangle(77, 123, 16, 32)} },
+            {"RightFireMarioShoot", new Rectangle[]{new Rectangle(312, 123, 16, 30)} }
 
         };
         private MarioSpriteFactory()
@@ -81,6 +91,11 @@ namespace Sprint_0.Factories
         }
         public ISprite GetStaticMarioSprite(string key, Vector2 size)
         {
+            if (key.Contains("Fall"))
+            {
+                key = key.Replace("Fall", "Jump");
+                Debug.WriteLine("Key: " + key);
+            }
             marioSprites.TryGetValue(key, out Rectangle[] frames);
             return new StaticMarioSprite(marioSpriteSheet, frames, size);
         }
@@ -110,6 +125,8 @@ namespace Sprint_0.Factories
             marioSprites.TryGetValue("DeadMario", out Rectangle[] frames);
             return new StaticMarioSprite(marioSpriteSheet, frames, marioSize);
         }
+
+        /* Should be able to delete these below fuctions but I will leave them here for now ~ Aidan */
         public ISprite LeftMarioIdleSprite()
         {
             marioSprites.TryGetValue("LeftMarioIdle", out Rectangle[] frames);
@@ -263,5 +280,5 @@ namespace Sprint_0.Factories
             return new AnimatedMarioSprite(marioSpriteSheet, frames, superMarioSize, runSpeed);
         }
     }
-    
+
 }

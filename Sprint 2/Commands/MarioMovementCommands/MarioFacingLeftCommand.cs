@@ -1,13 +1,4 @@
-﻿using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
-using Sprint_0.Sprites;
-using Sprint_2.Sprites;
+﻿using Sprint_2.Sprites;
 using Sprint_2.Interfaces;
 
 namespace Sprint_0.Commands.MarioMovementCommands
@@ -25,7 +16,7 @@ namespace Sprint_0.Commands.MarioMovementCommands
 
         public void Execute()
         {
-            mario.State.MoveLeft();
+            mario.MoveLeft();
         }
     }
 }

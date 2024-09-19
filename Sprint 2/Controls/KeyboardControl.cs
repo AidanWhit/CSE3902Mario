@@ -30,7 +30,7 @@ namespace Sprint_0.Controls
 
             foreach (Keys key in pressedKeys)
             {
-                if (!oldKeys.Contains(key) && controllerMappings.ContainsKey(key))
+                if (/*!oldKeys.Contains(key) &&*/ controllerMappings.ContainsKey(key))
                 {
                     controllerMappings[key].Execute();
                 }

@@ -1,25 +1,23 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint_0.Interfaces;
-using Sprint_0.Sprites.MarioStates.LeftFacing.FireMario;
-using Sprint_0.Sprites.MarioStates.LeftFacing.Mario;
-using Sprint_0.Sprites.MarioStates.RightFacing.FireMario;
-using Sprint_0.Sprites.MarioStates.RightFacing.Mario;
+using Sprint_0.Sprites;
 using Sprint_2.Constants;
 using Sprint_2.GameObjects;
 using Sprint_2.Interfaces;
 using Sprint_2.MarioPhysicsStates;
+using Sprint_2.MarioStates;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 
 
-namespace Sprint_0.Sprites
+namespace Sprint_2.Sprites
 {
     public class Player : IPlayer, ISprite
     {
 
-        public IMarioState State { get; set; }
+        public PlayerStateMachine playerState { get; set; }
         public int XPos { get; set; }
         public int YPos { get; set; }
         public Vector2 PlayerVelocity { get; set; }
@@ -31,29 +29,29 @@ namespace Sprint_0.Sprites
 
         private int numberOfFireballsRemaining = 2;
         private List<FireBall> fireBalls = new List<FireBall>();
-        
-        
-        public Player(Vector2 StartingLocation) 
+
+
+        public Player(Vector2 StartingLocation)
         {
             XPos = (int)StartingLocation.X;
             YPos = (int)StartingLocation.Y;
-            State = new RightFireMarioIdleState(this);
+            playerState = new PlayerStateMachine(this);
             PhysicsState = new Grounded(this);
         }
         public void Update(GameTime gameTime)
         {
             UpdateFireballs(gameTime);
-            State.Update(gameTime);
+            playerState.Update(gameTime);
             PhysicsState.Update(gameTime);
         }
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location)
         {
-            for(int i = 0; i < fireBalls.Count; i++)
+            for (int i = 0; i < fireBalls.Count; i++)
             {
                 fireBalls[i].Draw(spriteBatch);
             }
-            State.Draw(spriteBatch, new Vector2(XPos, YPos));
+            playerState.Draw(spriteBatch);
         }
 
         public void UpdateFireballs(GameTime gameTime)
@@ -74,49 +72,33 @@ namespace Sprint_0.Sprites
         }
         public void ShootFireball()
         {
-            string stateName = State.ToString();
-            if (stateName.Contains("Fire") && numberOfFireballsRemaining > 0 && !stateName.Contains("Crouching"))
+            if (numberOfFireballsRemaining > 0)
             {
-                if (stateName.Contains("Left"))
+                FireBall fireball = playerState.ShootFireball();
+                if (fireball != null)
                 {
-                    fireBalls.Add(new FireBall(this, -FireBallConstants.moveSpeed));
-                }
-                else //Shoot FireBall Right
-                {
-                    fireBalls.Add(new FireBall(this, FireBallConstants.moveSpeed));
-                }
-                numberOfFireballsRemaining--;
-            }
-        }
-        public void MoveLeft()
-        {
-            if (!isCrouching)
-            {
-                if (PlayerVelocity.X >  -MarioPhysicsConstants.maxXVelocity)
-                {
-                    PlayerVelocity -= MarioPhysicsConstants.marioXVelocity;
+                    fireBalls.Add(fireball);
+                    numberOfFireballsRemaining--;
                 }
 
             }
         }
-            
+        public void MoveLeft()
+        {
+            playerState.MoveLeft();
+        }
+
         public void MoveRight()
         {
-            if (!isCrouching)
-            {
-                if (PlayerVelocity.X < MarioPhysicsConstants.maxXVelocity)
-                {
-                    PlayerVelocity += MarioPhysicsConstants.marioXVelocity;
-                }
-            }
+            playerState.MoveRight();
         }
         public void Jump()
         {
-            isJumping = true;
-            if (PlayerVelocity.Y > MarioPhysicsConstants.maxJumpVelocity)
+            if (!isJumping)
             {
-                PlayerVelocity += MarioPhysicsConstants.marioJumpVelocity;
+                playerState.Jump();
             }
+            isJumping = true;
         }
         public void Fall()
         {
@@ -125,25 +107,24 @@ namespace Sprint_0.Sprites
                 PlayerVelocity += MarioPhysicsConstants.marioFallVelocity;
             }
         }
-
+        public void Idle()
+        {
+            playerState.Idle();
+        }
 
         public void Crouch()
         {
-            //Player can not crouch when jumping
-            if (!isJumping)
-            {
-                State.Crouch();
-            }
-            
+            playerState.Crouch();
+
         }
 
         public void Damage()
         {
-            State.Damage();
+            playerState.Damage();
         }
         public void PowerUp()
         {
-            State.PowerUp();
+            playerState.PowerUp();
         }
     }
 }
