@@ -20,6 +20,7 @@ namespace Sprint_0
 
     public class Game1 : Game
     {
+
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
         private ISprite currentSprite;
@@ -28,6 +29,10 @@ namespace Sprint_0
         private KeyboardControl keyControl;
 
         private IEnemy goomba;
+        // Modified 9/19
+        private IEnemy koopa;
+        private IEnemy shell;
+
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -55,7 +60,10 @@ namespace Sprint_0
             mario = new Player(new Vector2(400, 200));
 
             // Modified on 9/16 by Jingyu Fu, create a Goomba 
+            // Modified on 9/16 by Jingyu Fu, create a Koopa and shell 
             goomba = EnemyFactory.Instance.CreateGoomba(new Vector2(100, 100));
+            koopa = EnemyFactory.Instance.CreateKoopa(new Vector2(100, 100));
+            shell = EnemyFactory.Instance.CreateKoopaShell(new Vector2(100, 100));
 
             Texture2D texture = Content.Load<Texture2D>("marioSpriteSheet");
 
@@ -90,8 +98,10 @@ namespace Sprint_0
             keyControl.Update();
             mario.Update(gameTime);
 
-            // Modified on 9/16 by Jingyu Fu, update enemy(goomba)
+            // Modified on 9/16 by Jingyu Fu, update enemies
             goomba.Update(gameTime);
+            koopa.Update(gameTime);
+            shell.Update(gameTime);
 
             base.Update(gameTime);
         }
@@ -103,7 +113,9 @@ namespace Sprint_0
             mario.Draw(spriteBatch, new Vector2(mario.XPos, mario.YPos));
 
             // Modified on 9/16 by Jingyu Fu, draw goomba
-            goomba.Draw(spriteBatch, new Vector2(10, 10)); 
+            goomba.Draw(spriteBatch, goomba.Position);
+            koopa.Draw(spriteBatch, koopa.Position);
+            shell.Draw(spriteBatch, shell.Position); 
 
             spriteBatch.End();
             base.Draw(gameTime);

@@ -1,4 +1,3 @@
-using Sprint_0.Sprites;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -7,6 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
+using Sprint_0.Sprites;
+using Sprint_2.Sprites;
+
 
 namespace Sprint_0.Interfaces
 {
@@ -19,8 +21,10 @@ namespace Sprint_0.Interfaces
         //void Draw(SpriteBatch spriteBatch);
 
         //TO DO:
+        Vector2 Position { get; set; }
+        Vector2 Velocity { get; set; }
         //void Move();
-        //void TakeDamage();
+        void TakeDamage();
     }
 
 }
