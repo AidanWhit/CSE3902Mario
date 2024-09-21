@@ -24,6 +24,8 @@ namespace Sprint_0.Commands.EnemyCommands
 
         public void Execute()
         {
+            // Modified on 9/20 by Jingyu Fu
+            myGame.CycleEnemyLeft();
         }
     }
 }

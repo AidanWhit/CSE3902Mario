@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System.Collections.Generic;
 using Sprint_0.Commands;
 using Sprint_0.Commands.BlockCommands;
 using Sprint_0.Commands.ItemCommands;
@@ -32,6 +33,11 @@ namespace Sprint_0
         // Modified 9/19
         private IEnemy koopa;
         private IEnemy shell;
+        // Modified 9/20
+        private IEnemy bowser;
+        private EnemyCycler enemyCycler;
+        private List<IEnemy> enemies;
+        private IEnemy currentEnemy;
 
         public Game1()
         {
@@ -58,14 +64,24 @@ namespace Sprint_0
             EnemyFactory.Instance.LoadAllContent(Content);
 
             mario = new Player(new Vector2(400, 200));
+            Texture2D texture = Content.Load<Texture2D>("marioSpriteSheet");
 
             // Modified on 9/16 by Jingyu Fu, create a Goomba 
             // Modified on 9/16 by Jingyu Fu, create a Koopa and shell 
-            goomba = EnemyFactory.Instance.CreateGoomba(new Vector2(100, 100));
-            koopa = EnemyFactory.Instance.CreateKoopa(new Vector2(100, 100));
-            shell = EnemyFactory.Instance.CreateKoopaShell(new Vector2(100, 100));
-
-            Texture2D texture = Content.Load<Texture2D>("marioSpriteSheet");
+            //goomba = EnemyFactory.Instance.CreateGoomba(new Vector2(100, 100));
+            //koopa = EnemyFactory.Instance.CreateKoopa(new Vector2(100, 100));
+            //shell = EnemyFactory.Instance.CreateKoopaShell(new Vector2(100, 100));
+            // Modified on 9/20 by Jingyu Fu, create a bowser
+            //bowser = EnemyFactory.Instance.CreateBowser(new Vector2(100, 100));
+            enemies = new List<IEnemy>
+            {
+                EnemyFactory.Instance.CreateGoomba(new Vector2(100, 100)),
+                EnemyFactory.Instance.CreateKoopa(new Vector2(100, 100)),
+                EnemyFactory.Instance.CreateKoopaShell(new Vector2(100, 100)),
+                EnemyFactory.Instance.CreateBowser(new Vector2(100, 100))
+            };
+            enemyCycler = new EnemyCycler(enemies);
+            currentEnemy = enemies[0];
 
             keyControl.RegisterCommand(Keys.W, new MarioFacingUpCommand(this, mario));
             keyControl.RegisterCommand(Keys.S, new MarioFacingDownCommand(this, mario));
@@ -99,9 +115,11 @@ namespace Sprint_0
             mario.Update(gameTime);
 
             // Modified on 9/16 by Jingyu Fu, update enemies
-            goomba.Update(gameTime);
-            koopa.Update(gameTime);
-            shell.Update(gameTime);
+            //goomba.Update(gameTime);
+            //koopa.Update(gameTime);
+            //shell.Update(gameTime);
+            //bowser.Update(gameTime);
+            currentEnemy.Update(gameTime);
 
             base.Update(gameTime);
         }
@@ -113,9 +131,11 @@ namespace Sprint_0
             mario.Draw(spriteBatch, new Vector2(mario.XPos, mario.YPos));
 
             // Modified on 9/16 by Jingyu Fu, draw goomba
-            goomba.Draw(spriteBatch, goomba.Position);
-            koopa.Draw(spriteBatch, koopa.Position);
-            shell.Draw(spriteBatch, shell.Position); 
+            //goomba.Draw(spriteBatch, goomba.Position);
+            //koopa.Draw(spriteBatch, koopa.Position);
+            //shell.Draw(spriteBatch, shell.Position); 
+            //bowser.Draw(spriteBatch, bowser.Position);
+            currentEnemy.Draw(spriteBatch, currentEnemy.Position);
 
             spriteBatch.End();
             base.Draw(gameTime);
@@ -125,6 +145,16 @@ namespace Sprint_0
         {
             this.UnloadContent();
             this.LoadContent();
+        }
+
+        public void CycleEnemyLeft()
+        {
+            currentEnemy = enemyCycler.CycleEnemyLeft(); 
+        }
+
+        public void CycleEnemyRight()
+        {
+            currentEnemy = enemyCycler.CycleEnemyRight(); 
         }
     }
 }
