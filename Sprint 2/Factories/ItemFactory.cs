@@ -3,18 +3,19 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using System.Collections.Generic;
 using Sprint_0.Sprites;
-using Sprint_0.Sprites.EnemySprites;
+using Sprint_0.Sprites.ItemSprites;
 using Sprint_0.Interfaces;
+using System.Collections;
 
 namespace Sprint_0.Factories
 {
     public class ItemFactory
     {
+        private IItem currItem;
         private static ItemFactory instance = new ItemFactory();
-
-        private Texture2D goombaWalking1;
-        private Texture2D goombaWalking2;
-        private Texture2D goombaDying;
+        private Texture2D texture;
+        private int width, height;
+        private Rectangle source;
 
         public static ItemFactory Instance
         {
@@ -28,13 +29,41 @@ namespace Sprint_0.Factories
         {
         }
 
-        public void LoadAllContent(ContentManager content)
+        public void LoadItemContent(ContentManager content)
         {
-            goombaWalking1 = content.Load<Texture2D>("MarioItems");
+            texture = content.Load<Texture2D>("MarioItems");
+            width = texture.Width / 4; 
+            height = texture.Height / 4;
         }
 
-        //public IItem CreateItem(Vector2 position)
-        //{
-        //}
+        public IItem CreateRedMushroom(Vector2 position)
+        {
+            source = new Rectangle(0, 0, width, height);
+            return new RedMushroom(texture, source, position);
+        }
+
+        public IItem CreateGreenMushroom(Vector2 position)
+        {
+            source = new Rectangle(width, 0, width, height);
+            return new GreenMushroom(texture, source, position);
+        }
+
+        public IItem CreateFlower(Vector2 position)
+        {
+            source = new Rectangle(0, height, width, height);
+            return new Flower(texture, source, position);
+        }
+
+        public IItem CreateStar(Vector2 position)
+        {
+            source = new Rectangle(0, height * 2, width, height);
+            return new Star(texture, source, position);
+        }
+
+        public IItem CreateCoin(Vector2 position)
+        {
+            source = new Rectangle(0, height * 3, width, height);
+            return new Coin(texture, source, position);
+        }
     }
 }

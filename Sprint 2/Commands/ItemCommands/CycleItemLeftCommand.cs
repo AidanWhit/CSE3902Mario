@@ -24,6 +24,7 @@ namespace Sprint_0.Commands.ItemCommands
 
         public void Execute()
         {
+            myGame.CycleItemLeft();
         }
     }
 }

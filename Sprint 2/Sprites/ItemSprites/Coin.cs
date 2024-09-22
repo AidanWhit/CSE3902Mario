@@ -1,0 +1,41 @@
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using Sprint_0.Interfaces; 
+using Sprint_0.Sprites; 
+
+namespace Sprint_0.Sprites.ItemSprites
+{
+    public class Coin : IItem
+    {
+        public Texture2D Texture { get; set; }
+        public Vector2 Position { get; set; }
+        private int currentFrame;
+        private int totalFrames;
+        private Rectangle source;
+
+
+        public Coin(Texture2D texture, Rectangle source, Vector2 initialPosition)
+        {
+            this.Texture = texture;
+            this.Position = initialPosition;
+            this.source = source;
+            this.currentFrame = 0;
+            this.totalFrames = 4;
+        }
+
+        public void Update()
+        {
+            currentFrame++;
+            if (currentFrame == totalFrames)
+                currentFrame = 0;
+        }
+
+        public void Draw(SpriteBatch spriteBatch)
+        {
+            Rectangle newSource = new Rectangle(source.Width * currentFrame, source.Y, source.Width, source.Height);
+            spriteBatch.Draw(Texture, Position, newSource, Color.White);
+        }
+        public void DeleteItem() { }
+
+    }
+}

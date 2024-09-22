@@ -37,7 +37,10 @@ namespace Sprint_0
         private IEnemy bowser;
         private EnemyCycler enemyCycler;
         private List<IEnemy> enemies;
+        private List<IItem> items;
+        private ItemCycler itemCycler;
         private IEnemy currentEnemy;
+        private IItem currItem;
 
         public Game1()
         {
@@ -62,6 +65,7 @@ namespace Sprint_0
 
             // Modified on 9/16 by Jingyu Fu, added a factory for enemies
             EnemyFactory.Instance.LoadAllContent(Content);
+            ItemFactory.Instance.LoadItemContent(Content);
 
             mario = new Player(new Vector2(400, 200));
             Texture2D texture = Content.Load<Texture2D>("marioSpriteSheet");
@@ -82,6 +86,18 @@ namespace Sprint_0
             };
             enemyCycler = new EnemyCycler(enemies);
             currentEnemy = enemies[0];
+
+            items = new List<IItem>
+            {
+                ItemFactory.Instance.CreateRedMushroom(new Vector2(100, 100)),
+                ItemFactory.Instance.CreateGreenMushroom(new Vector2(100, 100)),
+                ItemFactory.Instance.CreateFlower(new Vector2(100, 100)),
+                ItemFactory.Instance.CreateStar(new Vector2(100, 100)),
+                ItemFactory.Instance.CreateCoin(new Vector2(100, 100))
+            };
+            itemCycler = new ItemCycler(items);
+            currItem = items[0];
+
 
             keyControl.RegisterCommand(Keys.W, new MarioFacingUpCommand(this, mario));
             keyControl.RegisterCommand(Keys.S, new MarioFacingDownCommand(this, mario));
@@ -120,6 +136,7 @@ namespace Sprint_0
             //shell.Update(gameTime);
             //bowser.Update(gameTime);
             currentEnemy.Update(gameTime);
+            currItem.Update();
 
             base.Update(gameTime);
         }
@@ -136,7 +153,7 @@ namespace Sprint_0
             //shell.Draw(spriteBatch, shell.Position); 
             //bowser.Draw(spriteBatch, bowser.Position);
             currentEnemy.Draw(spriteBatch, currentEnemy.Position);
-
+            currItem.Draw(spriteBatch);
             spriteBatch.End();
             base.Draw(gameTime);
         }
@@ -155,6 +172,16 @@ namespace Sprint_0
         public void CycleEnemyRight()
         {
             currentEnemy = enemyCycler.CycleEnemyRight(); 
+        }
+
+        public void CycleItemLeft()
+        {
+            currItem = itemCycler.CycleItemLeft();
+        }
+
+        public void CycleItemRight()
+        {
+            currItem = itemCycler.CycleItemRight();
         }
     }
 }
