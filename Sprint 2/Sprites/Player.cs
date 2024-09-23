@@ -14,10 +14,10 @@ using System.Diagnostics;
 
 namespace Sprint_2.Sprites
 {
-    public class Player : IPlayer, ISprite
+    public class Player : IPlayer
     {
 
-        public PlayerStateMachine playerState { get; set; }
+        public PlayerStateMachine PlayerState { get; set; }
         public int XPos { get; set; }
         public int YPos { get; set; }
         public Vector2 PlayerVelocity { get; set; }
@@ -25,7 +25,7 @@ namespace Sprint_2.Sprites
         public IMarioPhysicsStates PhysicsState { get; set; }
 
         private bool isCrouching = false;
-        public bool isJumping = false;
+        public bool isJumping { get; set; } = false;
 
         private int numberOfFireballsRemaining = 2;
         private List<FireBall> fireBalls = new List<FireBall>();
@@ -35,23 +35,23 @@ namespace Sprint_2.Sprites
         {
             XPos = (int)StartingLocation.X;
             YPos = (int)StartingLocation.Y;
-            playerState = new PlayerStateMachine(this);
+            PlayerState = new PlayerStateMachine(this);
             PhysicsState = new Grounded(this);
         }
         public void Update(GameTime gameTime)
         {
             UpdateFireballs(gameTime);
-            playerState.Update(gameTime);
+            PlayerState.Update(gameTime);
             PhysicsState.Update(gameTime);
         }
 
-        public void Draw(SpriteBatch spriteBatch, Vector2 location)
+        public void Draw(SpriteBatch spriteBatch)
         {
             for (int i = 0; i < fireBalls.Count; i++)
             {
                 fireBalls[i].Draw(spriteBatch);
             }
-            playerState.Draw(spriteBatch);
+            PlayerState.Draw(spriteBatch);
         }
 
         public void UpdateFireballs(GameTime gameTime)
@@ -74,7 +74,7 @@ namespace Sprint_2.Sprites
         {
             if (numberOfFireballsRemaining > 0)
             {
-                FireBall fireball = playerState.ShootFireball();
+                FireBall fireball = PlayerState.ShootFireball();
                 if (fireball != null)
                 {
                     fireBalls.Add(fireball);
@@ -85,46 +85,43 @@ namespace Sprint_2.Sprites
         }
         public void MoveLeft()
         {
-            playerState.MoveLeft();
+            PlayerState.MoveLeft();
         }
 
         public void MoveRight()
         {
-            playerState.MoveRight();
+            PlayerState.MoveRight();
         }
         public void Jump()
         {
             if (!isJumping)
             {
-                playerState.Jump();
+                PlayerState.Jump();
             }
             isJumping = true;
         }
         public void Fall()
         {
-            if (PlayerVelocity.Y < MarioPhysicsConstants.maxFallVelocity)
-            {
-                PlayerVelocity += MarioPhysicsConstants.marioFallVelocity;
-            }
+            PlayerState.Fall();
         }
         public void Idle()
         {
-            playerState.Idle();
+            PlayerState.Idle();
         }
 
         public void Crouch()
         {
-            playerState.Crouch();
+            PlayerState.Crouch();
 
         }
 
         public void Damage()
         {
-            playerState.Damage();
+            PlayerState.Damage();
         }
         public void PowerUp()
         {
-            playerState.PowerUp();
+            PlayerState.PowerUp();
         }
     }
 }

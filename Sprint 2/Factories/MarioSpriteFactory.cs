@@ -65,7 +65,7 @@ namespace Sprint_0.Factories
             {"LeftMarioSlide", new Rectangle[]{new Rectangle(60, 0, 16, 16)} },
             {"RightMarioSlide", new Rectangle[]{new Rectangle(331,0, 16, 16)} },
             {"LeftSuperMarioSlide", new Rectangle[]{new Rectangle(329, 52, 16, 32)} },
-            {"RigthSuperMarioSlide", new Rectangle[]{new Rectangle(60, 52, 16, 32)} },
+            {"RightSuperMarioSlide", new Rectangle[]{new Rectangle(60, 52, 16, 32)} },
             {"LeftFireMarioSlide", new Rectangle[]{new Rectangle(337, 122, 16, 32)} },
             {"RightFireMarioSlide", new Rectangle[]{new Rectangle(52, 122, 16, 32)} },
             {"LeftFireMarioShoot", new Rectangle[]{new Rectangle(77, 123, 16, 32)} },

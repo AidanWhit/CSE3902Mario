@@ -19,7 +19,7 @@ namespace Sprint_0.Commands.ProgramCommands
 
         public void Execute()
         {
-            myGame.reload();
+            myGame.Reload();
         }
     }
 }

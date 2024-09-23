@@ -25,7 +25,7 @@ namespace Sprint_0.Controls
         {
             onPressCommandMappings.Add(key, command);
         }
-
+        
         public void Update()
         {
             Keys[] pressedKeys = Keyboard.GetState().GetPressedKeys();
@@ -50,6 +50,7 @@ namespace Sprint_0.Controls
         public void ClearCommands()
         {
             controllerMappings.Clear();
+            onPressCommandMappings.Clear();
         }
 
     }

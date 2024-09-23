@@ -14,16 +14,17 @@ namespace Sprint_0.Commands.MarioAttackCommands
     public class MarioHurtCommand : ICommands
     {
         private Game1 myGame;
-        private Texture2D texture;
+        private Player mario;
 
-        public MarioHurtCommand(Game1 game, Texture2D texture)
+        public MarioHurtCommand(Game1 game, Player mario)
         {
             myGame = game;
-            this.texture = texture;
+            this.mario = mario;
         }
 
         public void Execute()
         {
+            mario.Damage();
         }
     }
 }

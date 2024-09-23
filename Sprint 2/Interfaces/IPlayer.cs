@@ -1,5 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Sprint_0.Sprites;
+using Sprint_2.Interfaces;
+using Sprint_2.MarioStates;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,12 +15,24 @@ namespace Sprint_0.Interfaces
     {
         public int XPos { get; set; }
         public int YPos { get; set; }
+        public bool isJumping { get; set; }
+        public IMarioPhysicsStates PhysicsState { get; set; }
+        public PlayerStateMachine PlayerState { get; set; }
         public Vector2 PlayerVelocity { get;set; }
-        void MoveLeft();
-        void MoveRight();
-        void Jump();
-        public enum Health { Mario=1, SuperMario, FireMario}
+        public void MoveLeft();
+        public void MoveRight();
+        public void Jump();
+        public void Crouch();
         public enum Facing { Left, Right }
-        public enum Pose { Crouch, Jump, Fall, Idle, Run, Dead}
+
+        public void Update(GameTime gameTime);
+        public void Draw(SpriteBatch spriteBatch);
+        public void UpdateFireballs(GameTime gameTime);
+        public void ShootFireball();
+        public void Fall();
+        public void Idle();
+
+        public void Damage();
+        public void PowerUp();
     }
 }

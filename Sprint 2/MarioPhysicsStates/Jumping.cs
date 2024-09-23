@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Sprint_0.Interfaces;
 using Sprint_0.Sprites;
 using Sprint_2.Constants;
 using Sprint_2.Interfaces;
@@ -15,11 +16,11 @@ namespace Sprint_2.MarioPhysicsStates
 {
     public class Jumping : IMarioPhysicsStates
     {
-        private Player mario;
+        private IPlayer mario;
         private int originalMarioY;
         private bool isFalling;
 
-        public Jumping(Player mario)
+        public Jumping(IPlayer mario)
         {
             this.mario = mario;
             originalMarioY = mario.YPos;
@@ -46,7 +47,7 @@ namespace Sprint_2.MarioPhysicsStates
                 if (Math.Abs(mario.YPos - originalMarioY) > MarioPhysicsConstants.maxJumpHeight)
                 {
                     mario.PlayerVelocity = new Vector2(mario.PlayerVelocity.X, 0);
-                    mario.playerState.Fall();
+                    mario.Fall();
                     mario.PhysicsState = new Falling(mario, originalMarioY);
                 }
             }
