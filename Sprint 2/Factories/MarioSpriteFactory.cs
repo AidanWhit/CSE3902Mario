@@ -1,15 +1,15 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
-using Sprint_0.Sprites;
+using Sprint_2.Sprites;
 using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework.Content;
-using Sprint_0.Sprites.MarioSprites;
+using Sprint_2.Sprites.MarioSprites;
 using Sprint_2.Sprites;
 using Sprint_2.Constants;
 using System.Diagnostics;
 using System.Net.Http.Headers;
 
-namespace Sprint_0.Factories
+namespace Sprint_2.Factories
 {
     public class MarioSpriteFactory
     {

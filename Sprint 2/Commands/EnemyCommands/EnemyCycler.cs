@@ -1,8 +1,8 @@
-using Sprint_0.Interfaces;
+using Sprint_2.Interfaces;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 
-namespace Sprint_0.Commands.EnemyCommands
+namespace Sprint_2.Commands.EnemyCommands
 {
     public class EnemyCycler
     {

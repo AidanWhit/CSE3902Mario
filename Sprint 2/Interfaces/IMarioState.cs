@@ -1,4 +1,4 @@
-﻿//using Sprint_0.Sprites;
+﻿//using Sprint_2.Sprites;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 
-namespace Sprint_0.Interfaces
+namespace Sprint_2.Interfaces
 {
     public interface IMarioState
     {

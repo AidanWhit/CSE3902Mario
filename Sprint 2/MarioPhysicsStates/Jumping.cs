@@ -1,6 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
-using Sprint_0.Interfaces;
-using Sprint_0.Sprites;
+using Sprint_2.Interfaces;
+using Sprint_2.Sprites;
 using Sprint_2.Constants;
 using Sprint_2.Interfaces;
 using Sprint_2.Sprites;

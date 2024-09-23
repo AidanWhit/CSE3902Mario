@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using System.Reflection;
 
 
-namespace Sprint_0.Sprites.MarioSprites
+namespace Sprint_2.Sprites.MarioSprites
 {
     public class AnimatedMarioSprite : ISprite
     {

@@ -1,9 +1,9 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Sprint_0.Interfaces; 
-using Sprint_0.Sprites; 
+using Sprint_2.Interfaces; 
+using Sprint_2.Sprites; 
 
-namespace Sprint_0.Sprites.ItemSprites
+namespace Sprint_2.Sprites.ItemSprites
 {
     public class Flower : IItem
     {
@@ -23,12 +23,15 @@ namespace Sprint_0.Sprites.ItemSprites
             this.totalFrames = 4;
         }
 
-        public void Update()
+        public void Update(GameTime gameTime)
         {
-            currentFrame++;
-            if (currentFrame == totalFrames)
-                currentFrame = 0;
+
+                currentFrame++;
+                if (currentFrame == totalFrames)
+                    currentFrame = 0;
         }
+
+        public void Update() { }
 
         public void Draw(SpriteBatch spriteBatch)
         {

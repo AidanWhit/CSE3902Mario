@@ -1,6 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Sprint_0.Sprites;
+using Sprint_2.Sprites;
 using System;
 using System.Collections.Generic;
 using System.Linq;

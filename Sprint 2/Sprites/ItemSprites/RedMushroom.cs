@@ -1,11 +1,11 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Sprint_0.Interfaces;
-using Sprint_0.Sprites;
+using Sprint_2.Interfaces;
+using Sprint_2.Sprites;
 using Sprint_2.Interfaces;
 using Sprint_2.Sprites; 
 
-namespace Sprint_0.Sprites.ItemSprites
+namespace Sprint_2.Sprites.ItemSprites
 {
     public class RedMushroom : IItem
     {
@@ -27,7 +27,7 @@ namespace Sprint_0.Sprites.ItemSprites
         }
 
 
-        public void Update()
+        public void Update(GameTime g)
         {
                 Position += Velocity;
 

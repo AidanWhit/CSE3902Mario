@@ -2,21 +2,20 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
-using Sprint_0.Commands;
-using Sprint_0.Commands.BlockCommands;
-using Sprint_0.Commands.ItemCommands;
-using Sprint_0.Commands.MarioItemCommands;
-using Sprint_0.Commands.MarioMovementCommands;
-using Sprint_0.Commands.MarioAttackCommands;
-using Sprint_0.Commands.ProgramCommands;
-using Sprint_0.Controls;
-using Sprint_0.Factories;
-using Sprint_0.Interfaces;
-using Sprint_0.Sprites;
-using Sprint_0.Commands.EnemyCommands;
+using Sprint_2.Commands;
+using Sprint_2.Commands.BlockCommands;
+using Sprint_2.Commands.ItemCommands;
+using Sprint_2.Commands.MarioItemCommands;
+using Sprint_2.Commands.MarioMovementCommands;
+using Sprint_2.Commands.MarioAttackCommands;
+using Sprint_2.Commands.ProgramCommands;
+using Sprint_2.Controls;
+using Sprint_2.Factories;
+using Sprint_2.Interfaces;
 using Sprint_2.Sprites;
+using Sprint_2.Commands.EnemyCommands;
 
-namespace Sprint_0
+namespace Sprint_2
 {
 
     public class Game1 : Game
@@ -89,11 +88,11 @@ namespace Sprint_0
 
             items = new List<IItem>
             {
-                ItemFactory.Instance.CreateRedMushroom(new Vector2(100, 100)),
-                ItemFactory.Instance.CreateGreenMushroom(new Vector2(100, 100)),
-                ItemFactory.Instance.CreateFlower(new Vector2(100, 100)),
-                ItemFactory.Instance.CreateStar(new Vector2(100, 100)),
-                ItemFactory.Instance.CreateCoin(new Vector2(100, 100))
+                ItemFactory.Instance.CreateRedMushroom(new Vector2(100, 300)),
+                ItemFactory.Instance.CreateGreenMushroom(new Vector2(100, 300)),
+                ItemFactory.Instance.CreateFlower(new Vector2(100, 300)),
+                ItemFactory.Instance.CreateStar(new Vector2(100, 300)),
+                ItemFactory.Instance.CreateCoin(new Vector2(100, 300))
             };
             itemCycler = new ItemCycler(items);
             currItem = items[0];
@@ -109,10 +108,10 @@ namespace Sprint_0
             keyControl.RegisterCommand(Keys.D2, new MarioItem2Command(this, texture));
             keyControl.RegisterOnPressCommand(Keys.D3, new MarioItem3Command(this, mario));
             keyControl.RegisterOnPressCommand(Keys.E, new MarioHurtCommand(this, mario));
-            keyControl.RegisterCommand(Keys.T, new CycleBlockLeftCommand(this, texture));
-            keyControl.RegisterCommand(Keys.Y, new CycleBlockRightCommand(this, texture));
-            keyControl.RegisterCommand(Keys.U, new CycleItemLeftCommand(this, texture));
-            keyControl.RegisterCommand(Keys.I, new CycleItemRightCommand(this, texture));
+            keyControl.RegisterOnPressCommand(Keys.T, new CycleBlockLeftCommand(this, texture));
+            keyControl.RegisterOnPressCommand(Keys.Y, new CycleBlockRightCommand(this, texture));
+            keyControl.RegisterOnPressCommand(Keys.U, new CycleItemLeftCommand(this, texture));
+            keyControl.RegisterOnPressCommand(Keys.I, new CycleItemRightCommand(this, texture));
             keyControl.RegisterOnPressCommand(Keys.O, new CycleEnemyLeftCommand(this, texture));
             keyControl.RegisterOnPressCommand(Keys.P, new CycleEnemyRightCommand(this, texture));
             keyControl.RegisterCommand(Keys.Q, new QuitCommand(this));
@@ -136,7 +135,7 @@ namespace Sprint_0
             //shell.Update(gameTime);
             //bowser.Update(gameTime);
             currentEnemy.Update(gameTime);
-            currItem.Update();
+            currItem.Update(gameTime);
 
             base.Update(gameTime);
         }

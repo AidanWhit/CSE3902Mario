@@ -2,7 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 
 
-namespace Sprint_0.Sprites.MarioSprites
+namespace Sprint_2.Sprites.MarioSprites
 {
     public class StaticMarioSprite : ISprite
     {

@@ -2,12 +2,12 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using System.Collections.Generic;
-using Sprint_0.Sprites;
-using Sprint_0.Sprites.ItemSprites;
-using Sprint_0.Interfaces;
+using Sprint_2.Sprites;
+using Sprint_2.Sprites.ItemSprites;
+using Sprint_2.Interfaces;
 using System.Collections;
 
-namespace Sprint_0.Factories
+namespace Sprint_2.Factories
 {
     public class ItemFactory
     {

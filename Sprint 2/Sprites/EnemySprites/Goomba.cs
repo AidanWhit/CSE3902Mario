@@ -1,11 +1,11 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Sprint_0.Interfaces;
-using Sprint_0.Sprites;
+using Sprint_2.Interfaces;
+using Sprint_2.Sprites;
 using Sprint_2.Interfaces;
 using Sprint_2.Sprites; 
 
-namespace Sprint_0.Sprites.EnemySprites
+namespace Sprint_2.Sprites.EnemySprites
 {
     public class Goomba : IEnemy
     {

@@ -2,11 +2,10 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint_2.Interfaces;
 using Sprint_2.Sprites;
-using Sprint_0.Interfaces;
-using Sprint_0.Sprites;
+using Microsoft.Xna.Framework.Input;
 
 
-namespace Sprint_0.Sprites.ItemSprites
+namespace Sprint_2.Sprites.ItemSprites
 {
     public class Star : IItem
     {
@@ -16,6 +15,7 @@ namespace Sprint_0.Sprites.ItemSprites
         private int currentFrame;
         private int totalFrames;
         private Rectangle source;
+        private int ticks = 1;
 
 
         public Star(Texture2D texture, Rectangle source, Vector2 initialPosition)
@@ -28,18 +28,20 @@ namespace Sprint_0.Sprites.ItemSprites
             this.totalFrames = 4;
         }
 
-        public void Update()
+        public void Update(GameTime gameTime)
         {
-                Position += Velocity;
+            Position += Velocity;
 
+
+                ticks = 1;
                 currentFrame++;
                 if (currentFrame == totalFrames)
                     currentFrame = 0;
 
-                if (Position.X <= 0 || Position.X >= 800 - Texture.Width / 4)
-                {
+            if (Position.X <= 0 || Position.X >= 800 - Texture.Width / 4)
+            {
                     Velocity = new Vector2(-Velocity.X, Velocity.Y);
-                }
+            }
         }
 
         public void Draw(SpriteBatch spriteBatch)

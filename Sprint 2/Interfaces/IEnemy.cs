@@ -6,11 +6,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
-using Sprint_0.Sprites;
+using Sprint_2.Sprites;
 using Sprint_2.Sprites;
 
 
-namespace Sprint_0.Interfaces
+namespace Sprint_2.Interfaces
 {
     public interface IEnemy : ISprite
     {

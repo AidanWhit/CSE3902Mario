@@ -1,7 +1,7 @@
 ﻿using Sprint_2.Sprites;
 using Sprint_2.Interfaces;
 
-namespace Sprint_0.Commands.MarioMovementCommands
+namespace Sprint_2.Commands.MarioMovementCommands
 {
     public class MarioFacingLeftCommand : ICommands
     {

@@ -1,5 +1,5 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
-using Sprint_0.Sprites;
+using Sprint_2.Sprites;
 using Sprint_2.Interfaces;
 using Sprint_2.Sprites;
 using System;
@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace Sprint_0.Commands.MarioItemCommands
+namespace Sprint_2.Commands.MarioItemCommands
 {
     public class MarioItem1Command : ICommands
     {
