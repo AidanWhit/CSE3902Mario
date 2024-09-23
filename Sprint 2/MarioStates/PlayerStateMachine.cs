@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint_0.Factories;
+using Sprint_0.Interfaces;
 using Sprint_0.Sprites;
 using Sprint_2.Constants;
 using Sprint_2.GameObjects;
@@ -19,10 +20,10 @@ namespace Sprint_2.MarioStates
         private enum Facing { Left, Right };
         private Facing facing;
 
-        private Player mario;
+        private IPlayer mario;
         private string key;
         private ISprite oldSprite;
-        public PlayerStateMachine(Player mario)
+        public PlayerStateMachine(IPlayer mario)
         {
             this.mario = mario;
 

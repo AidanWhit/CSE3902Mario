@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint_0.Factories;
+using Sprint_0.Interfaces;
 using Sprint_0.Sprites;
 using Sprint_2.Constants;
 using Sprint_2.Interfaces;
@@ -21,14 +22,14 @@ namespace Sprint_2.GameObjects
         private int fireballSpawn;
 
         private float totalTime;
-        private Player source;
+        private IPlayer source;
         double distFromSource;
 
         private bool enteredExplosionState = false;
 
         public bool FinishedExplosionAnimation = false;
         private float timer;
-        public FireBall(Player source, Vector2 speed)
+        public FireBall(IPlayer source, Vector2 speed)
         {
             this.source = source;
             XPos = source.XPos;

@@ -103,18 +103,18 @@ namespace Sprint_0
             keyControl.RegisterCommand(Keys.S, new MarioFacingDownCommand(this, mario));
             keyControl.RegisterCommand(Keys.D, new MarioFacingRightCommand(this, mario));
             keyControl.RegisterCommand(Keys.A, new MarioFacingLeftCommand(this, mario));
-            keyControl.RegisterCommand(Keys.Z, new MarioAttackNormalCommand(this, mario));
+            keyControl.RegisterOnPressCommand(Keys.Z, new MarioAttackNormalCommand(this, mario));
             keyControl.RegisterCommand(Keys.N, new MarioAttackSpecialCommand(this, texture));
             keyControl.RegisterCommand(Keys.D1, new MarioItem1Command(this, texture));
             keyControl.RegisterCommand(Keys.D2, new MarioItem2Command(this, texture));
-            keyControl.RegisterCommand(Keys.D3, new MarioItem3Command(this, texture));
-            keyControl.RegisterCommand(Keys.E, new MarioHurtCommand(this, texture));
+            keyControl.RegisterOnPressCommand(Keys.D3, new MarioItem3Command(this, mario));
+            keyControl.RegisterOnPressCommand(Keys.E, new MarioHurtCommand(this, mario));
             keyControl.RegisterCommand(Keys.T, new CycleBlockLeftCommand(this, texture));
             keyControl.RegisterCommand(Keys.Y, new CycleBlockRightCommand(this, texture));
             keyControl.RegisterCommand(Keys.U, new CycleItemLeftCommand(this, texture));
             keyControl.RegisterCommand(Keys.I, new CycleItemRightCommand(this, texture));
-            keyControl.RegisterCommand(Keys.O, new CycleEnemyLeftCommand(this, texture));
-            keyControl.RegisterCommand(Keys.P, new CycleEnemyRightCommand(this, texture));
+            keyControl.RegisterOnPressCommand(Keys.O, new CycleEnemyLeftCommand(this, texture));
+            keyControl.RegisterOnPressCommand(Keys.P, new CycleEnemyRightCommand(this, texture));
             keyControl.RegisterCommand(Keys.Q, new QuitCommand(this));
             keyControl.RegisterCommand(Keys.R, new ResetCommand(this));
         }
@@ -145,7 +145,7 @@ namespace Sprint_0
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
             spriteBatch.Begin();
-            mario.Draw(spriteBatch, new Vector2(mario.XPos, mario.YPos));
+            mario.Draw(spriteBatch);
 
             // Modified on 9/16 by Jingyu Fu, draw goomba
             //goomba.Draw(spriteBatch, goomba.Position);
@@ -158,7 +158,7 @@ namespace Sprint_0
             base.Draw(gameTime);
         }
 
-        public void reload ()
+        public void Reload()
         {
             this.UnloadContent();
             this.LoadContent();

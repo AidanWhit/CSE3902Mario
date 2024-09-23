@@ -14,16 +14,17 @@ namespace Sprint_0.Commands.MarioItemCommands
     public class MarioItem3Command : ICommands
     {
         private Game1 myGame;
-        private Texture2D texture;
+        private Player mario;
 
-        public MarioItem3Command(Game1 game, Texture2D texture)
+        public MarioItem3Command(Game1 game, Player mario)
         {
             myGame = game;
-            this.texture = texture;
+            this.mario = mario;
         }
 
         public void Execute()
         {
+            mario.PowerUp();
         }
     }
 }

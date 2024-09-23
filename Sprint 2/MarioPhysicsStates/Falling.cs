@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Sprint_0.Interfaces;
 using Sprint_2.Constants;
 using Sprint_2.Interfaces;
 using Sprint_2.Sprites;
@@ -7,9 +8,9 @@ namespace Sprint_2.MarioPhysicsStates
 {
     public class Falling : IMarioPhysicsStates
     {
-        private Player mario;
+        private IPlayer mario;
         private int originalPlayerHeight;
-        public Falling(Player mario, int origialPlayerHeight)
+        public Falling(IPlayer mario, int origialPlayerHeight)
         {
             this.mario = mario;
             this.originalPlayerHeight = origialPlayerHeight;
