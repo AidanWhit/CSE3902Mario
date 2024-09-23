@@ -31,7 +31,7 @@ namespace Sprint_0.Sprites.EnemySprites
             this.walkingRightTexture2 = walkingRight2;
             this.shellTexture = shell;
             this.Position = initialPosition;
-            this.Velocity = new Vector2(-2, 0); // Moving left by default
+            this.Velocity = new Vector2(-3, 0); // Moving left by default
             this.currentFrame = 0;
             this.totalFrames = 2; // 2 walking frames per direction
             this.isFacingLeft = true; // Starts facing left

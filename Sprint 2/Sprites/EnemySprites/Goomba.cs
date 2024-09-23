@@ -24,7 +24,7 @@ namespace Sprint_0.Sprites.EnemySprites
             this.walkingTexture2 = walking2;
             this.dyingTexture = dying;
             this.Position = initialPosition;
-            this.Velocity = new Vector2(-1, 0); // Starts moving left
+            this.Velocity = new Vector2(-2, 0); // Starts moving left
             this.currentFrame = 0;
             this.totalFrames = 2; // Goomba has 2 walking frames
             this.isDead = false;

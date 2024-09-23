@@ -23,6 +23,11 @@ namespace Sprint_0.Factories
         private Texture2D koopaWalkingRight2;
         private Texture2D koopaShell;
 
+        // Modified 9/20 added bowser
+        private Texture2D[] bowserLeftSprites;
+        private Texture2D[] bowserRightSprites;
+        private Texture2D[] fireballLeftSprites;
+        private Texture2D[] fireballRightSprites;
 
 
         public static EnemyFactory Instance
@@ -49,6 +54,36 @@ namespace Sprint_0.Factories
             koopaWalkingRight1 = content.Load<Texture2D>("koopa_walkingright1");
             koopaWalkingRight2 = content.Load<Texture2D>("koopa_walkingright2");
             koopaShell = content.Load<Texture2D>("koopa_shell");
+
+            //Modified 9/20 added bowser
+            bowserLeftSprites = new Texture2D[]
+            {
+                content.Load<Texture2D>("bowser_left1"),
+                content.Load<Texture2D>("bowser_left2"),
+                content.Load<Texture2D>("bowser_left3"),
+                content.Load<Texture2D>("bowser_left4")
+            };
+
+            bowserRightSprites = new Texture2D[]
+            {
+                content.Load<Texture2D>("bowser_right1"),
+                content.Load<Texture2D>("bowser_right2"),
+                content.Load<Texture2D>("bowser_right3"),
+                content.Load<Texture2D>("bowser_right4")
+            };
+
+            fireballLeftSprites = new Texture2D[]
+            {
+                content.Load<Texture2D>("bowser_fireballleft1"),
+                content.Load<Texture2D>("bowser_fireballleft2")
+            };
+
+            fireballRightSprites = new Texture2D[]
+            {
+                content.Load<Texture2D>("bowser_fireballright1"),
+                content.Load<Texture2D>("bowser_fireballright2")
+            };
+
         }
 
         public IEnemy CreateGoomba(Vector2 position)
@@ -67,6 +102,12 @@ namespace Sprint_0.Factories
         {
             // Create a shell
             return new Shell(koopaShell, position);
+        }
+
+        public IEnemy CreateBowser(Vector2 position)
+        {
+            // Create a bowser
+            return new Bowser(bowserLeftSprites, bowserRightSprites, fireballLeftSprites, fireballRightSprites, position);
         }
     }
 }

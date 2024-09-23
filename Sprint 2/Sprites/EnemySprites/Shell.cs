@@ -18,7 +18,7 @@ namespace Sprint_0.Sprites.EnemySprites
         {
             this.shellTexture = shellTexture;
             this.Position = initialPosition;
-            this.Velocity = new Vector2(-3, 0);
+            this.Velocity = new Vector2(-4, 0);
             //this.Velocity = new Vector2(-shellSpeed, 0); 
             this.isFacingLeft = true; 
         }
