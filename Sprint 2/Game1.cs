@@ -71,11 +71,11 @@ namespace Sprint_0
             keyControl.RegisterCommand(Keys.S, new MarioFacingDownCommand(this, mario));
             keyControl.RegisterCommand(Keys.D, new MarioFacingRightCommand(this, mario));
             keyControl.RegisterCommand(Keys.A, new MarioFacingLeftCommand(this, mario));
-            keyControl.RegisterCommand(Keys.Z, new MarioAttackNormalCommand(this, mario));
+            keyControl.RegisterOnPressCommand(Keys.Z, new MarioAttackNormalCommand(this, mario));
             keyControl.RegisterCommand(Keys.N, new MarioAttackSpecialCommand(this, texture));
             keyControl.RegisterCommand(Keys.D1, new MarioItem1Command(this, texture));
             keyControl.RegisterCommand(Keys.D2, new MarioItem2Command(this, texture));
-            keyControl.RegisterCommand(Keys.D3, new MarioItem3Command(this, texture));
+            keyControl.RegisterCommand(Keys.D3, new MarioItem3Command(this, mario));
             keyControl.RegisterCommand(Keys.E, new MarioHurtCommand(this, texture));
             keyControl.RegisterCommand(Keys.T, new CycleBlockLeftCommand(this, texture));
             keyControl.RegisterCommand(Keys.Y, new CycleBlockRightCommand(this, texture));
