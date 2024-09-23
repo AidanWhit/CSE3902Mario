@@ -38,7 +38,7 @@ namespace Sprint_0.Controls
                     controllerMappings[key].Execute();
                 }
                 /* Commands that will happen on press are executed here */
-                else if (!oldKeys.Contains(key) && onPressCommandMappings.ContainsKey(key))
+                if (!oldKeys.Contains(key) && onPressCommandMappings.ContainsKey(key))
                 {
                     onPressCommandMappings[key].Execute();
                 }
