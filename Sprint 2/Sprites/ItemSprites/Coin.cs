@@ -12,7 +12,7 @@ namespace Sprint_2.Sprites.ItemSprites
         private int currentFrame;
         private int totalFrames;
         private Rectangle source;
-
+        private float animationDelay = 0.1f;
 
         public Coin(Texture2D texture, Rectangle source, Vector2 initialPosition)
         {
@@ -26,9 +26,15 @@ namespace Sprint_2.Sprites.ItemSprites
         public void Update(GameTime gameTime)
         {
 
+            float timer = (float)gameTime.ElapsedGameTime.TotalSeconds;
+            animationDelay -= timer;
+            if (animationDelay < 0)
+            {
+                animationDelay = 0.2f;
                 currentFrame++;
                 if (currentFrame == totalFrames)
                     currentFrame = 0;
+            }
         }
 
 

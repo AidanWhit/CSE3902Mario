@@ -1,7 +1,8 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint_2.Interfaces;
-using Sprint_2.Interfaces; 
+using Sprint_2.Interfaces;
+using System;
 using System.Collections.Generic;
 
 namespace Sprint_2.Sprites.EnemySprites
@@ -22,6 +23,8 @@ namespace Sprint_2.Sprites.EnemySprites
         private float fireballTimer;
         private float fireballCooldown = 2.5f; // Time between each fireball shot (in seconds)
         private List<IProjectile> fireballs = new List<IProjectile>();
+
+        private float animationDelay = 0.2f;
 
         public Bowser(Texture2D[] leftSprites, Texture2D[] rightSprites, Texture2D[] fireLeftSprites, Texture2D[] fireRightSprites, Vector2 initialPosition)
         {
@@ -45,10 +48,16 @@ namespace Sprint_2.Sprites.EnemySprites
             
             Position += Velocity;
 
+            float timer = (float)gameTime.ElapsedGameTime.TotalSeconds;
+            animationDelay -= timer;
+            if (animationDelay < 0)
+            {
+                animationDelay = 0.2f;
+                currentFrame++;
+                if (currentFrame == totalFrames)
+                    currentFrame = 0;
+            }
             
-            currentFrame++;
-            if (currentFrame == totalFrames)
-                currentFrame = 0;
 
             
             if (Position.X <= 0 || Position.X >= 800 - bowserLeftSprites[0].Width)

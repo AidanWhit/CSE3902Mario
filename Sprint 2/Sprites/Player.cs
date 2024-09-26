@@ -1,14 +1,10 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint_2.Interfaces;
-using Sprint_2.Sprites;
-using Sprint_2.Constants;
 using Sprint_2.GameObjects;
 using Sprint_2.MarioPhysicsStates;
 using Sprint_2.MarioStates;
-using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
 
 
 namespace Sprint_2.Sprites

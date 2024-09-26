@@ -94,7 +94,6 @@ namespace Sprint_2.Factories
             if (key.Contains("Fall"))
             {
                 key = key.Replace("Fall", "Jump");
-                Debug.WriteLine("Key: " + key);
             }
             marioSprites.TryGetValue(key, out Rectangle[] frames);
             return new StaticMarioSprite(marioSpriteSheet, frames, size);

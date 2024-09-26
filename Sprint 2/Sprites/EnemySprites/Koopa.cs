@@ -23,6 +23,8 @@ namespace Sprint_2.Sprites.EnemySprites
         private bool isFacingLeft;
         private bool isShell;
 
+        private float animationDelay = 0.2f;
+
         public Koopa(Texture2D walkingLeft1, Texture2D walkingLeft2, Texture2D walkingRight1, Texture2D walkingRight2, Texture2D shell, Vector2 initialPosition)
         {
             this.walkingLeftTexture1 = walkingLeft1;
@@ -45,9 +47,15 @@ namespace Sprint_2.Sprites.EnemySprites
             {
                 Position += Velocity;
 
-                currentFrame++;
-                if (currentFrame == totalFrames)
-                    currentFrame = 0;
+                float timer = (float)gameTime.ElapsedGameTime.TotalSeconds;
+                animationDelay -= timer;
+                if (animationDelay < 0)
+                {
+                    animationDelay = 0.2f;
+                    currentFrame++;
+                    if (currentFrame == totalFrames)
+                        currentFrame = 0;
+                }
 
                 if (Position.X <= 0 || Position.X >= 800 - walkingLeftTexture1.Width)
                 {

@@ -17,7 +17,7 @@ namespace Sprint_2.Sprites.ItemSprites
         private Rectangle source;
         private int ticks = 1;
 
-
+        private float animationDelay = 0.1f;
         public Star(Texture2D texture, Rectangle source, Vector2 initialPosition)
         {
             this.Texture = texture;
@@ -34,9 +34,15 @@ namespace Sprint_2.Sprites.ItemSprites
 
 
                 ticks = 1;
+            float timer = (float)gameTime.ElapsedGameTime.TotalSeconds;
+            animationDelay -= timer;
+            if (animationDelay < 0)
+            {
+                animationDelay = 0.2f;
                 currentFrame++;
                 if (currentFrame == totalFrames)
                     currentFrame = 0;
+            }
 
             if (Position.X <= 0 || Position.X >= 800 - Texture.Width / 4)
             {

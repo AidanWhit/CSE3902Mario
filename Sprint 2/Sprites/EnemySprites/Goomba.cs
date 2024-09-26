@@ -18,6 +18,8 @@ namespace Sprint_2.Sprites.EnemySprites
         private int totalFrames;
         private bool isDead;
 
+        private float animationDelay = 0.2f;
+
         public Goomba(Texture2D walking1, Texture2D walking2, Texture2D dying, Vector2 initialPosition)
         {
             this.walkingTexture1 = walking1;
@@ -33,14 +35,20 @@ namespace Sprint_2.Sprites.EnemySprites
 
         public void Update(GameTime gameTime)
         {
+            float timer = (float)gameTime.ElapsedGameTime.TotalSeconds;
+            animationDelay -= timer;
             if (!isDead)
             {
-
+                
                 Position += Velocity;
-
-                currentFrame++;
-                if (currentFrame == totalFrames)
-                    currentFrame = 0;
+                if (animationDelay < 0)
+                {
+                    animationDelay = 0.2f;
+                    currentFrame++;
+                    if (currentFrame == totalFrames)
+                        currentFrame = 0;
+                }
+                
 
                 // Sprint0: Reverse direction if Goomba hits the screen edges
                 if (Position.X <= 0 || Position.X >= 800 - walkingTexture1.Width)
