@@ -29,3 +29,12 @@ content loading responsibility to a separate class or service, such as a Content
 The BlockFactory could then take the loaded textures as parameters or dependencies, 
 focusing solely on block creation.
 
+Hypothetically Scenario:
+Suppose we want to add a new block type, a “Timed Block,” which changes its appearance and behavior after a
+certain amount of time. This block should initially look like a regular block (e.g., questionBlock) but should
+switch to a “depleted” state (e.g., hitBlock) after a few seconds.
+The current implementation of BlockFactory is well-structured to accommodate the addition of new block types 
+like the “Timed Block” with minimal changes. Adding new methods to the factory and loading additional textures
+are straightforward processes. 
+
+
