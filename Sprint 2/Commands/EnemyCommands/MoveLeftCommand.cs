@@ -4,7 +4,6 @@ using Sprint_2.Interfaces;
 using Sprint_2.Sprites.EnemySprites;
 
 using Sprint_2.Sprites;
-using Sprint_2.Interfaces;
 
 using System;
 using System.Collections.Generic;

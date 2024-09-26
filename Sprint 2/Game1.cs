@@ -13,6 +13,10 @@ using Sprint_2.Controls;
 using Sprint_2.Factories;
 using Sprint_2.Interfaces;
 using Sprint_2.Sprites;
+using Sprint_2.Factories;
+using Sprint_2.Interfaces;
+using Sprint_2.Sprites.BlockSprites;
+using System.Linq.Expressions;
 using Sprint_2.Commands.EnemyCommands;
 
 namespace Sprint_2
@@ -40,6 +44,8 @@ namespace Sprint_2
         private ItemCycler itemCycler;
         private IEnemy currentEnemy;
         private IItem currItem;
+
+        private List<IBlock> blocks;
 
         public Game1()
         {
@@ -98,6 +104,16 @@ namespace Sprint_2
             currItem = items[0];
 
 
+            // TODO: make this into a list
+            BlockFactory.Instance.LoadAllContent(Content);
+            blocks = new List<IBlock> {
+                BlockFactory.Instance.createQuestionBlock(new Vector2(600, 300)),
+                BlockFactory.Instance.createBrickBlock(new Vector2(600, 316)),
+                BlockFactory.Instance.createHitBlock(new Vector2(600, 332)),
+                BlockFactory.Instance.createGroundBlock(new Vector2(600, 348))
+            };
+            
+
             keyControl.RegisterCommand(Keys.W, new MarioFacingUpCommand(this, mario));
             keyControl.RegisterCommand(Keys.S, new MarioFacingDownCommand(this, mario));
             keyControl.RegisterCommand(Keys.D, new MarioFacingRightCommand(this, mario));
@@ -153,6 +169,12 @@ namespace Sprint_2
             //bowser.Draw(spriteBatch, bowser.Position);
             currentEnemy.Draw(spriteBatch, currentEnemy.Position, Color.White);
             currItem.Draw(spriteBatch);
+
+            blocks[0].Draw(spriteBatch, blocks[0].position, Color.White);
+            blocks[1].Draw(spriteBatch, blocks[1].position, Color.White);
+            blocks[2].Draw(spriteBatch, blocks[2].position, Color.White);
+            blocks[3].Draw(spriteBatch, blocks[3].position, Color.White);
+
             spriteBatch.End();
             base.Draw(gameTime);
         }
