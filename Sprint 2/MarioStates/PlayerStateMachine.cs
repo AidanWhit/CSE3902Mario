@@ -26,8 +26,9 @@ namespace Sprint_2.MarioStates
             health = new HealthState();
             pose = new PoseState();
             facing = Facing.Right;
-            currentSprite = MarioSpriteFactory.Instance.RightMarioIdleSprite();
+            
             key = "RightMarioIdle";
+            currentSprite = MarioSpriteFactory.Instance.GetMarioSprite(key, health.GetSize());
         }
 
         public void Update(GameTime gameTime)

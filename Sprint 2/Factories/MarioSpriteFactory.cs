@@ -39,10 +39,10 @@ namespace Sprint_2.Factories
             {"RightSuperMarioIdle", new Rectangle[]{new Rectangle(209, 52, 16, 32)} },
             {"LeftFireMarioIdle", new Rectangle[]{new Rectangle(180, 122, 16, 32) } },
             {"RightFireMarioIdle", new Rectangle[]{new Rectangle(209, 122, 16, 32)} },
-            {"LeftSuperMarioCrouch", new Rectangle[]{new Rectangle(0, 57, 16, 32) } },
-            {"RightSuperMarioCrouch", new Rectangle[]{new Rectangle(389, 57, 16, 32)} },
-            {"LeftFireMarioCrouch", new Rectangle[]{new Rectangle(0, 127, 16, 32) } },
-            {"RightFireMarioCrouch", new Rectangle[]{new Rectangle(389, 127, 16, 32) } },
+            {"LeftSuperMarioCrouch", new Rectangle[]{new Rectangle(0, 57, 16, 30) } },
+            {"RightSuperMarioCrouch", new Rectangle[]{new Rectangle(389, 57, 16, 30)} },
+            {"LeftFireMarioCrouch", new Rectangle[]{new Rectangle(0, 127, 16, 30) } },
+            {"RightFireMarioCrouch", new Rectangle[]{new Rectangle(389, 127, 16, 30) } },
             {"LeftMarioJump", new Rectangle[]{new Rectangle(29, 0, 17, 16)} },
             {"RightMarioJump", new Rectangle[]{new Rectangle(359, 0, 17, 16) } },
             {"LeftSuperMarioJump", new Rectangle[]{new Rectangle(30, 52, 16, 32) } },
@@ -124,160 +124,6 @@ namespace Sprint_2.Factories
         {
             marioSprites.TryGetValue("DeadMario", out Rectangle[] frames);
             return new StaticMarioSprite(marioSpriteSheet, frames, marioSize);
-        }
-
-        /* Should be able to delete these below fuctions but I will leave them here for now ~ Aidan */
-        public ISprite LeftMarioIdleSprite()
-        {
-            marioSprites.TryGetValue("LeftMarioIdle", out Rectangle[] frames);
-            return new StaticMarioSprite(marioSpriteSheet, frames, marioSize);
-        }
-
-        public ISprite RightMarioIdleSprite()
-        {
-            marioSprites.TryGetValue("RightMarioIdle", out Rectangle[] frames);
-            return new StaticMarioSprite(marioSpriteSheet, frames, marioSize);
-        }
-
-        public ISprite LeftSuperMarioIdleSprite()
-        {
-            marioSprites.TryGetValue("LeftSuperMarioIdle", out Rectangle[] frames);
-            return new StaticMarioSprite(marioSpriteSheet, frames, superMarioSize);
-        }
-        public ISprite RightSuperMarioIdleSprite()
-        {
-            marioSprites.TryGetValue("RightSuperMarioIdle", out Rectangle[] frames);
-            return new StaticMarioSprite(marioSpriteSheet, frames, superMarioSize);
-        }
-        public ISprite LeftFireMarioIdleSprite()
-        {
-            marioSprites.TryGetValue("LeftFireMarioIdle", out Rectangle[] frames);
-            return new StaticMarioSprite(marioSpriteSheet, frames, superMarioSize);
-        }
-        public ISprite RightFireMarioIdleSprite()
-        {
-            marioSprites.TryGetValue("RightFireMarioIdle", out Rectangle[] frames);
-            return new StaticMarioSprite(marioSpriteSheet, frames, superMarioSize);
-        }
-        public ISprite LeftMarioClimbingSprite()
-        {
-            marioSprites.TryGetValue("LeftMarioClimb", out Rectangle[] frames);
-            return new AnimatedMarioSprite(marioSpriteSheet, frames, marioSize, climbSpeed);
-        }
-        public ISprite RightMarioClimbingSprite()
-        {
-            marioSprites.TryGetValue("RightMarioClimb", out Rectangle[] frames);
-            return new AnimatedMarioSprite(marioSpriteSheet, frames, marioSize, climbSpeed);
-        }
-        public ISprite LeftSuperMarioClimbingSprite()
-        {
-            marioSprites.TryGetValue("LeftSuperMarioClimb", out Rectangle[] frames);
-            return new AnimatedMarioSprite(marioSpriteSheet, frames, superMarioSize, climbSpeed);
-        }
-        public ISprite RightSuperMarioClimbingSprite()
-        {
-            marioSprites.TryGetValue("RightSuperMarioClimb", out Rectangle[] frames);
-            return new AnimatedMarioSprite(marioSpriteSheet, frames, superMarioSize, climbSpeed);
-        }
-        public ISprite LeftFireMarioClimbingSprite()
-        {
-            marioSprites.TryGetValue("LeftFireMarioClimb", out Rectangle[] frames);
-            return new AnimatedMarioSprite(marioSpriteSheet, frames, superMarioSize, climbSpeed);
-        }
-        public ISprite RightFireMarioClimbingSprite()
-        {
-            marioSprites.TryGetValue("RightFireMarioClimb", out Rectangle[] frames);
-            return new AnimatedMarioSprite(marioSpriteSheet, frames, superMarioSize, climbSpeed);
-        }
-        public ISprite LeftMarioCrouchingSprite()
-        {
-            marioSprites.TryGetValue("LeftMarioCrouch", out Rectangle[] frames);
-            return new StaticMarioSprite(marioSpriteSheet, frames, marioSize);
-        }
-        public ISprite RightMarioCrouchingSprite()
-        {
-            marioSprites.TryGetValue("RightMarioCrouch", out Rectangle[] frames);
-            return new StaticMarioSprite(marioSpriteSheet, frames, marioSize);
-        }
-        public ISprite LeftSuperMarioCrouchingSprite()
-        {
-            marioSprites.TryGetValue("LeftSuperMarioCrouch", out Rectangle[] frames);
-            return new StaticMarioSprite(marioSpriteSheet, frames, superMarioSize);
-        }
-        public ISprite RightSuperMarioCrouchingSprite()
-        {
-            marioSprites.TryGetValue("RightSuperMarioCrouch", out Rectangle[] frames);
-            return new StaticMarioSprite(marioSpriteSheet, frames, superMarioSize);
-        }
-        public ISprite LeftFireMarioCrouchingSprite()
-        {
-            marioSprites.TryGetValue("LeftFireMarioCrouch", out Rectangle[] frames);
-            return new StaticMarioSprite(marioSpriteSheet, frames, superMarioSize);
-        }
-        public ISprite RightFireMarioCrouchingSprite()
-        {
-            marioSprites.TryGetValue("RightFireMarioCrouch", out Rectangle[] frames);
-            return new StaticMarioSprite(marioSpriteSheet, frames, superMarioSize);
-        }
-        public ISprite LeftMarioJumpingSprite()
-        {
-            marioSprites.TryGetValue("LeftMarioJump", out Rectangle[] frames);
-            return new StaticMarioSprite(marioSpriteSheet, frames, marioSize);
-        }
-        public ISprite RightMarioJumpingSprite()
-        {
-            marioSprites.TryGetValue("RightMarioJump", out Rectangle[] frames);
-            return new StaticMarioSprite(marioSpriteSheet, frames, marioSize);
-        }
-        public ISprite LeftSuperMarioJumpingSprite()
-        {
-            marioSprites.TryGetValue("LeftSuperMarioJump", out Rectangle[] frames);
-            return new StaticMarioSprite(marioSpriteSheet, frames, superMarioSize);
-        }
-        public ISprite RightSuperMarioJumpingSprite()
-        {
-            marioSprites.TryGetValue("RightSuperMarioJump", out Rectangle[] frames);
-            return new StaticMarioSprite(marioSpriteSheet, frames, superMarioSize);
-        }
-        public ISprite LeftFireMarioJumpingSprite()
-        {
-            marioSprites.TryGetValue("LeftFireMarioJump", out Rectangle[] frames);
-            return new StaticMarioSprite(marioSpriteSheet, frames, superMarioSize);
-        }
-        public ISprite RightFireMarioJumpingSprite()
-        {
-            marioSprites.TryGetValue("RightFireMarioJump", out Rectangle[] frames);
-            return new StaticMarioSprite(marioSpriteSheet, frames, superMarioSize);
-        }
-        public ISprite LeftMarioRunningSprite()
-        {
-            marioSprites.TryGetValue("LeftMarioRun", out Rectangle[] frames);
-            return new AnimatedMarioSprite(marioSpriteSheet, frames, marioSize, runSpeed);
-        }
-        public ISprite RightMarioRunningSprite()
-        {
-            marioSprites.TryGetValue("RightMarioRun", out Rectangle[] frames);
-            return new AnimatedMarioSprite(marioSpriteSheet, frames, marioSize, runSpeed);
-        }
-        public ISprite LeftSuperMarioRunningSprite()
-        {
-            marioSprites.TryGetValue("LeftSuperMarioRun", out Rectangle[] frames);
-            return new AnimatedMarioSprite(marioSpriteSheet, frames, superMarioSize, runSpeed);
-        }
-        public ISprite RightSuperMarioRunningSprite()
-        {
-            marioSprites.TryGetValue("RightSuperMarioRun", out Rectangle[] frames);
-            return new AnimatedMarioSprite(marioSpriteSheet, frames, superMarioSize, runSpeed);
-        }
-        public ISprite LeftFireMarioRunningSprite()
-        {
-            marioSprites.TryGetValue("LeftFireMarioRun", out Rectangle[] frames);
-            return new AnimatedMarioSprite(marioSpriteSheet, frames, superMarioSize, runSpeed);
-        }
-        public ISprite RightFireMarioRunningSprite()
-        {
-            marioSprites.TryGetValue("RightFireMarioRun", out Rectangle[] frames);
-            return new AnimatedMarioSprite(marioSpriteSheet, frames, superMarioSize, runSpeed);
         }
     }
 

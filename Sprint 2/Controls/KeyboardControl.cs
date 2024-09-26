@@ -2,6 +2,7 @@
 using Sprint_2.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 
 namespace Sprint_2.Controls
@@ -10,11 +11,13 @@ namespace Sprint_2.Controls
     {
         private Dictionary<Keys, ICommands> controllerMappings;
         private Dictionary<Keys, ICommands> onPressCommandMappings;
+        private Dictionary<Keys, ICommands> onReleaseCommandMappings;
         private Keys[] oldKeys = {};
         public KeyboardControl()
         {
             controllerMappings = new Dictionary<Keys, ICommands>();
             onPressCommandMappings = new Dictionary<Keys, ICommands>();
+            onReleaseCommandMappings = new Dictionary<Keys, ICommands>();
         }
 
         public void RegisterCommand(Keys key, ICommands command)
@@ -25,11 +28,15 @@ namespace Sprint_2.Controls
         {
             onPressCommandMappings.Add(key, command);
         }
+        public void RegisterOnReleaseCommand(Keys key, ICommands command)
+        {
+            onReleaseCommandMappings.Add(key, command);
+        }
         
         public void Update()
         {
             Keys[] pressedKeys = Keyboard.GetState().GetPressedKeys();
-
+            
             foreach (Keys key in pressedKeys)
             {
                 /* Commands that will happens on press and hold will be executed here */
@@ -43,6 +50,14 @@ namespace Sprint_2.Controls
                     onPressCommandMappings[key].Execute();
                 }
             }
+            foreach (Keys key in oldKeys)
+            {
+                /* Execute on release command */
+                if (!pressedKeys.Contains(key) && onReleaseCommandMappings.ContainsKey(key))
+                {
+                    onReleaseCommandMappings[key].Execute();
+                }
+            }
             oldKeys = pressedKeys;
 
         }
@@ -51,6 +66,7 @@ namespace Sprint_2.Controls
         {
             controllerMappings.Clear();
             onPressCommandMappings.Clear();
+            onReleaseCommandMappings.Clear();
         }
 
     }

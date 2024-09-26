@@ -2,7 +2,6 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
-using Sprint_2.Commands;
 using Sprint_2.Commands.BlockCommands;
 using Sprint_2.Commands.ItemCommands;
 using Sprint_2.Commands.MarioItemCommands;
@@ -13,10 +12,6 @@ using Sprint_2.Controls;
 using Sprint_2.Factories;
 using Sprint_2.Interfaces;
 using Sprint_2.Sprites;
-using Sprint_2.Factories;
-using Sprint_2.Interfaces;
-using Sprint_2.Sprites.BlockSprites;
-using System.Linq.Expressions;
 using Sprint_2.Commands.EnemyCommands;
 
 namespace Sprint_2
@@ -132,6 +127,8 @@ namespace Sprint_2
             keyControl.RegisterOnPressCommand(Keys.P, new CycleEnemyRightCommand(this, texture));
             keyControl.RegisterCommand(Keys.Q, new QuitCommand(this));
             keyControl.RegisterCommand(Keys.R, new ResetCommand(this));
+
+            //keyControl.RegisterOnReleaseCommand(Keys.S, new MarioOnCrouchRelease(mario));
         }
         protected override void UnloadContent()
         {

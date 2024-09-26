@@ -4,7 +4,6 @@ using Sprint_2.Interfaces;
 using Sprint_2.Sprites;
 using Sprint_2.Constants;
 using Sprint_2.GameObjects;
-using Sprint_2.Interfaces;
 using Sprint_2.MarioPhysicsStates;
 using Sprint_2.MarioStates;
 using System.Collections;
@@ -24,7 +23,7 @@ namespace Sprint_2.Sprites
 
         public IMarioPhysicsStates PhysicsState { get; set; }
 
-        private bool isCrouching = false;
+        public bool isCrouching { get; set; } = false;
         public bool isJumping { get; set; } = false;
 
         private int numberOfFireballsRemaining = 2;
@@ -97,8 +96,9 @@ namespace Sprint_2.Sprites
             if (!isJumping)
             {
                 PlayerState.Jump();
+                isJumping = true;
             }
-            isJumping = true;
+            
         }
         public void Fall()
         {
@@ -112,7 +112,6 @@ namespace Sprint_2.Sprites
         public void Crouch()
         {
             PlayerState.Crouch();
-
         }
 
         public void Damage()

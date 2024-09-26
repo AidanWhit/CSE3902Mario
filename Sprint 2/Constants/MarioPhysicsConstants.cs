@@ -10,7 +10,7 @@ namespace Sprint_2.Constants
 {
     public class MarioPhysicsConstants
     {
-        public static Vector2 marioXVelocity = new Vector2(8f, 0);
+        public static Vector2 marioXVelocity = new Vector2(12f, 0);
         //Jump Velocity is negative because y=0 is at the top of the screen
         public static Vector2 marioJumpVelocity = new Vector2(0, -15f);
         public static Vector2 marioFallVelocity = new Vector2(0, 0.2f);
