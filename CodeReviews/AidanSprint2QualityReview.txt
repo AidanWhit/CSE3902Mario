@@ -28,4 +28,5 @@ Suggestions for Improvement:
   machine functions such as ChangeDirection() to update the koopa's current sprite. The new "Koopa.cs"
   would be in charge of when to change directions (it reaches the end of the screen) this lets the 
   state machine only be in charge of states while the Koopa.cs file can dictate when these state
-  changes need to happen.
+  changes need to happen. This way of thinking may be wrong application for sprint2 but I feel that
+  this changes would be beneficial for the future Sprints.
