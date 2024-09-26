@@ -1,6 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Sprint_2.Sprites;
+using Sprint_2.Interfaces;
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
@@ -44,7 +44,7 @@ namespace Sprint_2.Sprites
                 animationDelay = initalAnimationDelay;
             }
         }
-        public void Draw(SpriteBatch spriteBatch, Vector2 location)
+        public void Draw(SpriteBatch spriteBatch, Vector2 location, Color color)
         {
             int width = texture.Width / columns;
             int height = texture.Height / rows;
@@ -55,7 +55,7 @@ namespace Sprint_2.Sprites
             Rectangle sourceRect = new Rectangle(width * column, height * row, width, height);
             Rectangle destRect = new Rectangle((int)location.X, (int)location.Y, scale*width, scale*height);
 
-            spriteBatch.Draw(texture, destRect, sourceRect, Color.White);
+            spriteBatch.Draw(texture, destRect, sourceRect, color);
 
         }
     }

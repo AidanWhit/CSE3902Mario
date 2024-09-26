@@ -56,10 +56,10 @@ namespace Sprint_2.Sprites.EnemySprites
             }
         }
 
-        public void Draw(SpriteBatch spriteBatch, Vector2 location)
+        public void Draw(SpriteBatch spriteBatch, Vector2 location, Color color)
         {
             Texture2D currentTexture = GetCurrentTexture();
-            spriteBatch.Draw(currentTexture, Position, Color.White);
+            spriteBatch.Draw(currentTexture, Position, color);
         }
 
         // Takes damage and turns into a shell

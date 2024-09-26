@@ -17,7 +17,7 @@ namespace Sprint_2.Sprites
     public class Player : IPlayer
     {
 
-        public PlayerStateMachine PlayerState { get; set; }
+        private PlayerStateMachine PlayerState;
         public int XPos { get; set; }
         public int YPos { get; set; }
         public Vector2 PlayerVelocity { get; set; }

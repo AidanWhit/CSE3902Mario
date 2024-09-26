@@ -2,13 +2,9 @@
 using Microsoft.Xna.Framework.Graphics;
 using Sprint_2.Factories;
 using Sprint_2.Interfaces;
-using Sprint_2.Sprites;
 using Sprint_2.Constants;
 using Sprint_2.GameObjects;
 using Sprint_2.MarioPhysicsStates;
-using Sprint_2.Sprites;
-using System.Diagnostics;
-using System.Drawing;
 
 namespace Sprint_2.MarioStates
 {
@@ -39,6 +35,7 @@ namespace Sprint_2.MarioStates
             oldSprite = currentSprite;
             ChangeSprite();
             currentSprite.Update(gameTime);
+            
         }
         public void PowerUp()
         {
@@ -50,13 +47,16 @@ namespace Sprint_2.MarioStates
         }
         public void Jump()
         {
-            pose.Jump();
-            mario.PhysicsState = new Jumping(mario);
+            if (!health.GetHealth().Equals("Dead"))
+            {
+                pose.Jump();
+                mario.PhysicsState = new Jumping(mario);
+            }
+            
         }
         public void Fall()
         {
             pose.Fall();
-
         }
 
         public void Crouch()
@@ -76,7 +76,7 @@ namespace Sprint_2.MarioStates
                     mario.PlayerVelocity -= MarioPhysicsConstants.marioXVelocity;
                 }
             }
-            else if (!pose.GetPose().Equals("Crouch"))
+            else if (!pose.GetPose().Equals("Crouch") && !health.GetHealth().Equals("Dead"))
             {
 
                 facing = Facing.Left;
@@ -104,7 +104,7 @@ namespace Sprint_2.MarioStates
                     mario.PlayerVelocity += MarioPhysicsConstants.marioXVelocity;
                 }
             }
-            else if (!pose.GetPose().Equals("Crouch"))
+            else if (!pose.GetPose().Equals("Crouch") && !health.GetHealth().Equals("Dead"))
             {
                 facing = Facing.Right;
                 if (mario.PlayerVelocity.X < 50f)
@@ -151,12 +151,12 @@ namespace Sprint_2.MarioStates
         {
             if (key.Contains("Shoot"))
             {
-                currentSprite.Draw(spritebatch, new Vector2(mario.XPos, mario.YPos));
+                currentSprite.Draw(spritebatch, new Vector2(mario.XPos, mario.YPos), Color.White);
                 currentSprite = oldSprite;
             }
             else
             {
-                currentSprite.Draw(spritebatch, new Vector2(mario.XPos, mario.YPos));
+                currentSprite.Draw(spritebatch, new Vector2(mario.XPos, mario.YPos), Color.White);
             }
 
 

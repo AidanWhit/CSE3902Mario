@@ -151,7 +151,7 @@ namespace Sprint_2
             //koopa.Draw(spriteBatch, koopa.Position);
             //shell.Draw(spriteBatch, shell.Position); 
             //bowser.Draw(spriteBatch, bowser.Position);
-            currentEnemy.Draw(spriteBatch, currentEnemy.Position);
+            currentEnemy.Draw(spriteBatch, currentEnemy.Position, Color.White);
             currItem.Draw(spriteBatch);
             spriteBatch.End();
             base.Draw(gameTime);

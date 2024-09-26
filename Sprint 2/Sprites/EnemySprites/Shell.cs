@@ -36,10 +36,10 @@ namespace Sprint_2.Sprites.EnemySprites
             }
         }
 
-        public void Draw(SpriteBatch spriteBatch, Vector2 location)
+        public void Draw(SpriteBatch spriteBatch, Vector2 location, Color color)
         {
 
-            spriteBatch.Draw(shellTexture, Position, Color.White);
+            spriteBatch.Draw(shellTexture, Position, color);
         }
 
         public void TakeDamage()

@@ -71,11 +71,11 @@ namespace Sprint_2.Sprites.EnemySprites
             }
         }
 
-        public void Draw(SpriteBatch spriteBatch, Vector2 location)
+        public void Draw(SpriteBatch spriteBatch, Vector2 location, Color color)
         {
             
             Texture2D currentTexture = isFacingLeft ? bowserLeftSprites[currentFrame] : bowserRightSprites[currentFrame];
-            spriteBatch.Draw(currentTexture, Position, Color.White);
+            spriteBatch.Draw(currentTexture, Position, color);
 
             // Draw fireballs
             foreach (var fireball in fireballs)

@@ -4,10 +4,10 @@ using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework.Content;
 using Sprint_2.Sprites.MarioSprites;
-using Sprint_2.Sprites;
 using Sprint_2.Constants;
 using System.Diagnostics;
 using System.Net.Http.Headers;
+using Sprint_2.Interfaces;
 
 namespace Sprint_2.Factories
 {

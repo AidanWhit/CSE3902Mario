@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Sprint_2.Interfaces;
 
 
 namespace Sprint_2.Sprites.MarioSprites
@@ -20,10 +21,10 @@ namespace Sprint_2.Sprites.MarioSprites
         {
 
         }
-        public void Draw(SpriteBatch spriteBatch, Vector2 location)
+        public void Draw(SpriteBatch spriteBatch, Vector2 location, Color color)
         {
             Rectangle destRect = new Rectangle((int)location.X, (int)location.Y, (int)size.X, (int)size.Y);
-            spriteBatch.Draw(texture, destRect, frames[0], Color.White);
+            spriteBatch.Draw(texture, destRect, frames[0], color);
         }
     }
 }

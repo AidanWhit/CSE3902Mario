@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Sprint_2.Sprites;
 using System.Diagnostics;
 using Sprint_2.GameObjects;
 
@@ -62,7 +61,7 @@ namespace Sprint_2.Sprites
 
             
         }
-        public void Draw(SpriteBatch spriteBatch, Vector2 location)
+        public void Draw(SpriteBatch spriteBatch, Vector2 location, Color color)
         {
             if (drawable)
             {
@@ -75,7 +74,7 @@ namespace Sprint_2.Sprites
                 Rectangle sourceRect = new Rectangle(width * column, height * row, width, height);
                 Rectangle destRect = new Rectangle((int)location.X, (int)location.Y, scale * width, scale * height);
 
-                spriteBatch.Draw(texture, destRect, sourceRect, Color.White);
+                spriteBatch.Draw(texture, destRect, sourceRect, color);
             }
 
         }

@@ -51,11 +51,11 @@ namespace Sprint_2.Sprites.EnemySprites
         }
 
 
-        public void Draw(SpriteBatch spriteBatch, Vector2 location)
+        public void Draw(SpriteBatch spriteBatch, Vector2 location, Color color)
         {
             // Draw based on currentFrame and isDead
             Texture2D currentTexture = isDead ? dyingTexture : (currentFrame == 0 ? walkingTexture1 : walkingTexture2);
-            spriteBatch.Draw(currentTexture, Position, Color.White);
+            spriteBatch.Draw(currentTexture, Position, color);
         }
 
         

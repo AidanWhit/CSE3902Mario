@@ -17,7 +17,7 @@ namespace Sprint_2.Interfaces
         public int YPos { get; set; }
         public bool isJumping { get; set; }
         public IMarioPhysicsStates PhysicsState { get; set; }
-        public PlayerStateMachine PlayerState { get; set; }
+        //public PlayerStateMachine PlayerState { get; set; }
         public Vector2 PlayerVelocity { get;set; }
         public void MoveLeft();
         public void MoveRight();
