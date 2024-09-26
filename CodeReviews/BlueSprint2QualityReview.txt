@@ -3,7 +3,7 @@ Date: 9/26/2024
 Sprint 2
 Reviewed class: KeyboardControl.cs
 Author of file being reviewed: Zhuoyang Li
-Time taken of review: 
+Time taken of review: 15 minutes
 
 Coupling: Low
 
