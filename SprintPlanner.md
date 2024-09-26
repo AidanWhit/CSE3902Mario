@@ -37,6 +37,32 @@ Factories to make:
 
 Interfaces and Potential Features:
 * ISprite
-   -Draw, Update
+   - Draw, Update
+* ~~IPlayer~~
+*  ~~Item~~
+*  ~~IBlock~~
+   - ~~boolean hasItem~~
+   - hasCoin
+   - ~~hasBeenHit~~
+ * ~~IProjectile~~
+   - ~~int velocity~~
+   - int lifespan
+* IEnemy
+  - int health
+  - void move
+  - void attack
+  - void takeDamage
+  - boolean isDead/isDefeated
+## Next two were never implemented but might still need to be for future sprints
+* IDrawable
+* IUpdateable
+## For future considerations
+* ICollideable
+
+## Design Changes
+* boolean hasCoin for the block class was decided to be pointless as hasItem can be used instead.    
+* IState was decided to never be implemented because we opted to use a state machine design instead which did not require the interface.    
+* We did not implement all of our envisioned properties for the IEnemy interface this sprint because it would be easier to implement them once we get a working collision system. Coding these features without exactly knowing how collision would work had the possibility of being a time waster that we wanted to avoid.
+* int lifespan was decided not to be needed because Mario's fireballs only despawn when they collide with something or when they go offscreen. Representing this behavior with a projectile lifespan would not make much sense so we decided to scrap the idea all together.
 
 
