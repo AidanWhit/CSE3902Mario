@@ -31,12 +31,6 @@ namespace Sprint_2
         private Player mario;
         private KeyboardControl keyControl;
 
-        private IEnemy goomba;
-        // Modified 9/19
-        private IEnemy koopa;
-        private IEnemy shell;
-        // Modified 9/20
-        private IEnemy bowser;
         private EnemyCycler enemyCycler;
         private List<IEnemy> enemies;
         private List<IItem> items;
@@ -111,18 +105,17 @@ namespace Sprint_2
             // TODO: make this into a list
             BlockFactory.Instance.LoadAllContent(Content);
             blocks = new List<IBlock> {
-
-                new Block(BlockFactory.Instance.CreateQuestionBlock()),
-                new Block(BlockFactory.Instance.CreateHitBlock()),
+                new Block(BlockFactory.Instance.CreateChiseledBlock()),
                 new Block(BlockFactory.Instance.CreateBrickBlock()),
+                new Block(BlockFactory.Instance.CreateHitBlock()),
                 new Block(BlockFactory.Instance.CreateGroundBlock()),
-                new Block(BlockFactory.Instance.CreateChiseledBlock())
+                new Block(BlockFactory.Instance.CreateQuestionBlock())
+
             };
+
 
             blockCycler = new BlockCycler(blocks);
             currentBlock = blocks[0];
-
-
             
 
             keyControl.RegisterCommand(Keys.W, new MarioFacingUpCommand(this, mario));
