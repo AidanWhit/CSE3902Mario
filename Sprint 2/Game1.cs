@@ -16,6 +16,7 @@ using Sprint_2.Commands.EnemyCommands;
 using Sprint_2.GameObjects.ItemSprites;
 using Sprint_2.Sprites.EnemySprites;
 using Sprint_2.Sprites.BlockSprites;
+using Sprint_2.GameObjects;
 
 namespace Sprint_2
 {
@@ -110,11 +111,8 @@ namespace Sprint_2
             // TODO: make this into a list
             BlockFactory.Instance.LoadAllContent(Content);
             blocks = new List<IBlock> {
-                new QuestionBlock(new Vector2(600, 300)),
-                new BrickBlock(new Vector2(600, 300)),
-                new HitBlock(new Vector2(600, 300)),
-                new GroundBlock(new Vector2(600, 300)),
-                new ChiseledBlock(new Vector2(600, 300))
+
+                new Block(BlockFactory.Instance.CreateQuestionBlock())
             };
 
             blockCycler = new BlockCycler(blocks);
