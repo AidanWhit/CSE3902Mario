@@ -1,7 +1,6 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint_2.Interfaces;
-using Sprint_2.Interfaces; 
 
 namespace Sprint_2.Sprites.EnemySprites
 {
@@ -15,14 +14,16 @@ namespace Sprint_2.Sprites.EnemySprites
         private int currentFrame;
         private int totalFrames;
 
+        private ISprite sprite;
+
         public BowserFireball(Texture2D[] sprites, Vector2 initialPosition, Vector2 velocity)
         {
-            this.fireballSprites = sprites;
-            this.XPos = initialPosition.X;
-            this.YPos = initialPosition.Y;
-            this.Speed = velocity;
-            this.currentFrame = 0;
-            this.totalFrames = 2; 
+            fireballSprites = sprites;
+            XPos = initialPosition.X;
+            YPos = initialPosition.Y;
+            Speed = velocity;
+            currentFrame = 0;
+            totalFrames = 2;
         }
 
         public void Update(GameTime gameTime)

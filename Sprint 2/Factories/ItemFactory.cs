@@ -3,7 +3,6 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using System.Collections.Generic;
 using Sprint_2.Sprites;
-using Sprint_2.Sprites.ItemSprites;
 using Sprint_2.Interfaces;
 using System.Collections;
 

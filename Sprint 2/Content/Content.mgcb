@@ -217,6 +217,18 @@
 /processorParam:TextureFormat=Color
 /build:goomba_walking2.png
 
+#begin goombaWalkingSpriteSheet.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:goombaWalkingSpriteSheet.png
+
 #begin groundBlock.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -301,6 +313,18 @@
 /processorParam:TextureFormat=Color
 /build:koopa_walkingright2.png
 
+#begin LeftKoopaWalkingSpriteSheet.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:LeftKoopaWalkingSpriteSheet.png
+
 #begin MarioFireBallExplosionSpriteSheet.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -360,4 +384,16 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:questionBlock.png
+
+#begin RightKoopaWalkingSpriteSheet.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:RightKoopaWalkingSpriteSheet.png
 

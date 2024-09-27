@@ -1,36 +1,35 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint_2.Interfaces;
+using Sprint_2.Interfaces;
 using Sprint_2.Factories;
 
-namespace Sprint_2.Sprites.ItemSprites
+namespace Sprint_2.GameObjects.ItemSprites
 {
-    public class GreenMushroom : IItem
+    public class RedMushroom : IItem
     {
         public Vector2 Position { get; set; }
         public Vector2 Velocity { get; set; }
 
         private ISprite sprite;
 
-
-        public GreenMushroom(Vector2 initialPosition)
+        public RedMushroom(Vector2 initialPosition)
         {
             Position = initialPosition;
             Velocity = new Vector2(-1, 0); // Starts moving left
 
-            sprite = ItemFactory.Instance.CreateGreenMushroom();
+            sprite = ItemFactory.Instance.CreateRedMushroom();
         }
 
 
         public void Update(GameTime gameTime)
         {
+            Position += Velocity;
 
-                Position += Velocity;
-
-                if (Position.X <= 0 || Position.X >= 800)
-                {
-                    Velocity = new Vector2(-Velocity.X, Velocity.Y); 
-                }
+            if (Position.X <= 0 || Position.X >= 800)
+            {
+                Velocity = new Vector2(-Velocity.X, Velocity.Y); // Reverse direction
+            }
             sprite.Update(gameTime);
         }
 

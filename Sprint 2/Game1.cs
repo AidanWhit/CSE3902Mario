@@ -13,7 +13,8 @@ using Sprint_2.Factories;
 using Sprint_2.Interfaces;
 using Sprint_2.Sprites;
 using Sprint_2.Commands.EnemyCommands;
-using Sprint_2.Sprites.ItemSprites;
+using Sprint_2.GameObjects.ItemSprites;
+using Sprint_2.Sprites.EnemySprites;
 
 namespace Sprint_2
 {
@@ -80,7 +81,7 @@ namespace Sprint_2
             //bowser = EnemyFactory.Instance.CreateBowser(new Vector2(100, 100));
             enemies = new List<IEnemy>
             {
-                EnemyFactory.Instance.CreateGoomba(new Vector2(100, 100)),
+                new Goomba(new Vector2(100, 100)),
                 EnemyFactory.Instance.CreateKoopa(new Vector2(100, 100)),
                 EnemyFactory.Instance.CreateKoopaShell(new Vector2(100, 100)),
                 EnemyFactory.Instance.CreateBowser(new Vector2(100, 100))

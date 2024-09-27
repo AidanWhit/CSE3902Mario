@@ -1,22 +1,21 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint_2.Interfaces;
-using Sprint_2.Sprites;
 using Microsoft.Xna.Framework.Input;
 using Sprint_2.Factories;
 
 
-namespace Sprint_2.Sprites.ItemSprites
+namespace Sprint_2.GameObjects.ItemSprites
 {
     public class Star : IItem
-    { 
+    {
         public Vector2 Position { get; set; }
         public Vector2 Velocity { get; set; }
         private ISprite sprite;
         public Star(Vector2 initialPosition)
-        { 
-            this.Position = initialPosition;
-            this.Velocity = new Vector2(-2, 0); // Moving left by default
+        {
+            Position = initialPosition;
+            Velocity = new Vector2(-2, 0); // Moving left by default
 
             sprite = ItemFactory.Instance.CreateStar();
         }
@@ -27,7 +26,7 @@ namespace Sprint_2.Sprites.ItemSprites
 
             if (Position.X <= 0 || Position.X >= 800)
             {
-                    Velocity = new Vector2(-Velocity.X, Velocity.Y);
+                Velocity = new Vector2(-Velocity.X, Velocity.Y);
             }
 
             sprite.Update(gameTime);

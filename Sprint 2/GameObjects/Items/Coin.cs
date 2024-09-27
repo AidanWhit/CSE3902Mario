@@ -1,35 +1,33 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint_2.Factories;
-using Sprint_2.Interfaces; 
-using Sprint_2.Sprites; 
+using Sprint_2.Interfaces;
 
-namespace Sprint_2.Sprites.ItemSprites
+namespace Sprint_2.GameObjects.ItemSprites
 {
-    public class Flower : IItem
+    public class Coin : IItem
     {
-
-        public Vector2 Position { get; set; }
         private ISprite sprite;
-        
+        public Vector2 Position { get; set; }
 
-        public Flower(Vector2 initialPosition)
+        public Coin(Vector2 location)
         {
-            Position = initialPosition;
-
-            sprite = ItemFactory.Instance.CreateFlower();
+            sprite = ItemFactory.Instance.CreateCoin();
+            Position = location;
         }
 
         public void Update(GameTime gameTime)
         {
+
             sprite.Update(gameTime);
         }
+
 
         public void Draw(SpriteBatch spriteBatch)
         {
             sprite.Draw(spriteBatch, Position, Color.White);
         }
-
         public void DeleteItem() { }
+
     }
 }
