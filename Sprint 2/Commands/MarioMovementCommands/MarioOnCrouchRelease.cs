@@ -2,6 +2,7 @@
 using Sprint_2.Sprites;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.Metrics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,8 +20,12 @@ namespace Sprint_2.Commands.MarioMovementCommands
 
         public void Execute()
         {
-            mario.releaseCrouch();
-            mario.Idle();
+            if (!mario.isJumping)
+            {
+                mario.releaseCrouch();
+                mario.Idle();
+            }
+            
         }
     }
 }

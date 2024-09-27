@@ -23,9 +23,9 @@ namespace Sprint_2.MarioPhysicsStates
                 mario.PlayerVelocity += MarioPhysicsConstants.marioFallVelocity;
             }
 
-            mario.YPos += (int)(mario.PlayerVelocity.Y * gameTime.TotalGameTime.TotalSeconds);
+            mario.YPos += (int)(mario.PlayerVelocity.Y * gameTime.ElapsedGameTime.TotalSeconds);
             mario.XPos += (int)(mario.PlayerVelocity.X * gameTime.ElapsedGameTime.TotalSeconds);
-            mario.PlayerVelocity /= MarioPhysicsConstants.velocityDecay;
+            mario.PlayerVelocity *= MarioPhysicsConstants.velocityDecay;
 
             if (mario.YPos > originalPlayerHeight)
             {
