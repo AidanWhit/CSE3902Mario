@@ -3,12 +3,7 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint_2.Interfaces;
 using Sprint_2.Sprites;
-using Sprint_2.Sprites.BlockSprites;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace Sprint_2.Factories
 {

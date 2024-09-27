@@ -89,11 +89,12 @@ namespace Sprint_2.Sprites
         }
         public void Jump()
         {
+            
             if (!isJumping)
             {
                 PlayerState.Jump();
                 isJumping = true;
-            }
+            } 
             
         }
         public void Fall()
@@ -113,7 +114,7 @@ namespace Sprint_2.Sprites
         public void onCrouch()
         {
             Vector2 playerSize = PlayerState.getSize();
-            if (!isCrouching && !playerSize.Equals(new Vector2(16 *4, 16 *4)))
+            if (!isCrouching && !playerSize.Equals(new Vector2(16 *4, 16 *4)) && !isJumping)
             {
                 isCrouching = true;
                 YPos += 26;

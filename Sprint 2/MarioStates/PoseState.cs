@@ -52,7 +52,7 @@ namespace Sprint_2.MarioStates
 
         public void Crouch()
         {
-            if (pose != Pose.Jump)
+            if (pose != Pose.Jump && pose != Pose.Fall)
             {
                 pose = Pose.Crouch;
             }

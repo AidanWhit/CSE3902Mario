@@ -15,7 +15,6 @@ using Sprint_2.Sprites;
 using Sprint_2.Commands.EnemyCommands;
 using Sprint_2.GameObjects.ItemSprites;
 using Sprint_2.Sprites.EnemySprites;
-using Sprint_2.Sprites.BlockSprites;
 using Sprint_2.GameObjects;
 
 namespace Sprint_2

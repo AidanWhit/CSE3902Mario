@@ -16,7 +16,12 @@ namespace Sprint_2.Commands.MarioMovementCommands
 
         public void Execute()
         {
+            if (mario.isCrouching)
+            {
+                mario.releaseCrouch();
+            }
             mario.Jump();
+            
         }
     }
 }
