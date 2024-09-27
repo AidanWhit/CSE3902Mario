@@ -112,7 +112,11 @@ namespace Sprint_2
             BlockFactory.Instance.LoadAllContent(Content);
             blocks = new List<IBlock> {
 
-                new Block(BlockFactory.Instance.CreateQuestionBlock())
+                new Block(BlockFactory.Instance.CreateQuestionBlock()),
+                new Block(BlockFactory.Instance.CreateHitBlock()),
+                new Block(BlockFactory.Instance.CreateBrickBlock()),
+                new Block(BlockFactory.Instance.CreateGroundBlock()),
+                new Block(BlockFactory.Instance.CreateChiseledBlock())
             };
 
             blockCycler = new BlockCycler(blocks);
