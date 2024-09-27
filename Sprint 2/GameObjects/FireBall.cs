@@ -24,7 +24,7 @@ namespace Sprint_2.GameObjects
 
         private bool enteredExplosionState = false;
 
-        public bool FinishedExplosionAnimation = false;
+        private bool FinishedExplosionAnimation = false;
         private float timer;
         public FireBall(IPlayer source, Vector2 speed)
         {
@@ -58,7 +58,7 @@ namespace Sprint_2.GameObjects
             
             if (enteredExplosionState)
             {
-                /* Currently hardcoded need to find a better solution but it works for now ~ Aidan */
+                /* TODO : Currently hardcoded need to find a better solution but it works for now ~ Aidan */
                 timer += (float)gameTime.ElapsedGameTime.TotalSeconds;
                 if (timer > 0.3f)
                 {

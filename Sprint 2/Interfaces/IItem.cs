@@ -14,7 +14,7 @@ namespace Sprint_2.Interfaces
     public interface IItem
     {
         Vector2 Position { get; set; }
-        Texture2D Texture { get; set; }
+
         void Update(GameTime gameTime);
         void Draw(SpriteBatch spriteBatch);
         void DeleteItem();

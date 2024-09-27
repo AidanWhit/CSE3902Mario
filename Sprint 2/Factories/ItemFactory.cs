@@ -15,7 +15,9 @@ namespace Sprint_2.Factories
         private static ItemFactory instance = new ItemFactory();
         private Texture2D texture;
         private int width, height;
-        private Rectangle source;
+        private Rectangle[] source;
+
+        private Vector2 size;
 
         public static ItemFactory Instance
         {
@@ -34,36 +36,40 @@ namespace Sprint_2.Factories
             texture = content.Load<Texture2D>("MarioItems");
             width = texture.Width / 4; 
             height = texture.Height / 4;
+            size = new Vector2(width, height);
         }
 
-        public IItem CreateRedMushroom(Vector2 position)
+        public ISprite CreateRedMushroom()
         {
-            source = new Rectangle(0, 0, width, height);
-            return new RedMushroom(texture, source, position);
+            source = new Rectangle[] { new Rectangle(0, 0, width, height) };
+            return new FrameArrayFormattedSprite(texture, source, size);
         }
 
-        public IItem CreateGreenMushroom(Vector2 position)
+        public ISprite CreateGreenMushroom()
         {
-            source = new Rectangle(width, 0, width, height);
-            return new GreenMushroom(texture, source, position);
+            source = new Rectangle[] { new Rectangle(width, 0, width, height)};
+            return new FrameArrayFormattedSprite(texture, source, size);
         }
 
-        public IItem CreateFlower(Vector2 position)
+        public ISprite CreateFlower()
         {
-            source = new Rectangle(0, height, width, height);
-            return new Flower(texture, source, position);
+            source = new Rectangle[] { new Rectangle(0, height, width, height), new Rectangle(width, height, width, height), 
+                new Rectangle(width *2, height, width, height), new Rectangle(width *3, height, width, height) };
+            return new FrameArrayFormattedSprite(texture, source, size);
         }
 
-        public IItem CreateStar(Vector2 position)
+        public ISprite CreateStar()
         {
-            source = new Rectangle(0, height * 2, width, height);
-            return new Star(texture, source, position);
+            source = new Rectangle[] { new Rectangle(0, height * 2, width, height), new Rectangle(width, height * 2, width, height),
+                new Rectangle(width *2, height *2, width, height), new Rectangle(width * 3, height * 2, width, height)};
+            return new FrameArrayFormattedSprite(texture, source, size);
         }
 
-        public IItem CreateCoin(Vector2 position)
+        public ISprite CreateCoin()
         {
-            source = new Rectangle(0, height * 3, width, height);
-            return new Coin(texture, source, position);
+            source = new Rectangle[] { new Rectangle(0, height * 3, width, height), new Rectangle(width, height * 3, width, height),
+                new Rectangle(width * 2, height * 3, width, height),  new Rectangle(width * 3, height * 3, width, height)};
+            return new FrameArrayFormattedSprite(texture, source, size);
         }
     }
 }

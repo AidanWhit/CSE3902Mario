@@ -3,57 +3,39 @@ using Microsoft.Xna.Framework.Graphics;
 using Sprint_2.Interfaces;
 using Sprint_2.Sprites;
 using Microsoft.Xna.Framework.Input;
+using Sprint_2.Factories;
 
 
 namespace Sprint_2.Sprites.ItemSprites
 {
     public class Star : IItem
-    {
-        public Texture2D Texture { get; set; }
+    { 
         public Vector2 Position { get; set; }
         public Vector2 Velocity { get; set; }
-        private int currentFrame;
-        private int totalFrames;
-        private Rectangle source;
-        private int ticks = 1;
-
-        private float animationDelay = 0.1f;
-        public Star(Texture2D texture, Rectangle source, Vector2 initialPosition)
-        {
-            this.Texture = texture;
+        private ISprite sprite;
+        public Star(Vector2 initialPosition)
+        { 
             this.Position = initialPosition;
             this.Velocity = new Vector2(-2, 0); // Moving left by default
-            this.source = source;
-            this.currentFrame = 0;
-            this.totalFrames = 4;
+
+            sprite = ItemFactory.Instance.CreateStar();
         }
 
         public void Update(GameTime gameTime)
         {
             Position += Velocity;
 
-
-                ticks = 1;
-            float timer = (float)gameTime.ElapsedGameTime.TotalSeconds;
-            animationDelay -= timer;
-            if (animationDelay < 0)
-            {
-                animationDelay = 0.2f;
-                currentFrame++;
-                if (currentFrame == totalFrames)
-                    currentFrame = 0;
-            }
-
-            if (Position.X <= 0 || Position.X >= 800 - Texture.Width / 4)
+            if (Position.X <= 0 || Position.X >= 800)
             {
                     Velocity = new Vector2(-Velocity.X, Velocity.Y);
             }
+
+            sprite.Update(gameTime);
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            Rectangle newSource = new Rectangle(source.Width * currentFrame, source.Y, source.Width, source.Height);
-            spriteBatch.Draw(Texture, Position, newSource, Color.White);
+            sprite.Draw(spriteBatch, Position, Color.White);
         }
 
         public void DeleteItem() { }

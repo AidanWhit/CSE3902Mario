@@ -72,6 +72,7 @@ namespace Sprint_2.Factories
             {"RightFireMarioShoot", new Rectangle[]{new Rectangle(312, 123, 16, 30)} }
 
         };
+
         private MarioSpriteFactory()
         {
         }
@@ -82,47 +83,38 @@ namespace Sprint_2.Factories
             explosionSpriteSheet = content.Load<Texture2D>("MarioFireBallExplosionSpriteSheet");
 
         }
-
-        /* Next 3 functions are used to try and implement player without States */
-        public ISprite GetAnimatedMarioSprite(string key, Vector2 size)
+        public ISprite GetMarioSprite(string key, Vector2 size)
         {
-            marioSprites.TryGetValue(key, out Rectangle[] frames);
-            return new AnimatedMarioSprite(marioSpriteSheet, frames, size, runSpeed);
-        }
-        public ISprite GetStaticMarioSprite(string key, Vector2 size)
-        {
+            /* No fall sprite, so replace fall with jump because its the same sprite */
             if (key.Contains("Fall"))
             {
                 key = key.Replace("Fall", "Jump");
             }
+
             marioSprites.TryGetValue(key, out Rectangle[] frames);
-            return new StaticMarioSprite(marioSpriteSheet, frames, size);
-        }
-        public ISprite GetMarioSprite(string key, Vector2 size)
-        {
-            if (key.Contains("Run") || key.Contains("Climb"))
+            if (key.Contains("Fire") || key.Contains("Super"))
             {
-                return GetAnimatedMarioSprite(key, size);
+                return new FrameArrayFormattedSprite(marioSpriteSheet, frames, superMarioSize);
             }
             else
             {
-                return GetStaticMarioSprite(key, size);
+                return new FrameArrayFormattedSprite(marioSpriteSheet, frames, marioSize);
             }
         }
 
         /* Do not mess with any of the below functions */
         public ISprite FireBall()
         {
-            return new AnimatedSprite(fireBallSpriteSheet, FireBallConstants.animationDelay, 2, 2, FireBallConstants.scale);
+            return new RowsColumnsFormattedSprite(fireBallSpriteSheet, 2, 2, FireBallConstants.scale);
         }
         public ISprite FireballExplosion()
         {
-            return new FireballExplosionSprite(explosionSpriteSheet, FireBallConstants.animationDelay, 1, 3, FireBallConstants.scale);
+            return new RowsColumnsFormattedSprite(explosionSpriteSheet, 1, 3, FireBallConstants.scale);
         }
         public ISprite DeadMarioSprite()
         {
             marioSprites.TryGetValue("DeadMario", out Rectangle[] frames);
-            return new StaticMarioSprite(marioSpriteSheet, frames, marioSize);
+            return new FrameArrayFormattedSprite(marioSpriteSheet, frames, marioSize);
         }
     }
 

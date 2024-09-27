@@ -13,6 +13,7 @@ using Sprint_2.Factories;
 using Sprint_2.Interfaces;
 using Sprint_2.Sprites;
 using Sprint_2.Commands.EnemyCommands;
+using Sprint_2.Sprites.ItemSprites;
 
 namespace Sprint_2
 {
@@ -89,11 +90,12 @@ namespace Sprint_2
 
             items = new List<IItem>
             {
-                ItemFactory.Instance.CreateRedMushroom(new Vector2(100, 300)),
-                ItemFactory.Instance.CreateGreenMushroom(new Vector2(100, 300)),
-                ItemFactory.Instance.CreateFlower(new Vector2(100, 300)),
-                ItemFactory.Instance.CreateStar(new Vector2(100, 300)),
-                ItemFactory.Instance.CreateCoin(new Vector2(100, 300))
+                new RedMushroom(new Vector2(100, 300)),
+                new GreenMushroom(new Vector2(100, 300)),
+                new Flower(new Vector2(100, 300)),
+                new Coin(new Vector2(100, 300)),
+                new Star(new Vector2(100, 300))
+
             };
             itemCycler = new ItemCycler(items);
             currItem = items[0];
@@ -128,7 +130,8 @@ namespace Sprint_2
             keyControl.RegisterCommand(Keys.Q, new QuitCommand(this));
             keyControl.RegisterCommand(Keys.R, new ResetCommand(this));
 
-            //keyControl.RegisterOnReleaseCommand(Keys.S, new MarioOnCrouchRelease(mario));
+            keyControl.RegisterOnReleaseCommand(Keys.S, new MarioOnCrouchRelease(mario));
+            keyControl.RegisterOnPressCommand(Keys.S, new MarioOnCrouchPress(mario));
         }
         protected override void UnloadContent()
         {

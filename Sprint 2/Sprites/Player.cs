@@ -110,6 +110,26 @@ namespace Sprint_2.Sprites
             PlayerState.Crouch();
         }
 
+        public void onCrouch()
+        {
+            Vector2 playerSize = PlayerState.getSize();
+            if (!isCrouching && !playerSize.Equals(new Vector2(16 *4, 16 *4)))
+            {
+                isCrouching = true;
+                YPos += 26;
+            }
+        }
+
+        public void releaseCrouch()
+        {
+            Vector2 playerSize = PlayerState.getSize();
+            if (isCrouching && !playerSize.Equals(new Vector2(16 * 4, 16 * 4)))
+            {
+                isCrouching = false;
+                YPos -= 26;
+            }
+        }
+
         public void Damage()
         {
             PlayerState.Damage();

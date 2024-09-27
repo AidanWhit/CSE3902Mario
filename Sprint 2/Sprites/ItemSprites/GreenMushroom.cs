@@ -1,30 +1,24 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint_2.Interfaces;
-using Sprint_2.Sprites;
-using Sprint_2.Interfaces;
-using Sprint_2.Sprites; 
+using Sprint_2.Factories;
 
 namespace Sprint_2.Sprites.ItemSprites
 {
     public class GreenMushroom : IItem
     {
-        public Texture2D Texture { get; set; }
         public Vector2 Position { get; set; }
         public Vector2 Velocity { get; set; }
-        private int currentFrame;
-        private int totalFrames;
-        private Rectangle source;
+
+        private ISprite sprite;
 
 
-        public GreenMushroom(Texture2D texture, Rectangle source, Vector2 initialPosition)
+        public GreenMushroom(Vector2 initialPosition)
         {
-            this.Texture = texture;
-            this.Position = initialPosition;
-            this.Velocity = new Vector2(-1, 0); // Starts moving left
-            this.source = source;
-            this.currentFrame = 0;
-            this.totalFrames = 1;
+            Position = initialPosition;
+            Velocity = new Vector2(-1, 0); // Starts moving left
+
+            sprite = ItemFactory.Instance.CreateGreenMushroom();
         }
 
 
@@ -33,20 +27,17 @@ namespace Sprint_2.Sprites.ItemSprites
 
                 Position += Velocity;
 
-                currentFrame++;
-                if (currentFrame == totalFrames)
-                    currentFrame = 0;
-
                 if (Position.X <= 0 || Position.X >= 800)
                 {
                     Velocity = new Vector2(-Velocity.X, Velocity.Y); 
                 }
+            sprite.Update(gameTime);
         }
 
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(Texture, Position, source, Color.White);
+            sprite.Draw(spriteBatch, Position, Color.White);
         }
 
         public void DeleteItem() { }

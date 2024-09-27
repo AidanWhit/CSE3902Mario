@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Sprint_2.Factories;
 using Sprint_2.Interfaces; 
 using Sprint_2.Sprites; 
 
@@ -7,43 +8,26 @@ namespace Sprint_2.Sprites.ItemSprites
 {
     public class Flower : IItem
     {
-        public Texture2D Texture { get; set; }
-        public Vector2 Position { get; set; }
-        public Vector2 Velocity { get; set; }
-        private int currentFrame;
-        private int totalFrames;
-        private Rectangle source;
-        private float animationDelay = 0.1f;
 
-        public Flower(Texture2D texture, Rectangle source, Vector2 initialPosition)
+        public Vector2 Position { get; set; }
+        private ISprite sprite;
+        
+
+        public Flower(Vector2 initialPosition)
         {
-            this.Texture = texture;
-            this.Position = initialPosition;
-            this.source = source;
-            this.currentFrame = 0;
-            this.totalFrames = 4;
+            Position = initialPosition;
+
+            sprite = ItemFactory.Instance.CreateFlower();
         }
 
         public void Update(GameTime gameTime)
         {
-
-            float timer = (float)gameTime.ElapsedGameTime.TotalSeconds;
-            animationDelay -= timer;
-            if (animationDelay < 0)
-            {
-                animationDelay = 0.2f;
-                currentFrame++;
-                if (currentFrame == totalFrames)
-                    currentFrame = 0;
-            }
+            sprite.Update(gameTime);
         }
-
-        public void Update() { }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            Rectangle newSource = new Rectangle(source.Width * currentFrame, source.Y, source.Width, source.Height);
-            spriteBatch.Draw(Texture, Position, newSource, Color.White);
+            sprite.Draw(spriteBatch, Position, Color.White);
         }
 
         public void DeleteItem() { }

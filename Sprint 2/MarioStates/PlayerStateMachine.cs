@@ -68,6 +68,7 @@ namespace Sprint_2.MarioStates
             }
 
         }
+
         public void MoveLeft()
         {
             if (pose.GetPose().Equals("Jump") || pose.GetPose().Equals("Fall"))
@@ -81,6 +82,8 @@ namespace Sprint_2.MarioStates
             {
 
                 facing = Facing.Left;
+                //TODO: Remove Magic Number 
+                //Number currently acts as velocity in which the slide pose should be shown 
                 if (mario.PlayerVelocity.X > 50f)
                 {
                     pose.Slide();
@@ -108,6 +111,8 @@ namespace Sprint_2.MarioStates
             else if (!pose.GetPose().Equals("Crouch") && !health.GetHealth().Equals("Dead"))
             {
                 facing = Facing.Right;
+                //TODO: Remove Magic Number 
+                //Number currently acts as velocity in which the slide pose should be shown 
                 if (mario.PlayerVelocity.X < 50f)
                 {
                     pose.Slide();
@@ -176,6 +181,11 @@ namespace Sprint_2.MarioStates
                 key = newKey;
                 currentSprite = MarioSpriteFactory.Instance.GetMarioSprite(key, size);
             }
+        }
+
+        public Vector2 getSize()
+        {
+            return health.GetSize();
         }
     }
 }
