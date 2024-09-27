@@ -11,7 +11,7 @@ using Sprint_2.Factories;
 
 namespace Sprint_2.Sprites.BlockSprites
 {
-    public class HitBlock : IBlock
+    public class ChiseledBlock : IBlock
     {
         public Vector2 position { get; set; }
         public bool containsItem { get; set; }
@@ -19,18 +19,17 @@ namespace Sprint_2.Sprites.BlockSprites
 
         private ISprite sprite;
 
-        public HitBlock(Vector2 initalPosition)
+        public ChiseledBlock(Vector2 initalPosition)
         {
-            this.position = initalPosition;
-            this.containsItem = false;
-            this.breakable = false;
+            position = initalPosition;
+            containsItem = false;
+            breakable = true;
 
-            sprite = BlockFactory.Instance.CreateHitBlock();
+            sprite = BlockFactory.Instance.CreateChiseledBlock();
         }
 
         public void Update(GameTime gameTime)
         {
-            // TODO: update when block is hit by player
             sprite.Update(gameTime);
         }
 

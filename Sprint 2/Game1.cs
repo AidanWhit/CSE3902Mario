@@ -15,6 +15,7 @@ using Sprint_2.Sprites;
 using Sprint_2.Commands.EnemyCommands;
 using Sprint_2.GameObjects.ItemSprites;
 using Sprint_2.Sprites.EnemySprites;
+using Sprint_2.Sprites.BlockSprites;
 
 namespace Sprint_2
 {
@@ -41,6 +42,10 @@ namespace Sprint_2
         private ItemCycler itemCycler;
         private IEnemy currentEnemy;
         private IItem currItem;
+
+        private BlockCycler blockCycler;
+        private IBlock currentBlock;
+
 
         private List<IBlock> blocks;
 
@@ -105,11 +110,17 @@ namespace Sprint_2
             // TODO: make this into a list
             BlockFactory.Instance.LoadAllContent(Content);
             blocks = new List<IBlock> {
-                BlockFactory.Instance.createQuestionBlock(new Vector2(600, 300)),
-                BlockFactory.Instance.createBrickBlock(new Vector2(600, 316)),
-                BlockFactory.Instance.createHitBlock(new Vector2(600, 332)),
-                BlockFactory.Instance.createGroundBlock(new Vector2(600, 348))
+                new QuestionBlock(new Vector2(600, 300)),
+                new BrickBlock(new Vector2(600, 300)),
+                new HitBlock(new Vector2(600, 300)),
+                new GroundBlock(new Vector2(600, 300)),
+                new ChiseledBlock(new Vector2(600, 300))
             };
+
+            blockCycler = new BlockCycler(blocks);
+            currentBlock = blocks[0];
+
+
             
 
             keyControl.RegisterCommand(Keys.W, new MarioFacingUpCommand(this, mario));
@@ -153,6 +164,7 @@ namespace Sprint_2
             //bowser.Update(gameTime);
             currentEnemy.Update(gameTime);
             currItem.Update(gameTime);
+            currentBlock.Update(gameTime);
 
             base.Update(gameTime);
         }
@@ -171,10 +183,7 @@ namespace Sprint_2
             currentEnemy.Draw(spriteBatch, currentEnemy.Position, Color.White);
             currItem.Draw(spriteBatch);
 
-            blocks[0].Draw(spriteBatch, blocks[0].position, Color.White);
-            blocks[1].Draw(spriteBatch, blocks[1].position, Color.White);
-            blocks[2].Draw(spriteBatch, blocks[2].position, Color.White);
-            blocks[3].Draw(spriteBatch, blocks[3].position, Color.White);
+            currentBlock.Draw(spriteBatch, new Vector2(600, 300), Color.White);
 
             spriteBatch.End();
             base.Draw(gameTime);
@@ -204,6 +213,16 @@ namespace Sprint_2
         public void CycleItemRight()
         {
             currItem = itemCycler.CycleItemRight();
+        }
+
+        public void CycleBlockLeft()
+        {
+            currentBlock = blockCycler.CycleBlockLeft();
+        }
+
+        public void CycleBlockRight()
+        {
+            currentBlock = blockCycler.CycleBlockRight();
         }
     }
 }

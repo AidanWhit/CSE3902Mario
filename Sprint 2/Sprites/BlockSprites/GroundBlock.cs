@@ -7,32 +7,35 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Sprint_2.Factories;
 
 namespace Sprint_2.Sprites.BlockSprites
 {
-    public class GroundBlock : IBlock, ISprite
+    public class GroundBlock : IBlock
     {
-        private Texture2D blockTexture;
         public Vector2 position { get; set; }
         public bool containsItem { get; set; }
         public bool breakable { get; set; }
 
-        public GroundBlock(Texture2D texture, Vector2 initalPosition)
+        private ISprite sprite;
+
+        public GroundBlock(Vector2 initalPosition)
         {
-            this.blockTexture = texture;
-            this.position = initalPosition;
-            this.containsItem = false;
-            this.breakable = false;
+            position = initalPosition;
+            containsItem = false;
+            breakable = false;
+
+            sprite = BlockFactory.Instance.CreateGroundBlock();
         }
 
         public void Update(GameTime gameTime)
         {
-            // TODO: update when block is hit by player
+            sprite.Update(gameTime);
         }
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location, Color color)
         {
-            spriteBatch.Draw(blockTexture, position, color);
+            sprite.Draw(spriteBatch, position, color);
         }
     }
 }

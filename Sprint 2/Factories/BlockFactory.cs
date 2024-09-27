@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint_2.Interfaces;
+using Sprint_2.Sprites;
 using Sprint_2.Sprites.BlockSprites;
 using System;
 using System.Collections.Generic;
@@ -20,6 +21,7 @@ namespace Sprint_2.Factories
         private Texture2D brickBlock;
         private Texture2D hitBlock;
         private Texture2D groundBlock;
+        private Texture2D chiseledBlock;
 
         private BlockFactory()
         {
@@ -31,23 +33,29 @@ namespace Sprint_2.Factories
             brickBlock = content.Load<Texture2D>("brickBlock");
             hitBlock = content.Load<Texture2D>("hitBlock");
             groundBlock = content.Load<Texture2D>("groundBlock");
+            chiseledBlock = content.Load<Texture2D>("Chiseled Block");
         }
 
-        public IBlock createQuestionBlock(Vector2 position)
+        public ISprite CreateQuestionBlock()
         {
-            return new QuestionBlock(questionBlock, position);
+            return new RowsColumnsFormattedSprite(questionBlock, 1, 3, 3);
         }
-        public IBlock createBrickBlock(Vector2 position)
+        public ISprite CreateBrickBlock()
         {
-            return new BrickBlock(brickBlock, position);
+            return new RowsColumnsFormattedSprite(brickBlock, 1, 1, 3);
         }
-        public IBlock createHitBlock(Vector2 position)
+        public ISprite CreateHitBlock()
         {
-            return new HitBlock(hitBlock, position);
+            return new RowsColumnsFormattedSprite(hitBlock, 1, 1, 3);
         }
-        public IBlock createGroundBlock(Vector2 position)
+        public ISprite CreateGroundBlock()
         {
-            return new GroundBlock(groundBlock, position);
+            return new RowsColumnsFormattedSprite(groundBlock, 1, 1, 3);
+        }
+
+        public ISprite CreateChiseledBlock()
+        {
+            return new RowsColumnsFormattedSprite(chiseledBlock, 1, 1, 3);
         }
     }
 }

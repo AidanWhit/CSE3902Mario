@@ -23,6 +23,7 @@ namespace Sprint_2.Commands.BlockCommands
 
         public void Execute()
         {
+            myGame.CycleBlockRight();
         }
     }
 }
