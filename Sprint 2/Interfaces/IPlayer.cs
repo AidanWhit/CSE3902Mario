@@ -34,5 +34,8 @@ namespace Sprint_2.Interfaces
 
         public void Damage();
         public void PowerUp();
+
+        public void OnCrouch();
+        public void ReleaseCrouch();
     }
 }

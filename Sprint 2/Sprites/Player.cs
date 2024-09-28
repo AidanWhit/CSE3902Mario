@@ -111,7 +111,7 @@ namespace Sprint_2.Sprites
             PlayerState.Crouch();
         }
 
-        public void onCrouch()
+        public void OnCrouch()
         {
             Vector2 playerSize = PlayerState.getSize();
             if (!isCrouching && !playerSize.Equals(new Vector2(16 *4, 16 *4)) && !isJumping)
@@ -121,7 +121,7 @@ namespace Sprint_2.Sprites
             }
         }
 
-        public void releaseCrouch()
+        public void ReleaseCrouch()
         {
             Vector2 playerSize = PlayerState.getSize();
             if (isCrouching && !playerSize.Equals(new Vector2(16 * 4, 16 * 4)))

@@ -14,12 +14,11 @@ namespace Sprint_2.Commands.ItemCommands
     public class CycleItemLeftCommand : ICommands
     {
         private Game1 myGame;
-        private Texture2D texture;
 
-        public CycleItemLeftCommand(Game1 game, Texture2D texture)
+
+        public CycleItemLeftCommand(Game1 game)
         {
             myGame = game;
-            this.texture = texture;
         }
 
         public void Execute()

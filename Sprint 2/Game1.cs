@@ -114,22 +114,19 @@ namespace Sprint_2
             currentBlock = blocks[0];
             
             //Will eventually be moved somewhere else
-            keyControl.RegisterCommand(Keys.W, new MarioFacingUpCommand(this, mario));
-            keyControl.RegisterCommand(Keys.S, new MarioFacingDownCommand(this, mario));
-            keyControl.RegisterCommand(Keys.D, new MarioFacingRightCommand(this, mario));
-            keyControl.RegisterCommand(Keys.A, new MarioFacingLeftCommand(this, mario));
-            keyControl.RegisterOnPressCommand(Keys.Z, new MarioAttackNormalCommand(this, mario));
-            keyControl.RegisterCommand(Keys.N, new MarioAttackSpecialCommand(this, texture));
-            keyControl.RegisterCommand(Keys.D1, new MarioItem1Command(this, texture));
-            keyControl.RegisterCommand(Keys.D2, new MarioItem2Command(this, texture));
-            keyControl.RegisterOnPressCommand(Keys.D3, new MarioItem3Command(this, mario));
-            keyControl.RegisterOnPressCommand(Keys.E, new MarioHurtCommand(this, mario));
-            keyControl.RegisterOnPressCommand(Keys.T, new CycleBlockLeftCommand(this, texture));
-            keyControl.RegisterOnPressCommand(Keys.Y, new CycleBlockRightCommand(this, texture));
-            keyControl.RegisterOnPressCommand(Keys.U, new CycleItemLeftCommand(this, texture));
-            keyControl.RegisterOnPressCommand(Keys.I, new CycleItemRightCommand(this, texture));
-            keyControl.RegisterOnPressCommand(Keys.O, new CycleEnemyLeftCommand(this, texture));
-            keyControl.RegisterOnPressCommand(Keys.P, new CycleEnemyRightCommand(this, texture));
+            keyControl.RegisterCommand(Keys.W, new MarioFacingUpCommand(mario));
+            keyControl.RegisterCommand(Keys.S, new MarioFacingDownCommand(mario));
+            keyControl.RegisterCommand(Keys.D, new MarioFacingRightCommand(mario));
+            keyControl.RegisterCommand(Keys.A, new MarioFacingLeftCommand(mario));
+            keyControl.RegisterOnPressCommand(Keys.Z, new MarioAttackNormalCommand(mario));
+            keyControl.RegisterOnPressCommand(Keys.D3, new MarioPowerUpCommand(mario));
+            keyControl.RegisterOnPressCommand(Keys.E, new MarioHurtCommand(mario));
+            keyControl.RegisterOnPressCommand(Keys.T, new CycleBlockLeftCommand(this));
+            keyControl.RegisterOnPressCommand(Keys.Y, new CycleBlockRightCommand(this));
+            keyControl.RegisterOnPressCommand(Keys.U, new CycleItemLeftCommand(this));
+            keyControl.RegisterOnPressCommand(Keys.I, new CycleItemRightCommand(this));
+            keyControl.RegisterOnPressCommand(Keys.O, new CycleEnemyLeftCommand(this));
+            keyControl.RegisterOnPressCommand(Keys.P, new CycleEnemyRightCommand(this));
             keyControl.RegisterCommand(Keys.Q, new QuitCommand(this));
             keyControl.RegisterCommand(Keys.R, new ResetCommand(this));
 

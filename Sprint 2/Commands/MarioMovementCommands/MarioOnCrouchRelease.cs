@@ -11,9 +11,9 @@ namespace Sprint_2.Commands.MarioMovementCommands
 {
     public class MarioOnCrouchRelease : ICommands
     {
-        private Player mario;
+        private IPlayer mario;
 
-        public MarioOnCrouchRelease(Player mario)
+        public MarioOnCrouchRelease(IPlayer mario)
         {
             this.mario = mario;
         }
@@ -22,7 +22,7 @@ namespace Sprint_2.Commands.MarioMovementCommands
         {
             if (!mario.isJumping)
             {
-                mario.releaseCrouch();
+                mario.ReleaseCrouch();
                 mario.Idle();
             }
             

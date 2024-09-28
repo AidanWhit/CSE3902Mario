@@ -5,12 +5,10 @@ namespace Sprint_2.Commands.MarioMovementCommands
 {
     public class MarioFacingLeftCommand : ICommands
     {
-        private Game1 myGame;
-        private Player mario;
+        private IPlayer mario;
 
-        public MarioFacingLeftCommand(Game1 game, Player player)
+        public MarioFacingLeftCommand(IPlayer player)
         {
-            myGame = game;
             mario = player;
         }
 

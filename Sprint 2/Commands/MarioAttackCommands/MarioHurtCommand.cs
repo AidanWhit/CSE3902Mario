@@ -14,11 +14,10 @@ namespace Sprint_2.Commands.MarioAttackCommands
     public class MarioHurtCommand : ICommands
     {
         private Game1 myGame;
-        private Player mario;
+        private IPlayer mario;
 
-        public MarioHurtCommand(Game1 game, Player mario)
+        public MarioHurtCommand(IPlayer mario)
         {
-            myGame = game;
             this.mario = mario;
         }
 
