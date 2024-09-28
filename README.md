@@ -25,7 +25,6 @@ adventure that brings joy to gamers of all ages. Get ready to jump, run, and sav
 - S: crouch
 - Z: throw the fireball
 - N: special attack
-- 1, 2: chanage Mario state
 - 3:
 - E: Mario gets hurt
 - T: CycleBlockLeft
