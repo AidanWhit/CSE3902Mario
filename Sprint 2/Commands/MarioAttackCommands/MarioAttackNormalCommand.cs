@@ -12,12 +12,10 @@ namespace Sprint_2.Commands.MarioAttackCommands
 {
     public class MarioAttackNormalCommand : ICommands
     {
-        private Game1 myGame;
-        private Player mario;
+        private IPlayer mario;
 
-        public MarioAttackNormalCommand(Game1 game, Player player)
+        public MarioAttackNormalCommand(IPlayer player)
         {
-            myGame = game;
             mario = player;
         }
 

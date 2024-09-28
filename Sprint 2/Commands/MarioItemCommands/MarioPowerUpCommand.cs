@@ -11,19 +11,18 @@ using System.Windows.Input;
 
 namespace Sprint_2.Commands.MarioItemCommands
 {
-    public class MarioItem1Command : ICommands
+    public class MarioPowerUpCommand : ICommands
     {
-        private Game1 myGame;
-        private Texture2D texture;
+        private IPlayer mario;
 
-        public MarioItem1Command(Game1 game, Texture2D texture)
+        public MarioPowerUpCommand(IPlayer mario)
         {
-            myGame = game;
-            this.texture = texture;
+            this.mario = mario;
         }
 
         public void Execute()
         {
+            mario.PowerUp();
         }
     }
 }

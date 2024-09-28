@@ -10,16 +10,16 @@ namespace Sprint_2.Commands.MarioMovementCommands
 {
     public class MarioOnCrouchPress : ICommands
     {
-        private Player mario;
+        private IPlayer mario;
 
-        public MarioOnCrouchPress(Player mario)
+        public MarioOnCrouchPress(IPlayer mario)
         {
             this.mario = mario;
         }
 
         public void Execute()
         {
-            mario.onCrouch();
+            mario.OnCrouch();
         }
     }
 }

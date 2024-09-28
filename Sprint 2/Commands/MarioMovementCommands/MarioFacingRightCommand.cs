@@ -8,11 +8,10 @@ namespace Sprint_2.Commands.MarioMovementCommands
     public class MarioFacingRightCommand : ICommands
     {
         private Game1 myGame;
-        private Player mario;
+        private IPlayer mario;
 
-        public MarioFacingRightCommand(Game1 game, Player player)
+        public MarioFacingRightCommand(IPlayer player)
         {
-            myGame = game;
             mario = player;
         }
 

@@ -6,11 +6,10 @@ namespace Sprint_2.Commands.MarioMovementCommands
     public class MarioFacingUpCommand : ICommands
     {
         private Game1 myGame;
-        private Player mario;
+        private IPlayer mario;
 
-        public MarioFacingUpCommand(Game1 game, Player player)
+        public MarioFacingUpCommand(IPlayer player)
         {
-            myGame = game;
             mario = player;
         }
 
@@ -18,7 +17,7 @@ namespace Sprint_2.Commands.MarioMovementCommands
         {
             if (mario.isCrouching)
             {
-                mario.releaseCrouch();
+                mario.ReleaseCrouch();
             }
             mario.Jump();
             

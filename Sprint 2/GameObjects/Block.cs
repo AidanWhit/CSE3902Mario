@@ -17,7 +17,7 @@ namespace Sprint_2.GameObjects
 
         private ISprite blockSprite;
 
-        /* Add a blockstate that holds the sprite for the current block, the state will dictate how the block will interact with mario.
+        /* TODO : Add a blockstate that holds the sprite for the current block, the state will dictate how the block will interact with mario.
          e.g. what block is created when it is hit, if it has an item, etc. */
         public Block(ISprite initialSprite)
         {
