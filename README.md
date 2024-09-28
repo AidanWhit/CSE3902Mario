@@ -76,3 +76,8 @@ adventure that brings joy to gamers of all ages. Get ready to jump, run, and sav
    - A centralized SpriteFactory is used to load and manage all sprite assets, ensuring efficient memory usage and
    organization.
 
+## Known Bugs
+* When mario powers up, his location does not update as it should. If there was a floor, mario's feet would be clipping
+  through the floor when he powers up.
+* If a fireball is shot when mario is jumping, it will not fall all the way to where the ground should be before it starts boucing.
+  Instead it moves a set distance downward before it begins its bouncing behavior
