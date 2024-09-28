@@ -96,12 +96,17 @@ namespace Sprint_2
 
             BlockFactory.Instance.LoadAllContent(Content);
             blocks = new List<IBlock> {
-                new Block(BlockFactory.Instance.CreateChiseledBlock()),
-                new Block(BlockFactory.Instance.CreateBrickBlock()),
-                new Block(BlockFactory.Instance.CreateHitBlock()),
-                new Block(BlockFactory.Instance.CreateGroundBlock()),
-                new Block(BlockFactory.Instance.CreateQuestionBlock())
-
+                
+                new Block(BlockFactory.Instance.GetBlock("Chiseled")),
+                new Block(BlockFactory.Instance.GetBlock("BrownBrick")),
+                new Block(BlockFactory.Instance.GetBlock("BlueBrick")),
+                new Block(BlockFactory.Instance.GetBlock("Hit")),
+                new Block(BlockFactory.Instance.GetBlock("BrownGround")),
+                new Block(BlockFactory.Instance.GetBlock("BlueGround")),
+                new Block(BlockFactory.Instance.GetBlock("Question")),
+                new Block(BlockFactory.Instance.GetBlock("SmallPipe")),
+                new Block(BlockFactory.Instance.GetBlock("MediumPipe")),
+                new Block(BlockFactory.Instance.GetBlock("LargePipe"))
             };
 
 
