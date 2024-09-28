@@ -55,6 +55,7 @@ adventure that brings joy to gamers of all ages. Get ready to jump, run, and sav
   - Hit Block
   - Ground Block
   - Question Block
+  - Various sizes of pipes
 
 ## Tools and Processes Used
 
