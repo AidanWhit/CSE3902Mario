@@ -24,7 +24,6 @@ adventure that brings joy to gamers of all ages. Get ready to jump, run, and sav
 - D: move right
 - S: crouch
 - Z: throw the fireball
-- N: special attack
 - 3: power up
 - E: Mario gets hurt
 - T: CycleBlockLeft
