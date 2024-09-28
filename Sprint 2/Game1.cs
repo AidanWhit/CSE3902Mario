@@ -64,20 +64,13 @@ namespace Sprint_2
 
             MarioSpriteFactory.Instance.LoadAllContent(Content);
 
-            // Modified on 9/16 by Jingyu Fu, added a factory for enemies
             EnemyFactory.Instance.LoadAllContent(Content);
             ItemFactory.Instance.LoadItemContent(Content);
 
             mario = new Player(new Vector2(400, 200));
             Texture2D texture = Content.Load<Texture2D>("marioSpriteSheet");
 
-            // Modified on 9/16 by Jingyu Fu, create a Goomba 
-            // Modified on 9/16 by Jingyu Fu, create a Koopa and shell 
-            //goomba = EnemyFactory.Instance.CreateGoomba(new Vector2(100, 100));
-            //koopa = EnemyFactory.Instance.CreateKoopa(new Vector2(100, 100));
-            //shell = EnemyFactory.Instance.CreateKoopaShell(new Vector2(100, 100));
-            // Modified on 9/20 by Jingyu Fu, create a bowser
-            //bowser = EnemyFactory.Instance.CreateBowser(new Vector2(100, 100));
+            //TODO: Remove all cyclers after sprint 2
             enemies = new List<IEnemy>
             {
                 new Goomba(new Vector2(100, 100)),
@@ -101,7 +94,6 @@ namespace Sprint_2
             currItem = items[0];
 
 
-            // TODO: make this into a list
             BlockFactory.Instance.LoadAllContent(Content);
             blocks = new List<IBlock> {
                 new Block(BlockFactory.Instance.CreateChiseledBlock()),
@@ -116,7 +108,7 @@ namespace Sprint_2
             blockCycler = new BlockCycler(blocks);
             currentBlock = blocks[0];
             
-
+            //Will eventually be moved somewhere else
             keyControl.RegisterCommand(Keys.W, new MarioFacingUpCommand(this, mario));
             keyControl.RegisterCommand(Keys.S, new MarioFacingDownCommand(this, mario));
             keyControl.RegisterCommand(Keys.D, new MarioFacingRightCommand(this, mario));
@@ -151,11 +143,6 @@ namespace Sprint_2
             keyControl.Update();
             mario.Update(gameTime);
 
-            // Modified on 9/16 by Jingyu Fu, update enemies
-            //goomba.Update(gameTime);
-            //koopa.Update(gameTime);
-            //shell.Update(gameTime);
-            //bowser.Update(gameTime);
             currentEnemy.Update(gameTime);
             currItem.Update(gameTime);
             currentBlock.Update(gameTime);
@@ -167,13 +154,8 @@ namespace Sprint_2
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
             spriteBatch.Begin();
-            mario.Draw(spriteBatch);
 
-            // Modified on 9/16 by Jingyu Fu, draw goomba
-            //goomba.Draw(spriteBatch, goomba.Position);
-            //koopa.Draw(spriteBatch, koopa.Position);
-            //shell.Draw(spriteBatch, shell.Position); 
-            //bowser.Draw(spriteBatch, bowser.Position);
+            mario.Draw(spriteBatch);
             currentEnemy.Draw(spriteBatch, currentEnemy.Position, Color.White);
             currItem.Draw(spriteBatch);
 
@@ -189,6 +171,7 @@ namespace Sprint_2
             this.LoadContent();
         }
 
+        /* TODO: Below functions to be removed after sprint 2*/
         public void CycleEnemyLeft()
         {
             currentEnemy = enemyCycler.CycleEnemyLeft(); 
