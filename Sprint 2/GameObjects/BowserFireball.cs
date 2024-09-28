@@ -4,6 +4,7 @@ using Sprint_2.Interfaces;
 
 namespace Sprint_2.Sprites.EnemySprites
 {
+    //TODO: need a projectile factory later
     public class BowserFireball : IProjectile
     {
         private Texture2D[] fireballSprites;
