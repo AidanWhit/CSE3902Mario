@@ -1,73 +1,15 @@
 # Sprint Planner
-Here is the Sprint Planner that will be used to document our plans, design changes, and so forth for the sprints within this class
-## Sprint 2 Plan
-This is an updated version of the word document present on our Sprint2 Branch. This markdown file will serve as our new sprint planner since it has easier access to version control
-### Start Date: 09/09/24 
-### End Date: 09/28/24 @ noon
+Here is the Sprint Planner that will be used to document our plans, design changes, and so forth for the sprints within this class.
 
+## Sprint 3 Plan
 
-| Tasks(Effort) | In Progress (Name) | Expected Finish Date | Finished Date |
-|--------------:|--------------------|----------------------|---------------|
-|Create Interfaces (30 mins)| No assigned person, each person makes what they need| 9/15 | 9/26 |
-|Handle State Transitions (~ 2 hours)|Aidan Whitlatch & Jin Fu| 9/21 | 9/19|
-| Create Enemy Classes (4-6) hours|Jin Fu | 9/21 | 9/20 |
-| Create Item Classes (3 hours) | Hahn Choi | 9/21 | 9/22 |
-| Create Block Class(es) (2 hours) | Christian Blue | 9/21 | 9/26|
-|Implement Commands (1.5 hours) | Hahn Choi | 9/13 | 9/18 |
-| Implement Keyboard (1.5 - 2 hours) | Zhouyang Li | 9/14 | 9/18 |
-| Create README doc for the project (1.5 hours) | Zhuoyang Li | 9/22 | 9/27|
-|Grader meeting 1 | Everyone that can go | 9/16 | Took us too long to get far enough in the project to schedule at this time |
-|Grader meeting 2 | Everyone that can go | 9/23 | 9/26 |
+### Start Date: 09/30/24 
+### End Date: 09/19/24 @ noon
 
-## Notes
- * **Aidan's Portion:** The player took much longer than I was anticipating to finish. A major refactoring of the player code added a lot of extra time that I did not initially account for. In essence, the effort put in was much much larger than what I was expecting.
-
-## Backlog to be finished next Sprint :
-* Fix Crouching so that Mario moves down to the correct level
-* Make Fireballs move diagonally all the way to the ground before they start bouncing
-* Add Invulnerability Frames to mario when he takes damage
-* Add a starDecorater that is used when mario gets the star power up
-* Have mario's position be in line with the bottom left of the sprite instead of the top right so mario is drawn at the same level regardless of his height
-* Add properties/functions to enemies so that they can interact with the environment/player (e.g. health, move, take damage)
-* Add BlockStates that determine how a block will act when it is interacted with
-
-## List of Features that need Implemented for this Sprint
-### Completed Features will be crossed off
-
-Factories to make:
-* ~~Player~~
-*  ~~Block~~
-*  ~~Enemy~~
-*  ~~Item~~
-
-Interfaces and Potential Features:
-* ISprite
-   - Draw, Update
-* ~~IPlayer~~
-*  ~~Item~~
-*  ~~IBlock~~
-   - ~~boolean hasItem~~
-   - hasCoin
-   - ~~hasBeenHit~~
- * ~~IProjectile~~
-   - ~~int velocity~~
-   - int lifespan
-* IEnemy
-  - int health
-  - void move
-  - void attack
-  - void takeDamage
-  - boolean isDead/isDefeated
-## Next two were never implemented but might still need to be for future sprints
-* IDrawable
-* IUpdateable
-## For future considerations
-* ICollideable
-
-## Design Changes
-* boolean hasCoin for the block class was decided to be pointless as hasItem can be used instead.    
-* IState was decided to never be implemented because we opted to use a state machine design instead which did not require the interface.    
-* We did not end up implementing properties/functions for the enemy during this Sprint because it is not needed at the current moment
-* int lifespan was decided not to be needed because Mario's fireballs only despawn when they collide with something or when they go offscreen. Representing this behavior with a projectile lifespan would not make much sense so we decided to scrap the idea all together.
-
-
+| Tasks | Time(Effort) | Time Remaining | In Progress (Name) | Expected Finish Date | Finished Date |
+|------:|--------------|----------------|--------------------|----------------------|---------------|
+| Camera class | 
+| XML/JSON files | 
+| LevelLoader | 
+| Collisions |  
+| Game Object Manager |
