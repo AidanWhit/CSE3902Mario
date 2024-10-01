@@ -23,3 +23,14 @@ Here is the Sprint Planner that will be used to document our plans, design chang
 |  Enemy Damage Functions | 2 hours | 2 hours | Zhouyang | 10/9| |
 | Block States | 4 hours | 4 hours | Christian | 10/9 | |
 | Align all of mario's sprites on the bottom of the sprite | 2 hours | 2 hours| Aidan | 10/7 | |
+
+
+## List of features to be added
+* ICamera
+* Camera Class
+* GameObject manager class
+    - void AddObj(IGameObject)
+    - void RemoveObj(IGameObject)
+    - List <IGameObject> for enemies, items, blocks
+    - Potentially Draw(), Update()
+* IGameObject
