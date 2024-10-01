@@ -4,7 +4,7 @@ Here is the Sprint Planner that will be used to document our plans, design chang
 ## Sprint 3 Plan
 
 ### Start Date: 09/30/24 
-### End Date: 09/19/24 @ noon
+### End Date: 10/19/24 @ noon
 
 | Tasks | Time(Effort) | Time Remaining | In Progress (Name) | Expected Finish Date | Finished Date |
 |------:|--------------|----------------|--------------------|----------------------|---------------|
