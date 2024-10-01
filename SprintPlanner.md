@@ -34,3 +34,5 @@ Here is the Sprint Planner that will be used to document our plans, design chang
     - List <IGameObject> for enemies, items, blocks
     - Potentially Draw(), Update()
 * IGameObject
+* Collison Handler Class(es)
+* Collison Response Class(es)
