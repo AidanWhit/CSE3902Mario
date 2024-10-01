@@ -8,8 +8,8 @@ Here is the Sprint Planner that will be used to document our plans, design chang
 
 | Tasks | Time(Effort) | Time Remaining | In Progress (Name) | Expected Finish Date | Finished Date |
 |------:|--------------|----------------|--------------------|----------------------|---------------|
-| Camera class | 2-4 hours| 2-4 hours | Jin Fu & Zhouyang | 10/9 |  |
-| XML/JSON files | 6 hours | 6 hours | Zhouyang | 10/12 | |
+| Camera class | 2-4 hours| 2-4 hours | Jin Fu & Zhuoyang | 10/9 |  |
+| XML/JSON files | 6 hours | 6 hours | Zhuoyang | 10/12 | |
 | LevelLoader | ~8 hours | 8 hours | Hahn | 10/12 | | |
 | Collision Detection | 6 hours | 6 hours | Aidan & Christian | 10/14 |
 | Collision Response  | 10 hours | 10 hours | Aidan & Christian | 10/14 |
@@ -20,6 +20,6 @@ Here is the Sprint Planner that will be used to document our plans, design chang
 | Tasks | Time(Effort) | Time Remaining | In Progress (Name) | Expected Finish Date | Finished Date |
 |------:|--------------|----------------|--------------------|----------------------|---------------|
 | Star Mario Decorator | 2 hours | 2 hours | Aidan | 10/7 | |
-|  Enemy Damage Functions | 2 hours | 2 hours | Zhouyang | 10/9| |
+|  Enemy Damage Functions | 2 hours | 2 hours | Zhuoyang | 10/9| |
 | Block States | 4 hours | 4 hours | Christian | 10/9 | |
 | Align all of mario's sprites on the bottom of the sprite | 2 hours | 2 hours| Aidan | 10/7 | |
