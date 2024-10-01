@@ -14,7 +14,7 @@ Here is the Sprint Planner that will be used to document our plans, design chang
 | Collision Detection | 6 hours | 6 hours | Aidan & Christian | 10/14 |
 | Collision Response  | 10 hours | 10 hours | Aidan & Christian | 10/14 |
 | Game Object Manager | 6 hours | 6 hours | Jin Fu | 10/9 | |
-
+| Grader Meeting | 1 hour | 1 hour | Everyone that can attend | 10/14 or 10/15 | |
 
 ### BackLog tasks from Sprint2 
 | Tasks | Time(Effort) | Time Remaining | In Progress (Name) | Expected Finish Date | Finished Date |
