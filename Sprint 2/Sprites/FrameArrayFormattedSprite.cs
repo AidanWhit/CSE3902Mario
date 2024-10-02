@@ -52,13 +52,13 @@ namespace Sprint_2.Sprites
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location, Color color)
         {
-            Rectangle destinationRectangle = new Rectangle((int)location.X, (int)location.Y - (int)size.Y , (int)size.X, (int)size.Y);
+            Rectangle destinationRectangle = new Rectangle((int)location.X, (int)location.Y /*- (int)size.Y */, (int)size.X, (int)size.Y);
             spriteBatch.Draw(texture, destinationRectangle, frames[currentFrame], color);
         }
 
         public Rectangle GetHitBox(Vector2 location)
         {
-            return new Rectangle((int)location.X, (int)location.Y - (int)size.Y , (int)size.X, (int)size.Y);
+            return new Rectangle((int)location.X, (int)location.Y /* - (int)size.Y */, (int)size.X, (int)size.Y);
         }
     }
 }

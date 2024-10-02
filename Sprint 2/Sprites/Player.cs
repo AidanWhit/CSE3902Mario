@@ -26,10 +26,7 @@ namespace Sprint_2.Sprites
         private int numberOfFireballsRemaining = 2;
         private List<FireBall> fireBalls = new List<FireBall>();
 
-        public Rectangle GetHitBox()
-        {
-            return PlayerState.GetHitBox(new Vector2(XPos, YPos));
-        }
+        
 
 
         public Player(Vector2 StartingLocation)
@@ -112,6 +109,8 @@ namespace Sprint_2.Sprites
         }
         public void Idle()
         {
+            isCrouching = false;
+            isJumping = false;
             PlayerState.Idle();
         }
 
@@ -126,7 +125,8 @@ namespace Sprint_2.Sprites
             if (!isCrouching && !playerSize.Equals(new Vector2(16 *4, 16 *4)) && !isJumping)
             {
                 isCrouching = true;
-                YPos += 26;
+                
+                //YPos += GetHitBox().Height;
             }
         }
 
@@ -135,7 +135,10 @@ namespace Sprint_2.Sprites
             Vector2 playerSize = PlayerState.getSize();
             if (isCrouching && !playerSize.Equals(new Vector2(16 * 4, 16 * 4)))
             {
-                isCrouching = false;
+                int bottomOfSprite = GetHitBox().Bottom;
+                Idle();
+                YPos = bottomOfSprite - GetHitBox().Height;
+
             }
         }
 
@@ -146,6 +149,10 @@ namespace Sprint_2.Sprites
         public void PowerUp()
         {
             PlayerState.PowerUp();
+        }
+        public Rectangle GetHitBox()
+        {
+            return PlayerState.GetHitBox(new Vector2(XPos, YPos));
         }
     }
 }

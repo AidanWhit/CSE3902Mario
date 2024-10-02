@@ -1,8 +1,11 @@
-﻿using System;
+﻿using Sprint_2.Interfaces;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Transactions;
 
 namespace Sprint_2.MarioStates
 {
@@ -10,9 +13,11 @@ namespace Sprint_2.MarioStates
     {
         private enum Pose { Idle, Run, Jump, Crouch, Fall, Slide, Shoot }
         private Pose pose;
+        private IPlayer mario;
 
-        public PoseState()
+        public PoseState(IPlayer mario)
         {
+            this.mario = mario;
             /* Assume Player starts at idle */
             pose = Pose.Idle;
         }
@@ -52,9 +57,12 @@ namespace Sprint_2.MarioStates
 
         public void Crouch()
         {
-            if (pose != Pose.Jump && pose != Pose.Fall)
+            if (pose != Pose.Jump && pose != Pose.Fall && !mario.isCrouching)
             {
+                mario.isCrouching = true;
+                int bottomPositionOfSprite = mario.GetHitBox().Bottom;
                 pose = Pose.Crouch;
+                mario.YPos = bottomPositionOfSprite - mario.GetHitBox().Height;
             }
         }
         public void Idle()

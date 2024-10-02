@@ -135,7 +135,7 @@ namespace Sprint_2
             keyControl.RegisterCommand(Keys.R, new ResetCommand(this));
 
             keyControl.RegisterOnReleaseCommand(Keys.S, new MarioOnCrouchRelease(mario));
-            //keyControl.RegisterOnPressCommand(Keys.S, new MarioOnCrouchPress(mario));
+            keyControl.RegisterOnPressCommand(Keys.S, new MarioOnCrouchPress(mario));
 
         }
         protected override void UnloadContent()
@@ -163,7 +163,6 @@ namespace Sprint_2
             spriteBatch.Begin();
 
             mario.Draw(spriteBatch);
-            HitBoxRectangle.DrawRectangle(spriteBatch, new Rectangle(mario.XPos, mario.YPos, mario.GetHitBox().Width, mario.GetHitBox().Height), Color.Green, 1);
             HitBoxRectangle.DrawRectangle(spriteBatch, mario.GetHitBox(), Color.Black, 1);
             currentEnemy.Draw(spriteBatch, currentEnemy.Position, Color.White);
             currItem.Draw(spriteBatch);

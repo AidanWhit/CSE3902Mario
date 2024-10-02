@@ -18,7 +18,11 @@ namespace Sprint_2.MarioPhysicsStates
         {
             if (mario.PlayerVelocity.X > -50f && mario.PlayerVelocity.X < 50f)
             {
-                mario.Idle();
+                if (!mario.isCrouching)
+                {
+                    mario.Idle();
+                }
+                
             }
             mario.XPos += (int)(mario.PlayerVelocity.X * gameTime.ElapsedGameTime.TotalSeconds);
 

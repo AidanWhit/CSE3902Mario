@@ -5,6 +5,7 @@ using Sprint_2.Interfaces;
 using Sprint_2.Constants;
 using Sprint_2.GameObjects;
 using Sprint_2.MarioPhysicsStates;
+using System.Diagnostics;
 
 namespace Sprint_2.MarioStates
 {
@@ -23,8 +24,8 @@ namespace Sprint_2.MarioStates
         {
             this.mario = mario;
 
-            health = new HealthState();
-            pose = new PoseState();
+            health = new HealthState(mario);
+            pose = new PoseState(mario);
             facing = Facing.Right;
             
             key = "RightMarioIdle";
@@ -134,8 +135,6 @@ namespace Sprint_2.MarioStates
 
         public FireBall ShootFireball()
         {
-            PoseState oldPose = new PoseState();
-            oldPose.Jump();
             FireBall fireball = null;
             if (health.GetHealth().Equals("FireMario") && !pose.GetPose().Equals("Crouch"))
             {
@@ -157,6 +156,7 @@ namespace Sprint_2.MarioStates
         {
             if (key.Contains("Shoot"))
             {
+                
                 currentSprite.Draw(spritebatch, new Vector2(mario.XPos, mario.YPos), Color.White);
                 currentSprite = oldSprite;
             }
@@ -171,14 +171,17 @@ namespace Sprint_2.MarioStates
         public void ChangeSprite()
         {
             string newKey = facing.ToString() + health.GetHealth() + pose.GetPose();
+
             if (newKey.Contains("Dead"))
             {
+                key = newKey;
                 currentSprite = MarioSpriteFactory.Instance.DeadMarioSprite();
             }
             else if (!key.Equals(newKey))
             {
                 key = newKey;
                 currentSprite = MarioSpriteFactory.Instance.GetMarioSprite(key);
+                
             }
         }
 
@@ -189,6 +192,7 @@ namespace Sprint_2.MarioStates
 
         public Rectangle GetHitBox(Vector2 location)
         {
+            ChangeSprite();
             return currentSprite.GetHitBox(location);
         }
     }

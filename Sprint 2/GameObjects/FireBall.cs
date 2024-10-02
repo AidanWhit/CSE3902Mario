@@ -41,7 +41,7 @@ namespace Sprint_2.GameObjects
             Speed = speed;
             fireball = MarioSpriteFactory.Instance.FireBall();
 
-            fireballSpawn = playerSource.Y;
+            fireballSpawn = (int)YPos;
             
         }
         public void Update(GameTime gameTime) 

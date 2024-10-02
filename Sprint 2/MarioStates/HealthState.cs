@@ -1,4 +1,6 @@
-﻿using Sprint_2.Constants;
+﻿using Microsoft.Xna.Framework.Input;
+using Sprint_2.Constants;
+using Sprint_2.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -18,10 +20,12 @@ namespace Sprint_2.MarioStates
         private Vector2 marioSize;
         private Vector2 bigMarioSize;
 
-        public HealthState()
+        private IPlayer mario;
+
+        public HealthState(IPlayer mario)
         {
             health = Health.Mario;
-
+            this.mario = mario;
             marioSize = new Vector2(16 * 4, 16 * 4);
             bigMarioSize = new Vector2(16 * 4, 32 * 4);
 
@@ -33,8 +37,14 @@ namespace Sprint_2.MarioStates
         {
             if (health != Health.Dead && health != Health.FireMario)
             {
+                if (size != bigMarioSize)
+                {
+                    mario.YPos -= mario.GetHitBox().Height;
+                }
                 size = bigMarioSize;
                 health++;
+
+                
             }
         }
         public void Damage()
@@ -46,8 +56,12 @@ namespace Sprint_2.MarioStates
             else
             {
                 /* All damage sets Fire/Super mario to little mario */
+                
                 health = Health.Mario;
+                mario.YPos += mario.GetHitBox().Height;
+
             }
+           
             size = marioSize;
         }
 
