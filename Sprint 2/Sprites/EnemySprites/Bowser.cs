@@ -118,5 +118,11 @@ namespace Sprint_2.Sprites.EnemySprites
         {
             
         }
+
+        /* TODO: Implement actual hitbox */
+        public Rectangle GetHitBox(Vector2 location)
+        {
+            return new Rectangle(0, 0, 0, 0);
+        }
     }
 }

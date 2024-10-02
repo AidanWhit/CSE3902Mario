@@ -17,11 +17,7 @@ namespace Sprint_2.Factories
         private Texture2D explosionSpriteSheet;
 
         private static MarioSpriteFactory instance = new MarioSpriteFactory();
-        private Vector2 marioSize = new Vector2(4 * 17, 4 * 16);
-        private Vector2 superMarioSize = new Vector2(4 * 16, 4 * 32);
 
-        private float climbSpeed = 0.2f;
-        private float runSpeed = 0.1f;
         public static MarioSpriteFactory Instance
         {
             get
@@ -32,16 +28,16 @@ namespace Sprint_2.Factories
 
         private Dictionary<string, Rectangle[]> marioSprites = new Dictionary<string, Rectangle[]>
         {
-            {"LeftMarioIdle", new Rectangle[]{ new Rectangle(181, 0, 16, 16) } },
-            {"RightMarioIdle", new Rectangle[]{new Rectangle(211, 0, 16, 16) } },
+            {"LeftMarioIdle", new Rectangle[]{ new Rectangle(181, 0, 13, 16) } },
+            {"RightMarioIdle", new Rectangle[]{new Rectangle(211, 0, 13, 16) } },
             {"LeftSuperMarioIdle", new Rectangle[]{new Rectangle(180, 52, 16, 32)} },
             {"RightSuperMarioIdle", new Rectangle[]{new Rectangle(209, 52, 16, 32)} },
             {"LeftFireMarioIdle", new Rectangle[]{new Rectangle(180, 122, 16, 32) } },
             {"RightFireMarioIdle", new Rectangle[]{new Rectangle(209, 122, 16, 32)} },
-            {"LeftSuperMarioCrouch", new Rectangle[]{new Rectangle(0, 57, 16, 30) } },
-            {"RightSuperMarioCrouch", new Rectangle[]{new Rectangle(389, 57, 16, 30)} },
-            {"LeftFireMarioCrouch", new Rectangle[]{new Rectangle(0, 127, 16, 30) } },
-            {"RightFireMarioCrouch", new Rectangle[]{new Rectangle(389, 127, 16, 30) } },
+            {"LeftSuperMarioCrouch", new Rectangle[]{new Rectangle(0, 57, 16, 22) } },
+            {"RightSuperMarioCrouch", new Rectangle[]{new Rectangle(389, 57, 16, 22)} },
+            {"LeftFireMarioCrouch", new Rectangle[]{new Rectangle(0, 127, 16, 22) } },
+            {"RightFireMarioCrouch", new Rectangle[]{new Rectangle(389, 127, 16, 22) } },
             {"LeftMarioJump", new Rectangle[]{new Rectangle(29, 0, 17, 16)} },
             {"RightMarioJump", new Rectangle[]{new Rectangle(359, 0, 17, 16) } },
             {"LeftSuperMarioJump", new Rectangle[]{new Rectangle(30, 52, 16, 32) } },
@@ -54,20 +50,20 @@ namespace Sprint_2.Factories
             {"RightSuperMarioClimb", new Rectangle[]{new Rectangle(390, 88, 16, 32), new Rectangle(363, 89, 16, 32) } },
             {"LeftFireMarioClimb", new Rectangle[]{new Rectangle(1, 158, 16, 32), new Rectangle(28, 159, 16, 32) } },
             {"RightFireMarioClimb", new Rectangle[]{new Rectangle(390, 158, 16, 32), new Rectangle(363, 159, 16, 32) } },
-            {"LeftMarioRun", new Rectangle[]{new Rectangle(150, 0, 16, 16), new Rectangle(121, 0, 16, 16), new Rectangle(89, 0, 16, 16) } },
-            {"RightMarioRun", new Rectangle[]{new Rectangle(241, 0, 16, 16), new Rectangle(272, 0, 16, 16), new Rectangle(300, 0, 16, 16) } },
-            {"LeftSuperMarioRun", new Rectangle[]{new Rectangle(150, 52, 16, 32), new Rectangle(121, 52, 16, 32), new Rectangle(90, 53, 16, 32) } },
-            {"RightSuperMarioRun", new Rectangle[]{new Rectangle(239, 52, 16, 32), new Rectangle(270, 52, 16, 32), new Rectangle(299, 53, 16, 32) } },
-            {"LeftFireMarioRun", new Rectangle[]{new Rectangle(152, 122, 16, 32), new Rectangle(128, 122, 16, 32), new Rectangle(102, 123, 16, 32) } },
-            {"RightFireMarioRun", new Rectangle[]{new Rectangle(237, 122, 16, 32), new Rectangle(263, 122, 16, 32), new Rectangle(287, 123, 16, 32) } },
-            {"DeadMario", new Rectangle[]{new Rectangle(0, 16, 16, 16)} },
-            {"LeftMarioSlide", new Rectangle[]{new Rectangle(60, 0, 16, 16)} },
-            {"RightMarioSlide", new Rectangle[]{new Rectangle(331,0, 16, 16)} },
+            {"LeftMarioRun", new Rectangle[]{new Rectangle(150, 0, 14, 15), new Rectangle(121, 0, 12, 16), new Rectangle(89, 0, 16, 16) } },
+            {"RightMarioRun", new Rectangle[]{new Rectangle(241, 0, 14, 15), new Rectangle(272, 0, 12, 16), new Rectangle(300, 0, 16, 16) } },
+            {"LeftSuperMarioRun", new Rectangle[]{new Rectangle(150, 52, 16, 32), new Rectangle(121, 52, 14, 31), new Rectangle(90, 53, 16, 30) } },
+            {"RightSuperMarioRun", new Rectangle[]{new Rectangle(239, 52, 16, 32), new Rectangle(270, 52, 14, 31), new Rectangle(299, 53, 16, 30) } },
+            {"LeftFireMarioRun", new Rectangle[]{new Rectangle(152, 122, 16, 32), new Rectangle(128, 122, 14, 31), new Rectangle(102, 123, 16, 30) } },
+            {"RightFireMarioRun", new Rectangle[]{new Rectangle(237, 122, 16, 32), new Rectangle(263, 122, 14, 31), new Rectangle(287, 123, 16, 30) } },
+            {"DeadMario", new Rectangle[]{new Rectangle(0, 16, 15, 14)} },
+            {"LeftMarioSlide", new Rectangle[]{new Rectangle(60, 0, 14, 16)} },
+            {"RightMarioSlide", new Rectangle[]{new Rectangle(331,0, 14, 16)} },
             {"LeftSuperMarioSlide", new Rectangle[]{new Rectangle(329, 52, 16, 32)} },
             {"RightSuperMarioSlide", new Rectangle[]{new Rectangle(60, 52, 16, 32)} },
             {"LeftFireMarioSlide", new Rectangle[]{new Rectangle(337, 122, 16, 32)} },
             {"RightFireMarioSlide", new Rectangle[]{new Rectangle(52, 122, 16, 32)} },
-            {"LeftFireMarioShoot", new Rectangle[]{new Rectangle(77, 123, 16, 32)} },
+            {"LeftFireMarioShoot", new Rectangle[]{new Rectangle(77, 123, 16, 30)} },
             {"RightFireMarioShoot", new Rectangle[]{new Rectangle(312, 123, 16, 30)} }
 
         };
@@ -82,7 +78,7 @@ namespace Sprint_2.Factories
             explosionSpriteSheet = content.Load<Texture2D>("MarioFireBallExplosionSpriteSheet");
 
         }
-        public ISprite GetMarioSprite(string key, Vector2 size)
+        public ISprite GetMarioSprite(string key)
         {
             /* No fall sprite, so replace fall with jump because its the same sprite */
             if (key.Contains("Fall"))
@@ -93,11 +89,11 @@ namespace Sprint_2.Factories
             marioSprites.TryGetValue(key, out Rectangle[] frames);
             if (key.Contains("Fire") || key.Contains("Super"))
             {
-                return new FrameArrayFormattedSprite(marioSpriteSheet, frames, superMarioSize);
+                return new FrameArrayFormattedSprite(marioSpriteSheet, frames, 4);
             }
             else
             {
-                return new FrameArrayFormattedSprite(marioSpriteSheet, frames, marioSize);
+                return new FrameArrayFormattedSprite(marioSpriteSheet, frames, 4);
             }
         }
 
@@ -113,7 +109,7 @@ namespace Sprint_2.Factories
         public ISprite DeadMarioSprite()
         {
             marioSprites.TryGetValue("DeadMario", out Rectangle[] frames);
-            return new FrameArrayFormattedSprite(marioSpriteSheet, frames, marioSize);
+            return new FrameArrayFormattedSprite(marioSpriteSheet, frames, 4);
         }
     }
 

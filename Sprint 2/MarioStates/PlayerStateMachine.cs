@@ -28,7 +28,7 @@ namespace Sprint_2.MarioStates
             facing = Facing.Right;
             
             key = "RightMarioIdle";
-            currentSprite = MarioSpriteFactory.Instance.GetMarioSprite(key, health.GetSize());
+            currentSprite = MarioSpriteFactory.Instance.GetMarioSprite(key);
         }
 
         public void Update(GameTime gameTime)
@@ -170,7 +170,6 @@ namespace Sprint_2.MarioStates
 
         public void ChangeSprite()
         {
-            Vector2 size = health.GetSize();
             string newKey = facing.ToString() + health.GetHealth() + pose.GetPose();
             if (newKey.Contains("Dead"))
             {
@@ -179,13 +178,18 @@ namespace Sprint_2.MarioStates
             else if (!key.Equals(newKey))
             {
                 key = newKey;
-                currentSprite = MarioSpriteFactory.Instance.GetMarioSprite(key, size);
+                currentSprite = MarioSpriteFactory.Instance.GetMarioSprite(key);
             }
         }
 
         public Vector2 getSize()
         {
             return health.GetSize();
+        }
+
+        public Rectangle GetHitBox(Vector2 location)
+        {
+            return currentSprite.GetHitBox(location);
         }
     }
 }

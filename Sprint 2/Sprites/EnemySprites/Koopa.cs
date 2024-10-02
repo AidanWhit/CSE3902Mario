@@ -119,5 +119,11 @@ namespace Sprint_2.Sprites.EnemySprites
                 return (currentFrame == 0) ? walkingRightTexture1 : walkingRightTexture2;
             }
         }
+
+        /* TODO: Implement actual hitbox */
+        public Rectangle GetHitBox(Vector2 location)
+        {
+            return new Rectangle(0, 0, 0, 0);
+        }
     }
 }

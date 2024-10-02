@@ -54,6 +54,12 @@ namespace Sprint_2.Sprites.EnemySprites
             isDead = true;
             goombaSprite = EnemyFactory.Instance.CreateDeadGoomba();
         }
+
+        /* TODO: Implement actual hitbox */
+        public Rectangle GetHitBox(Vector2 location)
+        {
+            return new Rectangle(0, 0, 0, 0);
+        }
     }
 }
 

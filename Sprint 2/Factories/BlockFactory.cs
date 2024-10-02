@@ -47,7 +47,7 @@ namespace Sprint_2.Factories
         {
             blockDictionary.TryGetValue(id, out Rectangle[] frames);
             Vector2 size = new Vector2(frames[0].Size.X, frames[0].Size.Y);
-            return new FrameArrayFormattedSprite(blockSpriteSheet, frames, size * 3);
+            return new FrameArrayFormattedSprite(blockSpriteSheet, frames, 3);
         }
        
     }

@@ -41,34 +41,34 @@ namespace Sprint_2.Factories
         public ISprite CreateRedMushroom()
         {
             source = new Rectangle[] { new Rectangle(0, 0, width, height) };
-            return new FrameArrayFormattedSprite(texture, source, size);
+            return new FrameArrayFormattedSprite(texture, source, 1);
         }
 
         public ISprite CreateGreenMushroom()
         {
             source = new Rectangle[] { new Rectangle(width, 0, width, height)};
-            return new FrameArrayFormattedSprite(texture, source, size);
+            return new FrameArrayFormattedSprite(texture, source, 1);
         }
 
         public ISprite CreateFlower()
         {
             source = new Rectangle[] { new Rectangle(0, height, width, height), new Rectangle(width, height, width, height), 
                 new Rectangle(width *2, height, width, height), new Rectangle(width *3, height, width, height) };
-            return new FrameArrayFormattedSprite(texture, source, size);
+            return new FrameArrayFormattedSprite(texture, source, 1);
         }
 
         public ISprite CreateStar()
         {
             source = new Rectangle[] { new Rectangle(0, height * 2, width, height), new Rectangle(width, height * 2, width, height),
                 new Rectangle(width *2, height *2, width, height), new Rectangle(width * 3, height * 2, width, height)};
-            return new FrameArrayFormattedSprite(texture, source, size);
+            return new FrameArrayFormattedSprite(texture, source, 1);
         }
 
         public ISprite CreateCoin()
         {
             source = new Rectangle[] { new Rectangle(0, height * 3, width, height), new Rectangle(width, height * 3, width, height),
                 new Rectangle(width * 2, height * 3, width, height),  new Rectangle(width * 3, height * 3, width, height)};
-            return new FrameArrayFormattedSprite(texture, source, size);
+            return new FrameArrayFormattedSprite(texture, source, 1);
         }
     }
 }

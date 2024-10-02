@@ -5,6 +5,7 @@ using Sprint_2.GameObjects;
 using Sprint_2.MarioPhysicsStates;
 using Sprint_2.MarioStates;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 
 namespace Sprint_2.Sprites
@@ -25,12 +26,20 @@ namespace Sprint_2.Sprites
         private int numberOfFireballsRemaining = 2;
         private List<FireBall> fireBalls = new List<FireBall>();
 
+        public Rectangle GetHitBox()
+        {
+            return PlayerState.GetHitBox(new Vector2(XPos, YPos));
+        }
+
 
         public Player(Vector2 StartingLocation)
         {
             XPos = (int)StartingLocation.X;
-            YPos = (int)StartingLocation.Y;
+            
             PlayerState = new PlayerStateMachine(this);
+
+            YPos = (int)StartingLocation.Y;
+       
             PhysicsState = new Grounded(this);
         }
         public void Update(GameTime gameTime)
@@ -127,7 +136,6 @@ namespace Sprint_2.Sprites
             if (isCrouching && !playerSize.Equals(new Vector2(16 * 4, 16 * 4)))
             {
                 isCrouching = false;
-                YPos -= 26;
             }
         }
 

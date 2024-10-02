@@ -39,5 +39,11 @@ namespace Sprint_2.GameObjects
         {
             blockSprite = newSprite;
         }
+
+        /* TODO: Implement actual hitbox */
+        public Rectangle GetHitBox(Vector2 location)
+        {
+            return new Rectangle(0, 0, 0, 0);
+        }
     }
 }

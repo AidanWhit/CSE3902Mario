@@ -5,6 +5,7 @@ using Sprint_2.Interfaces;
 using Sprint_2.Constants;
 using System;
 using System.Diagnostics;
+using Sprint_2.Sprites;
 
 
 namespace Sprint_2.GameObjects
@@ -26,15 +27,21 @@ namespace Sprint_2.GameObjects
 
         private bool FinishedExplosionAnimation = false;
         private float timer;
+
+        private Rectangle playerSource;
         public FireBall(IPlayer source, Vector2 speed)
         {
             this.source = source;
             XPos = source.XPos;
             YPos = source.YPos;
+
+            playerSource = source.GetHitBox();
+
+
             Speed = speed;
             fireball = MarioSpriteFactory.Instance.FireBall();
 
-            fireballSpawn = source.YPos;
+            fireballSpawn = playerSource.Y;
             
         }
         public void Update(GameTime gameTime) 
@@ -70,7 +77,8 @@ namespace Sprint_2.GameObjects
         }
         public void Draw(SpriteBatch spriteBatch)
         {
-                fireball.Draw(spriteBatch, new Vector2(XPos, YPos), Color.White);   
+            fireball.Draw(spriteBatch, new Vector2(XPos, YPos), Color.White);
+            
         }
 
         public float CalculateYPosition(GameTime gameTime)

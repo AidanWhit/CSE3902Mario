@@ -62,5 +62,10 @@ namespace Sprint_2.Sprites
 
             spriteBatch.Draw(texture, destRect, sourceRect, color);
         }
+
+        public Rectangle GetHitBox(Vector2 location)
+        {
+            return new Rectangle(0, 0, 0, 0);
+        }
     }
 }

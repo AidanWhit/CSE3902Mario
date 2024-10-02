@@ -53,5 +53,11 @@ namespace Sprint_2.Sprites.EnemySprites
             isFacingLeft = !isFacingLeft;
             Velocity = new Vector2(-Velocity.X, Velocity.Y); // Reverse velocity to change direction
         }
+
+        /* TODO: Implement actual hitbox */
+        public Rectangle GetHitBox(Vector2 location)
+        {
+            return new Rectangle(0, 0, 0, 0);
+        }
     }
 }
