@@ -5,14 +5,19 @@ using System.Text;
 using System.Threading.Tasks;
 using Sprint_2.Sprites;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace Sprint_2.Interfaces
 {
-    public interface IBlock : ISprite
+    public interface IBlock
     {
-        Vector2 position { get; set; }
+        Vector2 Position { get; set; }
         bool containsItem { get; set; }
         bool breakable { get; set; }
+
+        public Rectangle GetHitBox();
+        public void Update(GameTime gameTime);
+        public void Draw(SpriteBatch spriteBatch, Color color);
 
     }
 }

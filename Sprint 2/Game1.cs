@@ -17,6 +17,7 @@ using Sprint_2.GameObjects.ItemSprites;
 using Sprint_2.Sprites.EnemySprites;
 using Sprint_2.GameObjects;
 using System.Diagnostics;
+using Sprint_2.Collision;
 
 namespace Sprint_2
 {
@@ -43,6 +44,7 @@ namespace Sprint_2
 
         private List<IBlock> blocks;
 
+        private List<IBlock> collisionTest;
 
         public Game1()
         {
@@ -68,7 +70,7 @@ namespace Sprint_2
             EnemyFactory.Instance.LoadAllContent(Content);
             ItemFactory.Instance.LoadItemContent(Content);
 
-            mario = new Player(new Vector2(400, 400));
+            mario = new Player(new Vector2(400, 100));
             Texture2D texture = Content.Load<Texture2D>("marioSpriteSheet");
 
             //TODO: Remove all cyclers after sprint 2
@@ -96,23 +98,19 @@ namespace Sprint_2
 
 
             BlockFactory.Instance.LoadAllContent(Content);
-            blocks = new List<IBlock> {
-                
-                new Block(BlockFactory.Instance.GetBlock("Chiseled")),
-                new Block(BlockFactory.Instance.GetBlock("BrownBrick")),
-                new Block(BlockFactory.Instance.GetBlock("BlueBrick")),
-                new Block(BlockFactory.Instance.GetBlock("Hit")),
-                new Block(BlockFactory.Instance.GetBlock("BrownGround")),
-                new Block(BlockFactory.Instance.GetBlock("BlueGround")),
-                new Block(BlockFactory.Instance.GetBlock("Question")),
-                new Block(BlockFactory.Instance.GetBlock("SmallPipe")),
-                new Block(BlockFactory.Instance.GetBlock("MediumPipe")),
-                new Block(BlockFactory.Instance.GetBlock("LargePipe"))
+            collisionTest = new List<IBlock> {
+
+                new Block(BlockFactory.Instance.GetBlock("Chiseled"), new Vector2(600, 400)),
+                new Block(BlockFactory.Instance.GetBlock("Chiseled"), new Vector2(552, 400)),
+                new Block(BlockFactory.Instance.GetBlock("Chiseled"), new Vector2(504, 400)),
+                new Block(BlockFactory.Instance.GetBlock("Chiseled"), new Vector2(456, 400)),
+                new Block(BlockFactory.Instance.GetBlock("Chiseled"), new Vector2(408, 400)),
+                new Block(BlockFactory.Instance.GetBlock("Chiseled"), new Vector2(360, 400)),
+                new Block(BlockFactory.Instance.GetBlock("Chiseled"), new Vector2(312, 400)),
+                new Block(BlockFactory.Instance.GetBlock("BrownBrick"), new Vector2(456, 200))
             };
 
 
-            blockCycler = new BlockCycler(blocks);
-            currentBlock = blocks[0];
             
             //Will eventually be moved somewhere else
             keyControl.RegisterCommand(Keys.W, new MarioFacingUpCommand(mario));
@@ -152,7 +150,14 @@ namespace Sprint_2
 
             currentEnemy.Update(gameTime);
             currItem.Update(gameTime);
-            currentBlock.Update(gameTime);
+
+            foreach (IBlock block in collisionTest){
+                block.Update(gameTime);
+                if (mario.GetHitBox().Intersects(block.GetHitBox()))
+                {
+                    BlockCollisionResponse.BlockReponseForPlayer(mario, block);
+                }
+            }
 
             base.Update(gameTime);
         }
@@ -167,7 +172,11 @@ namespace Sprint_2
             currentEnemy.Draw(spriteBatch, currentEnemy.Position, Color.White);
             currItem.Draw(spriteBatch);
 
-            currentBlock.Draw(spriteBatch, new Vector2(600, 300), Color.White);
+            foreach (IBlock block in collisionTest)
+            {
+                block.Draw(spriteBatch, Color.White);
+                HitBoxRectangle.DrawRectangle(spriteBatch, block.GetHitBox(), Color.White, 1);
+            }
 
             spriteBatch.End();
             base.Draw(gameTime);

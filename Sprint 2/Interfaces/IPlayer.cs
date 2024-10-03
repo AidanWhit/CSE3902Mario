@@ -17,6 +17,7 @@ namespace Sprint_2.Interfaces
         public int YPos { get; set; }
         public bool isJumping { get; set; }
         public bool isCrouching { get; set; }
+        public bool isFalling { get; set; }
         public IMarioPhysicsStates PhysicsState { get; set; }
         public Vector2 PlayerVelocity { get;set; }
         public void MoveLeft();

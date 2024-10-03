@@ -45,7 +45,11 @@ namespace Sprint_2.MarioStates
         }
         public void Damage()
         {
-            health.Damage();
+            if (!health.GetHealth().Equals("Dead"))
+            {
+                health.Damage();
+            }
+            
         }
         public void Jump()
         {

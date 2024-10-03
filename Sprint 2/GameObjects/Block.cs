@@ -11,7 +11,7 @@ namespace Sprint_2.GameObjects
 {
     public class Block : IBlock
     {
-        public Vector2 position { get; set; }
+        public Vector2 Position { get; set; }
         public bool containsItem { get; set; }
         public bool breakable { get; set; }
 
@@ -19,15 +19,16 @@ namespace Sprint_2.GameObjects
 
         /* TODO : Add a blockstate that holds the sprite for the current block, the state will dictate how the block will interact with mario.
          e.g. what block is created when it is hit, if it has an item, etc. */
-        public Block(ISprite initialSprite)
+        public Block(ISprite initialSprite, Vector2 position)
         {
             blockSprite = initialSprite;
+            Position = position;
         }
 
 
-        public void Draw(SpriteBatch spriteBatch, Vector2 location, Color color)
+        public void Draw(SpriteBatch spriteBatch, Color color)
         {
-            blockSprite.Draw(spriteBatch, location, color);
+            blockSprite.Draw(spriteBatch, Position, color);
         }
 
         public void Update(GameTime gameTime)
@@ -41,9 +42,9 @@ namespace Sprint_2.GameObjects
         }
 
         /* TODO: Implement actual hitbox */
-        public Rectangle GetHitBox(Vector2 location)
+        public Rectangle GetHitBox()
         {
-            return new Rectangle(0, 0, 0, 0);
+            return blockSprite.GetHitBox(Position);
         }
     }
 }

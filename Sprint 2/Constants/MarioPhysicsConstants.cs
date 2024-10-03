@@ -23,7 +23,8 @@ namespace Sprint_2.Constants
 
         public static int maxJumpHeight = 200;
 
+        public static float gravity = 200f;
 
-
+        public static float fallRange = gravity * 1.25f;
     }
 }

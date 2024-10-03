@@ -22,6 +22,7 @@ namespace Sprint_2.Sprites
 
         public bool isCrouching { get; set; } = false;
         public bool isJumping { get; set; } = false;
+        public bool isFalling { get; set; } = false;
 
         private int numberOfFireballsRemaining = 2;
         private List<FireBall> fireBalls = new List<FireBall>();
@@ -96,7 +97,7 @@ namespace Sprint_2.Sprites
         public void Jump()
         {
             
-            if (!isJumping)
+            if (!isJumping && !isFalling)
             {
                 PlayerState.Jump();
                 isJumping = true;
@@ -106,12 +107,15 @@ namespace Sprint_2.Sprites
         public void Fall()
         {
             PlayerState.Fall();
+            isFalling = true;
         }
         public void Idle()
         {
             isCrouching = false;
             isJumping = false;
+            isFalling = false;
             PlayerState.Idle();
+            //PhysicsState = new Grounded(this);
         }
 
         public void Crouch()

@@ -22,6 +22,7 @@ namespace Sprint_2.MarioPhysicsStates
         {
             this.mario = mario;
             originalMarioY = mario.YPos;
+            this.mario.PlayerVelocity = new Vector2(this.mario.PlayerVelocity.X, 0);
         }
 
         public void Update(GameTime gameTime)
@@ -43,7 +44,7 @@ namespace Sprint_2.MarioPhysicsStates
                 {
                     mario.PlayerVelocity = new Vector2(mario.PlayerVelocity.X, 0);
                     mario.Fall();
-                    mario.PhysicsState = new Falling(mario, originalMarioY);
+                    mario.PhysicsState = new Falling(mario);
                 }
             }
 

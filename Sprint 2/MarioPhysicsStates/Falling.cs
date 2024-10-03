@@ -1,8 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Sprint_2.Interfaces;
 using Sprint_2.Constants;
-using Sprint_2.Interfaces;
-using Sprint_2.Sprites;
+
 
 namespace Sprint_2.MarioPhysicsStates
 {
@@ -10,10 +9,11 @@ namespace Sprint_2.MarioPhysicsStates
     {
         private IPlayer mario;
         private int originalPlayerHeight;
-        public Falling(IPlayer mario, int origialPlayerHeight)
+        public Falling(IPlayer mario)
         {
             this.mario = mario;
-            this.originalPlayerHeight = origialPlayerHeight;
+            this.mario.isJumping = false;
+
         }
 
         public void Update(GameTime gameTime)
@@ -26,17 +26,6 @@ namespace Sprint_2.MarioPhysicsStates
             mario.YPos += (int)(mario.PlayerVelocity.Y * gameTime.ElapsedGameTime.TotalSeconds);
             mario.XPos += (int)(mario.PlayerVelocity.X * gameTime.ElapsedGameTime.TotalSeconds);
             mario.PlayerVelocity *= MarioPhysicsConstants.velocityDecay;
-
-            if (mario.YPos > originalPlayerHeight)
-            {
-                mario.PlayerVelocity = new Vector2(mario.PlayerVelocity.X, 0);
-                mario.YPos = originalPlayerHeight;
-                mario.PhysicsState = new Grounded(mario);
-                mario.isJumping = false;
-                mario.Idle();
-            }
-
-
         }
     }
 }
