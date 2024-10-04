@@ -44,7 +44,6 @@ namespace Sprint_2.MarioPhysicsStates
 
             if (mario.PlayerVelocity.Y > MarioPhysicsConstants.fallRange)
             {
-                Debug.WriteLine("Entered if");
                 mario.PhysicsState = new Falling(mario);
                 mario.Fall();
 

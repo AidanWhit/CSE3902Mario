@@ -158,5 +158,10 @@ namespace Sprint_2.Sprites
         {
             return PlayerState.GetHitBox(new Vector2(XPos, YPos));
         }
+
+        public string GetHealth()
+        {
+            return PlayerState.GetHealth();
+        }
     }
 }

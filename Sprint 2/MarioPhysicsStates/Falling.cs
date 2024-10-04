@@ -13,6 +13,7 @@ namespace Sprint_2.MarioPhysicsStates
         {
             this.mario = mario;
             this.mario.isJumping = false;
+            this.mario.isFalling = true;
 
         }
 

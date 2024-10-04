@@ -40,5 +40,7 @@ namespace Sprint_2.Interfaces
         public void ReleaseCrouch();
 
         public Rectangle GetHitBox();
+
+        public string GetHealth();
     }
 }

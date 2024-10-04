@@ -18,6 +18,7 @@ using Sprint_2.Sprites.EnemySprites;
 using Sprint_2.GameObjects;
 using System.Diagnostics;
 using Sprint_2.Collision;
+using Sprint_2.GameObjects.BlockStates;
 
 namespace Sprint_2
 {
@@ -100,14 +101,14 @@ namespace Sprint_2
             BlockFactory.Instance.LoadAllContent(Content);
             collisionTest = new List<IBlock> {
 
-                new Block(BlockFactory.Instance.GetBlock("Chiseled"), new Vector2(600, 400)),
-                new Block(BlockFactory.Instance.GetBlock("Chiseled"), new Vector2(552, 400)),
-                new Block(BlockFactory.Instance.GetBlock("Chiseled"), new Vector2(504, 400)),
-                new Block(BlockFactory.Instance.GetBlock("Chiseled"), new Vector2(456, 400)),
-                new Block(BlockFactory.Instance.GetBlock("Chiseled"), new Vector2(408, 400)),
-                new Block(BlockFactory.Instance.GetBlock("Chiseled"), new Vector2(360, 400)),
-                new Block(BlockFactory.Instance.GetBlock("Chiseled"), new Vector2(312, 400)),
-                new Block(BlockFactory.Instance.GetBlock("BrownBrick"), new Vector2(456, 200))
+                new Block("BrownBrick", new Vector2(600, 400)),
+                new Block("BrownBrick", new Vector2(552, 400)),
+                new Block("BrownBrick", new Vector2(504, 400)),
+                new Block("BrownBrick", new Vector2(456, 400)),
+                new Block("BrownBrick", new Vector2(408, 400)),
+                new Block("BrownBrick", new Vector2(360, 400)),
+                new Block("BrownBrick", new Vector2(312, 400)),
+                new Block("BrownBrick", new Vector2(456, 200))
             };
 
 
@@ -175,7 +176,7 @@ namespace Sprint_2
             foreach (IBlock block in collisionTest)
             {
                 block.Draw(spriteBatch, Color.White);
-                HitBoxRectangle.DrawRectangle(spriteBatch, block.GetHitBox(), Color.White, 1);
+                //HitBoxRectangle.DrawRectangle(spriteBatch, block.GetHitBox(), Color.White, 1);
             }
 
             spriteBatch.End();

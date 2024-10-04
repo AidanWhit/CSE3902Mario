@@ -19,5 +19,8 @@ namespace Sprint_2.Interfaces
         public void Update(GameTime gameTime);
         public void Draw(SpriteBatch spriteBatch, Color color);
 
+        public void BeHit(IPlayer player);
+
+        public ISprite Sprite { get; set; }
     }
 }

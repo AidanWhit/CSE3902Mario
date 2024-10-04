@@ -23,6 +23,7 @@ namespace Sprint_2.Collision
             if (side == CollisionSideDetector.side.Right)
             {
                 player.XPos -= collisionIntersection.Width;
+
             }
             else if (side == CollisionSideDetector.side.Left)
             {
@@ -46,8 +47,12 @@ namespace Sprint_2.Collision
             }
             else
             {
-                //player.PlayerVelocity = new Vector2(player.PlayerVelocity.X, 0);
-                //player.PhysicsState = new Falling(player, player.YPos);
+                player.YPos += collisionIntersection.Height;
+                player.PlayerVelocity = new Vector2(player.PlayerVelocity.X, 0);
+                player.Fall();
+                player.PhysicsState = new Falling(player);
+
+                block.BeHit(player);
             }
 
         }

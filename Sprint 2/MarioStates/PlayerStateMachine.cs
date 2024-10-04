@@ -199,5 +199,10 @@ namespace Sprint_2.MarioStates
             ChangeSprite();
             return currentSprite.GetHitBox(location);
         }
+
+        public string GetHealth()
+        {
+            return health.GetHealth();
+        }
     }
 }
