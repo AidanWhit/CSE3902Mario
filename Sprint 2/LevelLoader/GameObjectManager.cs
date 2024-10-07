@@ -1,8 +1,14 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Sprint_2.Collision;
+using Sprint_2.Factories;
+using Sprint_2.GameObjects;
 using Sprint_2.Interfaces;
+using Sprint_2.Sprites;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
+using System.Linq;
 
 namespace SprintZero.LevelLoader
 {
@@ -25,6 +31,29 @@ namespace SprintZero.LevelLoader
             return GameObjects;
         }
 
+        /* Next two methods added for testing */
+        public void AddItem(IItem item)
+        {
+            Items.Add(item);
+        }
+
+        public void RemoveItem(IItem item)
+        {
+            Items.Remove(item);
+        }
+
+        public void AddBlock(IBlock block)
+        {
+            Blocks.Add(block);
+        }
+
+        public void RemoveBlock(IBlock block)
+        {
+            Debug.WriteLine("Number of blocks before : " + Blocks.Count);
+            Blocks.Remove(block);
+            Debug.WriteLine("Number of Blocks After : " + Blocks.Count);
+        }
+
         public void AddObject(IGameObject gameObject)
         {
             GameObjects.Add(gameObject);
@@ -41,12 +70,39 @@ namespace SprintZero.LevelLoader
 
         }
 
-        public void Update()
+        public void Update(GameTime gameTime)
         {
+            foreach (IItem item in Items.ToList())
+            {
+                foreach (IBlock block in Blocks)
+                {
+                    if (item.GetHitBox().Intersects(block.GetHitBox()))
+                    {
+                        BlockCollisionResponse.BlockCollisionResponseForItem(item, block);
+                    }
+                    item.Update(gameTime);
+                }
+                   
+            }
+            foreach (IBlock block in Blocks)
+            {
+                block.Update(gameTime);
+            }
+
         }
 
         public void Draw(SpriteBatch spriteBatch, Texture2D allSpriteSheet, Color color)
         {
+            foreach (IItem item in Items)
+            {
+                item.Draw(spriteBatch);
+                HitBoxRectangle.DrawRectangle(spriteBatch, item.GetHitBox(), color, 1);
+            }
+
+            foreach (IBlock block in Blocks)
+            {
+                block.Draw(spriteBatch, color);
+            }
         }
     }
 }

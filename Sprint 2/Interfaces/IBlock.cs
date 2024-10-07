@@ -21,6 +21,8 @@ namespace Sprint_2.Interfaces
 
         public void BeHit(IPlayer player);
 
-        public ISprite Sprite { get; set; }
+        public void ChangeState(IBlockState blockState);
+
+
     }
 }

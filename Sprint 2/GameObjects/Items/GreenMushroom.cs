@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint_2.Interfaces;
 using Sprint_2.Factories;
+using SprintZero.LevelLoader;
 
 namespace Sprint_2.GameObjects.ItemSprites
 {
@@ -40,7 +41,12 @@ namespace Sprint_2.GameObjects.ItemSprites
             sprite.Draw(spriteBatch, Position, Color.White);
         }
 
-        public void DeleteItem() { }
+        public void DeleteItem(GameObjectManager gameObjectManager) { }
+
+        public Rectangle GetHitBox()
+        {
+            return sprite.GetHitBox(Position);
+        }
 
     }
 }

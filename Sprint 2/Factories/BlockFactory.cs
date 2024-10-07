@@ -1,8 +1,11 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
+using Sprint_2.GameObjects;
 using Sprint_2.Interfaces;
 using Sprint_2.Sprites;
+using SprintZero.LevelLoader;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Reflection.Metadata.Ecma335;
@@ -14,6 +17,8 @@ namespace Sprint_2.Factories
     {
         private static BlockFactory instance = new BlockFactory();
         public static BlockFactory Instance { get { return instance; } }
+
+        private GameObjectManager gameObjectManager;
 
 
         private Texture2D blockSpriteSheet;
@@ -49,6 +54,21 @@ namespace Sprint_2.Factories
             Vector2 size = new Vector2(frames[0].Size.X, frames[0].Size.Y);
             return new FrameArrayFormattedSprite(blockSpriteSheet, frames, 3);
         }
-       
+
+
+        public void SetGameObjectManager(GameObjectManager gameObjectManager)
+        {
+            this.gameObjectManager = gameObjectManager;
+        }
+        public void AddBlockToBlocksList(IBlock block)
+        {
+            gameObjectManager.AddBlock(block);
+        }
+
+        public void RemoveBlockFromList(IBlock block)
+        {
+            gameObjectManager.RemoveBlock(block);
+        }
+
     }
 }

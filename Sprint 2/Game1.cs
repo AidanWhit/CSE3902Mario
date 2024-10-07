@@ -19,6 +19,7 @@ using Sprint_2.GameObjects;
 using System.Diagnostics;
 using Sprint_2.Collision;
 using Sprint_2.GameObjects.BlockStates;
+using SprintZero.LevelLoader;
 
 namespace Sprint_2
 {
@@ -43,6 +44,8 @@ namespace Sprint_2
         private IBlock currentBlock;
 
 
+        private GameObjectManager objectManager;
+
         private List<IBlock> blocks;
 
         private List<IBlock> collisionTest;
@@ -63,6 +66,12 @@ namespace Sprint_2
 
         protected override void LoadContent()
         {
+
+            /* Added for testing */
+            objectManager = new GameObjectManager();
+            ItemFactory.Instance.SetGameObjectManager(objectManager);
+            BlockFactory.Instance.SetGameObjectManager(objectManager);
+
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
 
@@ -87,10 +96,10 @@ namespace Sprint_2
 
             items = new List<IItem>
             {
-                new RedMushroom(new Vector2(100, 300)),
+                //new RedMushroom(new Vector2(100, 300)),
                 new GreenMushroom(new Vector2(100, 300)),
                 new Flower(new Vector2(100, 300)),
-                new Coin(new Vector2(100, 300)),
+                //new Coin(new Vector2(100, 300)),
                 new Star(new Vector2(100, 300))
 
             };
@@ -108,7 +117,7 @@ namespace Sprint_2
                 new Block("BrownBrick", new Vector2(408, 400)),
                 new Block("BrownBrick", new Vector2(360, 400)),
                 new Block("BrownBrick", new Vector2(312, 400)),
-                new Block("BrownBrick", new Vector2(456, 200))
+                new Block("ItemWithPowerUp", new Vector2(456, 200))
             };
 
 
@@ -136,6 +145,8 @@ namespace Sprint_2
             keyControl.RegisterOnReleaseCommand(Keys.S, new MarioOnCrouchRelease(mario));
             keyControl.RegisterOnPressCommand(Keys.S, new MarioOnCrouchPress(mario));
 
+
+            
         }
         protected override void UnloadContent()
         {
@@ -152,13 +163,17 @@ namespace Sprint_2
             currentEnemy.Update(gameTime);
             currItem.Update(gameTime);
 
+            objectManager.Update(gameTime);
+
             foreach (IBlock block in collisionTest){
-                block.Update(gameTime);
+                //block.Update(gameTime);
                 if (mario.GetHitBox().Intersects(block.GetHitBox()))
                 {
                     BlockCollisionResponse.BlockReponseForPlayer(mario, block);
                 }
             }
+
+            
 
             base.Update(gameTime);
         }
@@ -173,11 +188,8 @@ namespace Sprint_2
             currentEnemy.Draw(spriteBatch, currentEnemy.Position, Color.White);
             currItem.Draw(spriteBatch);
 
-            foreach (IBlock block in collisionTest)
-            {
-                block.Draw(spriteBatch, Color.White);
-                //HitBoxRectangle.DrawRectangle(spriteBatch, block.GetHitBox(), Color.White, 1);
-            }
+            /* Added for testing */
+            objectManager.Draw(spriteBatch, null, Color.White);
 
             spriteBatch.End();
             base.Draw(gameTime);

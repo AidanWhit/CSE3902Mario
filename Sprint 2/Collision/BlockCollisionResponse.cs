@@ -62,5 +62,36 @@ namespace Sprint_2.Collision
         {
 
         }
+
+        public static void BlockCollisionResponseForItem(IItem item, IBlock block)
+        {
+            Rectangle collisionIntersection;
+            /* TODO: Think of a better way to represent the side to reduce coupling */
+            CollisionSideDetector.side side;
+
+            Rectangle itemHitBox = item.GetHitBox();
+            Rectangle blockHitBox = block.GetHitBox();
+            (collisionIntersection, side) = CollisionSideDetector.DetermineCollisionSide(itemHitBox, blockHitBox);
+
+            if (side == CollisionSideDetector.side.Right)
+            {
+                item.Position = new Vector2(item.Position.X - collisionIntersection.Width, item.Position.Y);
+                //item.ChangeDirection();
+            }
+            else if (side == CollisionSideDetector.side.Left)
+            {
+                item.Position = new Vector2(item.Position.X + collisionIntersection.Width, item.Position.Y);
+                //item.ChangeDirection();
+            }
+            else if (side == CollisionSideDetector.side.Top)
+            {
+                item.Position = new Vector2(item.Position.X, item.Position.Y - collisionIntersection.Height);
+            }
+            /* Collisions from the bottom should never happen*/
+            else
+            {
+                //item.Position = new Vector2(item.Position.X, item.Position.Y + collisionIntersection.Height);
+            }
+        }
     }
 }

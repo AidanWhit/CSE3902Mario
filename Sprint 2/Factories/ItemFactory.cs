@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using Sprint_2.Sprites;
 using Sprint_2.Interfaces;
 using System.Collections;
+using SprintZero.LevelLoader;
+using Sprint_2.GameObjects.ItemSprites;
 
 namespace Sprint_2.Factories
 {
@@ -17,6 +19,9 @@ namespace Sprint_2.Factories
         private Rectangle[] source;
 
         private Vector2 size;
+
+        /* Added for testing */
+        private GameObjectManager gameObjectManager;
 
         public static ItemFactory Instance
         {
@@ -69,6 +74,27 @@ namespace Sprint_2.Factories
             source = new Rectangle[] { new Rectangle(0, height * 3, width, height), new Rectangle(width, height * 3, width, height),
                 new Rectangle(width * 2, height * 3, width, height),  new Rectangle(width * 3, height * 3, width, height)};
             return new FrameArrayFormattedSprite(texture, source, 1);
+        }
+
+        /* Methods below added for testing */
+        public void SetGameObjectManager(GameObjectManager gameObjectManager)
+        {
+            this.gameObjectManager  = gameObjectManager;
+        }
+
+        public void AddCoinToItemsList(Vector2 location)
+        {
+            gameObjectManager.AddItem(new Coin(location, gameObjectManager));
+        }
+
+        public void AddRedMushroomToItemsList(Vector2 location, IBlock block)
+        {
+            gameObjectManager.AddItem(new RedMushroom(location, block));
+        }
+
+        public void AddFireFlowerToItemsList(Vector2 location)
+        {
+            gameObjectManager.AddItem(new Flower(location));
         }
     }
 }

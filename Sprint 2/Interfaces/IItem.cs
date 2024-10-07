@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 using Sprint_2.Sprites.EnemySprites;
+using SprintZero.LevelLoader;
 
 namespace Sprint_2.Interfaces
 {
@@ -17,7 +18,9 @@ namespace Sprint_2.Interfaces
 
         void Update(GameTime gameTime);
         void Draw(SpriteBatch spriteBatch);
-        void DeleteItem();
+        void DeleteItem(GameObjectManager gameObjectManager);
+
+        public Rectangle GetHitBox();
     }
 
 }
