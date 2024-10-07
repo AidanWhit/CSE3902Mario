@@ -67,11 +67,6 @@ namespace Sprint_2
         protected override void LoadContent()
         {
 
-            /* Added for testing */
-            objectManager = new GameObjectManager();
-            ItemFactory.Instance.SetGameObjectManager(objectManager);
-            BlockFactory.Instance.SetGameObjectManager(objectManager);
-
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
 
@@ -81,6 +76,10 @@ namespace Sprint_2
             ItemFactory.Instance.LoadItemContent(Content);
 
             mario = new Player(new Vector2(400, 100));
+
+            objectManager = new GameObjectManager(mario);
+            ItemFactory.Instance.SetGameObjectManager(objectManager);
+            BlockFactory.Instance.SetGameObjectManager(objectManager);
             Texture2D texture = Content.Load<Texture2D>("marioSpriteSheet");
 
             //TODO: Remove all cyclers after sprint 2
@@ -98,7 +97,7 @@ namespace Sprint_2
             {
                 //new RedMushroom(new Vector2(100, 300)),
                 new GreenMushroom(new Vector2(100, 300)),
-                new Flower(new Vector2(100, 300)),
+                //new Flower(new Vector2(100, 300)),
                 //new Coin(new Vector2(100, 300)),
                 new Star(new Vector2(100, 300))
 
@@ -111,12 +110,14 @@ namespace Sprint_2
             collisionTest = new List<IBlock> {
 
                 new Block("BrownBrick", new Vector2(600, 400)),
+                new Block("BrownBrick", new Vector2(600, 352)),
                 new Block("BrownBrick", new Vector2(552, 400)),
                 new Block("BrownBrick", new Vector2(504, 400)),
                 new Block("BrownBrick", new Vector2(456, 400)),
                 new Block("BrownBrick", new Vector2(408, 400)),
                 new Block("BrownBrick", new Vector2(360, 400)),
                 new Block("BrownBrick", new Vector2(312, 400)),
+                new Block("BrownBrick", new Vector2(312, 352)),
                 new Block("ItemWithPowerUp", new Vector2(456, 200))
             };
 

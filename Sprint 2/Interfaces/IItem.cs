@@ -14,13 +14,18 @@ namespace Sprint_2.Interfaces
 {
     public interface IItem
     {
-        Vector2 Position { get; set; }
+        public bool OnSpawn { get; set; }
+        public float XPos { get; set; }
+        public float YPos { get; set; }
 
+        public Vector2 Velocity { get; set; }
         void Update(GameTime gameTime);
         void Draw(SpriteBatch spriteBatch);
         void DeleteItem(GameObjectManager gameObjectManager);
 
         public Rectangle GetHitBox();
+
+        public void ChangeDirection();
     }
 
 }

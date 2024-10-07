@@ -11,28 +11,27 @@ namespace Sprint_2.GameObjects.ItemSprites
 {
     public class RedMushroom : IItem
     {
-        public Vector2 Position { get => new Vector2(XPos, YPos); set =>  (XPos, YPos) = value; }
         public Vector2 Velocity { get; set; }
 
-        private float XPos;
-        private float YPos;
+        public float XPos { get; set; }
+        public float YPos { get; set; }
 
         private ISprite sprite;
 
-        private bool onSpawn;
+        public bool OnSpawn { get; set; }
         private float spawnedYPosition;
         private IBlock sourceBlock;
 
+        private float speed = 1f;
+
         public RedMushroom(Vector2 initialPosition, IBlock block)
         {
-            Position = initialPosition;
+            XPos = initialPosition.X;
+            YPos = initialPosition.Y;
             Velocity = new Vector2(1, 0); // Starts moving rigjt
 
-            XPos = Position.X;
-            YPos = Position.Y;
-
             sprite = ItemFactory.Instance.CreateRedMushroom();
-            onSpawn = true;
+            OnSpawn = true;
             spawnedYPosition = initialPosition.Y;
 
             sourceBlock = block;
@@ -41,31 +40,26 @@ namespace Sprint_2.GameObjects.ItemSprites
 
         public void Update(GameTime gameTime)
         {
-            if (onSpawn)
+            if (OnSpawn)
             {
-                //Position -= new Vector2(0, 1);
+                
                 YPos--;
-                if (GetHitBox().Bottom <= sourceBlock.GetHitBox().Top)
+                if (GetHitBox().Bottom < sourceBlock.GetHitBox().Top)
                 {
-                    onSpawn = false;
+                    OnSpawn = false;
                 }
             }
             else
             {
                 /* Apply Gravity */
-                if (Velocity.Y < MarioPhysicsConstants.maxFallVelocity)
+                if (Velocity.Y < ItemPhysicsConstants.maxFallVelocity)
                 {
-                    Velocity += new Vector2(0, 1);
+                    Velocity += ItemPhysicsConstants.fallVelocity;
                 }
 
                 YPos += (float)(Velocity.Y * gameTime.ElapsedGameTime.TotalSeconds);
-
                 Velocity *= MarioPhysicsConstants.velocityDecay;
-
-                if (Position.X <= 0 || Position.X >= 800)
-                {
-                    Velocity = new Vector2(-Velocity.X, Velocity.Y); // Reverse direction
-                }
+                XPos += speed;
             }
             
             sprite.Update(gameTime);
@@ -74,16 +68,22 @@ namespace Sprint_2.GameObjects.ItemSprites
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            sprite.Draw(spriteBatch, Position, Color.White);
+            sprite.Draw(spriteBatch, new Vector2(XPos, YPos), Color.White);
         }
 
-        public void DeleteItem(GameObjectManager gameObjectManager) { }
+        public void DeleteItem(GameObjectManager gameObjectManager) 
+        {
+            ItemFactory.Instance.RemoveFromItemsList(this);
+        }
 
         public Rectangle GetHitBox()
         {
-            return sprite.GetHitBox(Position);
+            return sprite.GetHitBox(new Vector2(XPos, YPos));
         }
 
+        public void ChangeDirection() {
+            speed *= -1;
+        }
     }
 }
 
