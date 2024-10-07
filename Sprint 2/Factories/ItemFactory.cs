@@ -37,43 +37,40 @@ namespace Sprint_2.Factories
 
         public void LoadItemContent(ContentManager content)
         {
-            texture = content.Load<Texture2D>("MarioItems");
-            width = texture.Width / 4; 
-            height = texture.Height / 4;
-            size = new Vector2(width, height);
+            texture = content.Load<Texture2D>("items");
         }
 
         public ISprite CreateRedMushroom()
         {
-            source = new Rectangle[] { new Rectangle(0, 0, width, height) };
-            return new FrameArrayFormattedSprite(texture, source, 1);
+            source = new Rectangle[] { new Rectangle(184, 34, 16, 16) };
+            return new FrameArrayFormattedSprite(texture, source, 3);
         }
 
         public ISprite CreateGreenMushroom()
         {
-            source = new Rectangle[] { new Rectangle(width, 0, width, height)};
-            return new FrameArrayFormattedSprite(texture, source, 1);
+            source = new Rectangle[] { new Rectangle(214, 34, 16, 16)};
+            return new FrameArrayFormattedSprite(texture, source, 3);
         }
 
         public ISprite CreateFlower()
         {
-            source = new Rectangle[] { new Rectangle(0, height, width, height), new Rectangle(width, height, width, height), 
-                new Rectangle(width *2, height, width, height), new Rectangle(width *3, height, width, height) };
-            return new FrameArrayFormattedSprite(texture, source, 1);
+            source = new Rectangle[] { new Rectangle(4, 64, 16, 16), new Rectangle(34, 64, 16, 16), 
+                new Rectangle(64, 64, 16, 16), new Rectangle(94, 64, 16, 16) };
+            return new FrameArrayFormattedSprite(texture, source, 3);
         }
 
         public ISprite CreateStar()
         {
-            source = new Rectangle[] { new Rectangle(0, height * 2, width, height), new Rectangle(width, height * 2, width, height),
-                new Rectangle(width *2, height *2, width, height), new Rectangle(width * 3, height * 2, width, height)};
-            return new FrameArrayFormattedSprite(texture, source, 1);
+            source = new Rectangle[] { new Rectangle(5, 94, 14, 16), new Rectangle(35, 94, 14, 16),
+                new Rectangle(65, 94, 14, 16), new Rectangle(95, 94, 14, 16)};
+            return new FrameArrayFormattedSprite(texture, source, 3);
         }
 
         public ISprite CreateCoin()
         {
-            source = new Rectangle[] { new Rectangle(0, height * 3, width, height), new Rectangle(width, height * 3, width, height),
-                new Rectangle(width * 2, height * 3, width, height),  new Rectangle(width * 3, height * 3, width, height)};
-            return new FrameArrayFormattedSprite(texture, source, 1);
+            source = new Rectangle[] { new Rectangle(128, 95, 8, 14), new Rectangle(160, 95, 4, 14),
+                new Rectangle(191, 95, 1, 14),  new Rectangle(220, 95, 4, 14)};
+            return new FrameArrayFormattedSprite(texture, source, 3);
         }
 
         /* Methods below added for testing */
@@ -92,9 +89,14 @@ namespace Sprint_2.Factories
             gameObjectManager.AddItem(new RedMushroom(location, block));
         }
 
-        public void AddFireFlowerToItemsList(Vector2 location)
+        public void RemoveFromItemsList(IItem item)
         {
-            gameObjectManager.AddItem(new Flower(location));
+            gameObjectManager.RemoveItem(item);
+        }
+
+        public void AddFireFlowerToItemsList(Vector2 location, IBlock block)
+        {
+            gameObjectManager.AddItem(new Flower(location, block));
         }
     }
 }

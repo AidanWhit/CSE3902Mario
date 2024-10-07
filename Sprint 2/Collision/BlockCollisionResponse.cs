@@ -23,6 +23,7 @@ namespace Sprint_2.Collision
             if (side == CollisionSideDetector.side.Right)
             {
                 player.XPos -= collisionIntersection.Width;
+                
 
             }
             else if (side == CollisionSideDetector.side.Left)
@@ -72,25 +73,28 @@ namespace Sprint_2.Collision
             Rectangle itemHitBox = item.GetHitBox();
             Rectangle blockHitBox = block.GetHitBox();
             (collisionIntersection, side) = CollisionSideDetector.DetermineCollisionSide(itemHitBox, blockHitBox);
-
-            if (side == CollisionSideDetector.side.Right)
+            if (!item.OnSpawn)
             {
-                item.Position = new Vector2(item.Position.X - collisionIntersection.Width, item.Position.Y);
-                //item.ChangeDirection();
-            }
-            else if (side == CollisionSideDetector.side.Left)
-            {
-                item.Position = new Vector2(item.Position.X + collisionIntersection.Width, item.Position.Y);
-                //item.ChangeDirection();
-            }
-            else if (side == CollisionSideDetector.side.Top)
-            {
-                item.Position = new Vector2(item.Position.X, item.Position.Y - collisionIntersection.Height);
-            }
-            /* Collisions from the bottom should never happen*/
-            else
-            {
-                //item.Position = new Vector2(item.Position.X, item.Position.Y + collisionIntersection.Height);
+                if (side == CollisionSideDetector.side.Right)
+                {
+                    item.XPos -= collisionIntersection.Width;
+                    item.ChangeDirection();
+                }
+                else if (side == CollisionSideDetector.side.Left)
+                {
+                    item.XPos += collisionIntersection.Width;
+                    item.ChangeDirection();
+                }
+                else if (side == CollisionSideDetector.side.Top)
+                {
+                    item.YPos -= collisionIntersection.Height;
+                    item.Velocity = new Vector2(item.Velocity.X, 0);
+                }
+                /* Collisions from the bottom should never happen*/
+                else
+                {
+                    item.YPos += collisionIntersection.Height;
+                }
             }
         }
     }

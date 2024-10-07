@@ -31,7 +31,7 @@ namespace Sprint_2.GameObjects.BlockStates
             }
             else
             {
-                ItemFactory.Instance.AddFireFlowerToItemsList(block.Position);
+                ItemFactory.Instance.AddFireFlowerToItemsList(block.Position, block);
             }
             block.ChangeState(new UsedBlockState(block));
 

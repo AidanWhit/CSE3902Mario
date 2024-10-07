@@ -22,9 +22,12 @@ namespace SprintZero.LevelLoader
 
 
 
-        //public IPlayer Player { get; set; }
+        public IPlayer Player { get; set; }
 
-
+        public GameObjectManager(IPlayer player)
+        {
+            Player = player;
+        }
 
         public Collection<IGameObject> GetObjects()
         {
@@ -49,9 +52,7 @@ namespace SprintZero.LevelLoader
 
         public void RemoveBlock(IBlock block)
         {
-            Debug.WriteLine("Number of blocks before : " + Blocks.Count);
             Blocks.Remove(block);
-            Debug.WriteLine("Number of Blocks After : " + Blocks.Count);
         }
 
         public void AddObject(IGameObject gameObject)
@@ -80,9 +81,14 @@ namespace SprintZero.LevelLoader
                     {
                         BlockCollisionResponse.BlockCollisionResponseForItem(item, block);
                     }
-                    item.Update(gameTime);
+                    
                 }
-                   
+                if (item.GetHitBox().Intersects(Player.GetHitBox()))
+                {
+                    ItemCollisionResponse.ItemResponseForPlayer(item, Player);
+                }
+                item.Update(gameTime);
+
             }
             foreach (IBlock block in Blocks)
             {
@@ -102,6 +108,7 @@ namespace SprintZero.LevelLoader
             foreach (IBlock block in Blocks)
             {
                 block.Draw(spriteBatch, color);
+                HitBoxRectangle.DrawRectangle(spriteBatch, block.GetHitBox(), Color.Red, 1);
             }
         }
     }

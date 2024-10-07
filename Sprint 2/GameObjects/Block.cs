@@ -16,10 +16,6 @@ namespace Sprint_2.GameObjects
 
         private IBlockState blockState;
 
-
-        /* TODO : Add a blockstate that holds the sprite for the current block, the state will dictate how the block will interact with mario.
-         e.g. what block is created when it is hit, if it has an item, etc. */
-
         /* Needs to take in something representing a blockState without it being the actual block state. */
         public Block(string name, Vector2 position)
         {
@@ -62,7 +58,12 @@ namespace Sprint_2.GameObjects
                 {"BrownBrick", new BrownBrickState(this) },
                 {"BrownBrickWithCoins", new BrownBrickWithCoins(this, 2) },
                 {"ItemWithCoin", new ItemBlockWithCoin(this) },
-                {"ItemWithPowerUp", new ItemBlockWithPowerUp(this) }
+                {"ItemWithPowerUp", new ItemBlockWithPowerUp(this) },
+                {"Chiseled", new ChiseledBlockState(this) },
+                {"BlueGround", new BlueGroundState(this) },
+                {"BlueBrick", new BlueBrickState(this) },
+                {"BrownGround", new BrownGroundState(this) },
+
             };
 
 

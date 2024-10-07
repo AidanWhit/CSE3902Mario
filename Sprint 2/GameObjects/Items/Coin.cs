@@ -9,11 +9,12 @@ namespace Sprint_2.GameObjects.ItemSprites
 {
     public class Coin : IItem
     {
+        public Vector2 Velocity { get; set; }
+        public bool OnSpawn { get; set; } = true;
         private ISprite sprite;
-        public Vector2 Position { get; set; }
+        public float XPos { get; set; }
+        public float YPos { get; set; }
 
-        private float animationSpeed = 0.1f;
-        private float originalAnimationSpeed;
 
         private int heightIncrease = -2;
         private bool moveDown = false;
@@ -24,22 +25,22 @@ namespace Sprint_2.GameObjects.ItemSprites
         public Coin(Vector2 location, GameObjectManager gameObjectManager)
         {
             sprite = ItemFactory.Instance.CreateCoin();
-            Position = location;
-            originalHeight = Position.Y;
-
-            originalAnimationSpeed = animationSpeed;
+            XPos = location.X;
+            YPos = location.Y;
+            originalHeight = YPos;
 
             this.gameObjectManager = gameObjectManager;
         }
 
         public void Update(GameTime gameTime)
         {
-            Position = new Vector2(Position.X, Position.Y + heightIncrease);
-            if (Position.Y < originalHeight - 80)
+            //Position = new Vector2(Position.X, Position.Y + heightIncrease);
+            YPos += heightIncrease;
+            if (YPos < originalHeight - 80)
             {
                 heightIncrease *= -1;
             } 
-            else if (Position.Y > originalHeight)
+            else if (YPos > originalHeight)
             {
                 DeleteItem(gameObjectManager);
             }
@@ -47,12 +48,7 @@ namespace Sprint_2.GameObjects.ItemSprites
         }
         public void Draw(SpriteBatch spriteBatch)
         {
-            sprite.Draw(spriteBatch, Position, Color.White);
-        }
-
-        public void MoveUpAndDown(GameTime gameTime, int height)
-        {
-
+            sprite.Draw(spriteBatch, new Vector2(XPos, YPos), Color.White);
         }
         public void DeleteItem(GameObjectManager gameObjectManager) 
         {
@@ -61,7 +57,9 @@ namespace Sprint_2.GameObjects.ItemSprites
 
         public Rectangle GetHitBox()
         {
-            return sprite.GetHitBox(Position);
+            return sprite.GetHitBox(new Vector2(XPos, YPos));
         }
+
+        public void ChangeDirection() { }
     }
 }
