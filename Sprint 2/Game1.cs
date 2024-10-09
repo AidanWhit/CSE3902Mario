@@ -118,8 +118,12 @@ namespace Sprint_2
                 new Block("BrownBrick", new Vector2(360, 400)),
                 new Block("BrownBrick", new Vector2(312, 400)),
                 new Block("BrownBrick", new Vector2(312, 352)),
-                new Block("ItemWithPowerUp", new Vector2(456, 200))
+                new Block("ItemWithPowerUp", new Vector2(456, 200)),
+                new Block("BrownBrick", new Vector2(408, 200)),
+                new Block("BrownBrickWithCoins", new Vector2(360, 200)),
+                new Block("Chiseled", new Vector2(0,0))
             };
+
 
 
             

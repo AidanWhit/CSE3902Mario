@@ -102,13 +102,11 @@ namespace SprintZero.LevelLoader
             foreach (IItem item in Items)
             {
                 item.Draw(spriteBatch);
-                HitBoxRectangle.DrawRectangle(spriteBatch, item.GetHitBox(), color, 1);
             }
 
             foreach (IBlock block in Blocks)
             {
                 block.Draw(spriteBatch, color);
-                HitBoxRectangle.DrawRectangle(spriteBatch, block.GetHitBox(), Color.Red, 1);
             }
         }
     }

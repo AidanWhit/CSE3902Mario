@@ -23,8 +23,6 @@ namespace Sprint_2.Collision
             if (side == CollisionSideDetector.side.Right)
             {
                 player.XPos -= collisionIntersection.Width;
-                
-
             }
             else if (side == CollisionSideDetector.side.Left)
             {

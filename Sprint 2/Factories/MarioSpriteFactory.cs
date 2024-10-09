@@ -89,11 +89,11 @@ namespace Sprint_2.Factories
             marioSprites.TryGetValue(key, out Rectangle[] frames);
             if (key.Contains("Fire") || key.Contains("Super"))
             {
-                return new FrameArrayFormattedSprite(marioSpriteSheet, frames, 4);
+                return new FrameArrayFormattedSprite(marioSpriteSheet, frames, 3);
             }
             else
             {
-                return new FrameArrayFormattedSprite(marioSpriteSheet, frames, 4);
+                return new FrameArrayFormattedSprite(marioSpriteSheet, frames, 3);
             }
         }
 
