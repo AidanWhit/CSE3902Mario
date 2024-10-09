@@ -14,10 +14,12 @@ namespace SprintZero.LevelLoader
 {
     public class GameObjectManager
     {
+        // Add or remove collections of objects as needed
         private Collection<IEnemy> Enemies = new Collection<IEnemy>();
         private Collection<IItem> Items = new Collection<IItem>();
         private Collection<IBlock> Blocks = new Collection<IBlock>();
-        private Collection<ISprite> BackGround = new Collection<ISprite>();
+        //private Collection<IBlock> GroundBlocks = new Collection<IBlock>();
+        private Collection<ISprite> Background = new Collection<ISprite>();
         private Collection<IGameObject> GameObjects = new Collection<IGameObject>();
 
 

@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
@@ -20,6 +20,8 @@ using System.Diagnostics;
 using Sprint_2.Collision;
 using Sprint_2.GameObjects.BlockStates;
 using SprintZero.LevelLoader;
+using Sprint_2.ScreenCamera;
+
 
 namespace Sprint_2
 {
@@ -49,6 +51,9 @@ namespace Sprint_2
         private List<IBlock> blocks;
 
         private List<IBlock> collisionTest;
+        
+        private Camera camera;
+        private Vector2 levelBounds;
 
         public Game1()
         {
@@ -60,6 +65,12 @@ namespace Sprint_2
         protected override void Initialize()
         {
             keyControl = new KeyboardControl();
+            
+            // Set the level bounds (adjust these values to match your level size)
+            levelBounds = new Vector2(5000, 1080); 
+
+            // Initialize the camera with the current viewport and level bounds
+            camera = new Camera(GraphicsDevice.Viewport, levelBounds);
 
             base.Initialize();
         }
@@ -165,11 +176,15 @@ namespace Sprint_2
             keyControl.Update();
             mario.Update(gameTime);
 
+            // Update camera based on Mario's position
+            camera.Update(gameTime, new Vector2(mario.XPos, mario.YPos));
+
             currentEnemy.Update(gameTime);
             currItem.Update(gameTime);
 
             objectManager.Update(gameTime);
 
+            // Collision detection
             foreach (IBlock block in collisionTest){
                 //block.Update(gameTime);
                 if (mario.GetHitBox().Intersects(block.GetHitBox()))
@@ -186,7 +201,8 @@ namespace Sprint_2
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
-            spriteBatch.Begin();
+            // Begin the sprite batch with the camera's transformation matrix
+            spriteBatch.Begin(transformMatrix: camera.Transform);
 
             mario.Draw(spriteBatch);
             HitBoxRectangle.DrawRectangle(spriteBatch, mario.GetHitBox(), Color.Black, 1);
