@@ -1,6 +1,8 @@
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
-namespace SprintZero.ScreenCamera
+
+namespace Sprint_2.ScreenCamera
 {
     public class Camera
     {
