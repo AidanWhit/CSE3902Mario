@@ -49,7 +49,9 @@ namespace Sprint_2
         private List<IBlock> blocks;
 
         private List<IBlock> collisionTest;
+        
         private Camera camera;
+        private Vector2 levelBounds;
 
         public Game1()
         {
@@ -61,8 +63,12 @@ namespace Sprint_2
         protected override void Initialize()
         {
             keyControl = new KeyboardControl();
-            // Initialize the camera
-            camera = new Camera();
+            
+            // Set the level bounds (adjust these values to match your level size)
+            levelBounds = new Vector2(5000, 1080); 
+
+            // Initialize the camera with the current viewport and level bounds
+            camera = new Camera(GraphicsDevice.Viewport, levelBounds);
 
             base.Initialize();
         }
@@ -165,7 +171,7 @@ namespace Sprint_2
             mario.Update(gameTime);
 
             // Update camera based on Mario's position
-            camera.SetView(mario.Position);
+            camera.Update(gameTime, mario.Position);
 
             currentEnemy.Update(gameTime);
             currItem.Update(gameTime);
@@ -189,7 +195,8 @@ namespace Sprint_2
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
-            spriteBatch.Begin(transformMatrix: camera.View);
+            // Begin the sprite batch with the camera's transformation matrix
+            spriteBatch.Begin(transformMatrix: camera.Transform);
 
             mario.Draw(spriteBatch);
             HitBoxRectangle.DrawRectangle(spriteBatch, mario.GetHitBox(), Color.Black, 1);
