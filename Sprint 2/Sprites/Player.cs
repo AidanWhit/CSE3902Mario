@@ -47,13 +47,13 @@ namespace Sprint_2.Sprites
             PhysicsState.Update(gameTime);
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch spriteBatch, Color color)
         {
             for (int i = 0; i < fireBalls.Count; i++)
             {
                 fireBalls[i].Draw(spriteBatch);
             }
-            PlayerState.Draw(spriteBatch);
+            PlayerState.Draw(spriteBatch, color);
         }
 
         public void UpdateFireballs(GameTime gameTime)

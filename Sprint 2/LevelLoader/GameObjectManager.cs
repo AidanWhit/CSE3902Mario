@@ -75,6 +75,7 @@ namespace SprintZero.LevelLoader
 
         public void Update(GameTime gameTime)
         {
+            //Player.Update(gameTime);
             foreach (IItem item in Items.ToList())
             {
                 foreach (IBlock block in Blocks)
@@ -101,6 +102,7 @@ namespace SprintZero.LevelLoader
 
         public void Draw(SpriteBatch spriteBatch, Texture2D allSpriteSheet, Color color)
         {
+            //Player.Draw(spriteBatch, color);
             foreach (IItem item in Items)
             {
                 item.Draw(spriteBatch);

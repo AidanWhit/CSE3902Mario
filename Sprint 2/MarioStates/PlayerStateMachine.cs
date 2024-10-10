@@ -156,17 +156,17 @@ namespace Sprint_2.MarioStates
             }
             return fireball;
         }
-        public void Draw(SpriteBatch spritebatch)
+        public void Draw(SpriteBatch spritebatch, Color color)
         {
             if (key.Contains("Shoot"))
             {
                 
-                currentSprite.Draw(spritebatch, new Vector2(mario.XPos, mario.YPos), Color.White);
+                currentSprite.Draw(spritebatch, new Vector2(mario.XPos, mario.YPos), color);
                 currentSprite = oldSprite;
             }
             else
             {
-                currentSprite.Draw(spritebatch, new Vector2(mario.XPos, mario.YPos), Color.White);
+                currentSprite.Draw(spritebatch, new Vector2(mario.XPos, mario.YPos), color);
             }
 
 

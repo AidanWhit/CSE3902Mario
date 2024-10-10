@@ -4,6 +4,9 @@ using Sprint_2.Interfaces;
 using Microsoft.Xna.Framework.Input;
 using Sprint_2.Factories;
 using SprintZero.LevelLoader;
+using Sprint_2.Constants;
+using System.Diagnostics;
+using System.Linq.Expressions;
 
 
 namespace Sprint_2.GameObjects.ItemSprites
@@ -16,18 +19,42 @@ namespace Sprint_2.GameObjects.ItemSprites
         public float YPos { get; set; }
         public Vector2 Velocity { get; set; }
         private ISprite sprite;
-        public Star(Vector2 initialPosition)
+
+        private float XSpeed = 2f;
+        private IBlock block;
+        public Star(Vector2 initialPosition, IBlock sourceBlock)
         {
             XPos = initialPosition.X;
             YPos = initialPosition.Y;
-            Velocity = new Vector2(-2, 0); // Moving left by default
+            Velocity = new Vector2(1, 0); // Moving right by default
 
             sprite = ItemFactory.Instance.CreateStar();
+            OnSpawn = true;
+            block = sourceBlock;
         }
 
         public void Update(GameTime gameTime)
         {
-            
+            if (OnSpawn)
+            {
+                YPos--;
+                if (GetHitBox().Bottom < block.GetHitBox().Top)
+                {
+                    OnSpawn = false;
+                }
+            }
+            else
+            {
+                if (Velocity.Y < ItemPhysicsConstants.maxFallVelocity)
+                {
+                    Velocity += ItemPhysicsConstants.fallVelocity;
+                }
+
+                YPos += (float)(Velocity.Y * gameTime.ElapsedGameTime.TotalSeconds);
+                Velocity *= MarioPhysicsConstants.velocityDecay;
+
+                XPos += XSpeed;
+            }
 
             sprite.Update(gameTime);
         }
@@ -37,13 +64,19 @@ namespace Sprint_2.GameObjects.ItemSprites
             sprite.Draw(spriteBatch, new Vector2(XPos, YPos), Color.White);
         }
 
-        public void DeleteItem(GameObjectManager gameObjectManager) { }
+        public void DeleteItem(GameObjectManager gameObjectManager) 
+        {
+            ItemFactory.Instance.RemoveFromItemsList(this);
+        }
 
         public Rectangle GetHitBox()
         {
             return sprite.GetHitBox(new Vector2(XPos, YPos));
         }
 
-        public void ChangeDirection() { }
+        public void ChangeDirection() 
+        {
+            XSpeed *= -1;
+        }
     }
 }

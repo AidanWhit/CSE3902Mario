@@ -63,6 +63,7 @@ namespace Sprint_2.GameObjects
                 {"BlueGround", new BlueGroundState(this) },
                 {"BlueBrick", new BlueBrickState(this) },
                 {"BrownGround", new BrownGroundState(this) },
+                {"BrownBrickWithStar", new BrickWithAStar(this) }
 
             };
 

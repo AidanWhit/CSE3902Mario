@@ -21,6 +21,7 @@ using Sprint_2.Collision;
 using Sprint_2.GameObjects.BlockStates;
 using SprintZero.LevelLoader;
 using Sprint_2.ScreenCamera;
+using System.Net.Mime;
 
 
 namespace Sprint_2
@@ -28,11 +29,20 @@ namespace Sprint_2
 
     public class Game1 : Game
     {
+        private static Game1 instance = new Game1();
 
+        public static Game1 Instance
+        {
+            get
+            {
+                return instance;
+            }
+        }
+       
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
 
-        private Player mario;
+        public IPlayer mario { get; set; }
         private KeyboardControl keyControl;
 
         private EnemyCycler enemyCycler;
@@ -55,7 +65,7 @@ namespace Sprint_2
         private Camera camera;
         private Vector2 levelBounds;
 
-        public Game1()
+        private Game1()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
@@ -110,7 +120,7 @@ namespace Sprint_2
                 new GreenMushroom(new Vector2(100, 300)),
                 //new Flower(new Vector2(100, 300)),
                 //new Coin(new Vector2(100, 300)),
-                new Star(new Vector2(100, 300))
+                //new Star(new Vector2(100, 300))
 
             };
             itemCycler = new ItemCycler(items);
@@ -129,10 +139,10 @@ namespace Sprint_2
                 new Block("BrownBrick", new Vector2(360, 400)),
                 new Block("BrownBrick", new Vector2(312, 400)),
                 new Block("BrownBrick", new Vector2(312, 352)),
-                new Block("ItemWithPowerUp", new Vector2(456, 200)),
-                new Block("BrownBrick", new Vector2(408, 200)),
-                new Block("BrownBrickWithCoins", new Vector2(360, 200)),
-                new Block("Chiseled", new Vector2(0,0))
+                new Block("BrownBrickWithStar", new Vector2(408, 200)),
+                //new Block("BrownBrickWithStar", new Vector2(408, 200)),
+                //new Block("BrownBrickWithCoins", new Vector2(360, 200)),
+                //new Block("Chiseled", new Vector2(0,0))
             };
 
 
@@ -204,7 +214,7 @@ namespace Sprint_2
             // Begin the sprite batch with the camera's transformation matrix
             spriteBatch.Begin(transformMatrix: camera.Transform);
 
-            mario.Draw(spriteBatch);
+            mario.Draw(spriteBatch, Color.White);
             HitBoxRectangle.DrawRectangle(spriteBatch, mario.GetHitBox(), Color.Black, 1);
             currentEnemy.Draw(spriteBatch, currentEnemy.Position, Color.White);
             currItem.Draw(spriteBatch);

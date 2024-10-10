@@ -1,7 +1,9 @@
 ﻿using Sprint_2.GameObjects.ItemSprites;
 using Sprint_2.Interfaces;
+using Sprint_2.Sprites;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,6 +17,11 @@ namespace Sprint_2.Collision
             if (item is RedMushroom || item is Flower)
             {
                 player.PowerUp();
+                item.DeleteItem(null);
+            }
+            else if (item is Star)
+            {
+                Game1.Instance.mario = new StarMario(player);
                 item.DeleteItem(null);
             }
         }

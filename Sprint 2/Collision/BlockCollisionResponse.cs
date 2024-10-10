@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Sprint_2.MarioPhysicsStates;
 using System.Diagnostics;
 using Sprint_2.Constants;
+using Sprint_2.GameObjects.ItemSprites;
 
 namespace Sprint_2.Collision
 {
@@ -46,12 +47,16 @@ namespace Sprint_2.Collision
             }
             else
             {
-                player.YPos += collisionIntersection.Height;
-                player.PlayerVelocity = new Vector2(player.PlayerVelocity.X, 0);
-                player.Fall();
-                player.PhysicsState = new Falling(player);
+                if (!player.isFalling)
+                {
+                    player.YPos += collisionIntersection.Height;
+                    player.PlayerVelocity = new Vector2(player.PlayerVelocity.X, 0);
+                    player.Fall();
+                    player.PhysicsState = new Falling(player);
 
-                block.BeHit(player);
+                    block.BeHit(player);
+                }
+                
             }
 
         }
@@ -86,7 +91,14 @@ namespace Sprint_2.Collision
                 else if (side == CollisionSideDetector.side.Top)
                 {
                     item.YPos -= collisionIntersection.Height;
-                    item.Velocity = new Vector2(item.Velocity.X, 0);
+                    if (item is Star)
+                    {
+                        item.Velocity = new Vector2(item.Velocity.X, ItemPhysicsConstants.bounceVelocity);
+                    }
+                    else
+                    {
+                        item.Velocity = new Vector2(item.Velocity.X, 0);
+                    }
                 }
                 /* Collisions from the bottom should never happen*/
                 else

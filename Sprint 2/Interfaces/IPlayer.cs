@@ -24,10 +24,9 @@ namespace Sprint_2.Interfaces
         public void MoveRight();
         public void Jump();
         public void Crouch();
-        public enum Facing { Left, Right }
 
         public void Update(GameTime gameTime);
-        public void Draw(SpriteBatch spriteBatch);
+        public void Draw(SpriteBatch spriteBatch, Color color);
         public void UpdateFireballs(GameTime gameTime);
         public void ShootFireball();
         public void Fall();
