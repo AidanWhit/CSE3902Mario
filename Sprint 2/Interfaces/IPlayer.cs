@@ -18,6 +18,8 @@ namespace Sprint_2.Interfaces
         public bool isJumping { get; set; }
         public bool isCrouching { get; set; }
         public bool isFalling { get; set; }
+
+        public bool IsDamaged { get; set; }
         public IMarioPhysicsStates PhysicsState { get; set; }
         public Vector2 PlayerVelocity { get;set; }
         public void MoveLeft();

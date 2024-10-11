@@ -6,6 +6,7 @@ using Sprint_2.Constants;
 using Sprint_2.GameObjects;
 using Sprint_2.MarioPhysicsStates;
 using System.Diagnostics;
+using System.Linq.Expressions;
 
 namespace Sprint_2.MarioStates
 {
@@ -48,6 +49,10 @@ namespace Sprint_2.MarioStates
             if (!health.GetHealth().Equals("Dead"))
             {
                 health.Damage();
+                if (!health.GetHealth().Equals("Dead"))
+                {
+                    mario.IsDamaged = true;
+                }
             }
             
         }

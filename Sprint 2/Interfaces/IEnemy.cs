@@ -10,7 +10,7 @@ using System.Xml.Serialization;
 
 namespace Sprint_2.Interfaces
 {
-    public interface IEnemy : ISprite
+    public interface IEnemy
     {
         // Use Isprite first, implement other features later
 
@@ -19,10 +19,21 @@ namespace Sprint_2.Interfaces
         //void Draw(SpriteBatch spriteBatch);
 
         //TO DO:
-        Vector2 Position { get; set; }
+        public float XPos { get; set; }
+        public float YPos { get; set; }
         Vector2 Velocity { get; set; }
         //void Move();
-        void TakeDamage();
+        public void TakeFireballDamage();
+        public void TakeStompDamage();
+
+        public void Update(GameTime gameTime);
+        public void Draw(SpriteBatch spriteBatch, Color color);
+
+        public Rectangle GetHitBox();
+
+        public void ChangeDirection();
+
+        public bool Flipped { get; set; }
     }
 
 }

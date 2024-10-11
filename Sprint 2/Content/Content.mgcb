@@ -253,6 +253,18 @@
 /processorParam:TextureFormat=Color
 /build:cloud2.png
 
+#begin enemies.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:enemies.png
+
 #begin goomba_dying1.png
 /importer:TextureImporter
 /processor:TextureProcessor

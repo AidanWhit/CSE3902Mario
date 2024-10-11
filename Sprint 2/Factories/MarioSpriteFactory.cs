@@ -109,7 +109,7 @@ namespace Sprint_2.Factories
         public ISprite DeadMarioSprite()
         {
             marioSprites.TryGetValue("DeadMario", out Rectangle[] frames);
-            return new FrameArrayFormattedSprite(marioSpriteSheet, frames, 4);
+            return new FrameArrayFormattedSprite(marioSpriteSheet, frames, 3);
         }
     }
 

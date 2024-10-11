@@ -14,6 +14,8 @@ namespace Sprint_2.Sprites
     {
         public int XPos { get { return decoratedPlayer.XPos; } set { decoratedPlayer.XPos = value; } }
         public int YPos { get { return decoratedPlayer.YPos; } set { decoratedPlayer.YPos = value; } }
+
+        public bool IsDamaged { get { return decoratedPlayer.IsDamaged; }  set { decoratedPlayer.IsDamaged = value; } }
         public bool isJumping { get { return decoratedPlayer.isJumping; } set { decoratedPlayer.isJumping = value; } }
         public bool isCrouching { get { return decoratedPlayer.isCrouching; } set { decoratedPlayer.isCrouching = value; } }
         public bool isFalling { get { return decoratedPlayer.isFalling; } set { decoratedPlayer.isFalling = value; } }

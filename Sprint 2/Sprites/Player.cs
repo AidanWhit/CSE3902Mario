@@ -6,6 +6,7 @@ using Sprint_2.MarioPhysicsStates;
 using Sprint_2.MarioStates;
 using System.Collections.Generic;
 using System.Diagnostics;
+using Sprint_2.Constants;
 
 
 namespace Sprint_2.Sprites
@@ -16,6 +17,8 @@ namespace Sprint_2.Sprites
         private PlayerStateMachine PlayerState;
         public int XPos { get; set; }
         public int YPos { get; set; }
+
+        public bool IsDamaged { get; set; } = false;
         public Vector2 PlayerVelocity { get; set; }
 
         public IMarioPhysicsStates PhysicsState { get; set; }
@@ -27,21 +30,38 @@ namespace Sprint_2.Sprites
         private int numberOfFireballsRemaining = 2;
         private List<FireBall> fireBalls = new List<FireBall>();
 
+        private float opacity = 1f;
+        private float flashSpeed = MarioPhysicsConstants.flashSpeed;
+        private float damagedTime = MarioPhysicsConstants.damagedTime;
         
-
 
         public Player(Vector2 StartingLocation)
         {
             XPos = (int)StartingLocation.X;
-            
+            YPos = (int)StartingLocation.Y;
+
             PlayerState = new PlayerStateMachine(this);
 
-            YPos = (int)StartingLocation.Y;
-       
             PhysicsState = new Grounded(this);
         }
         public void Update(GameTime gameTime)
         {
+            if (IsDamaged)
+            {
+                damagedTime -= (float)gameTime.ElapsedGameTime.TotalSeconds;
+                flashSpeed -= (float)gameTime.ElapsedGameTime.TotalSeconds;
+                if (flashSpeed < 0)
+                {
+                    opacity = (opacity + 1) % 2;
+                    flashSpeed = MarioPhysicsConstants.flashSpeed;
+                }
+                if (damagedTime < 0)
+                {
+                    damagedTime = MarioPhysicsConstants.damagedTime;
+                    IsDamaged = false;
+                }
+               
+            }
             UpdateFireballs(gameTime);
             PlayerState.Update(gameTime);
             PhysicsState.Update(gameTime);
@@ -53,7 +73,7 @@ namespace Sprint_2.Sprites
             {
                 fireBalls[i].Draw(spriteBatch);
             }
-            PlayerState.Draw(spriteBatch, color);
+            PlayerState.Draw(spriteBatch, color * opacity);
         }
 
         public void UpdateFireballs(GameTime gameTime)
@@ -115,7 +135,6 @@ namespace Sprint_2.Sprites
             isJumping = false;
             isFalling = false;
             PlayerState.Idle();
-            //PhysicsState = new Grounded(this);
         }
 
         public void Crouch()
@@ -129,8 +148,7 @@ namespace Sprint_2.Sprites
             if (!isCrouching && !playerSize.Equals(new Vector2(16 *4, 16 *4)) && !isJumping)
             {
                 isCrouching = true;
-                
-                //YPos += GetHitBox().Height;
+               
             }
         }
 
@@ -148,7 +166,10 @@ namespace Sprint_2.Sprites
 
         public void Damage()
         {
-            PlayerState.Damage();
+            if (!IsDamaged)
+            {
+                PlayerState.Damage();
+            }
         }
         public void PowerUp()
         {

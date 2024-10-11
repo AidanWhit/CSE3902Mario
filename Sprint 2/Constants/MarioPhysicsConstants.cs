@@ -26,5 +26,10 @@ namespace Sprint_2.Constants
         public static float gravity = 200f;
 
         public static float fallRange = gravity * 1.25f;
+
+        public static float flashSpeed = 0.075f;
+        public static float damagedTime = 3f;
+
+        public static float bounceVelocity = -500f;
     }
 }

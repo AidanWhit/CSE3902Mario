@@ -1,14 +1,17 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Sprint_2;
 using Sprint_2.Collision;
 using Sprint_2.Factories;
 using Sprint_2.GameObjects;
+using Sprint_2.GameObjects.Enemies.EnemySprites;
 using Sprint_2.Interfaces;
 using Sprint_2.Sprites;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
+using System.Reflection.Metadata;
 
 namespace SprintZero.LevelLoader
 {
@@ -28,7 +31,8 @@ namespace SprintZero.LevelLoader
 
         public GameObjectManager(IPlayer player)
         {
-            Player = player;
+            Enemies.Add(new Shell(new Vector2(300, 350)));
+            Player = Game1.Instance.mario;
         }
 
         public Collection<IGameObject> GetObjects()
@@ -57,6 +61,16 @@ namespace SprintZero.LevelLoader
             Blocks.Remove(block);
         }
 
+        public void AddEnemy(IEnemy enemy)
+        {
+            Enemies.Add(enemy);
+        }
+
+        public void RemoveEnemy(IEnemy enemy)
+        {
+            Enemies.Remove(enemy);
+        }
+
         public void AddObject(IGameObject gameObject)
         {
             GameObjects.Add(gameObject);
@@ -75,7 +89,9 @@ namespace SprintZero.LevelLoader
 
         public void Update(GameTime gameTime)
         {
-            //Player.Update(gameTime);
+            /* TODO: Find a better way to update the player if it picks up a star */
+            Player = Game1.Instance.mario;
+            Player.Update(gameTime);
             foreach (IItem item in Items.ToList())
             {
                 foreach (IBlock block in Blocks)
@@ -93,16 +109,50 @@ namespace SprintZero.LevelLoader
                 item.Update(gameTime);
 
             }
+
+
             foreach (IBlock block in Blocks)
             {
                 block.Update(gameTime);
             }
 
+            foreach (IEnemy enemy in Enemies.ToList())
+            {
+                foreach (IBlock block in Blocks)
+                {
+                    if (enemy.GetHitBox().Intersects(block.GetHitBox()))
+                    {
+                        BlockCollisionResponse.BlockResponseForEnemy(enemy, block);
+                    }
+                }
+                foreach(IEnemy enemy2 in Enemies.ToList())
+                {
+                    if (!enemy.Equals(enemy2) && enemy.GetHitBox().Intersects(enemy2.GetHitBox()))
+                    {
+                        EnemyCollisionResponder.EnemyResponseForEnemy(enemy, enemy2);
+                    }
+                }
+                if (enemy.GetHitBox().Intersects(Player.GetHitBox()))
+                {
+                    if(enemy is Shell)
+                    {
+                        EnemyCollisionResponder.ShellResponseForPlayer(enemy, Player);
+                    }
+                    else
+                    {
+                        EnemyCollisionResponder.EnemyResponseForPlayer(enemy, Player);
+                    }
+                }
+                enemy.Update(gameTime);
+            }
+
+            
+
         }
 
         public void Draw(SpriteBatch spriteBatch, Texture2D allSpriteSheet, Color color)
         {
-            //Player.Draw(spriteBatch, color);
+            Player.Draw(spriteBatch, color);
             foreach (IItem item in Items)
             {
                 item.Draw(spriteBatch);
@@ -111,6 +161,11 @@ namespace SprintZero.LevelLoader
             foreach (IBlock block in Blocks)
             {
                 block.Draw(spriteBatch, color);
+            }
+
+            foreach (IEnemy enemy in Enemies)
+            {
+                enemy.Draw(spriteBatch, color);
             }
         }
     }

@@ -10,7 +10,6 @@ namespace Sprint_2.Collision
 {
     public class BlockCollisionResponse
     {
-
         public static void BlockReponseForPlayer(IPlayer player, IBlock block)
         {
             Rectangle collisionIntersection;
@@ -61,10 +60,38 @@ namespace Sprint_2.Collision
 
         }
     
-
-        public void BlockResponseForEnemy()
+        public static void BlockResponseForEnemy(IEnemy enemy, IBlock block)
         {
+            Rectangle collisionIntersection;
+            CollisionSideDetector.side side;
 
+            Rectangle enemyHitBox = enemy.GetHitBox();
+            Rectangle blockHitBox = block.GetHitBox();
+
+            (collisionIntersection, side) = CollisionSideDetector.DetermineCollisionSide(enemyHitBox, blockHitBox);
+            if (!enemy.Flipped)
+            {
+                if (side == CollisionSideDetector.side.Right)
+                {
+                    enemy.XPos -= collisionIntersection.Width;
+                    enemy.ChangeDirection();
+                }
+                else if (side == CollisionSideDetector.side.Left)
+                {
+                    enemy.XPos += collisionIntersection.Width;
+                    enemy.ChangeDirection();
+                }
+                else if (side == CollisionSideDetector.side.Top)
+                {
+                    enemy.YPos -= collisionIntersection.Height;
+                    enemy.Velocity = new Vector2(enemy.Velocity.X, EnemyConstants.fallVelocity.Y);
+                }
+                else //Bottom side (Shouldnt happen)
+                {
+                    enemy.YPos += collisionIntersection.Height;
+                }
+            }
+            
         }
 
         public static void BlockCollisionResponseForItem(IItem item, IBlock block)

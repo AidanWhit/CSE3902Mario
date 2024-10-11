@@ -2,8 +2,6 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
-using Sprint_2.Commands.BlockCommands;
-using Sprint_2.Commands.ItemCommands;
 using Sprint_2.Commands.MarioItemCommands;
 using Sprint_2.Commands.MarioMovementCommands;
 using Sprint_2.Commands.MarioAttackCommands;
@@ -12,16 +10,10 @@ using Sprint_2.Controls;
 using Sprint_2.Factories;
 using Sprint_2.Interfaces;
 using Sprint_2.Sprites;
-using Sprint_2.Commands.EnemyCommands;
-using Sprint_2.GameObjects.ItemSprites;
-using Sprint_2.Sprites.EnemySprites;
 using Sprint_2.GameObjects;
-using System.Diagnostics;
 using Sprint_2.Collision;
-using Sprint_2.GameObjects.BlockStates;
 using SprintZero.LevelLoader;
 using Sprint_2.ScreenCamera;
-using System.Net.Mime;
 
 
 namespace Sprint_2
@@ -44,16 +36,6 @@ namespace Sprint_2
 
         public IPlayer mario { get; set; }
         private KeyboardControl keyControl;
-
-        private EnemyCycler enemyCycler;
-        private List<IEnemy> enemies;
-        private List<IItem> items;
-        private ItemCycler itemCycler;
-        private IEnemy currentEnemy;
-        private IItem currItem;
-
-        private BlockCycler blockCycler;
-        private IBlock currentBlock;
 
 
         private GameObjectManager objectManager;
@@ -101,44 +83,26 @@ namespace Sprint_2
             objectManager = new GameObjectManager(mario);
             ItemFactory.Instance.SetGameObjectManager(objectManager);
             BlockFactory.Instance.SetGameObjectManager(objectManager);
+            EnemyFactory.Instance.SetGameObjectManager(objectManager);
             Texture2D texture = Content.Load<Texture2D>("marioSpriteSheet");
-
-            //TODO: Remove all cyclers after sprint 2
-            enemies = new List<IEnemy>
-            {
-                new Goomba(new Vector2(100, 100)),
-                EnemyFactory.Instance.CreateKoopa(new Vector2(100, 100)),
-                EnemyFactory.Instance.CreateKoopaShell(new Vector2(100, 100)),
-                EnemyFactory.Instance.CreateBowser(new Vector2(100, 100))
-            };
-            enemyCycler = new EnemyCycler(enemies);
-            currentEnemy = enemies[0];
-
-            items = new List<IItem>
-            {
-                //new RedMushroom(new Vector2(100, 300)),
-                new GreenMushroom(new Vector2(100, 300)),
-                //new Flower(new Vector2(100, 300)),
-                //new Coin(new Vector2(100, 300)),
-                //new Star(new Vector2(100, 300))
-
-            };
-            itemCycler = new ItemCycler(items);
-            currItem = items[0];
-
 
             BlockFactory.Instance.LoadAllContent(Content);
             collisionTest = new List<IBlock> {
 
-                new Block("BrownBrick", new Vector2(600, 400)),
-                new Block("BrownBrick", new Vector2(600, 352)),
-                new Block("BrownBrick", new Vector2(552, 400)),
-                new Block("BrownBrick", new Vector2(504, 400)),
-                new Block("BrownBrick", new Vector2(456, 400)),
-                new Block("BrownBrick", new Vector2(408, 400)),
-                new Block("BrownBrick", new Vector2(360, 400)),
-                new Block("BrownBrick", new Vector2(312, 400)),
-                new Block("BrownBrick", new Vector2(312, 352)),
+                new Block("BrownGround", new Vector2(600, 400)),
+                new Block("BrownGround", new Vector2(600, 352)),
+                new Block("BrownGround", new Vector2(552, 400)),
+                new Block("BrownGround", new Vector2(504, 400)),
+                new Block("BrownGround", new Vector2(456, 400)),
+                new Block("BrownGround", new Vector2(408, 400)),
+                new Block("BrownGround", new Vector2(360, 400)),
+                new Block("BrownGround", new Vector2(312, 400)),
+                new Block("BrownGround", new Vector2(264, 400)),
+                new Block("BrownGround", new Vector2(216, 400)),
+                new Block("BrownGround", new Vector2(168, 400)),
+                new Block("BrownGround", new Vector2(120, 400)),
+                new Block("BrownGround", new Vector2(72, 400)),
+                new Block("BrownGround", new Vector2(72, 352)),
                 new Block("BrownBrickWithStar", new Vector2(408, 200)),
                 //new Block("BrownBrickWithStar", new Vector2(408, 200)),
                 //new Block("BrownBrickWithCoins", new Vector2(360, 200)),
@@ -159,19 +123,14 @@ namespace Sprint_2
             keyControl.RegisterOnPressCommand(Keys.Z, new MarioAttackNormalCommand(mario));
             keyControl.RegisterOnPressCommand(Keys.D3, new MarioPowerUpCommand(mario));
             keyControl.RegisterOnPressCommand(Keys.E, new MarioHurtCommand(mario));
-            keyControl.RegisterOnPressCommand(Keys.T, new CycleBlockLeftCommand(this));
-            keyControl.RegisterOnPressCommand(Keys.Y, new CycleBlockRightCommand(this));
-            keyControl.RegisterOnPressCommand(Keys.U, new CycleItemLeftCommand(this));
-            keyControl.RegisterOnPressCommand(Keys.I, new CycleItemRightCommand(this));
-            keyControl.RegisterOnPressCommand(Keys.O, new CycleEnemyLeftCommand(this));
-            keyControl.RegisterOnPressCommand(Keys.P, new CycleEnemyRightCommand(this));
             keyControl.RegisterCommand(Keys.Q, new QuitCommand(this));
             keyControl.RegisterCommand(Keys.R, new ResetCommand(this));
 
             keyControl.RegisterOnReleaseCommand(Keys.S, new MarioOnCrouchRelease(mario));
             keyControl.RegisterOnPressCommand(Keys.S, new MarioOnCrouchPress(mario));
 
-
+            //EnemyFactory.Instance.AddKoopa(new Vector2(360, 250));
+            EnemyFactory.Instance.AddGoomba(new Vector2(550, 20));
             
         }
         protected override void UnloadContent()
@@ -184,13 +143,10 @@ namespace Sprint_2
         {
 
             keyControl.Update();
-            mario.Update(gameTime);
+           // mario.Update(gameTime);
 
             // Update camera based on Mario's position
             camera.Update(gameTime, new Vector2(mario.XPos, mario.YPos));
-
-            currentEnemy.Update(gameTime);
-            currItem.Update(gameTime);
 
             objectManager.Update(gameTime);
 
@@ -214,11 +170,9 @@ namespace Sprint_2
             // Begin the sprite batch with the camera's transformation matrix
             spriteBatch.Begin(transformMatrix: camera.Transform);
 
-            mario.Draw(spriteBatch, Color.White);
+          //  mario.Draw(spriteBatch, Color.White);
             HitBoxRectangle.DrawRectangle(spriteBatch, mario.GetHitBox(), Color.Black, 1);
-            currentEnemy.Draw(spriteBatch, currentEnemy.Position, Color.White);
-            currItem.Draw(spriteBatch);
-
+            
             /* Added for testing */
             objectManager.Draw(spriteBatch, null, Color.White);
 
@@ -230,37 +184,6 @@ namespace Sprint_2
         {
             this.UnloadContent();
             this.LoadContent();
-        }
-
-        /* TODO: Below functions to be removed after sprint 2*/
-        public void CycleEnemyLeft()
-        {
-            currentEnemy = enemyCycler.CycleEnemyLeft(); 
-        }
-
-        public void CycleEnemyRight()
-        {
-            currentEnemy = enemyCycler.CycleEnemyRight(); 
-        }
-
-        public void CycleItemLeft()
-        {
-            currItem = itemCycler.CycleItemLeft();
-        }
-
-        public void CycleItemRight()
-        {
-            currItem = itemCycler.CycleItemRight();
-        }
-
-        public void CycleBlockLeft()
-        {
-            currentBlock = blockCycler.CycleBlockLeft();
-        }
-
-        public void CycleBlockRight()
-        {
-            currentBlock = blockCycler.CycleBlockRight();
         }
     }
 }

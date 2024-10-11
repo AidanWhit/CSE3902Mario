@@ -2,13 +2,17 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint_2.Interfaces;
 using Sprint_2.Interfaces;
+using Sprint_2.Sprites.EnemySprites;
 using System;
 using System.Collections.Generic;
 
-namespace Sprint_2.Sprites.EnemySprites
+namespace Sprint_2.GameObjects.Enemies.EnemySprites
 {
     public class Bowser : IEnemy
     {
+        public float XPos { get; set; }
+        public float YPos { get; set; }
+        public bool Flipped { get; set; }
         private Texture2D[] bowserLeftSprites;
         private Texture2D[] bowserRightSprites;
         private Texture2D[] fireballLeftSprites;
@@ -28,24 +32,24 @@ namespace Sprint_2.Sprites.EnemySprites
 
         public Bowser(Texture2D[] leftSprites, Texture2D[] rightSprites, Texture2D[] fireLeftSprites, Texture2D[] fireRightSprites, Vector2 initialPosition)
         {
-            this.bowserLeftSprites = leftSprites;
-            this.bowserRightSprites = rightSprites;
-            this.fireballLeftSprites = fireLeftSprites;
-            this.fireballRightSprites = fireRightSprites;
+            bowserLeftSprites = leftSprites;
+            bowserRightSprites = rightSprites;
+            fireballLeftSprites = fireLeftSprites;
+            fireballRightSprites = fireRightSprites;
 
-            this.Position = initialPosition;
-            this.Velocity = new Vector2(-1, 0); 
-            this.isFacingLeft = true; // 
+            Position = initialPosition;
+            Velocity = new Vector2(-1, 0);
+            isFacingLeft = true; // 
 
-            this.currentFrame = 0;
-            this.totalFrames = 4; // 4 frames for walking in each direction
-            
-            this.fireballTimer = 0; 
+            currentFrame = 0;
+            totalFrames = 4; // 4 frames for walking in each direction
+
+            fireballTimer = 0;
         }
 
         public void Update(GameTime gameTime)
         {
-            
+
             Position += Velocity;
 
             float timer = (float)gameTime.ElapsedGameTime.TotalSeconds;
@@ -57,9 +61,9 @@ namespace Sprint_2.Sprites.EnemySprites
                 if (currentFrame == totalFrames)
                     currentFrame = 0;
             }
-            
 
-            
+
+
             if (Position.X <= 0 || Position.X >= 800 - bowserLeftSprites[0].Width)
             {
                 ReverseDirection();
@@ -70,19 +74,19 @@ namespace Sprint_2.Sprites.EnemySprites
             if (fireballTimer >= fireballCooldown)
             {
                 ShootFireball();
-                fireballTimer = 0; 
+                fireballTimer = 0;
             }
 
-            
+
             for (int i = 0; i < fireballs.Count; i++)
             {
                 fireballs[i].Update(gameTime);
             }
         }
 
-        public void Draw(SpriteBatch spriteBatch, Vector2 location, Color color)
+        public void Draw(SpriteBatch spriteBatch, Color color)
         {
-            
+
             Texture2D currentTexture = isFacingLeft ? bowserLeftSprites[currentFrame] : bowserRightSprites[currentFrame];
             spriteBatch.Draw(currentTexture, Position, color);
 
@@ -103,7 +107,7 @@ namespace Sprint_2.Sprites.EnemySprites
         private void ShootFireball()
         {
             // Create a new fireball in the direction Bowser is facing
-            Vector2 fireballPosition = new Vector2(Position.X, Position.Y + 20); 
+            Vector2 fireballPosition = new Vector2(Position.X, Position.Y + 20);
             Vector2 fireballVelocity = isFacingLeft ? new Vector2(-2, 0) : new Vector2(2, 0);
 
             BowserFireball fireball = new BowserFireball(
@@ -114,13 +118,22 @@ namespace Sprint_2.Sprites.EnemySprites
             fireballs.Add(fireball);
         }
 
-        public void TakeDamage()
+        public void TakeFireballDamage()
         {
             
         }
 
+        public void TakeStompDamage()
+        {
+            
+        }
+
+        public void ChangeDirection()
+        {
+            
+        }
         /* TODO: Implement actual hitbox */
-        public Rectangle GetHitBox(Vector2 location)
+        public Rectangle GetHitBox()
         {
             return new Rectangle(0, 0, 0, 0);
         }

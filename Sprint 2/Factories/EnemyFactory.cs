@@ -5,6 +5,9 @@ using System.Collections.Generic;
 using Sprint_2.Sprites;
 using Sprint_2.Sprites.EnemySprites;
 using Sprint_2.Interfaces;
+using Sprint_2.GameObjects.Enemies.EnemySprites;
+using SprintZero.LevelLoader;
+using System.ComponentModel.DataAnnotations;
 
 namespace Sprint_2.Factories
 {
@@ -28,6 +31,8 @@ namespace Sprint_2.Factories
         private Texture2D[] fireballLeftSprites;
         private Texture2D[] fireballRightSprites;
 
+        private Texture2D enemies;
+        private GameObjectManager objectManager;
 
         public static EnemyFactory Instance
         {
@@ -83,30 +88,92 @@ namespace Sprint_2.Factories
                 content.Load<Texture2D>("bowser_fireballright2")
             };
 
+            enemies = content.Load<Texture2D>("enemies");
+
         }
 
+        public void SetGameObjectManager(GameObjectManager gameObjectManager)
+        {
+            objectManager = gameObjectManager;
+        }
+
+        public void AddGoomba(Vector2 location)
+        {
+            objectManager.AddEnemy(new Goomba(location));
+        }
+
+        public void AddKoopa(Vector2 location)
+        {
+            objectManager.AddEnemy(new Koopa(location));
+        }
+
+        public void AddEnemy(IEnemy enemy)
+        {
+            objectManager.AddEnemy(enemy);
+        }
+
+        public void RemoveEnemyFromObjectList(IEnemy enemy) 
+        {
+            objectManager.RemoveEnemy(enemy);
+        }
         public ISprite CreateGoomba()
         {
-            // Create a Goomba(instance) 
-            return new RowsColumnsFormattedSprite(goombaWalking, 1, 2, 3);
+            Rectangle[] source = new Rectangle[] { new Rectangle(1, 5, 16, 16), new Rectangle(31, 5, 16, 16) };
+            return new FrameArrayFormattedSprite(enemies, source, 6);
         }
 
-        public ISprite CreateDeadGoomba()
+        public ISprite CreateStompedGoomba()
         {
-            // Create a Goomba(instance) 
-            return new RowsColumnsFormattedSprite(goombaDying, 1, 1, 3);
+            Rectangle[] source = new Rectangle[] { new Rectangle(61, 9, 16, 8) };
+            return new FrameArrayFormattedSprite(enemies, source, 3);
+        }
+
+        public ISprite CreateFlippedGoomba()
+        {
+            Rectangle[] source = new Rectangle[] { new Rectangle(1, 264, 16, 16), new Rectangle(19, 264, 16, 16) };
+            return new FrameArrayFormattedSprite(enemies, source, 3);
+        }
+
+        public ISprite CreateLeftFacingKoopa()
+        {
+            Rectangle[] source = new Rectangle[] { new Rectangle(181, 1, 16, 23), new Rectangle(151, 1, 16, 24) };
+            return new FrameArrayFormattedSprite (enemies, source, 3);
+        }
+
+        public ISprite CreateRightFacingKoopa()
+        {
+            Rectangle[] source = new Rectangle[] { new Rectangle(211, 1, 16, 23), new Rectangle(241, 1, 16, 24) };
+            return new FrameArrayFormattedSprite(enemies, source, 3);
+        }
+
+        public ISprite CreateKoopaShell()
+        {
+            Rectangle[] source = new Rectangle[] { new Rectangle(361, 6, 16, 14) };
+            return new FrameArrayFormattedSprite(enemies, source, 6);
+        }
+
+        public ISprite CreateFlippedKoopaShell()
+        {
+            Rectangle[] source = new Rectangle[] { new Rectangle(37, 264, 16, 13) };
+            return new FrameArrayFormattedSprite(enemies, source, 3);
+        }
+
+        public ISprite CreateKoopaShellWithFeet()
+        {
+            Rectangle[] source = new Rectangle[] { new Rectangle(331, 5, 16, 15) };
+            return new FrameArrayFormattedSprite(enemies, source, 3);
         }
 
         public IEnemy CreateKoopa(Vector2 position)
             {
             // Create a koopa(instance) 
-            return new Koopa(koopaWalkingLeft1, koopaWalkingLeft2, koopaWalkingRight1, koopaWalkingRight2, koopaShell, position);
+            return new Koopa(position);
         }
 
         public IEnemy CreateKoopaShell(Vector2 position)
         {
             // Create a shell
-            return new Shell(koopaShell, position);
+            return new Shell(position);
         }
 
         public IEnemy CreateBowser(Vector2 position)
