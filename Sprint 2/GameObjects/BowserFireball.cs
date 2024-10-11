@@ -12,6 +12,8 @@ namespace Sprint_2.Sprites.EnemySprites
         public float YPos { get; set; }
         public Vector2 Speed { get; set; }
 
+        public bool EnteredExplosionState { get; set; }
+
         private int currentFrame;
         private int totalFrames;
 
@@ -42,6 +44,18 @@ namespace Sprint_2.Sprites.EnemySprites
         public void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(fireballSprites[currentFrame], new Vector2(XPos, YPos), Color.White);
+        }
+
+        public Rectangle GetHitBox() 
+        {
+            return new Rectangle(0, 0, 0, 0);
+        }
+
+        public bool isExploded() { return false;  }
+
+        public void ChangeSprite(ISprite sprite)
+        {
+
         }
     }
 }

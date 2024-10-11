@@ -100,11 +100,14 @@ namespace Sprint_2.Factories
         /* Do not mess with any of the below functions */
         public ISprite FireBall()
         {
-            return new RowsColumnsFormattedSprite(fireBallSpriteSheet, 2, 2, FireBallConstants.scale);
+            Rectangle[] source = new Rectangle[] { new Rectangle(1, 1, 8, 8), new Rectangle(11, 1, 8, 8), 
+                new Rectangle(1, 11, 8, 8), new Rectangle(11, 11, 8, 8) };
+            return new FrameArrayFormattedSprite(fireBallSpriteSheet, source, FireBallConstants.scale);
         }
         public ISprite FireballExplosion()
         {
-            return new RowsColumnsFormattedSprite(explosionSpriteSheet, 1, 3, FireBallConstants.scale);
+            Rectangle[] source = new Rectangle[] { new Rectangle(5, 5, 9, 9), new Rectangle(21, 1, 13, 16), new Rectangle(37, 1, 16, 16) };
+            return new FrameArrayFormattedSprite(explosionSpriteSheet, source, FireBallConstants.scale);
         }
         public ISprite DeadMarioSprite()
         {

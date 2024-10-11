@@ -131,6 +131,7 @@ namespace Sprint_2
 
             //EnemyFactory.Instance.AddKoopa(new Vector2(360, 250));
             EnemyFactory.Instance.AddGoomba(new Vector2(550, 20));
+            EnemyFactory.Instance.AddKoopa(new Vector2(200, 300));
             
         }
         protected override void UnloadContent()

@@ -31,7 +31,6 @@ namespace SprintZero.LevelLoader
 
         public GameObjectManager(IPlayer player)
         {
-            Enemies.Add(new Shell(new Vector2(300, 350)));
             Player = Game1.Instance.mario;
         }
 
@@ -91,7 +90,28 @@ namespace SprintZero.LevelLoader
         {
             /* TODO: Find a better way to update the player if it picks up a star */
             Player = Game1.Instance.mario;
+
+            foreach (IProjectile fireball in Player.fireballs)
+            {
+                foreach(IBlock block in Blocks)
+                {
+                    if (fireball.GetHitBox().Intersects(block.GetHitBox()))
+                    {
+                        BlockCollisionResponse.BlockResponseForFireball(fireball, block);
+                    }
+                }
+                foreach (IEnemy enemy in Enemies)
+                {
+                    if (fireball.GetHitBox().Intersects(enemy.GetHitBox()))
+                    {
+                        FireballCollisionResponder.FireballResponderForEnemies(fireball, enemy);
+                    }
+                }
+            }
+
             Player.Update(gameTime);
+
+
             foreach (IItem item in Items.ToList())
             {
                 foreach (IBlock block in Blocks)

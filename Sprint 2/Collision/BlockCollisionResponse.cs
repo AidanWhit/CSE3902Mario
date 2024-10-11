@@ -5,6 +5,8 @@ using Sprint_2.MarioPhysicsStates;
 using System.Diagnostics;
 using Sprint_2.Constants;
 using Sprint_2.GameObjects.ItemSprites;
+using Sprint_2.GameObjects;
+using Sprint_2.Factories;
 
 namespace Sprint_2.Collision
 {
@@ -83,8 +85,10 @@ namespace Sprint_2.Collision
                 }
                 else if (side == CollisionSideDetector.side.Top)
                 {
-                    enemy.YPos -= collisionIntersection.Height;
                     enemy.Velocity = new Vector2(enemy.Velocity.X, EnemyConstants.fallVelocity.Y);
+                    //TODO: Fix this becuase it was a quick fix for jittery collision with the shell
+                    enemy.YPos = blockHitBox.Top - enemyHitBox.Height;
+                    //enemy.YPos -= collisionIntersection.Height;
                 }
                 else //Bottom side (Shouldnt happen)
                 {
@@ -132,6 +136,29 @@ namespace Sprint_2.Collision
                 {
                     item.YPos += collisionIntersection.Height;
                 }
+            }
+        }
+
+        public static void BlockResponseForFireball(IProjectile fireball, IBlock block)
+        {
+            Rectangle collisionIntersection;
+            CollisionSideDetector.side side;
+
+            Rectangle fireballHitBox = fireball.GetHitBox();
+            Rectangle blockHitBox = block.GetHitBox();
+
+            (collisionIntersection, side) = CollisionSideDetector.DetermineCollisionSide(fireballHitBox, blockHitBox);
+
+            if (side == CollisionSideDetector.side.Top)
+            {
+                fireball.YPos -= collisionIntersection.Height;
+                fireball.Speed = new Vector2(fireball.Speed.X, FireBallConstants.bounceSpeed);
+            }
+            else
+            {
+                fireball.ChangeSprite(MarioSpriteFactory.Instance.FireballExplosion());
+                fireball.EnteredExplosionState = true;
+                
             }
         }
     }

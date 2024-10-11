@@ -28,7 +28,7 @@ namespace Sprint_2.Sprites
         public bool isFalling { get; set; } = false;
 
         private int numberOfFireballsRemaining = 2;
-        private List<FireBall> fireBalls = new List<FireBall>();
+        public List<IProjectile> fireballs { get; set; } = new List<IProjectile>();
 
         private float opacity = 1f;
         private float flashSpeed = MarioPhysicsConstants.flashSpeed;
@@ -69,25 +69,25 @@ namespace Sprint_2.Sprites
 
         public void Draw(SpriteBatch spriteBatch, Color color)
         {
-            for (int i = 0; i < fireBalls.Count; i++)
+            for (int i = 0; i < fireballs.Count; i++)
             {
-                fireBalls[i].Draw(spriteBatch);
+                fireballs[i].Draw(spriteBatch);
             }
             PlayerState.Draw(spriteBatch, color * opacity);
         }
 
         public void UpdateFireballs(GameTime gameTime)
         {
-            for (int i = 0; i < fireBalls.Count; i++)
+            for (int i = 0; i < fireballs.Count; i++)
             {
-                if (fireBalls[i].isExploded())
+                if (fireballs[i].isExploded())
                 {
-                    fireBalls.Remove(fireBalls[i]);
+                    fireballs.Remove(fireballs[i]);
                     numberOfFireballsRemaining++;
                 }
                 else
                 {
-                    fireBalls[i].Update(gameTime);
+                    fireballs[i].Update(gameTime);
                 }
             }
 
@@ -99,7 +99,7 @@ namespace Sprint_2.Sprites
                 FireBall fireball = PlayerState.ShootFireball();
                 if (fireball != null)
                 {
-                    fireBalls.Add(fireball);
+                    fireballs.Add(fireball);
                     numberOfFireballsRemaining--;
                 }
 

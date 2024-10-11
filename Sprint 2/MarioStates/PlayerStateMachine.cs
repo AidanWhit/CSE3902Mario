@@ -150,12 +150,12 @@ namespace Sprint_2.MarioStates
 
                 if (facing.Equals(Facing.Left))
                 {
-                    fireball = new FireBall(mario, -FireBallConstants.moveSpeed);
+                    fireball = new FireBall(mario, new Vector2(-FireBallConstants.XSpeed, FireBallConstants.fallSpeed.Y));
 
                 }
                 else
                 {
-                    fireball = new FireBall(mario, FireBallConstants.moveSpeed);
+                    fireball = new FireBall(mario, new Vector2(FireBallConstants.XSpeed, FireBallConstants.fallSpeed.Y));
                 }
                 pose.Shoot();
             }

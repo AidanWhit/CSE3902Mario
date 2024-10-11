@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Sprint_2.GameObjects;
 
 namespace Sprint_2.Interfaces
 {
@@ -19,6 +20,7 @@ namespace Sprint_2.Interfaces
         public bool isCrouching { get; set; }
         public bool isFalling { get; set; }
 
+        public List<IProjectile> fireballs { get; set; }
         public bool IsDamaged { get; set; }
         public IMarioPhysicsStates PhysicsState { get; set; }
         public Vector2 PlayerVelocity { get;set; }

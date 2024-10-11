@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint_2.Interfaces;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
@@ -15,6 +16,7 @@ namespace Sprint_2.Sprites
         public int XPos { get { return decoratedPlayer.XPos; } set { decoratedPlayer.XPos = value; } }
         public int YPos { get { return decoratedPlayer.YPos; } set { decoratedPlayer.YPos = value; } }
 
+        public List<IProjectile> fireballs { get { return decoratedPlayer.fireballs; } set { decoratedPlayer.fireballs = value; } }
         public bool IsDamaged { get { return decoratedPlayer.IsDamaged; }  set { decoratedPlayer.IsDamaged = value; } }
         public bool isJumping { get { return decoratedPlayer.isJumping; } set { decoratedPlayer.isJumping = value; } }
         public bool isCrouching { get { return decoratedPlayer.isCrouching; } set { decoratedPlayer.isCrouching = value; } }

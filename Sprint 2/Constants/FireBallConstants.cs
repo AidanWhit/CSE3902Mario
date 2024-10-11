@@ -12,10 +12,16 @@ namespace Sprint_2.Constants
     {
         public static int scale = 3;
         
-        public static Vector2 moveSpeed = new Vector2(0.1f,0); //Use this to scale the YPos 
-        //Then have a separate speed to dictate how fast the fireball should move across the screen
+        public static Vector2 moveSpeed = new Vector2(0.1f,0); 
+
+        public static float XSpeed = 200f;
+        public static float maxFallSpeed = 600f;
+        public static Vector2 fallSpeed = new Vector2(0, 20);
+
+        public static float bounceSpeed = -400f;
+
         public static float animationDelay = 0.1f;
-        public static int explosionRange = 300;
+        public static int explosionRange = 700;
 
     }
 }

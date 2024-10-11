@@ -9,9 +9,14 @@ namespace Sprint_2.Interfaces
         public float XPos { get; set; }
         public float YPos { get; set; }
         public Vector2 Speed { get; set; }
+        public bool EnteredExplosionState { get; set; }
 
         public void Update(GameTime gameTime);
         public void Draw(SpriteBatch spriteBatch);
+        public bool isExploded();
+        public Rectangle GetHitBox();
+
+        public void ChangeSprite(ISprite sprite);
 
     }
 }

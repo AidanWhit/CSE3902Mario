@@ -111,6 +111,8 @@ namespace Sprint_2.Collision
 
             (collisionIntersection, side) = CollisionSideDetector.DetermineCollisionSide(sourceHitBox, targetHitBox);
 
+            /* TODO: Make this less ugly. split overall function into 2 where one deals with collision with a shell and the other
+             is for all other enemies*/
             if (!target.Flipped && !source.Flipped)
             {
                 if ((source is Shell && source.Velocity.X != 0) || (target is Shell && target.Velocity.X != 0))
@@ -141,7 +143,8 @@ namespace Sprint_2.Collision
                             source.ChangeDirection();
                             target.ChangeDirection();
                         }
-                    } else if (source is Shell)
+                    }
+                    else if (source is Shell)
                     {
                         if (side == CollisionSideDetector.side.Right)
                         {
@@ -156,21 +159,22 @@ namespace Sprint_2.Collision
                             source.ChangeDirection();
                             target.ChangeDirection();
                         }
-                        else
-                        {
-                            if (side == CollisionSideDetector.side.Right)
-                            {
-                                source.XPos -= collisionIntersection.Width;
+                    }
+                    else
+                    {
 
-                                source.ChangeDirection();
-                                target.ChangeDirection();
-                            }
-                            else if (side == CollisionSideDetector.side.Left)
-                            {
-                                source.XPos += collisionIntersection.Width;
-                                source.ChangeDirection();
-                                target.ChangeDirection();
-                            }
+                        if (side == CollisionSideDetector.side.Right)
+                        {
+                            source.XPos -= collisionIntersection.Width;
+
+                            source.ChangeDirection();
+                            target.ChangeDirection();
+                        }
+                        else if (side == CollisionSideDetector.side.Left)
+                        {
+                            source.XPos += collisionIntersection.Width;
+                            source.ChangeDirection();
+                            target.ChangeDirection();
                         }
                     }
                     

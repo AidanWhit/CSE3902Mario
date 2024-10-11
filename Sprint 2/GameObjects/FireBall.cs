@@ -23,7 +23,7 @@ namespace Sprint_2.GameObjects
         private IPlayer source;
         double distFromSource;
 
-        private bool enteredExplosionState = false;
+        public bool EnteredExplosionState { get; set; } = false;
 
         private bool FinishedExplosionAnimation = false;
         private float timer;
@@ -46,25 +46,32 @@ namespace Sprint_2.GameObjects
         }
         public void Update(GameTime gameTime) 
         {
-            //Calculate Position for bouncing fireball if it has not exploded
-            if (!enteredExplosionState)
+            if (!EnteredExplosionState)
             {
-                XPos += (float)(Speed.X * gameTime.ElapsedGameTime.TotalMilliseconds);
-                YPos = CalculateYPosition(gameTime);
+                if (Speed.Y < FireBallConstants.maxFallSpeed)
+                {
+                    Speed += FireBallConstants.fallSpeed;
+                }
+
+                Speed = new Vector2(Speed.X, Speed.Y * MarioPhysicsConstants.velocityDecay);
+                XPos += (float)(Speed.X * gameTime.ElapsedGameTime.TotalSeconds);
+                YPos += (float)(Speed.Y * gameTime.ElapsedGameTime.TotalSeconds);
+                
 
                 //Caclulates distance from the fireball and the Player
                 distFromSource = Math.Sqrt(Math.Pow(XPos - source.XPos, 2) + Math.Pow(YPos - source.YPos, 2));
             }
             
             //If the fireBall is too far away from the player that threw it, the fireball will explode
-            if (distFromSource > FireBallConstants.explosionRange && !enteredExplosionState)
+            if (distFromSource > FireBallConstants.explosionRange && !EnteredExplosionState)
             {
                 fireball = MarioSpriteFactory.Instance.FireballExplosion();
-                enteredExplosionState = true;
+                EnteredExplosionState = true;
             }
             
-            if (enteredExplosionState)
+            if (EnteredExplosionState)
             {
+                
                 /* TODO : Currently hardcoded need to find a better solution but it works for now ~ Aidan */
                 timer += (float)gameTime.ElapsedGameTime.TotalSeconds;
                 if (timer > 0.3f)
@@ -81,20 +88,24 @@ namespace Sprint_2.GameObjects
             
         }
 
-        public float CalculateYPosition(GameTime gameTime)
-        {
-            //Calculates how much time has passed since last Update Call
-            totalTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
-
-            //Random numbers that can be tweaked to make the bouncing of the fireball better
-            float YPos = -(float)Math.Abs(Math.Cos(totalTime)) * 64;
-            YPos += fireballSpawn + 64;
-            return YPos;
-        }
-
         public bool isExploded()
         {
             return FinishedExplosionAnimation;
+        }
+
+        public void ChangeSprite(ISprite sprite)
+        {
+            if (!EnteredExplosionState)
+            {
+                fireball = sprite;
+            }
+            
+            
+        }
+
+        public Rectangle GetHitBox()
+        {
+            return fireball.GetHitBox(new Vector2(XPos, YPos));
         }
     }
 }

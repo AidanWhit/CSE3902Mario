@@ -5,6 +5,7 @@ using Sprint_2.Factories;
 using Sprint_2.GameObjects.Enemies.EnemyStates;
 using Sprint_2.Interfaces;
 using Sprint_2.Sprites;
+using System.Diagnostics;
 
 namespace Sprint_2.GameObjects.Enemies.EnemySprites
 {
@@ -25,7 +26,7 @@ namespace Sprint_2.GameObjects.Enemies.EnemySprites
             YPos = initialPosition.Y;
 
             sprite = EnemyFactory.Instance.CreateKoopaShell();
-            Velocity = Vector2.Zero;
+            Velocity = new Vector2(0, EnemyConstants.fallVelocity.Y);
         }
 
 
@@ -38,9 +39,9 @@ namespace Sprint_2.GameObjects.Enemies.EnemySprites
                     EnemyFactory.Instance.RemoveEnemyFromObjectList(this);
                 }
             }
-            else
+            else if (Velocity.X == 0)
             {
-                //timeUntilShellBecomesKoopa -= (float)gameTime.ElapsedGameTime.TotalSeconds;
+                timeUntilShellBecomesKoopa -= (float)gameTime.ElapsedGameTime.TotalSeconds;
                 if (timeUntilShellBecomesKoopa < 0)
                 {
                     EnemyFactory.Instance.AddKoopa(new Vector2(XPos, YPos - GetHitBox().Height));
