@@ -119,7 +119,7 @@ namespace Sprint_2.Factories
         public ISprite CreateGoomba()
         {
             Rectangle[] source = new Rectangle[] { new Rectangle(1, 5, 16, 16), new Rectangle(31, 5, 16, 16) };
-            return new FrameArrayFormattedSprite(enemies, source, 6);
+            return new FrameArrayFormattedSprite(enemies, source, 3);
         }
 
         public ISprite CreateStompedGoomba()
@@ -149,7 +149,7 @@ namespace Sprint_2.Factories
         public ISprite CreateKoopaShell()
         {
             Rectangle[] source = new Rectangle[] { new Rectangle(361, 6, 16, 14) };
-            return new FrameArrayFormattedSprite(enemies, source, 6);
+            return new FrameArrayFormattedSprite(enemies, source, 3);
         }
 
         public ISprite CreateFlippedKoopaShell()
