@@ -14,7 +14,7 @@ namespace Sprint_2.Constants
         
         public static Vector2 moveSpeed = new Vector2(0.1f,0); 
 
-        public static float XSpeed = 200f;
+        public static float XSpeed = 300f;
         public static float maxFallSpeed = 600f;
         public static Vector2 fallSpeed = new Vector2(0, 20);
 

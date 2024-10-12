@@ -12,9 +12,13 @@ namespace Sprint_2.Collision
     {
         public static void FireballResponderForEnemies(IProjectile fireball, IEnemy enemy)
         {
-            enemy.TakeFireballDamage();
-            fireball.ChangeSprite(MarioSpriteFactory.Instance.FireballExplosion());
-            fireball.EnteredExplosionState = true;
+            if (!fireball.EnteredExplosionState && !enemy.Flipped)
+            {
+                enemy.TakeFireballDamage();
+                fireball.ChangeSprite(MarioSpriteFactory.Instance.FireballExplosion());
+                fireball.EnteredExplosionState = true;
+            }
+            
         }
     }
 }
