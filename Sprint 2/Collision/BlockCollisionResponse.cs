@@ -161,17 +161,21 @@ namespace Sprint_2.Collision
 
             (collisionIntersection, side) = CollisionSideDetector.DetermineCollisionSide(fireballHitBox, blockHitBox);
 
-            if (side == CollisionSideDetector.side.Top)
+            if (block.GetBlockState() is not InvisibleState)
             {
-                fireball.YPos -= collisionIntersection.Height;
-                fireball.Speed = new Vector2(fireball.Speed.X, FireBallConstants.bounceSpeed);
+                if (side == CollisionSideDetector.side.Top)
+                {
+                    fireball.YPos -= collisionIntersection.Height;
+                    fireball.Speed = new Vector2(fireball.Speed.X, FireBallConstants.bounceSpeed);
+                }
+                else
+                {
+                    fireball.ChangeSprite(MarioSpriteFactory.Instance.FireballExplosion());
+                    fireball.EnteredExplosionState = true;
+
+                }
             }
-            else
-            {
-                fireball.ChangeSprite(MarioSpriteFactory.Instance.FireballExplosion());
-                fireball.EnteredExplosionState = true;
-                
-            }
+            
         }
     }
 }
