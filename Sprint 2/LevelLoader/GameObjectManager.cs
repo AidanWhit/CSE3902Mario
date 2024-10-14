@@ -24,6 +24,7 @@ namespace Sprint_2.LevelLoader
         //private Collection<IBlock> GroundBlocks = new Collection<IBlock>();
         private Collection<IStaticSprite> Background = new Collection<IStaticSprite>();
         private Collection<IGameObject> GameObjects = new Collection<IGameObject>();
+        private Collection<IPipe> Pipes = new Collection<IPipe>();
 
 
 
@@ -90,7 +91,14 @@ namespace Sprint_2.LevelLoader
             GameObjects.Remove(gameObject);
         }
 
-
+        public void AddPipe(IPipe pipe)
+        {
+            Pipes.Add(pipe);
+        }
+        public void RemovePipe(IPipe pipe)
+        {
+            Pipes.Remove(pipe);
+        }
         private void UnloadObjects()
         {
 
@@ -108,6 +116,13 @@ namespace Sprint_2.LevelLoader
                     if (fireball.GetHitBox().Intersects(block.GetHitBox()))
                     {
                         BlockCollisionResponse.BlockResponseForFireball(fireball, block);
+                    }
+                }
+                foreach (IPipe pipe in Pipes)
+                {
+                    if (fireball.GetHitBox().Intersects(pipe.GetHitBox()))
+                    {
+                        PipeCollisionResponse.PipeResponseForFireBall(pipe, fireball);
                     }
                 }
                 foreach (IEnemy enemy in Enemies)
@@ -130,7 +145,13 @@ namespace Sprint_2.LevelLoader
                     {
                         BlockCollisionResponse.BlockCollisionResponseForItem(item, block);
                     }
-                    
+                }
+                foreach (IPipe pipe in Pipes)
+                {
+                    if (item.GetHitBox().Intersects(pipe.GetHitBox()))
+                    {
+                        PipeCollisionResponse.PipeResponseForItem(item, pipe);
+                    }
                 }
                 if (item.GetHitBox().Intersects(Player.GetHitBox()))
                 {
@@ -159,6 +180,18 @@ namespace Sprint_2.LevelLoader
                     {
                         BlockCollisionResponse.BlockResponseForEnemy(enemy, block);
                     }
+                }
+                foreach (IPipe pipe in Pipes)
+                {
+                    if (enemy.GetHitBox().Intersects(pipe.GetHitBox()))
+                    {
+                        PipeCollisionResponse.PipeResponseForEnemy(enemy, pipe);
+                    }
+                    if (Player.GetHitBox().Intersects(pipe.GetHitBox()))
+                    {
+                        PipeCollisionResponse.PipeResponseForPlayer(Player, pipe);
+                    }
+                    pipe.Update(gameTime);
                 }
                 foreach(IEnemy enemy2 in Enemies.ToList())
                 {
@@ -207,6 +240,11 @@ namespace Sprint_2.LevelLoader
             {
                 background.Draw(spriteBatch, Vector2.Zero, color); 
                 //background.Draw(spriteBatch, color);
+            }
+
+            foreach(IPipe pipe in Pipes)
+            {
+                pipe.Draw(spriteBatch, color);
             }
         }
     }

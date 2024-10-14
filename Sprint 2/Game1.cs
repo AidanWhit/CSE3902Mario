@@ -141,6 +141,8 @@ namespace Sprint_2
             BackgroundFactory.Instance.AddCloud1(new Vector2(0, 0));
             BackgroundFactory.Instance.AddCloud2(new Vector2(600, 0));
 
+            IPipe pipe = new Pipe(new Vector2(200, 308), "SmallPipe");
+
         }
         protected override void UnloadContent()
         {
