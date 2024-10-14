@@ -7,6 +7,7 @@ using Sprint_2.Constants;
 using Sprint_2.GameObjects.ItemSprites;
 using Sprint_2.GameObjects;
 using Sprint_2.Factories;
+using Sprint_2.GameObjects.BlockStates;
 
 namespace Sprint_2.Collision
 {
@@ -24,25 +25,36 @@ namespace Sprint_2.Collision
 
             if (side == CollisionSideDetector.side.Right)
             {
-                player.XPos -= collisionIntersection.Width;
+                if (block.GetBlockState() is not InvisibleState)
+                {
+                    player.XPos -= collisionIntersection.Width;
+                }
+                
             }
             else if (side == CollisionSideDetector.side.Left)
             {
-                player.XPos += collisionIntersection.Width;
+                if (block.GetBlockState() is not InvisibleState)
+                {
+                    player.XPos += collisionIntersection.Width;
+                }
             }
             else if (side == CollisionSideDetector.side.Top)
             {
-                if (!player.isJumping)
+                if (block.GetBlockState() is not InvisibleState)
                 {
-                    player.YPos -= collisionIntersection.Height;
-                    player.PlayerVelocity = new Vector2(player.PlayerVelocity.X, MarioPhysicsConstants.gravity);
+                    if (!player.isJumping)
+                    {
+                        player.YPos -= collisionIntersection.Height;
+                        player.PlayerVelocity = new Vector2(player.PlayerVelocity.X, MarioPhysicsConstants.gravity);
+                    }
+                    if (player.isFalling)
+                    {
+                        player.YPos -= collisionIntersection.Height;
+                        player.Idle();
+                        player.PhysicsState = new Grounded(player);
+                    }
                 }
-                if (player.isFalling)
-                {
-                    player.YPos -= collisionIntersection.Height;
-                    player.Idle();
-                    player.PhysicsState = new Grounded(player);
-                }
+                
                 
 
             }

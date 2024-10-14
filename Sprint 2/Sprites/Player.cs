@@ -30,6 +30,8 @@ namespace Sprint_2.Sprites
         private int numberOfFireballsRemaining = 2;
         public List<IProjectile> fireballs { get; set; } = new List<IProjectile>();
 
+        public int RemainingLives { get; set; }
+
         private float opacity = 1f;
         private float flashSpeed = MarioPhysicsConstants.flashSpeed;
         private float damagedTime = MarioPhysicsConstants.damagedTime;
@@ -43,6 +45,8 @@ namespace Sprint_2.Sprites
             PlayerState = new PlayerStateMachine(this);
 
             PhysicsState = new Grounded(this);
+
+            RemainingLives = MarioPhysicsConstants.startingLives;
         }
         public void Update(GameTime gameTime)
         {

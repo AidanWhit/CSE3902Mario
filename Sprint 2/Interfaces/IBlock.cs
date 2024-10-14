@@ -23,6 +23,8 @@ namespace Sprint_2.Interfaces
 
         public void ChangeState(IBlockState blockState);
 
+        public IBlockState GetBlockState();
+
 
     }
 }

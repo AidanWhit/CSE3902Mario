@@ -17,13 +17,19 @@ namespace Sprint_2.Collision
             if (item is RedMushroom || item is Flower)
             {
                 player.PowerUp();
-                item.DeleteItem(null);
+                
             }
             else if (item is Star)
             {
                 Game1.Instance.mario = new StarMario(player);
-                item.DeleteItem(null);
+                
             }
+            else if (item is GreenMushroom)
+            {
+                player.RemainingLives++;
+                
+            }
+            item.DeleteItem(null);
         }
     }
 }

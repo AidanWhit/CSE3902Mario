@@ -89,6 +89,11 @@ namespace Sprint_2.Factories
             gameObjectManager.AddItem(new RedMushroom(location, block));
         }
 
+        public void AddGreenMushroomToItemsList(Vector2 location, IBlock block)
+        {
+            gameObjectManager.AddItem(new GreenMushroom(location, block));
+        }
+
         public void AddStarToItemsList(Vector2 location, IBlock block)
         {
             gameObjectManager.AddItem(new Star(location, block));

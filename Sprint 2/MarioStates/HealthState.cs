@@ -52,6 +52,7 @@ namespace Sprint_2.MarioStates
             if (health == Health.Mario)
             {
                 health = Health.Dead;
+                mario.RemainingLives--;
             }
             else
             {

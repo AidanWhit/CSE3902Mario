@@ -34,7 +34,8 @@ namespace Sprint_2.Factories
             {"Chiseled", new Rectangle[]{new Rectangle(37, 65, 16, 16)} },
             {"BrownGround", new Rectangle[]{new Rectangle(55, 65, 16, 16) } },
             {"Hit", new Rectangle[]{new Rectangle(73, 65,16, 16) } },
-            {"Question", new Rectangle[]{new Rectangle(1, 83, 16, 16), new Rectangle(19, 83, 16, 16), new Rectangle(37, 83, 16, 16)} }
+            {"Question", new Rectangle[]{new Rectangle(1, 83, 16, 16), new Rectangle(19, 83, 16, 16), new Rectangle(37, 83, 16, 16)} },
+            {"Invisible", new Rectangle[]{new Rectangle(55, 83, 16, 16)} }
 
         };
 
@@ -51,7 +52,6 @@ namespace Sprint_2.Factories
         public ISprite GetBlock(string id)
         {
             blockDictionary.TryGetValue(id, out Rectangle[] frames);
-            Vector2 size = new Vector2(frames[0].Size.X, frames[0].Size.Y);
             return new FrameArrayFormattedSprite(blockSpriteSheet, frames, 3);
         }
 

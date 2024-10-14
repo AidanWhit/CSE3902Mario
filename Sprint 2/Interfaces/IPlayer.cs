@@ -20,6 +20,8 @@ namespace Sprint_2.Interfaces
         public bool isCrouching { get; set; }
         public bool isFalling { get; set; }
 
+        public int RemainingLives { get; set; }
+
         public List<IProjectile> fireballs { get; set; }
         public bool IsDamaged { get; set; }
         public IMarioPhysicsStates PhysicsState { get; set; }

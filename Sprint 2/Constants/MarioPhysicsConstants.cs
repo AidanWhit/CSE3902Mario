@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -31,5 +32,7 @@ namespace Sprint_2.Constants
         public static float damagedTime = 3f;
 
         public static float bounceVelocity = -500f;
+
+        public static int startingLives = 3;
     }
 }

@@ -24,6 +24,8 @@ namespace Sprint_2.Sprites
         public IMarioPhysicsStates PhysicsState { get { return decoratedPlayer.PhysicsState; } set { decoratedPlayer.PhysicsState = value; } }
         public Vector2 PlayerVelocity { get { return decoratedPlayer.PlayerVelocity; } set { decoratedPlayer.PlayerVelocity = value; } }
 
+        public int RemainingLives { get { return decoratedPlayer.RemainingLives; } set { decoratedPlayer.RemainingLives = value; } }
+
 
         private IPlayer decoratedPlayer;
         private int remainingStarTime = 1000;

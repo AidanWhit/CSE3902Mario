@@ -109,9 +109,7 @@ namespace Sprint_2
                 new Block("BrownGround", new Vector2(72, 400)),
                 new Block("BrownGround", new Vector2(72, 352)),
                 new Block("BrownBrickWithStar", new Vector2(408, 200)),
-                //new Block("BrownBrickWithStar", new Vector2(408, 200)),
-                //new Block("BrownBrickWithCoins", new Vector2(360, 200)),
-                //new Block("Chiseled", new Vector2(0,0))
+                new Block("Invisible", new Vector2(300, 200))
             };
 
             BackgroundFactory.Instance.LoadAllContent(Content);

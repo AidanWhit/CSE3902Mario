@@ -63,13 +63,19 @@ namespace Sprint_2.GameObjects
                 {"BlueGround", new BlueGroundState(this) },
                 {"BlueBrick", new BlueBrickState(this) },
                 {"BrownGround", new BrownGroundState(this) },
-                {"BrownBrickWithStar", new BrickWithAStar(this) }
+                {"BrownBrickWithStar", new BrickWithAStar(this) },
+                {"Invisible", new InvisibleState(this) }
 
             };
 
 
             blockStates.TryGetValue(name, out IBlockState blockState);
 
+            return blockState;
+        }
+
+        public IBlockState GetBlockState()
+        {
             return blockState;
         }
     }
