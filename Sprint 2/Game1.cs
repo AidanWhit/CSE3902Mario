@@ -44,7 +44,7 @@ namespace Sprint_2
 
         private List<IBlock> collisionTest;
 
-        //private List<ISprite> backgroundList;
+        //private List<IStaticSprite> backgroundList;
 
         private Camera camera;
         private Vector2 levelBounds;
@@ -115,7 +115,7 @@ namespace Sprint_2
             };
 
             BackgroundFactory.Instance.LoadAllContent(Content);
-            //backgroundList = new List<ISprite> {new Background("bush1", new Vector2(200, 200)),            };
+
 
             //Will eventually be moved somewhere else
             keyControl.RegisterCommand(Keys.W, new MarioFacingUpCommand(mario));
@@ -140,7 +140,7 @@ namespace Sprint_2
 
             // Load backgrounds
             //BackgroundFactory.Instance.AddLevelImage(new Vector2(0, 0));
-            BackgroundFactory.Instance.AddBush1(new Vector2(0, 0));
+            BackgroundFactory.Instance.AddCloud1(new Vector2(200, 100));
 
         }
         protected override void UnloadContent()

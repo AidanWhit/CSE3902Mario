@@ -22,7 +22,7 @@ namespace Sprint_2.LevelLoader
         private Collection<IItem> Items = new Collection<IItem>();
         private Collection<IBlock> Blocks = new Collection<IBlock>();
         //private Collection<IBlock> GroundBlocks = new Collection<IBlock>();
-        private Collection<ISprite> Background = new Collection<ISprite>();
+        private Collection<IStaticSprite> Background = new Collection<IStaticSprite>();
         private Collection<IGameObject> GameObjects = new Collection<IGameObject>();
 
 
@@ -70,12 +70,12 @@ namespace Sprint_2.LevelLoader
             Enemies.Remove(enemy);
         }
 
-        public void AddBackground(ISprite background)
+        public void AddBackground(IStaticSprite background)
         {
             Background.Add(background);
         }
 
-        public void RemoveBackground(ISprite background)
+        public void RemoveBackground(IStaticSprite background)
         {
             Background.Remove(background);
         }
@@ -203,9 +203,10 @@ namespace Sprint_2.LevelLoader
                 enemy.Draw(spriteBatch, color);
             }
 
-            foreach (ISprite background in Background)
+            foreach (IStaticSprite background in Background)
             {
-                background.Draw(spriteBatch, Vector2.Zero, Color.White); 
+                background.Draw(spriteBatch, Vector2.Zero, color);  // Draw at the background's position
+                //background.Draw(spriteBatch, color);
             }
         }
     }

@@ -14,7 +14,6 @@ namespace Sprint_2.Factories
 {
     public class BackgroundFactory
     {
-
         // Background sprites and level image
         private Texture2D bush1Texture;
         private Texture2D bush2Texture;
@@ -24,17 +23,10 @@ namespace Sprint_2.Factories
         private Texture2D cloud2Texture;
         private Texture2D levelImageTexture;  // The whole level image (blocks and background only)
 
-        
+
         private static BackgroundFactory instance = new BackgroundFactory();
         private GameObjectManager objectManager;
-
-        public static BackgroundFactory Instance
-        {
-            get
-            {
-                return instance;
-            }
-        }
+        public static BackgroundFactory Instance => instance;
 
         // Load all the background textures 
         public void LoadAllContent(ContentManager content)
@@ -56,80 +48,83 @@ namespace Sprint_2.Factories
         // Add methods for background objects
         public void AddBush1(Vector2 location)
         {
-            ISprite bush1 = CreateBush1();
+            IStaticSprite bush1 = CreateBush1(location);
             objectManager.AddBackground(bush1);  // Pass location to the object manager
         }
 
         public void AddBush2(Vector2 location)
         {
-            ISprite bush2 = CreateBush2();
+            IStaticSprite bush2 = CreateBush2(location);
             objectManager.AddBackground(bush2);  // Pass location to the object manager
         }
 
         public void AddHill1(Vector2 location)
         {
-            ISprite hill1 = CreateHill1();
+            IStaticSprite hill1 = CreateHill1(location);
             objectManager.AddBackground(hill1);  // Pass location to the object manager
         }
 
         public void AddHill2(Vector2 location)
         {
-            ISprite hill2 = CreateHill2();
-            objectManager.AddBackground(hill2);  // Pass location to the object manager
+            IStaticSprite hill2 = CreateHill2(location);
+            objectManager.AddBackground(hill2 );  // Pass location to the object manager
         }
 
         public void AddCloud1(Vector2 location)
         {
-            ISprite cloud1 = CreateCloud1();
+            IStaticSprite cloud1 = CreateCloud1(location);
             objectManager.AddBackground(cloud1);  // Pass location to the object manager
         }
 
         public void AddCloud2(Vector2 location)
         {
-            ISprite cloud2 = CreateCloud2();
-            objectManager.AddBackground(cloud2);  // Pass location to the object manager
+            IStaticSprite cloud2 = CreateCloud2(location);
+            objectManager.AddBackground(cloud2 );  // Pass location to the object manager
         }
 
         public void AddLevelImage(Vector2 location)
         {
-            ISprite levelImage = CreateLevelImage();
-            objectManager.AddBackground(levelImage);  // Pass location to the object manager
+            IStaticSprite levelImage = CreateLevelImage(location);
+            objectManager.AddBackground(levelImage );  // Pass location to the object manager
         }
 
 
-        public ISprite CreateBush1()
+        public IStaticSprite CreateBush1(Vector2 location)
         {
-            return new StaticSprite(bush1Texture, new Rectangle[] { new Rectangle(0, 0, bush1Texture.Width, bush1Texture.Height) });
+            return new StaticSprite(bush1Texture, new Rectangle[] { new Rectangle(0, 0, bush1Texture.Width, bush1Texture.Height) }, location);
         }
 
-        public ISprite CreateBush2()
+        public IStaticSprite CreateBush2(Vector2 location)
         {
-            return new StaticSprite(bush2Texture, new Rectangle[] { new Rectangle(0, 0, bush2Texture.Width, bush2Texture.Height) });
+            return new StaticSprite(bush2Texture, new Rectangle[] { new Rectangle(0, 0, bush2Texture.Width, bush2Texture.Height) }, location);
         }
 
-        public ISprite CreateHill1()
+        public IStaticSprite CreateHill1(Vector2 location)
         {
-            return new StaticSprite(hill1Texture, new Rectangle[] { new Rectangle(0, 0, hill1Texture.Width, hill1Texture.Height) });
+            return new StaticSprite(hill1Texture, new Rectangle[] { new Rectangle(0, 0, hill1Texture.Width, hill1Texture.Height) }, location);
         }
 
-        public ISprite CreateHill2()
+        public IStaticSprite CreateHill2(Vector2 location)
         {
-            return new StaticSprite(hill2Texture, new Rectangle[] { new Rectangle(0, 0, hill2Texture.Width, hill2Texture.Height) });
+            return new StaticSprite(hill2Texture, new Rectangle[] { new Rectangle(0, 0, hill2Texture.Width, hill2Texture.Height) }, location);
         }
 
-        public ISprite CreateCloud1()
+        public IStaticSprite CreateCloud1(Vector2 location)
         {
-            return new StaticSprite(cloud1Texture, new Rectangle[] { new Rectangle(0, 0, cloud1Texture.Width, cloud1Texture.Height) });
+            return new StaticSprite(cloud1Texture, new Rectangle[] { new Rectangle(0, 0, cloud1Texture.Width, cloud1Texture.Height) }, location);
         }
 
-        public ISprite CreateCloud2()
+        public IStaticSprite CreateCloud2(Vector2 location)
         {
-            return new StaticSprite(cloud2Texture, new Rectangle[] { new Rectangle(0, 0, cloud2Texture.Width, cloud2Texture.Height) });
+            return new StaticSprite(cloud2Texture, new Rectangle[] { new Rectangle(0, 0, cloud2Texture.Width, cloud2Texture.Height) }, location);
         }
 
-        public ISprite CreateLevelImage()
+        public IStaticSprite CreateLevelImage(Vector2 location)
         {
-            return new StaticSprite(levelImageTexture, new Rectangle[] { new Rectangle(0, 0, levelImageTexture.Width, levelImageTexture.Height) });
+            return new StaticSprite(levelImageTexture, new Rectangle[] { new Rectangle(0, 0, levelImageTexture.Width, levelImageTexture.Height) }, location);
         }
+
     }
+    
 }
+

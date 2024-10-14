@@ -7,33 +7,33 @@ using System.Collections.Generic;
 
 namespace Sprint_2.GameObjects
 {
-    public class StaticSprite : ISprite
+    public class StaticSprite : IStaticSprite
     {
         private Texture2D texture;
         private Rectangle[] sourceRectangles;
-        private Vector2 position;
+        public Vector2 Position { get; set; }  // Implement the Position property
 
-        public StaticSprite(Texture2D texture, Rectangle[] sourceRectangles)
+        public StaticSprite(Texture2D texture, Rectangle[] sourceRectangles, Vector2 position)
         {
             this.texture = texture;
             this.sourceRectangles = sourceRectangles;
-            //this.size = size;
+            this.Position = position;  // Store the position
         }
 
         public void Update(GameTime gameTime)
         {
-            // 
+            // Static background objects don't need updates
         }
 
-        public void Draw(SpriteBatch spriteBatch, Vector2 position, Color color)
+        public void Draw(SpriteBatch spriteBatch, Vector2 location, Color color)
         {
-            spriteBatch.Draw(texture, position, sourceRectangles[0], color);
+            // Draw using the stored position
+            spriteBatch.Draw(texture, Position, sourceRectangles[0], color);
         }
-
 
         public Rectangle GetHitBox(Vector2 location)
         {
-            // Background objects do not have hitboxes, return an empty Rectangle
+            // Static background objects don't need a hitbox
             return Rectangle.Empty;
         }
     }
