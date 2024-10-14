@@ -13,7 +13,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Reflection.Metadata;
 
-namespace SprintZero.LevelLoader
+namespace Sprint_2.LevelLoader
 {
     public class GameObjectManager
     {
@@ -68,6 +68,16 @@ namespace SprintZero.LevelLoader
         public void RemoveEnemy(IEnemy enemy)
         {
             Enemies.Remove(enemy);
+        }
+
+        public void AddBackground(ISprite background)
+        {
+            Background.Add(background);
+        }
+
+        public void RemoveBackground(ISprite background)
+        {
+            Background.Remove(background);
         }
 
         public void AddObject(IGameObject gameObject)
@@ -136,6 +146,11 @@ namespace SprintZero.LevelLoader
                 block.Update(gameTime);
             }
 
+            foreach (ISprite background in Background)
+            {
+                background.Update(gameTime);
+            }
+
             foreach (IEnemy enemy in Enemies.ToList())
             {
                 foreach (IBlock block in Blocks)
@@ -186,6 +201,11 @@ namespace SprintZero.LevelLoader
             foreach (IEnemy enemy in Enemies)
             {
                 enemy.Draw(spriteBatch, color);
+            }
+
+            foreach (ISprite background in Background)
+            {
+                background.Draw(spriteBatch, Vector2.Zero, Color.White); 
             }
         }
     }

@@ -12,7 +12,7 @@ using Sprint_2.Interfaces;
 using Sprint_2.Sprites;
 using Sprint_2.GameObjects;
 using Sprint_2.Collision;
-using SprintZero.LevelLoader;
+using Sprint_2.LevelLoader;
 using Sprint_2.ScreenCamera;
 
 
@@ -43,7 +43,9 @@ namespace Sprint_2
         private List<IBlock> blocks;
 
         private List<IBlock> collisionTest;
-        
+
+        //private List<ISprite> backgroundList;
+
         private Camera camera;
         private Vector2 levelBounds;
 
@@ -78,12 +80,15 @@ namespace Sprint_2
             EnemyFactory.Instance.LoadAllContent(Content);
             ItemFactory.Instance.LoadItemContent(Content);
 
+
             mario = new Player(new Vector2(400, 100));
 
             objectManager = new GameObjectManager(mario);
             ItemFactory.Instance.SetGameObjectManager(objectManager);
             BlockFactory.Instance.SetGameObjectManager(objectManager);
             EnemyFactory.Instance.SetGameObjectManager(objectManager);
+            BackgroundFactory.Instance.SetGameObjectManager(objectManager);
+
             Texture2D texture = Content.Load<Texture2D>("marioSpriteSheet");
 
             BlockFactory.Instance.LoadAllContent(Content);
@@ -109,9 +114,9 @@ namespace Sprint_2
                 //new Block("Chiseled", new Vector2(0,0))
             };
 
+            BackgroundFactory.Instance.LoadAllContent(Content);
+            //backgroundList = new List<ISprite> {new Background("bush1", new Vector2(200, 200)),            };
 
-
-            
             //Will eventually be moved somewhere else
             keyControl.RegisterCommand(Keys.W, new MarioFacingUpCommand(mario));
             keyControl.RegisterCommand(Keys.S, new MarioFacingDownCommand(mario));
@@ -132,7 +137,11 @@ namespace Sprint_2
             //EnemyFactory.Instance.AddKoopa(new Vector2(360, 250));
             EnemyFactory.Instance.AddGoomba(new Vector2(550, 20));
             EnemyFactory.Instance.AddKoopa(new Vector2(200, 300));
-            
+
+            // Load backgrounds
+            //BackgroundFactory.Instance.AddLevelImage(new Vector2(0, 0));
+            BackgroundFactory.Instance.AddBush1(new Vector2(0, 0));
+
         }
         protected override void UnloadContent()
         {

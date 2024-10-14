@@ -6,7 +6,7 @@ using Sprint_2.Sprites;
 using Sprint_2.Sprites.EnemySprites;
 using Sprint_2.Interfaces;
 using Sprint_2.GameObjects.Enemies.EnemySprites;
-using SprintZero.LevelLoader;
+using Sprint_2.LevelLoader;
 using System.ComponentModel.DataAnnotations;
 
 namespace Sprint_2.Factories
