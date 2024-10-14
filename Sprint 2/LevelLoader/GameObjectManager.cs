@@ -205,7 +205,7 @@ namespace Sprint_2.LevelLoader
 
             foreach (IStaticSprite background in Background)
             {
-                background.Draw(spriteBatch, Vector2.Zero, color);  // Draw at the background's position
+                background.Draw(spriteBatch, Vector2.Zero, color); 
                 //background.Draw(spriteBatch, color);
             }
         }

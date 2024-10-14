@@ -45,47 +45,47 @@ namespace Sprint_2.Factories
             objectManager = gameObjectManager;
         }
 
-        // Add methods for background objects
+        
         public void AddBush1(Vector2 location)
         {
             IStaticSprite bush1 = CreateBush1(location);
-            objectManager.AddBackground(bush1);  // Pass location to the object manager
+            objectManager.AddBackground(bush1); 
         }
 
         public void AddBush2(Vector2 location)
         {
             IStaticSprite bush2 = CreateBush2(location);
-            objectManager.AddBackground(bush2);  // Pass location to the object manager
+            objectManager.AddBackground(bush2); 
         }
 
         public void AddHill1(Vector2 location)
         {
             IStaticSprite hill1 = CreateHill1(location);
-            objectManager.AddBackground(hill1);  // Pass location to the object manager
+            objectManager.AddBackground(hill1);  
         }
 
         public void AddHill2(Vector2 location)
         {
             IStaticSprite hill2 = CreateHill2(location);
-            objectManager.AddBackground(hill2 );  // Pass location to the object manager
+            objectManager.AddBackground(hill2 ); 
         }
 
         public void AddCloud1(Vector2 location)
         {
             IStaticSprite cloud1 = CreateCloud1(location);
-            objectManager.AddBackground(cloud1);  // Pass location to the object manager
+            objectManager.AddBackground(cloud1);  
         }
 
         public void AddCloud2(Vector2 location)
         {
             IStaticSprite cloud2 = CreateCloud2(location);
-            objectManager.AddBackground(cloud2 );  // Pass location to the object manager
+            objectManager.AddBackground(cloud2 ); 
         }
 
         public void AddLevelImage(Vector2 location)
         {
             IStaticSprite levelImage = CreateLevelImage(location);
-            objectManager.AddBackground(levelImage );  // Pass location to the object manager
+            objectManager.AddBackground(levelImage );  
         }
 
 

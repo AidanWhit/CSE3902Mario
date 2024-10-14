@@ -140,7 +140,8 @@ namespace Sprint_2
 
             // Load backgrounds
             //BackgroundFactory.Instance.AddLevelImage(new Vector2(0, 0));
-            BackgroundFactory.Instance.AddCloud1(new Vector2(200, 100));
+            BackgroundFactory.Instance.AddCloud1(new Vector2(0, 0));
+            BackgroundFactory.Instance.AddCloud2(new Vector2(600, 0));
 
         }
         protected override void UnloadContent()
