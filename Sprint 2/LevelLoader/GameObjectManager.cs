@@ -26,6 +26,10 @@ namespace Sprint_2.LevelLoader
         private Collection<IGameObject> GameObjects = new Collection<IGameObject>();
         private Collection<IPipe> Pipes = new Collection<IPipe>();
 
+        public List<IBlock>[] blocks = new List<IBlock>[208];
+
+        private int iteration = 0;
+
 
 
         public IPlayer Player { get; set; }
@@ -136,6 +140,15 @@ namespace Sprint_2.LevelLoader
 
             Player.Update(gameTime);
 
+            foreach (IPipe pipe in Pipes)
+            {
+                if (Player.GetHitBox().Intersects(pipe.GetHitBox()))
+                {
+                    PipeCollisionResponse.PipeResponseForPlayer(Player, pipe);
+                }
+                pipe.Update(gameTime);
+            }
+            
 
             foreach (IItem item in Items.ToList())
             {
@@ -187,11 +200,7 @@ namespace Sprint_2.LevelLoader
                     {
                         PipeCollisionResponse.PipeResponseForEnemy(enemy, pipe);
                     }
-                    if (Player.GetHitBox().Intersects(pipe.GetHitBox()))
-                    {
-                        PipeCollisionResponse.PipeResponseForPlayer(Player, pipe);
-                    }
-                    pipe.Update(gameTime);
+                    
                 }
                 foreach(IEnemy enemy2 in Enemies.ToList())
                 {
@@ -220,7 +229,11 @@ namespace Sprint_2.LevelLoader
 
         public void Draw(SpriteBatch spriteBatch, Texture2D allSpriteSheet, Color color)
         {
-            Player.Draw(spriteBatch, color);
+            foreach (IStaticSprite background in Background)
+            {
+                background.Draw(spriteBatch, Vector2.Zero, color);
+                //background.Draw(spriteBatch, color);
+            }
             foreach (IItem item in Items)
             {
                 item.Draw(spriteBatch);
@@ -231,21 +244,22 @@ namespace Sprint_2.LevelLoader
                 block.Draw(spriteBatch, color);
             }
 
+            
+
+            
+
             foreach (IEnemy enemy in Enemies)
             {
                 enemy.Draw(spriteBatch, color);
             }
 
-            foreach (IStaticSprite background in Background)
-            {
-                background.Draw(spriteBatch, Vector2.Zero, color); 
-                //background.Draw(spriteBatch, color);
-            }
 
             foreach(IPipe pipe in Pipes)
             {
                 pipe.Draw(spriteBatch, color);
             }
+
+            Player.Draw(spriteBatch, color);
         }
     }
 }

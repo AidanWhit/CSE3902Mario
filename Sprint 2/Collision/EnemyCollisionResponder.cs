@@ -34,6 +34,7 @@ namespace Sprint_2.Collision
                         {
                             enemy.TakeStompDamage();
                             player.PlayerVelocity = new Vector2(player.PlayerVelocity.X, MarioPhysicsConstants.bounceVelocity);
+                            player.Jump();
                             player.isJumping = true;
                         }
 
