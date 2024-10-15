@@ -23,16 +23,20 @@ namespace Sprint_2.ScreenCamera
 
         public void Update(GameTime gameTime, Vector2 targetPosition)
         {
-            // Smoothly interpolate towards the target position
-            Position = Vector2.Lerp(Position, targetPosition - new Vector2(Viewport.Width / 2, Viewport.Height / 2), SmoothFactor);
+            // Smoothly interpolate towards the target x-position only
+            float targetX = targetPosition.X - (Viewport.Width / 2);
+            Position = new Vector2(
+                MathHelper.Lerp(Position.X, targetX, SmoothFactor), 
+                Position.Y // Keep the Y position constant
+            );
 
-            // Clamp the camera position within the level bounds
+            // Clamp the camera position within the level bounds (only for X)
             float cameraX = MathHelper.Clamp(Position.X, 0, _levelBounds.X - Viewport.Width);
-            float cameraY = MathHelper.Clamp(Position.Y, 0, _levelBounds.Y - Viewport.Height);
-            Position = new Vector2(cameraX, cameraY);
+            Position = new Vector2(cameraX, Position.Y); // Y remains unchanged
 
             UpdateTransform();
         }
+
 
         private void UpdateTransform()
         {
