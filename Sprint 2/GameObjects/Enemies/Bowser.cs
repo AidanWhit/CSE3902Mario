@@ -1,7 +1,6 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint_2.Interfaces;
-using Sprint_2.Interfaces;
 using Sprint_2.Sprites.EnemySprites;
 using System;
 using System.Collections.Generic;

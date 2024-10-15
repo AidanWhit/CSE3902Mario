@@ -5,8 +5,6 @@ using System.Collections.Generic;
 using Sprint_2.Sprites;
 using Sprint_2.Interfaces;
 using Sprint_2.GameObjects;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using Sprint_2.LevelLoader;
 using System.ComponentModel.DataAnnotations;
 
