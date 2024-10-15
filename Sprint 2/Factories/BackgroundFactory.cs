@@ -5,8 +5,8 @@ using System.Collections.Generic;
 using Sprint_2.Sprites;
 using Sprint_2.Interfaces;
 using Sprint_2.GameObjects;
-using Sprint_2.LevelLoader;
 using System.ComponentModel.DataAnnotations;
+using Sprint_2.LevelManager;
 
 namespace Sprint_2.Factories
 {

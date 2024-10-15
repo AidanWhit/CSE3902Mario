@@ -21,7 +21,7 @@ namespace Sprint_2.GameObjects
         {
             Position = position;
             blockState = GetBlockState(name);
-            BlockFactory.Instance.AddBlockToBlocksList(this);
+            //BlockFactory.Instance.AddBlockToBlocksList(this);
         }
 
 

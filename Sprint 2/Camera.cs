@@ -18,6 +18,7 @@ namespace Sprint_2.ScreenCamera
             Viewport = viewport;
             _levelBounds = levelBounds;
             Position = Vector2.Zero;
+            //Position = new Vector2(Game1.Instance.mario.XPos, Game1.Instance.mario.YPos);
             UpdateTransform();
         }
 
@@ -25,14 +26,16 @@ namespace Sprint_2.ScreenCamera
         {
             // Smoothly interpolate towards the target x-position only
             float targetX = targetPosition.X - (Viewport.Width / 2);
+            targetX = Game1.Instance.mario.XPos - (Viewport.Width / 8f);
             Position = new Vector2(
                 MathHelper.Lerp(Position.X, targetX, SmoothFactor), 
-                Position.Y // Keep the Y position constant
+                Position.Y
+                //Position.Y // Keep the Y position constant
             );
 
             // Clamp the camera position within the level bounds (only for X)
             float cameraX = MathHelper.Clamp(Position.X, 0, _levelBounds.X - Viewport.Width);
-            Position = new Vector2(cameraX, Position.Y); // Y remains unchanged
+            Position = new Vector2(cameraX, 240);
 
             UpdateTransform();
         }
@@ -40,7 +43,7 @@ namespace Sprint_2.ScreenCamera
 
         private void UpdateTransform()
         {
-            Transform = Matrix.CreateTranslation(-Position.X, -Position.Y, 0);
+            Transform = Matrix.CreateTranslation(-Position.X, -Position.Y, 0) * Matrix.CreateScale(2f, 2f, 1);
         }
 
         public void Reset()

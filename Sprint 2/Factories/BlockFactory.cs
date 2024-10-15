@@ -5,7 +5,7 @@ using Microsoft.Xna.Framework.Input;
 using Sprint_2.GameObjects;
 using Sprint_2.Interfaces;
 using Sprint_2.Sprites;
-using Sprint_2.LevelLoader;
+using Sprint_2.LevelManager;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Reflection.Metadata.Ecma335;
@@ -52,7 +52,7 @@ namespace Sprint_2.Factories
         public ISprite GetBlock(string id)
         {
             blockDictionary.TryGetValue(id, out Rectangle[] frames);
-            return new FrameArrayFormattedSprite(blockSpriteSheet, frames, 3);
+            return new FrameArrayFormattedSprite(blockSpriteSheet, frames, 1);
         }
 
 

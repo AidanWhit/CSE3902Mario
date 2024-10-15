@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Sprint_2.Interfaces;
 using Microsoft.Xna.Framework.Input;
 using Sprint_2.Factories;
-using Sprint_2.LevelLoader;
+using Sprint_2.LevelManager;
 using Sprint_2.Constants;
 using System.Diagnostics;
 using System.Linq.Expressions;

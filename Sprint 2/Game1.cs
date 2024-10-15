@@ -10,10 +10,8 @@ using Sprint_2.Controls;
 using Sprint_2.Factories;
 using Sprint_2.Interfaces;
 using Sprint_2.Sprites;
-using Sprint_2.GameObjects;
-using Sprint_2.Collision;
-using Sprint_2.LevelLoader;
 using Sprint_2.ScreenCamera;
+using Sprint_2.LevelManager;
 
 
 namespace Sprint_2
@@ -48,6 +46,7 @@ namespace Sprint_2
 
         private Camera camera;
         private Vector2 levelBounds;
+        private LevelLoader levelLoader;
 
         private Game1()
         {
@@ -61,10 +60,10 @@ namespace Sprint_2
             keyControl = new KeyboardControl();
             
             // Set the level bounds (adjust these values to match your level size)
-            levelBounds = new Vector2(5000, 1080); 
+            levelBounds = new Vector2(5000, 1080);
 
             // Initialize the camera with the current viewport and level bounds
-            camera = new Camera(GraphicsDevice.Viewport, levelBounds);
+            
 
             base.Initialize();
         }
@@ -74,6 +73,7 @@ namespace Sprint_2
 
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
+            
 
             MarioSpriteFactory.Instance.LoadAllContent(Content);
 
@@ -81,9 +81,14 @@ namespace Sprint_2
             ItemFactory.Instance.LoadItemContent(Content);
 
 
-            mario = new Player(new Vector2(400, 100));
+            mario = new Player(new Vector2(100, 100));
+            camera = new Camera(GraphicsDevice.Viewport, levelBounds);
 
             objectManager = new GameObjectManager(mario);
+
+            levelLoader = new LevelLoader(@"LevelManager\level-1_data_pretty.xml", objectManager);
+            
+
             ItemFactory.Instance.SetGameObjectManager(objectManager);
             BlockFactory.Instance.SetGameObjectManager(objectManager);
             EnemyFactory.Instance.SetGameObjectManager(objectManager);
@@ -92,25 +97,25 @@ namespace Sprint_2
             Texture2D texture = Content.Load<Texture2D>("marioSpriteSheet");
 
             BlockFactory.Instance.LoadAllContent(Content);
-            collisionTest = new List<IBlock> {
+            //collisionTest = new List<IBlock> {
 
-                new Block("BrownGround", new Vector2(600, 400)),
-                new Block("BrownGround", new Vector2(600, 352)),
-                new Block("BrownGround", new Vector2(552, 400)),
-                new Block("BrownGround", new Vector2(504, 400)),
-                new Block("BrownGround", new Vector2(456, 400)),
-                new Block("BrownGround", new Vector2(408, 400)),
-                new Block("BrownGround", new Vector2(360, 400)),
-                new Block("BrownGround", new Vector2(312, 400)),
-                new Block("BrownGround", new Vector2(264, 400)),
-                new Block("BrownGround", new Vector2(216, 400)),
-                new Block("BrownGround", new Vector2(168, 400)),
-                new Block("BrownGround", new Vector2(120, 400)),
-                new Block("BrownGround", new Vector2(72, 400)),
-                new Block("BrownGround", new Vector2(72, 352)),
-                new Block("BrownBrickWithStar", new Vector2(408, 200)),
-                new Block("Invisible", new Vector2(300, 200))
-            };
+            //    new Block("BrownGround", new Vector2(600, 400)),
+            //    new Block("BrownGround", new Vector2(600, 352)),
+            //    new Block("BrownGround", new Vector2(552, 400)),
+            //    new Block("BrownGround", new Vector2(504, 400)),
+            //    new Block("BrownGround", new Vector2(456, 400)),
+            //    new Block("BrownGround", new Vector2(408, 400)),
+            //    new Block("BrownGround", new Vector2(360, 400)),
+            //    new Block("BrownGround", new Vector2(312, 400)),
+            //    new Block("BrownGround", new Vector2(264, 400)),
+            //    new Block("BrownGround", new Vector2(216, 400)),
+            //    new Block("BrownGround", new Vector2(168, 400)),
+            //    new Block("BrownGround", new Vector2(120, 400)),
+            //    new Block("BrownGround", new Vector2(72, 400)),
+            //    new Block("BrownGround", new Vector2(72, 352)),
+            //    new Block("BrownBrickWithStar", new Vector2(408, 200)),
+            //    new Block("Invisible", new Vector2(300, 200))
+            //};
 
             BackgroundFactory.Instance.LoadAllContent(Content);
 
@@ -133,15 +138,17 @@ namespace Sprint_2
             keyControl.RegisterOnPressCommand(Keys.S, new MarioOnCrouchPress(mario));
 
             //EnemyFactory.Instance.AddKoopa(new Vector2(360, 250));
-            EnemyFactory.Instance.AddGoomba(new Vector2(550, 20));
+            //EnemyFactory.Instance.AddGoomba(new Vector2(550, 20));
             //EnemyFactory.Instance.AddKoopa(new Vector2(200, 300));
 
             // Load backgrounds
             //BackgroundFactory.Instance.AddLevelImage(new Vector2(0, 0));
-            BackgroundFactory.Instance.AddCloud1(new Vector2(0, 0));
-            BackgroundFactory.Instance.AddCloud2(new Vector2(600, 0));
+            //BackgroundFactory.Instance.AddCloud1(new Vector2(0, 0));
+            //BackgroundFactory.Instance.AddCloud2(new Vector2(600, 0));
 
-            IPipe pipe = new Pipe(new Vector2(200, 308), "SmallPipe");
+            //IPipe pipe = new Pipe(new Vector2(200, 308), "SmallPipe");
+
+            levelLoader.LoadLevel();
 
         }
         protected override void UnloadContent()
@@ -162,13 +169,13 @@ namespace Sprint_2
             objectManager.Update(gameTime);
 
             // Collision detection
-            foreach (IBlock block in collisionTest){
-                //block.Update(gameTime);
-                if (mario.GetHitBox().Intersects(block.GetHitBox()))
-                {
-                    BlockCollisionResponse.BlockReponseForPlayer(mario, block);
-                }
-            }
+            //foreach (IBlock block in collisionTest){
+            //    //block.Update(gameTime);
+            //    if (mario.GetHitBox().Intersects(block.GetHitBox()))
+            //    {
+            //        BlockCollisionResponse.BlockReponseForPlayer(mario, block);
+            //    }
+            //}
 
             
 
@@ -182,7 +189,7 @@ namespace Sprint_2
             spriteBatch.Begin(transformMatrix: camera.Transform);
 
           //  mario.Draw(spriteBatch, Color.White);
-            HitBoxRectangle.DrawRectangle(spriteBatch, mario.GetHitBox(), Color.Black, 1);
+            //HitBoxRectangle.DrawRectangle(spriteBatch, mario.GetHitBox(), Color.Black, 1);
             
             /* Added for testing */
             objectManager.Draw(spriteBatch, null, Color.White);

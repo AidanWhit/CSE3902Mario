@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 using Sprint_2.Sprites.EnemySprites;
-using Sprint_2.LevelLoader;
+using Sprint_2.LevelManager;
 
 namespace Sprint_2.Interfaces
 {
