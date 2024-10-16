@@ -119,49 +119,49 @@ namespace Sprint_2.Factories
         public ISprite CreateGoomba()
         {
             Rectangle[] source = new Rectangle[] { new Rectangle(1, 5, 16, 16), new Rectangle(31, 5, 16, 16) };
-            return new FrameArrayFormattedSprite(enemies, source, 3);
+            return new FrameArrayFormattedSprite(enemies, source, 1);
         }
 
         public ISprite CreateStompedGoomba()
         {
             Rectangle[] source = new Rectangle[] { new Rectangle(61, 9, 16, 8) };
-            return new FrameArrayFormattedSprite(enemies, source, 3);
+            return new FrameArrayFormattedSprite(enemies, source, 1);
         }
 
         public ISprite CreateFlippedGoomba()
         {
             Rectangle[] source = new Rectangle[] { new Rectangle(1, 264, 16, 16), new Rectangle(19, 264, 16, 16) };
-            return new FrameArrayFormattedSprite(enemies, source, 3);
+            return new FrameArrayFormattedSprite(enemies, source, 1);
         }
 
         public ISprite CreateLeftFacingKoopa()
         {
             Rectangle[] source = new Rectangle[] { new Rectangle(181, 1, 16, 23), new Rectangle(151, 1, 16, 24) };
-            return new FrameArrayFormattedSprite (enemies, source, 3);
+            return new FrameArrayFormattedSprite (enemies, source, 1);
         }
 
         public ISprite CreateRightFacingKoopa()
         {
             Rectangle[] source = new Rectangle[] { new Rectangle(211, 1, 16, 23), new Rectangle(241, 1, 16, 24) };
-            return new FrameArrayFormattedSprite(enemies, source, 3);
+            return new FrameArrayFormattedSprite(enemies, source, 1);
         }
 
         public ISprite CreateKoopaShell()
         {
             Rectangle[] source = new Rectangle[] { new Rectangle(361, 6, 16, 14) };
-            return new FrameArrayFormattedSprite(enemies, source, 3);
+            return new FrameArrayFormattedSprite(enemies, source, 1);
         }
 
         public ISprite CreateFlippedKoopaShell()
         {
             Rectangle[] source = new Rectangle[] { new Rectangle(37, 264, 16, 13) };
-            return new FrameArrayFormattedSprite(enemies, source, 3);
+            return new FrameArrayFormattedSprite(enemies, source, 1);
         }
 
         public ISprite CreateKoopaShellWithFeet()
         {
             Rectangle[] source = new Rectangle[] { new Rectangle(331, 5, 16, 15) };
-            return new FrameArrayFormattedSprite(enemies, source, 3);
+            return new FrameArrayFormattedSprite(enemies, source, 1);
         }
 
         public IEnemy CreateKoopa(Vector2 position)

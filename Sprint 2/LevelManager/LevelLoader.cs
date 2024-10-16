@@ -78,57 +78,11 @@ namespace Sprint_2.LevelManager
                     //TODO: Fix
                     MakeItem(name, locationX, locationY, new Block("ItemWithCoin", new Vector2(locationX, locationY)));
                     break;
-                case "Floor":
-                    MakeFloor(name, locationX, locationY);
-                    break;
-                //Do we need these?
-                //case "Column":
-                //    MakeColumn(name, locationX, locationY);
-                //    break;
-                //case "PipeColumn":
-                //    MakePipeColumn(name, locationX, locationY);
-                //    break;
                 default:
                     throw new InvalidOperationException("Game Object type: \"" + type + "\" doesn't exist.");
 
             }
         }
-
-        private void MakeFloor(string length, int locationX, int locationY)
-        {
-            int numOfFloorBlocks = Convert.ToInt32(length);
-            int nextBlockStart = locationX;
-            for (int i = 0; i < numOfFloorBlocks; i++)
-            {
-                gameObjectManager.AddBlock(new Block("BrownGround", new Vector2(locationX + nextBlockStart, locationY)));
-                nextBlockStart += 32;
-            }
-        }
-
-        //private void MakeColumn(string height, int locationX, int locationY, Block.BlockType blockType)
-        //{
-        //    int numOfBlocksTall = Convert.ToInt32(height);
-        //    int columnWidth = 32;
-        //    int columnHeight = 32 * numOfBlocksTall;
-        //    int nextBlockStartHeight = locationY;
-        //    int columnYLocation = locationY - columnHeight + 32;
-        //    for (int i = 0; i < numOfBlocksTall; i++)
-        //    {
-        //        gameObjectManager.individualFloorBlock.Add(new Block(locationX, nextBlockStartHeight, blockType));
-        //        nextBlockStartHeight -= 32;
-        //    }
-        //    gameObjectManager.BigFloorRectangles.Add(new ObstacleCombinedHitBox(locationX, columnYLocation, columnWidth, columnHeight));
-        //}
-
-        //private void MakePipeColumn(string height, int locationX, int locationY)
-        //{
-        //    int pipeHeight = Convert.ToInt32(height);
-        //    int columnWidth = 56;
-        //    int columnHeight = 32 * pipeHeight;
-        //    int columnYLocation = locationY - columnHeight + 32;
-        //    gameObjectManager.individualFloorBlock.Add(new PipeExtension(locationX, columnYLocation, pipeHeight));
-        //    gameObjectManager.BigFloorRectangles.Add(new ObstacleCombinedHitBox(locationX, columnYLocation, columnWidth, columnHeight));
-        //}
 
         private void MakePlayer(string name, int locationX, int locationY)
         {
@@ -179,37 +133,34 @@ namespace Sprint_2.LevelManager
             switch (name)
             {
                 case "BrownGround":
-                    gameObjectManager.AddBlock(new Block("BrownGround", new Vector2(locationX, locationY)));
                     gameObjectManager.blocks[column].Add(new Block("BrownGround", new Vector2(locationX, locationY)));
                     break;
                 case "BrownBrick":
-                    gameObjectManager.AddBlock(new Block("BrownBrick", new Vector2(locationX, locationY)));
                     gameObjectManager.blocks[column].Add(new Block("BrownBrick", new Vector2(locationX, locationY)));
                     break;
                 case "BlueBrick":
-                    gameObjectManager.AddBlock(new Block("BlueBrick", new Vector2(locationX, locationY)));
-                    gameObjectManager.blocks[column].Add(new Block("BlueGround", new Vector2(locationX, locationY)));
+                    gameObjectManager.blocks[column].Add(new Block("BlueBrick", new Vector2(locationX, locationY)));
                     break;
                 case "BlueGround":
-                    gameObjectManager.AddBlock(new Block("BlueGround", new Vector2(locationX, locationY)));
+                    gameObjectManager.blocks[column].Add(new Block("BlueGround", new Vector2(locationX, locationY)));
                     break;
                 case "ItemWithCoin":
-                    gameObjectManager.AddBlock(new Block("ItemWithCoin", new Vector2(locationX, locationY)));
+                    gameObjectManager.blocks[column].Add(new Block("ItemWithCoin", new Vector2(locationX, locationY)));
                     break;
                 case "ItemWithPowerUp":
-                    gameObjectManager.AddBlock(new Block("ItemWithPowerUp", new Vector2(locationX, locationY)));
+                    gameObjectManager.blocks[column].Add(new Block("ItemWithPowerUp", new Vector2(locationX, locationY)));
                     break;
                 case "Chiseled":
-                    gameObjectManager.AddBlock(new Block("Chiseled", new Vector2(locationX, locationY)));
+                    gameObjectManager.blocks[column].Add(new Block("Chiseled", new Vector2(locationX, locationY)));
                     break;
                 case "BrownBrickWithStar":
-                    gameObjectManager.AddBlock(new Block("BrownBrickWithStar", new Vector2(locationX, locationY)));
+                    gameObjectManager.blocks[column].Add(new Block("BrownBrickWithStar", new Vector2(locationX, locationY)));
                     break;
                 case "BrownBrickWithCoins":
-                    gameObjectManager.AddBlock(new Block("BrownBrickWithCoins", new Vector2(locationX, locationY)));
+                    gameObjectManager.blocks[column].Add(new Block("BrownBrickWithCoins", new Vector2(locationX, locationY)));
                     break;
                 case "Invisible":
-                    gameObjectManager.AddBlock(new Block("Invisible", new Vector2(locationX, locationY)));
+                    gameObjectManager.blocks[column].Add(new Block("Invisible", new Vector2(locationX, locationY)));
                     break;
                 default:
                     throw new InvalidOperationException("Block type: \"" + name + "\" doesn't exist");

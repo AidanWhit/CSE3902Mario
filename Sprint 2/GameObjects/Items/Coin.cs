@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Sprint_2.Constants;
 using Sprint_2.Factories;
 using Sprint_2.Interfaces;
 using Sprint_2.LevelManager;
@@ -34,9 +35,8 @@ namespace Sprint_2.GameObjects.ItemSprites
 
         public void Update(GameTime gameTime)
         {
-            //Position = new Vector2(Position.X, Position.Y + heightIncrease);
             YPos += heightIncrease;
-            if (YPos < originalHeight - 80)
+            if (YPos < originalHeight - ItemPhysicsConstants.coinHeightIncrease)
             {
                 heightIncrease *= -1;
             } 

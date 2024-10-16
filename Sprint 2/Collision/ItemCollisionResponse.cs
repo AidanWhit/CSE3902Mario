@@ -29,7 +29,11 @@ namespace Sprint_2.Collision
                 player.RemainingLives++;
                 
             }
-            item.DeleteItem(null);
+            if (item is not Coin)
+            {
+                item.DeleteItem(null);
+            }
+            
         }
     }
 }

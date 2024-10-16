@@ -22,7 +22,6 @@ namespace Sprint_2.Collision
 
             Rectangle enemyHitBox = enemy.GetHitBox();
             Rectangle playerHitBox = player.GetHitBox();
-
             (collisionIntersection, side) = CollisionSideDetector.DetermineCollisionSide(enemyHitBox, playerHitBox);
             if (!enemy.Flipped)
             {

@@ -24,8 +24,6 @@ namespace Sprint_2.GameObjects
             XPos = location.X;
             YPos = location.Y;
             sprite = BlockFactory.Instance.GetBlock(pipeSize);
-
-            BlockFactory.Instance.AddPipeToPipesList(this);
         }
 
         public void Update(GameTime gameTime)

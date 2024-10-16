@@ -56,7 +56,6 @@ namespace Sprint_2.Sprites.EnemySprites
         public void Draw(SpriteBatch spriteBatch, Color color)
         {
             goombaState.Draw(spriteBatch, new Vector2(XPos, YPos), color);
-            HitBoxRectangle.DrawRectangle(spriteBatch, GetHitBox(), color, 1);
         }
 
         

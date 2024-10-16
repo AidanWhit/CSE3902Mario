@@ -43,34 +43,34 @@ namespace Sprint_2.Factories
         public ISprite CreateRedMushroom()
         {
             source = new Rectangle[] { new Rectangle(184, 34, 16, 16) };
-            return new FrameArrayFormattedSprite(texture, source, 3);
+            return new FrameArrayFormattedSprite(texture, source, 1);
         }
 
         public ISprite CreateGreenMushroom()
         {
             source = new Rectangle[] { new Rectangle(214, 34, 16, 16)};
-            return new FrameArrayFormattedSprite(texture, source, 3);
+            return new FrameArrayFormattedSprite(texture, source, 1);
         }
 
         public ISprite CreateFlower()
         {
             source = new Rectangle[] { new Rectangle(4, 64, 16, 16), new Rectangle(34, 64, 16, 16), 
                 new Rectangle(64, 64, 16, 16), new Rectangle(94, 64, 16, 16) };
-            return new FrameArrayFormattedSprite(texture, source, 3);
+            return new FrameArrayFormattedSprite(texture, source, 1);
         }
 
         public ISprite CreateStar()
         {
             source = new Rectangle[] { new Rectangle(5, 94, 14, 16), new Rectangle(35, 94, 14, 16),
                 new Rectangle(65, 94, 14, 16), new Rectangle(95, 94, 14, 16)};
-            return new FrameArrayFormattedSprite(texture, source, 3);
+            return new FrameArrayFormattedSprite(texture, source, 1);
         }
 
         public ISprite CreateCoin()
         {
             source = new Rectangle[] { new Rectangle(128, 95, 8, 14), new Rectangle(160, 95, 4, 14),
                 new Rectangle(191, 95, 1, 14),  new Rectangle(220, 95, 4, 14)};
-            return new FrameArrayFormattedSprite(texture, source, 3);
+            return new FrameArrayFormattedSprite(texture, source, 1);
         }
 
         /* Methods below added for testing */

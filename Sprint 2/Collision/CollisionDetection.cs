@@ -1,55 +1,138 @@
-﻿using System;
+﻿using Microsoft.Xna.Framework;
+using Sprint_2.GameObjects.Enemies.EnemySprites;
+using Sprint_2.Interfaces;
+using Sprint_2.LevelManager;
+using Sprint_2.Sprites;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace Sprint_2.Collision
 {
     public class CollisionDetection
     {
-        /* TODO: things this needs to do:
-            1. sort static collideables into columns
-            2. reject obvious non-collisions using rectangle.intersects (returns a boolean)
-            3a. check list of movers against all collideables in adjacent columns
-            3b. check direction of collision using rectangle.intersect (returns a rectangle)  
-
-
-            COLLISION RESPONSE:
-            - players collide with blocks, items, and enemies
-            - enemies collide with blocks, enemies
-            - items collide with blocks
-
-            table wise (xml file loaded by level loader)
-            movers      reciever        side    moverCommand    recieverCommand2
-
-            player      blockWithItem   right   moveMarioRight  null
-                                        left    moveMarioLeft   null
-                                        top     moveMarioUp     null
-                                        bottom  marioHitBlock   blockHit
-
-            player      blockNoItem     right   moveMarioRight  null
-                                        left    moveMarioLeft   null
-                                        top     moveMarioUp     null
-                                        bottom  marioHitBlock   blockHit
-
-            player      items           all     marioPowerUp    itemDelete
-
-            player      enemy           not top marioTakeDamage null
-                                        top     marioBounce     enemyTakeDamage
-
-            enemy       blocks          right   moveEnemyRight  null
-                                        left    moveEnemyLeft   null
-                                        top     moveEnemyUp     null
-                                        bottom  moveEnemyDown   null
-
-            enemy       enemy           any     changeDirection changeDirection
-
-            items       block           right   changeDirection null
-                                        left    changeDirection null
-                                        top     moveItemUp      null
-                                        bottom  moveItemDown    null
         
-        */
+        private GameObjectManager gameObjectManager;
+        private IPlayer player;
+        public CollisionDetection(GameObjectManager gameObjectManager)
+        {
+            this.gameObjectManager = gameObjectManager;
+        }
+
+        public void DetectCollisions()
+        {
+            player = Game1.Instance.mario;
+            int marioColumn = player.XPos / 16;
+            List<IBlock> blocks = gameObjectManager.GetNearbyBlocks(marioColumn);
+            foreach (IBlock block in blocks.ToList())
+            {
+                if (player.GetHitBox().Intersects(block.GetHitBox()))
+                {
+                    BlockCollisionResponse.BlockReponseForPlayer(player, block);
+                }
+            }
+
+            foreach (IItem item in gameObjectManager.Items.ToList())
+            {
+                int itemColumn = (int)(item.XPos / 16);
+                blocks = gameObjectManager.GetNearbyBlocks(itemColumn);
+                foreach(IBlock block in blocks.ToList())
+                {
+                    if (item.GetHitBox().Intersects(block.GetHitBox()))
+                    {
+                        BlockCollisionResponse.BlockCollisionResponseForItem(item, block);
+                    }
+                }
+                foreach(IPipe pipe in gameObjectManager.Pipes)
+                {
+                    if (item.GetHitBox().Intersects(pipe.GetHitBox()))
+                    {
+                        PipeCollisionResponse.PipeResponseForItem(item, pipe);
+                    }
+                }
+                if (item.GetHitBox().Intersects(player.GetHitBox()))
+                {
+                    ItemCollisionResponse.ItemResponseForPlayer(item, player);
+                }
+            }
+
+            foreach (IProjectile fireball in player.fireballs)
+            {
+                int fireballColumn = (int)(fireball.XPos / 16);
+                blocks = gameObjectManager.GetNearbyBlocks(fireballColumn);
+                foreach(IBlock block in blocks)
+                {
+                    if (fireball.GetHitBox().Intersects(block.GetHitBox()))
+                    {
+                        BlockCollisionResponse.BlockResponseForFireball(fireball, block);
+                    }
+                }
+                foreach (IPipe pipe in gameObjectManager.Pipes)
+                {
+                    if (fireball.GetHitBox().Intersects(pipe.GetHitBox()))
+                    {
+                        PipeCollisionResponse.PipeResponseForFireBall(pipe, fireball);
+                    }
+                }
+                foreach (IEnemy enemy in gameObjectManager.Enemies)
+                {
+                    if (fireball.GetHitBox().Intersects(enemy.GetHitBox()))
+                    {
+                        FireballCollisionResponder.FireballResponderForEnemies(fireball, enemy);
+                    }
+                }
+            }
+
+            foreach (IPipe pipe in gameObjectManager.Pipes)
+            { 
+                if (player.GetHitBox().Intersects(pipe.GetHitBox()))
+                {
+                    PipeCollisionResponse.PipeResponseForPlayer(player, pipe);
+                }
+            }
+
+            foreach (IEnemy enemy in gameObjectManager.Enemies.ToList())
+            {
+                int enemyColumn = (int)(enemy.XPos / 16);
+                blocks = gameObjectManager.GetNearbyBlocks(enemyColumn);
+                foreach (IBlock block in blocks)
+                {
+                    if (enemy.GetHitBox().Intersects(block.GetHitBox()))
+                    {
+                        BlockCollisionResponse.BlockResponseForEnemy(enemy, block);
+                    }
+                }
+                foreach (IPipe pipe in gameObjectManager.Pipes)
+                {
+                    if (enemy.GetHitBox().Intersects(pipe.GetHitBox()))
+                    {
+                        PipeCollisionResponse.PipeResponseForEnemy(enemy, pipe);
+                    }
+                }
+                foreach (IEnemy enemy2 in gameObjectManager.Enemies.ToList())
+                {
+                    if (!enemy.Equals(enemy2) && enemy.GetHitBox().Intersects(enemy2.GetHitBox()))
+                    {
+                        EnemyCollisionResponder.EnemyResponseForEnemy(enemy, enemy2);
+                    }
+                }
+                if (enemy.GetHitBox().Intersects(player.GetHitBox()))
+                {
+                    if (enemy is Shell)
+                    {
+                        EnemyCollisionResponder.ShellResponseForPlayer(enemy, player);
+                    }
+                    else
+                    {
+                        EnemyCollisionResponder.EnemyResponseForPlayer(enemy, player);
+                    }
+                }
+            }
+        }
     }
 }

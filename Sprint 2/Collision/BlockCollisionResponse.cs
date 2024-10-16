@@ -44,12 +44,14 @@ namespace Sprint_2.Collision
                 {
                     if (!player.isJumping)
                     {
-                        player.YPos -= collisionIntersection.Height;
+                        player.YPos = blockHitBox.Top - playerHitBox.Height;
+                        //player.YPos -= collisionIntersection.Height;
                         player.PlayerVelocity = new Vector2(player.PlayerVelocity.X, MarioPhysicsConstants.gravity);
                     }
                     if (player.isFalling)
                     {
-                        player.YPos -= collisionIntersection.Height;
+                        player.YPos = blockHitBox.Top - playerHitBox.Height;
+                        //player.YPos -= collisionIntersection.Height;
                         player.Idle();
                         player.PhysicsState = new Grounded(player);
                     }

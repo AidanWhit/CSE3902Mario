@@ -12,6 +12,7 @@ using Sprint_2.Interfaces;
 using Sprint_2.Sprites;
 using Sprint_2.ScreenCamera;
 using Sprint_2.LevelManager;
+using Sprint_2.GameObjects;
 
 
 namespace Sprint_2
@@ -97,26 +98,6 @@ namespace Sprint_2
             Texture2D texture = Content.Load<Texture2D>("marioSpriteSheet");
 
             BlockFactory.Instance.LoadAllContent(Content);
-            //collisionTest = new List<IBlock> {
-
-            //    new Block("BrownGround", new Vector2(600, 400)),
-            //    new Block("BrownGround", new Vector2(600, 352)),
-            //    new Block("BrownGround", new Vector2(552, 400)),
-            //    new Block("BrownGround", new Vector2(504, 400)),
-            //    new Block("BrownGround", new Vector2(456, 400)),
-            //    new Block("BrownGround", new Vector2(408, 400)),
-            //    new Block("BrownGround", new Vector2(360, 400)),
-            //    new Block("BrownGround", new Vector2(312, 400)),
-            //    new Block("BrownGround", new Vector2(264, 400)),
-            //    new Block("BrownGround", new Vector2(216, 400)),
-            //    new Block("BrownGround", new Vector2(168, 400)),
-            //    new Block("BrownGround", new Vector2(120, 400)),
-            //    new Block("BrownGround", new Vector2(72, 400)),
-            //    new Block("BrownGround", new Vector2(72, 352)),
-            //    new Block("BrownBrickWithStar", new Vector2(408, 200)),
-            //    new Block("Invisible", new Vector2(300, 200))
-            //};
-
             BackgroundFactory.Instance.LoadAllContent(Content);
 
 
@@ -137,18 +118,11 @@ namespace Sprint_2
             keyControl.RegisterOnReleaseCommand(Keys.S, new MarioOnCrouchRelease(mario));
             keyControl.RegisterOnPressCommand(Keys.S, new MarioOnCrouchPress(mario));
 
-            //EnemyFactory.Instance.AddKoopa(new Vector2(360, 250));
-            //EnemyFactory.Instance.AddGoomba(new Vector2(550, 20));
-            //EnemyFactory.Instance.AddKoopa(new Vector2(200, 300));
 
-            // Load backgrounds
-            //BackgroundFactory.Instance.AddLevelImage(new Vector2(0, 0));
-            //BackgroundFactory.Instance.AddCloud1(new Vector2(0, 0));
-            //BackgroundFactory.Instance.AddCloud2(new Vector2(600, 0));
-
-            //IPipe pipe = new Pipe(new Vector2(200, 308), "SmallPipe");
+            IPipe pipe = new Pipe(new Vector2(200, 400), "SmallPipe");
 
             levelLoader.LoadLevel();
+            objectManager.Pipes.Add(pipe);
 
         }
         protected override void UnloadContent()

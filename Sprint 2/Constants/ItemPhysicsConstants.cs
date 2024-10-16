@@ -12,5 +12,6 @@ namespace Sprint_2.Constants
         public static float maxFallVelocity = 300f;
         public static Vector2 fallVelocity = new Vector2(0, 20);
         public static float bounceVelocity = -500f;
+        public static float coinHeightIncrease = 40;
     }
 }

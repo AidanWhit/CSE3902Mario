@@ -65,9 +65,9 @@ namespace Sprint_2.Factories
             gameObjectManager.AddBlock(block);
         }
 
-        public void RemoveBlockFromList(IBlock block)
+        public void RemoveBlockFromList(IBlock block, int column)
         {
-            gameObjectManager.RemoveBlock(block);
+            gameObjectManager.RemoveBlock(block, column);
         }
 
         public void AddPipeToPipesList(IPipe pipe)

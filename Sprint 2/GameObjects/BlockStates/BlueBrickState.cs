@@ -32,8 +32,9 @@ namespace Sprint_2.GameObjects.BlockStates
             /* SuperMario/Fire Mario hit the block*/
             else
             {
+                int column = (int)block.Position.X / 16;
                 /* Call remove object on gameobject manager to remove the block from being able to be drawn/updated */
-                BlockFactory.Instance.RemoveBlockFromList(block);
+                BlockFactory.Instance.RemoveBlockFromList(block, column);
 
             }
         }
