@@ -59,6 +59,11 @@ namespace Sprint_2.GameObjects.Enemies.EnemySprites
 
             XPos += (float)(Velocity.X * gameTime.ElapsedGameTime.TotalSeconds);
             YPos += (float)(Velocity.Y * gameTime.ElapsedGameTime.TotalSeconds);
+            
+            if (YPos > EnemyConstants.despawnHeight)
+            {
+                EnemyFactory.Instance.RemoveEnemyFromObjectList(this);
+            }
 
             sprite.Update(gameTime);
         }

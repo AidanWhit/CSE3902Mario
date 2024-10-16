@@ -5,6 +5,7 @@ using Sprint_2.Factories;
 using Sprint_2.GameObjects.Enemies.EnemyStates;
 using Sprint_2.Interfaces;
 using Sprint_2.Interfaces;
+using System;
 using System.Linq.Expressions;
 
 
@@ -18,8 +19,8 @@ namespace Sprint_2.GameObjects.Enemies.EnemySprites
         public Vector2 Velocity { get; set; }
 
         private KoopaStateMachine koopaState;
-        
 
+        private bool startBehavior = false;
         public Koopa(Vector2 initialPosition)
         {
             XPos = initialPosition.X;
@@ -31,11 +32,16 @@ namespace Sprint_2.GameObjects.Enemies.EnemySprites
 
         public void Update(GameTime gameTime)
         {
-            if (YPos > EnemyConstants.despawnHeight)
+            startBehavior = UpdateStartBehavior();
+            if (startBehavior)
             {
-                EnemyFactory.Instance.RemoveEnemyFromObjectList(this);
+                if (YPos > EnemyConstants.despawnHeight)
+                {
+                    EnemyFactory.Instance.RemoveEnemyFromObjectList(this);
+                }
+                koopaState.Update(gameTime);
             }
-            koopaState.Update(gameTime);
+            
         }
 
         public void Draw(SpriteBatch spriteBatch, Color color)
@@ -43,12 +49,19 @@ namespace Sprint_2.GameObjects.Enemies.EnemySprites
             koopaState.Draw(spriteBatch, new Vector2(XPos, YPos), color);
         }
 
-        /* TODO: Implement actual hitbox */
         public Rectangle GetHitBox()
         {
             return koopaState.GetHitBox(new Vector2(XPos, YPos));
         }
-
+        public bool UpdateStartBehavior()
+        {
+            float distToPlayer = Math.Abs(Game1.Instance.mario.XPos - XPos);
+            if (distToPlayer < EnemyConstants.distUntilBehaviorStarts)
+            {
+                startBehavior = true;
+            }
+            return startBehavior;
+        }
         public void TakeFireballDamage()
         {
             Flipped = true;

@@ -59,6 +59,12 @@ namespace Sprint_2.GameObjects.ItemSprites
 
                 XPos += speed;
             }
+
+            if (YPos > EnemyConstants.despawnHeight)
+            {
+                ItemFactory.Instance.RemoveFromItemsList(this);
+            }
+
             sprite.Update(gameTime);
         }
 

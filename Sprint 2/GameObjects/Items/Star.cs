@@ -20,7 +20,7 @@ namespace Sprint_2.GameObjects.ItemSprites
         public Vector2 Velocity { get; set; }
         private ISprite sprite;
 
-        private float XSpeed = 2f;
+        private float XSpeed = 1f;
         private IBlock block;
         public Star(Vector2 initialPosition, IBlock sourceBlock)
         {

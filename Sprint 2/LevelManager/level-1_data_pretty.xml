@@ -148,7 +148,7 @@
     </Item>
     <Item>
       <ObjectType>Block</ObjectType>
-      <ObjectName>BrownBrick</ObjectName>
+      <ObjectName>BrownBrickWithStar</ObjectName>
       <Location>1616 384</Location>
     </Item>
     <Item>

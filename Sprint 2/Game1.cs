@@ -119,10 +119,8 @@ namespace Sprint_2
             keyControl.RegisterOnPressCommand(Keys.S, new MarioOnCrouchPress(mario));
 
 
-            IPipe pipe = new Pipe(new Vector2(200, 400), "SmallPipe");
-
+           
             levelLoader.LoadLevel();
-            objectManager.Pipes.Add(pipe);
 
         }
         protected override void UnloadContent()

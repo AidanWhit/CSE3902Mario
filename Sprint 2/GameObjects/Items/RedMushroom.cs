@@ -61,6 +61,10 @@ namespace Sprint_2.GameObjects.ItemSprites
                 Velocity *= MarioPhysicsConstants.velocityDecay;
                 XPos += speed;
             }
+            if (YPos > EnemyConstants.despawnHeight)
+            {
+                ItemFactory.Instance.RemoveFromItemsList(this);
+            }
             
             sprite.Update(gameTime);
         }

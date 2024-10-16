@@ -10,8 +10,8 @@ namespace Sprint_2.Constants
     public static class ItemPhysicsConstants
     {
         public static float maxFallVelocity = 300f;
-        public static Vector2 fallVelocity = new Vector2(0, 20);
-        public static float bounceVelocity = -500f;
+        public static Vector2 fallVelocity = new Vector2(0, 8);
+        public static float bounceVelocity = -200f;
         public static float coinHeightIncrease = 40;
     }
 }

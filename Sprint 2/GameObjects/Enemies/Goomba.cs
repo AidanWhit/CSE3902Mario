@@ -7,6 +7,7 @@ using System.Threading;
 using System.Linq.Expressions;
 using Sprint_2.Constants;
 using System.Diagnostics;
+using System;
 
 namespace Sprint_2.Sprites.EnemySprites
 {
@@ -21,6 +22,8 @@ namespace Sprint_2.Sprites.EnemySprites
         private float stompTimer = 0.75f;
         private bool stomped = false;
 
+        private bool startBehavior = false;
+
         public bool Flipped { get; set; } = false;
         public Goomba(Vector2 initialPosition)
         { 
@@ -33,25 +36,39 @@ namespace Sprint_2.Sprites.EnemySprites
 
         public void Update(GameTime gameTime)
         {
-            if (stomped)
+            startBehavior = UpdateStartBehavior();
+            if (startBehavior)
             {
-                stompTimer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
-                if (stompTimer < 0)
+                if (stomped)
                 {
-                    //Remove Goomba from enemies list
-                    EnemyFactory.Instance.RemoveEnemyFromObjectList(this);
+                    stompTimer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
+                    if (stompTimer < 0)
+                    {
+                        //Remove Goomba from enemies list
+                        EnemyFactory.Instance.RemoveEnemyFromObjectList(this);
+                    }
                 }
-            } 
-            else if (Flipped)
-            {
-                if (YPos > 650)
+                else if (Flipped)
                 {
-                    EnemyFactory.Instance.RemoveEnemyFromObjectList(this);
+                    if (YPos > 650)
+                    {
+                        EnemyFactory.Instance.RemoveEnemyFromObjectList(this);
+                    }
                 }
+                goombaState.Update(gameTime);
             }
-            goombaState.Update(gameTime);
+            
         }
 
+        public bool UpdateStartBehavior()
+        {
+            float distToPlayer = Math.Abs(Game1.Instance.mario.XPos - XPos);
+            if (distToPlayer < EnemyConstants.distUntilBehaviorStarts)
+            {
+                startBehavior = true;
+            }
+            return startBehavior;
+        }
 
         public void Draw(SpriteBatch spriteBatch, Color color)
         {

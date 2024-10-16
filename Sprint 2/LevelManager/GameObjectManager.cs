@@ -5,6 +5,7 @@ using Sprint_2.Collision;
 using Sprint_2.Factories;
 using Sprint_2.GameObjects;
 using Sprint_2.GameObjects.Enemies.EnemySprites;
+using Sprint_2.GameObjects.ItemSprites;
 using Sprint_2.Interfaces;
 using Sprint_2.Sprites;
 using Sprint_2.Sprites.EnemySprites;
@@ -24,7 +25,6 @@ namespace Sprint_2.LevelManager
         public Collection<IItem> Items { get; set; } = new Collection<IItem>();
         public Collection<IBlock> Blocks { get; set; } = new Collection<IBlock>();
         public Collection<IStaticSprite> Background { get; set; } = new Collection<IStaticSprite>();
-        public Collection<IGameObject> GameObjects { get; set; } = new Collection<IGameObject>();
         public Collection<IPipe> Pipes { get; set; } = new Collection<IPipe>();
 
         public List<IBlock>[] blocks = new List<IBlock>[210];
@@ -44,17 +44,7 @@ namespace Sprint_2.LevelManager
             {
                 blocks[i] = new List<IBlock>();
             }
-            Enemies.Add(new Goomba(new Vector2(200, 400)));
 
-        }
-
-        public Collection<IGameObject> GetObjects()
-        {
-            return GameObjects;
-        }
-        public Collection<IItem> GetItemsList()
-        {
-            return Items;
         }
         /* Next two methods added for testing */
         public void AddItem(IItem item)
@@ -97,16 +87,6 @@ namespace Sprint_2.LevelManager
             Background.Remove(background);
         }
 
-        public void AddObject(IGameObject gameObject)
-        {
-            GameObjects.Add(gameObject);
-        }
-
-        public void RemoveObject(IGameObject gameObject)
-        {
-            GameObjects.Remove(gameObject);
-        }
-
         public void AddPipe(IPipe pipe)
         {
             Pipes.Add(pipe);
@@ -122,13 +102,17 @@ namespace Sprint_2.LevelManager
         public List<IBlock> GetNearbyBlocks(int column)
         {
             List<IBlock> nearbyBlocks;
-            if (column < 0)
+            if (column < 0 || column >= blocks.Length)
             {
                 nearbyBlocks = new List<IBlock>();
             }
-            else if (column != 0)
+            else if (column != 0 && column < blocks.Length - 1)
             {
                 nearbyBlocks = blocks[column].Concat(blocks[column - 1].Concat(blocks[column + 1])).ToList();
+            }
+            else if (column == blocks.Length - 1)
+            {
+                nearbyBlocks = blocks[column].Concat(blocks[column - 1]).ToList();
             }
             else
             {

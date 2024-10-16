@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -17,5 +18,7 @@ namespace Sprint_2.Constants
         public static float despawnHeight = 650;
 
         public static float shellMoveSpeed = 200f;
+
+        public static float distUntilBehaviorStarts = 320;
     }
 }
