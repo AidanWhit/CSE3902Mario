@@ -117,6 +117,7 @@ namespace Sprint_2
 
             keyControl.RegisterOnReleaseCommand(Keys.S, new MarioOnCrouchRelease(mario));
             keyControl.RegisterOnPressCommand(Keys.S, new MarioOnCrouchPress(mario));
+            keyControl.RegisterOnReleaseCommand(Keys.W, new MarioJumpReleaseCommand(mario));
 
 
            

@@ -132,6 +132,7 @@ namespace Sprint_2.Sprites
         {
             PlayerState.Fall();
             isFalling = true;
+            PhysicsState = new Falling(this);
         }
         public void Idle()
         {
