@@ -2,12 +2,11 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint_2.MarioPhysicsStates;
-using System.Diagnostics;
 using Sprint_2.Constants;
 using Sprint_2.GameObjects.ItemSprites;
-using Sprint_2.GameObjects;
 using Sprint_2.Factories;
 using Sprint_2.GameObjects.BlockStates;
+using System.Diagnostics;
 
 namespace Sprint_2.Collision
 {
@@ -18,10 +17,13 @@ namespace Sprint_2.Collision
             Rectangle collisionIntersection;
             /* TODO: Think of a better way to represent the side to reduce coupling */
             CollisionSideDetector.side side;
+            
 
             Rectangle playerHitBox = player.GetHitBox();
             Rectangle blockHitBox = block.GetHitBox();
+            
             (collisionIntersection, side) = CollisionSideDetector.DetermineCollisionSide(playerHitBox, blockHitBox);
+            //Debug.Write("Side Type: \n" + side.GetType());
 
             if (side == CollisionSideDetector.side.Right)
             {

@@ -12,7 +12,8 @@ using Sprint_2.Interfaces;
 using Sprint_2.Sprites;
 using Sprint_2.ScreenCamera;
 using Sprint_2.LevelManager;
-using Sprint_2.GameObjects;
+using System.Diagnostics;
+using System;
 
 
 namespace Sprint_2
@@ -73,6 +74,7 @@ namespace Sprint_2
 
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
+           
             
 
             MarioSpriteFactory.Instance.LoadAllContent(Content);
@@ -81,12 +83,14 @@ namespace Sprint_2
             BlockFactory.Instance.LoadAllContent(Content);
             BackgroundFactory.Instance.LoadAllContent(Content);
 
-            mario = new Player(new Vector2(100, 100));
+            mario = new Player(new Vector2(100, 400));
+
             camera = new Camera(GraphicsDevice.Viewport, levelBounds);
 
             objectManager = new GameObjectManager(mario);
 
             levelLoader = new LevelLoader(@"LevelManager\level-1_data_pretty.xml", objectManager);
+            levelLoader.LoadCommandDictionary(@"LevelManager\XMLFiles\CollisionTable.xml");
             
 
             ItemFactory.Instance.SetGameObjectManager(objectManager);

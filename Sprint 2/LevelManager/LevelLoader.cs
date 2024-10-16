@@ -9,6 +9,8 @@ using Sprint_2.GameObjects.Enemies.EnemySprites;
 using Sprint_2.Sprites.EnemySprites;
 using Sprint_2.Factories;
 using System.Diagnostics;
+using System.Reflection.Emit;
+using Sprint_2.Collision;
 
 namespace Sprint_2.LevelManager
 {
@@ -31,7 +33,45 @@ namespace Sprint_2.LevelManager
         }
 
 
+        public void LoadCommandDictionary(string collisionTableFile)
+        {
+            string directory = AppDomain.CurrentDomain.BaseDirectory;
+            int index = directory.IndexOf(@"\bin");
+            directory = directory.Substring(0, index + 1);
+            directory = directory + collisionTableFile;
 
+            XmlReader collisionReader = XmlReader.Create(directory);
+            collisionReader.MoveToContent();
+            while (collisionReader.Read())
+            {
+                string sourceType;
+                string receiverType;
+                string collisionSide;
+                string sourceCommand;
+                string receiverCommand;
+                if ((collisionReader.NodeType == XmlNodeType.Element) && (collisionReader.Name == "Entry"))
+                {
+                    collisionReader.ReadToDescendant("SourceType");
+                    sourceType = collisionReader.ReadElementContentAsString();
+
+                    collisionReader.Read();
+                    receiverType = collisionReader.ReadElementContentAsString();
+
+                    collisionReader.Read();
+                    collisionSide = collisionReader.ReadElementContentAsString();
+
+                    collisionReader.Read();
+                    sourceCommand = collisionReader.ReadElementContentAsString();
+
+                    collisionReader.Read();
+                    receiverCommand = collisionReader.ReadElementContentAsString();
+
+                    //Assembly asm = typeof(IPlayer).Assembly;
+                    Type source = Type.GetType(collisionSide);
+                    //Debug.WriteLine("Source Type: " + source);
+                }
+            }
+        }
         public void LoadLevel()
         {
             LevelReader.MoveToContent();

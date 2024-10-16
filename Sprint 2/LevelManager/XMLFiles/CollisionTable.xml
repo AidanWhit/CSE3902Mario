@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<XnaContent>
+	<Entry>
+		<SourceType>Sprint_2.Interfaces.IPlayer</SourceType>
+		<ReceiverType>Sprint_2.Interfaces.IBlock</ReceiverType>
+		<CollisionSide>Sprint_2.Collision.CollisionSideDetector+side.Left</CollisionSide>
+		<SourceCommandType>Sprint_2.Commands.MarioCollisionCommands.MarioCollideLeftCommand</SourceCommandType>
+		<ReceiverCommandType>null</ReceiverCommandType>
+	</Entry>
+</XnaContent>

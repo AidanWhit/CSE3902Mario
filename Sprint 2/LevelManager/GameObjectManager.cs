@@ -9,6 +9,7 @@ using Sprint_2.GameObjects.ItemSprites;
 using Sprint_2.Interfaces;
 using Sprint_2.Sprites;
 using Sprint_2.Sprites.EnemySprites;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
@@ -29,6 +30,8 @@ namespace Sprint_2.LevelManager
 
         public List<IBlock>[] blocks = new List<IBlock>[210];
 
+        private Dictionary<Tuple<Type, Type, CollisionSideDetector.side>, (Type, Type)> collisionCommandMap = new Dictionary<Tuple<Type, Type, CollisionSideDetector.side>, (Type, Type)>();
+
         private CollisionDetection collisionDetection;
         private int marioColumn;
 
@@ -47,6 +50,11 @@ namespace Sprint_2.LevelManager
 
         }
         /* Next two methods added for testing */
+
+        public void AddCommandMapping(Tuple<Type, Type, CollisionSideDetector.side> entry, Type sourceCommand, Type receiverCommand)
+        {
+            collisionCommandMap.Add(entry, (sourceCommand, receiverCommand));
+        }
         public void AddItem(IItem item)
         {
             Items.Add(item);
