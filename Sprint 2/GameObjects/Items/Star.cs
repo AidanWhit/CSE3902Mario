@@ -26,7 +26,7 @@ namespace Sprint_2.GameObjects.ItemSprites
         {
             XPos = initialPosition.X;
             YPos = initialPosition.Y;
-            Velocity = new Vector2(1, 0); // Moving right by default
+            Velocity = Vector2.Zero; 
 
             sprite = ItemFactory.Instance.CreateStar();
             OnSpawn = true;

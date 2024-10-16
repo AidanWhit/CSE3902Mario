@@ -12,13 +12,10 @@ namespace Sprint_2.Factories
 {
     public class ItemFactory
     {
-        private IItem currItem;
         private static ItemFactory instance = new ItemFactory();
         private Texture2D texture;
-        private int width, height;
         private Rectangle[] source;
 
-        private Vector2 size;
 
         /* Added for testing */
         private GameObjectManager gameObjectManager;

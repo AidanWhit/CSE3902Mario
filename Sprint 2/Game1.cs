@@ -77,10 +77,10 @@ namespace Sprint_2
             
 
             MarioSpriteFactory.Instance.LoadAllContent(Content);
-
             EnemyFactory.Instance.LoadAllContent(Content);
             ItemFactory.Instance.LoadItemContent(Content);
-
+            BlockFactory.Instance.LoadAllContent(Content);
+            BackgroundFactory.Instance.LoadAllContent(Content);
 
             mario = new Player(new Vector2(100, 100));
             camera = new Camera(GraphicsDevice.Viewport, levelBounds);
@@ -97,8 +97,7 @@ namespace Sprint_2
 
             Texture2D texture = Content.Load<Texture2D>("marioSpriteSheet");
 
-            BlockFactory.Instance.LoadAllContent(Content);
-            BackgroundFactory.Instance.LoadAllContent(Content);
+            
 
 
             //Will eventually be moved somewhere else
@@ -134,23 +133,11 @@ namespace Sprint_2
         {
 
             keyControl.Update();
-           // mario.Update(gameTime);
 
             // Update camera based on Mario's position
             camera.Update(gameTime, new Vector2(mario.XPos, mario.YPos));
 
             objectManager.Update(gameTime);
-
-            // Collision detection
-            //foreach (IBlock block in collisionTest){
-            //    //block.Update(gameTime);
-            //    if (mario.GetHitBox().Intersects(block.GetHitBox()))
-            //    {
-            //        BlockCollisionResponse.BlockReponseForPlayer(mario, block);
-            //    }
-            //}
-
-            
 
             base.Update(gameTime);
         }
@@ -160,11 +147,7 @@ namespace Sprint_2
             GraphicsDevice.Clear(Color.CornflowerBlue);
             // Begin the sprite batch with the camera's transformation matrix
             spriteBatch.Begin(transformMatrix: camera.Transform);
-
-          //  mario.Draw(spriteBatch, Color.White);
-            //HitBoxRectangle.DrawRectangle(spriteBatch, mario.GetHitBox(), Color.Black, 1);
             
-            /* Added for testing */
             objectManager.Draw(spriteBatch, null, Color.White);
 
             spriteBatch.End();

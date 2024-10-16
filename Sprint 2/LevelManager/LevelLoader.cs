@@ -42,7 +42,6 @@ namespace Sprint_2.LevelManager
                 string location;
                 if ((LevelReader.NodeType == XmlNodeType.Element) && (LevelReader.Name == "Item"))
                 {
-
                     LevelReader.ReadToDescendant("ObjectType");
                     type = LevelReader.ReadElementContentAsString();
                     LevelReader.ReadToNextSibling("ObjectName");

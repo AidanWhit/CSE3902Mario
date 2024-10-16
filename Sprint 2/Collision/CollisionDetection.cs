@@ -1,16 +1,9 @@
-﻿using Microsoft.Xna.Framework;
+﻿
 using Sprint_2.GameObjects.Enemies.EnemySprites;
 using Sprint_2.Interfaces;
 using Sprint_2.LevelManager;
-using Sprint_2.Sprites;
-using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Diagnostics;
 using System.Linq;
-using System.Text;
-using System.Text.Json.Serialization;
-using System.Threading.Tasks;
 
 namespace Sprint_2.Collision
 {
