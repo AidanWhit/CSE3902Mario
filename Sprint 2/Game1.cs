@@ -43,7 +43,6 @@ namespace Sprint_2
 
         private List<IBlock> collisionTest;
 
-        //private List<IStaticSprite> backgroundList;
 
         private Camera camera;
         private Vector2 levelBounds;
