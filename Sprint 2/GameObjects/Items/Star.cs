@@ -84,5 +84,14 @@ namespace Sprint_2.GameObjects.ItemSprites
         {
             return typeof(Star).Name;
         }
+
+        public int GetColumn()
+        {
+            if (OnSpawn)
+            {
+                return -1;
+            }
+            return (int)(XPos / CollisionConstants.blockWidth);
+        }
     }
 }

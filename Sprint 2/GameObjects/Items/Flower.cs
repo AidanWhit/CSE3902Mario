@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Sprint_2.Constants;
 using Sprint_2.Factories;
 using Sprint_2.Interfaces;
 using Sprint_2.LevelManager;
@@ -63,6 +64,11 @@ namespace Sprint_2.GameObjects.ItemSprites
         public string GetCollisionType()
         {
             return typeof(IItem).Name;
+        }
+
+        public int GetColumn()
+        {
+            return (int)(XPos / CollisionConstants.blockWidth);
         }
     }
 }

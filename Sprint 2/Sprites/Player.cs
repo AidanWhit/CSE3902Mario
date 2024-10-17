@@ -195,5 +195,10 @@ namespace Sprint_2.Sprites
         {
             return typeof(IPlayer).Name;
         }
+
+        public int GetColumn()
+        {
+            return (int)(XPos / CollisionConstants.blockWidth);
+        }
     }
 }

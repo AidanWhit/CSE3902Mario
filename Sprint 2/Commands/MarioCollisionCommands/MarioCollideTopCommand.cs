@@ -23,13 +23,15 @@ namespace Sprint_2.Commands.MarioCollisionCommands
 
         public void Execute()
         {
-            mario.YPos -= height;
+            
             if (!mario.isJumping)
             {
+                mario.YPos -= height;
                 mario.PlayerVelocity = new Vector2(mario.PlayerVelocity.X, MarioPhysicsConstants.gravity);
             }
             if (mario.isFalling)
             {
+                mario.YPos -= height;
                 mario.Idle();
                 mario.PhysicsState = new Grounded(mario);
             }

@@ -112,5 +112,10 @@ namespace Sprint_2.GameObjects
         {
             return typeof(IProjectile).Name;
         }
+
+        public int GetColumn()
+        {
+            return (int)(XPos / CollisionConstants.blockWidth);
+        }
     }
 }

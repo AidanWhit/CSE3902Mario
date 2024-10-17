@@ -94,6 +94,11 @@ namespace Sprint_2.GameObjects.ItemSprites
         {
             return typeof(IItem).Name;
         }
+        public int GetColumn()
+        {
+            return (int)(XPos / CollisionConstants.blockWidth);
+        }
+
 
     }
 }

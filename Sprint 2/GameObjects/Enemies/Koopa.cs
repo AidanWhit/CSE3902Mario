@@ -84,5 +84,10 @@ namespace Sprint_2.GameObjects.Enemies.EnemySprites
         {
             return typeof(IEnemy).Name;
         }
+
+        public int GetColumn()
+        {
+            return (int)(XPos / CollisionConstants.blockWidth);
+        }
     }
 }

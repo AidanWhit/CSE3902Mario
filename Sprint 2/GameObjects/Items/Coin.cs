@@ -64,5 +64,10 @@ namespace Sprint_2.GameObjects.ItemSprites
         {
             return typeof(Coin).Name;
         }
+
+        public int GetColumn()
+        {
+            return (int)(XPos / CollisionConstants.blockWidth);
+        }
     }
 }

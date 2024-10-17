@@ -12,5 +12,7 @@ namespace Sprint_2.Interfaces
         public string GetCollisionType();
 
         public Rectangle GetHitBox();
+
+        public int GetColumn();
     }
 }

@@ -24,12 +24,6 @@ namespace Sprint_2.LevelManager
     {
         private static GameObjectManager instance = new GameObjectManager();
         public static GameObjectManager Instance { get { return instance; } }
-        
-        //public Collection<IEnemy> Enemies { get; set; } = new Collection<IEnemy>();
-        //public Collection<IItem> Items { get; set; } = new Collection<IItem>();
-        //public Collection<IBlock> Blocks { get; set; } = new Collection<IBlock>();
-        //public Collection<IStaticSprite> Background { get; set; } = new Collection<IStaticSprite>();
-        //public Collection<IPipe> Pipes { get; set; } = new Collection<IPipe>();
 
         public List<ICollideable>[] Blocks = new List<ICollideable>[210];
         public List<Interfaces.IUpdateable> Updateables;
@@ -91,7 +85,20 @@ namespace Sprint_2.LevelManager
             {
                 nearbyBlocks = Blocks[column].Concat(Blocks[column + 1]).ToList();
             }
+            foreach(ICollideable block in nearbyBlocks)
+            {
+                Static.Add(block);
+            }
             return nearbyBlocks;
+        }
+
+        public void RemoveBlocksFromStatic(List<ICollideable> list)
+        {
+            
+            foreach(ICollideable block in list)
+            {
+                Static.Remove(block);
+            }
         }
         public void Update(GameTime gameTime)
         {
@@ -99,18 +106,17 @@ namespace Sprint_2.LevelManager
             Player = Game1.Instance.mario;
             Player.Update(gameTime);
             
-            foreach (Interfaces.IUpdateable update in Updateables)
+            foreach (Interfaces.IUpdateable update in Updateables.ToList())
             {
                 update.Update(gameTime);
             }
 
-            collisionDetection.DetectCollision2();
+            collisionDetection.DetectCollision();
             
         }
 
         public void Draw(SpriteBatch spriteBatch, Texture2D allSpriteSheet, Color color)
         {
-            Debug.WriteLine("Draw Length: " + Blocks[1].Count);
             foreach(Interfaces.IDrawable draw in Drawables)
             {
                 draw.Draw(spriteBatch, color);

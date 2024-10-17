@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Sprint_2.Constants;
 using Sprint_2.Interfaces;
 using Sprint_2.Sprites.EnemySprites;
 using System;
@@ -140,6 +141,11 @@ namespace Sprint_2.GameObjects.Enemies.EnemySprites
         public string GetCollisionType()
         {
             return typeof(IEnemy).Name;
+        }
+
+        public int GetColumn()
+        {
+            return (int)(XPos / CollisionConstants.blockWidth);
         }
     }
 }

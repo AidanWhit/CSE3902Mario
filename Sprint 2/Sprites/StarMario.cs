@@ -121,5 +121,10 @@ namespace Sprint_2.Sprites
         {
             return typeof(StarMario).Name;
         }
+
+        public int GetColumn()
+        {
+            return decoratedPlayer.GetColumn();
+        }
     }
 }
