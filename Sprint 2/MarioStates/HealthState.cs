@@ -57,12 +57,16 @@ namespace Sprint_2.MarioStates
             else
             {
                 /* All damage sets Fire/Super mario to little mario */
-                
+
+                if (mario.isCrouching)
+                {
+                    mario.Idle();
+                }
                 health = Health.Mario;
+                
                 mario.YPos += mario.GetHitBox().Height;
 
             }
-           
             size = marioSize;
         }
 

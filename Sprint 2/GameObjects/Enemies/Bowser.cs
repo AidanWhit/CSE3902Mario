@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Sprint_2.Constants;
 using Sprint_2.Interfaces;
 using Sprint_2.Sprites.EnemySprites;
 using System;
@@ -92,7 +93,7 @@ namespace Sprint_2.GameObjects.Enemies.EnemySprites
             // Draw fireballs
             foreach (var fireball in fireballs)
             {
-                fireball.Draw(spriteBatch);
+                fireball.Draw(spriteBatch, color);
             }
         }
 
@@ -135,6 +136,16 @@ namespace Sprint_2.GameObjects.Enemies.EnemySprites
         public Rectangle GetHitBox()
         {
             return new Rectangle(0, 0, 0, 0);
+        }
+
+        public string GetCollisionType()
+        {
+            return typeof(IEnemy).Name;
+        }
+
+        public int GetColumn()
+        {
+            return (int)(XPos / CollisionConstants.blockWidth);
         }
     }
 }

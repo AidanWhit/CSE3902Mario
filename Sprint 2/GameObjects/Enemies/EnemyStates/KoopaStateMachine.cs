@@ -6,6 +6,7 @@ using Sprint_2.Constants;
 using Sprint_2.Factories;
 using Sprint_2.GameObjects.Enemies.EnemySprites;
 using Sprint_2.Interfaces;
+using Sprint_2.LevelManager;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -92,8 +93,14 @@ namespace Sprint_2.GameObjects.Enemies.EnemyStates
                 sprite = EnemyFactory.Instance.CreateKoopaShell();
                 bottomPos -= sprite.GetHitBox(new Vector2(koopa.XPos, koopa.YPos)).Height; 
 
-                EnemyFactory.Instance.RemoveEnemyFromObjectList(koopa);
-                EnemyFactory.Instance.AddEnemy(new Shell(new Vector2(koopa.XPos, bottomPos)));
+                GameObjectManager.Instance.Movers.Remove(koopa);
+                GameObjectManager.Instance.Updateables.Remove(koopa);
+                GameObjectManager.Instance.Drawables.Remove(koopa);
+
+                Shell shell = new Shell(new Vector2(koopa.XPos, bottomPos));
+                GameObjectManager.Instance.Movers.Add(shell);
+                GameObjectManager.Instance.Updateables.Add(shell);
+                GameObjectManager.Instance.Drawables.Add(shell);
                 
             }
         }

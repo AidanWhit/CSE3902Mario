@@ -24,16 +24,9 @@ namespace Sprint_2.GameObjects
            
         }
 
-        public void Draw(SpriteBatch spriteBatch, Vector2 location, Color color)
+        public void Draw(SpriteBatch spriteBatch, Color color)
         {
-           
             spriteBatch.Draw(texture, Position, sourceRectangles[0], color);
-        }
-
-        public Rectangle GetHitBox(Vector2 location)
-        {
-            // Static background objects don't need a hitbox
-            return Rectangle.Empty;
         }
     }
 }

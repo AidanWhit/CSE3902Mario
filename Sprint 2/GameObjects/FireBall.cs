@@ -6,6 +6,7 @@ using Sprint_2.Constants;
 using System;
 using System.Diagnostics;
 using Sprint_2.Sprites;
+using Sprint_2.LevelManager;
 
 
 namespace Sprint_2.GameObjects
@@ -82,9 +83,9 @@ namespace Sprint_2.GameObjects
             fireball.Update(gameTime);
 
         }
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch spriteBatch, Color color)
         {
-            fireball.Draw(spriteBatch, new Vector2(XPos, YPos), Color.White);
+            fireball.Draw(spriteBatch, new Vector2(XPos, YPos), color);
             
         }
 
@@ -106,6 +107,20 @@ namespace Sprint_2.GameObjects
         public Rectangle GetHitBox()
         {
             return fireball.GetHitBox(new Vector2(XPos, YPos));
+        }
+
+        public string GetCollisionType()
+        {
+            if (EnteredExplosionState)
+            {
+                return "exploding";
+            }
+            return typeof(IProjectile).Name;
+        }
+
+        public int GetColumn()
+        {
+            return (int)(XPos / CollisionConstants.blockWidth);
         }
     }
 }

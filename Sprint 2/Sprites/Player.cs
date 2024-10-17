@@ -7,6 +7,8 @@ using Sprint_2.MarioStates;
 using System.Collections.Generic;
 using System.Diagnostics;
 using Sprint_2.Constants;
+using System;
+using Sprint_2.LevelManager;
 
 
 namespace Sprint_2.Sprites
@@ -75,7 +77,7 @@ namespace Sprint_2.Sprites
         {
             for (int i = 0; i < fireballs.Count; i++)
             {
-                fireballs[i].Draw(spriteBatch);
+                fireballs[i].Draw(spriteBatch, color);
             }
             PlayerState.Draw(spriteBatch, color * opacity);
         }
@@ -86,7 +88,9 @@ namespace Sprint_2.Sprites
             {
                 if (fireballs[i].isExploded())
                 {
+                    GameObjectManager.Instance.Movers.Remove(fireballs[i]);
                     fireballs.Remove(fireballs[i]);
+                    
                     numberOfFireballsRemaining++;
                 }
                 else
@@ -104,6 +108,7 @@ namespace Sprint_2.Sprites
                 if (fireball != null)
                 {
                     fireballs.Add(fireball);
+                    GameObjectManager.Instance.Movers.Add(fireball);
                     numberOfFireballsRemaining--;
                 }
 
@@ -132,6 +137,7 @@ namespace Sprint_2.Sprites
         {
             PlayerState.Fall();
             isFalling = true;
+            PhysicsState = new Falling(this);
         }
         public void Idle()
         {
@@ -187,6 +193,16 @@ namespace Sprint_2.Sprites
         public string GetHealth()
         {
             return PlayerState.GetHealth();
+        }
+
+        public string GetCollisionType()
+        {
+            return typeof(IPlayer).Name;
+        }
+
+        public int GetColumn()
+        {
+            return (int)(XPos / CollisionConstants.blockWidth);
         }
     }
 }

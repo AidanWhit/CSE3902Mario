@@ -7,6 +7,9 @@ using System.Threading;
 using System.Linq.Expressions;
 using Sprint_2.Constants;
 using System.Diagnostics;
+using System;
+using Sprint_2.GameObjects.Enemies.EnemySprites;
+using Sprint_2.LevelManager;
 
 namespace Sprint_2.Sprites.EnemySprites
 {
@@ -21,6 +24,8 @@ namespace Sprint_2.Sprites.EnemySprites
         private float stompTimer = 0.75f;
         private bool stomped = false;
 
+        private bool startBehavior = false;
+
         public bool Flipped { get; set; } = false;
         public Goomba(Vector2 initialPosition)
         { 
@@ -33,30 +38,46 @@ namespace Sprint_2.Sprites.EnemySprites
 
         public void Update(GameTime gameTime)
         {
-            if (stomped)
+            startBehavior = UpdateStartBehavior();
+            if (startBehavior)
             {
-                stompTimer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
-                if (stompTimer < 0)
+                if (stomped)
                 {
-                    //Remove Goomba from enemies list
-                    EnemyFactory.Instance.RemoveEnemyFromObjectList(this);
+                    stompTimer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
+                    if (stompTimer < 0)
+                    {
+                        //Remove Goomba from enemies list
+                        GameObjectManager.Instance.Updateables.Remove(this);
+                        GameObjectManager.Instance.Drawables.Remove(this);
+                    }
                 }
-            } 
-            else if (Flipped)
-            {
-                if (YPos > 650)
+                else if (Flipped)
                 {
-                    EnemyFactory.Instance.RemoveEnemyFromObjectList(this);
+                    if (YPos > 650)
+                    {
+                        GameObjectManager.Instance.Movers.Remove(this);
+                        GameObjectManager.Instance.Updateables.Remove(this);
+                        GameObjectManager.Instance.Drawables.Remove(this);
+                    }
                 }
+                goombaState.Update(gameTime);
             }
-            goombaState.Update(gameTime);
+            
         }
 
+        public bool UpdateStartBehavior()
+        {
+            float distToPlayer = Math.Abs(Game1.Instance.mario.XPos - XPos);
+            if (distToPlayer < EnemyConstants.distUntilBehaviorStarts)
+            {
+                startBehavior = true;
+            }
+            return startBehavior;
+        }
 
         public void Draw(SpriteBatch spriteBatch, Color color)
         {
             goombaState.Draw(spriteBatch, new Vector2(XPos, YPos), color);
-            HitBoxRectangle.DrawRectangle(spriteBatch, GetHitBox(), color, 1);
         }
 
         
@@ -65,12 +86,14 @@ namespace Sprint_2.Sprites.EnemySprites
             goombaState.BeFlipped();
             Flipped = true;
             Velocity = EnemyConstants.flippedVelocity;
+            GameObjectManager.Instance.Movers.Remove(this);
         }
 
         public void TakeStompDamage()
         {
             goombaState.BeStomped();
             stomped = true;
+            GameObjectManager.Instance.Movers.Remove(this);
         }
 
         public void ChangeDirection()
@@ -81,6 +104,21 @@ namespace Sprint_2.Sprites.EnemySprites
         public Rectangle GetHitBox()
         {
             return goombaState.GetHitBox(new Vector2(XPos, YPos));
+        }
+
+        public string GetCollisionType()
+        {
+            return typeof(IEnemy).Name;
+        }
+
+        public int GetColumn()
+        {
+            return (int)(XPos / CollisionConstants.blockWidth);
+        }
+
+        public bool GetStomped()
+        {
+            return stomped;
         }
     }
 }

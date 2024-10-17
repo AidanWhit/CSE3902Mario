@@ -1,5 +1,7 @@
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using Sprint_2.Constants;
 using Sprint_2.Interfaces;
 
 namespace Sprint_2.Sprites.EnemySprites
@@ -41,9 +43,9 @@ namespace Sprint_2.Sprites.EnemySprites
                 currentFrame = 0;
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch spriteBatch, Color color)
         {
-            spriteBatch.Draw(fireballSprites[currentFrame], new Vector2(XPos, YPos), Color.White);
+            spriteBatch.Draw(fireballSprites[currentFrame], new Vector2(XPos, YPos), color);
         }
 
         public Rectangle GetHitBox() 
@@ -56,6 +58,15 @@ namespace Sprint_2.Sprites.EnemySprites
         public void ChangeSprite(ISprite sprite)
         {
 
+        }
+
+        public int GetColumn()
+        {
+            return (int)XPos / CollisionConstants.blockWidth;
+        }
+        public string GetCollisionType()
+        {
+            return typeof(IProjectile).Name;
         }
     }
 }

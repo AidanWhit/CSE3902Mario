@@ -9,13 +9,11 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Sprint_2.Interfaces
 {
-    public interface IBlock
+    public interface IBlock : ICollideable, IUpdateable, IDrawable
     {
         Vector2 Position { get; set; }
 
         public Rectangle GetHitBox();
-        public void Update(GameTime gameTime);
-        public void Draw(SpriteBatch spriteBatch, Color color);
 
         public void BeHit(IPlayer player);
 

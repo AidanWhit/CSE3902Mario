@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Sprint_2.Factories;
 using Sprint_2.GameObjects.ItemSprites;
 using Sprint_2.Interfaces;
+using Sprint_2.LevelManager;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 
@@ -26,7 +27,9 @@ namespace Sprint_2.GameObjects.BlockStates
         {
             Hit = true;
             /* Game Object manager add coin */
-            ItemFactory.Instance.AddCoinToItemsList(new Vector2(block.Position.X + block.GetHitBox().Width/2.5f, block.Position.Y - block.GetHitBox().Height));
+            IItem Coin = new Coin(new Vector2(block.Position.X + block.GetHitBox().Width / 2.5f, block.Position.Y - block.GetHitBox().Height));
+            GameObjectManager.Instance.Updateables.Add(Coin);
+            GameObjectManager.Instance.Drawables.Add(Coin);
             if (--coins == 0)
             {
                 block.ChangeState(new UsedBlockState(block));

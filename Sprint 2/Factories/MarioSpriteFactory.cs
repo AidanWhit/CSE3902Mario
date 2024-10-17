@@ -38,8 +38,8 @@ namespace Sprint_2.Factories
             {"RightSuperMarioCrouch", new Rectangle[]{new Rectangle(389, 57, 16, 22)} },
             {"LeftFireMarioCrouch", new Rectangle[]{new Rectangle(0, 127, 16, 22) } },
             {"RightFireMarioCrouch", new Rectangle[]{new Rectangle(389, 127, 16, 22) } },
-            {"LeftMarioJump", new Rectangle[]{new Rectangle(29, 0, 17, 16)} },
-            {"RightMarioJump", new Rectangle[]{new Rectangle(359, 0, 17, 16) } },
+            {"LeftMarioJump", new Rectangle[]{new Rectangle(29, 0, 16, 16)} },
+            {"RightMarioJump", new Rectangle[]{new Rectangle(359, 0, 16, 16) } },
             {"LeftSuperMarioJump", new Rectangle[]{new Rectangle(30, 52, 16, 32) } },
             {"RightSuperMarioJump", new Rectangle[]{new Rectangle(359, 52, 16, 32) } },
             {"LeftFireMarioJump", new Rectangle[]{new Rectangle(27, 122, 16, 32) } },
@@ -112,7 +112,7 @@ namespace Sprint_2.Factories
         public ISprite DeadMarioSprite()
         {
             marioSprites.TryGetValue("DeadMario", out Rectangle[] frames);
-            return new FrameArrayFormattedSprite(marioSpriteSheet, frames, 3);
+            return new FrameArrayFormattedSprite(marioSpriteSheet, frames, 1);
         }
     }
 

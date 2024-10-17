@@ -9,7 +9,7 @@ using System.Xml.Serialization;
 
 namespace Sprint_2.Interfaces
 {
-    public interface IStaticSprite  : ISprite
+    public interface IStaticSprite  : IDrawable
     {
         Vector2 Position { get; set; }
         //public void Update(GameTime gameTime);

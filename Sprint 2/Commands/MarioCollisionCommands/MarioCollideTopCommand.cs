@@ -15,7 +15,7 @@ namespace Sprint_2.Commands.MarioCollisionCommands
     {
         private IPlayer mario;
         private int height;
-        public MarioCollideTopCommand(IPlayer player, Rectangle collisionIntersection)
+        public MarioCollideTopCommand(IPlayer player, IBlock block, Rectangle collisionIntersection)
         {
             mario = player;
             height = collisionIntersection.Height;
@@ -23,13 +23,15 @@ namespace Sprint_2.Commands.MarioCollisionCommands
 
         public void Execute()
         {
-            mario.YPos -= height;
+            
             if (!mario.isJumping)
             {
+                mario.YPos -= height;
                 mario.PlayerVelocity = new Vector2(mario.PlayerVelocity.X, MarioPhysicsConstants.gravity);
             }
             if (mario.isFalling)
             {
+                mario.YPos -= height;
                 mario.Idle();
                 mario.PhysicsState = new Grounded(mario);
             }

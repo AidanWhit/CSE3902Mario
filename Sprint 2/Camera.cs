@@ -18,7 +18,6 @@ namespace Sprint_2.ScreenCamera
             Viewport = viewport;
             _levelBounds = levelBounds;
             Position = Vector2.Zero;
-            //Position = new Vector2(Game1.Instance.mario.XPos, Game1.Instance.mario.YPos);
             UpdateTransform();
         }
 
@@ -29,8 +28,7 @@ namespace Sprint_2.ScreenCamera
             targetX = Game1.Instance.mario.XPos - (Viewport.Width / 8f);
             Position = new Vector2(
                 MathHelper.Lerp(Position.X, targetX, SmoothFactor), 
-                Position.Y
-                //Position.Y // Keep the Y position constant
+                Position.Y //Keep Y Position Constant
             );
 
             // Clamp the camera position within the level bounds (only for X)

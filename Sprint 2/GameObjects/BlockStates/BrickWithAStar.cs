@@ -1,5 +1,7 @@
 ﻿using Sprint_2.Factories;
+using Sprint_2.GameObjects.ItemSprites;
 using Sprint_2.Interfaces;
+using Sprint_2.LevelManager;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,7 +22,10 @@ namespace Sprint_2.GameObjects.BlockStates
         public override void BeHit(IPlayer player)
         {
             Hit = true;
-            ItemFactory.Instance.AddStarToItemsList(block.Position, block);
+            IItem Star = new Star(block.Position, block);
+            
+            GameObjectManager.Instance.Updateables.Add(Star);
+            GameObjectManager.Instance.Drawables.Add(Star);
             block.ChangeState(new UsedBlockState(block));
 
         }

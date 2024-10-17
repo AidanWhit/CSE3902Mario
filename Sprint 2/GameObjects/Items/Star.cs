@@ -20,13 +20,13 @@ namespace Sprint_2.GameObjects.ItemSprites
         public Vector2 Velocity { get; set; }
         private ISprite sprite;
 
-        private float XSpeed = 2f;
+        private float XSpeed = 1f;
         private IBlock block;
         public Star(Vector2 initialPosition, IBlock sourceBlock)
         {
             XPos = initialPosition.X;
             YPos = initialPosition.Y;
-            Velocity = new Vector2(1, 0); // Moving right by default
+            Velocity = Vector2.Zero; 
 
             sprite = ItemFactory.Instance.CreateStar();
             OnSpawn = true;
@@ -41,6 +41,7 @@ namespace Sprint_2.GameObjects.ItemSprites
                 if (GetHitBox().Bottom < block.GetHitBox().Top)
                 {
                     OnSpawn = false;
+                    GameObjectManager.Instance.Movers.Add(this);
                 }
             }
             else
@@ -59,14 +60,16 @@ namespace Sprint_2.GameObjects.ItemSprites
             sprite.Update(gameTime);
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch spriteBatch, Color color)
         {
-            sprite.Draw(spriteBatch, new Vector2(XPos, YPos), Color.White);
+            sprite.Draw(spriteBatch, new Vector2(XPos, YPos), color);
         }
 
-        public void DeleteItem(GameObjectManager gameObjectManager) 
+        public void DeleteItem() 
         {
-            ItemFactory.Instance.RemoveFromItemsList(this);
+            GameObjectManager.Instance.Movers.Remove(this);
+            GameObjectManager.Instance.Updateables.Remove(this);
+            GameObjectManager.Instance.Drawables.Remove(this);
         }
 
         public Rectangle GetHitBox()
@@ -77,6 +80,19 @@ namespace Sprint_2.GameObjects.ItemSprites
         public void ChangeDirection() 
         {
             XSpeed *= -1;
+        }
+        public string GetCollisionType()
+        {
+            return typeof(Star).Name;
+        }
+
+        public int GetColumn()
+        {
+            if (OnSpawn)
+            {
+                return -1;
+            }
+            return (int)(XPos / CollisionConstants.blockWidth);
         }
     }
 }

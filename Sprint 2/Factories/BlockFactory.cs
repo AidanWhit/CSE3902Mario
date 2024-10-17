@@ -60,24 +60,6 @@ namespace Sprint_2.Factories
         {
             this.gameObjectManager = gameObjectManager;
         }
-        public void AddBlockToBlocksList(IBlock block)
-        {
-            gameObjectManager.AddBlock(block);
-        }
-
-        public void RemoveBlockFromList(IBlock block)
-        {
-            gameObjectManager.RemoveBlock(block);
-        }
-
-        public void AddPipeToPipesList(IPipe pipe)
-        {
-            gameObjectManager.AddPipe(pipe);
-        }
-        public void RemovePipeFromPipesList(IPipe pipe)
-        {
-            gameObjectManager.RemovePipe(pipe);
-        }
 
     }
 }

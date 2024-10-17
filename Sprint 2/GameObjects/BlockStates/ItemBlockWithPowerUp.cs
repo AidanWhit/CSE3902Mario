@@ -1,5 +1,8 @@
-﻿using Sprint_2.Factories;
+﻿using Microsoft.Xna.Framework;
+using Sprint_2.Factories;
+using Sprint_2.GameObjects.ItemSprites;
 using Sprint_2.Interfaces;
+using Sprint_2.LevelManager;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -27,11 +30,16 @@ namespace Sprint_2.GameObjects.BlockStates
             string health = player.GetHealth();
             if (health.Equals("Mario"))
             {
-                ItemFactory.Instance.AddRedMushroomToItemsList(block.Position, block);
+                IItem mushroom = new RedMushroom(block.Position, block);
+                GameObjectManager.Instance.Updateables.Add(mushroom);
+                GameObjectManager.Instance.Drawables.Add(mushroom);
             }
             else
             {
-                ItemFactory.Instance.AddFireFlowerToItemsList(block.Position, block);
+                IItem flower = new Flower(block.Position, block);
+                GameObjectManager.Instance.Updateables.Add(flower);
+                GameObjectManager.Instance.Drawables.Add(flower);
+                GameObjectManager.Instance.Static.Add(flower);
             }
             block.ChangeState(new UsedBlockState(block));
 
