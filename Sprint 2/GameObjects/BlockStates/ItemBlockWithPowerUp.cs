@@ -33,7 +33,6 @@ namespace Sprint_2.GameObjects.BlockStates
                 IItem mushroom = new RedMushroom(block.Position, block);
                 GameObjectManager.Instance.Updateables.Add(mushroom);
                 GameObjectManager.Instance.Drawables.Add(mushroom);
-                GameObjectManager.Instance.Movers.Add(mushroom);
             }
             else
             {

@@ -47,7 +47,6 @@ namespace Sprint_2.Sprites.EnemySprites
                     if (stompTimer < 0)
                     {
                         //Remove Goomba from enemies list
-                        GameObjectManager.Instance.Movers.Remove(this);
                         GameObjectManager.Instance.Updateables.Remove(this);
                         GameObjectManager.Instance.Drawables.Remove(this);
                     }
@@ -87,12 +86,14 @@ namespace Sprint_2.Sprites.EnemySprites
             goombaState.BeFlipped();
             Flipped = true;
             Velocity = EnemyConstants.flippedVelocity;
+            GameObjectManager.Instance.Movers.Remove(this);
         }
 
         public void TakeStompDamage()
         {
             goombaState.BeStomped();
             stomped = true;
+            GameObjectManager.Instance.Movers.Remove(this);
         }
 
         public void ChangeDirection()
@@ -113,6 +114,11 @@ namespace Sprint_2.Sprites.EnemySprites
         public int GetColumn()
         {
             return (int)(XPos / CollisionConstants.blockWidth);
+        }
+
+        public bool GetStomped()
+        {
+            return stomped;
         }
     }
 }

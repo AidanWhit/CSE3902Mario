@@ -83,6 +83,10 @@ namespace Sprint_2.GameObjects
 
         public string GetCollisionType()
         {
+            if (blockState.GetType() == typeof(InvisibleState))
+            {
+                return typeof(InvisibleState).Name;
+            }
             return typeof(IBlock).Name;
         }
 

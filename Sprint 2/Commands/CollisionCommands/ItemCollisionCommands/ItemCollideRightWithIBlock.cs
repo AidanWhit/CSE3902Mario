@@ -1,10 +1,6 @@
-﻿using Sprint_2.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.Xna.Framework;
+using Sprint_2.Interfaces;
+
 
 namespace Sprint_2.Commands.CollisionCommands.ItemCollisionCommands
 {
@@ -23,7 +19,7 @@ namespace Sprint_2.Commands.CollisionCommands.ItemCollisionCommands
 
         public void Execute()
         {
-            item.XPos += collisionIntersection.Width;
+            item.XPos -= collisionIntersection.Width;
             item.ChangeDirection();
         }
     }

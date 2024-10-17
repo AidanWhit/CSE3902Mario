@@ -110,6 +110,10 @@ namespace Sprint_2.GameObjects.Enemies.EnemySprites
 
         public string GetCollisionType()
         {
+            if (Velocity.X != 0)
+            {
+                return "MovingShell";
+            }
             return typeof(Shell).Name;
         }
 

@@ -23,7 +23,7 @@ namespace Sprint_2.GameObjects.BlockStates
         {
             Hit = true;
             IItem Star = new Star(block.Position, block);
-            GameObjectManager.Instance.Movers.Add(Star);
+            
             GameObjectManager.Instance.Updateables.Add(Star);
             GameObjectManager.Instance.Drawables.Add(Star);
             block.ChangeState(new UsedBlockState(block));

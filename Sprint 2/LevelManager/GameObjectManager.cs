@@ -26,7 +26,7 @@ namespace Sprint_2.LevelManager
         public static GameObjectManager Instance { get { return instance; } }
 
         public List<ICollideable>[] Blocks = new List<ICollideable>[210];
-        public List<Interfaces.IUpdateable> Updateables;
+        public List<Interfaces.IUpdateable> Updateables { get; set; } = new List<Interfaces.IUpdateable>();
         public List<Interfaces.IDrawable> Drawables { get; set; } = new List<Interfaces.IDrawable>();
         public List<ICollideable> Movers { get; set; } = new List<ICollideable>();
         public List<ICollideable> Static { get; set; } = new List<ICollideable>();
@@ -47,7 +47,27 @@ namespace Sprint_2.LevelManager
             {
                 Blocks[i] = new List<ICollideable>();
             }
-            Updateables = new List<Interfaces.IUpdateable>();
+
+            IEnemy testGoomba = new Goomba(new Vector2(200, 200));
+            Block testBlock1 = new Block("Chiseled", new Vector2(16 * 4, 432));
+            Block testBlock2 = new Block("Chiseled", new Vector2(16 * 14, 432));
+
+            Block testBlock3 = new Block("BrownBrickWithStar", new Vector2(16 *2, 432 - 16*4));
+
+            Updateables.Add(testBlock1);
+            Static.Add(testBlock1);
+            Drawables.Add(testBlock1);
+            Updateables.Add(testBlock2);
+            Static.Add(testBlock2);
+            Drawables.Add(testBlock2);
+            Updateables.Add(testBlock3);
+            Static.Add(testBlock3);
+            Drawables.Add(testBlock3);
+
+            Movers.Add(testGoomba);
+            Updateables.Add(testGoomba);
+            Drawables.Add(testGoomba);
+            
 
         }
         /* Next two methods added for testing */
@@ -94,7 +114,6 @@ namespace Sprint_2.LevelManager
 
         public void RemoveBlocksFromStatic(List<ICollideable> list)
         {
-            
             foreach(ICollideable block in list)
             {
                 Static.Remove(block);
@@ -117,7 +136,7 @@ namespace Sprint_2.LevelManager
 
         public void Draw(SpriteBatch spriteBatch, Texture2D allSpriteSheet, Color color)
         {
-            foreach(Interfaces.IDrawable draw in Drawables)
+            foreach(Interfaces.IDrawable draw in Drawables.ToList())
             {
                 draw.Draw(spriteBatch, color);
             }

@@ -9,7 +9,7 @@ using System.Windows.Markup;
 
 namespace Sprint_2.GameObjects.ItemSprites
 {
-    public class RedMushroom : IItem, ICollideable
+    public class RedMushroom : IItem
     {
         public Vector2 Velocity { get; set; }
 
@@ -47,6 +47,7 @@ namespace Sprint_2.GameObjects.ItemSprites
                 if (GetHitBox().Bottom < sourceBlock.GetHitBox().Top)
                 {
                     OnSpawn = false;
+                    GameObjectManager.Instance.Movers.Add(this);
                 }
             }
             else

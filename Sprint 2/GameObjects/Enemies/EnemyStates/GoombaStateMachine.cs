@@ -6,6 +6,7 @@ using Sprint_2.Interfaces;
 using Sprint_2.Sprites.EnemySprites;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -41,9 +42,8 @@ namespace Sprint_2.GameObjects.Enemies.EnemyStates
             if (health != GoombaHealth.Stomped)
             {
                 health = GoombaHealth.Stomped;
-                int bottomPos = goomba.GetHitBox().Bottom;
                 sprite = EnemyFactory.Instance.CreateStompedGoomba();
-                goomba.YPos = bottomPos;
+                goomba.YPos += goomba.GetHitBox().Height;
             }
         }
 
@@ -72,9 +72,16 @@ namespace Sprint_2.GameObjects.Enemies.EnemyStates
         public void Update(GameTime gameTime)
         {
             /* Applies Gravity */
-            if (goomba.Velocity.Y < EnemyConstants.maxFallVelocity)
+            if (!goomba.GetStomped())
             {
-                goomba.Velocity += EnemyConstants.fallVelocity;
+                if (goomba.Velocity.Y < EnemyConstants.maxFallVelocity)
+                {
+                    goomba.Velocity += EnemyConstants.fallVelocity;
+                }
+            }
+            else
+            {
+                goomba.Velocity = Vector2.Zero;
             }
 
             goomba.YPos += (float)(goomba.Velocity.Y * gameTime.ElapsedGameTime.TotalSeconds);

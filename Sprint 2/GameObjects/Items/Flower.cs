@@ -7,7 +7,7 @@ using Sprint_2.LevelManager;
 
 namespace Sprint_2.GameObjects.ItemSprites
 {
-    public class Flower : IItem, ICollideable
+    public class Flower : IItem
     {
         public Vector2 Velocity { get; set; }
         public bool OnSpawn { get; set; }

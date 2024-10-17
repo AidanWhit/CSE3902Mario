@@ -23,7 +23,7 @@ namespace Sprint_2.Commands.CollisionCommands.ItemCollisionCommands
 
         public void Execute()
         {
-            item.XPos -= collisionRectangle.Width;
+            item.XPos += collisionRectangle.Width;
             item.ChangeDirection();
         } 
     }

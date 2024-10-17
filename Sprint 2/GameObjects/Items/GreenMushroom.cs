@@ -8,7 +8,7 @@ using Sprint_2.Constants;
 
 namespace Sprint_2.GameObjects.ItemSprites
 {
-    public class GreenMushroom : IItem, ICollideable
+    public class GreenMushroom : IItem
     {
         public bool OnSpawn { get; set; }
         public float XPos { get; set; }
@@ -92,10 +92,14 @@ namespace Sprint_2.GameObjects.ItemSprites
         }
         public string GetCollisionType()
         {
-            return typeof(IItem).Name;
+            return typeof(GreenMushroom).Name;
         }
         public int GetColumn()
         {
+            if (OnSpawn)
+            {
+                return -1;
+            }
             return (int)(XPos / CollisionConstants.blockWidth);
         }
 

@@ -11,7 +11,7 @@ using System.Linq.Expressions;
 
 namespace Sprint_2.GameObjects.ItemSprites
 {
-    public class Star : IItem, ICollideable
+    public class Star : IItem
     {
         public bool OnSpawn { get; set; }
 
@@ -41,6 +41,7 @@ namespace Sprint_2.GameObjects.ItemSprites
                 if (GetHitBox().Bottom < block.GetHitBox().Top)
                 {
                     OnSpawn = false;
+                    GameObjectManager.Instance.Movers.Add(this);
                 }
             }
             else

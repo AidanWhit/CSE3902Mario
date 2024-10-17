@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using System.Diagnostics;
+using Microsoft.Xna.Framework;
 
 namespace Sprint_2.Commands.MarioAttackCommands
 {
@@ -17,14 +18,14 @@ namespace Sprint_2.Commands.MarioAttackCommands
         private Game1 myGame;
         private IPlayer mario;
 
-        public MarioHurtCommand(IPlayer mario)
+        public MarioHurtCommand(IPlayer mario, IEnemy enemy, Rectangle collisionRect)
         {
             this.mario = mario;
         }
 
         public void Execute()
         {
-            mario = Game1.Instance.mario;
+            //mario = Game1.Instance.mario;
             mario.Damage();
         }
     }
