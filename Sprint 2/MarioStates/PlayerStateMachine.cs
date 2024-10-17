@@ -21,6 +21,10 @@ namespace Sprint_2.MarioStates
         private IPlayer mario;
         private string key;
         private ISprite oldSprite;
+
+        private float damagedTime = MarioPhysicsConstants.damagedTime;
+        private float flashSpeed = MarioPhysicsConstants.flashSpeed;
+        private int opacity = 1;
         public PlayerStateMachine(IPlayer mario)
         {
             this.mario = mario;
@@ -37,8 +41,29 @@ namespace Sprint_2.MarioStates
         {
             oldSprite = currentSprite;
             ChangeSprite();
+            UpdateFlashingTime(gameTime);
             currentSprite.Update(gameTime);
             
+        }
+
+        private void UpdateFlashingTime(GameTime gameTime)
+        {
+            if (mario.IsDamaged)
+            {
+                damagedTime -= (float)gameTime.ElapsedGameTime.TotalSeconds;
+                flashSpeed -= (float)gameTime.ElapsedGameTime.TotalSeconds;
+                if (flashSpeed < 0)
+                {
+                    opacity = (opacity + 1) % 2;
+                    flashSpeed = MarioPhysicsConstants.flashSpeed;
+                }
+                if (damagedTime < 0)
+                {
+                    damagedTime = MarioPhysicsConstants.damagedTime;
+                    mario.IsDamaged = false;
+                }
+
+            }
         }
         public void PowerUp()
         {
@@ -166,12 +191,12 @@ namespace Sprint_2.MarioStates
             if (key.Contains("Shoot"))
             {
                 
-                currentSprite.Draw(spritebatch, new Vector2(mario.XPos, mario.YPos), color);
+                currentSprite.Draw(spritebatch, new Vector2(mario.XPos, mario.YPos), color * opacity);
                 currentSprite = oldSprite;
             }
             else
             {
-                currentSprite.Draw(spritebatch, new Vector2(mario.XPos, mario.YPos), color);
+                currentSprite.Draw(spritebatch, new Vector2(mario.XPos, mario.YPos), color * opacity);
             }
 
 

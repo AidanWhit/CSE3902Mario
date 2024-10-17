@@ -33,12 +33,7 @@ namespace Sprint_2.Sprites
         public List<IProjectile> fireballs { get; set; } = new List<IProjectile>();
 
         public int RemainingLives { get; set; }
-
-        private float opacity = 1f;
-        private float flashSpeed = MarioPhysicsConstants.flashSpeed;
-        private float damagedTime = MarioPhysicsConstants.damagedTime;
         
-
         public Player(Vector2 StartingLocation)
         {
             XPos = (int)StartingLocation.X;
@@ -52,22 +47,7 @@ namespace Sprint_2.Sprites
         }
         public void Update(GameTime gameTime)
         {
-            if (IsDamaged)
-            {
-                damagedTime -= (float)gameTime.ElapsedGameTime.TotalSeconds;
-                flashSpeed -= (float)gameTime.ElapsedGameTime.TotalSeconds;
-                if (flashSpeed < 0)
-                {
-                    opacity = (opacity + 1) % 2;
-                    flashSpeed = MarioPhysicsConstants.flashSpeed;
-                }
-                if (damagedTime < 0)
-                {
-                    damagedTime = MarioPhysicsConstants.damagedTime;
-                    IsDamaged = false;
-                }
-               
-            }
+            
             UpdateFireballs(gameTime);
             PlayerState.Update(gameTime);
             PhysicsState.Update(gameTime);
@@ -79,7 +59,7 @@ namespace Sprint_2.Sprites
             {
                 fireballs[i].Draw(spriteBatch, color);
             }
-            PlayerState.Draw(spriteBatch, color * opacity);
+            PlayerState.Draw(spriteBatch, color);
         }
 
         public void UpdateFireballs(GameTime gameTime)
