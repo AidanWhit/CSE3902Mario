@@ -21,7 +21,7 @@ namespace Sprint_2.Constants
         public static float bounceSpeed = -150f;
 
         public static float animationDelay = 0.1f;
-        public static int explosionRange = 700;
+        public static int explosionRange = 350;
 
     }
 }

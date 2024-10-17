@@ -509,14 +509,14 @@
 		<SourceType>IProjectile</SourceType>
 		<ReceiverType>IBlock</ReceiverType>
 		<CollisionSide>Right</CollisionSide>
-		<SourceCommandType>Sprint_2.Commands.CollisionCommands.Fireball.FireballBounceCommand</SourceCommandType>
+		<SourceCommandType>Sprint_2.Commands.CollisionCommands.Fireball.FireballExplodeCommand</SourceCommandType>
 		<ReceiverCommandType></ReceiverCommandType>
 	</Entry>
 	<Entry>
 		<SourceType>IProjectile</SourceType>
 		<ReceiverType>IBlock</ReceiverType>
 		<CollisionSide>Bottom</CollisionSide>
-		<SourceCommandType>Sprint_2.Commands.CollisionCommands.Fireball.FireballBounceCommand</SourceCommandType>
+		<SourceCommandType>Sprint_2.Commands.CollisionCommands.Fireball.FireballExplodeCommand</SourceCommandType>
 		<ReceiverCommandType></ReceiverCommandType>
 	</Entry>
 	<Entry>
