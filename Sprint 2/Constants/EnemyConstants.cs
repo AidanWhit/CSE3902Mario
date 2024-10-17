@@ -17,7 +17,7 @@ namespace Sprint_2.Constants
 
         public static float despawnHeight = 650;
 
-        public static float shellMoveSpeed = 200f;
+        public static float shellMoveSpeed = 150f;
 
         public static float distUntilBehaviorStarts = 320;
     }

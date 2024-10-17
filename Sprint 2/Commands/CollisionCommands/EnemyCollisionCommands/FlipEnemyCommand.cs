@@ -12,13 +12,13 @@ namespace Sprint_2.Commands.CollisionCommands.EnemyCollisionCommands
     public class FlipEnemyCommand : ICommands
     {
         private IEnemy enemy;
-        private IPlayer player;
+        private ICollideable collider;
         private Rectangle collisionRect;
 
-        public FlipEnemyCommand(IEnemy enemy, IPlayer player, Rectangle collisionRect)
+        public FlipEnemyCommand(IEnemy enemy, ICollideable collider, Rectangle collisionRect)
         {
             this.enemy = enemy;
-            this.player = player;
+            this.collider = collider;
             this.collisionRect = collisionRect;
         }
         public void Execute()

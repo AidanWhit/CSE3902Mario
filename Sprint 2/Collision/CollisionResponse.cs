@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Sprint_2.Commands.MarioCollisionCommands;
 using Sprint_2.Interfaces;
 using Sprint_2.LevelManager;
 using System;
@@ -27,7 +28,9 @@ namespace Sprint_2.Collision
         {
             //Item1 is sourceCommand, Item2 is receiverCommand
             (Type, Type) commands;
+            
             collisionDict.TryGetValue(source.GetCollisionType() + receiver.GetCollisionType() + side, out commands);
+            
             if (commands.Item2 != null)
             {
                 Type[] constructorTypes = new Type[] { Type.GetType(receiver.ToString()), Type.GetType(source.ToString()), typeof(Rectangle) };
@@ -40,14 +43,8 @@ namespace Sprint_2.Collision
             }
             if (commands.Item1 != null)  
             {
-                Debug.WriteLine("Collision Command: " + commands.Item1.Name);
-                
                 Type[] constructorTypes = new Type[] { Type.GetType(source.ToString()), Type.GetType(receiver.ToString()), typeof(Rectangle) };
                 ConstructorInfo constructorInfo = commands.Item1.GetConstructor(constructorTypes);
-                if (commands.Item1.Name == "ItemCollideBottomWithIBlock")
-                {
-                    Debug.WriteLine("constructorArray: " + constructorTypes[1].Name);
-                }
                 object[] constructorParameters = new object[] {source, receiver, collisionIntersection};
                 ICommands command = (ICommands) constructorInfo.Invoke(constructorParameters);
                 command.Execute();

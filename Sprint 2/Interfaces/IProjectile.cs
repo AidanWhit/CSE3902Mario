@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Sprint_2.Interfaces
 {
-    public interface IProjectile : IUpdateable, IDrawable
+    public interface IProjectile : IUpdateable, IDrawable, ICollideable
     {
         public float XPos { get; set; }
         public float YPos { get; set; }

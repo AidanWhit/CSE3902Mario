@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using Sprint_2.Constants;
 using System;
+using Sprint_2.LevelManager;
 
 
 namespace Sprint_2.Sprites
@@ -87,7 +88,9 @@ namespace Sprint_2.Sprites
             {
                 if (fireballs[i].isExploded())
                 {
+                    GameObjectManager.Instance.Movers.Remove(fireballs[i]);
                     fireballs.Remove(fireballs[i]);
+                    
                     numberOfFireballsRemaining++;
                 }
                 else
@@ -105,6 +108,7 @@ namespace Sprint_2.Sprites
                 if (fireball != null)
                 {
                     fireballs.Add(fireball);
+                    GameObjectManager.Instance.Movers.Add(fireball);
                     numberOfFireballsRemaining--;
                 }
 

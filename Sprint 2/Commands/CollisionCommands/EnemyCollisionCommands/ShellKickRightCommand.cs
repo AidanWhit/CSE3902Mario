@@ -27,6 +27,7 @@ namespace Sprint_2.Commands.CollisionCommands.EnemyCollisionCommands
             if (shell.Velocity.X == 0)
             {
                 shell.Velocity = new Vector2(EnemyConstants.shellMoveSpeed, shell.Velocity.Y);
+                player.XPos -= collisionIntersection.Width;
             }
         }
     }

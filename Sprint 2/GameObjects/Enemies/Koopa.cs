@@ -38,7 +38,6 @@ namespace Sprint_2.GameObjects.Enemies.EnemySprites
             {
                 if (YPos > EnemyConstants.despawnHeight)
                 {
-                    GameObjectManager.Instance.Movers.Remove(this);
                     GameObjectManager.Instance.Updateables.Remove(this);
                     GameObjectManager.Instance.Drawables.Remove(this);
                 }
@@ -69,6 +68,7 @@ namespace Sprint_2.GameObjects.Enemies.EnemySprites
         {
             Flipped = true;
             koopaState.BeFlipped();
+            GameObjectManager.Instance.Movers.Remove(this);
         }
 
         public void TakeStompDamage()

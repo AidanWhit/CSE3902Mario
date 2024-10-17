@@ -6,11 +6,12 @@ using Sprint_2.Constants;
 using System;
 using System.Diagnostics;
 using Sprint_2.Sprites;
+using Sprint_2.LevelManager;
 
 
 namespace Sprint_2.GameObjects
 {
-    public class FireBall : IProjectile, ICollideable
+    public class FireBall : IProjectile
     {
         private ISprite fireball;
         public float XPos { get; set; }
@@ -110,6 +111,10 @@ namespace Sprint_2.GameObjects
 
         public string GetCollisionType()
         {
+            if (EnteredExplosionState)
+            {
+                return "exploding";
+            }
             return typeof(IProjectile).Name;
         }
 

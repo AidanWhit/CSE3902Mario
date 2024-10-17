@@ -12,7 +12,7 @@ namespace Sprint_2.Commands.MarioCollisionCommands
     {
         private IPlayer mario;
         private int width;
-        public MarioCollideRightCommand(IPlayer player, IBlock block, Rectangle collisionIntersection)
+        public MarioCollideRightCommand(IPlayer player, ICollideable block, Rectangle collisionIntersection)
         {
             mario = player;
             width = collisionIntersection.Width;

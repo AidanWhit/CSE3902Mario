@@ -63,7 +63,6 @@ namespace Sprint_2.GameObjects.Enemies.EnemySprites
             {
                 Velocity += EnemyConstants.fallVelocity;
             }
-
             Velocity = new Vector2(Velocity.X, Velocity.Y * MarioPhysicsConstants.velocityDecay);
 
             XPos += (float)(Velocity.X * gameTime.ElapsedGameTime.TotalSeconds);
@@ -71,7 +70,6 @@ namespace Sprint_2.GameObjects.Enemies.EnemySprites
             
             if (YPos > EnemyConstants.despawnHeight)
             {
-                GameObjectManager.Instance.Movers.Remove(this);
                 GameObjectManager.Instance.Updateables.Remove(this);
                 GameObjectManager.Instance.Drawables.Remove(this);
             }
@@ -82,7 +80,6 @@ namespace Sprint_2.GameObjects.Enemies.EnemySprites
         public void Draw(SpriteBatch spriteBatch, Color color)
         {
             sprite.Draw(spriteBatch, new Vector2(XPos, YPos), color);
-            HitBoxRectangle.DrawRectangle(spriteBatch, GetHitBox(), color, 1);
         }
 
         /* TODO: Implement actual hitbox */
@@ -96,6 +93,7 @@ namespace Sprint_2.GameObjects.Enemies.EnemySprites
             sprite = EnemyFactory.Instance.CreateFlippedKoopaShell();
             Flipped = true;
             Velocity = EnemyConstants.flippedVelocity;
+            GameObjectManager.Instance.Movers.Remove(this);
         }
 
         public void TakeStompDamage()
@@ -113,6 +111,10 @@ namespace Sprint_2.GameObjects.Enemies.EnemySprites
             if (Velocity.X != 0)
             {
                 return "MovingShell";
+            }
+            if (Flipped)
+            {
+                return "flip";
             }
             return typeof(Shell).Name;
         }
