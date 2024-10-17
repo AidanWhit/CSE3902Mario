@@ -87,7 +87,7 @@ namespace Sprint_2
 
             camera = new Camera(GraphicsDevice.Viewport, levelBounds);
 
-            objectManager = new GameObjectManager(mario);
+            objectManager = GameObjectManager.Instance;
 
             levelLoader = new LevelLoader(@"LevelManager\level-1_data_pretty.xml", objectManager);
             levelLoader.LoadCommandDictionary(@"LevelManager\XMLFiles\CollisionTable.xml");

@@ -4,6 +4,7 @@ using Sprint_2.Constants;
 using Sprint_2.Factories;
 using Sprint_2.GameObjects.Enemies.EnemyStates;
 using Sprint_2.Interfaces;
+using Sprint_2.LevelManager;
 using Sprint_2.Sprites;
 using System.Diagnostics;
 
@@ -36,7 +37,9 @@ namespace Sprint_2.GameObjects.Enemies.EnemySprites
             {
                 if (YPos > EnemyConstants.despawnHeight)
                 {
-                    EnemyFactory.Instance.RemoveEnemyFromObjectList(this);
+                    GameObjectManager.Instance.Movers.Remove(this);
+                    GameObjectManager.Instance.Updateables.Remove(this);
+                    GameObjectManager.Instance.Drawables.Remove(this);
                 }
             }
             else if (Velocity.X == 0)
@@ -44,8 +47,14 @@ namespace Sprint_2.GameObjects.Enemies.EnemySprites
                 timeUntilShellBecomesKoopa -= (float)gameTime.ElapsedGameTime.TotalSeconds;
                 if (timeUntilShellBecomesKoopa < 0)
                 {
-                    EnemyFactory.Instance.AddKoopa(new Vector2(XPos, YPos - GetHitBox().Height));
-                    EnemyFactory.Instance.RemoveEnemyFromObjectList(this);
+                    Koopa koopa = new Koopa(new Vector2(XPos, YPos - GetHitBox().Height));
+                    GameObjectManager.Instance.Movers.Add(koopa);
+                    GameObjectManager.Instance.Updateables.Add(koopa);
+                    GameObjectManager.Instance.Drawables.Add(koopa);
+
+                    GameObjectManager.Instance.Movers.Remove(this);
+                    GameObjectManager.Instance.Updateables.Remove(this);
+                    GameObjectManager.Instance.Drawables.Remove(this);
                 }
 
                
@@ -62,7 +71,9 @@ namespace Sprint_2.GameObjects.Enemies.EnemySprites
             
             if (YPos > EnemyConstants.despawnHeight)
             {
-                EnemyFactory.Instance.RemoveEnemyFromObjectList(this);
+                GameObjectManager.Instance.Movers.Remove(this);
+                GameObjectManager.Instance.Updateables.Remove(this);
+                GameObjectManager.Instance.Drawables.Remove(this);
             }
 
             sprite.Update(gameTime);
@@ -95,6 +106,11 @@ namespace Sprint_2.GameObjects.Enemies.EnemySprites
         public void ChangeDirection()
         {
             Velocity = new Vector2(Velocity.X * -1, Velocity.Y);
+        }
+
+        public string GetCollisionType()
+        {
+            return typeof(Shell).Name;
         }
     }
 }

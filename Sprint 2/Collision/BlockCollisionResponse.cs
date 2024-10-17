@@ -23,7 +23,6 @@ namespace Sprint_2.Collision
             Rectangle blockHitBox = block.GetHitBox();
             
             (collisionIntersection, side) = CollisionSideDetector.DetermineCollisionSide(playerHitBox, blockHitBox);
-            //Debug.Write("Side Type: \n" + side.GetType());
 
             if (side == CollisionSideDetector.side.Right)
             {

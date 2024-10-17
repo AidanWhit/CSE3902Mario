@@ -1,10 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <XnaContent>
 	<Entry>
-		<SourceType>Sprint_2.Interfaces.IPlayer</SourceType>
-		<ReceiverType>Sprint_2.Interfaces.IBlock</ReceiverType>
-		<CollisionSide>Sprint_2.Collision.CollisionSideDetector+side.Left</CollisionSide>
-		<SourceCommandType>Sprint_2.Commands.MarioCollisionCommands.MarioCollideLeftCommand</SourceCommandType>
+		<SourceType>IPlayer</SourceType>
+		<ReceiverType>IBlock</ReceiverType>
+		<CollisionSide>Top</CollisionSide>
+		<SourceCommandType>Sprint_2.Commands.MarioCollisionCommands.MarioCollideTopCommand</SourceCommandType>
 		<ReceiverCommandType>null</ReceiverCommandType>
+	</Entry>
+	<Entry>
+		<SourceType>IPlayer</SourceType>
+		<ReceiverType>IBlock</ReceiverType>
+		<CollisionSide>Bottom</CollisionSide>
+		<SourceCommandType>Sprint_2.Commands.MarioCollisionCommands.MarioCollideBottomCommand</SourceCommandType>
+		<ReceiverCommandType>Sprint_2.Commands.CollisionCommands.BlockHitCommand</ReceiverCommandType>
 	</Entry>
 </XnaContent>

@@ -92,7 +92,7 @@ namespace Sprint_2.GameObjects.Enemies.EnemySprites
             // Draw fireballs
             foreach (var fireball in fireballs)
             {
-                fireball.Draw(spriteBatch);
+                fireball.Draw(spriteBatch, color);
             }
         }
 
@@ -135,6 +135,11 @@ namespace Sprint_2.GameObjects.Enemies.EnemySprites
         public Rectangle GetHitBox()
         {
             return new Rectangle(0, 0, 0, 0);
+        }
+
+        public string GetCollisionType()
+        {
+            return typeof(IEnemy).Name;
         }
     }
 }

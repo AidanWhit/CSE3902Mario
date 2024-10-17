@@ -15,7 +15,7 @@ namespace Sprint_2.Commands.MarioCollisionCommands
     {
         private IPlayer mario;
         private int height;
-        public MarioCollideTopCommand(IPlayer player, Rectangle collisionIntersection)
+        public MarioCollideTopCommand(IPlayer player, IBlock block, Rectangle collisionIntersection)
         {
             mario = player;
             height = collisionIntersection.Height;

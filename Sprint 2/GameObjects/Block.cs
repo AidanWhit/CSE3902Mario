@@ -5,6 +5,7 @@ using Sprint_2.GameObjects.BlockStates;
 using Sprint_2.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace Sprint_2.GameObjects
 {
@@ -77,6 +78,11 @@ namespace Sprint_2.GameObjects
         public IBlockState GetBlockState()
         {
             return blockState;
+        }
+
+        public string GetCollisionType()
+        {
+            return typeof(IBlock).Name;
         }
     }
 }

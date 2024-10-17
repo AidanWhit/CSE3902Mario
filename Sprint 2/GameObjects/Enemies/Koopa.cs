@@ -5,6 +5,7 @@ using Sprint_2.Factories;
 using Sprint_2.GameObjects.Enemies.EnemyStates;
 using Sprint_2.Interfaces;
 using Sprint_2.Interfaces;
+using Sprint_2.LevelManager;
 using System;
 using System.Linq.Expressions;
 
@@ -37,7 +38,9 @@ namespace Sprint_2.GameObjects.Enemies.EnemySprites
             {
                 if (YPos > EnemyConstants.despawnHeight)
                 {
-                    EnemyFactory.Instance.RemoveEnemyFromObjectList(this);
+                    GameObjectManager.Instance.Movers.Remove(this);
+                    GameObjectManager.Instance.Updateables.Remove(this);
+                    GameObjectManager.Instance.Drawables.Remove(this);
                 }
                 koopaState.Update(gameTime);
             }
@@ -75,6 +78,11 @@ namespace Sprint_2.GameObjects.Enemies.EnemySprites
         public void ChangeDirection()
         {
             koopaState.ChangeDirection();
+        }
+
+        public string GetCollisionType()
+        {
+            return typeof(IEnemy).Name;
         }
     }
 }

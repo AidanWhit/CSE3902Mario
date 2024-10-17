@@ -6,7 +6,7 @@ using Sprint_2.LevelManager;
 
 namespace Sprint_2.GameObjects.ItemSprites
 {
-    public class Flower : IItem
+    public class Flower : IItem, ICollideable
     {
         public Vector2 Velocity { get; set; }
         public bool OnSpawn { get; set; }
@@ -41,14 +41,16 @@ namespace Sprint_2.GameObjects.ItemSprites
             sprite.Update(gameTime);
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch spriteBatch, Color color)
         {
-            sprite.Draw(spriteBatch, new Vector2(XPos, YPos), Color.White);
+            sprite.Draw(spriteBatch, new Vector2(XPos, YPos), color);
         }
 
-        public void DeleteItem(GameObjectManager gameObjectManager) 
+        public void DeleteItem() 
         {
-            ItemFactory.Instance.RemoveFromItemsList(this);
+            GameObjectManager.Instance.Movers.Remove(this);
+            GameObjectManager.Instance.Updateables.Remove(this);
+            GameObjectManager.Instance.Drawables.Remove(this);
         }
 
         public Rectangle GetHitBox()
@@ -57,5 +59,10 @@ namespace Sprint_2.GameObjects.ItemSprites
         }
 
         public void ChangeDirection() { }
+
+        public string GetCollisionType()
+        {
+            return typeof(IItem).Name;
+        }
     }
 }

@@ -12,7 +12,7 @@ using Sprint_2.GameObjects;
 
 namespace Sprint_2.Interfaces
 {
-    public interface IPlayer
+    public interface IPlayer : ICollideable, IUpdateable, IDrawable
     {
         public int XPos { get; set; }
         public int YPos { get; set; }
@@ -30,9 +30,6 @@ namespace Sprint_2.Interfaces
         public void MoveRight();
         public void Jump();
         public void Crouch();
-
-        public void Update(GameTime gameTime);
-        public void Draw(SpriteBatch spriteBatch, Color color);
         public void UpdateFireballs(GameTime gameTime);
         public void ShootFireball();
         public void Fall();

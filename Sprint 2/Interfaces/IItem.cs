@@ -12,16 +12,14 @@ using Sprint_2.LevelManager;
 
 namespace Sprint_2.Interfaces
 {
-    public interface IItem
+    public interface IItem: IUpdateable, IDrawable, ICollideable
     {
         public bool OnSpawn { get; set; }
         public float XPos { get; set; }
         public float YPos { get; set; }
 
         public Vector2 Velocity { get; set; }
-        void Update(GameTime gameTime);
-        void Draw(SpriteBatch spriteBatch);
-        void DeleteItem(GameObjectManager gameObjectManager);
+        void DeleteItem();
 
         public Rectangle GetHitBox();
 

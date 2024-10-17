@@ -1,5 +1,6 @@
 ﻿using Sprint_2.Factories;
 using Sprint_2.Interfaces;
+using Sprint_2.LevelManager;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,7 +35,7 @@ namespace Sprint_2.GameObjects.BlockStates
             {
                 int column = (int)block.Position.X / 16;
                 /* Call remove object on gameobject manager to remove the block from being able to be drawn/updated */
-                BlockFactory.Instance.RemoveBlockFromList(block, column);
+                GameObjectManager.Instance.Blocks[column].Remove(block);
 
             }
         }

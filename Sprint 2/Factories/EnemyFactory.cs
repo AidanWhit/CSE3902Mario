@@ -97,25 +97,7 @@ namespace Sprint_2.Factories
             objectManager = gameObjectManager;
         }
 
-        public void AddGoomba(Vector2 location)
-        {
-            objectManager.AddEnemy(new Goomba(location));
-        }
 
-        public void AddKoopa(Vector2 location)
-        {
-            objectManager.AddEnemy(new Koopa(location));
-        }
-
-        public void AddEnemy(IEnemy enemy)
-        {
-            objectManager.AddEnemy(enemy);
-        }
-
-        public void RemoveEnemyFromObjectList(IEnemy enemy) 
-        {
-            objectManager.RemoveEnemy(enemy);
-        }
         public ISprite CreateGoomba()
         {
             Rectangle[] source = new Rectangle[] { new Rectangle(1, 5, 16, 16), new Rectangle(31, 5, 16, 16) };

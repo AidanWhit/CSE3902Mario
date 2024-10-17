@@ -10,7 +10,7 @@ using Sprint_2.Sprites;
 
 namespace Sprint_2.GameObjects
 {
-    public class FireBall : IProjectile
+    public class FireBall : IProjectile, ICollideable
     {
         private ISprite fireball;
         public float XPos { get; set; }
@@ -82,9 +82,9 @@ namespace Sprint_2.GameObjects
             fireball.Update(gameTime);
 
         }
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch spriteBatch, Color color)
         {
-            fireball.Draw(spriteBatch, new Vector2(XPos, YPos), Color.White);
+            fireball.Draw(spriteBatch, new Vector2(XPos, YPos), color);
             
         }
 
@@ -106,6 +106,11 @@ namespace Sprint_2.GameObjects
         public Rectangle GetHitBox()
         {
             return fireball.GetHitBox(new Vector2(XPos, YPos));
+        }
+
+        public string GetCollisionType()
+        {
+            return typeof(IProjectile).Name;
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿
+using Microsoft.Xna.Framework;
 using Sprint_2.GameObjects.Enemies.EnemySprites;
 using Sprint_2.Interfaces;
 using Sprint_2.LevelManager;
@@ -11,12 +12,15 @@ namespace Sprint_2.Collision
     {
         
         private GameObjectManager gameObjectManager;
+        private CollisionResponse collisionResponse;
         private IPlayer player;
         public CollisionDetection(GameObjectManager gameObjectManager)
         {
             this.gameObjectManager = gameObjectManager;
+            collisionResponse = new CollisionResponse(gameObjectManager);
         }
 
+        /*
         public void DetectCollisions()
         {
             player = Game1.Instance.mario;
@@ -124,6 +128,23 @@ namespace Sprint_2.Collision
                     {
                         EnemyCollisionResponder.EnemyResponseForPlayer(enemy, player);
                     }
+                }
+            }
+        }
+        */
+        public void DetectCollision2()
+        {
+            player = Game1.Instance.mario;
+            int marioColumn = player.XPos / 16;
+            List<ICollideable> blocks = gameObjectManager.GetNearbyBlocks2(marioColumn);
+            foreach (ICollideable block in blocks)
+            {
+                if (player.GetHitBox().Intersects(block.GetHitBox()))
+                {
+                    Rectangle collisionRect;
+                    CollisionSideDetector.side side;
+                    (collisionRect, side) = CollisionSideDetector.DetermineCollisionSide(player.GetHitBox(), block.GetHitBox());
+                    collisionResponse.ResolveCollision(player, block, side.ToString(), collisionRect);
                 }
             }
         }

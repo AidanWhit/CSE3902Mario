@@ -1,3 +1,4 @@
+using Microsoft.VisualBasic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint_2;
@@ -21,110 +22,74 @@ namespace Sprint_2.LevelManager
 {
     public class GameObjectManager
     {
-        // Add or remove collections of objects as needed
-        public Collection<IEnemy> Enemies { get; set; } = new Collection<IEnemy>();
-        public Collection<IItem> Items { get; set; } = new Collection<IItem>();
-        public Collection<IBlock> Blocks { get; set; } = new Collection<IBlock>();
-        public Collection<IStaticSprite> Background { get; set; } = new Collection<IStaticSprite>();
-        public Collection<IPipe> Pipes { get; set; } = new Collection<IPipe>();
+        private static GameObjectManager instance = new GameObjectManager();
+        public static GameObjectManager Instance { get { return instance; } }
+        
+        //public Collection<IEnemy> Enemies { get; set; } = new Collection<IEnemy>();
+        //public Collection<IItem> Items { get; set; } = new Collection<IItem>();
+        //public Collection<IBlock> Blocks { get; set; } = new Collection<IBlock>();
+        //public Collection<IStaticSprite> Background { get; set; } = new Collection<IStaticSprite>();
+        //public Collection<IPipe> Pipes { get; set; } = new Collection<IPipe>();
 
-        public List<IBlock>[] blocks = new List<IBlock>[210];
+        public List<ICollideable>[] Blocks = new List<ICollideable>[210];
+        public List<Interfaces.IUpdateable> Updateables;
+        public List<Interfaces.IDrawable> Drawables { get; set; } = new List<Interfaces.IDrawable>();
+        public List<ICollideable> Movers { get; set; } = new List<ICollideable>();
+        public List<ICollideable> Static { get; set; } = new List<ICollideable>();
 
-        private Dictionary<Tuple<Type, Type, CollisionSideDetector.side>, (Type, Type)> collisionCommandMap = new Dictionary<Tuple<Type, Type, CollisionSideDetector.side>, (Type, Type)>();
+        private Dictionary<string, (Type, Type)> collisionCommandMap = new Dictionary<string, (Type, Type)>();
 
         private CollisionDetection collisionDetection;
-        private int marioColumn;
 
 
         public IPlayer Player { get; set; }
 
-        public GameObjectManager(IPlayer player)
+        private GameObjectManager()
         {
             Player = Game1.Instance.mario;
             collisionDetection = new CollisionDetection(this);
             
-            for (int i = 0; i < blocks.Length; i++)
+            for (int i = 0; i < Blocks.Length; i++)
             {
-                blocks[i] = new List<IBlock>();
+                Blocks[i] = new List<ICollideable>();
             }
+            Updateables = new List<Interfaces.IUpdateable>();
 
         }
         /* Next two methods added for testing */
 
-        public void AddCommandMapping(Tuple<Type, Type, CollisionSideDetector.side> entry, Type sourceCommand, Type receiverCommand)
+        public void AddCommandMapping(string entry, Type sourceCommand, Type receiverCommand)
         {
             collisionCommandMap.Add(entry, (sourceCommand, receiverCommand));
         }
-        public void AddItem(IItem item)
+        public Dictionary<string, (Type, Type)> GetCollisionDictionary()
         {
-            Items.Add(item);
+            return collisionCommandMap;
         }
-
-        public void RemoveItem(IItem item)
-        {
-            Items.Remove(item);
-        }
-
-        public void AddBlock(IBlock block)
-        {
-            Blocks.Add(block);
-        }
-
-        public void RemoveBlock(IBlock block, int column)
-        {
-            blocks[column].Remove(block);
-        }
-
-        public void AddEnemy(IEnemy enemy)
-        {
-            Enemies.Add(enemy);
-        }
-
-        public void RemoveEnemy(IEnemy enemy)
-        {
-            Enemies.Remove(enemy);
-        }
-
-        public void AddBackground(IStaticSprite background)
-        {
-            Background.Add(background);
-        }
-
-        public void RemoveBackground(IStaticSprite background)
-        {
-            Background.Remove(background);
-        }
-
-        public void AddPipe(IPipe pipe)
-        {
-            Pipes.Add(pipe);
-        }
-        public void RemovePipe(IPipe pipe)
-        {
-            Pipes.Remove(pipe);
-        }
+        
         private void UnloadObjects()
         {
 
         }
-        public List<IBlock> GetNearbyBlocks(int column)
+        
+        public List<ICollideable> GetNearbyBlocks2(int column)
         {
-            List<IBlock> nearbyBlocks;
-            if (column < 0 || column >= blocks.Length)
+            List<ICollideable> nearbyBlocks;
+            if (column < 0 || column >= Blocks.Length)
             {
-                nearbyBlocks = new List<IBlock>();
+                nearbyBlocks = new List<ICollideable>();
             }
-            else if (column != 0 && column < blocks.Length - 1)
+            else if (column != 0 && column < Blocks.Length - 1)
             {
-                nearbyBlocks = blocks[column].Concat(blocks[column - 1].Concat(blocks[column + 1])).ToList();
+                nearbyBlocks = Blocks[column].Concat(Blocks[column - 1].Concat(Blocks[column + 1])).ToList();
             }
-            else if (column == blocks.Length - 1)
+            else if (column == Blocks.Length - 1)
             {
-                nearbyBlocks = blocks[column].Concat(blocks[column - 1]).ToList();
+                nearbyBlocks = Blocks[column].Concat(Blocks[column - 1]).ToList();
             }
             else
             {
-                nearbyBlocks = blocks[column].Concat(blocks[column + 1]).ToList();
+                nearbyBlocks = Blocks[column].Concat(Blocks[column + 1]).ToList();
             }
             return nearbyBlocks;
         }
@@ -133,61 +98,22 @@ namespace Sprint_2.LevelManager
             /* TODO: Find a better way to update the player if it picks up a star */
             Player = Game1.Instance.mario;
             Player.Update(gameTime);
-
-            foreach (List<IBlock> list in blocks)
+            
+            foreach (Interfaces.IUpdateable update in Updateables)
             {
-                foreach (IBlock block in list)
-                {
-                    block.Update(gameTime);
-                }
-            }
-            foreach (IItem item in Items.ToList())
-            {
-                item.Update(gameTime);
-            }
-            foreach (IPipe pipe in Pipes)
-            {
-                pipe.Update(gameTime);
-            }
-            foreach (ISprite background in Background)
-            {
-                background.Update(gameTime);
-            }
-            foreach (IEnemy enemy in Enemies.ToList())
-            {
-                enemy.Update(gameTime);
+                update.Update(gameTime);
             }
 
-            collisionDetection.DetectCollisions();
+            collisionDetection.DetectCollision2();
             
         }
 
         public void Draw(SpriteBatch spriteBatch, Texture2D allSpriteSheet, Color color)
         {
-            foreach (IStaticSprite background in Background)
+            Debug.WriteLine("Draw Length: " + Blocks[1].Count);
+            foreach(Interfaces.IDrawable draw in Drawables)
             {
-                background.Draw(spriteBatch, Vector2.Zero, color);
-            }
-            foreach (IItem item in Items)
-            {
-                item.Draw(spriteBatch);
-            }
-
-            foreach (List<IBlock> list in blocks)
-            {
-                foreach (IBlock block in list)
-                {
-                    block.Draw(spriteBatch, color);
-                }
-            }
-            foreach (IEnemy enemy in Enemies)
-            {
-                enemy.Draw(spriteBatch, color);
-            }
-
-            foreach(IPipe pipe in Pipes)
-            {
-                pipe.Draw(spriteBatch, color);
+                draw.Draw(spriteBatch, color);
             }
 
             Player.Draw(spriteBatch, color);

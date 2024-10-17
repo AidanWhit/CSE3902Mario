@@ -76,7 +76,7 @@ namespace Sprint_2.Sprites
         {
             for (int i = 0; i < fireballs.Count; i++)
             {
-                fireballs[i].Draw(spriteBatch);
+                fireballs[i].Draw(spriteBatch, color);
             }
             PlayerState.Draw(spriteBatch, color * opacity);
         }
@@ -189,6 +189,11 @@ namespace Sprint_2.Sprites
         public string GetHealth()
         {
             return PlayerState.GetHealth();
+        }
+
+        public string GetCollisionType()
+        {
+            return typeof(IPlayer).Name;
         }
     }
 }

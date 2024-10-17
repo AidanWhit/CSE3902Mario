@@ -31,7 +31,7 @@ namespace Sprint_2.Collision
             }
             if (item is not Coin)
             {
-                item.DeleteItem(null);
+                item.DeleteItem();
             }
             
         }

@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Sprint_2.GameObjects
 {
-    public class Pipe : IPipe
+    public class Pipe : IPipe, ICollideable
     {
         public float XPos { get; set; }
         public float YPos { get; set; }
@@ -39,6 +39,11 @@ namespace Sprint_2.GameObjects
         public Rectangle GetHitBox()
         {
             return sprite.GetHitBox(new Vector2(XPos, YPos));
+        }
+
+        public string GetCollisionType()
+        {
+            return typeof(IBlock).Name;
         }
     }
 }

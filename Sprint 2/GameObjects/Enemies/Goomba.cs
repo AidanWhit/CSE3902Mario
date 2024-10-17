@@ -8,6 +8,8 @@ using System.Linq.Expressions;
 using Sprint_2.Constants;
 using System.Diagnostics;
 using System;
+using Sprint_2.GameObjects.Enemies.EnemySprites;
+using Sprint_2.LevelManager;
 
 namespace Sprint_2.Sprites.EnemySprites
 {
@@ -45,14 +47,18 @@ namespace Sprint_2.Sprites.EnemySprites
                     if (stompTimer < 0)
                     {
                         //Remove Goomba from enemies list
-                        EnemyFactory.Instance.RemoveEnemyFromObjectList(this);
+                        GameObjectManager.Instance.Movers.Remove(this);
+                        GameObjectManager.Instance.Updateables.Remove(this);
+                        GameObjectManager.Instance.Drawables.Remove(this);
                     }
                 }
                 else if (Flipped)
                 {
                     if (YPos > 650)
                     {
-                        EnemyFactory.Instance.RemoveEnemyFromObjectList(this);
+                        GameObjectManager.Instance.Movers.Remove(this);
+                        GameObjectManager.Instance.Updateables.Remove(this);
+                        GameObjectManager.Instance.Drawables.Remove(this);
                     }
                 }
                 goombaState.Update(gameTime);
@@ -97,6 +103,11 @@ namespace Sprint_2.Sprites.EnemySprites
         public Rectangle GetHitBox()
         {
             return goombaState.GetHitBox(new Vector2(XPos, YPos));
+        }
+
+        public string GetCollisionType()
+        {
+            return typeof(IEnemy).Name;
         }
     }
 }

@@ -41,9 +41,9 @@ namespace Sprint_2.Sprites.EnemySprites
                 currentFrame = 0;
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch spriteBatch, Color color)
         {
-            spriteBatch.Draw(fireballSprites[currentFrame], new Vector2(XPos, YPos), Color.White);
+            spriteBatch.Draw(fireballSprites[currentFrame], new Vector2(XPos, YPos), color);
         }
 
         public Rectangle GetHitBox() 
