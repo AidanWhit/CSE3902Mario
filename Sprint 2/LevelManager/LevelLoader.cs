@@ -143,7 +143,8 @@ namespace Sprint_2.LevelManager
             {
                 case "Mario":
                     //gameObjectManager.Player = new Player(new Vector2(locationX, locationY));
-                    
+                    Game1.Instance.mario.XPos = locationX;
+                    Game1.Instance.mario.YPos = locationY;
                     break;
                 default:
                     throw new InvalidOperationException("Player type: \"" + name + "\" doesn't exist");

@@ -34,6 +34,7 @@ namespace Sprint_2
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
 
+        //TODO: Make this singular IPlayer into a list and have level loader create the player
         public IPlayer mario { get; set; }
         private KeyboardControl keyControl;
 
