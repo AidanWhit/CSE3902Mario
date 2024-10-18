@@ -90,7 +90,6 @@ namespace Sprint_2
             ItemFactory.Instance.SetGameObjectManager(GameObjectManager.Instance);
             BlockFactory.Instance.SetGameObjectManager(GameObjectManager.Instance);
             EnemyFactory.Instance.SetGameObjectManager(GameObjectManager.Instance);
-            BackgroundFactory.Instance.SetGameObjectManager(GameObjectManager.Instance);
 
             Texture2D texture = Content.Load<Texture2D>("marioSpriteSheet");
 
@@ -117,7 +116,8 @@ namespace Sprint_2
 
 
             levelLoader = new LevelLoader();
-            levelLoader.LoadLevel(@"LevelManager\level-1_data_pretty.xml");
+            //levelLoader.LoadLevel(@"LevelManager\level-1_data_pretty.xml");
+            levelLoader.LoadLevel(@"LevelManager\testing-level.xml");
         }
         protected override void UnloadContent()
         {

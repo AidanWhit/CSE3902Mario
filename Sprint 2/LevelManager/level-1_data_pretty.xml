@@ -143,7 +143,7 @@
     </Item>
     <Item>
       <ObjectType>Block</ObjectType>
-      <ObjectName>BrownBrick</ObjectName>
+      <ObjectName>BrownBrickWithCoins</ObjectName>
       <Location>1504 384</Location>
     </Item>
     <Item>
@@ -2838,6 +2838,97 @@
 		  <ObjectType>Block</ObjectType>
 		  <ObjectName>Chiseled</ObjectName>
 		  <Location>3168 432</Location>
+	  </Item>
+	  <Item>
+		  <ObjectType>Collider</ObjectType>
+		  <ObjectName></ObjectName>
+		  <Location>1088 448</Location>
+		  <SizeX>16</SizeX>
+		  <SizeY>32</SizeY>
+	  </Item>
+	  <Item>
+		  <ObjectType>Collider</ObjectType>
+		  <ObjectName></ObjectName>
+		  <Location>1136 448</Location>
+		  <SizeX>16</SizeX>
+		  <SizeY>32</SizeY>
+	  </Item>
+	  <Item>
+		  <ObjectType>Collider</ObjectType>
+		  <ObjectName></ObjectName>
+		  <Location>1360 448</Location>
+		  <SizeX>16</SizeX>
+		  <SizeY>32</SizeY>
+	  </Item>
+	  <Item>
+		  <ObjectType>Collider</ObjectType>
+		  <ObjectName></ObjectName>
+		  <Location>1424 448</Location>
+		  <SizeX>16</SizeX>
+		  <SizeY>32</SizeY>
+	  </Item>
+	  <Item>
+		  <ObjectType>Collider</ObjectType>
+		  <ObjectName></ObjectName>
+		  <Location>2192 384</Location>
+		  <SizeX>16</SizeX>
+		  <SizeY>64</SizeY>
+	  </Item>
+	  <Item>
+		  <ObjectType>Collider</ObjectType>
+		  <ObjectName></ObjectName>
+		  <Location>2240 384</Location>
+		  <SizeX>16</SizeX>
+		  <SizeY>64</SizeY>
+	  </Item>
+	  <Item>
+		  <ObjectType>Collider</ObjectType>
+		  <ObjectName></ObjectName>
+		  <Location>2432 384</Location>
+		  <SizeX>16</SizeX>
+		  <SizeY>96</SizeY>
+	  </Item>
+	  <Item>
+		  <ObjectType>Collider</ObjectType>
+		  <ObjectName></ObjectName>
+		  <Location>2480 384</Location>
+		  <SizeX>16</SizeX>
+		  <SizeY>96</SizeY>
+	  </Item>
+	  <Item>
+		  <ObjectType>Collider</ObjectType>
+		  <ObjectName></ObjectName>
+		  <Location>3024 320</Location>
+		  <SizeX>16</SizeX>
+		  <SizeY>128</SizeY>
+	  </Item>
+	  <Item>
+		  <ObjectType>Collider</ObjectType>
+		  <ObjectName></ObjectName>
+		  <Location>0 448</Location>
+		  <SizeX>1088</SizeX>
+		  <SizeY>16</SizeY>
+	  </Item>
+	  <Item>
+		  <ObjectType>Collider</ObjectType>
+		  <ObjectName></ObjectName>
+		  <Location>1136 448</Location>
+		  <SizeX>240</SizeX>
+		  <SizeY>16</SizeY>
+	  </Item>
+	  <Item>
+		  <ObjectType>Collider</ObjectType>
+		  <ObjectName></ObjectName>
+		  <Location>1424 448</Location>
+		  <SizeX>992</SizeX>
+		  <SizeY>16</SizeY>
+	  </Item>
+	  <Item>
+		  <ObjectType>Collider</ObjectType>
+		  <ObjectName></ObjectName>
+		  <Location>2480 448</Location>
+		  <SizeX>832</SizeX>
+		  <SizeY>16</SizeY>
 	  </Item>
 	  
 	  

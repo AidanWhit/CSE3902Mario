@@ -14,6 +14,7 @@ using Sprint_2.Collision;
 using Sprint_2.Constants;
 using System.Reflection;
 using System.Data.Common;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Sprint_2.LevelManager
 {
@@ -44,6 +45,7 @@ namespace Sprint_2.LevelManager
                 string type;
                 string name;
                 string location;
+                string sizeX = "";  string sizeY = "";
                 if ((LevelReader.NodeType == XmlNodeType.Element) && (LevelReader.Name == "Item"))
                 {
                     LevelReader.ReadToDescendant("ObjectType");
@@ -52,11 +54,18 @@ namespace Sprint_2.LevelManager
                     name = LevelReader.ReadElementContentAsString();
                     LevelReader.ReadToNextSibling("Location");
                     location = LevelReader.ReadElementContentAsString();
-                    LoadObject(name, type, location);
+                    if (type.Equals("Collider"))
+                    {
+                        LevelReader.ReadToNextSibling("SizeX");
+                        sizeX = LevelReader.ReadElementContentAsString();
+                        LevelReader.Read();
+                        sizeY = LevelReader.ReadElementContentAsString();
+                    }
+                    LoadObject(name, type, location, sizeX, sizeY);
                 }
             }
         }
-        private void LoadObject(string name, string type, string location)
+        private void LoadObject(string name, string type, string location, string sizeX, string sizeY)
         {
             location.Trim();
             string[] tokens = location.Split(new char[] { ' ' });
@@ -79,17 +88,25 @@ namespace Sprint_2.LevelManager
                     break;
                 case "Item":
                     //TODO: Fix
-                    MakeItem(name, locationX, locationY, new Block("ItemWithCoin", new Vector2(locationX, locationY)));
+                    MakeItem(name, locationX, locationY);
                     break;
                 case "Pipe":
                     MakePipe(name, locationX, locationY);
+                    break;
+                case "Collider":
+                    Vector2 size = new Vector2(Convert.ToInt32(sizeX), Convert.ToInt32(sizeY));
+                    MakeCollider(name, locationX, locationY, size);
                     break;
                 default:
                     throw new InvalidOperationException("Game Object type: \"" + type + "\" doesn't exist.");
 
             }
         }
-
+        private void MakeCollider(string name, int locationX, int locationY, Vector2 size)
+        {
+            GameObjectManager.Instance.Static.Add(new Collider(new Vector2(locationX, locationY), size));
+            //GameObjectManager.Instance.Drawables.Add(new Collider(new Vector2(locationX, locationY), size));
+        }
         private void MakePipe(string name, int locationX, int locationY)
         {
             Pipe pipe = new Pipe(new Vector2(locationX, locationY), name);
@@ -216,7 +233,7 @@ namespace Sprint_2.LevelManager
             
         }
 
-        private void MakeItem(string name, int locationX, int locationY, IBlock source)
+        private void MakeItem(string name, int locationX, int locationY)
         {
             switch (name)
             {
@@ -226,25 +243,25 @@ namespace Sprint_2.LevelManager
                     GameObjectManager.Instance.Drawables.Add(coin);
                     break;
                 case "Flower":
-                    Flower flower = new Flower(new Vector2(locationX, locationY), 0);
+                    Flower flower = new Flower(new Vector2(locationX, locationY), 480);
                     GameObjectManager.Instance.Updateables.Add(flower);
                     GameObjectManager.Instance.Drawables.Add(flower);
                     GameObjectManager.Instance.Static.Add(flower);
                     break;
                 case "RedMushroom":
-                    RedMushroom mushroom = new RedMushroom(new Vector2(locationX, locationY), 0);
+                    RedMushroom mushroom = new RedMushroom(new Vector2(locationX, locationY), 480);
                     GameObjectManager.Instance.Updateables.Add(mushroom);
                     GameObjectManager.Instance.Drawables.Add(mushroom);
                     GameObjectManager.Instance.Movers.Add(mushroom);
                     break;
                 case "GreenMushroom":
-                    GreenMushroom greenMushroom = new GreenMushroom(new Vector2(locationX, locationY), 0);
+                    GreenMushroom greenMushroom = new GreenMushroom(new Vector2(locationX, locationY), 480);
                     GameObjectManager.Instance.Updateables.Add(greenMushroom);
                     GameObjectManager.Instance.Drawables.Add(greenMushroom);
                     GameObjectManager.Instance.Movers.Add(greenMushroom);
                     break;
                 case "Star":
-                    Star star = new Star(new Vector2(locationX, locationY), 0);
+                    Star star = new Star(new Vector2(locationX, locationY), 480);
                     GameObjectManager.Instance.Updateables.Add(star);
                     GameObjectManager.Instance.Drawables.Add(star);
                     GameObjectManager.Instance.Movers.Add(star);

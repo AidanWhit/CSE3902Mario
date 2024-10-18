@@ -23,7 +23,6 @@ namespace Sprint_2.GameObjects
         {
             Position = position;
             blockState = GetBlockState(name);
-            //BlockFactory.Instance.AddBlockToBlocksList(this);
         }
 
 
@@ -58,7 +57,7 @@ namespace Sprint_2.GameObjects
             Dictionary<string, IBlockState> blockStates = new Dictionary<string, IBlockState>()
             {
                 {"BrownBrick", new BrownBrickState(this) },
-                {"BrownBrickWithCoins", new BrownBrickWithCoins(this, 2) },
+                {"BrownBrickWithCoins", new BrownBrickWithCoins(this, 6) },
                 {"ItemWithCoin", new ItemBlockWithCoin(this) },
                 {"ItemWithPowerUp", new ItemBlockWithPowerUp(this) },
                 {"Chiseled", new ChiseledBlockState(this) },

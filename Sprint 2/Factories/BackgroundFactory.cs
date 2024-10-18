@@ -13,13 +13,8 @@ namespace Sprint_2.Factories
     public class BackgroundFactory
     {
         // Background sprites and level image
-        private Texture2D bush1Texture;
-        private Texture2D bush2Texture;
-        private Texture2D hill1Texture;
-        private Texture2D hill2Texture;
-        private Texture2D cloud1Texture;
-        private Texture2D cloud2Texture;
         private Texture2D levelImageTexture;  // The whole level image (blocks and background only)
+        private Texture2D backgroundSprites;
 
 
         private static BackgroundFactory instance = new BackgroundFactory();
@@ -29,92 +24,37 @@ namespace Sprint_2.Factories
         // Load all the background textures 
         public void LoadAllContent(ContentManager content)
         {
-            bush1Texture = content.Load<Texture2D>("bush1"); //sprite for 1 bush
-            bush2Texture = content.Load<Texture2D>("bush2"); //sprite for 2 bushes
-            hill1Texture = content.Load<Texture2D>("hill1"); //sprite for small hill
-            hill2Texture = content.Load<Texture2D>("hill2"); //sprite for big hill
-            cloud1Texture = content.Load<Texture2D>("cloud1"); //sprite for 1 cloud
-            cloud2Texture = content.Load<Texture2D>("cloud2"); //sprite for 2 clouds
             levelImageTexture = content.Load<Texture2D>("levelimage"); //sprite for the whole level image  
+            backgroundSprites = content.Load<Texture2D>("backgroundSprites");
         }
-
-        public void SetGameObjectManager(GameObjectManager gameObjectManager)
-        {
-            objectManager = gameObjectManager;
-        }
-
-        
-        public void AddBush1(Vector2 location)
-        {
-            IStaticSprite bush1 = CreateBush1(location);
-            GameObjectManager.Instance.Drawables.Add(bush1);
-        }
-
-        public void AddBush2(Vector2 location)
-        {
-            IStaticSprite bush2 = CreateBush2(location);
-            GameObjectManager.Instance.Drawables.Add(bush2);
-        }
-
-        public void AddHill1(Vector2 location)
-        {
-            IStaticSprite hill1 = CreateHill1(location);
-            GameObjectManager.Instance.Drawables.Add(hill1);  
-        }
-
-        public void AddHill2(Vector2 location)
-        {
-            IStaticSprite hill2 = CreateHill2(location);
-            GameObjectManager.Instance.Drawables.Add(hill2); 
-        }
-
-        public void AddCloud1(Vector2 location)
-        {
-            IStaticSprite cloud1 = CreateCloud1(location);
-            GameObjectManager.Instance.Drawables.Add(cloud1);  
-        }
-
-        public void AddCloud2(Vector2 location)
-        {
-            IStaticSprite cloud2 = CreateCloud2(location);
-            GameObjectManager.Instance.Drawables.Add(cloud2 ); 
-        }
-
-        public void AddLevelImage(Vector2 location)
-        {
-            IStaticSprite levelImage = CreateLevelImage(location);
-            GameObjectManager.Instance.Drawables.Add(levelImage );  
-        }
-
-
         public IStaticSprite CreateBush1(Vector2 location)
         {
-            return new StaticSprite(bush1Texture, new Rectangle[] { new Rectangle(0, 0, bush1Texture.Width, bush1Texture.Height) }, location);
+            return new StaticSprite(backgroundSprites, new Rectangle[] { new Rectangle(288, 24, 32, 16) }, location);
         }
 
         public IStaticSprite CreateBush2(Vector2 location)
         {
-            return new StaticSprite(bush2Texture, new Rectangle[] { new Rectangle(0, 0, bush2Texture.Width, bush2Texture.Height) }, location);
+            return new StaticSprite(backgroundSprites, new Rectangle[] { new Rectangle(220, 24, 64, 16) }, location);
         }
 
         public IStaticSprite CreateHill1(Vector2 location)
         {
-            return new StaticSprite(hill1Texture, new Rectangle[] { new Rectangle(0, 0, hill1Texture.Width, hill1Texture.Height) }, location);
+            return new StaticSprite(backgroundSprites, new Rectangle[] { new Rectangle(169, 21, 48, 19) }, location);
         }
 
         public IStaticSprite CreateHill2(Vector2 location)
         {
-            return new StaticSprite(hill2Texture, new Rectangle[] { new Rectangle(0, 0, hill2Texture.Width, hill2Texture.Height) }, location);
+            return new StaticSprite(backgroundSprites, new Rectangle[] { new Rectangle(86, 5, 80, 35) }, location);
         }
 
         public IStaticSprite CreateCloud1(Vector2 location)
         {
-            return new StaticSprite(cloud1Texture, new Rectangle[] { new Rectangle(0, 0, cloud1Texture.Width, cloud1Texture.Height) }, location);
+            return new StaticSprite(backgroundSprites, new Rectangle[] { new Rectangle(211, 69, 32, 24) }, location);
         }
 
         public IStaticSprite CreateCloud2(Vector2 location)
         {
-            return new StaticSprite(cloud2Texture, new Rectangle[] { new Rectangle(0, 0, cloud2Texture.Width, cloud2Texture.Height) }, location);
+            return new StaticSprite(backgroundSprites, new Rectangle[] { new Rectangle(144, 69, 64, 24) }, location);
         }
 
         public IStaticSprite CreateLevelImage(Vector2 location)

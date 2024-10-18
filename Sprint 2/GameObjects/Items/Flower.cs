@@ -50,7 +50,7 @@ namespace Sprint_2.GameObjects.ItemSprites
 
         public void DeleteItem() 
         {
-            GameObjectManager.Instance.Movers.Remove(this);
+            GameObjectManager.Instance.Static.Remove(this);
             GameObjectManager.Instance.Updateables.Remove(this);
             GameObjectManager.Instance.Drawables.Remove(this);
         }

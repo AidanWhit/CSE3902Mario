@@ -176,6 +176,13 @@
 		<ReceiverCommandType>Sprint_2.Commands.CollisionCommands.BlockHitCommand</ReceiverCommandType>
 	</Entry>
 	<Entry>
+		<SourceType>StarMario</SourceType>
+		<ReceiverType>InvisibleState</ReceiverType>
+		<CollisionSide>Bottom</CollisionSide>
+		<SourceCommandType>Sprint_2.Commands.MarioCollisionCommands.MarioCollideBottomCommand</SourceCommandType>
+		<ReceiverCommandType>Sprint_2.Commands.CollisionCommands.BlockHitCommand</ReceiverCommandType>
+	</Entry>
+	<Entry>
 		<SourceType>GreenMushroom</SourceType>
 		<ReceiverType>IBlock</ReceiverType>
 		<CollisionSide>Top</CollisionSide>
@@ -633,6 +640,104 @@
 		<CollisionSide>Bottom</CollisionSide>
 		<SourceCommandType>Sprint_2.Commands.MarioCollisionCommands.MarioGainsALife</SourceCommandType>
 		<ReceiverCommandType>Sprint_2.Commands.CollisionCommands.ItemCollisionCommands.ItemCollidesWithPlayer</ReceiverCommandType>
+	</Entry>
+	<Entry>
+		<SourceType>StarMario</SourceType>
+		<ReceiverType>GreenMushroom</ReceiverType>
+		<CollisionSide>Bottom</CollisionSide>
+		<SourceCommandType>Sprint_2.Commands.MarioCollisionCommands.MarioGainsALife</SourceCommandType>
+		<ReceiverCommandType>Sprint_2.Commands.CollisionCommands.ItemCollisionCommands.ItemCollidesWithPlayer</ReceiverCommandType>
+	</Entry>
+	<Entry>
+		<SourceType>StarMario</SourceType>
+		<ReceiverType>GreenMushroom</ReceiverType>
+		<CollisionSide>Left</CollisionSide>
+		<SourceCommandType>Sprint_2.Commands.MarioCollisionCommands.MarioGainsALife</SourceCommandType>
+		<ReceiverCommandType>Sprint_2.Commands.CollisionCommands.ItemCollisionCommands.ItemCollidesWithPlayer</ReceiverCommandType>
+	</Entry>
+	<Entry>
+		<SourceType>StarMario</SourceType>
+		<ReceiverType>GreenMushroom</ReceiverType>
+		<CollisionSide>Right</CollisionSide>
+		<SourceCommandType>Sprint_2.Commands.MarioCollisionCommands.MarioGainsALife</SourceCommandType>
+		<ReceiverCommandType>Sprint_2.Commands.CollisionCommands.ItemCollisionCommands.ItemCollidesWithPlayer</ReceiverCommandType>
+	</Entry>
+	<Entry>
+		<SourceType>StarMario</SourceType>
+		<ReceiverType>GreenMushroom</ReceiverType>
+		<CollisionSide>Top</CollisionSide>
+		<SourceCommandType>Sprint_2.Commands.MarioCollisionCommands.MarioGainsALife</SourceCommandType>
+		<ReceiverCommandType>Sprint_2.Commands.CollisionCommands.ItemCollisionCommands.ItemCollidesWithPlayer</ReceiverCommandType>
+	</Entry>
+	<Entry>
+		<SourceType>IPlayer</SourceType>
+		<ReceiverType>Collider</ReceiverType>
+		<CollisionSide>Top</CollisionSide>
+		<SourceCommandType>Sprint_2.Commands.MarioCollisionCommands.MarioCollideTopCommand</SourceCommandType>
+		<ReceiverCommandType></ReceiverCommandType>
+	</Entry>
+	<Entry>
+		<SourceType>IPlayer</SourceType>
+		<ReceiverType>Collider</ReceiverType>
+		<CollisionSide>Left</CollisionSide>
+		<SourceCommandType>Sprint_2.Commands.MarioCollisionCommands.MarioCollideLeftCommand</SourceCommandType>
+		<ReceiverCommandType></ReceiverCommandType>
+	</Entry>
+	<Entry>
+		<SourceType>IPlayer</SourceType>
+		<ReceiverType>Collider</ReceiverType>
+		<CollisionSide>Right</CollisionSide>
+		<SourceCommandType>Sprint_2.Commands.MarioCollisionCommands.MarioCollideRightCommand</SourceCommandType>
+		<ReceiverCommandType></ReceiverCommandType>
+	</Entry>
+	<Entry>
+		<SourceType>IPlayer</SourceType>
+		<ReceiverType>Collider</ReceiverType>
+		<CollisionSide>Bottom</CollisionSide>
+		<SourceCommandType>Sprint_2.Commands.MarioCollisionCommands.MarioCollideBottomCommand</SourceCommandType>
+		<ReceiverCommandType></ReceiverCommandType>
+	</Entry>
+	<Entry>
+		<SourceType>StarMario</SourceType>
+		<ReceiverType>Collider</ReceiverType>
+		<CollisionSide>Top</CollisionSide>
+		<SourceCommandType>Sprint_2.Commands.MarioCollisionCommands.MarioCollideTopCommand</SourceCommandType>
+		<ReceiverCommandType></ReceiverCommandType>
+	</Entry>
+	<Entry>
+		<SourceType>StarMario</SourceType>
+		<ReceiverType>Collider</ReceiverType>
+		<CollisionSide>Left</CollisionSide>
+		<SourceCommandType>Sprint_2.Commands.MarioCollisionCommands.MarioCollideLeftCommand</SourceCommandType>
+		<ReceiverCommandType></ReceiverCommandType>
+	</Entry>
+	<Entry>
+		<SourceType>StarMario</SourceType>
+		<ReceiverType>Collider</ReceiverType>
+		<CollisionSide>Right</CollisionSide>
+		<SourceCommandType>Sprint_2.Commands.MarioCollisionCommands.MarioCollideRightCommand</SourceCommandType>
+		<ReceiverCommandType></ReceiverCommandType>
+	</Entry>
+	<Entry>
+		<SourceType>StarMario</SourceType>
+		<ReceiverType>Collider</ReceiverType>
+		<CollisionSide>Bottom</CollisionSide>
+		<SourceCommandType>Sprint_2.Commands.MarioCollisionCommands.MarioCollideBottomCommand</SourceCommandType>
+		<ReceiverCommandType></ReceiverCommandType>
+	</Entry>
+	<Entry>
+		<SourceType>Star</SourceType>
+		<ReceiverType>Collider</ReceiverType>
+		<CollisionSide>Top</CollisionSide>
+		<SourceCommandType>Sprint_2.Commands.CollisionCommands.ItemCollisionCommands.StarCollideTopWithIBlock</SourceCommandType>
+		<ReceiverCommandType></ReceiverCommandType>
+	</Entry>
+	<Entry>
+		<SourceType>IProjectile</SourceType>
+		<ReceiverType>Collider</ReceiverType>
+		<CollisionSide>Top</CollisionSide>
+		<SourceCommandType>Sprint_2.Commands.CollisionCommands.Fireball.FireballBounceCommand</SourceCommandType>
+		<ReceiverCommandType></ReceiverCommandType>
 	</Entry>
 	
 	

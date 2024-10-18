@@ -6,6 +6,37 @@
       <ObjectName>BrownGround</ObjectName>
       <Location>0 448</Location>
     </Item>
+	  <Item>
+		  <ObjectType>Background</ObjectType>
+		  <ObjectName>Bush1</ObjectName>
+		  <Location>32 432</Location>
+	  </Item>
+	  <Item>
+		  <ObjectType>Background</ObjectType>
+		  <ObjectName>Bush2</ObjectName>
+		  <Location>80 432</Location>
+	  </Item>
+	  <Item>
+		  <ObjectType>Background</ObjectType>
+		  <ObjectName>Hill1</ObjectName>
+		  <Location>144 432</Location>
+	  </Item>
+	  <Item>
+		  <ObjectType>Background</ObjectType>
+		  <ObjectName>Hill2</ObjectName>
+		  <Location>192 416</Location>
+	  </Item>
+	  
+	  <Item>
+		  <ObjectType>Background</ObjectType>
+		  <ObjectName>Cloud1</ObjectName>
+		  <Location>112 320</Location>
+	  </Item>
+	  <Item>
+		  <ObjectType>Background</ObjectType>
+		  <ObjectName>Cloud2</ObjectName>
+		  <Location>224 320</Location>
+	  </Item>
     <Item>
       <ObjectType>Block</ObjectType>
       <ObjectName>BrownGround</ObjectName>
@@ -403,7 +434,7 @@
     </Item>
     <Item>
       <ObjectType>Block</ObjectType>
-      <ObjectName>Question</ObjectName>
+      <ObjectName>ItemWithPowerUp</ObjectName>
       <Location>48 384</Location>
     </Item>
     <Item>
@@ -423,7 +454,7 @@
     </Item>
     <Item>
       <ObjectType>Block</ObjectType>
-      <ObjectName>BrickWithAStar</ObjectName>
+      <ObjectName>BrownBrickWithStar</ObjectName>
       <Location>240 384</Location>
     </Item>
     <Item>
@@ -436,40 +467,47 @@
       <ObjectName>Koopa</ObjectName>
       <Location>288 432</Location>
     </Item>
-    <Item>
-      <ObjectType>Background</ObjectType>
-      <ObjectName>Bush1</ObjectName>
-      <Location>64 432</Location>
-    </Item>
-    <Item>
-      <ObjectType>Background</ObjectType>
-      <ObjectName>Bush2</ObjectName>
-      <Location>128 432</Location>
-    </Item>
-    <Item>
-      <ObjectType>Background</ObjectType>
-      <ObjectName>Hill1</ObjectName>
-      <Location>192 432</Location>
-    </Item>
-    <Item>
-      <ObjectType>Background</ObjectType>
-      <ObjectName>Hill2</ObjectName>
-      <Location>256 432</Location>
-    </Item>
-    <Item>
-      <ObjectType>Background</ObjectType>
-      <ObjectName>Cloud1</ObjectName>
-      <Location>112 320</Location>
-    </Item>
-    <Item>
-      <ObjectType>Background</ObjectType>
-      <ObjectName>Cloud2</ObjectName>
-      <Location>224 320</Location>
-    </Item>
+    
     <Item>
       <ObjectType>Player</ObjectType>
       <ObjectName>Mario</ObjectName>
       <Location>32 432</Location>
     </Item>
+	  <Item>
+		  <ObjectType>Block</ObjectType>
+		  <ObjectName>BrownBrickWithCoins</ObjectName>
+		  <Location>16 384</Location>
+	  </Item>
+	  <Item>
+		  <ObjectType>Item</ObjectType>
+		  <ObjectName>Flower</ObjectName>
+		  <Location>32 352</Location>
+	  </Item>
+	  <Item>
+		  <ObjectType>Block</ObjectType>
+		  <ObjectName>ItemWithCoin</ObjectName>
+		  <Location>128 384</Location>
+	  </Item>
+	  <Item>
+		  <ObjectType>Collider</ObjectType>
+		  <ObjectName></ObjectName>
+		  <Location>0 448</Location>
+		  <SizeX>320</SizeX>
+		  <SizeY>16</SizeY>
+	  </Item>
+	  <Item>
+		  <ObjectType>Collider</ObjectType>
+		  <ObjectName></ObjectName>
+		  <Location>0 304</Location>
+		  <SizeX>16</SizeX>
+		  <SizeY>144</SizeY>
+	  </Item>
+	  <Item>
+		  <ObjectType>Collider</ObjectType>
+		  <ObjectName></ObjectName>
+		  <Location>304 304</Location>
+		  <SizeX>16</SizeX>
+		  <SizeY>144</SizeY>
+	  </Item>
   </Asset>
 </XnaContent>
