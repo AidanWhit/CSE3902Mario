@@ -11,10 +11,10 @@ namespace Sprint_2.Commands.CollisionCommands.EnemyCollisionCommands
     public class EnemyCollideTopWithIBlock : ICommands
     {
         private IEnemy enemy;
-        private IBlock block;
+        private ICollideable block;
         private Rectangle collisionRect;
 
-        public EnemyCollideTopWithIBlock(IEnemy enemy, IBlock block, Rectangle collisionRect)
+        public EnemyCollideTopWithIBlock(IEnemy enemy, ICollideable block, Rectangle collisionRect)
         {
             this.enemy = enemy;
             this.block = block;

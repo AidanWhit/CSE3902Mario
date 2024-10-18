@@ -13,10 +13,10 @@ namespace Sprint_2.Commands.CollisionCommands.ItemCollisionCommands
     public class StarCollideTopWithIBlock : ICommands
     {
         private Star star;
-        private IBlock block;
+        private ICollideable block;
         private Rectangle collisionRect;
 
-        public StarCollideTopWithIBlock(Star star, IBlock block, Rectangle collisionRect)
+        public StarCollideTopWithIBlock(Star star, ICollideable block, Rectangle collisionRect)
         {
             this.star = star;
             this.block = block;

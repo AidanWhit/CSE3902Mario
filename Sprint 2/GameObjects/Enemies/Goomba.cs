@@ -55,7 +55,6 @@ namespace Sprint_2.Sprites.EnemySprites
                 {
                     if (YPos > 650)
                     {
-                        GameObjectManager.Instance.Movers.Remove(this);
                         GameObjectManager.Instance.Updateables.Remove(this);
                         GameObjectManager.Instance.Drawables.Remove(this);
                     }

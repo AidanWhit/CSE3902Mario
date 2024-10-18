@@ -19,6 +19,6 @@ namespace Sprint_2.Constants
 
         public static float shellMoveSpeed = 150f;
 
-        public static float distUntilBehaviorStarts = 320;
+        public static float distUntilBehaviorStarts = 10;
     }
 }

@@ -397,7 +397,7 @@
 /processorParam:TextureFormat=Color
 /build:LeftKoopaWalkingSpriteSheet.png
 
-#begin levelimage.png
+#begin levelimage.jpg
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -407,7 +407,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:levelimage.png
+/build:levelimage.jpg
 
 #begin MarioFireBallExplosionSpriteSheet.png
 /importer:TextureImporter

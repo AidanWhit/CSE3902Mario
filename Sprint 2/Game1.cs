@@ -61,11 +61,7 @@ namespace Sprint_2
             keyControl = new KeyboardControl();
             
             // Set the level bounds (adjust these values to match your level size)
-            levelBounds = new Vector2(5000, 1080);
-
-            // Initialize the camera with the current viewport and level bounds
-            
-
+            levelBounds = new Vector2(3744, 240);
             base.Initialize();
         }
 

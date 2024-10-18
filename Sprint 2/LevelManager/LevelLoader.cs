@@ -72,9 +72,6 @@ namespace Sprint_2.LevelManager
                     Type command2 = Type.GetType(receiverCommand);
 
                     GameObjectManager.Instance.AddCommandMapping(key, command1, command2);
-                    //gameObjectManager.AddCommandMapping(key, command1, command2);
-
-                    
                 }
             }
         }
@@ -123,12 +120,23 @@ namespace Sprint_2.LevelManager
                     //TODO: Fix
                     MakeItem(name, locationX, locationY, new Block("ItemWithCoin", new Vector2(locationX, locationY)));
                     break;
+                case "Pipe":
+                    MakePipe(name, locationX, locationY);
+                    break;
                 default:
                     throw new InvalidOperationException("Game Object type: \"" + type + "\" doesn't exist.");
 
             }
         }
 
+        private void MakePipe(string name, int locationX, int locationY)
+        {
+            Pipe pipe = new Pipe(new Vector2(locationX, locationY), name);
+            GameObjectManager.Instance.Static.Add(pipe);
+            GameObjectManager.Instance.Drawables.Add(pipe);
+            GameObjectManager.Instance.Updateables.Add(pipe);
+
+        }
         private void MakePlayer(string name, int locationX, int locationY)
         {
             switch (name)
@@ -148,25 +156,25 @@ namespace Sprint_2.LevelManager
             switch (name)
             {
                 case "Bush1":
-                    GameObjectManager.Instance.Drawables.Add(backgroundFactory.CreateBush1(new Vector2(locationX, locationY)));
+                    GameObjectManager.Instance.Drawables.Add(BackgroundFactory.Instance.CreateBush1(new Vector2(locationX, locationY)));
                     break;
                 case "Bush2":
-                    GameObjectManager.Instance.Drawables.Add(backgroundFactory.CreateBush2(new Vector2(locationX, locationY)));
+                    GameObjectManager.Instance.Drawables.Add(BackgroundFactory.Instance.CreateBush2(new Vector2(locationX, locationY)));
                     break;
                 case "Hill1":
-                    GameObjectManager.Instance.Drawables.Add(backgroundFactory.CreateHill1(new Vector2(locationX, locationY)));
+                    GameObjectManager.Instance.Drawables.Add(BackgroundFactory.Instance.CreateHill1(new Vector2(locationX, locationY)));
                     break;
                 case "Hill2":
-                    GameObjectManager.Instance.Drawables.Add(backgroundFactory.CreateHill2(new Vector2(locationX, locationY)));
+                    GameObjectManager.Instance.Drawables.Add(BackgroundFactory.Instance.CreateHill2(new Vector2(locationX, locationY)));
                     break;
                 case "Cloud1":
-                    GameObjectManager.Instance.Drawables.Add(backgroundFactory.CreateCloud1(new Vector2(locationX, locationY)));
+                    GameObjectManager.Instance.Drawables.Add(BackgroundFactory.Instance.CreateCloud1(new Vector2(locationX, locationY)));
                     break;
                 case "Cloud2":
-                    GameObjectManager.Instance.Drawables.Add(backgroundFactory.CreateCloud2(new Vector2(locationX, locationY)));
+                    GameObjectManager.Instance.Drawables.Add(BackgroundFactory.Instance.CreateCloud2(new Vector2(locationX, locationY)));
                     break;
                 case "LevelImage":
-                    GameObjectManager.Instance.Drawables.Add(backgroundFactory.CreateLevelImage(new Vector2(locationX, locationY)));
+                    GameObjectManager.Instance.Drawables.Add(BackgroundFactory.Instance.CreateLevelImage(new Vector2(locationX, locationY)));
                     break;
                 default:
                     throw new InvalidOperationException("Scenery type: \"" + name + "\" doesn't exist");

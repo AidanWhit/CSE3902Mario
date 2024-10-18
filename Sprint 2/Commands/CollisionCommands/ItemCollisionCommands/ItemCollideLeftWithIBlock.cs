@@ -11,10 +11,10 @@ namespace Sprint_2.Commands.CollisionCommands.ItemCollisionCommands
     public class ItemCollideLeftWithIBlock : ICommands
     {
         private IItem item;
-        private IBlock block;
+        private ICollideable block;
         private Rectangle collisionRectangle;
 
-        public ItemCollideLeftWithIBlock(IItem item, IBlock block, Rectangle collisionRectangle)
+        public ItemCollideLeftWithIBlock(IItem item, ICollideable block, Rectangle collisionRectangle)
         {
             this.item = item;
             this.block = block;
