@@ -23,7 +23,6 @@ namespace Sprint_2.GameObjects.BlockStates
 
         public override void BeHit(IPlayer player)
         {
-            Debug.WriteLine("Entered BlockState be Hit");
             Hit = true;
 
             Coin coin = new Coin(new Vector2(block.Position.X + block.GetHitBox().Width / 2.5f, block.Position.Y - block.GetHitBox().Height), true);

@@ -20,6 +20,8 @@ using System.Text.Json.Serialization;
 
 namespace Sprint_2.LevelManager
 {
+    /* TODO: Will need to change gameObject Manager to only store the lists and not do all of the drawing/updating/collision checking
+     * Also need to find a way to draw the items behind the blocks the spawn the items*/
     public class GameObjectManager
     {
         private static GameObjectManager instance = new GameObjectManager();

@@ -27,7 +27,7 @@ namespace Sprint_2.GameObjects.BlockStates
         {
             Hit = true;
             /* Game Object manager add coin */
-            IItem Coin = new Coin(new Vector2(block.Position.X + block.GetHitBox().Width / 2.5f, block.Position.Y - block.GetHitBox().Height));
+            IItem Coin = new Coin(new Vector2(block.Position.X + block.GetHitBox().Width / 2.5f, block.Position.Y - block.GetHitBox().Height), true);
             GameObjectManager.Instance.Updateables.Add(Coin);
             GameObjectManager.Instance.Drawables.Add(Coin);
             if (--coins == 0)

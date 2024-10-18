@@ -25,7 +25,6 @@ namespace Sprint_2.Commands.MarioCollisionCommands
 
         public void Execute()
         {
-            Debug.WriteLine("Entered Bounce Command");
             if (player.isFalling)
             {
                 player.PlayerVelocity = new Vector2(player.PlayerVelocity.X, MarioPhysicsConstants.bounceVelocity);
