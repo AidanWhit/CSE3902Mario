@@ -156,8 +156,10 @@ namespace Sprint_2
 
         public void Reload()
         {
+            GameObjectManager.Instance.Reset();
             this.UnloadContent();
             this.LoadContent();
+            
             
         }
     }

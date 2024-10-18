@@ -20,6 +20,7 @@ namespace Sprint_2.GameObjects.Enemies.EnemySprites
         private ISprite sprite;
 
         private float timeUntilShellBecomesKoopa = 5f;
+        public IShellState ShellState { get; set; }
 
         public Shell(Vector2 initialPosition)
         {
@@ -27,53 +28,15 @@ namespace Sprint_2.GameObjects.Enemies.EnemySprites
             YPos = initialPosition.Y;
 
             sprite = EnemyFactory.Instance.CreateKoopaShell();
+            ShellState = new ShellStateIdle(this);
             Velocity = new Vector2(0, EnemyConstants.fallVelocity.Y);
         }
 
 
         public void Update(GameTime gameTime)
         {
-            if (Flipped)
-            {
-                if (YPos > EnemyConstants.despawnHeight)
-                {
-                    GameObjectManager.Instance.Movers.Remove(this);
-                    GameObjectManager.Instance.Updateables.Remove(this);
-                    GameObjectManager.Instance.Drawables.Remove(this);
-                }
-            }
-            else if (Velocity.X == 0)
-            {
-                timeUntilShellBecomesKoopa -= (float)gameTime.ElapsedGameTime.TotalSeconds;
-                if (timeUntilShellBecomesKoopa < 0)
-                {
-                    Koopa koopa = new Koopa(new Vector2(XPos, YPos - GetHitBox().Height));
-                    GameObjectManager.Instance.Movers.Add(koopa);
-                    GameObjectManager.Instance.Updateables.Add(koopa);
-                    GameObjectManager.Instance.Drawables.Add(koopa);
-
-                    GameObjectManager.Instance.Movers.Remove(this);
-                    GameObjectManager.Instance.Updateables.Remove(this);
-                    GameObjectManager.Instance.Drawables.Remove(this);
-                }
-
-               
-            }
-            if (Velocity.Y < EnemyConstants.maxFallVelocity)
-            {
-                Velocity += EnemyConstants.fallVelocity;
-            }
-            Velocity = new Vector2(Velocity.X, Velocity.Y * MarioPhysicsConstants.velocityDecay);
-
-            XPos += (float)(Velocity.X * gameTime.ElapsedGameTime.TotalSeconds);
-            YPos += (float)(Velocity.Y * gameTime.ElapsedGameTime.TotalSeconds);
             
-            if (YPos > EnemyConstants.despawnHeight)
-            {
-                GameObjectManager.Instance.Updateables.Remove(this);
-                GameObjectManager.Instance.Drawables.Remove(this);
-            }
-
+            ShellState.Update(gameTime);
             sprite.Update(gameTime);
         }
 
@@ -93,6 +56,7 @@ namespace Sprint_2.GameObjects.Enemies.EnemySprites
             sprite = EnemyFactory.Instance.CreateFlippedKoopaShell();
             Flipped = true;
             Velocity = EnemyConstants.flippedVelocity;
+            ShellState = new ShellFlippedState(this);
             GameObjectManager.Instance.Movers.Remove(this);
         }
 

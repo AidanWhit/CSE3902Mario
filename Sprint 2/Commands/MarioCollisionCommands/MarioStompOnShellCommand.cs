@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Sprint_2.GameObjects.Enemies.EnemySprites;
+using Sprint_2.GameObjects.Enemies.EnemyStates;
 using Sprint_2.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -24,9 +25,9 @@ namespace Sprint_2.Commands.MarioCollisionCommands
         }
         public void Execute()
         {
-            Debug.WriteLine("Entered StompShell");
             if (shell.Velocity.X != 0)
             {
+                shell.ShellState = new ShellStateIdle(shell);
                 shell.Velocity = Vector2.Zero;
             }
         }

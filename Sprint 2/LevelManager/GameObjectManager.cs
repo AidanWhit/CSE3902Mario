@@ -97,6 +97,18 @@ namespace Sprint_2.LevelManager
                 Static.Remove(block);
             }
         }
+        public void Reset()
+        {
+            collisionCommandMap.Clear();
+            Static.Clear();
+            Movers.Clear();
+            Updateables.Clear();
+            Drawables.Clear();
+            foreach (List<ICollideable> list in Blocks)
+            {
+                list.Clear();
+            }
+        }
         public void Update(GameTime gameTime)
         {
             /* TODO: Find a better way to update the player if it picks up a star */

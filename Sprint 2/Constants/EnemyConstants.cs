@@ -20,5 +20,7 @@ namespace Sprint_2.Constants
         public static float shellMoveSpeed = 150f;
 
         public static float distUntilBehaviorStarts = 300;
+
+        public static float timeUntilShellBecomesKoopa = 5f;
     }
 }
