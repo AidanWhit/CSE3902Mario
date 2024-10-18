@@ -25,6 +25,7 @@ namespace Sprint_2.Sprites.EnemySprites
         private bool stomped = false;
 
         private bool startBehavior = false;
+        public IGoombaBehavior behavior;
 
         public bool Flipped { get; set; } = false;
         public Goomba(Vector2 initialPosition)
@@ -41,24 +42,6 @@ namespace Sprint_2.Sprites.EnemySprites
             startBehavior = UpdateStartBehavior();
             if (startBehavior)
             {
-                if (stomped)
-                {
-                    stompTimer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
-                    if (stompTimer < 0)
-                    {
-                        //Remove Goomba from enemies list
-                        GameObjectManager.Instance.Updateables.Remove(this);
-                        GameObjectManager.Instance.Drawables.Remove(this);
-                    }
-                }
-                else if (Flipped)
-                {
-                    if (YPos > 650)
-                    {
-                        GameObjectManager.Instance.Updateables.Remove(this);
-                        GameObjectManager.Instance.Drawables.Remove(this);
-                    }
-                }
                 goombaState.Update(gameTime);
             }
             

@@ -22,11 +22,13 @@ namespace Sprint_2.GameObjects.Enemies.EnemyStates
 
         private Goomba goomba;
         private ISprite sprite;
+        private IGoombaBehavior goombaBehavior;
 
         public GoombaStateMachine(Goomba goomba)
         {
             this.goomba = goomba;
 
+            goombaBehavior = new GoombaBehaviorMoving(goomba);
             sprite = EnemyFactory.Instance.CreateGoomba();
         }
         public void ChangeDirection()
@@ -43,6 +45,7 @@ namespace Sprint_2.GameObjects.Enemies.EnemyStates
             {
                 health = GoombaHealth.Stomped;
                 sprite = EnemyFactory.Instance.CreateStompedGoomba();
+                goombaBehavior = new GoombaBehaviorStomped(goomba);
                 goomba.YPos += goomba.GetHitBox().Height;
             }
         }
@@ -53,6 +56,8 @@ namespace Sprint_2.GameObjects.Enemies.EnemyStates
             {
                 health = GoombaHealth.Flipped;
                 sprite = EnemyFactory.Instance.CreateFlippedGoomba();
+
+                goombaBehavior = new GoombaBehaviorFlipped(goomba);
             }
         }
 
@@ -71,23 +76,12 @@ namespace Sprint_2.GameObjects.Enemies.EnemyStates
 
         public void Update(GameTime gameTime)
         {
-            /* Applies Gravity */
-            if (!goomba.GetStomped())
-            {
-                if (goomba.Velocity.Y < EnemyConstants.maxFallVelocity)
-                {
-                    goomba.Velocity += EnemyConstants.fallVelocity;
-                }
-            }
-
-            goomba.YPos += (float)(goomba.Velocity.Y * gameTime.ElapsedGameTime.TotalSeconds);
+            goombaBehavior.Update(gameTime);
+            
             if (health == GoombaHealth.Normal)
             {
                 Move();
             }
-            
-
-            goomba.Velocity = new Vector2(goomba.Velocity.X, goomba.Velocity.Y * MarioPhysicsConstants.velocityDecay);
             
             sprite.Update(gameTime);
         }

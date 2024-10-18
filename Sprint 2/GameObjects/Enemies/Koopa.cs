@@ -21,7 +21,6 @@ namespace Sprint_2.GameObjects.Enemies.EnemySprites
 
         private KoopaStateMachine koopaState;
 
-        private bool startBehavior = false;
         public Koopa(Vector2 initialPosition)
         {
             XPos = initialPosition.X;

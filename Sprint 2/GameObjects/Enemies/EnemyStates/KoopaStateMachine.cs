@@ -79,8 +79,6 @@ namespace Sprint_2.GameObjects.Enemies.EnemyStates
                 }
 
             }
-
-           
             sprite.Update(gameTime);
         }
         private bool UpdateStartBehavior()
