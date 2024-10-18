@@ -73,6 +73,10 @@ namespace Sprint_2.MarioStates
         {
             if (!health.GetHealth().Equals("Dead"))
             {
+                if (pose.GetPose().Equals("Shoot"))
+                {
+                    Idle();
+                }
                 health.Damage();
                 if (!health.GetHealth().Equals("Dead"))
                 {
