@@ -21,7 +21,8 @@ namespace Sprint_2.GameObjects.ItemSprites
         private IBlock sourceBlock;
 
         private float speed = 1f;
-        public GreenMushroom(Vector2 initialPosition, IBlock block)
+        private int topOfSourceBlock;
+        public GreenMushroom(Vector2 initialPosition, int topOfSourceBlock)
         {
             XPos = initialPosition.X;
             YPos = initialPosition.Y;
@@ -32,7 +33,7 @@ namespace Sprint_2.GameObjects.ItemSprites
             OnSpawn = true;
             spawnedYPosition = initialPosition.Y;
 
-            sourceBlock = block;
+            this.topOfSourceBlock = topOfSourceBlock;
         }
 
 
@@ -41,7 +42,7 @@ namespace Sprint_2.GameObjects.ItemSprites
             if (OnSpawn)
             {
                 YPos--;
-                if (GetHitBox().Bottom < sourceBlock.GetHitBox().Top)
+                if (GetHitBox().Bottom < topOfSourceBlock)
                 {
                     OnSpawn = false;
                 }

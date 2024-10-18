@@ -30,13 +30,13 @@ namespace Sprint_2.GameObjects.BlockStates
             string health = player.GetHealth();
             if (health.Equals("Mario"))
             {
-                IItem mushroom = new RedMushroom(block.Position, block);
+                IItem mushroom = new RedMushroom(block.Position, block.GetHitBox().Top);
                 GameObjectManager.Instance.Updateables.Add(mushroom);
                 GameObjectManager.Instance.Drawables.Add(mushroom);
             }
             else
             {
-                IItem flower = new Flower(block.Position, block);
+                IItem flower = new Flower(block.Position, block.GetHitBox().Top);
                 GameObjectManager.Instance.Updateables.Add(flower);
                 GameObjectManager.Instance.Drawables.Add(flower);
                 GameObjectManager.Instance.Static.Add(flower);

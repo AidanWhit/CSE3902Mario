@@ -22,7 +22,9 @@ namespace Sprint_2.GameObjects.ItemSprites
 
         private float XSpeed = 1f;
         private IBlock block;
-        public Star(Vector2 initialPosition, IBlock sourceBlock)
+
+        private int topOfSourceBlock;
+        public Star(Vector2 initialPosition, int topOfSourceBlock)
         {
             XPos = initialPosition.X;
             YPos = initialPosition.Y;
@@ -30,7 +32,7 @@ namespace Sprint_2.GameObjects.ItemSprites
 
             sprite = ItemFactory.Instance.CreateStar();
             OnSpawn = true;
-            block = sourceBlock;
+            this.topOfSourceBlock = topOfSourceBlock;
         }
 
         public void Update(GameTime gameTime)
@@ -38,7 +40,7 @@ namespace Sprint_2.GameObjects.ItemSprites
             if (OnSpawn)
             {
                 YPos--;
-                if (GetHitBox().Bottom < block.GetHitBox().Top)
+                if (GetHitBox().Bottom < topOfSourceBlock)
                 {
                     OnSpawn = false;
                     GameObjectManager.Instance.Movers.Add(this);

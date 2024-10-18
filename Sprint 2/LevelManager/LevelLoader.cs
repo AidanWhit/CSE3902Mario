@@ -257,26 +257,40 @@ namespace Sprint_2.LevelManager
 
         private void MakeItem(string name, int locationX, int locationY, IBlock source)
         {
-            //switch (name)
-            //{
-            //    case "Coin":
-            //        gameObjectManager.AddItem(new Coin(new Vector2(locationX, locationY), gameObjectManager));
-            //        break;
-            //    case "Flower":
-            //        gameObjectManager.AddItem(new Flower(new Vector2(locationX, locationY), source));
-            //        break;
-            //    case "RedMushroom":
-            //        gameObjectManager.AddItem(new RedMushroom(new Vector2(locationX, locationY), source));
-            //        break;
-            //    case "GreenMushroom":
-            //        gameObjectManager.AddItem(new GreenMushroom(new Vector2(locationX, locationY), source));
-            //        break;
-            //    case "Star":
-            //        gameObjectManager.AddItem(new Star(new Vector2(locationX, locationY), source));
-            //        break;
-            //    default:
-            //        throw new InvalidOperationException("Item type: \"" + name + "\" doesn't exist");
-            //}
+            switch (name)
+            {
+                case "Coin":
+                    Coin coin = new Coin(new Vector2(locationX, locationY), false);
+                    GameObjectManager.Instance.Updateables.Add(coin);
+                    GameObjectManager.Instance.Drawables.Add(coin);
+                    break;
+                case "Flower":
+                    Flower flower = new Flower(new Vector2(locationX, locationY), 0);
+                    GameObjectManager.Instance.Updateables.Add(flower);
+                    GameObjectManager.Instance.Drawables.Add(flower);
+                    GameObjectManager.Instance.Static.Add(flower);
+                    break;
+                case "RedMushroom":
+                    RedMushroom mushroom = new RedMushroom(new Vector2(locationX, locationY), 0);
+                    GameObjectManager.Instance.Updateables.Add(mushroom);
+                    GameObjectManager.Instance.Drawables.Add(mushroom);
+                    GameObjectManager.Instance.Movers.Add(mushroom);
+                    break;
+                case "GreenMushroom":
+                    GreenMushroom greenMushroom = new GreenMushroom(new Vector2(locationX, locationY), 0);
+                    GameObjectManager.Instance.Updateables.Add(greenMushroom);
+                    GameObjectManager.Instance.Drawables.Add(greenMushroom);
+                    GameObjectManager.Instance.Movers.Add(greenMushroom);
+                    break;
+                case "Star":
+                    Star star = new Star(new Vector2(locationX, locationY), 0);
+                    GameObjectManager.Instance.Updateables.Add(star);
+                    GameObjectManager.Instance.Drawables.Add(star);
+                    GameObjectManager.Instance.Movers.Add(star);
+                    break;
+                default:
+                    throw new InvalidOperationException("Item type: \"" + name + "\" doesn't exist");
+            }
         }
 
         private void MakeEnemy(string name, int locationX, int locationY)

@@ -22,7 +22,7 @@ namespace Sprint_2.GameObjects.BlockStates
         public override void BeHit(IPlayer player)
         {
             Hit = true;
-            IItem Star = new Star(block.Position, block);
+            IItem Star = new Star(block.Position, block.GetHitBox().Top);
             
             GameObjectManager.Instance.Updateables.Add(Star);
             GameObjectManager.Instance.Drawables.Add(Star);

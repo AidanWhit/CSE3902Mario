@@ -21,26 +21,34 @@ namespace Sprint_2.GameObjects.ItemSprites
         private bool moveDown = false;
 
         private float originalHeight;
+        private bool fromBlock;
 
-        public Coin(Vector2 location)
+        public Coin(Vector2 location, bool fromBlock)
         {
             sprite = ItemFactory.Instance.CreateCoin();
             XPos = location.X;
             YPos = location.Y;
             originalHeight = YPos;
+
+            this.fromBlock = fromBlock;
         }
 
         public void Update(GameTime gameTime)
         {
-            YPos += heightIncrease;
-            if (YPos < originalHeight - ItemPhysicsConstants.coinHeightIncrease)
+            if (fromBlock)
             {
-                heightIncrease *= -1;
-            } 
-            else if (YPos > originalHeight)
-            {
-                DeleteItem();
+                YPos += heightIncrease;
+                if (YPos < originalHeight - ItemPhysicsConstants.coinHeightIncrease)
+                {
+                    heightIncrease *= -1;
+                }
+                else if (YPos > originalHeight)
+                {
+                    DeleteItem();
+                }
             }
+            
+            
             sprite.Update(gameTime);
         }
         public void Draw(SpriteBatch spriteBatch, Color color)

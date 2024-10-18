@@ -16,13 +16,14 @@ namespace Sprint_2.GameObjects.ItemSprites
         private ISprite sprite;
 
         private IBlock sourceBlock;
+        private int topOfSourceBlock;
 
-        public Flower(Vector2 initialPosition, IBlock block)
+        public Flower(Vector2 initialPosition, int topOfSourceBlock)
         {
             XPos = initialPosition.X;
             YPos = initialPosition.Y;
 
-            sourceBlock = block;
+            this.topOfSourceBlock = topOfSourceBlock;
             OnSpawn = true;
 
             sprite = ItemFactory.Instance.CreateFlower();
@@ -34,7 +35,7 @@ namespace Sprint_2.GameObjects.ItemSprites
             {
 
                 YPos--;
-                if (GetHitBox().Bottom < sourceBlock.GetHitBox().Top)
+                if (GetHitBox().Bottom < topOfSourceBlock)
                 {
                     OnSpawn = false;
                 }
