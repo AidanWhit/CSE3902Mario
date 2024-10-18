@@ -1,7 +1,11 @@
 # Super Mario
+
 ### Course: CSE 3902 AU24
+
 ### Instructor: Neil Kirby
+
 ### Team: Five-Guys
+
 - Christian Blue
 - Hahn Choi
 - Jingyu Fu
@@ -12,70 +16,61 @@
 
 Super Mario is a classic platform adventure game that takes players on an exciting journey through the Mushroom
 Kingdom. Join Mario, the courageous plumber, as he embarks on a quest to rescue Princess Peach from the clutches of
-the evil Bowser. Leap over obstacles, stomp on enemies, and navigate treacherous landscapes filled with hidden 
+the evil Bowser. Leap over obstacles, stomp on enemies, and navigate treacherous landscapes filled with hidden
 secrets and power-ups. Whether you’re dodging fire-breathing plants or exploring underwater realms, each level offers
 a new challenge and surprise. With iconic music, vibrant graphics, and timeless gameplay, Super Mario is a thrilling
 adventure that brings joy to gamers of all ages. Get ready to jump, run, and save the day!
 
 ## How to play the game
+
 #### Player control:
+
 - W: jump
 - A: move left
 - D: move right
 - S: crouch
 - Z: throw the fireball
 - 3: power up
-- E: Mario gets hurt
-- T: CycleBlockLeft
-- Y: CycleBlockRight
-- U: CycleItemLeft
-- I: CycleItemRight
-- O: CycleEnemyLeft
-- P: CycleEnemyRight
 - Q: Quit the game
 - R: Reset
 
+## Sprint3 Content
 
-## Game Elements
-- **Player:** Mario
-- **Enemies:**
-  - Goomba
-  - Koopa
-  - Koopa Shell
-  - Bowser
-- **Items:**
-  - Red Mushroom
-  - Green Mushroom
-  - Flower
-  - Coin
-  - Star
-- **Blocks:**
-  - Chiseled Block
-  - Brick Block
-  - Hit Block
-  - Ground Block
-  - Question Block
-  - Various sizes of pipes
+- **Camera:**
+- **Background:** Backgrounds can be drawn in two ways: by giving the similar data as other blocks and items, given their sprite location; or by directly generating a background image for the entire level.
+- **XML files:** We have 2 XML files for testing level and SMB 1-1, the xml files contain all the properties of the objects in the level.
+- **LevelLoader:**
+- **Game Object Manager:** GameObjectManager categorizes all the objects needed in the game and stores them as collections.
+- **Collision Detection:**
+- **Collision Response:**
+
+
+## How to Load Different Levels
+
+In this sprint, we have created two levels, and the data are stored in two XML files, and we need to let LevelLoader read the two files separately to enter different levels.
+
+## Team Management
+
+We reflected on our experience in implementing last Sprint and worked to do a better job of teamwork and project management this time:
+First, we implemented most of the features a week before the deadline, and we identified and solved problems in the code during each class discussion.
+Secondly, we made appointments with instructors and TAs for Code Review and Group Meeting in advance, which left us enough time for Debugging and Refactoring.
+The project progress management was also better than last time, we created different channels on the Discord server for us to implement different functionalities in smaller groups; we had different branches in the Github repository to implement and test the code, which accelerated our progress.
 
 ## Tools and Processes Used
 
 1. **Command Pattern:**
+
    - The project implements the Command pattern for handling user inputs. Each command is encapsulated in its own
-    class, making the codebase modular and easier to manage.
+     class, making the codebase modular and easier to manage.
+2. **Object Manager:**
 
-2. **Cycling Mechanism:**
-   - The project uses custom cycler classes (`EnemyCycler`, `ItemCycler`, `BlockCycler`) to manage the cycling of
-    different game elements, enabling easy switching between different game objects for testing and gameplay.
+   - The **GameObjectManager** is a central class(Singleton)  responsible for managing all the game objects in game, such as player, enemies, items, background elements, and blocks.
+3. **XML Files:**
 
-3. **Factories:**
-   - The Factory pattern is used for creating various game objects like enemies, items, and blocks. This helps in
-   maintaining the code by centralizing the object creation logic.
-
-4. **Sprite Management:**
-   - A centralized SpriteFactory is used to load and manage all sprite assets, ensuring efficient memory usage and
-   organization.
+   - First we used Microsoft Excel to fill in the level data, the reason we used Excel is that it's easy to modify and generate whole rows and columns of data with it and most of the blocks in the levels have some of the same attributes such as height, name etc. We then wrote an external program in python to read the data from the Excel sheet and use it to generate XML files.
 
 ## Known Bugs
+
 * When mario powers up, his location does not update as it should. If there was a floor, mario's feet would be clipping
   through the floor when he powers up.
 * If a fireball is shot when mario is jumping, it will not fall all the way to where the ground should be before it starts boucing.
@@ -85,4 +80,3 @@ adventure that brings joy to gamers of all ages. Get ready to jump, run, and sav
    line1: <?xml version="1.0" encoding="utf-8" ?>
    line2: <?xml version="1.0" ?>"
     delete the line2 before using this file
-  ```
