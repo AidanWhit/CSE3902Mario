@@ -22,7 +22,13 @@ namespace Sprint_2.LevelManager
         private XmlReader LevelReader;
         private BackgroundFactory backgroundFactory;
 
-        public LevelLoader(string level, GameObjectManager gameObjectManager)
+        public LevelLoader()
+        {
+            
+
+            
+        }
+        public void LoadLevel(string level)
         {
             //TODO: Find a way to avoid having to do this
             string directory = AppDomain.CurrentDomain.BaseDirectory;
@@ -31,52 +37,7 @@ namespace Sprint_2.LevelManager
             directory = directory + level;
 
             LevelReader = XmlReader.Create(directory);
-        }
-
-
-        public void LoadCommandDictionary(string collisionTableFile)
-        {
-            string directory = AppDomain.CurrentDomain.BaseDirectory;
-            int index = directory.IndexOf(@"\bin");
-            directory = directory.Substring(0, index + 1);
-            directory = directory + collisionTableFile;
-
-            XmlReader collisionReader = XmlReader.Create(directory);
-            collisionReader.MoveToContent();
-            while (collisionReader.Read())
-            {
-                string sourceType;
-                string receiverType;
-                string collisionSide;
-                string sourceCommand;
-                string receiverCommand;
-                if ((collisionReader.NodeType == XmlNodeType.Element) && (collisionReader.Name == "Entry"))
-                {
-                    collisionReader.ReadToDescendant("SourceType");
-                    sourceType = collisionReader.ReadElementContentAsString();
-
-                    collisionReader.Read();
-                    receiverType = collisionReader.ReadElementContentAsString();
-
-                    collisionReader.Read();
-                    collisionSide = collisionReader.ReadElementContentAsString();
-
-                    collisionReader.Read();
-                    sourceCommand = collisionReader.ReadElementContentAsString();
-
-                    collisionReader.Read();
-                    receiverCommand = collisionReader.ReadElementContentAsString();
-
-                    string key = sourceType + receiverType + collisionSide;
-                    Type command1 = Type.GetType(sourceCommand);
-                    Type command2 = Type.GetType(receiverCommand);
-
-                    GameObjectManager.Instance.AddCommandMapping(key, command1, command2);
-                }
-            }
-        }
-        public void LoadLevel()
-        {
+            
             LevelReader.MoveToContent();
             while (LevelReader.Read())
             {

@@ -24,8 +24,19 @@ namespace Sprint_2.LevelManager
      * Also need to find a way to draw the items behind the blocks the spawn the items*/
     public class GameObjectManager
     {
-        private static GameObjectManager instance = new GameObjectManager();
-        public static GameObjectManager Instance { get { return instance; } }
+        private static GameObjectManager instance = null;
+        public static GameObjectManager Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new GameObjectManager();
+                }
+                return instance;
+            }
+        }
+                
 
         public List<ICollideable>[] Blocks = new List<ICollideable>[210];
         public List<Interfaces.IUpdateable> Updateables { get; set; } = new List<Interfaces.IUpdateable>();
@@ -35,22 +46,13 @@ namespace Sprint_2.LevelManager
 
         private Dictionary<string, (Type, Type)> collisionCommandMap = new Dictionary<string, (Type, Type)>();
 
-        private CollisionDetection collisionDetection;
-
-
-        public IPlayer Player { get; set; }
-
         private GameObjectManager()
-        {
-            Player = Game1.Instance.mario;
-            collisionDetection = new CollisionDetection(this);
-            
+        {   
             for (int i = 0; i < Blocks.Length; i++)
             {
                 Blocks[i] = new List<ICollideable>();
             }
         }
-        /* Next two methods added for testing */
 
         public void AddCommandMapping(string entry, Type sourceCommand, Type receiverCommand)
         {
@@ -66,7 +68,7 @@ namespace Sprint_2.LevelManager
 
         }
         
-        public List<ICollideable> GetNearbyBlocks2(int column)
+        public List<ICollideable> GetNearbyBlocks(int column)
         {
             List<ICollideable> nearbyBlocks;
             if (column < 0 || column >= Blocks.Length)
@@ -110,30 +112,6 @@ namespace Sprint_2.LevelManager
             {
                 list.Clear();
             }
-        }
-        public void Update(GameTime gameTime)
-        {
-            /* TODO: Find a better way to update the player if it picks up a star */
-            Player = Game1.Instance.mario;
-            Player.Update(gameTime);
-            
-            foreach (Interfaces.IUpdateable update in Updateables.ToList())
-            {
-                update.Update(gameTime);
-            }
-
-            collisionDetection.DetectCollision();
-            
-        }
-
-        public void Draw(SpriteBatch spriteBatch, Texture2D allSpriteSheet, Color color)
-        {
-            foreach(Interfaces.IDrawable draw in Drawables.ToList())
-            {
-                draw.Draw(spriteBatch, color);
-            }
-
-            Player.Draw(spriteBatch, color);
         }
     }
 }

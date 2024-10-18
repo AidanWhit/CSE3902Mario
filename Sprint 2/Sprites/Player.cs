@@ -57,7 +57,7 @@ namespace Sprint_2.Sprites
         {
             for (int i = 0; i < fireballs.Count; i++)
             {
-                fireballs[i].Draw(spriteBatch, color);
+                fireballs[i].Draw(spriteBatch, Color.White);
             }
             PlayerState.Draw(spriteBatch, color);
         }

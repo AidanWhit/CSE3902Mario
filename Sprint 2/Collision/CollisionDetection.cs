@@ -13,14 +13,11 @@ namespace Sprint_2.Collision
 {
     public class CollisionDetection
     {
-        
-        private GameObjectManager gameObjectManager;
         private CollisionResponse collisionResponse;
         private IPlayer player;
-        public CollisionDetection(GameObjectManager gameObjectManager)
+        public CollisionDetection()
         {
-            this.gameObjectManager = gameObjectManager;
-            collisionResponse = new CollisionResponse(gameObjectManager);
+            collisionResponse = new CollisionResponse();
         }
         public void DetectCollision()
         {
@@ -31,7 +28,7 @@ namespace Sprint_2.Collision
             {
                 
                 int column = mover.GetColumn();
-                List<ICollideable> nearbyBlocks = GameObjectManager.Instance.GetNearbyBlocks2(column);
+                List<ICollideable> nearbyBlocks = GameObjectManager.Instance.GetNearbyBlocks(column);
                 foreach(ICollideable nonmover in GameObjectManager.Instance.Static.ToList())
                 {
                     if (mover.GetHitBox().Intersects(nonmover.GetHitBox()))
