@@ -81,6 +81,8 @@ adventure that brings joy to gamers of all ages. Get ready to jump, run, and sav
 * If a fireball is shot when mario is jumping, it will not fall all the way to where the ground should be before it starts boucing.
   Instead it moves a set distance downward before it begins its bouncing behavior
 * xml file from the XMLgenerator might generates a file start with:
+  ```xml
    line1: <?xml version="1.0" encoding="utf-8" ?>
    line2: <?xml version="1.0" ?>"
     delete the line2 before using this file
+  ```
