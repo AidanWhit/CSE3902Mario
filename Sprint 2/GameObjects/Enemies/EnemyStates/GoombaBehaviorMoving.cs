@@ -20,6 +20,7 @@ namespace Sprint_2.GameObjects.Enemies.EnemyStates
 
         public override void RunBehavior(GameTime gameTime)
         {
+            goomba.Move();
             if (goomba.Velocity.Y < EnemyConstants.maxFallVelocity)
             {
                 goomba.Velocity += EnemyConstants.fallVelocity;

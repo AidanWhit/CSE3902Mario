@@ -82,7 +82,10 @@ namespace Sprint_2.Sprites.EnemySprites
         {
             goombaState.ChangeDirection();
         }
-
+        public void Move()
+        {
+            goombaState.Move();
+        }
         public Rectangle GetHitBox()
         {
             return goombaState.GetHitBox(new Vector2(XPos, YPos));

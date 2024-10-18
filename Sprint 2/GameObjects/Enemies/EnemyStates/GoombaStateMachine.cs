@@ -77,12 +77,6 @@ namespace Sprint_2.GameObjects.Enemies.EnemyStates
         public void Update(GameTime gameTime)
         {
             goombaBehavior.Update(gameTime);
-            
-            if (health == GoombaHealth.Normal)
-            {
-                Move();
-            }
-            
             sprite.Update(gameTime);
         }
 
