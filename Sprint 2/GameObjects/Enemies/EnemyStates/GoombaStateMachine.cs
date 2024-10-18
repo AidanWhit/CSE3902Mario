@@ -79,10 +79,6 @@ namespace Sprint_2.GameObjects.Enemies.EnemyStates
                     goomba.Velocity += EnemyConstants.fallVelocity;
                 }
             }
-            else
-            {
-                goomba.Velocity = Vector2.Zero;
-            }
 
             goomba.YPos += (float)(goomba.Velocity.Y * gameTime.ElapsedGameTime.TotalSeconds);
             if (health == GoombaHealth.Normal)

@@ -26,6 +26,8 @@ namespace Sprint_2.GameObjects.Enemies.EnemyStates
         private enum Health { Normal, Shell, Flipped};
         private Health health = Health.Normal;
 
+        private bool startBehavior = false;
+
         public KoopaStateMachine(Koopa koopa)
         {
             this.koopa = koopa;
@@ -50,20 +52,45 @@ namespace Sprint_2.GameObjects.Enemies.EnemyStates
 
         public void Update(GameTime gameTime)
         {
-            if (koopa.Velocity.Y < EnemyConstants.maxFallVelocity)
+            startBehavior = UpdateStartBehavior();
+            if (startBehavior)
             {
-                koopa.Velocity += EnemyConstants.fallVelocity;
+                /* Apply Gravity*/
+                if (koopa.Velocity.Y < EnemyConstants.maxFallVelocity)
+                {
+                    koopa.Velocity += EnemyConstants.fallVelocity;
+                }
+
+                if (health == Health.Normal)
+                {
+                    Move();
+                }
+
+                /* Move Position*/
+                koopa.YPos += (float)(koopa.Velocity.Y * gameTime.ElapsedGameTime.TotalSeconds);
+                koopa.Velocity = new Vector2(koopa.Velocity.X, koopa.Velocity.Y * MarioPhysicsConstants.velocityDecay);
+
+                /* if the koopa falls out of the map */
+                if (koopa.YPos > EnemyConstants.despawnHeight)
+                {
+                    GameObjectManager.Instance.Movers.Remove(koopa);
+                    GameObjectManager.Instance.Updateables.Remove(koopa);
+                    GameObjectManager.Instance.Drawables.Remove(koopa);
+                }
+
             }
 
-            if (health == Health.Normal)
-            {
-                Move();
-            }
-            
-            koopa.YPos += (float)(koopa.Velocity.Y * gameTime.ElapsedGameTime.TotalSeconds);
-
-            koopa.Velocity = new Vector2(koopa.Velocity.X, koopa.Velocity.Y * MarioPhysicsConstants.velocityDecay);
+           
             sprite.Update(gameTime);
+        }
+        private bool UpdateStartBehavior()
+        {
+            float distToPlayer = Math.Abs(Game1.Instance.mario.XPos - koopa.XPos);
+            if (distToPlayer < EnemyConstants.distUntilBehaviorStarts)
+            {
+                startBehavior = true;
+            }
+            return startBehavior;
         }
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location, Color color)

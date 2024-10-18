@@ -35,7 +35,6 @@ namespace Sprint_2.GameObjects.Enemies.EnemySprites
 
         public void Update(GameTime gameTime)
         {
-            
             ShellState.Update(gameTime);
             sprite.Update(gameTime);
         }

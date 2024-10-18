@@ -18,7 +18,7 @@ namespace Sprint_2.GameObjects.Enemies.EnemyStates
         public ShellStateIdle(Shell shell) : base(shell)
         {
             timeUntilShellBecomesKoopa = EnemyConstants.timeUntilShellBecomesKoopa;
-
+            this.shell = shell;
         }
         public override void Update(GameTime gameTime)
         {

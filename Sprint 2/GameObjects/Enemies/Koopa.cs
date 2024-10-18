@@ -33,17 +33,7 @@ namespace Sprint_2.GameObjects.Enemies.EnemySprites
 
         public void Update(GameTime gameTime)
         {
-            startBehavior = UpdateStartBehavior();
-            if (startBehavior)
-            {
-                if (YPos > EnemyConstants.despawnHeight)
-                {
-                    GameObjectManager.Instance.Updateables.Remove(this);
-                    GameObjectManager.Instance.Drawables.Remove(this);
-                }
-                koopaState.Update(gameTime);
-            }
-            
+            koopaState.Update(gameTime);
         }
 
         public void Draw(SpriteBatch spriteBatch, Color color)
@@ -55,15 +45,7 @@ namespace Sprint_2.GameObjects.Enemies.EnemySprites
         {
             return koopaState.GetHitBox(new Vector2(XPos, YPos));
         }
-        public bool UpdateStartBehavior()
-        {
-            float distToPlayer = Math.Abs(Game1.Instance.mario.XPos - XPos);
-            if (distToPlayer < EnemyConstants.distUntilBehaviorStarts)
-            {
-                startBehavior = true;
-            }
-            return startBehavior;
-        }
+
         public void TakeFireballDamage()
         {
             Flipped = true;
