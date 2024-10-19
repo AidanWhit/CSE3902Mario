@@ -9,6 +9,7 @@ using System.Diagnostics;
 using Sprint_2.Constants;
 using System;
 using Sprint_2.LevelManager;
+using Sprint_2.Commands.ProgramCommands;
 
 
 namespace Sprint_2.Sprites
@@ -47,7 +48,12 @@ namespace Sprint_2.Sprites
         }
         public void Update(GameTime gameTime)
         {
-            
+            /* Quick and easy way to reset player after falling out of bounds. Will be changed next sprint to be more robust */
+            if (YPos > EnemyConstants.despawnHeight)
+            {
+                ICommands reset = new ResetCommand();
+                reset.Execute();
+            }
             UpdateFireballs(gameTime);
             PlayerState.Update(gameTime);
             PhysicsState.Update(gameTime);

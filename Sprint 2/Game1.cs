@@ -102,13 +102,18 @@ namespace Sprint_2
             keyControl.RegisterCommand(Keys.D, new MarioFacingRightCommand(mario));
             keyControl.RegisterCommand(Keys.A, new MarioFacingLeftCommand(mario));
 
+            keyControl.RegisterCommand(Keys.Up, new MarioFacingUpCommand(mario));
+            keyControl.RegisterCommand(Keys.Down, new MarioFacingDownCommand(mario));
+            keyControl.RegisterCommand(Keys.Left, new MarioFacingRightCommand(mario));
+            keyControl.RegisterCommand(Keys.Right, new MarioFacingLeftCommand(mario));
+
 
 
             keyControl.RegisterOnPressCommand(Keys.Z, new MarioAttackNormalCommand(mario));
             keyControl.RegisterOnPressCommand(Keys.D3, new MarioPowerUpCommand(mario, null, Rectangle.Empty));
             keyControl.RegisterOnPressCommand(Keys.E, new MarioHurtCommand(mario, null, Rectangle.Empty));
             keyControl.RegisterCommand(Keys.Q, new QuitCommand(this));
-            keyControl.RegisterCommand(Keys.R, new ResetCommand(this));
+            keyControl.RegisterCommand(Keys.R, new ResetCommand());
 
             keyControl.RegisterOnReleaseCommand(Keys.S, new MarioOnCrouchRelease(mario));
             keyControl.RegisterOnPressCommand(Keys.S, new MarioOnCrouchPress(mario));
@@ -116,8 +121,8 @@ namespace Sprint_2
 
 
             levelLoader = new LevelLoader();
-            //levelLoader.LoadLevel(@"LevelManager\level-1_data_pretty.xml");
-            levelLoader.LoadLevel(@"LevelManager\testing-level.xml");
+            levelLoader.LoadLevel(@"LevelManager\level-1_data_pretty.xml");
+            //levelLoader.LoadLevel(@"LevelManager\testing-level.xml");
         }
         protected override void UnloadContent()
         {

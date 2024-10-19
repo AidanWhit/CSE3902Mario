@@ -12,9 +12,9 @@ namespace Sprint_2.Commands.ProgramCommands
     {
         private Game1 myGame;
 
-        public ResetCommand(Game1 game)
+        public ResetCommand()
         {
-            myGame = game;
+            myGame = Game1.Instance;
         }
 
         public void Execute()
