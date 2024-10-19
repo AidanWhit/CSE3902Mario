@@ -2,6 +2,8 @@ Author: Zhuoyang Li
 Date: 10/18/2024
 Sprint-3
 Class Reviewed: CollisionDetection.cs By Aidan
+Main Focus: Quality
+Reviewed time: 10 min
 
 Overview:
 The CollisionDetection class is responsible for detecting and resolving collisions between game objects 
