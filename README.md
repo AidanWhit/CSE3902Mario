@@ -40,15 +40,16 @@ adventure that brings joy to gamers of all ages. Get ready to jump, run, and sav
 - **Camera:**
 - **Background:** Backgrounds can be drawn in two ways: by giving the similar data as other blocks and items, given their sprite location; or by directly generating a background image for the entire level.
 - **XML files:** We have 2 XML files for testing level and SMB 1-1, the xml files contain all the properties of the objects in the level.
-- **LevelLoader:**
+- **LevelLoader:** Given an xml file of object data, the level loader reads through all of these items and then creates objects from that data based on what the data represents. These created objects are then added into specific lists in GameObjectManager based on what kind of object they are. 
 - **Game Object Manager:** GameObjectManager categorizes all the objects needed in the game and stores them as collections.
-- **Collision Detection:**
-- **Collision Response:**
+- **Collision Detection:** Collision Detection uses a list of all moveable collideables and static collideables from GameObjectManager to detect collisions. If two items are intersecting, the ResolveCollision from the CollisionResponse class is called to deal with that specific collision
+- **Collision Response:** Using a dictionary of keys and their associted commands, commands are instantiated and then executed during runtime to resolve collisions. The key consists of the collision type of the source object, the collision type of the receiver object, as well as the side that the collison was detected on in reference to the source. 
 
 
 ## How to Load Different Levels
 
 In this sprint, we have created two levels, and the data are stored in two XML files, and we need to let LevelLoader read the two files separately to enter different levels.
+The test level be loaded instead of level 1-1 by commenting out line 123 in Game1.cs and the uncommenting line 124. This will then have level loader load the xml file associated with the test level.
 
 ## Team Management
 
@@ -69,13 +70,12 @@ The project progress management was also better than last time, we created diffe
 3. **XML Files:**
 
    - First we used Microsoft Excel to fill in the level data, the reason we used Excel is that it's easy to modify and generate whole rows and columns of data with it and most of the blocks in the levels have some of the same attributes such as height, name etc. We then wrote an external program in python to read the data from the Excel sheet and use it to generate XML files.
+4. **.NET Type system**
+   - This allows us to use Reflections to create new ICommands objects during runtime that are then executed to resolve detected collisions. 
 
 ## Known Bugs
 
-* When mario powers up, his location does not update as it should. If there was a floor, mario's feet would be clipping
-  through the floor when he powers up.
-* If a fireball is shot when mario is jumping, it will not fall all the way to where the ground should be before it starts boucing.
-  Instead it moves a set distance downward before it begins its bouncing behavior
+* Sometimes when holding crouch during a jump and then landing, mario will move up and down really quickly
 * xml file from the XMLgenerator might generates a file start with:
   ```xml
    line1: <?xml version="1.0" encoding="utf-8" ?>
