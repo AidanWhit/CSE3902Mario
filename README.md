@@ -80,4 +80,4 @@ The project progress management was also better than last time, we created diffe
   ```xml
    line1: <?xml version="1.0" encoding="utf-8" ?>
    line2: <?xml version="1.0" ?>"
-    delete the line2 before using this file
+  Manually delete the line2 before using this file
