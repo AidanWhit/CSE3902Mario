@@ -23,7 +23,7 @@ namespace Sprint_2.Commands.MarioCollisionCommands
 
         public void Execute()
         {
-            if (!mario.isFalling)
+            if (mario.isJumping)
             {
                 mario.YPos += height;
                 mario.PlayerVelocity = new Vector2(mario.PlayerVelocity.X, 0);

@@ -76,6 +76,8 @@ The project progress management was also better than last time, we created diffe
 ## Known Bugs
 
 * Sometimes when holding crouch during a jump and then landing, mario will move up and down really quickly
+* Mario can clip out of bounds if he kicks the shell near a wall. The collision with the shell will cause mario to be push out of bounds.
+* Collision with the bottom of blocks after bouncing on an enemy can produce weird results sometimes
 * xml file from the XMLgenerator might generates a file start with:
   ```xml
    line1: <?xml version="1.0" encoding="utf-8" ?>

@@ -28,8 +28,9 @@ namespace Sprint_2.Commands.MarioCollisionCommands
             if (player.isFalling)
             {
                 player.PlayerVelocity = new Vector2(player.PlayerVelocity.X, MarioPhysicsConstants.bounceVelocity);
-                player.Jump();
                 player.isJumping = true;
+                player.Jump();
+                
             }
         }
     }
