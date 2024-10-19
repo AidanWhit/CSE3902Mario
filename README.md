@@ -37,7 +37,7 @@ adventure that brings joy to gamers of all ages. Get ready to jump, run, and sav
 
 ## Sprint3 Content
 
-- **Camera:**
+- **Camera:** Camera will manages the player’s view by smoothly following their horizontal movement while keeping the vertical position fixed. It uses interpolation for smooth transitions, clamps movement within level boundaries, and applies scaling to ensure the game world is rendered correctly on the screen.
 - **Background:** Backgrounds can be drawn in two ways: by giving the similar data as other blocks and items, given their sprite location; or by directly generating a background image for the entire level.
 - **XML files:** We have 2 XML files for testing level and SMB 1-1, the xml files contain all the properties of the objects in the level.
 - **LevelLoader:** Given an xml file of object data, the level loader reads through all of these items and then creates objects from that data based on what the data represents. These created objects are then added into specific lists in GameObjectManager based on what kind of object they are. 
