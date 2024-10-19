@@ -127,10 +127,11 @@ namespace Sprint_2.Sprites
         }
         public void Idle()
         {
+            PlayerState.Idle();
             isCrouching = false;
             isJumping = false;
             isFalling = false;
-            PlayerState.Idle();
+            
         }
 
         public void Crouch()
@@ -140,8 +141,7 @@ namespace Sprint_2.Sprites
 
         public void OnCrouch()
         {
-            Vector2 playerSize = PlayerState.getSize();
-            if (!isCrouching && !playerSize.Equals(new Vector2(16 *4, 16 *4)) && !isJumping)
+            if (!isCrouching && !isJumping)
             {
                 isCrouching = true;
                

@@ -59,10 +59,13 @@ namespace Sprint_2.MarioStates
         {
             if (pose != Pose.Jump && pose != Pose.Fall && !mario.isCrouching)
             {
+                
                 mario.isCrouching = true;
                 int bottomPositionOfSprite = mario.GetHitBox().Bottom;
                 pose = Pose.Crouch;
                 mario.YPos = bottomPositionOfSprite - mario.GetHitBox().Height;
+
+                
             }
         }
         public void Idle()
