@@ -25,14 +25,15 @@ adventure that brings joy to gamers of all ages. Get ready to jump, run, and sav
 
 #### Player control:
 
-- W: jump
-- A: move left
-- D: move right
-- S: crouch
+- W/Up Arrow: jump
+- A/Down Arrow: move left
+- D/Right Arrow: move right
+- S/Left Arrow: crouch
 - Z: throw the fireball
 - 3: power up
 - Q: Quit the game
 - R: Reset
+- E: Force the Player to take damage
 
 ## Sprint3 Content
 
