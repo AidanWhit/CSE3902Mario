@@ -22,7 +22,7 @@ namespace Sprint_2.Commands.CollisionCommands
 
         public void Execute() 
         {
-            if (!player.isFalling)
+            if (player.isJumping)
             {
                 block.BeHit(player);
             }
