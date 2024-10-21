@@ -10,12 +10,12 @@ Here is the Sprint Planner that will be used to document our plans, design chang
 |------:|--------------|----------------|--------------------|----------------------|---------------|
 | HUD | 
 | Sounds |
-| Flag Collison + Animation | 
-| Underground section |
-| Collision on entering/leaving underground  | 
+| Flag Collison + Animation | | | Christian + Aidan |
+| Underground XML | | | Zhuoyang |
+| Collision on entering/leaving underground  | | | Christian + Aidan |
 | Score points appear on screen | 
-| Remove magic numbers/strings |
-| Create stationary coin for underground |
+| Remove magic numbers/strings | | | Everyone |
+| Create stationary coin for underground | | | Christian |
 | Pausing the Game |
 | Win State |
 | Game Over state |
@@ -25,11 +25,11 @@ Here is the Sprint Planner that will be used to document our plans, design chang
 | Tasks | Time(Effort) | Time Remaining | In Progress (Name) | Expected Finish Date | Finished Date |
 |------:|--------------|----------------|--------------------|----------------------|---------------|
 | Move Keyboard instantiation to a different class |
-| Brick break effect |
+| Brick break effect | | | Aidan |
 | Refactor GameObjectManager |
 | Figure out to enter underground via different levels or teleportation |
 | Add the ability to add sprite data to factories through a file |
-| Possibly refactor the player class |
+| Possibly refactor the player class | | | Aidan |
 
 
 ## List of features to be added
