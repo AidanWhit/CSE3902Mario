@@ -18,6 +18,7 @@ Here is the Sprint Planner that will be used to document our plans, design chang
 | Create stationary coin for underground |
 | Pausing the Game |
 | Win State |
+| Game Over state |
 | Grader Meeting |
 
 ### BackLog tasks from Sprint3
