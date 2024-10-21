@@ -8,7 +8,7 @@ Here is the Sprint Planner that will be used to document our plans, design chang
 
 | Tasks | Time(Effort) | Time Remaining | In Progress (Name) | Expected Finish Date | Finished Date |
 |------:|--------------|----------------|--------------------|----------------------|---------------|
-| HUD | 
+| HUD | 8hrs | Zhuoyang Li| 10/30|
 | Sounds |8hrs|| Jingyu Fu| 10/27| 
 | Flag Collison + Animation | 
 | Underground section |
