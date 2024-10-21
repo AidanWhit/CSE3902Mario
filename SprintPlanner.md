@@ -9,16 +9,16 @@ Here is the Sprint Planner that will be used to document our plans, design chang
 | Tasks | Time(Effort) | Time Remaining | In Progress (Name) | Expected Finish Date | Finished Date |
 |------:|--------------|----------------|--------------------|----------------------|---------------|
 | HUD | 
-| Sounds |
+| Sounds |8hrs|| Jingyu Fu| 10/27| 
 | Flag Collison + Animation | 
 | Underground section |
 | Collision on entering/leaving underground  | 
 | Score points appear on screen | 
 | Remove magic numbers/strings |
 | Create stationary coin for underground |
-| Pausing the Game |
-| Win State |
-| Game Over state |
+| Pausing the Game |2hrs| | Jingyu Fu|10/27|
+| Win State | 2hrs| |Jinguy Fu|10/27|
+| Game Over state | 2hrs| |Jingyu Fu|10/27|
 | Grader Meeting |
 
 ### BackLog tasks from Sprint3
@@ -40,7 +40,13 @@ Strikethrough implies the items have been completed\
   - Lives
   - Score
   - Coin Counter
+* Sound
+  - SFX
+  - BGM
 * State Manager
   - Update Game based on current
+  - Pause state
+  - Win state
+  - Game over state
 
 
