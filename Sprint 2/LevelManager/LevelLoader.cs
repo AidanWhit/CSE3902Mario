@@ -105,7 +105,7 @@ namespace Sprint_2.LevelManager
         private void MakeCollider(string name, int locationX, int locationY, Vector2 size)
         {
             GameObjectManager.Instance.Static.Add(new Collider(new Vector2(locationX, locationY), size));
-            //GameObjectManager.Instance.Drawables.Add(new Collider(new Vector2(locationX, locationY), size));
+            GameObjectManager.Instance.Drawables.Add(new Collider(new Vector2(locationX, locationY), size));
         }
         private void MakePipe(string name, int locationX, int locationY)
         {

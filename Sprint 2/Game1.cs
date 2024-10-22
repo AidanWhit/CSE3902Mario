@@ -107,8 +107,6 @@ namespace Sprint_2
             keyControl.RegisterCommand(Keys.Left, new MarioFacingRightCommand(mario));
             keyControl.RegisterCommand(Keys.Right, new MarioFacingLeftCommand(mario));
 
-
-
             keyControl.RegisterOnPressCommand(Keys.Z, new MarioAttackNormalCommand(mario));
             keyControl.RegisterOnPressCommand(Keys.D3, new MarioPowerUpCommand(mario, null, Rectangle.Empty));
             keyControl.RegisterOnPressCommand(Keys.E, new MarioHurtCommand(mario, null, Rectangle.Empty));
