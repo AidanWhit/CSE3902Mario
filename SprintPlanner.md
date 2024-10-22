@@ -4,32 +4,32 @@ Here is the Sprint Planner that will be used to document our plans, design chang
 ## Sprint 4 Plan
 
 ### Start Date: 10/21/24 
-### End Date: 11/8/24 @ noon
+### End Date: 11/9/24 @ noon
 
 | Tasks | Time(Effort) | Time Remaining | In Progress (Name) | Expected Finish Date | Finished Date |
 |------:|--------------|----------------|--------------------|----------------------|---------------|
-| HUD | 8hrs ||Zhuoyang Li| 10/30|
-| Sounds |8hrs|| Jingyu Fu| 10/27| 
-| Flag Collison + Animation | 
-| Underground section |
-| Collision on entering/leaving underground  | 
+| HUD | 8hrs |8hrs|Zhuoyang Li| 10/30|
+| Sounds |8hrs|8hrs| Jingyu Fu| 10/27| 
+| Flag Collison + Animation | 3-4 hours | 3-4 hours | Chirstian + Aidan | 10/26 |
+| Underground XML | 1-2 hours | 1-2 hours | Zhuoyang Li| 10/28 |
+| Collision on entering/leaving underground  | 2 hours | 2 hours | Aidan | 10/28 |
 | Score points appear on screen | 
-| Remove magic numbers/strings |
-| Create stationary coin for underground |
-| Pausing the Game |2hrs| | Jingyu Fu|10/27|
-| Win State | 2hrs| |Jinguy Fu|10/27|
-| Game Over state | 2hrs| |Jingyu Fu|10/27|
-| Grader Meeting |
+| Remove magic numbers/strings | 6 hrs| 6 hrs | Everyone | 11/4 |
+| Create stationary coin for underground | 2 hours |  2 hours | Christian |
+| Pausing the Game |2hrs|2hrs | Jingyu Fu|10/27|
+| Win State | 2hrs| 2hrs |Jinguy Fu|10/27|
+| Game Over state | 2hrs|2hrs  |Jingyu Fu|10/27|
+| Grader Meeting | 1 hour | 1 hour | Everyone | Sometime during the last week |
 
 ### BackLog tasks from Sprint3
 | Tasks | Time(Effort) | Time Remaining | In Progress (Name) | Expected Finish Date | Finished Date |
 |------:|--------------|----------------|--------------------|----------------------|---------------|
-| Move Keyboard instantiation to a different class |
-| Brick break effect |
+| Move Keyboard instantiation to a different class | | |  |
+| Brick break effect | 2 hours| 2hours | Aidan | 10/28 |
 | Refactor GameObjectManager |
 | Figure out to enter underground via different levels or teleportation |
 | Add the ability to add sprite data to factories through a file |
-| Possibly refactor the player class |
+| Possibly refactor the player class | 4 hours | 4 hours | Aidan | 11/4 |
 
 
 ## List of features to be added
