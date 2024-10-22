@@ -13,7 +13,7 @@ Here is the Sprint Planner that will be used to document our plans, design chang
 | Flag Collison + Animation | 3-4 hours | 3-4 hours | Chirstian + Aidan | 10/26 |
 | Underground XML | 1-2 hours | 1-2 hours | Zhuoyang Li| 10/28 |
 | Collision on entering/leaving underground  | 2 hours | 2 hours | Aidan | 10/28 |
-| Score points appear on screen | 
+| Score points appear on screen | 1-2 hrs| 1-2hrs | Zhuoyang Li | 10/28| |
 | Remove magic numbers/strings | 6 hrs| 6 hrs | Everyone | 11/4 |
 | Create stationary coin for underground | 2 hours |  2 hours | Christian |
 | Pausing the Game |2hrs|2hrs | Jingyu Fu|10/27|
