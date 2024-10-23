@@ -28,7 +28,7 @@ Here is the Sprint Planner that will be used to document our plans, design chang
 | Brick break effect | 2 hours| 2hours | Aidan | 10/28 |
 | Refactor GameObjectManager | 2hrs | 2hrs | Hahn | 10/28
 | Figure out to enter underground via different levels or teleportation | 4hrs | 4hrs | Hahn | 10/30
-| Add the ability to add sprite data to factories through a file | 2hrs| 2hrs| Hahn | 2030
+| Add the ability to add sprite data to factories through a file | 2hrs| 2hrs| Hahn | 10/30
 | Possibly refactor the player class | 4 hours | 4 hours | Aidan | 11/4 |
 
 
