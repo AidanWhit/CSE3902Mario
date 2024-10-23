@@ -7,6 +7,7 @@ using Sprint_2.Interfaces;
 using System.Collections;
 using Sprint_2.LevelManager;
 using Sprint_2.GameObjects.ItemSprites;
+using System.Diagnostics.Tracing;
 
 namespace Sprint_2.Factories
 {
@@ -14,6 +15,7 @@ namespace Sprint_2.Factories
     {
         private static ItemFactory instance = new ItemFactory();
         private Texture2D texture;
+        private Texture2D staticCoin;
         private Rectangle[] source;
 
 
@@ -35,6 +37,7 @@ namespace Sprint_2.Factories
         public void LoadItemContent(ContentManager content)
         {
             texture = content.Load<Texture2D>("items");
+            staticCoin = content.Load<Texture2D>("staticCoin");
         }
 
         public ISprite CreateRedMushroom()
@@ -68,6 +71,14 @@ namespace Sprint_2.Factories
             source = new Rectangle[] { new Rectangle(128, 95, 8, 14), new Rectangle(160, 95, 4, 14),
                 new Rectangle(191, 95, 1, 14),  new Rectangle(220, 95, 4, 14)};
             return new FrameArrayFormattedSprite(texture, source, 1);
+        }
+
+        // TODO: move staticCoin texture into items content file and refactor accordingly
+        public ISprite CreateStaticCoin()
+        {
+            source = new Rectangle[] { new Rectangle(3, 1, 11, 14), new Rectangle(19, 1, 11, 14),
+                new Rectangle(35, 1, 11, 14), new Rectangle(51, 1, 11, 14)};
+            return new FrameArrayFormattedSprite(staticCoin, source, 1);
         }
 
         /* Methods below added for testing */
