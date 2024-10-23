@@ -11,6 +11,7 @@ namespace Sprint_2.GameObjects
     {
         private Rectangle collider;
         private Vector2 location;
+        private bool flag;
         public Collider(Vector2 location, Vector2 size)
         {
             this.location = location;
