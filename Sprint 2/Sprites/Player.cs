@@ -181,7 +181,10 @@ namespace Sprint_2.Sprites
         public void Climb()
         {
             PlayerState.Climb();
+            SoundManager.Instance.StopBackgroundMusic();
             SoundManager.Instance.PlaySoundEffect("flagpole");
+            SoundManager.Instance.PlaySoundEffect("stageClear");
+            
         }
         public Rectangle GetHitBox()
         {
