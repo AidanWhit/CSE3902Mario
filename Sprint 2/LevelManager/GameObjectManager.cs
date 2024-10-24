@@ -52,6 +52,12 @@ namespace Sprint_2.LevelManager
             {
                 Blocks[i] = new List<ICollideable>();
             }
+
+            // MOVE THIS TO LEVEL LOADER
+            StaticCoin s = new StaticCoin(new Vector2(400, 400));
+            Updateables.Add(s);
+            Drawables.Add(s);
+            Static.Add(s);
         }
 
         public void AddCommandMapping(string entry, Type sourceCommand, Type receiverCommand)

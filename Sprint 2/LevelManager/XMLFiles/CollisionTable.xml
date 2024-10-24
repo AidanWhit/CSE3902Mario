@@ -739,6 +739,7 @@
 		<SourceCommandType>Sprint_2.Commands.CollisionCommands.Fireball.FireballBounceCommand</SourceCommandType>
 		<ReceiverCommandType></ReceiverCommandType>
 	</Entry>
+
 	<Entry>
 		<SourceType>IPlayer</SourceType>
 		<ReceiverType>FlagCollider</ReceiverType>
@@ -760,6 +761,35 @@
 		<SourceCommandType>Sprint_2.Commands.MarioCollisionCommands.MarioClimbCommand</SourceCommandType>
 		<ReceiverCommandType></ReceiverCommandType>
 	</Entry>
-	
-	
+	<!--
+	STATIC COIN COLLISION: UNFINISHED
+	<Entry>
+		<SourceType>IPlayer</SourceType>
+		<ReceiverType>StaticCoin</ReceiverType>
+		<CollisionSide>Top</CollisionSide>
+		<SourceCommandType> COIN COLLECT COMMAND </SourceCommandType>
+		<ReceiverCommandType> DELETE COIN </ReceiverCommandType>
+	</Entry>
+	<Entry>
+		<SourceType>IPlayer</SourceType>
+		<ReceiverType>StaticCoin</ReceiverType>
+		<CollisionSide>Right</CollisionSide>
+		<SourceCommandType> COIN COLLECT COMMAND </SourceCommandType>
+		<ReceiverCommandType> DELETE COIN </ReceiverCommandType>
+	</Entry>
+	<Entry>
+		<SourceType>IPlayer</SourceType>
+		<ReceiverType>StaticCoin</ReceiverType>
+		<CollisionSide>Left</CollisionSide>
+		<SourceCommandType> COIN COLLECT COMMAND </SourceCommandType>
+		<ReceiverCommandType> DELETE COIN </ReceiverCommandType>
+	</Entry>
+	<Entry>
+		<SourceType>IPlayer</SourceType>
+		<ReceiverType>StaticCoin</ReceiverType>
+		<CollisionSide>Bottom</CollisionSide>
+		<SourceCommandType> COIN COLLECT COMMAND </SourceCommandType>
+		<ReceiverCommandType> DELETE COIN </ReceiverCommandType>
+	</Entry>
+	-->
 </XnaContent>
