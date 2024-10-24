@@ -20,7 +20,6 @@ namespace Sprint_2.Commands.MarioMovementCommands
                 mario.ReleaseCrouch();
             }
             mario.Jump();
-            
         }
     }
 }

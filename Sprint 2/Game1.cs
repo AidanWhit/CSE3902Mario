@@ -83,6 +83,7 @@ namespace Sprint_2
             BackgroundFactory.Instance.LoadAllContent(Content);
 
             SoundManager.Instance.LoadAllBGM(Content);
+            SoundManager.Instance.LoadAllSFX(Content);
 
             mario = new Player(new Vector2(100, 400));
             collisionDetection = new CollisionDetection();

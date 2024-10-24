@@ -31,13 +31,26 @@ namespace Sprint_2.Sound
                 return instance;
             }
         }
-        // Load all background music
+        // Load all background music for now, this will become a load-from-xml-file thing later
         public void LoadAllBGM(ContentManager content)
         {
-            backgroundMusic.Add("mainTheme", content.Load<Song>("01-main-theme-overworld"));
-            backgroundMusic.Add("starman", content.Load<Song>("05-starman"));
-            backgroundMusic.Add("levelComplete", content.Load<Song>("06-level-complete"));
-            backgroundMusic.Add("youAreDead", content.Load<Song>("08-you-re-dead"));
+            LoadBackgroundMusic("mainTheme", content.Load<Song>("01-main-theme-overworld"));
+            LoadBackgroundMusic("starman", content.Load<Song>("05-starman"));
+            LoadBackgroundMusic("levelComplete", content.Load<Song>("06-level-complete"));
+            LoadBackgroundMusic("youAreDead", content.Load<Song>("08-you-re-dead"));
+        }
+
+        // Load all sound effects for now, this will become a load-from-xml-file thing later
+        public void LoadAllSFX(ContentManager content)
+        {
+            LoadSoundEffect("breakBlock", content.Load<SoundEffect>("smb_breakblock"));
+            LoadSoundEffect("stomp", content.Load<SoundEffect>("smb_stomp"));
+            LoadSoundEffect("stageClear", content.Load<SoundEffect>("smb_stage_clear"));
+            LoadSoundEffect("marioDie", content.Load<SoundEffect>("smb_mariodie"));
+            LoadSoundEffect("kick", content.Load<SoundEffect>("smb_kick"));
+            LoadSoundEffect("jumpSmall", content.Load<SoundEffect>("smb_jumpsmall"));
+            LoadSoundEffect("flagpole", content.Load<SoundEffect>("smb_flagpole"));
+            LoadSoundEffect("coin", content.Load<SoundEffect>("smb_coin"));
         }
         // Play the background music by the key in the dictionary ("main theme" is default)
         public void PlayBGM(string musicKey)
@@ -48,61 +61,61 @@ namespace Sprint_2.Sound
                 MediaPlayer.IsRepeating = musicKey == "mainTheme";  // playing the music looped
             }
         }
-        //// Load 1 sound effect and add it to the dictionary
-        //public void LoadSoundEffect(string name, SoundEffect soundEffect)
-        //{
-        //    if (!soundEffects.ContainsKey(name))
-        //    {
-        //        soundEffects.Add(name, new SoundEffectWrapper(soundEffect));
-        //    }
-        //}
+        // Load 1 sound effect and add it to the dictionary
+        public void LoadSoundEffect(string name, SoundEffect soundEffect)
+        {
+            if (!soundEffects.ContainsKey(name))
+            {
+                soundEffects.Add(name, new SoundEffectWrapper(soundEffect));
+            }
+        }
 
-        //// Load 1 background music and add it to the dictionary
-        //public void LoadBackgroundMusic(string name, Song song)
-        //{
-        //    if (!backgroundMusic.ContainsKey(name))
-        //    {
-        //        backgroundMusic.Add(name, song);
-        //    }
-        //}
+        // Load 1 background music and add it to the dictionary
+        public void LoadBackgroundMusic(string name, Song song)
+        {
+            if (!backgroundMusic.ContainsKey(name))
+            {
+                backgroundMusic.Add(name, song);
+            }
+        }
 
-        //// Play a sound effect by name
-        //public void PlaySoundEffect(string name)
-        //{
-        //    if (soundEffects.ContainsKey(name))
-        //    {
-        //        soundEffects[name].Play();
-        //    }
-        //}
+        // Play a sound effect by name
+        public void PlaySoundEffect(string name)
+        {
+            if (soundEffects.ContainsKey(name))
+            {
+                soundEffects[name].Play();
+            }
+        }
 
-        //// Play background music by name
-        //public void PlayBackgroundMusic(string name)
-        //{
-        //    if (backgroundMusic.ContainsKey(name))
-        //    {
-        //        MediaPlayer.Play(backgroundMusic[name]);
-        //    }
-        //}
+        // Play background music by name
+        public void PlayBackgroundMusic(string name)
+        {
+            if (backgroundMusic.ContainsKey(name))
+            {
+                MediaPlayer.Play(backgroundMusic[name]);
+            }
+        }
 
-        //// Stop the currently playing background music
-        //public void StopBackgroundMusic()
-        //{
-        //    MediaPlayer.Stop();
-        //}
+        // Stop the currently playing background music
+        public void StopBackgroundMusic()
+        {
+            MediaPlayer.Stop();
+        }
 
-        //// Set volume for background music
-        //public void SetMusicVolume(float volume)
-        //{
-        //    MediaPlayer.Volume = volume;
-        //}
+        // Set volume for background music
+        public void SetMusicVolume(float volume)
+        {
+            MediaPlayer.Volume = volume;
+        }
 
-        //// Set volume for sound effects
-        //public void SetSoundEffectVolume(string name, float volume)
-        //{
-        //    if (soundEffects.ContainsKey(name))
-        //    {
-        //        soundEffects[name].SetVolume(volume);
-        //    }
-        //}
+        // Set volume for sound effects
+        public void SetSoundEffectVolume(string name, float volume)
+        {
+            if (soundEffects.ContainsKey(name))
+            {
+                soundEffects[name].SetVolume(volume);
+            }
+        }
     }
 }
