@@ -10,6 +10,7 @@ using Sprint_2.Controls;
 using Sprint_2.Factories;
 using Sprint_2.Interfaces;
 using Sprint_2.Sprites;
+using Sprint_2.Sound;
 using Sprint_2.ScreenCamera;
 using Sprint_2.LevelManager;
 using System.Diagnostics;
@@ -81,12 +82,15 @@ namespace Sprint_2
             BlockFactory.Instance.LoadAllContent(Content);
             BackgroundFactory.Instance.LoadAllContent(Content);
 
+            SoundManager.Instance.LoadAllBGM(Content);
+
             mario = new Player(new Vector2(100, 400));
             collisionDetection = new CollisionDetection();
             
 
             camera = new Camera(GraphicsDevice.Viewport, levelBounds);
-            
+
+            SoundManager.Instance.PlayBGM("mainTheme");
 
             ItemFactory.Instance.SetGameObjectManager(GameObjectManager.Instance);
             BlockFactory.Instance.SetGameObjectManager(GameObjectManager.Instance);
