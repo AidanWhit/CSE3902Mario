@@ -21,7 +21,8 @@ namespace Sprint_2.GameObjects
         }
         public void Draw(SpriteBatch spriteBatch, Color color)
         {
-            HitBoxRectangle.DrawRectangle(spriteBatch, collider, Color.White, 1);
+            /* Used to see where the invisible collision rectangles are located */
+            //HitBoxRectangle.DrawRectangle(spriteBatch, collider, Color.White, 1);
         }
         public string GetCollisionType()
         {

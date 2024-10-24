@@ -6,6 +6,12 @@
 		  <ObjectName>LevelImage</ObjectName>
 		  <Location>0 240</Location>
 	  </Item>
+	  <Item>
+		  <ObjectType>Background</ObjectType>
+		  <ObjectName>Flag</ObjectName>
+		  <Location>3160 288</Location>
+	  </Item>
+	  
     <Item>
       <ObjectType>Block</ObjectType>
       <ObjectName>BrownGround</ObjectName>

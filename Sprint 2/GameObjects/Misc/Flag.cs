@@ -1,6 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Sprint_2.Factories;
 using Sprint_2.Interfaces;
+using Sprint_2.LevelManager;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,31 +11,44 @@ using System.Threading.Tasks;
 
 namespace Sprint_2.GameObjects.Misc
 {
-    public class Flag : Interfaces.IDrawable
+    public class Flag : Interfaces.IDrawable, Interfaces.IUpdateable
     {
         private ISprite flagSprite;
         private float XPos;
         private float YPos;
+        private bool reachedBottom = false;
 
         public Flag(Vector2 location)
         {
             XPos = location.X;
             YPos = location.Y;
+            flagSprite = BackgroundFactory.Instance.CreateFlag();
         }
-
+        public void Update(GameTime gameTime)
+        {
+            if (YPos < 416)
+            {
+                YPos++;
+            }
+            else
+            {
+                reachedBottom = true;
+            }
+        }
         public void Draw(SpriteBatch spriteBatch, Color color)
         {
             flagSprite.Draw(spriteBatch, new Vector2(XPos, YPos), color);
         }
 
-        public void SetXPos(float newXPos)
+        public void AddToUpdateables()
         {
-            XPos = newXPos;
+            GameObjectManager.Instance.Updateables.Add(this);
         }
 
-        public void SetYPos(float newYPos)
+        public bool ReachedBottom()
         {
-            YPos = newYPos;
+            return reachedBottom;
         }
+
     }
 }

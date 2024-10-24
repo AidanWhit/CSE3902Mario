@@ -15,6 +15,7 @@ namespace Sprint_2.Factories
         // Background sprites and level image
         private Texture2D levelImageTexture;  // The whole level image (blocks and background only)
         private Texture2D backgroundSprites;
+        private Texture2D flagSprite;
 
 
         private static BackgroundFactory instance = new BackgroundFactory();
@@ -26,6 +27,11 @@ namespace Sprint_2.Factories
         {
             levelImageTexture = content.Load<Texture2D>("levelimage"); //sprite for the whole level image  
             backgroundSprites = content.Load<Texture2D>("backgroundSprites");
+            flagSprite = content.Load<Texture2D>("flag");
+        }
+        public ISprite CreateFlag()
+        {
+            return new FrameArrayFormattedSprite(flagSprite, new Rectangle[] { new Rectangle(0, 0, flagSprite.Width, flagSprite.Height) }, 1);
         }
         public IStaticSprite CreateBush1(Vector2 location)
         {

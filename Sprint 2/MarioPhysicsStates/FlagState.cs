@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using Sprint_2.Constants;
+using Sprint_2.GameObjects.Misc;
 using Sprint_2.Interfaces;
 using Sprint_2.LevelManager;
 using Sprint_2.MarioStates;
@@ -33,11 +34,15 @@ namespace Sprint_2.MarioPhysicsStates
 
         public void Update(GameTime gameTime)
         {
+            /* Feels like a workaround to a simpler solution but I am not sure */
+            Flag flag = (Flag)GameObjectManager.Instance.Drawables.Find((x => x.GetType() == typeof(Flag)));
+
             if (player.GetHitBox().Bottom != bottomOfFlagPole)
             {
                 player.YPos++;
             }
-            else
+            /* Want this section to happen when the flag has reached the bottom of the pole */
+            else if (flag.ReachedBottom())
             {
                 player.XPos += widthOfFlagPole;
                 player.MoveLeft();
@@ -48,11 +53,14 @@ namespace Sprint_2.MarioPhysicsStates
                 /* Might be a better way to do this but it works */
                 Timer timer = new Timer(MarioPhysicsConstants.timeToReachCastle);
                 moveRightTimer = new Timer(MarioPhysicsConstants.timeBetweenMovementForAnimations);
+
                 moveRightTimer.Elapsed += (source, e) => MoveRight(source, e, player);
                 moveRightTimer.Enabled = true;
                 moveRightTimer.AutoReset = true;
+
                 timer.Elapsed += (source, e) => OnTimedEvent(source, e, player, moveRightTimer);
                 timer.Enabled = true;
+                
             }
         }
 
@@ -64,6 +72,7 @@ namespace Sprint_2.MarioPhysicsStates
 
         private static void MoveRight(Object source, ElapsedEventArgs e, IPlayer player)
         {
+            Debug.WriteLine("Entered MoveRight timer");
             player.MoveRight();
         }
     }

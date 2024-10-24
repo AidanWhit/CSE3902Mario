@@ -15,6 +15,7 @@ using Sprint_2.Constants;
 using System.Reflection;
 using System.Data.Common;
 using System.Diagnostics.CodeAnalysis;
+using Sprint_2.GameObjects.Misc;
 
 namespace Sprint_2.LevelManager
 {
@@ -154,6 +155,9 @@ namespace Sprint_2.LevelManager
                     break;
                 case "LevelImage":
                     GameObjectManager.Instance.Drawables.Add(BackgroundFactory.Instance.CreateLevelImage(new Vector2(locationX, locationY)));
+                    break;
+                case "Flag":
+                    GameObjectManager.Instance.Drawables.Add(new Flag(new Vector2(locationX, locationY)));
                     break;
                 default:
                     throw new InvalidOperationException("Scenery type: \"" + name + "\" doesn't exist");
