@@ -63,11 +63,6 @@ namespace Sprint_2.LevelManager
             return collisionCommandMap;
         }
         
-        private void UnloadObjects()
-        {
-
-        }
-        
         public List<ICollideable> GetNearbyBlocks(int column)
         {
             List<ICollideable> nearbyBlocks;

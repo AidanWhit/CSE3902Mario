@@ -15,7 +15,7 @@ namespace Sprint_2.MarioStates
         private HealthState health;
         public ISprite currentSprite { get; set; }
         private PoseState pose;
-        private enum Facing { Left, Right };
+        public enum Facing { Left, Right };
         private Facing facing;
 
         private IPlayer mario;
@@ -170,6 +170,10 @@ namespace Sprint_2.MarioStates
         {
             pose.Idle();
         }
+        public void Climb()
+        {
+            pose.Climb();
+        }
 
         public FireBall ShootFireball()
         {
@@ -237,6 +241,11 @@ namespace Sprint_2.MarioStates
         public string GetHealth()
         {
             return health.GetHealth();
+        }
+
+        public Facing GetFacing()
+        {
+            return facing;
         }
     }
 }

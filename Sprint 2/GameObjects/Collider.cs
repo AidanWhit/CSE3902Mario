@@ -11,11 +11,12 @@ namespace Sprint_2.GameObjects
     {
         private Rectangle collider;
         private Vector2 location;
-        private bool flag;
-        public Collider(Vector2 location, Vector2 size)
+        private string type;
+        public Collider(Vector2 location, Vector2 size, string type)
         {
             this.location = location;
             collider = new Rectangle((int)location.X, (int)location.Y, (int)size.X, (int)size.Y);
+            this.type = type;
             
         }
         public void Draw(SpriteBatch spriteBatch, Color color)
@@ -24,7 +25,7 @@ namespace Sprint_2.GameObjects
         }
         public string GetCollisionType()
         {
-            return typeof(Collider).Name;
+            return type;
         }
 
         public Rectangle GetHitBox()

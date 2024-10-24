@@ -1,6 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint_2.Interfaces;
+using Sprint_2.LevelManager;
+using Sprint_2.MarioStates;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -55,7 +57,9 @@ namespace Sprint_2.Sprites
 
         public void RemoveStar()
         {
+            GameObjectManager.Instance.Drawables.Remove(this);
             Game1.Instance.mario = decoratedPlayer;
+            GameObjectManager.Instance.Drawables.Add(decoratedPlayer);
         }
 
         public void MoveLeft()
@@ -108,6 +112,11 @@ namespace Sprint_2.Sprites
         {
             decoratedPlayer.ReleaseCrouch();
         }
+
+        public void Climb()
+        {
+            decoratedPlayer.Climb();
+        }
         public Rectangle GetHitBox()
         {
             return decoratedPlayer.GetHitBox();
@@ -125,6 +134,11 @@ namespace Sprint_2.Sprites
         public int GetColumn()
         {
             return decoratedPlayer.GetColumn();
+        }
+
+        public PlayerStateMachine.Facing GetFacing()
+        {
+            return decoratedPlayer.GetFacing();
         }
     }
 }

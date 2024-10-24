@@ -34,5 +34,10 @@ namespace Sprint_2.Constants
         public static float bounceVelocity = -250f;
 
         public static int startingLives = 3;
+
+        public static Vector2 velocityJumpingOffFlagPole = new Vector2(100, 0);
+
+        public static int timeBetweenMovementForAnimations = 200; /* units : milliseconds */
+        public static int timeToReachCastle = 1500; /* units : milliseconds */
     }
 }

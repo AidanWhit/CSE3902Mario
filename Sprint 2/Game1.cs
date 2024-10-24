@@ -83,6 +83,7 @@ namespace Sprint_2
 
             mario = new Player(new Vector2(100, 400));
             collisionDetection = new CollisionDetection();
+            
 
             camera = new Camera(GraphicsDevice.Viewport, levelBounds);
             
@@ -121,6 +122,8 @@ namespace Sprint_2
             levelLoader = new LevelLoader();
             levelLoader.LoadLevel(@"LevelManager\level-1_data_pretty.xml");
             //levelLoader.LoadLevel(@"LevelManager\testing-level.xml");
+
+            GameObjectManager.Instance.Drawables.Add(mario);
         }
         protected override void UnloadContent()
         {
@@ -151,12 +154,12 @@ namespace Sprint_2
             GraphicsDevice.Clear(Color.CornflowerBlue);
             // Begin the sprite batch with the camera's transformation matrix
             spriteBatch.Begin(transformMatrix: camera.Transform);
-           
+
             foreach (Interfaces.IDrawable obj in GameObjectManager.Instance.Drawables.ToList())
             {
                 obj.Draw(spriteBatch, Color.White);
             }
-            mario.Draw(spriteBatch, Color.White);
+            //mario.Draw(spriteBatch, Color.White);
 
             spriteBatch.End();
             base.Draw(gameTime);

@@ -11,7 +11,7 @@ namespace Sprint_2.MarioStates
 {
     public class PoseState
     {
-        private enum Pose { Idle, Run, Jump, Crouch, Fall, Slide, Shoot }
+        private enum Pose { Idle, Run, Jump, Crouch, Fall, Slide, Shoot, Climb }
         private Pose pose;
         private IPlayer mario;
 
@@ -79,6 +79,11 @@ namespace Sprint_2.MarioStates
         public void Fall()
         {
             pose = Pose.Fall;
+        }
+
+        public void Climb()
+        {
+            pose = Pose.Climb;
         }
 
         public string GetPose()

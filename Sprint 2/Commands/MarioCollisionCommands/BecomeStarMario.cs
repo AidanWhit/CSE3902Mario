@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Sprint_2.GameObjects.ItemSprites;
 using Sprint_2.Interfaces;
+using Sprint_2.LevelManager;
 using Sprint_2.Sprites;
 using System;
 using System.Collections.Generic;
@@ -25,7 +26,9 @@ namespace Sprint_2.Commands.MarioCollisionCommands
 
         public void Execute()
         {
+            GameObjectManager.Instance.Drawables.Remove(player);
             Game1.Instance.mario = new StarMario(player);
+            GameObjectManager.Instance.Drawables.Add(Game1.Instance.mario);
         }
     }
 }
