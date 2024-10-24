@@ -10,7 +10,7 @@ Here is the Sprint Planner that will be used to document our plans, design chang
 |------:|--------------|----------------|--------------------|----------------------|---------------|
 | HUD | 8hrs |8hrs|Zhuoyang Li| 10/30|
 | Sounds |8hrs|8hrs| Jingyu Fu| 10/27| 
-| Flag Collison + Animation | 3-4 hours | 3-4 hours | Chirstian + Aidan | 10/26 |
+| Flag Collison + Animation | 3-4 hours | 3-4 hours | Chirstian + Aidan | 10/26 | 10/24 |
 | Underground XML | 1-2 hours | 1-2 hours | Zhuoyang Li| 10/28 |
 | Collision on entering/leaving underground  | 2 hours | 2 hours | Aidan | 10/28 |
 | Score points appear on screen | 1-2 hrs| 1-2hrs | Zhuoyang Li | 10/28| |
