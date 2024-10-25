@@ -18,8 +18,6 @@ namespace Sprint_2.Factories
         private static BlockFactory instance = new BlockFactory();
         public static BlockFactory Instance { get { return instance; } }
 
-        private GameObjectManager gameObjectManager;
-
 
         private Texture2D blockSpriteSheet;
 
@@ -35,7 +33,7 @@ namespace Sprint_2.Factories
             {"BrownGround", new Rectangle[]{new Rectangle(55, 67, 16, 16) } },
             {"Hit", new Rectangle[]{new Rectangle(73, 67,16, 16) } },
             {"Question", new Rectangle[]{new Rectangle(1, 85, 16, 16), new Rectangle(19, 85, 16, 16), new Rectangle(37, 85, 16, 16)} },
-            {"Invisible", new Rectangle[]{new Rectangle(55, 85, 16, 16)} }
+            {"Invisible", new Rectangle[]{new Rectangle(71, 85, 16, 16)} }
 
         };
 
@@ -48,17 +46,17 @@ namespace Sprint_2.Factories
         {
             blockSpriteSheet = content.Load<Texture2D>("blocks");
         }
-
+        
+        public ISprite GetBrokenPieceSprite()
+        {
+            Rectangle[] source = new Rectangle[] {new Rectangle(55, 85, 8, 8), new Rectangle(63, 85, 8, 8),
+            new Rectangle(55, 93, 16, 16), new Rectangle(63, 93, 16, 16)};
+            return new FrameArrayFormattedSprite(blockSpriteSheet, source, 1);
+        }
         public ISprite GetBlock(string id)
         {
             blockDictionary.TryGetValue(id, out Rectangle[] frames);
             return new FrameArrayFormattedSprite(blockSpriteSheet, frames, 1);
-        }
-
-
-        public void SetGameObjectManager(GameObjectManager gameObjectManager)
-        {
-            this.gameObjectManager = gameObjectManager;
         }
 
     }

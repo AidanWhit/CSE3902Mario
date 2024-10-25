@@ -35,11 +35,9 @@ namespace Sprint_2.Commands.MarioCollisionCommands
             player.PhysicsState = new FlagState(collideable.GetHitBox().Bottom, collideable.GetHitBox().Width);
             player.Climb();
             
-            
-
             /* Want to get the flag sprite to move down */
             Flag flag = (Flag)GameObjectManager.Instance.Drawables.Find((x => x.GetType() == typeof(Flag)));
-            flag.AddToUpdateables();
+            GameObjectManager.Instance.Updateables.Add(flag);
         }
     }
 }

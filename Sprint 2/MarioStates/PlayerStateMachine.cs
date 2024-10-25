@@ -101,6 +101,7 @@ namespace Sprint_2.MarioStates
 
         public void Crouch()
         {
+            
             if (!health.GetHealth().Equals("Mario"))
             {
                 pose.Crouch();
