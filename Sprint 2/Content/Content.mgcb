@@ -577,6 +577,12 @@
 /processorParam:Quality=Best
 /build:smb_pause.wav
 
+#begin smb_pipe.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:smb_pipe.wav
+
 #begin smb_powerup_appears.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor

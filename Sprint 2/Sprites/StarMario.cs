@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Sprint_2.Interfaces;
 using Sprint_2.LevelManager;
+using Sprint_2.Sound;
 using Sprint_2.MarioStates;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -34,17 +35,25 @@ namespace Sprint_2.Sprites
         private Color[] colors = new Color[] { Color.Red, Color.Orange, Color.Yellow, Color.LightGreen, Color.LightBlue, Color.Salmon};
         private int colorIndex = 0;
 
+        private bool isStarmanPlaying;
+
+
         public StarMario (IPlayer decoratedPlayer)
         {
             this.decoratedPlayer = decoratedPlayer;
+            isStarmanPlaying = true;
+            SoundManager.Instance.PlayBackgroundMusic("starman");
         }
         public void Update(GameTime gameTime)
-        { 
+        {
             remainingStarTime--;
             if (remainingStarTime < 0)
             {
                 /* Remove star somehow */
                 RemoveStar();
+
+                SoundManager.Instance.StopBackgroundMusic();
+                SoundManager.Instance.PlayBGM("mainTheme");
             }
             
             decoratedPlayer.Update(gameTime);

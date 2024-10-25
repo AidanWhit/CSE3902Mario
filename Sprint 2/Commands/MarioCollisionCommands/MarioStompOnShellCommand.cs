@@ -31,7 +31,7 @@ namespace Sprint_2.Commands.MarioCollisionCommands
                 shell.ShellState = new ShellStateIdle(shell);
                 shell.Velocity = Vector2.Zero;
 
-                //SoundManager.Instance.PlaySoundEffect("stomp");
+                SoundManager.Instance.PlaySoundEffect("stomp");
 
             }
         }

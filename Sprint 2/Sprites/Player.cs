@@ -173,8 +173,8 @@ namespace Sprint_2.Sprites
             if (!IsDamaged)
             {
                 PlayerState.Damage();
-                SoundManager.Instance.StopBackgroundMusic();
-                SoundManager.Instance.PlaySoundEffect("marioDie");
+                //SoundManager.Instance.StopBackgroundMusic();
+                //SoundManager.Instance.PlaySoundEffect("marioDie");
             }
         }
         public void PowerUp()

@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Sprint_2.GameObjects.ItemSprites;
 using Sprint_2.Interfaces;
+using Sprint_2.Sound;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,6 +26,9 @@ namespace Sprint_2.Commands.CollisionCommands.ItemCollisionCommands
         public void Execute()
         {
             star.DeleteItem();
+            //SoundManager.Instance.StopBackgroundMusic();
+            //SoundManager.Instance.PlayBackgroundMusic("starman");
+            //SoundManager.Instance.PlayBGM("mainTheme");
         }
     }
 }

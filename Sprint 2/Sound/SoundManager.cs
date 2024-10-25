@@ -47,6 +47,7 @@ namespace Sprint_2.Sound
             LoadSoundEffect("stomp", content.Load<SoundEffect>("smb_stomp"));
             LoadSoundEffect("stageClear", content.Load<SoundEffect>("smb_stage_clear"));
             LoadSoundEffect("marioDie", content.Load<SoundEffect>("smb_mariodie"));
+            //LoadSoundEffect("marioDie", content.Load<SoundEffect>("smb_dead"));
             LoadSoundEffect("kick", content.Load<SoundEffect>("smb_kick"));
             LoadSoundEffect("jumpSmall", content.Load<SoundEffect>("smb_jumpsmall"));
             LoadSoundEffect("flagpole", content.Load<SoundEffect>("smb_flagpole"));
@@ -58,6 +59,7 @@ namespace Sprint_2.Sound
             LoadSoundEffect("pause", content.Load<SoundEffect>("smb_pause"));
             LoadSoundEffect("powerUp", content.Load<SoundEffect>("smb_powerup"));
             LoadSoundEffect("powerUpAppears", content.Load<SoundEffect>("smb_powerup_appears"));
+            LoadSoundEffect("pipe", content.Load<SoundEffect>("smb_pipe"));
 
         }
         // Play the background music by the key in the dictionary ("main theme" is default)

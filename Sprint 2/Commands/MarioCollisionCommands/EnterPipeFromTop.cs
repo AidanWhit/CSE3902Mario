@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Sprint_2.Constants;
 using Sprint_2.Interfaces;
+using Sprint_2.Sound;
 using Sprint_2.LevelManager;
 using System;
 using System.Diagnostics;
@@ -34,6 +35,8 @@ namespace Sprint_2.Commands.MarioCollisionCommands
                 GameObjectManager.Instance.Updateables.Remove(player);
                 GameObjectManager.Instance.Movers.Remove(player);
                 player.MoveRight();
+
+                SoundManager.Instance.PlaySoundEffect("pipe");
 
                 moveDownTimer = new Timer(MarioPhysicsConstants.timeBetweenMovementForAnimations);
                 moveDownTimer.Enabled = true;

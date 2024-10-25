@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework.Input;
 using Sprint_2.Constants;
 using Sprint_2.Interfaces;
+using Sprint_2.Sound;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -52,6 +53,11 @@ namespace Sprint_2.MarioStates
             if (health == Health.Mario)
             {
                 health = Health.Dead;
+
+                SoundManager.Instance.StopBackgroundMusic();
+                SoundManager.Instance.PlayBackgroundMusic("youAreDead");
+                //SoundManager.Instance.PlaySoundEffect("marioDie");
+
                 mario.RemainingLives--;
             }
             else
@@ -63,7 +69,9 @@ namespace Sprint_2.MarioStates
                     mario.Idle();
                 }
                 health = Health.Mario;
-                
+
+                SoundManager.Instance.PlaySoundEffect("pipe");
+
                 mario.YPos += mario.GetHitBox().Height;
 
             }
