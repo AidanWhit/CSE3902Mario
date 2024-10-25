@@ -2937,11 +2937,6 @@
 		  <SizeY>16</SizeY>
 	  </Item>
         
-	  <Item>
-		  <ObjectType>Player</ObjectType>
-		  <ObjectName>Mario</ObjectName>
-		  <Location>928 300</Location>
-	  </Item>
 	  
 	  <Item>
 		  <ObjectType>Collider</ObjectType>
