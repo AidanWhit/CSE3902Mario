@@ -119,6 +119,9 @@ namespace Sprint_2
             keyControl.RegisterCommand(Keys.Q, new QuitCommand(this));
             keyControl.RegisterCommand(Keys.R, new ResetCommand());
 
+            //Edited 10/24 by Jingyu Fu, should move this to keycontrol later
+            keyControl.RegisterOnPressCommand(Keys.P, new PauseCommand());
+
             keyControl.RegisterOnReleaseCommand(Keys.S, new MarioOnCrouchRelease(mario));
             keyControl.RegisterOnPressCommand(Keys.S, new MarioOnCrouchPress(mario));
             keyControl.RegisterOnReleaseCommand(Keys.W, new MarioJumpReleaseCommand(mario));
@@ -140,7 +143,11 @@ namespace Sprint_2
         {
 
             keyControl.Update();
-
+            // If the game is paused, everything except keycontrol are no longer updating
+            if (GameStateManager.Instance.CurrentState == GameState.Paused)
+            {
+                return;
+            }
             // Update camera based on Mario's position
             camera.Update(gameTime, new Vector2(mario.XPos, mario.YPos));
 
@@ -173,6 +180,7 @@ namespace Sprint_2
         public void Reload()
         {
             GameObjectManager.Instance.Reset();
+            SoundManager.Instance.Reset();
             this.UnloadContent();
             this.LoadContent();
             

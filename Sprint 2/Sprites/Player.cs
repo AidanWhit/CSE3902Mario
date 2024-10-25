@@ -102,6 +102,9 @@ namespace Sprint_2.Sprites
                     fireballs.Add(fireball);
                     GameObjectManager.Instance.Movers.Add(fireball);
                     numberOfFireballsRemaining--;
+
+                    SoundManager.Instance.PlaySoundEffect("fireball");
+
                 }
 
             }
@@ -131,6 +134,7 @@ namespace Sprint_2.Sprites
             PlayerState.Fall();
             isFalling = true;
             PhysicsState = new Falling(this);
+
         }
         public void Idle()
         {
@@ -172,11 +176,14 @@ namespace Sprint_2.Sprites
             if (!IsDamaged)
             {
                 PlayerState.Damage();
+                SoundManager.Instance.StopBackgroundMusic();
+                SoundManager.Instance.PlaySoundEffect("marioDie");
             }
         }
         public void PowerUp()
         {
             PlayerState.PowerUp();
+            SoundManager.Instance.PlaySoundEffect("powerUp");
         }
         public void Climb()
         {

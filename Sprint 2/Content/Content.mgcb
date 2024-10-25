@@ -517,17 +517,35 @@
 /processorParam:TextureFormat=Color
 /build:RightKoopaWalkingSpriteSheet.png
 
+#begin smb_1-up.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:smb_1-up.wav
+
 #begin smb_breakblock.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
 /build:smb_breakblock.wav
 
+#begin smb_bump.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:smb_bump.wav
+
 #begin smb_coin.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
 /build:smb_coin.wav
+
+#begin smb_fireball.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:smb_fireball.wav
 
 #begin smb_flagpole.wav
 /importer:WavImporter
@@ -552,6 +570,24 @@
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
 /build:smb_mariodie.wav
+
+#begin smb_pause.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:smb_pause.wav
+
+#begin smb_powerup_appears.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:smb_powerup_appears.wav
+
+#begin smb_powerup.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:smb_powerup.wav
 
 #begin smb_stage_clear.wav
 /importer:WavImporter

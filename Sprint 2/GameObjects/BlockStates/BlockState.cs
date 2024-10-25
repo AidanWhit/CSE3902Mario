@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Sprint_2.Sound;
 using Sprint_2.Interfaces;
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;

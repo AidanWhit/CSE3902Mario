@@ -1,5 +1,6 @@
 ﻿using Sprint_2.Factories;
 using Sprint_2.Interfaces;
+using Sprint_2.Sound;
 using Sprint_2.LevelManager;
 using System;
 using System.Collections.Generic;
@@ -29,12 +30,14 @@ namespace Sprint_2.GameObjects.BlockStates
                 /* Make the block move up and then down */
                 Hit = true;
                 originalBlockY = (int)block.Position.Y;
+                SoundManager.Instance.PlaySoundEffect("bump");
             }
             /* SuperMario/Fire Mario hit the block*/
             else
             {
                 int column = (int)block.Position.X / 16;
                 /* Call remove object on gameobject manager to remove the block from being able to be drawn/updated */
+                SoundManager.Instance.PlaySoundEffect("breakBlock");
                 GameObjectManager.Instance.Blocks[column].Remove(block);
 
             }

@@ -51,6 +51,14 @@ namespace Sprint_2.Sound
             LoadSoundEffect("jumpSmall", content.Load<SoundEffect>("smb_jumpsmall"));
             LoadSoundEffect("flagpole", content.Load<SoundEffect>("smb_flagpole"));
             LoadSoundEffect("coin", content.Load<SoundEffect>("smb_coin"));
+            //
+            LoadSoundEffect("1-up", content.Load<SoundEffect>("smb_1-up"));
+            LoadSoundEffect("bump", content.Load<SoundEffect>("smb_bump"));
+            LoadSoundEffect("fireball", content.Load<SoundEffect>("smb_fireball"));
+            LoadSoundEffect("pause", content.Load<SoundEffect>("smb_pause"));
+            LoadSoundEffect("powerUp", content.Load<SoundEffect>("smb_powerup"));
+            LoadSoundEffect("powerUpAppears", content.Load<SoundEffect>("smb_powerup_appears"));
+
         }
         // Play the background music by the key in the dictionary ("main theme" is default)
         public void PlayBGM(string musicKey)
@@ -116,6 +124,15 @@ namespace Sprint_2.Sound
             {
                 soundEffects[name].SetVolume(volume);
             }
+        }
+
+        // DEBUG: when the game resets, there will be an error: System.ObjectDisposedException: 'Cannot access a disposed object.
+        // Reset SoundManager to handle game reload
+        public void Reset()
+        {
+            MediaPlayer.Stop();
+            soundEffects.Clear();
+            backgroundMusic.Clear();
         }
     }
 }
