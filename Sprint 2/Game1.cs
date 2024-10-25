@@ -99,33 +99,8 @@ namespace Sprint_2
 
             Texture2D texture = Content.Load<Texture2D>("marioSpriteSheet");
 
-            
 
-
-            //Will eventually be moved somewhere else
-            keyControl.RegisterCommand(Keys.W, new MarioFacingUpCommand(mario));
-            keyControl.RegisterCommand(Keys.S, new MarioFacingDownCommand(mario));
-            keyControl.RegisterCommand(Keys.D, new MarioFacingRightCommand(mario));
-            keyControl.RegisterCommand(Keys.A, new MarioFacingLeftCommand(mario));
-
-            keyControl.RegisterCommand(Keys.Up, new MarioFacingUpCommand(mario));
-            keyControl.RegisterCommand(Keys.Down, new MarioFacingDownCommand(mario));
-            keyControl.RegisterCommand(Keys.Left, new MarioFacingRightCommand(mario));
-            keyControl.RegisterCommand(Keys.Right, new MarioFacingLeftCommand(mario));
-
-            keyControl.RegisterOnPressCommand(Keys.Z, new MarioAttackNormalCommand(mario));
-            keyControl.RegisterOnPressCommand(Keys.D3, new MarioPowerUpCommand(mario, null, Rectangle.Empty));
-            keyControl.RegisterOnPressCommand(Keys.E, new MarioHurtCommand(mario, null, Rectangle.Empty));
-            keyControl.RegisterCommand(Keys.Q, new QuitCommand(this));
-            keyControl.RegisterCommand(Keys.R, new ResetCommand());
-
-            //Edited 10/24 by Jingyu Fu, should move this to keycontrol later
-            keyControl.RegisterOnPressCommand(Keys.P, new PauseCommand());
-
-            keyControl.RegisterOnReleaseCommand(Keys.S, new MarioOnCrouchRelease(mario));
-            keyControl.RegisterOnPressCommand(Keys.S, new MarioOnCrouchPress(mario));
-            keyControl.RegisterOnReleaseCommand(Keys.W, new MarioJumpReleaseCommand(mario));
-
+            InitControls.initializeControls(keyControl, mario, this);
 
             levelLoader = new LevelLoader();
             levelLoader.LoadLevel(@"LevelManager\level-1_data_pretty.xml");

@@ -1,5 +1,11 @@
-﻿using Microsoft.Xna.Framework.Input;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Input;
+using Sprint_2.Commands.MarioAttackCommands;
+using Sprint_2.Commands.MarioItemCommands;
+using Sprint_2.Commands.MarioMovementCommands;
+using Sprint_2.Commands.ProgramCommands;
 using Sprint_2.Interfaces;
+using Sprint_2.Sprites;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -7,66 +13,33 @@ using System.Linq;
 
 namespace Sprint_2.Controls
 {
-    internal class KeyboardControl : IController
+    internal static class InitControls
     {
-        private Dictionary<Keys, ICommands> controllerMappings;
-        private Dictionary<Keys, ICommands> onPressCommandMappings;
-        private Dictionary<Keys, ICommands> onReleaseCommandMappings;
-        private Keys[] oldKeys = {};
-        public KeyboardControl()
+        public static void initializeControls(KeyboardControl keyControl, IPlayer mario, Game1 game)
         {
-            controllerMappings = new Dictionary<Keys, ICommands>();
-            onPressCommandMappings = new Dictionary<Keys, ICommands>();
-            onReleaseCommandMappings = new Dictionary<Keys, ICommands>();
-        }
+            //Will eventually be moved somewhere else
+            keyControl.RegisterCommand(Keys.W, new MarioFacingUpCommand(mario));
+            keyControl.RegisterCommand(Keys.S, new MarioFacingDownCommand(mario));
+            keyControl.RegisterCommand(Keys.D, new MarioFacingRightCommand(mario));
+            keyControl.RegisterCommand(Keys.A, new MarioFacingLeftCommand(mario));
 
-        public void RegisterCommand(Keys key, ICommands command)
-        {
-            controllerMappings.Add(key, command);
-        }
-        public void RegisterOnPressCommand(Keys key, ICommands command)
-        {
-            onPressCommandMappings.Add(key, command);
-        }
-        public void RegisterOnReleaseCommand(Keys key, ICommands command)
-        {
-            onReleaseCommandMappings.Add(key, command);
-        }
-        
-        public void Update()
-        {
-            Keys[] pressedKeys = Keyboard.GetState().GetPressedKeys();
-            
-            foreach (Keys key in pressedKeys)
-            {
-                /* Commands that will happens on press and hold will be executed here */
-                if (controllerMappings.ContainsKey(key))
-                {
-                    controllerMappings[key].Execute();
-                }
-                /* Commands that will happen on press are executed here */
-                if (!oldKeys.Contains(key) && onPressCommandMappings.ContainsKey(key))
-                {
-                    onPressCommandMappings[key].Execute();
-                }
-            }
-            foreach (Keys key in oldKeys)
-            {
-                /* Execute on release command */
-                if (!pressedKeys.Contains(key) && onReleaseCommandMappings.ContainsKey(key))
-                {
-                    onReleaseCommandMappings[key].Execute();
-                }
-            }
-            oldKeys = pressedKeys;
+            keyControl.RegisterCommand(Keys.Up, new MarioFacingUpCommand(mario));
+            keyControl.RegisterCommand(Keys.Down, new MarioFacingDownCommand(mario));
+            keyControl.RegisterCommand(Keys.Left, new MarioFacingRightCommand(mario));
+            keyControl.RegisterCommand(Keys.Right, new MarioFacingLeftCommand(mario));
 
-        }
+            keyControl.RegisterOnPressCommand(Keys.Z, new MarioAttackNormalCommand(mario));
+            keyControl.RegisterOnPressCommand(Keys.D3, new MarioPowerUpCommand(mario, null, Rectangle.Empty));
+            keyControl.RegisterOnPressCommand(Keys.E, new MarioHurtCommand(mario, null, Rectangle.Empty));
+            keyControl.RegisterCommand(Keys.Q, new QuitCommand(game));
+            keyControl.RegisterCommand(Keys.R, new ResetCommand());
 
-        public void ClearCommands()
-        {
-            controllerMappings.Clear();
-            onPressCommandMappings.Clear();
-            onReleaseCommandMappings.Clear();
+            //Edited 10/24 by Jingyu Fu, should move this to keycontrol later
+            keyControl.RegisterOnPressCommand(Keys.P, new PauseCommand());
+
+            keyControl.RegisterOnReleaseCommand(Keys.S, new MarioOnCrouchRelease(mario));
+            keyControl.RegisterOnPressCommand(Keys.S, new MarioOnCrouchPress(mario));
+            keyControl.RegisterOnReleaseCommand(Keys.W, new MarioJumpReleaseCommand(mario));
         }
 
     }
