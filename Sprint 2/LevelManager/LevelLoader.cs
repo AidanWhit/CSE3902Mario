@@ -95,6 +95,7 @@ namespace Sprint_2.LevelManager
                     MakePipe(name, locationX, locationY);
                     break;
                 case "Collider":
+                    
                     Vector2 size = new Vector2(Convert.ToInt32(sizeX), Convert.ToInt32(sizeY));
                     MakeCollider(name, locationX, locationY, size);
                     break;

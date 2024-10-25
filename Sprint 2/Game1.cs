@@ -17,6 +17,7 @@ using System.Diagnostics;
 using System;
 using Sprint_2.Collision;
 using System.Linq;
+using Sprint_2.GameObjects.ItemSprites;
 
 
 namespace Sprint_2
@@ -94,7 +95,6 @@ namespace Sprint_2
             SoundManager.Instance.PlayBGM("mainTheme");
 
             ItemFactory.Instance.SetGameObjectManager(GameObjectManager.Instance);
-            BlockFactory.Instance.SetGameObjectManager(GameObjectManager.Instance);
             EnemyFactory.Instance.SetGameObjectManager(GameObjectManager.Instance);
 
             Texture2D texture = Content.Load<Texture2D>("marioSpriteSheet");
@@ -107,6 +107,8 @@ namespace Sprint_2
             //levelLoader.LoadLevel(@"LevelManager\testing-level.xml");
 
             GameObjectManager.Instance.Drawables.Add(mario);
+            GameObjectManager.Instance.Updateables.Add(mario);
+            GameObjectManager.Instance.Movers.Add(mario);
         }
         protected override void UnloadContent()
         {
@@ -126,7 +128,7 @@ namespace Sprint_2
             // Update camera based on Mario's position
             camera.Update(gameTime, new Vector2(mario.XPos, mario.YPos));
 
-            mario.Update(gameTime);
+            //mario.Update(gameTime);
             foreach (Interfaces.IUpdateable obj in GameObjectManager.Instance.Updateables.ToList())
             {
                 obj.Update(gameTime);

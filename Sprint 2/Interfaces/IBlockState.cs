@@ -6,7 +6,6 @@ namespace Sprint_2.Interfaces
 {
     public interface IBlockState
     {
-        //public bool Hit {  get; set; }
         void BeHit(IPlayer player);
 
         Rectangle GetHitBox(Vector2 location);

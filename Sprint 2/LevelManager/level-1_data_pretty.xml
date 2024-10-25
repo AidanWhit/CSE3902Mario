@@ -2937,11 +2937,6 @@
 		  <SizeY>16</SizeY>
 	  </Item>
         
-	  <Item>
-		  <ObjectType>Player</ObjectType>
-		  <ObjectName>Mario</ObjectName>
-		  <Location>3018 300</Location>
-	  </Item>
 	  
 	  <Item>
 		  <ObjectType>Collider</ObjectType>
@@ -2957,6 +2952,14 @@
 		  <Location>3177 252</Location>
 		  <SizeX>4</SizeX>
 		  <SizeY>30</SizeY>
+	  </Item>
+
+	  <Item>
+		  <ObjectType>Collider</ObjectType>
+		  <ObjectName>PipeCollider</ObjectName>
+		  <Location>927 382</Location>
+		  <SizeX>2</SizeX>
+		  <SizeY>16</SizeY>
 	  </Item>
 	  
 	  

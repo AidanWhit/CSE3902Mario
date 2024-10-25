@@ -22,7 +22,7 @@ namespace Sprint_2.GameObjects
         public void Draw(SpriteBatch spriteBatch, Color color)
         {
             /* Used to see where the invisible collision rectangles are located */
-            //HitBoxRectangle.DrawRectangle(spriteBatch, collider, Color.White, 1);
+            HitBoxRectangle.DrawRectangle(spriteBatch, collider, Color.White, 1);
         }
         public string GetCollisionType()
         {

@@ -42,10 +42,11 @@ namespace Sprint_2.GameObjects.BlockStates
 
                 /* Call remove object on gameobject manager to remove the block from being able to be drawn/updated */
                 GameObjectManager.Instance.Blocks[column].Remove(block);
-                GameObjectManager.Instance.Drawables.Remove(block);
-                GameObjectManager.Instance.Updateables.Remove(block);
-                SoundManager.Instance.PlaySoundEffect("breakBlock");
+                //GameObjectManager.Instance.Drawables.Remove(block);
+                //GameObjectManager.Instance.Updateables.Remove(block);
 
+                block.ChangeState(new BrokenBlockState(block));
+                SoundManager.Instance.PlaySoundEffect("breakBlock");
 
             }
         }

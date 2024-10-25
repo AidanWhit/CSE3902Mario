@@ -152,22 +152,19 @@ namespace Sprint_2.Sprites
 
         public void OnCrouch()
         {
-            if (!isCrouching && !isJumping)
+            if (!isCrouching && !isJumping && !isFalling)
             {
                 isCrouching = true;
-               
             }
         }
 
         public void ReleaseCrouch()
         {
-            Vector2 playerSize = PlayerState.getSize();
-            if (isCrouching && !playerSize.Equals(new Vector2(16 * 4, 16 * 4)))
+            if (isCrouching)
             {
                 int bottomOfSprite = GetHitBox().Bottom;
                 Idle();
                 YPos = bottomOfSprite - GetHitBox().Height;
-
             }
         }
 

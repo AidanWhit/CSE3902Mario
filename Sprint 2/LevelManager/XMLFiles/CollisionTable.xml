@@ -761,6 +761,13 @@
 		<SourceCommandType>Sprint_2.Commands.MarioCollisionCommands.MarioClimbCommand</SourceCommandType>
 		<ReceiverCommandType></ReceiverCommandType>
 	</Entry>
+	<Entry>
+		<SourceType>IPlayer</SourceType>
+		<ReceiverType>PipeCollider</ReceiverType>
+		<CollisionSide>Top</CollisionSide>
+		<SourceCommandType>Sprint_2.Commands.MarioCollisionCommands.EnterPipeFromTop</SourceCommandType>
+		<ReceiverCommandType></ReceiverCommandType>
+	</Entry>
 	<!--
 	STATIC COIN COLLISION: UNFINISHED
 	<Entry>

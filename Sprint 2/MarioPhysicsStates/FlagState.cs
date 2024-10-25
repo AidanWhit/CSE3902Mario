@@ -1,13 +1,10 @@
 ﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Input;
 using Sprint_2.Constants;
 using Sprint_2.GameObjects.Misc;
 using Sprint_2.Interfaces;
 using Sprint_2.LevelManager;
 using Sprint_2.MarioStates;
 using System;
-using System.Diagnostics;
-using System.Runtime.CompilerServices;
 using System.Timers;
 
 namespace Sprint_2.MarioPhysicsStates
@@ -72,7 +69,6 @@ namespace Sprint_2.MarioPhysicsStates
 
         private static void MoveRight(Object source, ElapsedEventArgs e, IPlayer player)
         {
-            Debug.WriteLine("Entered MoveRight timer");
             player.MoveRight();
         }
     }

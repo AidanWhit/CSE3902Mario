@@ -3,6 +3,7 @@ using Sprint_2.GameObjects.ItemSprites;
 using Sprint_2.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,6 +24,7 @@ namespace Sprint_2.Commands.MarioCollisionCommands
         }
         public void Execute() 
         {
+            Debug.WriteLine("Mario Gained A Life");
             player.RemainingLives++;
         }
 

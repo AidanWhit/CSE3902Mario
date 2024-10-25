@@ -40,11 +40,6 @@ namespace Sprint_2.GameObjects.Misc
             flagSprite.Draw(spriteBatch, new Vector2(XPos, YPos), color);
         }
 
-        public void AddToUpdateables()
-        {
-            GameObjectManager.Instance.Updateables.Add(this);
-        }
-
         public bool ReachedBottom()
         {
             return reachedBottom;
