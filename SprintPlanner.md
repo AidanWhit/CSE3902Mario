@@ -9,15 +9,15 @@ Here is the Sprint Planner that will be used to document our plans, design chang
 | Tasks | Time(Effort) | Time Remaining | In Progress (Name) | Expected Finish Date | Finished Date |
 |------:|--------------|----------------|--------------------|----------------------|---------------|
 | HUD | 8hrs |8hrs|Zhuoyang Li| 10/30|
-| Sounds |8hrs|8hrs| Jingyu Fu| 10/27| 
-| Flag Collison + Animation | 3-4 hours | 3-4 hours | Chirstian + Aidan | 10/26 |
+| Sounds |8hrs|8hrs| Jingyu Fu| 10/27| 10/24
+| Flag Collison + Animation | 3-4 hours | 3-4 hours | Chirstian + Aidan | 10/26 | 10/24 |
 | Underground XML | 1-2 hours | 1-2 hours | Zhuoyang Li| 10/28 |
 | Collision on entering/leaving underground  | 2 hours | 2 hours | Aidan | 10/28 |
 | Score points appear on screen | 1-2 hrs| 1-2hrs | Zhuoyang Li | 10/28| |
 | Remove magic numbers/strings | 6 hrs| 6 hrs | Everyone | 11/4 |
 | Create stationary coin for underground | 2 hours |  2 hours | Christian | 10/30 |
-| Pausing the Game |2hrs|2hrs | Jingyu Fu|10/27|
-| Win State | 2hrs| 2hrs |Jinguy Fu|10/27|
+| Pausing the Game |2hrs|2hrs | Jingyu Fu|10/27| 10/24
+| Win State | 2hrs| 2hrs |Jinguy Fu|10/27| I think the flagpole-team did it for me, thx lol
 | Game Over state | 2hrs|2hrs  |Jingyu Fu|10/27|
 | Grader Meeting | 1 hour | 1 hour | Everyone | Sometime during the last week |
 
@@ -40,12 +40,13 @@ Strikethrough implies the items have been completed\
   - Lives
   - Score
   - Coin Counter
-* Sound
+* Sound Manager
+  - ISound interface
   - SFX
   - BGM
 * State Manager
   - Update Game based on current
-  - Pause state
+  - Pause state(command)
   - Win state
   - Game over state
 

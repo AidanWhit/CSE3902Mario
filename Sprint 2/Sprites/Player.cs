@@ -4,6 +4,7 @@ using Sprint_2.Interfaces;
 using Sprint_2.GameObjects;
 using Sprint_2.MarioPhysicsStates;
 using Sprint_2.MarioStates;
+using Sprint_2.Sound;
 using System.Collections.Generic;
 using System.Diagnostics;
 using Sprint_2.Constants;
@@ -101,6 +102,9 @@ namespace Sprint_2.Sprites
                     fireballs.Add(fireball);
                     GameObjectManager.Instance.Movers.Add(fireball);
                     numberOfFireballsRemaining--;
+
+                    SoundManager.Instance.PlaySoundEffect("fireball");
+
                 }
 
             }
@@ -121,6 +125,7 @@ namespace Sprint_2.Sprites
             {
                 PlayerState.Jump();
                 isJumping = true;
+                SoundManager.Instance.PlaySoundEffect("jumpSmall");
             } 
             
         }
@@ -129,6 +134,7 @@ namespace Sprint_2.Sprites
             PlayerState.Fall();
             isFalling = true;
             PhysicsState = new Falling(this);
+
         }
         public void Idle()
         {
@@ -167,15 +173,22 @@ namespace Sprint_2.Sprites
             if (!IsDamaged)
             {
                 PlayerState.Damage();
+                SoundManager.Instance.StopBackgroundMusic();
+                SoundManager.Instance.PlaySoundEffect("marioDie");
             }
         }
         public void PowerUp()
         {
             PlayerState.PowerUp();
+            SoundManager.Instance.PlaySoundEffect("powerUp");
         }
         public void Climb()
         {
             PlayerState.Climb();
+            SoundManager.Instance.StopBackgroundMusic();
+            SoundManager.Instance.PlaySoundEffect("flagpole");
+            SoundManager.Instance.PlaySoundEffect("stageClear");
+            
         }
         public Rectangle GetHitBox()
         {

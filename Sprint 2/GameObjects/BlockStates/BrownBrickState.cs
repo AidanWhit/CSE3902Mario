@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Sprint_2.Factories;
 using Sprint_2.Interfaces;
 using Sprint_2.LevelManager;
+using Sprint_2.Sound;
 using System.Diagnostics;
 
 
@@ -32,6 +33,7 @@ namespace Sprint_2.GameObjects.BlockStates
                 /* Make the block move up and then down */
                 Hit = true;
                 originalBlockY = (int)block.Position.Y;
+                SoundManager.Instance.PlaySoundEffect("bump");
             }
             /* SuperMario/Fire Mario hit the block*/
             else
@@ -44,6 +46,9 @@ namespace Sprint_2.GameObjects.BlockStates
                 //GameObjectManager.Instance.Updateables.Remove(block);
 
                 block.ChangeState(new BrokenBlockState(block));
+                GameObjectManager.Instance.Drawables.Remove(block);
+                GameObjectManager.Instance.Updateables.Remove(block);
+                SoundManager.Instance.PlaySoundEffect("breakBlock");
 
             }
         }

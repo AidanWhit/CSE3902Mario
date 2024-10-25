@@ -2,6 +2,7 @@
 using Sprint_2.Factories;
 using Sprint_2.GameObjects.ItemSprites;
 using Sprint_2.Interfaces;
+using Sprint_2.Sound;
 using Sprint_2.LevelManager;
 using System;
 using System.Collections.Generic;
@@ -41,6 +42,7 @@ namespace Sprint_2.GameObjects.BlockStates
                 GameObjectManager.Instance.Drawables.Add(flower);
                 GameObjectManager.Instance.Static.Add(flower);
             }
+            SoundManager.Instance.PlaySoundEffect("powerUpAppears");
             block.ChangeState(new UsedBlockState(block));
 
         }

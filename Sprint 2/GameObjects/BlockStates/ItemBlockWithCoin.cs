@@ -3,6 +3,7 @@ using Sprint_2.Factories;
 using Sprint_2.GameObjects.ItemSprites;
 using Sprint_2.Interfaces;
 using Sprint_2.LevelManager;
+using Sprint_2.Sound;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -28,7 +29,9 @@ namespace Sprint_2.GameObjects.BlockStates
             Coin coin = new Coin(new Vector2(block.Position.X + block.GetHitBox().Width / 2.5f, block.Position.Y - block.GetHitBox().Height), true);
             GameObjectManager.Instance.Updateables.Add(coin);
             GameObjectManager.Instance.Drawables.Add(coin);
-            
+
+            SoundManager.Instance.PlaySoundEffect("coin");
+
             block.ChangeState(new UsedBlockState(block));
         }
     }

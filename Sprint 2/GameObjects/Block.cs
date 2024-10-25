@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint_2.Constants;
+using Sprint_2.Sound;
 using Sprint_2.Factories;
 using Sprint_2.GameObjects.BlockStates;
 using Sprint_2.Interfaces;
@@ -49,7 +50,10 @@ namespace Sprint_2.GameObjects
 
         public void BeHit(IPlayer player)
         {
+            //SoundManager.Instance.PlaySoundEffect("bump");
+
             blockState.BeHit(player);
+            
         }
 
         private IBlockState GetBlockState(string name)

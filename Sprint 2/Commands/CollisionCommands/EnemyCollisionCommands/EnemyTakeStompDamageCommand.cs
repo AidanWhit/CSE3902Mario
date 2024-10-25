@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Sprint_2.Interfaces;
 using Sprint_2.LevelManager;
+using Sprint_2.Sound;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,7 +26,8 @@ namespace Sprint_2.Commands.CollisionCommands.EnemyCollisionCommands
         public void Execute()
         {
             enemy.TakeStompDamage();
+            //SoundManager.Instance.PlaySoundEffect("stomp");
         }
-       
+
     }
 }
