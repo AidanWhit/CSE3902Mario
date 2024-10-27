@@ -32,7 +32,7 @@ namespace Sprint_2.MarioPhysicsStates
         public void Update(GameTime gameTime)
         {
             /* Feels like a workaround to a simpler solution but I am not sure */
-            Flag flag = (Flag)GameObjectManager.Instance.Drawables.Find((x => x.GetType() == typeof(Flag)));
+            Flag flag = (Flag)GameObjectManager.Instance.ForeDrawables.Find((x => x.GetType() == typeof(Flag)));
 
             if (player.GetHitBox().Bottom != bottomOfFlagPole)
             {
@@ -63,7 +63,7 @@ namespace Sprint_2.MarioPhysicsStates
 
         private static void OnTimedEvent(Object source, ElapsedEventArgs e, IPlayer player, Timer moveRightTimer)
         {
-            GameObjectManager.Instance.Drawables.Remove(player);
+            GameObjectManager.Instance.BackDrawables.Remove(player);
             moveRightTimer.Dispose();
         }
 

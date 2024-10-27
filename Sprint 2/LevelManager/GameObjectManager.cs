@@ -20,7 +20,7 @@ using System.Text.Json.Serialization;
 
 namespace Sprint_2.LevelManager
 {
-    /* TODO: Will need to change gameObject Manager to only store the lists and not do all of the drawing/updating/collision checking
+    /* TODO: Will need to change gameObject Manager to only store the lists and not do all of the abing/updating/collision checking
      * Also need to find a way to draw the items behind the blocks the spawn the items*/
     public class GameObjectManager
     {
@@ -40,7 +40,9 @@ namespace Sprint_2.LevelManager
 
         public List<ICollideable>[] Blocks = new List<ICollideable>[210];
         public List<Interfaces.IUpdateable> Updateables { get; set; } = new List<Interfaces.IUpdateable>();
-        public List<Interfaces.IDrawable> Drawables { get; set; } = new List<Interfaces.IDrawable>();
+        public List<Interfaces.IDrawable> ForeDrawables { get; set; } = new List<Interfaces.IDrawable>();
+        public List<Interfaces.IDrawable> BackDrawables { get; set; } = new List<Interfaces.IDrawable>();
+
         public List<ICollideable> Movers { get; set; } = new List<ICollideable>();
         public List<ICollideable> Static { get; set; } = new List<ICollideable>();
 
@@ -56,7 +58,7 @@ namespace Sprint_2.LevelManager
             // MOVE THIS TO LEVEL LOADER
             StaticCoin s = new StaticCoin(new Vector2(400, 400));
             Updateables.Add(s);
-            Drawables.Add(s);
+            BackDrawables.Add(s);
             Static.Add(s);
         }
 
@@ -108,7 +110,8 @@ namespace Sprint_2.LevelManager
             Static.Clear();
             Movers.Clear();
             Updateables.Clear();
-            Drawables.Clear();
+            ForeDrawables.Clear();
+            BackDrawables.Clear();
             foreach (List<ICollideable> list in Blocks)
             {
                 list.Clear();

@@ -28,7 +28,7 @@ namespace Sprint_2.GameObjects.BlockStates
 
 
             GameObjectManager.Instance.Updateables.Add(mushroom);
-            GameObjectManager.Instance.Drawables.Add(mushroom);
+            GameObjectManager.Instance.BackDrawables.Add(mushroom);
             GameObjectManager.Instance.Movers.Add(mushroom);
             SoundManager.Instance.PlaySoundEffect("powerUpAppears");
         }

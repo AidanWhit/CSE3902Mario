@@ -26,7 +26,7 @@ namespace Sprint_2.GameObjects.Enemies.EnemyStates
             {
                 GameObjectManager.Instance.Movers.Remove(shell);
                 GameObjectManager.Instance.Updateables.Remove(shell);
-                GameObjectManager.Instance.Drawables.Remove(shell);
+                GameObjectManager.Instance.BackDrawables.Remove(shell);
             }
             UpdatePosition(gameTime);
         }

@@ -62,7 +62,7 @@ namespace Sprint_2.GameObjects.BlockStates
 
             if (topLeftPosition.Y > 448)
             {
-                GameObjectManager.Instance.Drawables.Remove(block);
+                GameObjectManager.Instance.ForeDrawables.Remove(block);
                 GameObjectManager.Instance.Updateables.Remove(block);
             }
 

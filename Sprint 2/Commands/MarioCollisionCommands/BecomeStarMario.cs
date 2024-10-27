@@ -26,12 +26,12 @@ namespace Sprint_2.Commands.MarioCollisionCommands
 
         public void Execute()
         {
-            GameObjectManager.Instance.Drawables.Remove(player);
+            GameObjectManager.Instance.BackDrawables.Remove(player);
             GameObjectManager.Instance.Updateables.Remove(player);
             GameObjectManager.Instance.Movers.Remove(player);
 
             Game1.Instance.mario = new StarMario(player);
-            GameObjectManager.Instance.Drawables.Add(Game1.Instance.mario);
+            GameObjectManager.Instance.BackDrawables.Add(Game1.Instance.mario);
             GameObjectManager.Instance.Updateables.Add(Game1.Instance.mario);
             GameObjectManager.Instance.Movers.Add(Game1.Instance.mario);
         }

@@ -36,7 +36,7 @@ namespace Sprint_2.Commands.MarioCollisionCommands
             player.Climb();
             
             /* Want to get the flag sprite to move down */
-            Flag flag = (Flag)GameObjectManager.Instance.Drawables.Find((x => x.GetType() == typeof(Flag)));
+            Flag flag = (Flag)GameObjectManager.Instance.ForeDrawables.Find((x => x.GetType() == typeof(Flag)));
             GameObjectManager.Instance.Updateables.Add(flag);
         }
     }

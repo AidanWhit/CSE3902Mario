@@ -33,13 +33,13 @@ namespace Sprint_2.GameObjects.BlockStates
             {
                 IItem mushroom = new RedMushroom(block.Position, block.GetHitBox().Top);
                 GameObjectManager.Instance.Updateables.Add(mushroom);
-                GameObjectManager.Instance.Drawables.Add(mushroom);
+                GameObjectManager.Instance.BackDrawables.Add(mushroom);
             }
             else
             {
                 IItem flower = new Flower(block.Position, block.GetHitBox().Top);
                 GameObjectManager.Instance.Updateables.Add(flower);
-                GameObjectManager.Instance.Drawables.Add(flower);
+                GameObjectManager.Instance.BackDrawables.Add(flower);
                 GameObjectManager.Instance.Static.Add(flower);
             }
             SoundManager.Instance.PlaySoundEffect("powerUpAppears");

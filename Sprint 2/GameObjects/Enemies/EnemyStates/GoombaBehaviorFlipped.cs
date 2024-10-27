@@ -33,7 +33,7 @@ namespace Sprint_2.GameObjects.Enemies.EnemyStates
             if (goomba.YPos > 650)
             {
                 GameObjectManager.Instance.Updateables.Remove(goomba);
-                GameObjectManager.Instance.Drawables.Remove(goomba);
+                GameObjectManager.Instance.BackDrawables.Remove(goomba);
             }
         }
     }

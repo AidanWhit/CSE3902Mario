@@ -71,7 +71,7 @@ namespace Sprint_2.GameObjects.ItemSprites
         {
             GameObjectManager.Instance.Movers.Remove(this);
             GameObjectManager.Instance.Updateables.Remove(this);
-            GameObjectManager.Instance.Drawables.Remove(this);
+            GameObjectManager.Instance.BackDrawables.Remove(this);
         }
 
         public Rectangle GetHitBox()

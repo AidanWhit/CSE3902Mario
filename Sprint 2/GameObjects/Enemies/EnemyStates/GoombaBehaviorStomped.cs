@@ -28,7 +28,7 @@ namespace Sprint_2.GameObjects.Enemies.EnemyStates
             {
                 //Remove Goomba from enemies list
                 GameObjectManager.Instance.Updateables.Remove(goomba);
-                GameObjectManager.Instance.Drawables.Remove(goomba);
+                GameObjectManager.Instance.BackDrawables.Remove(goomba);
             }
         }
     }

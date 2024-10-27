@@ -106,7 +106,7 @@ namespace Sprint_2
             levelLoader.LoadLevel(@"LevelManager\level-1_data_pretty.xml");
             //levelLoader.LoadLevel(@"LevelManager\testing-level.xml");
 
-            GameObjectManager.Instance.Drawables.Add(mario);
+            GameObjectManager.Instance.BackDrawables.Add(mario);
             GameObjectManager.Instance.Updateables.Add(mario);
             GameObjectManager.Instance.Movers.Add(mario);
         }
@@ -144,7 +144,11 @@ namespace Sprint_2
             // Begin the sprite batch with the camera's transformation matrix
             spriteBatch.Begin(transformMatrix: camera.Transform);
 
-            foreach (Interfaces.IDrawable obj in GameObjectManager.Instance.Drawables.ToList())
+            foreach (Interfaces.IDrawable obj in GameObjectManager.Instance.BackDrawables.ToList())
+            {
+                obj.Draw(spriteBatch, Color.White);
+            }
+            foreach (Interfaces.IDrawable obj in GameObjectManager.Instance.ForeDrawables.ToList())
             {
                 obj.Draw(spriteBatch, Color.White);
             }

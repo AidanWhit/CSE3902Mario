@@ -26,7 +26,7 @@ namespace Sprint_2.GameObjects.BlockStates
             IItem Star = new Star(block.Position, block.GetHitBox().Top);
             
             GameObjectManager.Instance.Updateables.Add(Star);
-            GameObjectManager.Instance.Drawables.Add(Star);
+            GameObjectManager.Instance.BackDrawables.Add(Star);
 
             SoundManager.Instance.PlaySoundEffect("powerUpAppears");
 

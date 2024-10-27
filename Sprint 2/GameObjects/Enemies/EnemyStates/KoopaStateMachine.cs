@@ -75,7 +75,7 @@ namespace Sprint_2.GameObjects.Enemies.EnemyStates
                 {
                     GameObjectManager.Instance.Movers.Remove(koopa);
                     GameObjectManager.Instance.Updateables.Remove(koopa);
-                    GameObjectManager.Instance.Drawables.Remove(koopa);
+                    GameObjectManager.Instance.BackDrawables.Remove(koopa);
                 }
 
             }
@@ -120,12 +120,12 @@ namespace Sprint_2.GameObjects.Enemies.EnemyStates
 
                 GameObjectManager.Instance.Movers.Remove(koopa);
                 GameObjectManager.Instance.Updateables.Remove(koopa);
-                GameObjectManager.Instance.Drawables.Remove(koopa);
+                GameObjectManager.Instance.BackDrawables.Remove(koopa);
 
                 Shell shell = new Shell(new Vector2(koopa.XPos, bottomPos));
                 GameObjectManager.Instance.Movers.Add(shell);
                 GameObjectManager.Instance.Updateables.Add(shell);
-                GameObjectManager.Instance.Drawables.Add(shell);
+                GameObjectManager.Instance.BackDrawables.Add(shell);
                 
             }
         }
