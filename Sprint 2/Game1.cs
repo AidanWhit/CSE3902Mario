@@ -18,6 +18,7 @@ using System;
 using Sprint_2.Collision;
 using System.Linq;
 using Sprint_2.GameObjects.ItemSprites;
+using Sprint_2.GameObjects.Misc;
 
 
 namespace Sprint_2
@@ -131,6 +132,11 @@ namespace Sprint_2
             //mario.Update(gameTime);
             foreach (Interfaces.IUpdateable obj in GameObjectManager.Instance.Updateables.ToList())
             {
+                if (obj.GetType() == typeof(Flag))
+                {
+                    Debug.WriteLine("Obj causing error: " + obj.GetType());
+                }
+                
                 obj.Update(gameTime);
             }
             collisionDetection.DetectCollision();

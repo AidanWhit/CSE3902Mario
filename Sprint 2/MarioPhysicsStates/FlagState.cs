@@ -32,7 +32,7 @@ namespace Sprint_2.MarioPhysicsStates
         public void Update(GameTime gameTime)
         {
             /* Feels like a workaround to a simpler solution but I am not sure */
-            Flag flag = (Flag)GameObjectManager.Instance.ForeDrawables.Find((x => x.GetType() == typeof(Flag)));
+            Flag flag = (Flag)GameObjectManager.Instance.BackDrawables.Find((x => x.GetType() == typeof(Flag)));
 
             if (player.GetHitBox().Bottom != bottomOfFlagPole)
             {
