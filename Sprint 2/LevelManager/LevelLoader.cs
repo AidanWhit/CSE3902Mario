@@ -160,6 +160,7 @@ namespace Sprint_2.LevelManager
                 case "Flag":
                     GameObjectManager.Instance.BackDrawables.Add(new Flag(new Vector2(locationX, locationY)));
                     break;
+            
                 default:
                     throw new InvalidOperationException("Scenery type: \"" + name + "\" doesn't exist");
             }
@@ -270,6 +271,12 @@ namespace Sprint_2.LevelManager
                     GameObjectManager.Instance.Updateables.Add(star);
                     GameObjectManager.Instance.BackDrawables.Add(star);
                     GameObjectManager.Instance.Movers.Add(star);
+                    break;
+                case "StaticCoin":
+                    StaticCoin staticCoin = new StaticCoin(new Vector2(locationX, locationY));
+                    GameObjectManager.Instance.Updateables.Add(staticCoin);
+                    GameObjectManager.Instance.ForeDrawables.Add(staticCoin);
+                    GameObjectManager.Instance.Static.Add(staticCoin);
                     break;
                 default:
                     throw new InvalidOperationException("Item type: \"" + name + "\" doesn't exist");

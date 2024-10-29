@@ -55,6 +55,13 @@ namespace Sprint_2
         public Interfaces.IUpdateable gameState { get; set; }
         public CollisionDetection CollisionDetection { get; private set; }
 
+        public struct LevelGameObjects 
+        {
+            public List<Interfaces.IDrawable> BackDrawables;
+            public List<Interfaces.IDrawable> ForeDrawables;
+        }
+        private LevelGameObjects levelGameObjects;
+
         private Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -99,7 +106,8 @@ namespace Sprint_2
             InitControls.initializeControls(keyControl, mario);
 
             levelLoader = new LevelLoader();
-            levelLoader.LoadLevel(@"LevelManager\level-1_data_pretty.xml");
+            //levelLoader.LoadLevel(@"LevelManager\level-1_data_pretty.xml");
+            levelLoader.LoadLevel(@"LevelManager\XMLFiles\UndergroundXML.xml");
             //levelLoader.LoadLevel(@"LevelManager\testing-level.xml");
 
             GameObjectManager.Instance.BackDrawables.Add(mario);
@@ -122,7 +130,7 @@ namespace Sprint_2
 
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.Black);
             // Begin the sprite batch with the camera's transformation matrix
             spriteBatch.Begin(transformMatrix: camera.Transform);
 

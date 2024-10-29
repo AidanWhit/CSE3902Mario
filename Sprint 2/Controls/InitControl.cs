@@ -33,7 +33,7 @@ namespace Sprint_2.Controls
             keyControl.RegisterOnPressCommand(Keys.D3, new MarioPowerUpCommand(mario, null, Rectangle.Empty));
             keyControl.RegisterOnPressCommand(Keys.E, new MarioHurtCommand(mario, null, Rectangle.Empty));
             keyControl.RegisterCommand(Keys.Q, new QuitCommand());
-            keyControl.RegisterCommand(Keys.R, new ResetCommand());
+            keyControl.RegisterOnPressCommand(Keys.R, new ResetCommand());
 
             keyControl.RegisterOnPressCommand(Keys.P, new PauseCommand());
 

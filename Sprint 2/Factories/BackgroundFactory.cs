@@ -29,6 +29,11 @@ namespace Sprint_2.Factories
             backgroundSprites = content.Load<Texture2D>("backgroundSprites");
             flagSprite = content.Load<Texture2D>("flag");
         }
+
+        public ISprite CreateUndergroundPipe()
+        {
+            return new FrameArrayFormattedSprite(backgroundSprites, new Rectangle[] { new Rectangle(84, 321, 62, 128) }, 1);
+        }
         public ISprite CreateFlag()
         {
             return new FrameArrayFormattedSprite(flagSprite, new Rectangle[] { new Rectangle(0, 0, flagSprite.Width, flagSprite.Height) }, 1);

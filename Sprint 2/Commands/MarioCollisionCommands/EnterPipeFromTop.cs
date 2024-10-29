@@ -57,6 +57,7 @@ namespace Sprint_2.Commands.MarioCollisionCommands
             else
             {
                 Debug.WriteLine("Entered Underground: " + System.DateTime.Now);
+
                 /* TODO: Teleport mario to underground section*/
                 timer.Dispose();
             }

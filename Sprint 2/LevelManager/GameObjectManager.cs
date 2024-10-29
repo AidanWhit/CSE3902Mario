@@ -38,7 +38,7 @@ namespace Sprint_2.LevelManager
         }
                 
 
-        public List<ICollideable>[] Blocks = new List<ICollideable>[210];
+        public List<ICollideable>[] Blocks = new List<ICollideable>[225];
         public List<Interfaces.IUpdateable> Updateables { get; set; } = new List<Interfaces.IUpdateable>();
         public List<Interfaces.IDrawable> ForeDrawables { get; set; } = new List<Interfaces.IDrawable>();
         public List<Interfaces.IDrawable> BackDrawables { get; set; } = new List<Interfaces.IDrawable>();

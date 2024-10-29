@@ -18,12 +18,13 @@ namespace Sprint_2.GameObjects
         public float YPos { get; set; }
 
         private ISprite sprite;
-
+        private string pipeSize;
 
         public Pipe(Vector2 location, string pipeSize)
         {
             XPos = location.X;
             YPos = location.Y;
+            this.pipeSize = pipeSize;
             sprite = BlockFactory.Instance.GetBlock(pipeSize);
         }
 
@@ -44,6 +45,10 @@ namespace Sprint_2.GameObjects
 
         public string GetCollisionType()
         {
+            if (pipeSize.Equals("UndergroundPipe"))
+            {
+                return pipeSize;
+            }
             return typeof(IBlock).Name;
         }
 

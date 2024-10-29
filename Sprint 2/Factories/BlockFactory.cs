@@ -9,6 +9,7 @@ using Sprint_2.LevelManager;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Reflection.Metadata.Ecma335;
+using System.Runtime.CompilerServices;
 
 
 namespace Sprint_2.Factories
@@ -20,12 +21,14 @@ namespace Sprint_2.Factories
 
 
         private Texture2D blockSpriteSheet;
+        private Texture2D undergroundPipe;
 
         //TODO : To be moved out of here for a later sprint
         private Dictionary<string, Rectangle[]> blockDictionary = new Dictionary<string, Rectangle[]> {
             {"SmallPipe", new Rectangle[]{new Rectangle(69, 1, 32, 32)} },
             {"MediumPipe", new Rectangle[]{new Rectangle(35, 1, 32, 48)} },
             {"LargePipe", new Rectangle[]{new Rectangle(1, 1, 32, 64)} },
+            {"UndergroundPipe", new Rectangle[]{new Rectangle(0, 0, 64, 176)} },
             {"BlueBrick", new Rectangle[]{new Rectangle(69, 35, 16, 16)} },
             {"BlueGround", new Rectangle[]{new Rectangle(1, 67, 16, 16) } },
             {"BrownBrick", new Rectangle[]{new Rectangle(19, 67, 16, 16)} },
@@ -45,6 +48,7 @@ namespace Sprint_2.Factories
         public void LoadAllContent(ContentManager content)
         {
             blockSpriteSheet = content.Load<Texture2D>("blocks");
+            undergroundPipe = content.Load<Texture2D>("UndergroundPipe");
         }
         
         public ISprite GetBrokenPieceSprite()
@@ -56,6 +60,11 @@ namespace Sprint_2.Factories
         public ISprite GetBlock(string id)
         {
             blockDictionary.TryGetValue(id, out Rectangle[] frames);
+            /* Placeholder, will be changed to be something better */
+            if (id.Equals("UndergroundPipe"))
+            {
+                return new FrameArrayFormattedSprite(undergroundPipe, frames, 1);
+            }
             return new FrameArrayFormattedSprite(blockSpriteSheet, frames, 1);
         }
 

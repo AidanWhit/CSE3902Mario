@@ -48,5 +48,10 @@ namespace Sprint_2.ScreenCamera
             Position = Vector2.Zero;
             UpdateTransform();
         }
+
+        public void SetLevelBounds(Vector2 levelBounds)
+        {
+            _levelBounds = levelBounds;
+        }
     }
 }
