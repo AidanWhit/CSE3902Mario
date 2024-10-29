@@ -10,12 +10,14 @@ namespace Sprint_2.GameObjects
     public class Collider : ICollideable, Interfaces.IDrawable
     {
         private Rectangle collider;
-        private Vector2 location;
+        public Vector2 location { get; set; }
         private string type;
+        private Vector2 size;
         public Collider(Vector2 location, Vector2 size, string type)
         {
             this.location = location;
-            collider = new Rectangle((int)location.X, (int)location.Y, (int)size.X, (int)size.Y);
+            this.size = size;
+            //collider = new Rectangle((int)location.X, (int)location.Y, (int)size.X, (int)size.Y);
             this.type = type;
             
         }
@@ -31,7 +33,7 @@ namespace Sprint_2.GameObjects
 
         public Rectangle GetHitBox()
         {
-            return collider;
+            return new Rectangle((int)location.X, (int)location.Y, (int)size.X, (int)size.Y);
         }
 
         public int GetColumn()

@@ -48,7 +48,7 @@ namespace Sprint_2
         private List<IBlock> collisionTest;
 
 
-        private Camera camera;
+        public Camera camera { get; private set; }
         private Vector2 levelBounds;
         private LevelLoader levelLoader;
         private CollisionDetection collisionDetection;
@@ -106,8 +106,8 @@ namespace Sprint_2
             InitControls.initializeControls(keyControl, mario);
 
             levelLoader = new LevelLoader();
-            //levelLoader.LoadLevel(@"LevelManager\level-1_data_pretty.xml");
-            levelLoader.LoadLevel(@"LevelManager\XMLFiles\UndergroundXML.xml");
+            levelLoader.LoadLevel(@"LevelManager\level-1_data_pretty.xml");
+            //levelLoader.LoadLevel(@"LevelManager\XMLFiles\UndergroundXML.xml");
             //levelLoader.LoadLevel(@"LevelManager\testing-level.xml");
 
             GameObjectManager.Instance.BackDrawables.Add(mario);

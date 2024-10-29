@@ -1,5 +1,9 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Sprint_2.Constants;
+using Sprint_2.GameObjects;
+using Sprint_2.LevelManager;
+using System.Diagnostics;
 
 
 namespace Sprint_2.ScreenCamera
@@ -12,12 +16,19 @@ namespace Sprint_2.ScreenCamera
         public float SmoothFactor { get; set; } = 0.1f; // Adjust for desired smoothness
 
         private Vector2 _levelBounds; // The size of your level in pixels
+        private Collider leftBorder;
+        private float oldcameraX = 0;
 
         public Camera(Viewport viewport, Vector2 levelBounds)
         {
             Viewport = viewport;
             _levelBounds = levelBounds;
             Position = Vector2.Zero;
+            leftBorder = new Collider(new Vector2(0, 240), new Vector2(16, 240), "Collider");
+            Debug.WriteLine("Left border: " + leftBorder.GetHitBox().ToString());
+
+            GameObjectManager.Instance.Static.Add(leftBorder);
+            GameObjectManager.Instance.ForeDrawables.Add(leftBorder);
             UpdateTransform();
         }
 
@@ -32,9 +43,14 @@ namespace Sprint_2.ScreenCamera
 
             // Clamp the camera position within the level bounds (only for X)
             float cameraX = MathHelper.Clamp(Position.X, 0, _levelBounds.X - Viewport.Width);
-            Position = new Vector2(cameraX, 240);
+            if (cameraX >= oldcameraX)
+            {
+                Position = new Vector2(cameraX, 240);
+                leftBorder.location = new Vector2(Position.X - CollisionConstants.blockWidth, Position.Y);
+                UpdateTransform();
 
-            UpdateTransform();
+                oldcameraX = cameraX;
+            }
         }
 
 
