@@ -21,11 +21,10 @@ namespace Sprint_2.ScreenCamera
             UpdateTransform();
         }
 
-        public void Update(GameTime gameTime, Vector2 targetPosition)
+        public void Update(GameTime gameTime)
         {
             // Smoothly interpolate towards the target x-position only
-            float targetX = targetPosition.X - (Viewport.Width / 2);
-            targetX = Game1.Instance.mario.XPos - (Viewport.Width / 8f);
+            float targetX = Game1.Instance.mario.XPos - (Viewport.Width / 8f);
             Position = new Vector2(
                 MathHelper.Lerp(Position.X, targetX, SmoothFactor), 
                 Position.Y //Keep Y Position Constant

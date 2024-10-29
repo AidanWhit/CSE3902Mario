@@ -10,16 +10,14 @@ namespace Sprint_2.Commands.ProgramCommands
 {
     public class QuitCommand : ICommands
     {
-        private Game1 myGame;
 
-        public QuitCommand(Game1 game)
+        public QuitCommand()
         {
-            myGame = game;
         }
 
         public void Execute()
         {
-            myGame.Exit();
+            Game1.Instance.Exit();
         }
     }
 }

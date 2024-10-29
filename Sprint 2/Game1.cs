@@ -17,8 +17,7 @@ using System.Diagnostics;
 using System;
 using Sprint_2.Collision;
 using System.Linq;
-using Sprint_2.GameObjects.ItemSprites;
-using Sprint_2.GameObjects.Misc;
+using Sprint_2.GameStates;
 
 
 namespace Sprint_2
@@ -53,6 +52,8 @@ namespace Sprint_2
         private Vector2 levelBounds;
         private LevelLoader levelLoader;
         private CollisionDetection collisionDetection;
+        public Interfaces.IUpdateable gameState { get; set; }
+        public CollisionDetection CollisionDetection { get; private set; }
 
         private Game1()
         {
@@ -75,9 +76,6 @@ namespace Sprint_2
 
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-           
-            
-
             MarioSpriteFactory.Instance.LoadAllContent(Content);
             EnemyFactory.Instance.LoadAllContent(Content);
             ItemFactory.Instance.LoadItemContent(Content);
@@ -88,7 +86,7 @@ namespace Sprint_2
             SoundManager.Instance.LoadAllSFX(Content);
 
             mario = new Player(new Vector2(100, 400));
-            collisionDetection = new CollisionDetection();
+            CollisionDetection = new CollisionDetection();
             
 
             camera = new Camera(GraphicsDevice.Viewport, levelBounds);
@@ -98,10 +96,7 @@ namespace Sprint_2
             ItemFactory.Instance.SetGameObjectManager(GameObjectManager.Instance);
             EnemyFactory.Instance.SetGameObjectManager(GameObjectManager.Instance);
 
-            Texture2D texture = Content.Load<Texture2D>("marioSpriteSheet");
-
-
-            InitControls.initializeControls(keyControl, mario, this);
+            InitControls.initializeControls(keyControl, mario);
 
             levelLoader = new LevelLoader();
             levelLoader.LoadLevel(@"LevelManager\level-1_data_pretty.xml");
@@ -110,6 +105,8 @@ namespace Sprint_2
             GameObjectManager.Instance.BackDrawables.Add(mario);
             GameObjectManager.Instance.Updateables.Add(mario);
             GameObjectManager.Instance.Movers.Add(mario);
+
+            gameState = new PlayableState(keyControl);
         }
         protected override void UnloadContent()
         {
@@ -119,28 +116,7 @@ namespace Sprint_2
 
         protected override void Update(GameTime gameTime)
         {
-
-            keyControl.Update();
-            // If the game is paused, everything except keycontrol are no longer updating
-            if (GameStateManager.Instance.CurrentState == GameState.Paused)
-            {
-                return;
-            }
-            // Update camera based on Mario's position
-            camera.Update(gameTime, new Vector2(mario.XPos, mario.YPos));
-
-            //mario.Update(gameTime);
-            foreach (Interfaces.IUpdateable obj in GameObjectManager.Instance.Updateables.ToList())
-            {
-                if (obj.GetType() == typeof(Flag))
-                {
-                    Debug.WriteLine("Obj causing error: " + obj.GetType());
-                }
-                
-                obj.Update(gameTime);
-            }
-            collisionDetection.DetectCollision();
-
+            gameState.Update(gameTime);
             base.Update(gameTime);
         }
 
@@ -158,7 +134,6 @@ namespace Sprint_2
             {
                 obj.Draw(spriteBatch, Color.White);
             }
-            //mario.Draw(spriteBatch, Color.White);
 
             spriteBatch.End();
             base.Draw(gameTime);
@@ -168,10 +143,17 @@ namespace Sprint_2
         {
             GameObjectManager.Instance.Reset();
             SoundManager.Instance.Reset();
-            this.UnloadContent();
-            this.LoadContent();
-            
-            
+            UnloadContent();
+            LoadContent();
+        }
+
+        public Camera GetCamera()
+        {
+            return camera;
+        }
+        public KeyboardControl GetKeyboardControl()
+        {
+            return keyControl;
         }
     }
 }

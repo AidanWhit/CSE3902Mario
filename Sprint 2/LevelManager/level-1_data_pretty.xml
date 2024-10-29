@@ -7,6 +7,11 @@
 		  <Location>0 240</Location>
 	  </Item>
 	  <Item>
+		  <ObjectType>Player</ObjectType>
+		  <ObjectName>Mario</ObjectName>
+		  <Location>3000 300</Location>
+	  </Item>
+	  <Item>
 		  <ObjectType>Background</ObjectType>
 		  <ObjectName>Flag</ObjectName>
 		  <Location>3160 288</Location>

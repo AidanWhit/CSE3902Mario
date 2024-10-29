@@ -762,6 +762,27 @@
 		<ReceiverCommandType></ReceiverCommandType>
 	</Entry>
 	<Entry>
+		<SourceType>StarMario</SourceType>
+		<ReceiverType>FlagCollider</ReceiverType>
+		<CollisionSide>Right</CollisionSide>
+		<SourceCommandType>Sprint_2.Commands.MarioCollisionCommands.MarioClimbCommand</SourceCommandType>
+		<ReceiverCommandType></ReceiverCommandType>
+	</Entry>
+	<Entry>
+		<SourceType>StarMario</SourceType>
+		<ReceiverType>FlagCollider</ReceiverType>
+		<CollisionSide>Left</CollisionSide>
+		<SourceCommandType>Sprint_2.Commands.MarioCollisionCommands.MarioClimbCommand</SourceCommandType>
+		<ReceiverCommandType>S</ReceiverCommandType>
+	</Entry>
+	<Entry>
+		<SourceType>StarMario</SourceType>
+		<ReceiverType>FlagCollider</ReceiverType>
+		<CollisionSide>Top</CollisionSide>
+		<SourceCommandType>Sprint_2.Commands.MarioCollisionCommands.MarioClimbCommand</SourceCommandType>
+		<ReceiverCommandType></ReceiverCommandType>
+	</Entry>
+	<Entry>
 		<SourceType>IPlayer</SourceType>
 		<ReceiverType>PipeCollider</ReceiverType>
 		<CollisionSide>Top</CollisionSide>

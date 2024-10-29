@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Sprint_2.GameObjects.Misc;
+using Sprint_2.GameStates;
 using Sprint_2.Interfaces;
 using Sprint_2.LevelManager;
 using Sprint_2.MarioPhysicsStates;
@@ -31,6 +32,8 @@ namespace Sprint_2.Commands.MarioCollisionCommands
         public async void Execute()
         {
             /* Only need to collide with it once */
+
+            Game1.Instance.gameState = new WinState(Game1.Instance.GetKeyboardControl());
             GameObjectManager.Instance.Static.Remove(collideable);
             player.PhysicsState = new FlagState(collideable.GetHitBox().Bottom, collideable.GetHitBox().Width);
             player.Climb();

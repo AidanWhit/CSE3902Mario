@@ -31,7 +31,7 @@ namespace Sprint_2.Sprites
 
 
         private IPlayer decoratedPlayer;
-        private int remainingStarTime = 1000;
+        private int remainingStarTime = 750;
         private Color[] colors = new Color[] { Color.Red, Color.Orange, Color.Yellow, Color.LightGreen, Color.LightBlue, Color.Salmon};
         private int colorIndex = 0;
 

@@ -15,8 +15,10 @@ namespace Sprint_2.Controls
 {
     internal static class InitControls
     {
-        public static void initializeControls(KeyboardControl keyControl, IPlayer mario, Game1 game)
+        public static void initializeControls(KeyboardControl keyControl, IPlayer mario)
         {
+            keyControl.ClearCommands();
+
             keyControl.RegisterCommand(Keys.W, new MarioFacingUpCommand(mario));
             keyControl.RegisterCommand(Keys.S, new MarioFacingDownCommand(mario));
             keyControl.RegisterCommand(Keys.D, new MarioFacingRightCommand(mario));
@@ -30,7 +32,7 @@ namespace Sprint_2.Controls
             keyControl.RegisterOnPressCommand(Keys.Z, new MarioAttackNormalCommand(mario));
             keyControl.RegisterOnPressCommand(Keys.D3, new MarioPowerUpCommand(mario, null, Rectangle.Empty));
             keyControl.RegisterOnPressCommand(Keys.E, new MarioHurtCommand(mario, null, Rectangle.Empty));
-            keyControl.RegisterCommand(Keys.Q, new QuitCommand(game));
+            keyControl.RegisterCommand(Keys.Q, new QuitCommand());
             keyControl.RegisterCommand(Keys.R, new ResetCommand());
 
             keyControl.RegisterOnPressCommand(Keys.P, new PauseCommand());
@@ -38,6 +40,15 @@ namespace Sprint_2.Controls
             keyControl.RegisterOnReleaseCommand(Keys.S, new MarioOnCrouchRelease(mario));
             keyControl.RegisterOnPressCommand(Keys.S, new MarioOnCrouchPress(mario));
             keyControl.RegisterOnReleaseCommand(Keys.W, new MarioJumpReleaseCommand(mario));
+        }
+
+        public static void InitializeNonMovementControls(KeyboardControl keyboardControl)
+        {
+            keyboardControl.ClearCommands();
+
+            keyboardControl.RegisterOnPressCommand(Keys.P, new PauseCommand());
+            keyboardControl.RegisterOnPressCommand(Keys.Q, new QuitCommand());
+            keyboardControl.RegisterOnPressCommand(Keys.R, new ResetCommand());
         }
 
     }

@@ -21,9 +21,6 @@ namespace Sprint_2.Collision
         }
         public void DetectCollision()
         {
-            //player = Game1.Instance.mario;
-            //GameObjectManager.Instance.Movers.Add(player);
-
             foreach(ICollideable mover in GameObjectManager.Instance.Movers.ToList())
             {
                 
@@ -56,7 +53,6 @@ namespace Sprint_2.Collision
                     }
                 }
             }
-            //GameObjectManager.Instance.Movers.Remove(player);
         }
     }
 }

@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace Sprint_2.Controls
 {
-    internal class KeyboardControl : IController
+    public class KeyboardControl : IController
     {
         private Dictionary<Keys, ICommands> controllerMappings;
         private Dictionary<Keys, ICommands> onPressCommandMappings;
@@ -69,5 +69,18 @@ namespace Sprint_2.Controls
             onReleaseCommandMappings.Clear();
         }
 
+        /* Testing 3 below to switch between different key mappings */
+        public void SetControllerCommands(Dictionary<Keys, ICommands> commands)
+        {
+            controllerMappings = commands;
+        }
+        public void SetOnPressCommands(Dictionary<Keys, ICommands> onPressCommands)
+        {
+            onPressCommandMappings = onPressCommands;
+        }
+        public void SetOnReleaseCommands(Dictionary<Keys, ICommands> onReleaseCommands)
+        {
+            onReleaseCommandMappings = onReleaseCommands;
+        }
     }
 }
