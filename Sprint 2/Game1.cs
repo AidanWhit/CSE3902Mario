@@ -103,16 +103,10 @@ namespace Sprint_2
             ItemFactory.Instance.SetGameObjectManager(GameObjectManager.Instance);
             EnemyFactory.Instance.SetGameObjectManager(GameObjectManager.Instance);
 
-            InitControls.initializeControls(keyControl, mario);
-
             levelLoader = new LevelLoader();
             levelLoader.LoadLevel(@"LevelManager\level-1_data_pretty.xml");
             //levelLoader.LoadLevel(@"LevelManager\XMLFiles\UndergroundXML.xml");
             //levelLoader.LoadLevel(@"LevelManager\testing-level.xml");
-
-            GameObjectManager.Instance.BackDrawables.Add(mario);
-            GameObjectManager.Instance.Updateables.Add(mario);
-            GameObjectManager.Instance.Movers.Add(mario);
 
             gameState = new PlayableState(keyControl);
         }
@@ -149,10 +143,15 @@ namespace Sprint_2
 
         public void Reload()
         {
+           
             GameObjectManager.Instance.Reset();
-            SoundManager.Instance.Reset();
-            UnloadContent();
-            LoadContent();
+            mario = new Player(Vector2.Zero);
+            InitControls.initializeControls(keyControl, mario);
+            levelLoader.LoadLevel(@"LevelManager\level-1_data_pretty.xml");
+            camera.Reset();
+            //SoundManager.Instance.Reset();
+            //UnloadContent();
+            //LoadContent();
         }
 
         public Camera GetCamera()

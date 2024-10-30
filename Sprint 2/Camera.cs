@@ -61,7 +61,12 @@ namespace Sprint_2.ScreenCamera
 
         public void Reset()
         {
-            Position = Vector2.Zero;
+            Position = new Vector2(0, 240);
+            oldcameraX = Position.X;
+
+            GameObjectManager.Instance.Static.Add(leftBorder);
+            GameObjectManager.Instance.ForeDrawables.Add(leftBorder);
+
             UpdateTransform();
         }
 

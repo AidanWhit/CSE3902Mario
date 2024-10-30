@@ -7,6 +7,7 @@ using System;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Timers;
+using Sprint_2.GameStates;
 
 namespace Sprint_2.Commands.MarioCollisionCommands
 {
@@ -31,7 +32,6 @@ namespace Sprint_2.Commands.MarioCollisionCommands
         {
             if (player.isCrouching)
             {
-                
                 GameObjectManager.Instance.Updateables.Remove(player);
                 GameObjectManager.Instance.Movers.Remove(player);
                 player.MoveRight();
@@ -57,7 +57,12 @@ namespace Sprint_2.Commands.MarioCollisionCommands
             else
             {
                 Debug.WriteLine("Entered Underground: " + System.DateTime.Now);
-
+                player.PlayerVelocity = Vector2.Zero;
+                LevelLoader leveLoader = new LevelLoader();
+                GameObjectManager.Instance.Reset();
+                leveLoader.LoadLevel(@"LevelManager\XMLFiles\UndergroundXML.xml");
+                Game1.Instance.GetCamera().Reset();
+                Game1.Instance.GetCamera().SetLevelBounds(new Vector2(240, 240));
                 /* TODO: Teleport mario to underground section*/
                 timer.Dispose();
             }

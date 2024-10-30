@@ -100,7 +100,7 @@ namespace Sprint_2.LevelManager
         }
         public void Reset()
         {
-            collisionCommandMap.Clear();
+            //collisionCommandMap.Clear();
             Static.Clear();
             Movers.Clear();
             Updateables.Clear();

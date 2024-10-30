@@ -4,8 +4,9 @@
 		<Item>
 			<ObjectType>Player</ObjectType>
 			<ObjectName>Mario</ObjectName>
-			<Location>16 432</Location>
+			<Location>16 272</Location>
 		</Item>
+		
 		<Item>
 			<ObjectType>Block</ObjectType>
 			<ObjectName>BlueGround</ObjectName>
@@ -543,12 +544,12 @@
 
 		<Item>
 			<ObjectType>Collider</ObjectType>
-			<ObjectName>PipeCollider</ObjectName>
+			<ObjectName>UndergroundPipeCollider</ObjectName>
 			<Location>208 440</Location>
 			<SizeX>12</SizeX>
 			<SizeY>4</SizeY>
 		</Item>
-
+		
 
 		
 	</Asset>

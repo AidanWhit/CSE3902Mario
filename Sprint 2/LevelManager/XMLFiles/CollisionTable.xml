@@ -813,7 +813,7 @@
 
 	<Entry>
 		<SourceType>IPlayer</SourceType>
-		<ReceiverType>PipeCollider</ReceiverType>
+		<ReceiverType>UndergroundPipeCollider</ReceiverType>
 		<CollisionSide>Right</CollisionSide>
 		<SourceCommandType>Sprint_2.Commands.MarioCollisionCommands.EnterPipeFromRight</SourceCommandType>
 		<ReceiverCommandType></ReceiverCommandType>

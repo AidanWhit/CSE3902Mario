@@ -39,7 +39,7 @@ namespace Sprint_2.Controls
             
             foreach (Keys key in pressedKeys)
             {
-                /* Commands that will happens on press and hold will be executed here */
+                /* Commands that will happen when held down will be executed here */
                 if (controllerMappings.ContainsKey(key))
                 {
                     controllerMappings[key].Execute();
