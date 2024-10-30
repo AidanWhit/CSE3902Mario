@@ -17,12 +17,13 @@ namespace Sprint_2.GameObjects
         {
             this.location = location;
             this.size = size;
-            //collider = new Rectangle((int)location.X, (int)location.Y, (int)size.X, (int)size.Y);
+            collider = new Rectangle((int)location.X, (int)location.Y, (int)size.X, (int)size.Y);
             this.type = type;
             
         }
         public void Draw(SpriteBatch spriteBatch, Color color)
         {
+            collider = new Rectangle((int)location.X, (int)location.Y, (int)size.X, (int)size.Y);
             /* Used to see where the invisible collision rectangles are located */
             HitBoxRectangle.DrawRectangle(spriteBatch, collider, Color.White, 1);
         }

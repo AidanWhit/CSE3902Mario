@@ -25,7 +25,6 @@ namespace Sprint_2.ScreenCamera
             _levelBounds = levelBounds;
             Position = Vector2.Zero;
             leftBorder = new Collider(new Vector2(0, 240), new Vector2(16, 240), "Collider");
-            Debug.WriteLine("Left border: " + leftBorder.GetHitBox().ToString());
 
             GameObjectManager.Instance.Static.Add(leftBorder);
             GameObjectManager.Instance.ForeDrawables.Add(leftBorder);
@@ -46,9 +45,9 @@ namespace Sprint_2.ScreenCamera
             if (cameraX >= oldcameraX)
             {
                 Position = new Vector2(cameraX, 240);
+                
                 leftBorder.location = new Vector2(Position.X - CollisionConstants.blockWidth, Position.Y);
                 UpdateTransform();
-
                 oldcameraX = cameraX;
             }
         }
@@ -62,6 +61,7 @@ namespace Sprint_2.ScreenCamera
         public void Reset()
         {
             Position = new Vector2(0, 240);
+            leftBorder.location = Position;
             oldcameraX = Position.X;
 
             GameObjectManager.Instance.Static.Add(leftBorder);

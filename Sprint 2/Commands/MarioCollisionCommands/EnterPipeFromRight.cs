@@ -53,6 +53,7 @@ namespace Sprint_2.Commands.MarioCollisionCommands
                 GameObjectManager.Instance.Reset();
 
                 levelLoader.LoadLevel(@"LevelManager\level-1_data_pretty.xml");
+                Game1.Instance.camera.Reset();
                 Game1.Instance.GetCamera().SetLevelBounds(new Vector2(3744, 240));
 
                 player.XPos = 2624;
