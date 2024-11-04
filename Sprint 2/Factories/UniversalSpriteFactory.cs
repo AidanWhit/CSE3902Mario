@@ -1,7 +1,13 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Graphics;
+using Sprint_2.Constants;
+using Sprint_2.Interfaces;
+using Sprint_2.Sprites;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Reflection.Metadata;
 using System.Xml;
 
 namespace Sprint_2.Factories
@@ -12,6 +18,25 @@ namespace Sprint_2.Factories
         public static UniversalSpriteFactory Instance { get { return instance; } }
 
         Dictionary<string, Rectangle[]> spriteData = new Dictionary<string, Rectangle[]>();
+
+        private Texture2D marioSpriteSheet;
+        private Texture2D fireBallSpriteSheet;
+        private Texture2D explosionSpriteSheet;
+
+        private Texture2D blockSpriteSheet;
+        private Texture2D undergroundPipe;
+
+        private Texture2D enemies;
+
+        private Texture2D texture;
+        private Texture2D staticCoin;
+
+        private Texture2D levelImageTexture;  // The whole level image (blocks and background only)
+        private Texture2D backgroundSprites;
+        private Texture2D flagSprite;
+
+        private Rectangle[] frames;
+
         private UniversalSpriteFactory() 
         {
             LoadSpriteMachine();
@@ -81,9 +106,61 @@ namespace Sprint_2.Factories
             return frames;
         }
 
+        public void LoadAllContent(ContentManager content)
+        {
+            marioSpriteSheet = content.Load<Texture2D>("marioSpriteSheet");
+            fireBallSpriteSheet = content.Load<Texture2D>("MarioFireBallSpriteSheet");
+            explosionSpriteSheet = content.Load<Texture2D>("MarioFireBallExplosionSpriteSheet");
+
+            blockSpriteSheet = content.Load<Texture2D>("blocks");
+            undergroundPipe = content.Load<Texture2D>("UndergroundPipe");
+
+            enemies = content.Load<Texture2D>("enemies");
+
+            texture = content.Load<Texture2D>("items");
+            staticCoin = content.Load<Texture2D>("staticCoin");
+
+            levelImageTexture = content.Load<Texture2D>("levelimage"); //sprite for the whole level image  
+            backgroundSprites = content.Load<Texture2D>("backgroundSprites");
+            flagSprite = content.Load<Texture2D>("flag");
+        }
+
         public void AddEntry(string key, Rectangle[] frames)
         {
             spriteData.Add(key, frames);
+        }
+
+        public ISprite GetMarioSprite(string key)
+        {
+            if (key.Contains("Fall"))
+            {
+                key = key.Replace("Fall", "Jump");
+            }
+            spriteData.TryGetValue(key, out frames);
+            return new FrameArrayFormattedSprite(marioSpriteSheet, frames, 1);
+        }
+
+        public ISprite MarioFireball()
+        {
+            spriteData.TryGetValue("fireball", out frames);
+            return new FrameArrayFormattedSprite(fireBallSpriteSheet, frames, FireBallConstants.scale);
+        }
+
+        public ISprite MarioFireballExplosion()
+        {
+            spriteData.TryGetValue("fireballExplosion", out frames);
+            return new FrameArrayFormattedSprite(explosionSpriteSheet, frames, FireBallConstants.scale);
+        }
+
+        public ISprite GetBlock(string id)
+        {
+            spriteData.TryGetValue(id, out Rectangle[] frames);
+            /* Placeholder, will be changed to be something better */
+            if (id.Equals("UndergroundPipe"))
+            {
+                return new FrameArrayFormattedSprite(undergroundPipe, frames, 1);
+            }
+            return new FrameArrayFormattedSprite(blockSpriteSheet, frames, 1);
         }
     }
 }

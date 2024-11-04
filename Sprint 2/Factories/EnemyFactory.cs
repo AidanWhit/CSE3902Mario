@@ -15,16 +15,6 @@ namespace Sprint_2.Factories
     {
         private static EnemyFactory instance = new EnemyFactory();
 
-        private Texture2D goombaWalking;
-        private Texture2D goombaDying;
-
-        // Modified 9/19 added koopa's sprites
-        private Texture2D koopaWalkingLeft1;
-        private Texture2D koopaWalkingLeft2;
-        private Texture2D koopaWalkingRight1;
-        private Texture2D koopaWalkingRight2;
-        private Texture2D koopaShell;
-
         // Modified 9/20 added bowser
         private Texture2D[] bowserLeftSprites;
         private Texture2D[] bowserRightSprites;
@@ -48,16 +38,6 @@ namespace Sprint_2.Factories
 
         public void LoadAllContent(ContentManager content)
         {
-            goombaWalking = content.Load<Texture2D>("goombaWalkingSpriteSheet");
-           
-            goombaDying = content.Load<Texture2D>("goomba_dying1");
-
-            // Modified 9/19 added koopa's sprites
-            koopaWalkingLeft1 = content.Load<Texture2D>("koopa_walkingleft1");
-            koopaWalkingLeft2 = content.Load<Texture2D>("koopa_walkingleft2");
-            koopaWalkingRight1 = content.Load<Texture2D>("koopa_walkingright1");
-            koopaWalkingRight2 = content.Load<Texture2D>("koopa_walkingright2");
-            koopaShell = content.Load<Texture2D>("koopa_shell");
 
             //Modified 9/20 added bowser
             bowserLeftSprites = new Texture2D[]
