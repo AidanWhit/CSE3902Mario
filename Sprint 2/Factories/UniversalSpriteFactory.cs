@@ -44,13 +44,9 @@ namespace Sprint_2.Factories
 
                     Rectangle[] frames = CreateFrameArray(dataReader, Convert.ToInt32(numberOfFrames));
 
-                    Debug.WriteLine("NumberofFrames: " + numberOfFrames);
                     AddEntry(spriteName, frames);
                 }
             }
-
-            Debug.WriteLine("Dict: " + spriteData.Keys);
-            Game1.Instance.Exit();
         }
         
         private Rectangle[] CreateFrameArray(XmlReader dataReader, int numberOfFrames)
@@ -68,15 +64,16 @@ namespace Sprint_2.Factories
                 dataReader.ReadToDescendant("XPos");
                 xPos = dataReader.ReadElementContentAsString();
 
-                dataReader.Read();
+                dataReader.ReadToNextSibling("YPos");
                 yPos = dataReader.ReadElementContentAsString();
 
-                dataReader.Read();
+                dataReader.ReadToNextSibling("Width");
                 width = dataReader.ReadElementContentAsString();
 
-                dataReader.Read();
+                dataReader.ReadToNextSibling("Height");
                 height = dataReader.ReadElementContentAsString();
 
+                dataReader.Read(); //Discard </Rectangle> element
 
                 frames[i] = new Rectangle(Convert.ToInt32(xPos), Convert.ToInt32(yPos), Convert.ToInt32(width), Convert.ToInt32(height));
             }
