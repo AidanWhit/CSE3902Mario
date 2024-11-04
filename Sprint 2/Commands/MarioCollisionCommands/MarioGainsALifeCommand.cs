@@ -24,7 +24,6 @@ namespace Sprint_2.Commands.MarioCollisionCommands
         }
         public void Execute() 
         {
-            Debug.WriteLine("Mario Gained A Life");
             player.RemainingLives++;
         }
 

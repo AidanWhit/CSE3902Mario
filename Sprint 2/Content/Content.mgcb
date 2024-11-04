@@ -361,6 +361,13 @@
 /processorParam:TextureFormat=Color
 /build:hill2.png
 
+#begin HudFont.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:HudFont.spritefont
+
 #begin items.png
 /importer:TextureImporter
 /processor:TextureProcessor

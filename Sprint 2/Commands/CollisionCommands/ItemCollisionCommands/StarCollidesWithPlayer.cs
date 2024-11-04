@@ -26,6 +26,7 @@ namespace Sprint_2.Commands.CollisionCommands.ItemCollisionCommands
         public void Execute()
         {
             star.DeleteItem();
+            HUD.Instance.AddScorePopUp(1000, new Vector2(star.XPos, star.YPos));
             //SoundManager.Instance.StopBackgroundMusic();
             //SoundManager.Instance.PlayBackgroundMusic("starman");
             //SoundManager.Instance.PlayBGM("mainTheme");

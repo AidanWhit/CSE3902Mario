@@ -55,12 +55,8 @@ namespace Sprint_2
         public Interfaces.IUpdateable gameState { get; set; }
         public CollisionDetection CollisionDetection { get; private set; }
 
-        public struct LevelGameObjects 
-        {
-            public List<Interfaces.IDrawable> BackDrawables;
-            public List<Interfaces.IDrawable> ForeDrawables;
-        }
-        private LevelGameObjects levelGameObjects;
+        public HUD Hud { get; private set; }
+        private SpriteFont hudFont;
 
         private Game1()
         {
@@ -106,8 +102,6 @@ namespace Sprint_2
 
             levelLoader = new LevelLoader();
             levelLoader.LoadLevel(@"LevelManager\level-1_data_pretty.xml");
-            //levelLoader.LoadLevel(@"LevelManager\XMLFiles\UndergroundXML.xml");
-            //levelLoader.LoadLevel(@"LevelManager\testing-level.xml");
 
             gameState = new PlayableState(keyControl);
         }
@@ -120,6 +114,7 @@ namespace Sprint_2
         protected override void Update(GameTime gameTime)
         {
             gameState.Update(gameTime);
+            HUD.Instance.Update(gameTime);
             base.Update(gameTime);
         }
 
@@ -138,7 +133,12 @@ namespace Sprint_2
                 obj.Draw(spriteBatch, Color.White);
             }
 
+            //spriteBatch.End();
+
+            //spriteBatch.Begin();
+            HUD.Instance.Draw(spriteBatch);
             spriteBatch.End();
+
             base.Draw(gameTime);
         }
 

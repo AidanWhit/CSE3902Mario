@@ -48,8 +48,9 @@ namespace Sprint_2.ScreenCamera
                 Position = new Vector2(cameraX, MiscConstants.leftBorderSize.Y);
                 
                 leftBorder.location = new Vector2(Position.X - CollisionConstants.blockWidth, Position.Y);
-                UpdateTransform();
                 oldcameraX = cameraX;
+                UpdateTransform();
+                
             }
         }
 
@@ -74,6 +75,11 @@ namespace Sprint_2.ScreenCamera
         public void SetLevelBounds(Vector2 levelBounds)
         {
             _levelBounds = levelBounds;
+        }
+
+        public Vector2 GetLeftScreenBound()
+        {
+            return leftBorder.location;
         }
     }
 }

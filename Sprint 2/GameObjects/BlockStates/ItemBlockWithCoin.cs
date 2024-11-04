@@ -32,6 +32,8 @@ namespace Sprint_2.GameObjects.BlockStates
 
             SoundManager.Instance.PlaySoundEffect("coin");
 
+            HUD.Instance.AddScoreFromCoin(200);
+
             block.ChangeState(new UsedBlockState(block));
         }
     }

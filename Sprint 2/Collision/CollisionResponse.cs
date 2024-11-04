@@ -22,6 +22,10 @@ namespace Sprint_2.Collision
         {
             LoadCommandDictionary();
             collisionDict = GameObjectManager.Instance.GetCollisionDictionary();
+
+            (Type, Type) foundCommand;
+            collisionDict.TryGetValue("IPlayerGreenMushroomLeft", out foundCommand);
+            Debug.WriteLine("foundCommand: " + foundCommand);
         }
 
 

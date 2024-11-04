@@ -32,6 +32,7 @@ namespace Sprint_2.Commands.CollisionCommands.EnemyCollisionCommands
                 player.XPos += collisionIntersection.Width;
                 shell.ShellState = new MovingShellState(shell);
 
+                HUD.Instance.AddScorePopUp(400, new Vector2(shell.XPos, shell.YPos));
                 SoundManager.Instance.PlaySoundEffect("stomp");
             }
         }

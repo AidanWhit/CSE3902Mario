@@ -617,56 +617,56 @@
 		<SourceType>IPlayer</SourceType>
 		<ReceiverType>GreenMushroom</ReceiverType>
 		<CollisionSide>Left</CollisionSide>
-		<SourceCommandType>Sprint_2.Commands.MarioCollisionCommands.MarioGainsALife</SourceCommandType>
+		<SourceCommandType>Sprint_2.Commands.MarioCollisionCommands.MarioGainsALifeCommand</SourceCommandType>
 		<ReceiverCommandType>Sprint_2.Commands.CollisionCommands.ItemCollisionCommands.ItemCollidesWithPlayer</ReceiverCommandType>
 	</Entry>
 	<Entry>
 		<SourceType>IPlayer</SourceType>
 		<ReceiverType>GreenMushroom</ReceiverType>
 		<CollisionSide>Right</CollisionSide>
-		<SourceCommandType>Sprint_2.Commands.MarioCollisionCommands.MarioGainsALife</SourceCommandType>
+		<SourceCommandType>Sprint_2.Commands.MarioCollisionCommands.MarioGainsALifeCommand</SourceCommandType>
 		<ReceiverCommandType>Sprint_2.Commands.CollisionCommands.ItemCollisionCommands.ItemCollidesWithPlayer</ReceiverCommandType>
 	</Entry>
 	<Entry>
 		<SourceType>IPlayer</SourceType>
 		<ReceiverType>GreenMushroom</ReceiverType>
 		<CollisionSide>Top</CollisionSide>
-		<SourceCommandType>Sprint_2.Commands.MarioCollisionCommands.MarioGainsALife</SourceCommandType>
+		<SourceCommandType>Sprint_2.Commands.MarioCollisionCommands.MarioGainsALifeCommand</SourceCommandType>
 		<ReceiverCommandType>Sprint_2.Commands.CollisionCommands.ItemCollisionCommands.ItemCollidesWithPlayer</ReceiverCommandType>
 	</Entry>
 	<Entry>
 		<SourceType>IPlayer</SourceType>
 		<ReceiverType>GreenMushroom</ReceiverType>
 		<CollisionSide>Bottom</CollisionSide>
-		<SourceCommandType>Sprint_2.Commands.MarioCollisionCommands.MarioGainsALife</SourceCommandType>
+		<SourceCommandType>Sprint_2.Commands.MarioCollisionCommands.MarioGainsALifeCommand</SourceCommandType>
 		<ReceiverCommandType>Sprint_2.Commands.CollisionCommands.ItemCollisionCommands.ItemCollidesWithPlayer</ReceiverCommandType>
 	</Entry>
 	<Entry>
 		<SourceType>StarMario</SourceType>
 		<ReceiverType>GreenMushroom</ReceiverType>
 		<CollisionSide>Bottom</CollisionSide>
-		<SourceCommandType>Sprint_2.Commands.MarioCollisionCommands.MarioGainsALife</SourceCommandType>
+		<SourceCommandType>Sprint_2.Commands.MarioCollisionCommands.MarioGainsALifeCommand</SourceCommandType>
 		<ReceiverCommandType>Sprint_2.Commands.CollisionCommands.ItemCollisionCommands.ItemCollidesWithPlayer</ReceiverCommandType>
 	</Entry>
 	<Entry>
 		<SourceType>StarMario</SourceType>
 		<ReceiverType>GreenMushroom</ReceiverType>
 		<CollisionSide>Left</CollisionSide>
-		<SourceCommandType>Sprint_2.Commands.MarioCollisionCommands.MarioGainsALife</SourceCommandType>
+		<SourceCommandType>Sprint_2.Commands.MarioCollisionCommands.MarioGainsALifeCommand</SourceCommandType>
 		<ReceiverCommandType>Sprint_2.Commands.CollisionCommands.ItemCollisionCommands.ItemCollidesWithPlayer</ReceiverCommandType>
 	</Entry>
 	<Entry>
 		<SourceType>StarMario</SourceType>
 		<ReceiverType>GreenMushroom</ReceiverType>
 		<CollisionSide>Right</CollisionSide>
-		<SourceCommandType>Sprint_2.Commands.MarioCollisionCommands.MarioGainsALife</SourceCommandType>
+		<SourceCommandType>Sprint_2.Commands.MarioCollisionCommands.MarioGainsALifeCommand</SourceCommandType>
 		<ReceiverCommandType>Sprint_2.Commands.CollisionCommands.ItemCollisionCommands.ItemCollidesWithPlayer</ReceiverCommandType>
 	</Entry>
 	<Entry>
 		<SourceType>StarMario</SourceType>
 		<ReceiverType>GreenMushroom</ReceiverType>
 		<CollisionSide>Top</CollisionSide>
-		<SourceCommandType>Sprint_2.Commands.MarioCollisionCommands.MarioGainsALife</SourceCommandType>
+		<SourceCommandType>Sprint_2.Commands.MarioCollisionCommands.MarioGainsALifeCommand</SourceCommandType>
 		<ReceiverCommandType>Sprint_2.Commands.CollisionCommands.ItemCollisionCommands.ItemCollidesWithPlayer</ReceiverCommandType>
 	</Entry>
 	<Entry>

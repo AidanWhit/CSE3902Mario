@@ -1,22 +1,28 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Diagnostics;
 
 namespace Sprint_2
 {
     public class HUD
     {
+        private static HUD hud = new HUD();
+        public static HUD Instance {get {return hud;} }
+
         private SpriteFont font;
         private int score;
         private int coins;
         private string world;
-        private int time;
+        private float time;
         private int lives;
         private List<ScorePopup> scorePopups;
 
-        public HUD(SpriteFont font)
+        public HUD()
         {
-            this.font = font;
+            font = Game1.Instance.Content.Load<SpriteFont>("HUDFont");
+
             score = 0;
             coins = 0;
             world = "1-1";
@@ -24,17 +30,22 @@ namespace Sprint_2
             lives = 3;
             scorePopups = new List<ScorePopup>();
         }
-
-        public void AddScore(int points, Vector2 position)
+        
+        public void AddScorePopUp(int points, Vector2 position)
         {
             score += points;
             scorePopups.Add(new ScorePopup(points, position));
         }
 
+        public void AddScoreFromCoin(int points)
+        {
+            coins++;
+            score += points;
+        }
+
         public void Update(GameTime gameTime)
         {
-            time -= (int)gameTime.ElapsedGameTime.TotalSeconds;
-
+            time -= (float)gameTime.ElapsedGameTime.TotalSeconds;
             for (int i = scorePopups.Count - 1; i >= 0; i--)
             {
                 scorePopups[i].Update(gameTime);
@@ -48,14 +59,15 @@ namespace Sprint_2
         public void Draw(SpriteBatch spriteBatch)
         {
             // 定义顶部元素的起始位置和间隔
-            Vector2 startPosition = new Vector2(50, 10);
-            int spacing = 150;  // 每个元素之间的间隔
+            Vector2 startPosition = Game1.Instance.camera.GetLeftScreenBound() + new Vector2(50, 0);
+            int spacing = 75;  // 每个元素之间的间隔
+            lives = Game1.Instance.mario.RemainingLives;
 
             // 绘制并排的 HUD 元素
             spriteBatch.DrawString(font, $"Score: {score}", startPosition, Color.White);
             spriteBatch.DrawString(font, $"Coins: {coins}", startPosition + new Vector2(spacing, 0), Color.Yellow);
             spriteBatch.DrawString(font, $"World: {world}", startPosition + new Vector2(2 * spacing, 0), Color.White);
-            spriteBatch.DrawString(font, $"Time: {time}", startPosition + new Vector2(3 * spacing, 0), Color.White);
+            spriteBatch.DrawString(font, $"Time: {(int)time}", startPosition + new Vector2(3 * spacing, 0), Color.White);
             spriteBatch.DrawString(font, $"Lives: {lives}", startPosition + new Vector2(4 * spacing, 0), Color.White);
 
             // 绘制短暂显示的得分
@@ -63,6 +75,14 @@ namespace Sprint_2
             {
                 popup.Draw(spriteBatch, font);
             }
+        }
+
+        public void Reset()
+        {
+            score = 0;
+            coins = 0;
+            time = 400;
+            lives = 3;
         }
     }
 

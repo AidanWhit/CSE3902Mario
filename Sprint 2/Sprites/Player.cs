@@ -115,7 +115,6 @@ namespace Sprint_2.Sprites
         }
         public void Jump()
         {
-            
             if (!isJumping && !isFalling)
             {
                 PlayerState.Jump();
