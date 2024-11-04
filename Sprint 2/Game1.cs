@@ -80,6 +80,7 @@ namespace Sprint_2
 
         protected override void LoadContent()
         {
+            UniversalSpriteFactory.Instance.GetType();
 
             spriteBatch = new SpriteBatch(GraphicsDevice);
 

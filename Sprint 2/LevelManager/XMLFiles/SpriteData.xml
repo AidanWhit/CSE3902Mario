@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<XNAContent>
+	<Sprite>
+		<Name>LeftMarioIdle</Name>
+		<NumOfFrames>1</NumOfFrames>
+		<Rectangle>
+			<XPos>181</XPos>
+			<YPos>0</YPos>
+			<Width>13</Width>
+			<Height>16</Height>
+		</Rectangle>
+	</Sprite>
+	<Sprite>
+		<Name>LeftMarioRun</Name>
+		<NumOfFrames>3</NumOfFrames>
+		<Rectangle>
+			<XPos>150</XPos>
+			<YPos>0</YPos>
+			<Width>14</Width>
+			<Height>16</Height>
+		</Rectangle>
+		<Rectangle>
+			<XPos>121</XPos>
+			<YPos>0</YPos>
+			<Width>12</Width>
+			<Height>16</Height>
+		</Rectangle>
+		<Rectangle>
+			<XPos>89</XPos>
+			<YPos>0</YPos>
+			<Width>16</Width>
+			<Height>16</Height>
+		</Rectangle>
+	</Sprite>
+</XNAContent>

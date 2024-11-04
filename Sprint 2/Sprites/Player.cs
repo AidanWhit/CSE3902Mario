@@ -31,7 +31,7 @@ namespace Sprint_2.Sprites
         public bool isJumping { get; set; } = false;
         public bool isFalling { get; set; } = false;
 
-        private int numberOfFireballsRemaining = 2;
+        private int numberOfFireballsRemaining = MarioPhysicsConstants.maxNumOfFireballs;
         public List<IProjectile> fireballs { get; set; } = new List<IProjectile>();
 
         public int RemainingLives { get; set; }

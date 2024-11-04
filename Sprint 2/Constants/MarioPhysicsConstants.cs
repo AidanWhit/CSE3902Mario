@@ -44,5 +44,6 @@ namespace Sprint_2.Constants
         public static int timeBetweenColorsScaleFactor = 4;
 
         public static float maxSlideVelocity = 50f;
+        public static int maxNumOfFireballs = 2;
     }
 }
