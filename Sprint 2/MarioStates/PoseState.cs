@@ -11,58 +11,58 @@ namespace Sprint_2.MarioStates
 {
     public class PoseState
     {
-        private enum Pose { Idle, Run, Jump, Crouch, Fall, Slide, Shoot, Climb }
-        private Pose pose;
+        public enum PoseEnum { Idle, Run, Jump, Crouch, Fall, Slide, Shoot, Climb }
+        public PoseEnum pose { get; private set; }
         private IPlayer mario;
 
         public PoseState(IPlayer mario)
         {
             this.mario = mario;
             /* Assume Player starts at idle */
-            pose = Pose.Idle;
+            pose = PoseEnum.Idle;
         }
         public void Shoot()
         {
-            if (pose != Pose.Crouch)
+            if (pose != PoseEnum.Crouch)
             {
-                pose = Pose.Shoot;
+                pose = PoseEnum.Shoot;
             }
         }
         public void Slide()
         {
-            if (pose == Pose.Run)
+            if (pose == PoseEnum.Run)
             {
-                pose = Pose.Slide;
+                pose = PoseEnum.Slide;
             }
         }
         public void Jump()
         {
-            if (pose != Pose.Fall)
+            if (pose != PoseEnum.Fall)
             {
-                pose = Pose.Jump;
+                pose = PoseEnum.Jump;
             }
-            else if (pose == Pose.Crouch)
+            else if (pose == PoseEnum.Crouch)
             {
-                pose = Pose.Idle;
+                pose = PoseEnum.Idle;
             }
         }
 
         public void Run()
         {
-            if (pose == Pose.Idle)
+            if (pose == PoseEnum.Idle)
             {
-                pose = Pose.Run;
+                pose = PoseEnum.Run;
             }
         }
 
         public void Crouch()
         {
-            if (pose != Pose.Jump && pose != Pose.Fall && !mario.isCrouching)
+            if (pose != PoseEnum.Jump && pose != PoseEnum.Fall && !mario.isCrouching)
             {
                 
                 mario.isCrouching = true;
                 int bottomPositionOfSprite = mario.GetHitBox().Bottom;
-                pose = Pose.Crouch;
+                pose = PoseEnum.Crouch;
                 mario.YPos = bottomPositionOfSprite - mario.GetHitBox().Height;
 
                 
@@ -70,20 +70,20 @@ namespace Sprint_2.MarioStates
         }
         public void Idle()
         {
-            if (pose != Pose.Jump)
+            if (pose != PoseEnum.Jump)
             {
-                pose = Pose.Idle;
+                pose = PoseEnum.Idle;
             }
         }
 
         public void Fall()
         {
-            pose = Pose.Fall;
+            pose = PoseEnum.Fall;
         }
 
         public void Climb()
         {
-            pose = Pose.Climb;
+            pose = PoseEnum.Climb;
         }
 
         public string GetPose()

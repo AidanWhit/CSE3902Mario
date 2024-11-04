@@ -12,9 +12,9 @@ namespace Sprint_2.MarioStates
 {
     public class PlayerStateMachine
     {
-        private HealthState health;
+        private HealthState healthState;
         public ISprite currentSprite { get; set; }
-        private PoseState pose;
+        private PoseState poseState;
         public enum Facing { Left, Right };
         private Facing facing;
 
@@ -29,8 +29,8 @@ namespace Sprint_2.MarioStates
         {
             this.mario = mario;
 
-            health = new HealthState(mario);
-            pose = new PoseState(mario);
+            healthState = new HealthState(mario);
+            poseState = new PoseState(mario);
             facing = Facing.Right;
             
             key = "RightMarioIdle";
@@ -67,18 +67,19 @@ namespace Sprint_2.MarioStates
         }
         public void PowerUp()
         {
-            health.PowerUp();
+            healthState.PowerUp();
         }
         public void Damage()
         {
-            if (!health.GetHealth().Equals("Dead"))
+            if (!healthState.health.Equals(HealthState.HealthEnum.Dead))
             {
-                if (pose.GetPose().Equals("Shoot"))
+                if (poseState.pose.Equals(PoseState.PoseEnum.Shoot))
                 {
                     Idle();
                 }
-                health.Damage();
-                if (!health.GetHealth().Equals("Dead"))
+                healthState.Damage();
+                /* May want to rework so it doesn't check if mario is dead twice */
+                if (!healthState.health.Equals(HealthState.HealthEnum.Dead))
                 {
                     mario.IsDamaged = true;
                 }
@@ -87,50 +88,49 @@ namespace Sprint_2.MarioStates
         }
         public void Jump()
         {
-            if (!health.GetHealth().Equals("Dead"))
+            if (!healthState.health.Equals(HealthState.HealthEnum.Dead))
             {
-                pose.Jump();
+                poseState.Jump();
                 mario.PhysicsState = new Jumping(mario);
             }
             
         }
         public void Fall()
         {
-            pose.Fall();
+            poseState.Fall();
         }
 
         public void Crouch()
         {
             
-            if (!health.GetHealth().Equals("Mario"))
+            if (!healthState.health.Equals(HealthState.HealthEnum.Mario))
             {
-                pose.Crouch();
+                poseState.Crouch();
             }
 
         }
 
         public void MoveLeft()
         {
-            if (pose.GetPose().Equals("Jump") || pose.GetPose().Equals("Fall"))
+            if (poseState.pose.Equals(PoseState.PoseEnum.Jump) || poseState.pose.Equals(PoseState.PoseEnum.Fall))
             {
                 if (mario.PlayerVelocity.X > -MarioPhysicsConstants.maxXVelocity)
                 {
                     mario.PlayerVelocity -= MarioPhysicsConstants.marioXVelocity;
                 }
             }
-            else if (!pose.GetPose().Equals("Crouch") && !health.GetHealth().Equals("Dead"))
+            else if (!poseState.pose.Equals(PoseState.PoseEnum.Crouch) && !healthState.health.Equals(HealthState.HealthEnum.Dead))
             {
 
                 facing = Facing.Left;
-                //TODO: Remove Magic Number 
-                //Number currently acts as velocity in which the slide pose should be shown 
-                if (mario.PlayerVelocity.X > 50f)
+                /* Potential source of sliding bug */
+                if (mario.PlayerVelocity.X > MarioPhysicsConstants.maxSlideVelocity)
                 {
-                    pose.Slide();
+                    poseState.Slide();
                 }
                 else
                 {
-                    pose.Run();
+                    poseState.Run();
                 }
                 if (mario.PlayerVelocity.X > -MarioPhysicsConstants.maxXVelocity)
                 {
@@ -141,25 +141,24 @@ namespace Sprint_2.MarioStates
         }
         public void MoveRight()
         {
-            if (pose.GetPose().Equals("Jump") || pose.GetPose().Equals("Fall"))
+            if (poseState.pose.Equals(PoseState.PoseEnum.Jump) || poseState.pose.Equals(PoseState.PoseEnum.Fall))
             {
                 if (mario.PlayerVelocity.X < MarioPhysicsConstants.maxXVelocity)
                 {
                     mario.PlayerVelocity += MarioPhysicsConstants.marioXVelocity;
                 }
             }
-            else if (!pose.GetPose().Equals("Crouch") && !health.GetHealth().Equals("Dead"))
+            else if (!poseState.pose.Equals(PoseState.PoseEnum.Crouch) && !healthState.health.Equals(HealthState.HealthEnum.Dead))
             {
                 facing = Facing.Right;
-                //TODO: Remove Magic Number 
-                //Number currently acts as velocity in which the slide pose should be shown 
-                if (mario.PlayerVelocity.X < 50f)
+                /* Most likely the source of the slide bug */
+                if (mario.PlayerVelocity.X < MarioPhysicsConstants.maxSlideVelocity)
                 {
-                    pose.Slide();
+                    poseState.Slide();
                 }
                 else
                 {
-                    pose.Run();
+                    poseState.Run();
                 }
                 if (mario.PlayerVelocity.X < MarioPhysicsConstants.maxXVelocity)
                 {
@@ -169,17 +168,17 @@ namespace Sprint_2.MarioStates
         }
         public void Idle()
         {
-            pose.Idle();
+            poseState.Idle();
         }
         public void Climb()
         {
-            pose.Climb();
+            poseState.Climb();
         }
 
         public FireBall ShootFireball()
         {
             FireBall fireball = null;
-            if (health.GetHealth().Equals("FireMario") && !pose.GetPose().Equals("Crouch"))
+            if (healthState.health.Equals(HealthState.HealthEnum.FireMario) && !poseState.pose.Equals(PoseState.PoseEnum.Crouch))
             {
 
                 if (facing.Equals(Facing.Left))
@@ -191,7 +190,7 @@ namespace Sprint_2.MarioStates
                 {
                     fireball = new FireBall(mario, new Vector2(FireBallConstants.XSpeed, FireBallConstants.fallSpeed.Y));
                 }
-                pose.Shoot();
+                poseState.Shoot();
             }
             return fireball;
         }
@@ -213,9 +212,9 @@ namespace Sprint_2.MarioStates
 
         public void ChangeSprite()
         {
-            string newKey = facing.ToString() + health.GetHealth() + pose.GetPose();
+            string newKey = facing.ToString() + healthState.GetHealth() + poseState.GetPose();
 
-            if (newKey.Contains("Dead"))
+            if (healthState.health.Equals(HealthState.HealthEnum.Dead))
             {
                 key = newKey;
                 currentSprite = MarioSpriteFactory.Instance.DeadMarioSprite();
@@ -230,7 +229,7 @@ namespace Sprint_2.MarioStates
 
         public Vector2 getSize()
         {
-            return health.GetSize();
+            return healthState.GetSize();
         }
 
         public Rectangle GetHitBox(Vector2 location)
@@ -241,7 +240,7 @@ namespace Sprint_2.MarioStates
 
         public string GetHealth()
         {
-            return health.GetHealth();
+            return healthState.GetHealth();
         }
 
         public Facing GetFacing()

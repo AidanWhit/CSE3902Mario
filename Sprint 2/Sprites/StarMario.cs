@@ -10,6 +10,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
 using System.Text;
 using System.Threading;
+using Sprint_2.Constants;
 
 
 namespace Sprint_2.Sprites
@@ -31,7 +32,7 @@ namespace Sprint_2.Sprites
 
 
         private IPlayer decoratedPlayer;
-        private int remainingStarTime = 750;
+        private int remainingStarTime = MarioPhysicsConstants.starDuration;
         private Color[] colors = new Color[] { Color.Red, Color.Orange, Color.Yellow, Color.LightGreen, Color.LightBlue, Color.Salmon};
         private int colorIndex = 0;
 
@@ -61,7 +62,7 @@ namespace Sprint_2.Sprites
 
         public void Draw(SpriteBatch spriteBatch, Color color)
         {
-            decoratedPlayer.Draw(spriteBatch, colors[(remainingStarTime / 4) % colors.Length]);
+            decoratedPlayer.Draw(spriteBatch, colors[(remainingStarTime / MarioPhysicsConstants.timeBetweenColorsScaleFactor) % colors.Length]);
         }
 
         public void RemoveStar()

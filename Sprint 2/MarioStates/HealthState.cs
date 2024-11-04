@@ -14,9 +14,9 @@ namespace Sprint_2.MarioStates
 {
     public class HealthState
     {
-        private enum Health { Dead, Mario, SuperMario, FireMario };
+        public enum HealthEnum { Dead, Mario, SuperMario, FireMario };
         private Vector2 size;
-        private Health health;
+        public HealthEnum health { get; private set; }
 
         private Vector2 marioSize;
         private Vector2 bigMarioSize;
@@ -25,7 +25,7 @@ namespace Sprint_2.MarioStates
 
         public HealthState(IPlayer mario)
         {
-            health = Health.Mario;
+            health = HealthEnum.Mario;
             this.mario = mario;
             marioSize = new Vector2(16 * 4, 16 * 4);
             bigMarioSize = new Vector2(16 * 4, 32 * 4);
@@ -36,7 +36,7 @@ namespace Sprint_2.MarioStates
 
         public void PowerUp()
         {
-            if (health != Health.Dead && health != Health.FireMario)
+            if (health != HealthEnum.Dead && health != HealthEnum.FireMario)
             {
                 if (size != bigMarioSize)
                 {
@@ -50,9 +50,9 @@ namespace Sprint_2.MarioStates
         }
         public void Damage()
         {
-            if (health == Health.Mario)
+            if (health == HealthEnum.Mario)
             {
-                health = Health.Dead;
+                health = HealthEnum.Dead;
 
                 SoundManager.Instance.StopBackgroundMusic();
                 SoundManager.Instance.PlayBackgroundMusic("youAreDead");
@@ -68,7 +68,7 @@ namespace Sprint_2.MarioStates
                 {
                     mario.Idle();
                 }
-                health = Health.Mario;
+                health = HealthEnum.Mario;
 
                 SoundManager.Instance.PlaySoundEffect("pipe");
 

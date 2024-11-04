@@ -13,18 +13,19 @@ namespace Sprint_2.ScreenCamera
         public Matrix Transform { get; private set; }
         public Vector2 Position { get; private set; }
         public Viewport Viewport { get; private set; }
-        public float SmoothFactor { get; set; } = 0.1f; // Adjust for desired smoothness
+        private float SmoothFactor { get; set; } = MiscConstants.cameraSmoothingFactor; // Adjust for desired smoothness
 
         private Vector2 _levelBounds; // The size of your level in pixels
         private Collider leftBorder;
-        private float oldcameraX = 0;
+        private float oldcameraX;
 
         public Camera(Viewport viewport, Vector2 levelBounds)
         {
             Viewport = viewport;
             _levelBounds = levelBounds;
             Position = Vector2.Zero;
-            leftBorder = new Collider(new Vector2(0, 240), new Vector2(16, 240), "Collider");
+            oldcameraX = 0;
+            leftBorder = new Collider(MiscConstants.leftBorderPosition, MiscConstants.leftBorderSize, "Collider");
 
             GameObjectManager.Instance.Static.Add(leftBorder);
             GameObjectManager.Instance.ForeDrawables.Add(leftBorder);
@@ -34,7 +35,7 @@ namespace Sprint_2.ScreenCamera
         public void Update(GameTime gameTime)
         {
             // Smoothly interpolate towards the target x-position only
-            float targetX = Game1.Instance.mario.XPos - (Viewport.Width / 8f);
+            float targetX = Game1.Instance.mario.XPos - (Viewport.Width / MiscConstants.cameraViewPortWidthScale);
             Position = new Vector2(
                 MathHelper.Lerp(Position.X, targetX, SmoothFactor), 
                 Position.Y //Keep Y Position Constant
@@ -44,7 +45,7 @@ namespace Sprint_2.ScreenCamera
             float cameraX = MathHelper.Clamp(Position.X, 0, _levelBounds.X - Viewport.Width);
             if (cameraX >= oldcameraX)
             {
-                Position = new Vector2(cameraX, 240);
+                Position = new Vector2(cameraX, MiscConstants.leftBorderSize.Y);
                 
                 leftBorder.location = new Vector2(Position.X - CollisionConstants.blockWidth, Position.Y);
                 UpdateTransform();
@@ -55,12 +56,12 @@ namespace Sprint_2.ScreenCamera
 
         private void UpdateTransform()
         {
-            Transform = Matrix.CreateTranslation(-Position.X, -Position.Y, 0) * Matrix.CreateScale(2f, 2f, 1);
+            Transform = Matrix.CreateTranslation(-Position.X, -Position.Y, 0) * MiscConstants.cameraScale;
         }
 
         public void Reset()
         {
-            Position = new Vector2(0, 240);
+            Position = MiscConstants.leftBorderPosition;
             leftBorder.location = Position;
             oldcameraX = Position.X;
 

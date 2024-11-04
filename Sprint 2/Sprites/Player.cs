@@ -36,11 +36,6 @@ namespace Sprint_2.Sprites
 
         public int RemainingLives { get; set; }
 
-        /* Need to find a better way to disable input from the keyboard during the sliding down the flag animation besides adding
-         an additional if clause inside of pretty much every movement function 
-        
-         Could possibly disable user input through the use of game states. Like on transition/win state the keyboard controller is updated
-        and while in the win state the keyboard controller is not updated. */
         public Player(Vector2 StartingLocation)
         {
             XPos = (int)StartingLocation.X;

@@ -39,5 +39,10 @@ namespace Sprint_2.Constants
 
         public static int timeBetweenMovementForAnimations = 50; /* units : milliseconds */
         public static int timeToReachCastle = 1500; /* units : milliseconds */
+
+        public static int starDuration = 750;
+        public static int timeBetweenColorsScaleFactor = 4;
+
+        public static float maxSlideVelocity = 50f;
     }
 }
