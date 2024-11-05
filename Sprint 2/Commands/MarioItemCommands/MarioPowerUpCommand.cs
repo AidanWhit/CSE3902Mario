@@ -29,7 +29,7 @@ namespace Sprint_2.Commands.MarioItemCommands
             {
                 HUD.Instance.AddScorePopUp(1000, new Vector2(item.XPos, item.YPos));
             }
-            
+            //SoundManager.Instance.PlaySoundEffect("1-up");
             mario.PowerUp();
         }
     }

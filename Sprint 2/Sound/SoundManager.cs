@@ -12,6 +12,7 @@ namespace Sprint_2.Sound
         private static SoundManager instance;
         private Dictionary<string, ISound> soundEffects; // holds all SFX
         private Dictionary<string, Song> backgroundMusic; // holds all BGM
+        private ContentManager content; // Store the ContentManager reference for reloading
 
         private SoundManager()
         {
@@ -31,6 +32,15 @@ namespace Sprint_2.Sound
                 return instance;
             }
         }
+
+        // Store the ContentManager reference for later use
+        public void Initialize(ContentManager content)
+        {
+            this.content = content;
+            LoadAllBGM(content);
+            LoadAllSFX(content);
+        }
+
         // Load all background music for now, this will become a load-from-xml-file thing later
         public void LoadAllBGM(ContentManager content)
         {
@@ -38,6 +48,7 @@ namespace Sprint_2.Sound
             LoadBackgroundMusic("starman", content.Load<Song>("05-starman"));
             LoadBackgroundMusic("levelComplete", content.Load<Song>("06-level-complete"));
             LoadBackgroundMusic("youAreDead", content.Load<Song>("08-you-re-dead"));
+            LoadBackgroundMusic("underworld", content.Load<Song>("02-underworld"));
         }
 
         // Load all sound effects for now, this will become a load-from-xml-file thing later
@@ -135,6 +146,14 @@ namespace Sprint_2.Sound
             MediaPlayer.Stop();
             soundEffects.Clear();
             backgroundMusic.Clear();
+
+            // Reload the sounds using the stored ContentManager
+            LoadAllBGM(content);
+            LoadAllSFX(content);
+
+            // Play the main theme again
+            PlayBGM("mainTheme");
+
         }
     }
 }

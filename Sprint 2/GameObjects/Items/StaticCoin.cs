@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Sprint_2.Constants;
 using Sprint_2.Factories;
 using Sprint_2.Interfaces;
+using Sprint_2.Sound;
 using Sprint_2.LevelManager;
 using System.ComponentModel;
 
@@ -38,6 +39,7 @@ namespace Sprint_2.GameObjects.ItemSprites
             GameObjectManager.Instance.Updateables.Remove(this);
             GameObjectManager.Instance.ForeDrawables.Remove(this);
             GameObjectManager.Instance.Static.Remove(this);
+            SoundManager.Instance.PlaySoundEffect("coin");
         }
 
         public Rectangle GetHitBox()
