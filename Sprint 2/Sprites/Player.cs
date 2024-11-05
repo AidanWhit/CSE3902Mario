@@ -36,6 +36,8 @@ namespace Sprint_2.Sprites
 
         public int RemainingLives { get; set; }
 
+        private int[] score = new int[] { 100, 200, 400, 500, 800, 1000, 2000, 4000, 5000, 8000 };
+        private int scoreIndex = 0;
         public Player(Vector2 StartingLocation)
         {
             XPos = (int)StartingLocation.X;
@@ -136,6 +138,7 @@ namespace Sprint_2.Sprites
             isCrouching = false;
             isJumping = false;
             isFalling = false;
+            scoreIndex = 0;
             
         }
 
@@ -207,6 +210,11 @@ namespace Sprint_2.Sprites
         public PlayerStateMachine.Facing GetFacing()
         {
             return PlayerState.GetFacing();
+        }
+
+        public int GetScore()
+        {
+            return score[scoreIndex++];
         }
     }
 }

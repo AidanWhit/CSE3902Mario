@@ -3,6 +3,7 @@ using Sprint_2.Constants;
 using Sprint_2.Interfaces;
 using Sprint_2.MarioPhysicsStates;
 using Sprint_2.Sound;
+using Sprint_2.Sprites;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -37,7 +38,8 @@ namespace Sprint_2.Commands.MarioCollisionCommands
 
                 player.Jump();
 
-                HUD.Instance.AddScorePopUp(100, new Vector2(enemy.XPos, enemy.YPos));
+                
+                HUD.Instance.AddScorePopUp(((Player)player).GetScore(), new Vector2(enemy.XPos, enemy.YPos));
             }
         }
     }

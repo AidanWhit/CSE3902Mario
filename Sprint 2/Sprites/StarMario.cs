@@ -37,8 +37,6 @@ namespace Sprint_2.Sprites
         private int colorIndex = 0;
 
         private bool isStarmanPlaying;
-
-
         public StarMario (IPlayer decoratedPlayer)
         {
             this.decoratedPlayer = decoratedPlayer;

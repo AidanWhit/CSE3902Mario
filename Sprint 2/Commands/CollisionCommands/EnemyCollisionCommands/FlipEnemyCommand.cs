@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Sprint_2.GameObjects;
 using Sprint_2.GameObjects.Enemies.EnemySprites;
 using Sprint_2.Interfaces;
 using Sprint_2.Sprites;
@@ -25,13 +26,20 @@ namespace Sprint_2.Commands.CollisionCommands.EnemyCollisionCommands
         }
         public void Execute()
         {
-            if (collider is StarMario || collider is Shell)
+            if (collider is StarMario)
             {
-
+                HUD.Instance.AddScorePopUp(100, new Vector2(enemy.XPos, enemy.YPos));
+            }
+            else if (collider is FireBall)
+            {
+                HUD.Instance.AddScorePopUp(200, new Vector2(enemy.XPos, enemy.YPos));
             }
             else
             {
-                HUD.Instance.AddScorePopUp(200, new Vector2(enemy.XPos, enemy.YPos));
+                // Collider is a moving shell
+                Shell shell = (Shell) collider;
+                HUD.Instance.AddScorePopUp(shell.GetScore(), new Vector2(enemy.XPos, enemy.YPos));
+                
             }
             enemy.TakeFireballDamage();
         }

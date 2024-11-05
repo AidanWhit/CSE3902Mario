@@ -22,6 +22,8 @@ namespace Sprint_2.GameObjects.Enemies.EnemySprites
         private float timeUntilShellBecomesKoopa = 5f;
         public IShellState ShellState { get; set; }
 
+        private int[] score = new int[] { 500, 800, 1000, 2000, 4000, 5000, 8000 };
+        private int index = 0;
         public Shell(Vector2 initialPosition)
         {
             XPos = initialPosition.X;
@@ -85,6 +87,16 @@ namespace Sprint_2.GameObjects.Enemies.EnemySprites
         public int GetColumn()
         {
             return (int)(XPos / CollisionConstants.blockWidth);
+        }
+
+        public int GetScore()
+        {
+            return score[index++];
+        }
+
+        public void ResetIndex()
+        {
+            index = 0;
         }
     }
 }
