@@ -12,7 +12,7 @@ namespace Sprint_2.Sound
         private static SoundManager instance;
         private Dictionary<string, ISound> soundEffects; // holds all SFX
         private Dictionary<string, Song> backgroundMusic; // holds all BGM
-        private ContentManager content; // Store the ContentManager reference for reloading
+        private ContentManager content; 
 
         private SoundManager()
         {
@@ -147,7 +147,7 @@ namespace Sprint_2.Sound
             soundEffects.Clear();
             backgroundMusic.Clear();
 
-            // Reload the sounds using the stored ContentManager
+            // Reload the sounds
             LoadAllBGM(content);
             LoadAllSFX(content);
 
