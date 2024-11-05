@@ -80,8 +80,9 @@ namespace Sprint_2
 
             UniversalSpriteFactory.Instance.LoadAllContent(Content);
 
-            SoundManager.Instance.LoadAllBGM(Content);
-            SoundManager.Instance.LoadAllSFX(Content);
+            SoundManager.Instance.Initialize(Content);
+
+            SoundManager.Instance.PlayBGM("mainTheme");
 
             mario = new Player(Vector2.Zero);
             CollisionDetection = new CollisionDetection();
@@ -89,7 +90,7 @@ namespace Sprint_2
 
             camera = new Camera(GraphicsDevice.Viewport, levelBounds);
 
-            SoundManager.Instance.PlayBGM("mainTheme");
+
 
             ItemFactory.Instance.SetGameObjectManager(GameObjectManager.Instance);
             EnemyFactory.Instance.SetGameObjectManager(GameObjectManager.Instance);
@@ -140,9 +141,10 @@ namespace Sprint_2
             InitControls.initializeControls(keyControl, mario);
             levelLoader.LoadLevel(@"LevelManager\level-1_data_pretty.xml");
             camera.Reset();
-            //SoundManager.Instance.Reset();
+            SoundManager.Instance.Reset();
             //UnloadContent();
             //LoadContent();
+
         }
 
         public Camera GetCamera()

@@ -63,6 +63,10 @@ namespace Sprint_2.Commands.MarioCollisionCommands
                 leveLoader.LoadLevel(@"LevelManager\XMLFiles\UndergroundXML.xml");
                 Game1.Instance.GetCamera().Reset();
                 Game1.Instance.GetCamera().SetLevelBounds(new Vector2(240, 240));
+
+                SoundManager.Instance.StopBackgroundMusic();
+                SoundManager.Instance.PlayBackgroundMusic("underworld");
+
                 /* TODO: Teleport mario to underground section*/
                 timer.Dispose();
             }

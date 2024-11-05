@@ -56,6 +56,9 @@ namespace Sprint_2.Commands.MarioCollisionCommands
                 Game1.Instance.camera.Reset();
                 Game1.Instance.GetCamera().SetLevelBounds(new Vector2(3744, 240));
 
+                SoundManager.Instance.StopBackgroundMusic();
+                SoundManager.Instance.PlayBGM("mainTheme");
+
                 player.XPos = 2624;
                 player.YPos = 400;
                 
