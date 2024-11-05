@@ -2,10 +2,15 @@
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint_2.Constants;
+using Sprint_2.GameObjects;
+using Sprint_2.GameObjects.ItemSprites;
+using Sprint_2.GameObjects.Misc;
 using Sprint_2.Interfaces;
+using Sprint_2.MarioStates;
 using Sprint_2.Sprites;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using System.Diagnostics;
 using System.Reflection.Metadata;
 using System.Xml;
@@ -28,7 +33,7 @@ namespace Sprint_2.Factories
 
         private Texture2D enemies;
 
-        private Texture2D texture;
+        private Texture2D items;
         private Texture2D staticCoin;
 
         private Texture2D levelImageTexture;  // The whole level image (blocks and background only)
@@ -117,7 +122,7 @@ namespace Sprint_2.Factories
 
             enemies = content.Load<Texture2D>("enemies");
 
-            texture = content.Load<Texture2D>("items");
+            items = content.Load<Texture2D>("items");
             staticCoin = content.Load<Texture2D>("staticCoin");
 
             levelImageTexture = content.Load<Texture2D>("levelimage"); //sprite for the whole level image  
@@ -140,15 +145,21 @@ namespace Sprint_2.Factories
             return new FrameArrayFormattedSprite(marioSpriteSheet, frames, 1);
         }
 
+        public ISprite GetDeadMarioSprite()
+        {
+            spriteData.TryGetValue(NamesOfSprites.SpriteNames.DeadMario.ToString(), out frames);
+            return new FrameArrayFormattedSprite(marioSpriteSheet, frames, 1);
+        }
+
         public ISprite MarioFireball()
         {
-            spriteData.TryGetValue("fireball", out frames);
+            spriteData.TryGetValue(NamesOfSprites.SpriteNames.Fireball.ToString(), out frames);
             return new FrameArrayFormattedSprite(fireBallSpriteSheet, frames, FireBallConstants.scale);
         }
 
         public ISprite MarioFireballExplosion()
         {
-            spriteData.TryGetValue("fireballExplosion", out frames);
+            spriteData.TryGetValue(NamesOfSprites.SpriteNames.FireballExplosion.ToString(), out frames);
             return new FrameArrayFormattedSprite(explosionSpriteSheet, frames, FireBallConstants.scale);
         }
 
@@ -156,11 +167,48 @@ namespace Sprint_2.Factories
         {
             spriteData.TryGetValue(id, out Rectangle[] frames);
             /* Placeholder, will be changed to be something better */
-            if (id.Equals("UndergroundPipe"))
+            if (id.Equals(NamesOfSprites.SpriteNames.UndergroundPipe.ToString()))
             {
                 return new FrameArrayFormattedSprite(undergroundPipe, frames, 1);
             }
             return new FrameArrayFormattedSprite(blockSpriteSheet, frames, 1);
         }
+
+        public ISprite CreateEnemy(string key)
+        {
+            spriteData.TryGetValue(key, out frames);
+            return new FrameArrayFormattedSprite(enemies, frames, 1);
+        }
+
+        public ISprite GetItemSprite(string key)
+        {
+            spriteData.TryGetValue(key, out frames);
+            return new FrameArrayFormattedSprite(items, frames, 1);
+        }
+
+        public ISprite GetStaticCoinSprite()
+        {
+            spriteData.TryGetValue(nameof(StaticCoin), out frames);
+            return new FrameArrayFormattedSprite(staticCoin, frames, 1);
+        }
+
+        public ISprite GetFlagSprite()
+        {
+            spriteData.TryGetValue(nameof(Flag), out frames);
+            return new FrameArrayFormattedSprite(flagSprite, frames, 1);
+        }
+
+        public IStaticSprite GetBackgroundSprite(string key, Vector2 location)
+        {
+            spriteData.TryGetValue(key, out frames);
+            return new StaticSprite(backgroundSprites, frames, location);
+        }
+
+        public IStaticSprite GetLevelImageSprite(Vector2 location)
+        {
+            spriteData.TryGetValue(NamesOfSprites.SpriteNames.LevelImage.ToString(), out frames);
+            return new StaticSprite(levelImageTexture, frames, location);
+        }
+
     }
 }

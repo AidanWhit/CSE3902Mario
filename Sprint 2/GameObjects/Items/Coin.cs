@@ -25,7 +25,7 @@ namespace Sprint_2.GameObjects.ItemSprites
 
         public Coin(Vector2 location, bool fromBlock)
         {
-            sprite = ItemFactory.Instance.CreateCoin();
+            sprite = UniversalSpriteFactory.Instance.GetItemSprite(nameof(Coin));
             XPos = location.X;
             YPos = location.Y;
             originalHeight = YPos;

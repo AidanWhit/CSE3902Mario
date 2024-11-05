@@ -954,4 +954,55 @@
 			<Height>15</Height>
 		</Rectangle>
 	</Sprite>
+	<Sprite>
+		<Name>Fireball</Name>
+		<NumOfFrames>4</NumOfFrames>
+		<Rectangle>
+			<XPos>1</XPos>
+			<YPos>1</YPos>
+			<Width>8</Width>
+			<Height>8</Height>
+		</Rectangle>
+		<Rectangle>
+			<XPos>11</XPos>
+			<YPos>1</YPos>
+			<Width>8</Width>
+			<Height>8</Height>
+		</Rectangle>
+		<Rectangle>
+			<XPos>1</XPos>
+			<YPos>11</YPos>
+			<Width>8</Width>
+			<Height>8</Height>
+		</Rectangle>
+		<Rectangle>
+			<XPos>11</XPos>
+			<YPos>11</YPos>
+			<Width>8</Width>
+			<Height>8</Height>
+		</Rectangle>
+	</Sprite>
+	<Sprite>
+		<Name>FireballExplosion</Name>
+		<NumOfFrames>3</NumOfFrames>
+		<Rectangle>
+			<XPos>5</XPos>
+			<YPos>5</YPos>
+			<Width>9</Width>
+			<Height>9</Height>
+		</Rectangle>
+		<Rectangle>
+			<XPos>21</XPos>
+			<YPos>1</YPos>
+			<Width>13</Width>
+			<Height>16</Height>
+		</Rectangle>
+		<Rectangle>
+			<XPos>37</XPos>
+			<YPos>1</YPos>
+			<Width>16</Width>
+			<Height>16</Height>
+		</Rectangle>
+	</Sprite>
+	
 </XNAContent>

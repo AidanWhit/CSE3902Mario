@@ -139,28 +139,29 @@ namespace Sprint_2.LevelManager
 
         private void MakeBackground(string name, int locationX, int locationY)
         {
+            Vector2 location = new Vector2(locationX, locationY);
             switch (name)
             {
                 case "Bush1":
-                    GameObjectManager.Instance.BackDrawables.Add(BackgroundFactory.Instance.CreateBush1(new Vector2(locationX, locationY)));
+                    GameObjectManager.Instance.BackDrawables.Add(UniversalSpriteFactory.Instance.GetBackgroundSprite(NamesOfSprites.SpriteNames.Bush1.ToString(), location));
                     break;
                 case "Bush2":
-                    GameObjectManager.Instance.BackDrawables.Add(BackgroundFactory.Instance.CreateBush2(new Vector2(locationX, locationY)));
+                    GameObjectManager.Instance.BackDrawables.Add(UniversalSpriteFactory.Instance.GetBackgroundSprite(NamesOfSprites.SpriteNames.Bush2.ToString(), location));
                     break;
                 case "Hill1":
-                    GameObjectManager.Instance.BackDrawables.Add(BackgroundFactory.Instance.CreateHill1(new Vector2(locationX, locationY)));
+                    GameObjectManager.Instance.BackDrawables.Add(UniversalSpriteFactory.Instance.GetBackgroundSprite(NamesOfSprites.SpriteNames.Hill1.ToString(), location));
                     break;
                 case "Hill2":
-                    GameObjectManager.Instance.BackDrawables.Add(BackgroundFactory.Instance.CreateHill2(new Vector2(locationX, locationY)));
+                    GameObjectManager.Instance.BackDrawables.Add(UniversalSpriteFactory.Instance.GetBackgroundSprite(NamesOfSprites.SpriteNames.Hill2.ToString(), location));
                     break;
                 case "Cloud1":
-                    GameObjectManager.Instance.BackDrawables.Add(BackgroundFactory.Instance.CreateCloud1(new Vector2(locationX, locationY)));
+                    GameObjectManager.Instance.BackDrawables.Add(UniversalSpriteFactory.Instance.GetBackgroundSprite(NamesOfSprites.SpriteNames.Cloud1.ToString(), location));
                     break;
                 case "Cloud2":
-                    GameObjectManager.Instance.BackDrawables.Add(BackgroundFactory.Instance.CreateCloud2(new Vector2(locationX, locationY)));
+                    GameObjectManager.Instance.BackDrawables.Add(UniversalSpriteFactory.Instance.GetBackgroundSprite(NamesOfSprites.SpriteNames.Cloud2.ToString(), location));
                     break;
                 case "LevelImage":
-                    GameObjectManager.Instance.BackDrawables.Add(BackgroundFactory.Instance.CreateLevelImage(new Vector2(locationX, locationY)));
+                    GameObjectManager.Instance.BackDrawables.Add(UniversalSpriteFactory.Instance.GetLevelImageSprite(location));
                     break;
                 case "Flag":
                     GameObjectManager.Instance.BackDrawables.Add(new Flag(new Vector2(locationX, locationY)));

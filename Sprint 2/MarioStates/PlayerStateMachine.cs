@@ -217,12 +217,12 @@ namespace Sprint_2.MarioStates
             if (healthState.health.Equals(HealthState.HealthEnum.Dead))
             {
                 key = newKey;
-                currentSprite = MarioSpriteFactory.Instance.DeadMarioSprite();
+                currentSprite = UniversalSpriteFactory.Instance.GetDeadMarioSprite();
             }
             else if (!key.Equals(newKey))
             {
                 key = newKey;
-                currentSprite = MarioSpriteFactory.Instance.GetMarioSprite(key);
+                currentSprite = UniversalSpriteFactory.Instance.GetMarioSprite(key);
                 
             }
         }

@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Sprint_2.Constants;
 
 namespace Sprint_2.GameObjects.BlockStates
 {
@@ -17,7 +18,7 @@ namespace Sprint_2.GameObjects.BlockStates
         public BlueBrickState(IBlock block) : base(block) 
         {
             this.block = block;
-            sprite = BlockFactory.Instance.GetBlock("BlueBrick");
+            sprite = UniversalSpriteFactory.Instance.GetBlock(NamesOfSprites.SpriteNames.BlueBrick.ToString());
 
             originalBlockY = (int)block.Position.Y;
         }

@@ -27,7 +27,7 @@ namespace Sprint_2.GameStates
         public void Update(GameTime gameTime)
         {
             keyboardControl.Update();
-            camera.Update(gameTime);
+            //camera.Update(gameTime);
 
             foreach (Interfaces.IUpdateable obj in GameObjectManager.Instance.Updateables.ToList())
             {

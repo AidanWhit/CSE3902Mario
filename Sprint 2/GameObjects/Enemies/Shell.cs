@@ -29,7 +29,7 @@ namespace Sprint_2.GameObjects.Enemies.EnemySprites
             XPos = initialPosition.X;
             YPos = initialPosition.Y;
 
-            sprite = EnemyFactory.Instance.CreateKoopaShell();
+            sprite = UniversalSpriteFactory.Instance.CreateEnemy(NamesOfSprites.SpriteNames.KoopaShell.ToString());
             ShellState = new ShellStateIdle(this);
             Velocity = new Vector2(0, EnemyConstants.fallVelocity.Y);
         }
@@ -54,7 +54,7 @@ namespace Sprint_2.GameObjects.Enemies.EnemySprites
 
         public void TakeFireballDamage()
         {
-            sprite = EnemyFactory.Instance.CreateFlippedKoopaShell();
+            sprite = UniversalSpriteFactory.Instance.CreateEnemy(NamesOfSprites.SpriteNames.FlippedKoopaShell.ToString());
             Flipped = true;
             Velocity = EnemyConstants.flippedVelocity;
             ShellState = new ShellFlippedState(this);

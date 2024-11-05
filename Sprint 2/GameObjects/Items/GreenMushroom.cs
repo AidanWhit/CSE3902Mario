@@ -28,7 +28,7 @@ namespace Sprint_2.GameObjects.ItemSprites
             YPos = initialPosition.Y;
             Velocity = new Vector2(1, 0); // Starts moving right
 
-            sprite = ItemFactory.Instance.CreateGreenMushroom();
+            sprite = UniversalSpriteFactory.Instance.GetItemSprite(nameof(GreenMushroom));
 
             OnSpawn = true;
             spawnedYPosition = initialPosition.Y;

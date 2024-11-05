@@ -7,6 +7,7 @@ using Sprint_2.Interfaces;
 using Sprint_2.LevelManager;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
+using Sprint_2.Constants;
 
 namespace Sprint_2.GameObjects.BlockStates
 {
@@ -20,7 +21,7 @@ namespace Sprint_2.GameObjects.BlockStates
             this.block = block;
             this.coins = coins;
 
-            base.sprite = BlockFactory.Instance.GetBlock("BrownBrick");
+            sprite = UniversalSpriteFactory.Instance.GetBlock(NamesOfSprites.SpriteNames.BrownBrick.ToString());
         }
 
 

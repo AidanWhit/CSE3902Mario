@@ -818,35 +818,32 @@
 		<SourceCommandType>Sprint_2.Commands.MarioCollisionCommands.EnterPipeFromRight</SourceCommandType>
 		<ReceiverCommandType></ReceiverCommandType>
 	</Entry>
-	<!--
-	STATIC COIN COLLISION: UNFINISHED
 	<Entry>
 		<SourceType>IPlayer</SourceType>
 		<ReceiverType>StaticCoin</ReceiverType>
 		<CollisionSide>Top</CollisionSide>
-		<SourceCommandType> COIN COLLECT COMMAND </SourceCommandType>
-		<ReceiverCommandType> DELETE COIN </ReceiverCommandType>
+		<SourceCommandType>Sprint_2.Commands.CollisionCommands.ItemCollisionCommands.StaticCoinCollectCommand</SourceCommandType>
+		<ReceiverCommandType>Sprint_2.Commands.CollisionCommands.ItemCollisionCommands.ItemCollidesWithPlayer</ReceiverCommandType>
 	</Entry>
 	<Entry>
 		<SourceType>IPlayer</SourceType>
 		<ReceiverType>StaticCoin</ReceiverType>
 		<CollisionSide>Right</CollisionSide>
-		<SourceCommandType> COIN COLLECT COMMAND </SourceCommandType>
-		<ReceiverCommandType> DELETE COIN </ReceiverCommandType>
+		<SourceCommandType>Sprint_2.Commands.CollisionCommands.ItemCollisionCommands.StaticCoinCollectCommand</SourceCommandType>
+		<ReceiverCommandType>Sprint_2.Commands.CollisionCommands.ItemCollisionCommands.ItemCollidesWithPlayer</ReceiverCommandType>
 	</Entry>
 	<Entry>
 		<SourceType>IPlayer</SourceType>
 		<ReceiverType>StaticCoin</ReceiverType>
 		<CollisionSide>Left</CollisionSide>
-		<SourceCommandType> COIN COLLECT COMMAND </SourceCommandType>
-		<ReceiverCommandType> DELETE COIN </ReceiverCommandType>
+		<SourceCommandType>Sprint_2.Commands.CollisionCommands.ItemCollisionCommands.StaticCoinCollectCommand</SourceCommandType>
+		<ReceiverCommandType>Sprint_2.Commands.CollisionCommands.ItemCollisionCommands.ItemCollidesWithPlayer</ReceiverCommandType>
 	</Entry>
 	<Entry>
 		<SourceType>IPlayer</SourceType>
 		<ReceiverType>StaticCoin</ReceiverType>
 		<CollisionSide>Bottom</CollisionSide>
-		<SourceCommandType> COIN COLLECT COMMAND </SourceCommandType>
-		<ReceiverCommandType> DELETE COIN </ReceiverCommandType>
+		<SourceCommandType>Sprint_2.Commands.CollisionCommands.ItemCollisionCommands.StaticCoinCollectCommand</SourceCommandType>
+		<ReceiverCommandType>Sprint_2.Commands.CollisionCommands.ItemCollisionCommands.ItemCollidesWithPlayer</ReceiverCommandType>
 	</Entry>
-	-->
 </XnaContent>

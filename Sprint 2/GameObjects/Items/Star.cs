@@ -30,7 +30,7 @@ namespace Sprint_2.GameObjects.ItemSprites
             YPos = initialPosition.Y;
             Velocity = Vector2.Zero; 
 
-            sprite = ItemFactory.Instance.CreateStar();
+            sprite = UniversalSpriteFactory.Instance.GetItemSprite(nameof(Star));
             OnSpawn = true;
             this.topOfSourceBlock = topOfSourceBlock;
         }

@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Sprint_2.Constants;
 using Sprint_2.Factories;
 using Sprint_2.Interfaces;
 using Sprint_2.LevelManager;
@@ -19,7 +20,7 @@ namespace Sprint_2.GameObjects.BlockStates
         public BrownBrickState(IBlock block) : base(block)
         {
             this.block = block;
-            sprite = BlockFactory.Instance.GetBlock("BrownBrick");
+            sprite = UniversalSpriteFactory.Instance.GetBlock(NamesOfSprites.SpriteNames.BrownBrick.ToString());
 
             originalBlockY = block.Position.Y;
         }

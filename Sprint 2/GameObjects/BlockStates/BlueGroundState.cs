@@ -1,4 +1,5 @@
-﻿using Sprint_2.Factories;
+﻿using Sprint_2.Constants;
+using Sprint_2.Factories;
 using Sprint_2.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -12,7 +13,7 @@ namespace Sprint_2.GameObjects.BlockStates
     {
         public BlueGroundState (IBlock block) : base(block)
         {
-            sprite = BlockFactory.Instance.GetBlock("BlueGround");
+            sprite = UniversalSpriteFactory.Instance.GetBlock(NamesOfSprites.SpriteNames.BlueGround.ToString());
         }
 
         public override void BeHit(IPlayer player)

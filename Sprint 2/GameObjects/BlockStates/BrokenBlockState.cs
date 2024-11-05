@@ -33,10 +33,10 @@ namespace Sprint_2.GameObjects.BlockStates
         public BrokenBlockState(IBlock block)
         {
             this.block = block;
-            topLeftSprite = BlockFactory.Instance.GetBrokenPieceSprite();
-            topRightSprite = BlockFactory.Instance.GetBrokenPieceSprite();
-            bottomLeftSprite = BlockFactory.Instance.GetBrokenPieceSprite();
-            bottomRightSprite = BlockFactory.Instance.GetBrokenPieceSprite();
+            topLeftSprite = UniversalSpriteFactory.Instance.GetBlock(NamesOfSprites.SpriteNames.BrokenPiece.ToString());
+            topRightSprite = UniversalSpriteFactory.Instance.GetBlock(NamesOfSprites.SpriteNames.BrokenPiece.ToString());
+            bottomLeftSprite = UniversalSpriteFactory.Instance.GetBlock(NamesOfSprites.SpriteNames.BrokenPiece.ToString());
+            bottomRightSprite = UniversalSpriteFactory.Instance.GetBlock(NamesOfSprites.SpriteNames.BrokenPiece.ToString());
 
             topLeftPosition = block.Position;
             bottomLeftPosition = block.Position;

@@ -29,7 +29,7 @@ namespace Sprint_2.GameObjects.Enemies.EnemyStates
             this.goomba = goomba;
 
             goombaBehavior = new GoombaBehaviorMoving(goomba);
-            sprite = EnemyFactory.Instance.CreateGoomba();
+            sprite = UniversalSpriteFactory.Instance.CreateEnemy(NamesOfSprites.SpriteNames.Goomba.ToString());
         }
         public void ChangeDirection()
         {
@@ -44,7 +44,7 @@ namespace Sprint_2.GameObjects.Enemies.EnemyStates
             if (health != GoombaHealth.Stomped)
             {
                 health = GoombaHealth.Stomped;
-                sprite = EnemyFactory.Instance.CreateStompedGoomba();
+                sprite = UniversalSpriteFactory.Instance.CreateEnemy(NamesOfSprites.SpriteNames.StompedGoomba.ToString());
                 goombaBehavior = new GoombaBehaviorStomped(goomba);
                 goomba.YPos += goomba.GetHitBox().Height;
             }
@@ -55,7 +55,7 @@ namespace Sprint_2.GameObjects.Enemies.EnemyStates
             if (health != GoombaHealth.Flipped)
             {
                 health = GoombaHealth.Flipped;
-                sprite = EnemyFactory.Instance.CreateFlippedGoomba();
+                sprite = UniversalSpriteFactory.Instance.CreateEnemy(NamesOfSprites.SpriteNames.FlippedGoomba.ToString());
 
                 goombaBehavior = new GoombaBehaviorFlipped(goomba);
             }

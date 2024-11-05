@@ -40,7 +40,7 @@ namespace Sprint_2.GameObjects
 
 
             Speed = speed;
-            fireball = MarioSpriteFactory.Instance.FireBall();
+            fireball = UniversalSpriteFactory.Instance.MarioFireball();
 
             fireballSpawn = (int)YPos;
             
@@ -66,7 +66,7 @@ namespace Sprint_2.GameObjects
             //If the fireBall is too far away from the player that threw it, the fireball will explode
             if (distFromSource > FireBallConstants.explosionRange && !EnteredExplosionState)
             {
-                fireball = MarioSpriteFactory.Instance.FireballExplosion();
+                fireball = UniversalSpriteFactory.Instance.MarioFireballExplosion();
                 EnteredExplosionState = true;
             }
             

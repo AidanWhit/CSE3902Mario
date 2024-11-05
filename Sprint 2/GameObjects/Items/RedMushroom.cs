@@ -31,7 +31,7 @@ namespace Sprint_2.GameObjects.ItemSprites
             YPos = initialPosition.Y;
             Velocity = new Vector2(1, 0); // Starts moving rigjt
 
-            sprite = ItemFactory.Instance.CreateRedMushroom();
+            sprite = UniversalSpriteFactory.Instance.GetItemSprite(nameof(RedMushroom));
             OnSpawn = true;
             spawnedYPosition = initialPosition.Y;
 

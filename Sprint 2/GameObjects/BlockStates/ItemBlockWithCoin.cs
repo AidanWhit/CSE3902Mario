@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Sprint_2.Constants;
 using Sprint_2.Factories;
 using Sprint_2.GameObjects.ItemSprites;
 using Sprint_2.Interfaces;
@@ -19,7 +20,7 @@ namespace Sprint_2.GameObjects.BlockStates
         public ItemBlockWithCoin(IBlock block) : base(block) 
         {
             this.block = block;
-            sprite = BlockFactory.Instance.GetBlock("Question");
+            sprite = UniversalSpriteFactory.Instance.GetBlock(NamesOfSprites.SpriteNames.Question.ToString());
         }
 
         public override void BeHit(IPlayer player)

@@ -22,7 +22,7 @@ namespace Sprint_2.GameObjects.Misc
         {
             XPos = location.X;
             YPos = location.Y;
-            flagSprite = BackgroundFactory.Instance.CreateFlag();
+            flagSprite = UniversalSpriteFactory.Instance.GetFlagSprite();
         }
         public void Update(GameTime gameTime)
         {

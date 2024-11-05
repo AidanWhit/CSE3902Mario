@@ -4,6 +4,7 @@ using Sprint_2.Constants;
 using Sprint_2.Factories;
 using Sprint_2.Interfaces;
 using Sprint_2.LevelManager;
+using System.Security;
 
 namespace Sprint_2.GameObjects.ItemSprites
 {
@@ -26,7 +27,7 @@ namespace Sprint_2.GameObjects.ItemSprites
             this.topOfSourceBlock = topOfSourceBlock;
             OnSpawn = true;
 
-            sprite = ItemFactory.Instance.CreateFlower();
+            sprite = UniversalSpriteFactory.Instance.GetItemSprite(nameof(Flower));
         }
 
         public void Update(GameTime gameTime)

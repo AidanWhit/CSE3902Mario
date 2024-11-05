@@ -19,7 +19,7 @@ namespace Sprint_2.GameObjects.ItemSprites
 
         public StaticCoin(Vector2 location)
         {
-            sprite = ItemFactory.Instance.CreateStaticCoin();
+            sprite = UniversalSpriteFactory.Instance.GetStaticCoinSprite();
             XPos = location.X;
             YPos = location.Y;
 
@@ -36,7 +36,7 @@ namespace Sprint_2.GameObjects.ItemSprites
         public void DeleteItem() 
         {
             GameObjectManager.Instance.Updateables.Remove(this);
-            GameObjectManager.Instance.BackDrawables.Remove(this);
+            GameObjectManager.Instance.ForeDrawables.Remove(this);
             GameObjectManager.Instance.Static.Remove(this);
         }
 

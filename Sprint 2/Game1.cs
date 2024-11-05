@@ -76,10 +76,11 @@ namespace Sprint_2
 
         protected override void LoadContent()
         {
-            UniversalSpriteFactory.Instance.GetType();
+            
 
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
+            UniversalSpriteFactory.Instance.LoadAllContent(Content);
             MarioSpriteFactory.Instance.LoadAllContent(Content);
             EnemyFactory.Instance.LoadAllContent(Content);
             ItemFactory.Instance.LoadItemContent(Content);
@@ -114,7 +115,6 @@ namespace Sprint_2
         protected override void Update(GameTime gameTime)
         {
             gameState.Update(gameTime);
-            HUD.Instance.Update(gameTime);
             base.Update(gameTime);
         }
 
@@ -133,9 +133,6 @@ namespace Sprint_2
                 obj.Draw(spriteBatch, Color.White);
             }
 
-            //spriteBatch.End();
-
-            //spriteBatch.Begin();
             HUD.Instance.Draw(spriteBatch);
             spriteBatch.End();
 
