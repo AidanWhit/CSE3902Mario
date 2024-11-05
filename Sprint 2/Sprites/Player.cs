@@ -57,9 +57,12 @@ namespace Sprint_2.Sprites
                 ICommands reset = new ResetCommand();
                 reset.Execute();
             }
+
             UpdateFireballs(gameTime);
             PlayerState.Update(gameTime);
             PhysicsState.Update(gameTime);
+
+            //Debug.WriteLine("isJumping: " + isJumping);
         }
 
         public void Draw(SpriteBatch spriteBatch, Color color)
@@ -127,10 +130,10 @@ namespace Sprint_2.Sprites
         }
         public void Fall()
         {
-            PlayerState.Fall();
             isFalling = true;
+            isJumping = false;
             PhysicsState = new Falling(this);
-
+            PlayerState.Fall();
         }
         public void Idle()
         {
@@ -138,8 +141,7 @@ namespace Sprint_2.Sprites
             isCrouching = false;
             isJumping = false;
             isFalling = false;
-            scoreIndex = 0;
-            
+            scoreIndex = 0; 
         }
 
         public void Crouch()

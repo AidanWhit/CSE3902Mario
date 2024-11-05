@@ -34,7 +34,7 @@ namespace Sprint_2.MarioStates
             facing = Facing.Right;
             
             key = "RightMarioIdle";
-            currentSprite = MarioSpriteFactory.Instance.GetMarioSprite(key);
+            currentSprite = UniversalSpriteFactory.Instance.GetMarioSprite(key);
         }
 
         public void Update(GameTime gameTime)

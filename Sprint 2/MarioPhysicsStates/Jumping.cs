@@ -34,18 +34,19 @@ namespace Sprint_2.MarioPhysicsStates
                 {
                     mario.PlayerVelocity += MarioPhysicsConstants.marioJumpVelocity;
                 }
+
                 mario.YPos += (int)(mario.PlayerVelocity.Y * gameTime.ElapsedGameTime.TotalSeconds);
                 mario.XPos += (int)(mario.PlayerVelocity.X * gameTime.ElapsedGameTime.TotalSeconds);
 
                 mario.PlayerVelocity *= MarioPhysicsConstants.velocityDecay;
 
                 /* If max Jump height is reached, make mario fall */
-                if (Math.Abs(mario.YPos - originalMarioY) > MarioPhysicsConstants.maxJumpHeight)
+                if (Math.Abs(mario.YPos - originalMarioY) > MarioPhysicsConstants.maxJumpHeight || mario.PlayerVelocity.Y == 0)
                 {
                     mario.PlayerVelocity = new Vector2(mario.PlayerVelocity.X, 0);
                     mario.Fall();
-                    mario.PhysicsState = new Falling(mario);
                 }
+                
             }
 
         }

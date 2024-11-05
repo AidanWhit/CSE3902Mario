@@ -31,9 +31,8 @@ namespace Sprint_2.Commands.MarioCollisionCommands
             
             if (player.isFalling)
             {
-                player.PlayerVelocity = new Vector2(player.PlayerVelocity.X, MarioPhysicsConstants.bounceVelocity);
                 player.isJumping = true;
-
+                player.PlayerVelocity = new Vector2(player.PlayerVelocity.X, MarioPhysicsConstants.bounceVelocity);
                 SoundManager.Instance.PlaySoundEffect("stomp");
 
                 player.Jump();

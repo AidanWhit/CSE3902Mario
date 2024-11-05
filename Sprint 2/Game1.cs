@@ -76,21 +76,14 @@ namespace Sprint_2
 
         protected override void LoadContent()
         {
-            
-
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             UniversalSpriteFactory.Instance.LoadAllContent(Content);
-            MarioSpriteFactory.Instance.LoadAllContent(Content);
-            EnemyFactory.Instance.LoadAllContent(Content);
-            ItemFactory.Instance.LoadItemContent(Content);
-            BlockFactory.Instance.LoadAllContent(Content);
-            BackgroundFactory.Instance.LoadAllContent(Content);
 
             SoundManager.Instance.LoadAllBGM(Content);
             SoundManager.Instance.LoadAllSFX(Content);
 
-            mario = new Player(new Vector2(100, 400));
+            mario = new Player(Vector2.Zero);
             CollisionDetection = new CollisionDetection();
             
 

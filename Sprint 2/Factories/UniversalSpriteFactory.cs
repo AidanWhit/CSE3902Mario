@@ -6,13 +6,10 @@ using Sprint_2.GameObjects;
 using Sprint_2.GameObjects.ItemSprites;
 using Sprint_2.GameObjects.Misc;
 using Sprint_2.Interfaces;
-using Sprint_2.MarioStates;
 using Sprint_2.Sprites;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.Design;
 using System.Diagnostics;
-using System.Reflection.Metadata;
 using System.Xml;
 
 namespace Sprint_2.Factories
@@ -114,6 +111,7 @@ namespace Sprint_2.Factories
         public void LoadAllContent(ContentManager content)
         {
             marioSpriteSheet = content.Load<Texture2D>("marioSpriteSheet");
+            Debug.WriteLine("Loaded mario SpriteSheet: " + marioSpriteSheet.Bounds.ToString());
             fireBallSpriteSheet = content.Load<Texture2D>("MarioFireBallSpriteSheet");
             explosionSpriteSheet = content.Load<Texture2D>("MarioFireBallExplosionSpriteSheet");
 

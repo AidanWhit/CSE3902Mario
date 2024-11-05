@@ -21,14 +21,14 @@ namespace Sprint_2.MarioPhysicsStates
 
         public void Update(GameTime gameTime)
         {
-            
+
             if (mario.PlayerVelocity.X > -50f && mario.PlayerVelocity.X < 50f)
             {
                 if (!mario.isCrouching)
                 {
                     mario.Idle();
                 }
-                
+
             }
 
             if (mario.PlayerVelocity.Y < MarioPhysicsConstants.maxFallVelocity)
