@@ -1,6 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Sprint_2.Controls;
 using Sprint_2.Interfaces;
+using Sprint_2.LevelManager;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Sprint_2.GameStates
 {
-    public class PausedState : Interfaces.IUpdateable
+    public class PausedState : IGameState
     {
         private KeyboardControl keyboardControl;
         public PausedState(KeyboardControl keyboardControl)
@@ -21,6 +23,20 @@ namespace Sprint_2.GameStates
         public void Update(GameTime gameTime)
         {
             keyboardControl.Update();
+        }
+
+        public void Draw(SpriteBatch spriteBatch, Color color)
+        {
+            foreach (Interfaces.IDrawable obj in GameObjectManager.Instance.BackDrawables.ToList())
+            {
+                obj.Draw(spriteBatch, Color.White);
+            }
+            foreach (Interfaces.IDrawable obj in GameObjectManager.Instance.ForeDrawables.ToList())
+            {
+                obj.Draw(spriteBatch, Color.White);
+            }
+
+            HUD.Instance.Draw(spriteBatch);
         }
     }
 }

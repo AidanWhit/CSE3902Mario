@@ -1,14 +1,11 @@
-﻿using Microsoft.Xna.Framework.Input;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Input;
 using Sprint_2.Constants;
+using Sprint_2.GameStates;
 using Sprint_2.Interfaces;
+using Sprint_2.LevelManager;
+using Sprint_2.MarioPhysicsStates;
 using Sprint_2.Sound;
-using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Numerics;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Sprint_2.MarioStates
 {
@@ -57,6 +54,10 @@ namespace Sprint_2.MarioStates
                 SoundManager.Instance.StopBackgroundMusic();
                 SoundManager.Instance.PlayBackgroundMusic("youAreDead");
                 //SoundManager.Instance.PlaySoundEffect("marioDie");
+
+                mario.PhysicsState = new DeadMario(mario);
+                mario.PlayerVelocity = new Vector2(0, MarioPhysicsConstants.bounceVelocity);
+                GameObjectManager.Instance.Movers.Remove(mario);
 
                 mario.RemainingLives--;
             }

@@ -18,6 +18,7 @@ namespace Sprint_2
         private float time;
         private int lives;
         private List<ScorePopup> scorePopups;
+        private bool hideHUD = false;
 
         public HUD()
         {
@@ -59,31 +60,46 @@ namespace Sprint_2
         public void Draw(SpriteBatch spriteBatch)
         {
             // 定义顶部元素的起始位置和间隔
-            Vector2 startPosition = Game1.Instance.camera.GetLeftScreenBound() + new Vector2(50, 0);
-            int spacing = 75;  // 每个元素之间的间隔
-            lives = Game1.Instance.mario.RemainingLives;
-
-            // 绘制并排的 HUD 元素
-            spriteBatch.DrawString(font, $"Score: {score}", startPosition, Color.White);
-            spriteBatch.DrawString(font, $"Coins: {coins}", startPosition + new Vector2(spacing, 0), Color.Yellow);
-            spriteBatch.DrawString(font, $"World: {world}", startPosition + new Vector2(2 * spacing, 0), Color.White);
-            spriteBatch.DrawString(font, $"Time: {(int)time}", startPosition + new Vector2(3 * spacing, 0), Color.White);
-            spriteBatch.DrawString(font, $"Lives: {lives}", startPosition + new Vector2(4 * spacing, 0), Color.White);
-
-            // 绘制短暂显示的得分
-            foreach (var popup in scorePopups)
+            if (!hideHUD)
             {
-                popup.Draw(spriteBatch, font);
+                Vector2 startPosition = Game1.Instance.camera.GetLeftScreenBound() + new Vector2(50, 0);
+                int spacing = 75;  // 每个元素之间的间隔
+                lives = Game1.Instance.mario.RemainingLives;
+
+                // 绘制并排的 HUD 元素
+                spriteBatch.DrawString(font, $"Score: {score}", startPosition, Color.White);
+                spriteBatch.DrawString(font, $"Coins: {coins}", startPosition + new Vector2(spacing, 0), Color.Yellow);
+                spriteBatch.DrawString(font, $"World: {world}", startPosition + new Vector2(2 * spacing, 0), Color.White);
+                spriteBatch.DrawString(font, $"Time: {(int)time}", startPosition + new Vector2(3 * spacing, 0), Color.White);
+                spriteBatch.DrawString(font, $"Lives: {lives}", startPosition + new Vector2(4 * spacing, 0), Color.White);
+
+                // 绘制短暂显示的得分
+                foreach (var popup in scorePopups)
+                {
+                    popup.Draw(spriteBatch, font);
+                }
             }
         }
 
-        public void Reset()
+        public void ResetTime()
         {
-            score = 0;
-            coins = 0;
             time = 400;
-            lives = 3;
         }
+
+        public void CompleteReset()
+        {
+            coins = 0;
+            score = 0;
+            time = 400;
+
+            hideHUD = false;
+        }
+
+        public int GetScore()
+        {
+            return score;
+        }
+
     }
 
     public class ScorePopup

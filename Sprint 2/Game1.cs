@@ -18,6 +18,7 @@ using System;
 using Sprint_2.Collision;
 using System.Linq;
 using Sprint_2.GameStates;
+using Sprint_2.Constants;
 
 
 namespace Sprint_2
@@ -52,7 +53,7 @@ namespace Sprint_2
         private Vector2 levelBounds;
         private LevelLoader levelLoader;
         private CollisionDetection collisionDetection;
-        public Interfaces.IUpdateable gameState { get; set; }
+        public IGameState gameState { get; set; }
         public CollisionDetection CollisionDetection { get; private set; }
 
         public HUD Hud { get; private set; }
@@ -84,7 +85,7 @@ namespace Sprint_2
 
             SoundManager.Instance.PlayBGM("mainTheme");
 
-            mario = new Player(Vector2.Zero);
+            mario = new Player(Vector2.Zero, MarioPhysicsConstants.startingLives);
             CollisionDetection = new CollisionDetection();
             
 
@@ -118,16 +119,9 @@ namespace Sprint_2
             // Begin the sprite batch with the camera's transformation matrix
             spriteBatch.Begin(transformMatrix: camera.Transform);
 
-            foreach (Interfaces.IDrawable obj in GameObjectManager.Instance.BackDrawables.ToList())
-            {
-                obj.Draw(spriteBatch, Color.White);
-            }
-            foreach (Interfaces.IDrawable obj in GameObjectManager.Instance.ForeDrawables.ToList())
-            {
-                obj.Draw(spriteBatch, Color.White);
-            }
+            gameState.Draw(spriteBatch, Color.White);
 
-            HUD.Instance.Draw(spriteBatch);
+            
             spriteBatch.End();
 
             base.Draw(gameTime);
@@ -135,16 +129,33 @@ namespace Sprint_2
 
         public void Reload()
         {
-           
             GameObjectManager.Instance.Reset();
-            mario = new Player(Vector2.Zero);
+            mario = new Player(Vector2.Zero, mario.RemainingLives);
             InitControls.initializeControls(keyControl, mario);
             levelLoader.LoadLevel(@"LevelManager\level-1_data_pretty.xml");
             camera.Reset();
             SoundManager.Instance.Reset();
+            HUD.Instance.ResetTime();
             //UnloadContent();
             //LoadContent();
+        }
 
+        public void TotalReset()
+        {
+            GameObjectManager.Instance.Reset();
+
+            mario = new Player(Vector2.Zero, MarioPhysicsConstants.startingLives);
+
+            InitControls.initializeControls(keyControl, mario);
+            levelLoader.LoadLevel(@"LevelManager\level-1_data_pretty.xml");
+
+            camera.Reset();
+            SoundManager.Instance.Reset();
+            HUD.Instance.CompleteReset();
+
+            gameState = new PlayableState(keyControl);
+            //UnloadContent();
+            //LoadContent();
         }
 
         public Camera GetCamera()

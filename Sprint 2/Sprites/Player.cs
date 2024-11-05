@@ -38,7 +38,7 @@ namespace Sprint_2.Sprites
 
         private int[] score = new int[] { 100, 200, 400, 500, 800, 1000, 2000, 4000, 5000, 8000 };
         private int scoreIndex = 0;
-        public Player(Vector2 StartingLocation)
+        public Player(Vector2 StartingLocation, int lives)
         {
             XPos = (int)StartingLocation.X;
             YPos = (int)StartingLocation.Y;
@@ -46,8 +46,7 @@ namespace Sprint_2.Sprites
             PlayerState = new PlayerStateMachine(this);
 
             PhysicsState = new Grounded(this);
-
-            RemainingLives = MarioPhysicsConstants.startingLives;
+            RemainingLives = lives;
         }
         public void Update(GameTime gameTime)
         {

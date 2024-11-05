@@ -319,6 +319,13 @@
 /processorParam:TextureFormat=Color
 /build:flag.png
 
+#begin GameOverFont.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:GameOverFont.spritefont
+
 #begin goomba_dying1.png
 /importer:TextureImporter
 /processor:TextureProcessor
