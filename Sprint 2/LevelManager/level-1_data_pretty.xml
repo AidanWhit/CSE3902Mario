@@ -2961,12 +2961,5 @@
 		  <SizeX>2</SizeX>
 		  <SizeY>16</SizeY>
 	  </Item>
-
-	  <Item>
-		  <ObjectType>Player</ObjectType>
-		  <ObjectName>Mario</ObjectName>
-		  <Location>3024 298</Location>
-	  </Item>
-	  
   </Asset>
 </XnaContent>

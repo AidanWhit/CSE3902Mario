@@ -56,7 +56,6 @@ namespace Sprint_2
         public IGameState gameState { get; set; }
         public CollisionDetection CollisionDetection { get; private set; }
 
-        public HUD Hud { get; private set; }
         private SpriteFont hudFont;
 
         private Game1()
