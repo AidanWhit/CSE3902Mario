@@ -39,7 +39,7 @@ namespace Sprint_2.GameObjects.ItemSprites
             GameObjectManager.Instance.Updateables.Remove(this);
             GameObjectManager.Instance.ForeDrawables.Remove(this);
             GameObjectManager.Instance.Static.Remove(this);
-            SoundManager.Instance.PlaySoundEffect("coin");
+            //SoundManager.Instance.PlaySoundEffect("coin");
         }
 
         public Rectangle GetHitBox()
