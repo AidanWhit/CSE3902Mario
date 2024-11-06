@@ -1,6 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
 using Sprint_2.Constants;
+using Sprint_2.Controls;
 using Sprint_2.GameObjects.Misc;
+using Sprint_2.GameStates;
 using Sprint_2.Interfaces;
 using Sprint_2.LevelManager;
 using Sprint_2.MarioStates;
@@ -19,6 +21,8 @@ namespace Sprint_2.MarioPhysicsStates
         private Timer moveRightTimer;
         public FlagState(int bottomOfFlagPole, int widthOfFlagPole)
         {
+
+            InitControls.InitializeNonPauseProgramCommands(Game1.Instance.GetKeyboardControl());
             player = Game1.Instance.mario;
             this.bottomOfFlagPole = bottomOfFlagPole;
             this.widthOfFlagPole = widthOfFlagPole;
@@ -58,6 +62,7 @@ namespace Sprint_2.MarioPhysicsStates
 
                 timer.Elapsed += (source, e) => OnTimedEvent(source, e, player, moveRightTimer);
                 timer.Enabled = true;
+                timer.AutoReset = false;
                 
             }
         }
@@ -65,6 +70,7 @@ namespace Sprint_2.MarioPhysicsStates
         private static void OnTimedEvent(Object source, ElapsedEventArgs e, IPlayer player, Timer moveRightTimer)
         {
             GameObjectManager.Instance.BackDrawables.Remove(player);
+            Game1.Instance.gameState = new WinScreen();
             moveRightTimer.Dispose();
         }
 

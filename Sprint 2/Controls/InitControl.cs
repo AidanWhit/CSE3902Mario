@@ -51,5 +51,12 @@ namespace Sprint_2.Controls
             keyboardControl.RegisterOnPressCommand(Keys.R, new TotalResetCommand());
         }
 
+        public static void InitializeNonPauseProgramCommands(KeyboardControl keyboardControl)
+        {
+            keyboardControl.ClearCommands();
+            keyboardControl.RegisterOnPressCommand(Keys.Q, new QuitCommand());
+            keyboardControl.RegisterOnPressCommand(Keys.R, new TotalResetCommand());
+        }
+
     }
 }
