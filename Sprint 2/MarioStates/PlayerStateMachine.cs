@@ -241,11 +241,6 @@ namespace Sprint_2.MarioStates
             }
         }
 
-        public Vector2 getSize()
-        {
-            return healthState.GetSize();
-        }
-
         public Rectangle GetHitBox(Vector2 location)
         {
             ChangeSprite();

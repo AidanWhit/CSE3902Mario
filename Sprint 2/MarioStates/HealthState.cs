@@ -15,19 +15,12 @@ namespace Sprint_2.MarioStates
         private Vector2 size;
         public HealthEnum health { get; private set; }
 
-        private Vector2 marioSize;
-        private Vector2 bigMarioSize;
-
         private IPlayer mario;
 
         public HealthState(IPlayer mario)
         {
             health = HealthEnum.Mario;
             this.mario = mario;
-            marioSize = new Vector2(16 * 4, 16 * 4);
-            bigMarioSize = new Vector2(16 * 4, 32 * 4);
-
-            size = marioSize;
         }
 
 
@@ -35,14 +28,11 @@ namespace Sprint_2.MarioStates
         {
             if (health != HealthEnum.Dead && health != HealthEnum.FireMario)
             {
-                if (size != bigMarioSize)
+                if (health.Equals(HealthEnum.Mario))
                 {
                     mario.YPos -= mario.GetHitBox().Height;
                 }
-                size = bigMarioSize;
-                health++;
-
-                
+                health++; 
             }
         }
         public void Damage()
@@ -58,7 +48,7 @@ namespace Sprint_2.MarioStates
                 mario.PhysicsState = new DeadMario(mario);
                 mario.PlayerVelocity = new Vector2(0, MarioPhysicsConstants.bounceVelocity);
                 GameObjectManager.Instance.Movers.Remove(mario);
-
+               
                 mario.RemainingLives--;
             }
             else
@@ -76,19 +66,11 @@ namespace Sprint_2.MarioStates
                 mario.YPos += mario.GetHitBox().Height;
 
             }
-            size = marioSize;
         }
 
         public string GetHealth()
         {
             return health.ToString();
         }
-
-        public Vector2 GetSize()
-        {
-            return size;
-        }
-
-
     }
 }

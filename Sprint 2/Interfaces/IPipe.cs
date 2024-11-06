@@ -12,6 +12,5 @@ namespace Sprint_2.Interfaces
     {
         public float XPos { get; set; }
         public float YPos { get; set; }
-        public Rectangle GetHitBox();
     }
 }

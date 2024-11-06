@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Sprint_2.Commands.ProgramCommands;
 using Sprint_2.Constants;
+using Sprint_2.Controls;
 using Sprint_2.GameStates;
 using Sprint_2.Interfaces;
 using System;
@@ -18,6 +19,8 @@ namespace Sprint_2.MarioPhysicsStates
         public DeadMario(IPlayer mario)
         {
             this.mario = mario;
+            mario.PlayerVelocity = Vector2.Zero;
+            InitControls.InitializeNonPauseProgramCommands(Game1.Instance.GetKeyboardControl());
         }
 
         public void Update(GameTime gameTime)
