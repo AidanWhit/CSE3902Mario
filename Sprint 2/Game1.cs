@@ -90,11 +90,6 @@ namespace Sprint_2
 
             camera = new Camera(GraphicsDevice.Viewport, levelBounds);
 
-
-
-            ItemFactory.Instance.SetGameObjectManager(GameObjectManager.Instance);
-            EnemyFactory.Instance.SetGameObjectManager(GameObjectManager.Instance);
-
             levelLoader = new LevelLoader();
             levelLoader.LoadLevel(@"LevelManager\level-1_data_pretty.xml");
 

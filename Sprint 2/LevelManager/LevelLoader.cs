@@ -22,8 +22,6 @@ namespace Sprint_2.LevelManager
     public class LevelLoader
     {
         private XmlReader LevelReader;
-        private BackgroundFactory backgroundFactory;
-
         public LevelLoader()
         {
             

@@ -1,7 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Sprint_2.Interfaces;
 using Sprint_2.Constants;
-using Sprint_2.Interfaces;
 using Sprint_2.Sprites;
 using System.Diagnostics;
 using System;

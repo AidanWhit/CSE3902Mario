@@ -12,7 +12,7 @@ using System.Diagnostics;
 
 public class PauseCommand : ICommands
 {
-    private IUpdateable oldGameState;
+    //private IUpdateable oldGameState;
 
     public void Execute()
     {   
