@@ -2945,7 +2945,6 @@
 		  <SizeX>4</SizeX>
 		  <SizeY>150</SizeY>
 	  </Item>
-
 	  <Item>
 		  <ObjectType>Collider</ObjectType>
 		  <ObjectName>Collider</ObjectName>
@@ -2964,7 +2963,7 @@
 	  <Item>
 		  <ObjectType>Player</ObjectType>
 		  <ObjectName>Mario</ObjectName>
-		  <Location>48 432</Location>
+		  <Location>64 432</Location>
 	  </Item>
   </Asset>
 </XnaContent>
