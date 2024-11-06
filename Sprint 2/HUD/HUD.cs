@@ -76,21 +76,21 @@ namespace Sprint_2
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            // 定义顶部元素的起始位置和间隔
+            // define position and space
             if (!hideHUD)
             {
                 Vector2 startPosition = Game1.Instance.camera.GetLeftScreenBound() + new Vector2(50, 0);
-                int spacing = 75;  // 每个元素之间的间隔
+                int spacing = 75;  
                 lives = Game1.Instance.mario.RemainingLives;
 
-                // 绘制并排的 HUD 元素
+                // draw
                 spriteBatch.DrawString(font, $"Score: {score}", startPosition, Color.White);
                 spriteBatch.DrawString(font, $"Coins: {coins}", startPosition + new Vector2(spacing, 0), Color.Yellow);
                 spriteBatch.DrawString(font, $"World: {world}", startPosition + new Vector2(2 * spacing, 0), Color.White);
                 spriteBatch.DrawString(font, $"Time: {(int)time}", startPosition + new Vector2(3 * spacing, 0), Color.White);
                 spriteBatch.DrawString(font, $"Lives: {lives}", startPosition + new Vector2(4 * spacing, 0), Color.White);
 
-                // 绘制短暂显示的得分
+                // draw the score on the screen
                 foreach (var popup in scorePopups)
                 {
                     popup.Draw(spriteBatch, font);
