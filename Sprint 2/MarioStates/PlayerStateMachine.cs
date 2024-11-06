@@ -7,6 +7,7 @@ using Sprint_2.GameObjects;
 using Sprint_2.MarioPhysicsStates;
 using System.Diagnostics;
 using System.Linq.Expressions;
+using Sprint_2.LevelManager;
 
 namespace Sprint_2.MarioStates
 {
@@ -64,6 +65,19 @@ namespace Sprint_2.MarioStates
                 }
 
             }
+        }
+        public void Die()
+        {
+            currentSprite = UniversalSpriteFactory.Instance.GetDeadMarioSprite();
+
+            mario.PlayerVelocity = new Vector2(0, MarioPhysicsConstants.bounceVelocity);
+            GameObjectManager.Instance.Movers.Remove(mario);
+
+            mario.PhysicsState = new DeadMario(mario);
+
+            
+
+            mario.RemainingLives--;
         }
         public void PowerUp()
         {

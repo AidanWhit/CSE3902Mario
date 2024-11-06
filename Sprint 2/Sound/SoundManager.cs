@@ -87,7 +87,7 @@ namespace Sprint_2.Sound
         {
             if (!soundEffects.ContainsKey(name))
             {
-                soundEffects.Add(name, new SoundEffectWrapper(soundEffect));
+                //soundEffects.Add(name, new SoundEffectWrapper(soundEffect));
             }
         }
 

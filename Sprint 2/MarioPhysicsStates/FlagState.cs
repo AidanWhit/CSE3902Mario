@@ -5,6 +5,7 @@ using Sprint_2.Interfaces;
 using Sprint_2.LevelManager;
 using Sprint_2.MarioStates;
 using System;
+using System.Diagnostics;
 using System.Timers;
 
 namespace Sprint_2.MarioPhysicsStates
@@ -23,7 +24,7 @@ namespace Sprint_2.MarioPhysicsStates
             this.widthOfFlagPole = widthOfFlagPole;
 
             PlayerStateMachine.Facing facing = player.GetFacing();
-            if (facing == PlayerStateMachine.Facing.Left)
+            if (facing.Equals(PlayerStateMachine.Facing.Left))
             {
                 player.MoveRight();
             }

@@ -41,8 +41,7 @@ namespace Sprint_2.MarioPhysicsStates
                 }
                 else
                 {
-                    ICommands reset = new ResetCommand();
-                    reset.Execute();
+                    Game1.Instance.Reload();
                 }
                 
             }

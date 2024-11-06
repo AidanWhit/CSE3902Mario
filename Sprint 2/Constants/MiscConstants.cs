@@ -11,5 +11,6 @@ namespace Sprint_2.Constants
         public static Vector2 leftBorderPosition = new Vector2(0, 240);
         public static float cameraViewPortWidthScale = 8f;
         public static Matrix cameraScale = Matrix.CreateScale(2f, 2f, 1f);
+
     }
 }

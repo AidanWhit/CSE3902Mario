@@ -1,8 +1,11 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Sprint_2.Constants;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Xml.Serialization;
 
 namespace Sprint_2
 {
@@ -28,7 +31,7 @@ namespace Sprint_2
             coins = 0;
             world = "1-1";
             time = 400;
-            lives = 3;
+            lives = MarioPhysicsConstants.startingLives;
             scorePopups = new List<ScorePopup>();
         }
         
@@ -44,9 +47,23 @@ namespace Sprint_2
             score += points;
         }
 
+        public void AddScore(int points)
+        {
+            score += points;
+        }
+
         public void Update(GameTime gameTime)
         {
-            time -= (float)gameTime.ElapsedGameTime.TotalSeconds;
+            /* Need a better way to do this but it works for now */
+            if (time < 0)
+            {
+                time = 0;
+                Game1.Instance.mario.Die();
+            }
+            else if (time > 0)
+            {
+                time -= (float)gameTime.ElapsedGameTime.TotalSeconds;
+            }
             for (int i = scorePopups.Count - 1; i >= 0; i--)
             {
                 scorePopups[i].Update(gameTime);

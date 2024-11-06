@@ -46,5 +46,7 @@ namespace Sprint_2.Interfaces
         public string GetHealth();
 
         public PlayerStateMachine.Facing GetFacing();
+
+        public void Die();
     }
 }

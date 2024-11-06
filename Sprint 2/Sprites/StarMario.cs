@@ -153,5 +153,9 @@ namespace Sprint_2.Sprites
         {
             return decoratedPlayer.GetFacing();
         }
+        public void Die()
+        {
+            // Do Nothing
+        }
     }
 }

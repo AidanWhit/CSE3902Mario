@@ -195,6 +195,11 @@ namespace Sprint_2.Sprites
             SoundManager.Instance.PlaySoundEffect("stageClear");
             
         }
+
+        public void Die()
+        {
+            PlayerState.Die();
+        }
         public Rectangle GetHitBox()
         {
             return PlayerState.GetHitBox(new Vector2(XPos, YPos));
