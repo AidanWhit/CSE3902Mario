@@ -61,6 +61,7 @@ namespace Sprint_2.Sprites
 
                 ICommands reset = new ResetCommand();
                 reset.Execute();
+                Game1.Instance.mario.RemainingLives--;
 
             }
 
