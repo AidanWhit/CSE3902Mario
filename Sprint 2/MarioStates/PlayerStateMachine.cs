@@ -5,16 +5,16 @@ using Sprint_2.Interfaces;
 using Sprint_2.Constants;
 using Sprint_2.GameObjects;
 using Sprint_2.MarioPhysicsStates;
-using System.Diagnostics;
-using System.Linq.Expressions;
 using Sprint_2.LevelManager;
+using System.Timers;
+using System.Diagnostics;
 
 namespace Sprint_2.MarioStates
 {
     public class PlayerStateMachine
     {
         private HealthState healthState;
-        public ISprite currentSprite { get; set; }
+        private ISprite currentSprite;
         private PoseState poseState;
         public enum Facing { Left, Right };
         private Facing facing;
@@ -132,7 +132,12 @@ namespace Sprint_2.MarioStates
             {
 
                 facing = Facing.Left;
-                /* Potential source of sliding bug */
+
+                if (mario.PlayerVelocity.X > -MarioPhysicsConstants.maxXVelocity)
+                {
+                    mario.PlayerVelocity -= MarioPhysicsConstants.marioXVelocity;
+                }
+
                 if (mario.PlayerVelocity.X > MarioPhysicsConstants.maxSlideVelocity)
                 {
                     poseState.Slide();
@@ -141,15 +146,13 @@ namespace Sprint_2.MarioStates
                 {
                     poseState.Run();
                 }
-                if (mario.PlayerVelocity.X > -MarioPhysicsConstants.maxXVelocity)
-                {
-                    mario.PlayerVelocity -= MarioPhysicsConstants.marioXVelocity;
-                }
+                
             }
 
         }
         public void MoveRight()
         {
+            
             if (poseState.pose.Equals(PoseState.PoseEnum.Jump) || poseState.pose.Equals(PoseState.PoseEnum.Fall))
             {
                 if (mario.PlayerVelocity.X < MarioPhysicsConstants.maxXVelocity)
@@ -160,7 +163,11 @@ namespace Sprint_2.MarioStates
             else if (!poseState.pose.Equals(PoseState.PoseEnum.Crouch) && !healthState.health.Equals(HealthState.HealthEnum.Dead))
             {
                 facing = Facing.Right;
-                /* Most likely the source of the slide bug */
+                if (mario.PlayerVelocity.X < MarioPhysicsConstants.maxXVelocity)
+                {
+                    mario.PlayerVelocity += MarioPhysicsConstants.marioXVelocity;
+                }
+
                 if (mario.PlayerVelocity.X < MarioPhysicsConstants.maxSlideVelocity)
                 {
                     poseState.Slide();
@@ -169,10 +176,7 @@ namespace Sprint_2.MarioStates
                 {
                     poseState.Run();
                 }
-                if (mario.PlayerVelocity.X < MarioPhysicsConstants.maxXVelocity)
-                {
-                    mario.PlayerVelocity += MarioPhysicsConstants.marioXVelocity;
-                }
+                
             }
         }
         public void Idle()
@@ -205,9 +209,9 @@ namespace Sprint_2.MarioStates
         }
         public void Draw(SpriteBatch spritebatch, Color color)
         {
+            
             if (key.Contains("Shoot"))
             {
-                
                 currentSprite.Draw(spritebatch, new Vector2(mario.XPos, mario.YPos), color * opacity);
                 currentSprite = oldSprite;
             }

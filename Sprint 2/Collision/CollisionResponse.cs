@@ -16,16 +16,11 @@ namespace Sprint_2.Collision
 {
     public class CollisionResponse
     {
-        private Dictionary<string, (Type, Type)> collisionDict;
+        private Dictionary<string, (Type, Type)> collisionDict = new Dictionary<string, (Type, Type)>();
 
         public CollisionResponse()
         {
             LoadCommandDictionary();
-            collisionDict = GameObjectManager.Instance.GetCollisionDictionary();
-
-            (Type, Type) foundCommand;
-            collisionDict.TryGetValue("IPlayerGreenMushroomLeft", out foundCommand);
-            Debug.WriteLine("foundCommand: " + foundCommand);
         }
 
 
@@ -67,7 +62,7 @@ namespace Sprint_2.Collision
                     Type command1 = Type.GetType(sourceCommand);
                     Type command2 = Type.GetType(receiverCommand);
 
-                    GameObjectManager.Instance.AddCommandMapping(key, command1, command2);
+                    collisionDict.Add(key, (command1, command2));
                 }
             }
         }

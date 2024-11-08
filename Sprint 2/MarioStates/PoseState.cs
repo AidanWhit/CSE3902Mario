@@ -50,7 +50,7 @@ namespace Sprint_2.MarioStates
 
         public void Run()
         {
-            if (pose == PoseEnum.Idle)
+            if (pose == PoseEnum.Idle || pose == PoseEnum.Slide)
             {
                 pose = PoseEnum.Run;
             }

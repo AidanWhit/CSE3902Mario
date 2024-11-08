@@ -22,7 +22,7 @@ namespace Sprint_2.LevelManager
 {
     public class GameObjectManager
     {
-        private static GameObjectManager instance = null;
+        private static GameObjectManager instance;
         public static GameObjectManager Instance
         {
             get
@@ -44,23 +44,12 @@ namespace Sprint_2.LevelManager
         public List<ICollideable> Movers { get; set; } = new List<ICollideable>();
         public List<ICollideable> Static { get; set; } = new List<ICollideable>();
 
-        private Dictionary<string, (Type, Type)> collisionCommandMap = new Dictionary<string, (Type, Type)>();
-
         private GameObjectManager()
         {   
             for (int i = 0; i < Blocks.Length; i++)
             {
                 Blocks[i] = new List<ICollideable>();
             }
-        }
-
-        public void AddCommandMapping(string entry, Type sourceCommand, Type receiverCommand)
-        {
-            collisionCommandMap.Add(entry, (sourceCommand, receiverCommand));
-        }
-        public Dictionary<string, (Type, Type)> GetCollisionDictionary()
-        {
-            return collisionCommandMap;
         }
         
         public List<ICollideable> GetNearbyBlocks(int column)
@@ -98,7 +87,6 @@ namespace Sprint_2.LevelManager
         }
         public void Reset()
         {
-            //collisionCommandMap.Clear();
             Static.Clear();
             Movers.Clear();
             Updateables.Clear();
