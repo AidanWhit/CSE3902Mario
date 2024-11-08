@@ -53,7 +53,8 @@ namespace Sprint_2.Commands.MarioCollisionCommands
             int locationRelativeToFlagPole = bottomOfCollision - YPosOfFlagPole;
             int score;
 
-            /* Ask professor for a better way to structure this */
+            /* Use a data table that has the range with its respective score. Based on location determine what range it falls into
+             * Lower Bound | Upper Bound | Score */
             if (locationRelativeToFlagPole == 1)
             {
                 score = 5000;

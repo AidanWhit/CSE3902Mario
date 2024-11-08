@@ -31,12 +31,11 @@ namespace Sprint_2.Commands.MarioCollisionCommands
             
             if (player.isFalling)
             {
-                player.isJumping = true;
                 player.PlayerVelocity = new Vector2(player.PlayerVelocity.X, MarioPhysicsConstants.bounceVelocity);
                 SoundManager.Instance.PlaySoundEffect("stomp");
 
-                player.Jump();
-
+                player.isFalling = false;
+                player.Bounce();
                 
                 HUD.Instance.AddScorePopUp(((Player)player).GetScore(), new Vector2(enemy.XPos, enemy.YPos));
             }

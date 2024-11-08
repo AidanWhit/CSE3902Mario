@@ -45,5 +45,9 @@ namespace Sprint_2.Constants
 
         public static float maxSlideVelocity = 50f;
         public static int maxNumOfFireballs = 2;
+
+        public static int heightOfCrouch = 22;
+
+        public static int minTransitionToFallState = -5;
     }
 }

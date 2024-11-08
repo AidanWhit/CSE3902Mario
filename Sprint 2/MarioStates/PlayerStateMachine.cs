@@ -102,12 +102,7 @@ namespace Sprint_2.MarioStates
         }
         public void Jump()
         {
-            if (!healthState.health.Equals(HealthState.HealthEnum.Dead))
-            {
-                poseState.Jump();
-                mario.PhysicsState = new Jumping(mario);
-            }
-            
+            poseState.Jump();
         }
         public void Fall()
         {

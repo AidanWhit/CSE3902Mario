@@ -1,4 +1,5 @@
 ﻿using Sprint_2.Interfaces;
+using Sprint_2.MarioPhysicsStates;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -57,15 +58,13 @@ namespace Sprint_2.MarioStates
 
         public void Crouch()
         {
-            if (pose != PoseEnum.Jump && pose != PoseEnum.Fall && !mario.isCrouching)
+            if (pose != PoseEnum.Jump && pose != PoseEnum.Fall)
             {
-                
+                //Debug.WriteLine("Entered change pose to crouch: " + System.DateTime.Now);
                 mario.isCrouching = true;
                 int bottomPositionOfSprite = mario.GetHitBox().Bottom;
                 pose = PoseEnum.Crouch;
                 mario.YPos = bottomPositionOfSprite - mario.GetHitBox().Height;
-
-                
             }
         }
         public void Idle()

@@ -19,7 +19,8 @@ namespace Sprint_2.Controls
         {
             keyControl.ClearCommands();
 
-            keyControl.RegisterCommand(Keys.W, new MarioFacingUpCommand(mario));
+            //keyControl.RegisterCommand(Keys.W, new MarioFacingUpCommand(mario));
+            keyControl.RegisterOnPressCommand(Keys.W, new MarioOnJumpPressCommand(mario));
             keyControl.RegisterCommand(Keys.S, new MarioFacingDownCommand(mario));
             keyControl.RegisterCommand(Keys.D, new MarioFacingRightCommand(mario));
             keyControl.RegisterCommand(Keys.A, new MarioFacingLeftCommand(mario));

@@ -48,5 +48,6 @@ namespace Sprint_2.Interfaces
         public PlayerStateMachine.Facing GetFacing();
 
         public void Die();
+        public void Bounce();
     }
 }

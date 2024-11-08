@@ -15,10 +15,12 @@ namespace Sprint_2.Commands.MarioCollisionCommands
     public class MarioCollideTopCommand : ICommands
     {
         private IPlayer mario;
+        private ICollideable collideable;
         private int height;
         public MarioCollideTopCommand(IPlayer player, ICollideable block, Rectangle collisionIntersection)
         {
             mario = player;
+            collideable = block;
             height = collisionIntersection.Height;
         }
 
@@ -27,11 +29,12 @@ namespace Sprint_2.Commands.MarioCollisionCommands
             
             if (mario.isFalling)
             {
-                mario.Idle();
+                
                 mario.YPos -= height;
+                mario.Idle();
                 mario.PhysicsState = new Grounded(mario);
             }
-            if (!mario.isJumping)
+            else if (!mario.isJumping)
             {
                 mario.YPos -= height;
                 mario.PlayerVelocity = new Vector2(mario.PlayerVelocity.X, MarioPhysicsConstants.gravity);

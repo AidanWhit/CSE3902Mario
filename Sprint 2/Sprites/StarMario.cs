@@ -157,5 +157,10 @@ namespace Sprint_2.Sprites
         {
             // Do Nothing
         }
+
+        public void Bounce()
+        {
+            // Star Mario can not bounce on enemies
+        }
     }
 }

@@ -129,11 +129,23 @@ namespace Sprint_2.Sprites
         {
             if (!isJumping && !isFalling)
             {
-                PlayerState.Jump();
                 isJumping = true;
+                PhysicsState = new Jumping(this);
+                PlayerState.Jump();
                 SoundManager.Instance.PlaySoundEffect("jumpSmall");
             } 
             
+        }
+
+        public void Bounce()
+        {
+            if (!isJumping && !isFalling)
+            {
+                isJumping = true;
+                PhysicsState = new BounceState(this);
+                PlayerState.Jump();
+                SoundManager.Instance.PlaySoundEffect("jumpSmall");
+            }
         }
         public void Fall()
         {
@@ -161,6 +173,7 @@ namespace Sprint_2.Sprites
             if (!isCrouching && !isJumping && !isFalling)
             {
                 isCrouching = true;
+                //PlayerState.Crouch();
             }
         }
 

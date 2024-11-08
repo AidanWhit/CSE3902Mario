@@ -27,8 +27,6 @@ namespace Sprint_2.Commands.MarioCollisionCommands
         {
             if (mario.isJumping)
             {
-                /* Commenting out this line fixes the crouch bug that occurs when you hit a block and then immediately crouch
-                 while in the air. I have no idea why it fixes it. */
                 mario.YPos += height;
                 mario.PlayerVelocity = new Vector2(mario.PlayerVelocity.X, 0);
                 mario.Fall();
