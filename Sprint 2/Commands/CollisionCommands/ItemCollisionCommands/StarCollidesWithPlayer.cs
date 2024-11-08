@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Sprint_2.Constants;
 using Sprint_2.GameObjects.ItemSprites;
 using Sprint_2.Interfaces;
 using Sprint_2.Sound;
@@ -26,7 +27,7 @@ namespace Sprint_2.Commands.CollisionCommands.ItemCollisionCommands
         public void Execute()
         {
             star.DeleteItem();
-            HUD.Instance.AddScorePopUp(1000, new Vector2(star.XPos, star.YPos));
+            HUD.Instance.AddScorePopUp(MiscConstants.powerUpPoints, new Vector2(star.XPos, star.YPos));
             //SoundManager.Instance.StopBackgroundMusic();
             //SoundManager.Instance.PlayBackgroundMusic("starman");
             //SoundManager.Instance.PlayBGM("mainTheme");

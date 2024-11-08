@@ -22,6 +22,10 @@ namespace Sprint_2.Constants
             {(134, 150), 100 }
         };
         public static int maxFlagScore = 5000;
+        public static Vector2 levelBounds = new Vector2(3744, 240);
+
+        public static int powerUpPoints = 1000;
+        public static int coinPoints = 200;
 
 
 

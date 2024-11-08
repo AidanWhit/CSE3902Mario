@@ -1,11 +1,6 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
-using Sprint_2.Commands.MarioItemCommands;
-using Sprint_2.Commands.MarioMovementCommands;
-using Sprint_2.Commands.MarioAttackCommands;
-using Sprint_2.Commands.ProgramCommands;
 using Sprint_2.Controls;
 using Sprint_2.Factories;
 using Sprint_2.Interfaces;
@@ -13,10 +8,7 @@ using Sprint_2.Sprites;
 using Sprint_2.Sound;
 using Sprint_2.ScreenCamera;
 using Sprint_2.LevelManager;
-using System.Diagnostics;
-using System;
 using Sprint_2.Collision;
-using System.Linq;
 using Sprint_2.GameStates;
 using Sprint_2.Constants;
 
@@ -70,7 +62,7 @@ namespace Sprint_2
             keyControl = new KeyboardControl();
             
             // Set the level bounds (adjust these values to match your level size)
-            levelBounds = new Vector2(3744, 240);
+            levelBounds = MiscConstants.levelBounds;
             base.Initialize();
         }
 

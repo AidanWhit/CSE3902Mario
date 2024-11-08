@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using System.Diagnostics;
+using Sprint_2.Constants;
 
 namespace Sprint_2.Commands.MarioItemCommands
 {
@@ -26,7 +27,7 @@ namespace Sprint_2.Commands.MarioItemCommands
             // Used for testing will be deleted later
             if (item != null)
             {
-                HUD.Instance.AddScorePopUp(1000, new Vector2(item.XPos, item.YPos));
+                HUD.Instance.AddScorePopUp(MiscConstants.powerUpPoints, new Vector2(item.XPos, item.YPos));
             }
             //SoundManager.Instance.PlaySoundEffect("1-up");
             mario.PowerUp();

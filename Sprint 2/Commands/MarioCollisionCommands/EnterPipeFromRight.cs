@@ -17,6 +17,8 @@ namespace Sprint_2.Commands.MarioCollisionCommands
         private Rectangle collisionRect;
         private int rightSide;
         private Timer enterPipeTimer;
+
+        private static Vector2 marioExitPosition = new Vector2(2624, 400);
         public EnterPipeFromRight(IPlayer player, ICollideable collideable, Rectangle collisionRect)
         {
             this.player = player;
@@ -27,7 +29,6 @@ namespace Sprint_2.Commands.MarioCollisionCommands
 
         public void Execute()
         {
-            Debug.WriteLine("EnteredPipe");
             GameObjectManager.Instance.Updateables.Remove(player);
             GameObjectManager.Instance.Movers.Remove(player);
             SoundManager.Instance.PlaySoundEffect("pipe");
@@ -54,13 +55,13 @@ namespace Sprint_2.Commands.MarioCollisionCommands
 
                 levelLoader.LoadLevel(@"LevelManager\level-1_data_pretty.xml");
                 Game1.Instance.camera.Reset();
-                Game1.Instance.GetCamera().SetLevelBounds(new Vector2(3744, 240));
+                Game1.Instance.GetCamera().SetLevelBounds(MiscConstants.levelBounds);
 
                 SoundManager.Instance.StopBackgroundMusic();
                 SoundManager.Instance.PlayBGM("mainTheme");
 
-                player.XPos = 2624;
-                player.YPos = 400;
+                player.XPos = (int)marioExitPosition.X;
+                player.YPos = (int)marioExitPosition.Y;
                 
 
                 timer.Dispose();

@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Sprint_2.Constants;
 using Sprint_2.GameObjects;
 using Sprint_2.GameObjects.Enemies.EnemySprites;
 using Sprint_2.Interfaces;
@@ -28,11 +29,11 @@ namespace Sprint_2.Commands.CollisionCommands.EnemyCollisionCommands
         {
             if (collider is StarMario)
             {
-                HUD.Instance.AddScorePopUp(100, new Vector2(enemy.XPos, enemy.YPos));
+                HUD.Instance.AddScorePopUp(EnemyConstants.pointsFromStarMario, new Vector2(enemy.XPos, enemy.YPos));
             }
             else if (collider is FireBall)
             {
-                HUD.Instance.AddScorePopUp(200, new Vector2(enemy.XPos, enemy.YPos));
+                HUD.Instance.AddScorePopUp(EnemyConstants.pointsFromFireball, new Vector2(enemy.XPos, enemy.YPos));
             }
             else
             {

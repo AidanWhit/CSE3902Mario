@@ -49,5 +49,6 @@ namespace Sprint_2.Constants
         public static int heightOfCrouch = 22;
 
         public static int minTransitionToFallState = -5;
+        public static float initialJumpVelocity = -50;
     }
 }

@@ -21,7 +21,7 @@ namespace Sprint_2.Collision
                 }
                 else
                 {
-                    return (collisionRectangle,side.Left);
+                    return (collisionRectangle, side.Left);
                 }
             }
             /* Collision is top or bottom */
@@ -35,7 +35,7 @@ namespace Sprint_2.Collision
                 {
                     return (collisionRectangle, side.Bottom);
                 }
-               
+
             }
         }
     }

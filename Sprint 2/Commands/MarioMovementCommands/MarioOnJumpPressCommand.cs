@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Sprint_2.Constants;
 using Sprint_2.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -25,7 +26,7 @@ namespace Sprint_2.Commands.MarioMovementCommands
                 {
                     player.ReleaseCrouch();
                 }
-                player.PlayerVelocity = new Vector2(player.PlayerVelocity.X, -50);
+                player.PlayerVelocity = new Vector2(player.PlayerVelocity.X, MarioPhysicsConstants.initialJumpVelocity);
                 player.Jump();
             }
             

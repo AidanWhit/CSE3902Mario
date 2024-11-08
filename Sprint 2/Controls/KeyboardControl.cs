@@ -68,19 +68,5 @@ namespace Sprint_2.Controls
             onPressCommandMappings.Clear();
             onReleaseCommandMappings.Clear();
         }
-
-        /* Testing 3 below to switch between different key mappings */
-        public void SetControllerCommands(Dictionary<Keys, ICommands> commands)
-        {
-            controllerMappings = commands;
-        }
-        public void SetOnPressCommands(Dictionary<Keys, ICommands> onPressCommands)
-        {
-            onPressCommandMappings = onPressCommands;
-        }
-        public void SetOnReleaseCommands(Dictionary<Keys, ICommands> onReleaseCommands)
-        {
-            onReleaseCommandMappings = onReleaseCommands;
-        }
     }
 }

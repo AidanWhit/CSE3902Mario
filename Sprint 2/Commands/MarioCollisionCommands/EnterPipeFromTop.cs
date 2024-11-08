@@ -62,7 +62,7 @@ namespace Sprint_2.Commands.MarioCollisionCommands
                 GameObjectManager.Instance.Reset();
                 leveLoader.LoadLevel(@"LevelManager\XMLFiles\UndergroundXML.xml");
                 Game1.Instance.GetCamera().Reset();
-                Game1.Instance.GetCamera().SetLevelBounds(new Vector2(240, 240));
+                Game1.Instance.GetCamera().SetLevelBounds(new Vector2(0, MiscConstants.levelBounds.Y));
 
                 SoundManager.Instance.StopBackgroundMusic();
                 SoundManager.Instance.PlayBackgroundMusic("underworld");
