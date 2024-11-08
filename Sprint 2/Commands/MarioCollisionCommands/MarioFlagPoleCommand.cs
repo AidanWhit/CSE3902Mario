@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Sprint_2.Constants;
 using Sprint_2.GameObjects.Misc;
 using Sprint_2.GameStates;
 using Sprint_2.Interfaces;
@@ -51,35 +52,22 @@ namespace Sprint_2.Commands.MarioCollisionCommands
         private void CalculatePointsEarned(int bottomOfCollision, int YPosOfFlagPole)
         {
             int locationRelativeToFlagPole = bottomOfCollision - YPosOfFlagPole;
-            int score;
+            int score = 0;
 
-            /* Use a data table that has the range with its respective score. Based on location determine what range it falls into
-             * Lower Bound | Upper Bound | Score */
-            if (locationRelativeToFlagPole == 1)
+            bool scoreFound = false;
+            foreach (KeyValuePair<(int, int), int> entry in MiscConstants.flagPoints)
             {
-                score = 5000;
-            } 
-            else if (1 < locationRelativeToFlagPole && locationRelativeToFlagPole <= 26)
-            {
-                score = 4000;
+                if (entry.Key.Item1 < locationRelativeToFlagPole && locationRelativeToFlagPole <= entry.Key.Item2)
+                {
+                    score = entry.Value;
+                    scoreFound = true;
+                    break;
+                }
             }
-            else if (26 < locationRelativeToFlagPole && locationRelativeToFlagPole <= 71)
+            if (!scoreFound)
             {
-                score = 2000;
+                score = MiscConstants.maxFlagScore;
             }
-            else if (71 < locationRelativeToFlagPole && locationRelativeToFlagPole <= 94)
-            {
-                score = 800;
-            }
-            else if (94 < locationRelativeToFlagPole && locationRelativeToFlagPole <= 133)
-            {
-                score = 400;
-            }
-            else
-            {
-                score = 100;
-            }
-
             HUD.Instance.AddScore(score);
         }
     }

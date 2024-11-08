@@ -2942,7 +2942,7 @@
 		  <ObjectType>Collider</ObjectType>
 		  <ObjectName>FlagCollider</ObjectName>
 		  <Location>3173 282</Location>
-		  <SizeX>4</SizeX>
+		  <SizeX>6</SizeX>
 		  <SizeY>150</SizeY>
 	  </Item>
 	  <Item>
