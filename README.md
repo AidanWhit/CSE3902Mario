@@ -35,15 +35,15 @@ adventure that brings joy to gamers of all ages. Get ready to jump, run, and sav
 - R: Reset
 - E: Force the Player to take damage
 
-## Sprint3 Content
+## Sprint4 Content
 
-- **Camera:** Camera will manages the player’s view by smoothly following their horizontal movement while keeping the vertical position fixed. It uses interpolation for smooth transitions, clamps movement within level boundaries, and applies scaling to ensure the game world is rendered correctly on the screen.
-- **Background:** Backgrounds can be drawn in two ways: by giving the similar data as other blocks and items, given their sprite location; or by directly generating a background image for the entire level.
-- **XML files:** We have 2 XML files for testing level and SMB 1-1, the xml files contain all the properties of the objects in the level.
-- **LevelLoader:** Given an xml file of object data, the level loader reads through all of these items and then creates objects from that data based on what the data represents. These created objects are then added into specific lists in GameObjectManager based on what kind of object they are. 
-- **Game Object Manager:** GameObjectManager categorizes all the objects needed in the game and stores them as collections.
-- **Collision Detection:** Collision Detection uses a list of all moveable collideables and static collideables from GameObjectManager to detect collisions. If two items are intersecting, the ResolveCollision from the CollisionResponse class is called to deal with that specific collision
-- **Collision Response:** Using a dictionary of keys and their associted commands, commands are instantiated and then executed during runtime to resolve collisions. The key consists of the collision type of the source object, the collision type of the receiver object, as well as the side that the collison was detected on in reference to the source. 
+- **Sound:** The sound system is designed to handle background music (BGM) and sound effects (SFX) in a clean, reusable, and scalable way. It ensures that:
+- Multiple sound effects can play simultaneously.
+- Background music can transition seamlessly between states.
+- Sounds can be paused, resumed, stopped, or adjusted in volume dynamically
+
+
+
 
 
 ## How to Load Different Levels

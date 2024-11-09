@@ -11,28 +11,28 @@ Here is the Sprint Planner that will be used to document our plans, design chang
 | HUD | 8hrs |8hrs|Zhuoyang Li| 10/30|
 | Sounds |8hrs|8hrs| Jingyu Fu| 10/27| 10/24
 | Flag Collison + Animation | 3-4 hours | 3-4 hours | Chirstian + Aidan | 10/26 | 10/24 |
-| Underground XML | 1-2 hours | 1-2 hours | Zhuoyang Li| 10/28 |
+| Underground XML | 1-2 hours | 1-2 hours | Zhuoyang Li| 10/28 | 10/28
 | Collision on entering/leaving underground  | 2 hours | 2 hours | Aidan | 10/28 |
 | Score points appear on screen | 1-2 hrs| 1-2hrs | Zhuoyang Li | 10/28| |
-| Remove magic numbers/strings | 6 hrs| 6 hrs | Everyone | 11/4 |
+| Remove magic numbers/strings | 6 hrs| 6 hrs | Everyone | 11/4 | 11/4
 | Create stationary coin for underground | 2 hours |  2 hours | Christian | 10/30 |
 | Pausing the Game |2hrs|2hrs | Jingyu Fu|10/27| 10/24
-| Win State | 2hrs| 2hrs |Jinguy Fu|10/27| I think the flagpole-team did it for me, thx lol
-| Game Over state | 2hrs|2hrs  |Jingyu Fu|10/27|
-| Grader Meeting | 1 hour | 1 hour | Everyone | Sometime during the last week |
+| Win State | 2hrs| 2hrs |Jinguy Fu|10/27| 10/27
+| Game Over state | 2hrs|2hrs  |Jingyu Fu&|10/27|10/27
+| Grader Meeting | 1 hour | 1 hour | Everyone | Sometime during the last week | 11/6 & 11/8
 
 ### BackLog tasks from Sprint3
 | Tasks | Time(Effort) | Time Remaining | In Progress (Name) | Expected Finish Date | Finished Date |
 |------:|--------------|----------------|--------------------|----------------------|---------------|
-| Move Keyboard instantiation to a different class | 2hours | 2hrs | Hahn | 10/28
+| Move Keyboard instantiation to a different class | 2hours | 2hrs | Hahn | 10/28 |
 | Brick break effect | 2 hours| 2hours | Aidan | 10/28 |
-| Refactor GameObjectManager | 2hrs | 2hrs | Hahn | 10/28
-| Figure out to enter underground via different levels or teleportation | 4hrs | 4hrs | Hahn | 10/30
-| Add the ability to add sprite data to factories through a file | 2hrs| 2hrs| Hahn | 10/30
+| Refactor GameObjectManager | 2hrs | 2hrs | Hahn | 10/28|
+| Figure out to enter underground via different levels or teleportation | 4hrs | 4hrs | Hahn | 10/30|
+| Add the ability to add sprite data to factories through a file | 2hrs| 2hrs| Hahn | 10/30|
 | Possibly refactor the player class | 4 hours | 4 hours | Aidan | 11/4 |
 
 
-## List of features to be added
+## List of features(classes)
 Strikethrough implies the items have been completed\
 * HUD
   - Text Class
@@ -42,6 +42,8 @@ Strikethrough implies the items have been completed\
   - Coin Counter
 * Sound Manager
   - ISound interface
+  - SoundEffectWrapper
+  - SoundManager
   - SFX
   - BGM
 * State Manager
