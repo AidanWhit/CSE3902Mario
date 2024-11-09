@@ -27,6 +27,9 @@ namespace Sprint_2.Constants
         public static int powerUpPoints = 1000;
         public static int coinPoints = 200;
 
+        public const int blockHeightChange = -2;
+        public const int blockTotalHeightChange = 6;
+
 
 
     }

@@ -12,10 +12,12 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Xml;
 
+
 namespace Sprint_2.Factories
 {
     public class UniversalSpriteFactory
     {
+        private const int defaultScale = 1;
         private static UniversalSpriteFactory instance = new UniversalSpriteFactory();
         public static UniversalSpriteFactory Instance { get { return instance; } }
 
@@ -111,7 +113,6 @@ namespace Sprint_2.Factories
         public void LoadAllContent(ContentManager content)
         {
             marioSpriteSheet = content.Load<Texture2D>("marioSpriteSheet");
-            Debug.WriteLine("Loaded mario SpriteSheet: " + marioSpriteSheet.Bounds.ToString());
             fireBallSpriteSheet = content.Load<Texture2D>("MarioFireBallSpriteSheet");
             explosionSpriteSheet = content.Load<Texture2D>("MarioFireBallExplosionSpriteSheet");
 
@@ -140,13 +141,13 @@ namespace Sprint_2.Factories
                 key = key.Replace("Fall", "Jump");
             }
             spriteData.TryGetValue(key, out frames);
-            return new FrameArrayFormattedSprite(marioSpriteSheet, frames, 1);
+            return new FrameArrayFormattedSprite(marioSpriteSheet, frames, defaultScale);
         }
 
         public ISprite GetDeadMarioSprite()
         {
             spriteData.TryGetValue(NamesOfSprites.SpriteNames.DeadMario.ToString(), out frames);
-            return new FrameArrayFormattedSprite(marioSpriteSheet, frames, 1);
+            return new FrameArrayFormattedSprite(marioSpriteSheet, frames, defaultScale);
         }
 
         public ISprite MarioFireball()
@@ -167,33 +168,33 @@ namespace Sprint_2.Factories
             /* Placeholder, will be changed to be something better */
             if (id.Equals(NamesOfSprites.SpriteNames.UndergroundPipe.ToString()))
             {
-                return new FrameArrayFormattedSprite(undergroundPipe, frames, 1);
+                return new FrameArrayFormattedSprite(undergroundPipe, frames, defaultScale);
             }
-            return new FrameArrayFormattedSprite(blockSpriteSheet, frames, 1);
+            return new FrameArrayFormattedSprite(blockSpriteSheet, frames, defaultScale);
         }
 
         public ISprite CreateEnemy(string key)
         {
             spriteData.TryGetValue(key, out frames);
-            return new FrameArrayFormattedSprite(enemies, frames, 1);
+            return new FrameArrayFormattedSprite(enemies, frames, defaultScale);
         }
 
         public ISprite GetItemSprite(string key)
         {
             spriteData.TryGetValue(key, out frames);
-            return new FrameArrayFormattedSprite(items, frames, 1);
+            return new FrameArrayFormattedSprite(items, frames, defaultScale);
         }
 
         public ISprite GetStaticCoinSprite()
         {
             spriteData.TryGetValue(nameof(StaticCoin), out frames);
-            return new FrameArrayFormattedSprite(staticCoin, frames, 1);
+            return new FrameArrayFormattedSprite(staticCoin, frames, defaultScale);
         }
 
         public ISprite GetFlagSprite()
         {
             spriteData.TryGetValue(nameof(Flag), out frames);
-            return new FrameArrayFormattedSprite(flagSprite, frames, 1);
+            return new FrameArrayFormattedSprite(flagSprite, frames, defaultScale);
         }
 
         public IStaticSprite GetBackgroundSprite(string key, Vector2 location)
