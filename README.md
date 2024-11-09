@@ -41,15 +41,11 @@ adventure that brings joy to gamers of all ages. Get ready to jump, run, and sav
 - Multiple sound effects can play simultaneously.
 - Background music can transition seamlessly between states.
 - Sounds can be paused, resumed, stopped, or adjusted in volume dynamically
+- SpriteData for the SpriteFactory is loaded into a dictionary from an xml file.
+- Mario can transition between levels (overworld and the underworld) via the pipes located in the levels
+- Working HUD that displays remaining time, the player's score and coins, and the player's remaining lives
+- Different GameStates such as Paused, Playable, and Win that dictate how the game is updated as well as what keyboard controls are accepted in each state
 
-
-
-
-
-## How to Load Different Levels
-
-In this sprint, we have created two levels, and the data are stored in two XML files, and we need to let LevelLoader read the two files separately to enter different levels.
-The test level be loaded instead of level 1-1 by commenting out line 123 in Game1.cs and the uncommenting line 124. This will then have level loader load the xml file associated with the test level.
 
 ## Team Management
 
@@ -75,9 +71,7 @@ The project progress management was also better than last time, we created diffe
 
 ## Known Bugs
 
-* Sometimes when holding crouch during a jump and then landing, mario will move up and down really quickly
 * Mario can clip out of bounds if he kicks the shell near a wall. The collision with the shell will cause mario to be push out of bounds.
-* Collision with the bottom of blocks after bouncing on an enemy can produce weird results sometimes
 * xml file from the XMLgenerator might generates a file start with:
   ```xml
    line1: <?xml version="1.0" encoding="utf-8" ?>
