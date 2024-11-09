@@ -26,6 +26,7 @@ namespace Sprint_2.Commands.CollisionCommands.ItemCollisionCommands
 
         public void Execute()
         {
+            // sfx.stop() 
             SoundManager.Instance.PlaySoundEffect("coin");
             HUD.Instance.AddScoreFromCoin(MiscConstants.coinPoints);
         }
