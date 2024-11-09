@@ -5,37 +5,43 @@ namespace Sprint_2.Sound
 {
     public class SoundEffectWrapper : ISound
     {
-        private SoundEffectInstance soundEffectInstance;
+        private SoundEffect soundEffect;
 
         public SoundEffectWrapper(SoundEffect soundEffect)
         {
-            soundEffectInstance = soundEffect.CreateInstance();
+            this.soundEffect = soundEffect;
         }
 
         public void Play()
         {
-            soundEffectInstance.Play();
+            soundEffect.CreateInstance().Play(); // Always creates a new instance
         }
+
+        public SoundEffectInstance CreateInstance()
+        {
+            return soundEffect.CreateInstance();
+        }
+
 
         // TODO: implement the followings after we have pause/win/gameover state
         public void Stop()
         {
-            soundEffectInstance.Stop();
+            //soundEffectInstance.Stop();
         }
 
         public void Pause()
         {
-            soundEffectInstance.Pause();
+            //soundEffectInstance.Pause();
         }
 
         public void Resume()
         {
-            soundEffectInstance.Resume();
+            //soundEffectInstance.Resume();
         }
 
         public void SetVolume(float volume)
         {
-            soundEffectInstance.Volume = volume;
+            //soundEffectInstance.Volume = volume;
         }
     }
 }

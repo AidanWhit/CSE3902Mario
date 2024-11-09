@@ -101,11 +101,20 @@ namespace Sprint_2.Sound
         }
 
         // Play a sound effect by name
+        //public void PlaySoundEffect(string name)
+        //{
+        //    if (soundEffects.ContainsKey(name))
+        //    {
+        //        soundEffects[name].Play();
+        //    }
+        //}
         public void PlaySoundEffect(string name)
         {
             if (soundEffects.ContainsKey(name))
             {
-                soundEffects[name].Play();
+                //DEBUG: Create a new instance for each sfx, allowing mutiple sound play at once
+                SoundEffectInstance instance = soundEffects[name].CreateInstance();
+                instance.Play(); // Each play call creates a new instance
             }
         }
 
