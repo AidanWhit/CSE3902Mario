@@ -6,6 +6,7 @@ using Sprint_2.Interfaces;
 using Sprint_2.LevelManager;
 using Sprint_2.MarioPhysicsStates;
 using Sprint_2.MarioStates;
+using Sprint_2.Sprites;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -32,7 +33,12 @@ namespace Sprint_2.Commands.MarioCollisionCommands
 
         public void Execute()
         {
-            
+            if (player is StarMario)
+            {
+                StarMario starMario = (StarMario)player;
+                starMario.RemoveStar();
+
+            }
             CalculatePointsEarned(collisionRect.Bottom, collideable.GetHitBox().Top);
 
             
