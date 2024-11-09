@@ -19,10 +19,10 @@ namespace Sprint_2.GameObjects.Enemies.EnemySprites
         public Vector2 Velocity { get; set; }
         private ISprite sprite;
 
-        private float timeUntilShellBecomesKoopa = 5f;
+        private float timeUntilShellBecomesKoopa = EnemyConstants.timeUntilShellBecomesKoopa;
         public IShellState ShellState { get; set; }
 
-        private int[] score = new int[] { 500, 800, 1000, 2000, 4000, 5000, 8000 };
+        private int[] score = EnemyConstants.shellScoreValues;
         private int index = 0;
         public Shell(Vector2 initialPosition)
         {

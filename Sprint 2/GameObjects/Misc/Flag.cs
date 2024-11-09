@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Sprint_2.Constants;
 using Sprint_2.Factories;
 using Sprint_2.Interfaces;
 using Sprint_2.LevelManager;
@@ -26,7 +27,7 @@ namespace Sprint_2.GameObjects.Misc
         }
         public void Update(GameTime gameTime)
         {
-            if (YPos < 416)
+            if (YPos < MiscConstants.bottomOfFlagPole)
             {
                 YPos++;
             }

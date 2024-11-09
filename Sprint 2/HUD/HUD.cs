@@ -21,16 +21,14 @@ namespace Sprint_2
         private float time;
         private int lives;
         private List<ScorePopup> scorePopups;
-        private bool hideHUD = false;
 
         public HUD()
         {
             font = Game1.Instance.Content.Load<SpriteFont>("HUDFont");
-
             score = 0;
             coins = 0;
             world = "1-1";
-            time = 400;
+            time = MiscConstants.defaultLevelTime;
             lives = MarioPhysicsConstants.startingLives;
             scorePopups = new List<ScorePopup>();
         }
@@ -77,39 +75,34 @@ namespace Sprint_2
         public void Draw(SpriteBatch spriteBatch)
         {
             // define position and space
-            if (!hideHUD)
+            int spacing = MiscConstants.hudSpacingBetweenElements;
+            Vector2 startPosition = Game1.Instance.camera.GetLeftScreenBound() + new Vector2(MiscConstants.hudSpacingForScreen, 0);
+            lives = Game1.Instance.mario.RemainingLives;
+
+            // draw
+            spriteBatch.DrawString(font, $"Score: {score}", startPosition, Color.White);
+            spriteBatch.DrawString(font, $"Coins: {coins}", startPosition + new Vector2(spacing, 0), Color.Yellow);
+            spriteBatch.DrawString(font, $"World: {world}", startPosition + new Vector2(2 * spacing, 0), Color.White);
+            spriteBatch.DrawString(font, $"Time: {(int)time}", startPosition + new Vector2(3 * spacing, 0), Color.White);
+            spriteBatch.DrawString(font, $"Lives: {lives}", startPosition + new Vector2(4 * spacing, 0), Color.White);
+
+            // draw the score on the screen
+            foreach (var popup in scorePopups)
             {
-                Vector2 startPosition = Game1.Instance.camera.GetLeftScreenBound() + new Vector2(50, 0);
-                int spacing = 75;  
-                lives = Game1.Instance.mario.RemainingLives;
-
-                // draw
-                spriteBatch.DrawString(font, $"Score: {score}", startPosition, Color.White);
-                spriteBatch.DrawString(font, $"Coins: {coins}", startPosition + new Vector2(spacing, 0), Color.Yellow);
-                spriteBatch.DrawString(font, $"World: {world}", startPosition + new Vector2(2 * spacing, 0), Color.White);
-                spriteBatch.DrawString(font, $"Time: {(int)time}", startPosition + new Vector2(3 * spacing, 0), Color.White);
-                spriteBatch.DrawString(font, $"Lives: {lives}", startPosition + new Vector2(4 * spacing, 0), Color.White);
-
-                // draw the score on the screen
-                foreach (var popup in scorePopups)
-                {
-                    popup.Draw(spriteBatch, font);
-                }
+                popup.Draw(spriteBatch, font);
             }
         }
 
         public void ResetTime()
         {
-            time = 400;
+            time = MiscConstants.defaultLevelTime;
         }
 
         public void CompleteReset()
         {
             coins = 0;
             score = 0;
-            time = 400;
-
-            hideHUD = false;
+            time = MiscConstants.defaultLevelTime;
         }
 
         public int GetScore()
@@ -119,33 +112,5 @@ namespace Sprint_2
 
     }
 
-    public class ScorePopup
-    {
-        private int points;
-        private Vector2 position;
-        private float timer;
-        private Color color;
-
-        public bool IsExpired => timer <= 0;
-
-        public ScorePopup(int points, Vector2 position)
-        {
-            this.points = points;
-            this.position = position;
-            this.timer = 1.5f;
-            this.color = Color.White;
-        }
-
-        public void Update(GameTime gameTime)
-        {
-            timer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
-            position.Y -= 20 * (float)gameTime.ElapsedGameTime.TotalSeconds;
-            color = Color.White * MathHelper.Clamp(timer / 1.5f, 0, 1);
-        }
-
-        public void Draw(SpriteBatch spriteBatch, SpriteFont font)
-        {
-            spriteBatch.DrawString(font, points.ToString(), position, color);
-        }
-    }
+    
 }

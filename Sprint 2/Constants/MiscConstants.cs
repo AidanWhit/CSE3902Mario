@@ -30,7 +30,29 @@ namespace Sprint_2.Constants
         public const int blockHeightChange = -2;
         public const int blockTotalHeightChange = 6;
 
+        public const int brokenBlockXVelocity = 50;
+        public const int brokenBlockTopYVelocity = 150;
+        public const int brokenBlockBottomYVelocity = 50;
+        public const int despawnHeight = 464;
 
+        public const float coinCenteringFactor = 2.5f;
+
+        public const int bottomOfFlagPole = 416;
+
+        public const int defaultNumberOfCoins = 6;
+
+        public const int defaultLevelTime = 400;
+        public const int hudSpacingBetweenElements = 75;
+        public const int hudSpacingForScreen = 50;
+        public const float lifetimeOfPoints = 1.5f;
+        public const int heightChangeForPopupPoints = 20;
+
+        public const float animationSpeed = 0.1f;
+
+        public readonly static Vector2 scoreTextLocation = new Vector2(150, 390);
+        public readonly static Vector2 resetTextLocation = new Vector2(50, 440);
+        public readonly static Vector2 quitTextLocation = new Vector2(250, 440);
+        public readonly static Vector2 endingTextLocation = new Vector2(150, 340);
 
     }
 }

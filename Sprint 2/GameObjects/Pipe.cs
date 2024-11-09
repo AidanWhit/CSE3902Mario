@@ -14,8 +14,8 @@ namespace Sprint_2.GameObjects
 {
     public class Pipe : IPipe, ICollideable
     {
-        public float XPos { get; set; }
-        public float YPos { get; set; }
+        private float XPos;
+        private float YPos;
 
         private ISprite sprite;
         private string pipeSize;
@@ -45,7 +45,7 @@ namespace Sprint_2.GameObjects
 
         public string GetCollisionType()
         {
-            if (pipeSize.Equals("UndergroundPipe"))
+            if (pipeSize.Equals(NamesOfSprites.SpriteNames.UndergroundPipe.ToString()))
             {
                 return pipeSize;
             }

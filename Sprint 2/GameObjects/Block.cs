@@ -14,8 +14,6 @@ namespace Sprint_2.GameObjects
     public class Block : IBlock
     {
         public Vector2 Position { get; set; }
-        public bool containsItem { get; set; }
-        public bool breakable { get; set; }
 
         private IBlockState blockState;
 
@@ -61,7 +59,7 @@ namespace Sprint_2.GameObjects
             Dictionary<string, IBlockState> blockStates = new Dictionary<string, IBlockState>()
             {
                 {"BrownBrick", new BrownBrickState(this) },
-                {"BrownBrickWithCoins", new BrownBrickWithCoins(this, 6) },
+                {"BrownBrickWithCoins", new BrownBrickWithCoins(this, MiscConstants.defaultNumberOfCoins) },
                 {"ItemWithCoin", new ItemBlockWithCoin(this) },
                 {"ItemWithPowerUp", new ItemBlockWithPowerUp(this) },
                 {"Chiseled", new ChiseledBlockState(this) },

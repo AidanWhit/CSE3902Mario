@@ -37,7 +37,7 @@ namespace Sprint_2.Sprites
 
         public int RemainingLives { get; set; }
 
-        private int[] score = new int[] { 100, 200, 400, 500, 800, 1000, 2000, 4000, 5000, 8000 };
+        private int[] score = MarioPhysicsConstants.marioBounceScores;
         private int scoreIndex = 0;
         public Player(Vector2 StartingLocation, int lives)
         {
@@ -144,7 +144,6 @@ namespace Sprint_2.Sprites
                 isJumping = true;
                 PhysicsState = new BounceState(this);
                 PlayerState.Jump();
-                SoundManager.Instance.PlaySoundEffect("jumpSmall");
             }
         }
         public void Fall()
@@ -173,7 +172,6 @@ namespace Sprint_2.Sprites
             if (!isCrouching && !isJumping && !isFalling)
             {
                 isCrouching = true;
-                //PlayerState.Crouch();
             }
         }
 
@@ -192,8 +190,6 @@ namespace Sprint_2.Sprites
             if (!IsDamaged)
             {
                 PlayerState.Damage();
-                //SoundManager.Instance.StopBackgroundMusic();
-                //SoundManager.Instance.PlaySoundEffect("marioDie");
             }
         }
         public void PowerUp()

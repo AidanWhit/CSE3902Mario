@@ -24,9 +24,6 @@ namespace Sprint_2.LevelManager
         private XmlReader LevelReader;
         public LevelLoader()
         {
-            
-
-            
         }
         public void LoadLevel(string level)
         {
@@ -86,7 +83,6 @@ namespace Sprint_2.LevelManager
                     MakeBlocks(name, locationX, locationY);
                     break;
                 case "Item":
-                    //TODO: Fix
                     MakeItem(name, locationX, locationY);
                     break;
                 case "Pipe":
@@ -120,7 +116,6 @@ namespace Sprint_2.LevelManager
             switch (name)
             {
                 case "Mario":
-                    //gameObjectManager.Player = new Player(new Vector2(locationX, locationY));
                     IPlayer mario = Game1.Instance.mario;
                     Game1.Instance.mario.XPos = locationX;
                     Game1.Instance.mario.YPos = locationY;
@@ -172,7 +167,7 @@ namespace Sprint_2.LevelManager
 
         private void MakeBlocks(string name, int locationX, int locationY)
         {
-            int column = locationX / 16;
+            int column = locationX / CollisionConstants.blockWidth;
             IBlock block;
             switch (name) 
             {
@@ -253,25 +248,25 @@ namespace Sprint_2.LevelManager
                     GameObjectManager.Instance.BackDrawables.Add(coin);
                     break;
                 case "Flower":
-                    Flower flower = new Flower(new Vector2(locationX, locationY), 480);
+                    Flower flower = new Flower(new Vector2(locationX, locationY), locationY);
                     GameObjectManager.Instance.Updateables.Add(flower);
                     GameObjectManager.Instance.BackDrawables.Add(flower);
                     GameObjectManager.Instance.Static.Add(flower);
                     break;
                 case "RedMushroom":
-                    RedMushroom mushroom = new RedMushroom(new Vector2(locationX, locationY), 480);
+                    RedMushroom mushroom = new RedMushroom(new Vector2(locationX, locationY), locationY);
                     GameObjectManager.Instance.Updateables.Add(mushroom);
                     GameObjectManager.Instance.BackDrawables.Add(mushroom);
                     GameObjectManager.Instance.Movers.Add(mushroom);
                     break;
                 case "GreenMushroom":
-                    GreenMushroom greenMushroom = new GreenMushroom(new Vector2(locationX, locationY), 480);
+                    GreenMushroom greenMushroom = new GreenMushroom(new Vector2(locationX, locationY), locationY);
                     GameObjectManager.Instance.Updateables.Add(greenMushroom);
                     GameObjectManager.Instance.BackDrawables.Add(greenMushroom);
                     GameObjectManager.Instance.Movers.Add(greenMushroom);
                     break;
                 case "Star":
-                    Star star = new Star(new Vector2(locationX, locationY), 480);
+                    Star star = new Star(new Vector2(locationX, locationY), locationY);
                     GameObjectManager.Instance.Updateables.Add(star);
                     GameObjectManager.Instance.BackDrawables.Add(star);
                     GameObjectManager.Instance.Movers.Add(star);
@@ -295,7 +290,7 @@ namespace Sprint_2.LevelManager
                 
                 case "Bowser":
                     //TODO: FIX BOWSER CONSTRUCTOR
-                    //gameObjectManager.AddEnemy(new Bowser(new Vector2(locationX, locationY)));
+                    // To be implemented for Sprint5
                     break;
                 case "Goomba":
                     enemy = new Goomba(new Vector2(locationX, locationY));

@@ -79,7 +79,7 @@ namespace Sprint_2.Sound
             if (backgroundMusic.ContainsKey(musicKey))
             {
                 MediaPlayer.Play(backgroundMusic[musicKey]);
-                MediaPlayer.IsRepeating = musicKey == "mainTheme";  // playing the music looped
+                MediaPlayer.IsRepeating = true;  // playing the music looped
             }
         }
         // Load 1 sound effect and add it to the dictionary
@@ -100,14 +100,6 @@ namespace Sprint_2.Sound
             }
         }
 
-        // Play a sound effect by name
-        //public void PlaySoundEffect(string name)
-        //{
-        //    if (soundEffects.ContainsKey(name))
-        //    {
-        //        soundEffects[name].Play();
-        //    }
-        //}
         public void PlaySoundEffect(string name)
         {
             if (soundEffects.ContainsKey(name))

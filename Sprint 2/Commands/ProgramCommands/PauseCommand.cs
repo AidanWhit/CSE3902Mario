@@ -16,9 +16,8 @@ public class PauseCommand : ICommands
 
     public void Execute()
     {   
-        // Switch between Pasuse and Playing state
+        // Switch between Pause and Playing state
         SoundManager.Instance.PlaySoundEffect("pause");
-        GameStateManager.Instance.TogglePause();
 
         if (Game1.Instance.gameState.GetType() == typeof(PausedState) )
         {

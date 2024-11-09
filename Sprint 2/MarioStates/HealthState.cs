@@ -12,7 +12,6 @@ namespace Sprint_2.MarioStates
     public class HealthState
     {
         public enum HealthEnum { Dead, Mario, SuperMario, FireMario };
-        private Vector2 size;
         public HealthEnum health { get; private set; }
 
         private IPlayer mario;
@@ -43,7 +42,6 @@ namespace Sprint_2.MarioStates
 
                 SoundManager.Instance.StopBackgroundMusic();
                 SoundManager.Instance.PlayBackgroundMusic("youAreDead");
-                //SoundManager.Instance.PlaySoundEffect("marioDie");
 
                 mario.PhysicsState = new DeadMario(mario);
                 mario.PlayerVelocity = new Vector2(0, MarioPhysicsConstants.bounceVelocity);

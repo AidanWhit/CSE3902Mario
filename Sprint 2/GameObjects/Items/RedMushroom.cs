@@ -22,14 +22,14 @@ namespace Sprint_2.GameObjects.ItemSprites
         private float spawnedYPosition;
         private IBlock sourceBlock;
 
-        private float speed = 1f;
+        private float speed = ItemPhysicsConstants.defaultMoveSpeed;
         private int topOfSourceBlock;
 
         public RedMushroom(Vector2 initialPosition, int topOfSourceBlock)
         {
             XPos = initialPosition.X;
             YPos = initialPosition.Y;
-            Velocity = new Vector2(1, 0); // Starts moving rigjt
+            Velocity = new Vector2(speed, 0); // Starts moving right
 
             sprite = UniversalSpriteFactory.Instance.GetItemSprite(nameof(RedMushroom));
             OnSpawn = true;
@@ -64,7 +64,7 @@ namespace Sprint_2.GameObjects.ItemSprites
                 Velocity *= MarioPhysicsConstants.velocityDecay;
                 XPos += speed;
             }
-            if (YPos > EnemyConstants.despawnHeight)
+            if (YPos > MiscConstants.despawnHeight)
             {
                 DeleteItem();
             }

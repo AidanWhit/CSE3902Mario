@@ -27,10 +27,10 @@ namespace Sprint_2.GameObjects.BlockStates
         {
             Hit = true;
 
-            Coin coin = new Coin(new Vector2(block.Position.X + block.GetHitBox().Width / 2.5f, block.Position.Y - block.GetHitBox().Height), true);
+            Coin coin = new Coin(new Vector2(block.Position.X + CollisionConstants.blockWidth / MiscConstants.coinCenteringFactor, 
+                block.Position.Y - CollisionConstants.blockWidth), true);
             GameObjectManager.Instance.Updateables.Add(coin);
             GameObjectManager.Instance.BackDrawables.Add(coin);
-
             SoundManager.Instance.PlaySoundEffect("coin");
 
             HUD.Instance.AddScoreFromCoin(200);

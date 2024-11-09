@@ -122,8 +122,6 @@ namespace Sprint_2
             camera.Reset();
             SoundManager.Instance.Reset();
             HUD.Instance.ResetTime();
-            //UnloadContent();
-            //LoadContent();
         }
 
         public void TotalReset()
@@ -140,8 +138,6 @@ namespace Sprint_2
             HUD.Instance.CompleteReset();
 
             gameState = new PlayableState(keyControl);
-            //UnloadContent();
-            //LoadContent();
         }
 
         public Camera GetCamera()

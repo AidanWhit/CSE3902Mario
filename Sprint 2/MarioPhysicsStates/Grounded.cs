@@ -21,7 +21,7 @@ namespace Sprint_2.MarioPhysicsStates
         public void Update(GameTime gameTime)
         {
 
-            if (mario.PlayerVelocity.X > -50f && mario.PlayerVelocity.X < 50f)
+            if (mario.PlayerVelocity.X > -MarioPhysicsConstants.maxSlideVelocity && mario.PlayerVelocity.X < MarioPhysicsConstants.maxSlideVelocity)
             {
                 if (!mario.isCrouching)
                 {
@@ -38,13 +38,11 @@ namespace Sprint_2.MarioPhysicsStates
             mario.XPos += (int)(mario.PlayerVelocity.X * gameTime.ElapsedGameTime.TotalSeconds);
             mario.YPos += (int)(mario.PlayerVelocity.Y * gameTime.ElapsedGameTime.TotalSeconds);
 
-            //mario.PlayerVelocity = new Vector2(mario.PlayerVelocity.X * MarioPhysicsConstants.velocityDecay, mario.PlayerVelocity.Y);
             mario.PlayerVelocity *= MarioPhysicsConstants.velocityDecay;
 
             if (mario.PlayerVelocity.Y > MarioPhysicsConstants.fallRange)
             {
                 mario.Fall();
-                //mario.PhysicsState = new Falling(mario);
             }
             
             

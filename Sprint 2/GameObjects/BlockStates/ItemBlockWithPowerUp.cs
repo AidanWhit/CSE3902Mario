@@ -12,6 +12,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using Sprint_2.Constants;
+using Sprint_2.MarioStates;
 
 namespace Sprint_2.GameObjects.BlockStates
 {
@@ -30,7 +31,7 @@ namespace Sprint_2.GameObjects.BlockStates
         {
             Hit = true;
             string health = player.GetHealth();
-            if (health.Equals("Mario"))
+            if (health.Equals(HealthState.HealthEnum.Mario.ToString()))
             {
                 IItem mushroom = new RedMushroom(block.Position, block.GetHitBox().Top);
                 GameObjectManager.Instance.Updateables.Add(mushroom);

@@ -10,7 +10,5 @@ namespace Sprint_2.Interfaces
 {
     public interface IPipe: ICollideable, IUpdateable, IDrawable
     {
-        public float XPos { get; set; }
-        public float YPos { get; set; }
     }
 }

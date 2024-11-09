@@ -28,7 +28,7 @@ namespace Sprint_2.GameObjects.BlockStates
 
         public override void BeHit(IPlayer player)
         {
-            
+            // Do nothing
         }
 
     }

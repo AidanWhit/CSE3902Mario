@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Sprint_2.Constants;
 using Sprint_2.Controls;
 using Sprint_2.Interfaces;
 using Sprint_2.LevelManager;
@@ -37,10 +38,10 @@ namespace Sprint_2.GameStates
 
         public void Draw(SpriteBatch spriteBatch, Color color)
         {
-            spriteBatch.DrawString(font, "Game Over", new Vector2(150, 340), color);
-            spriteBatch.DrawString(font, "Your Score: " + HUD.Instance.GetScore(), new Vector2(150, 390), color);
-            spriteBatch.DrawString(font, "Press R to reset", new Vector2(50, 440), color);
-            spriteBatch.DrawString(font, "Press Q to quit", new Vector2(250, 440), color);
+            spriteBatch.DrawString(font, "Game Over", MiscConstants.endingTextLocation, color);
+            spriteBatch.DrawString(font, "Your Score: " + HUD.Instance.GetScore(), MiscConstants.scoreTextLocation, color);
+            spriteBatch.DrawString(font, "Press R to reset", MiscConstants.resetTextLocation, color);
+            spriteBatch.DrawString(font, "Press Q to quit", MiscConstants.quitTextLocation, color);
         }
     }
 }

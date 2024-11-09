@@ -21,7 +21,6 @@ namespace Sprint_2.Sprites.EnemySprites
 
         private GoombaStateMachine goombaState;
 
-        private float stompTimer = 0.75f;
         private bool stomped = false;
 
         private bool startBehavior = false;

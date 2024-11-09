@@ -15,6 +15,7 @@ namespace Sprint_2.GameObjects.BlockStates
     {
         private IBlock block;
         private int coins;
+        //private const float rightShift
 
         public BrownBrickWithCoins(IBlock block, int coins) : base(block)
         {
@@ -29,7 +30,9 @@ namespace Sprint_2.GameObjects.BlockStates
         {
             Hit = true;
             /* Game Object manager add coin */
-            IItem Coin = new Coin(new Vector2(block.Position.X + block.GetHitBox().Width / 2.5f, block.Position.Y - block.GetHitBox().Height), true);
+            IItem Coin = new Coin(new Vector2(block.Position.X + CollisionConstants.blockWidth / MiscConstants.coinCenteringFactor, 
+                block.Position.Y - CollisionConstants.blockWidth), true);
+            
             GameObjectManager.Instance.Updateables.Add(Coin);
             GameObjectManager.Instance.BackDrawables.Add(Coin);
 

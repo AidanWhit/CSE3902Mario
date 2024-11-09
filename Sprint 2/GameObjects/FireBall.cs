@@ -59,7 +59,7 @@ namespace Sprint_2.GameObjects
                 YPos += (float)(Speed.Y * gameTime.ElapsedGameTime.TotalSeconds);
                 
 
-                //Caclulates distance from the fireball and the Player
+                //Calculates distance from the fireball and the Player
                 distFromSource = Math.Sqrt(Math.Pow(XPos - source.XPos, 2) + Math.Pow(YPos - source.YPos, 2));
             }
             
@@ -75,7 +75,7 @@ namespace Sprint_2.GameObjects
                 
                 /* TODO : Currently hardcoded need to find a better solution but it works for now ~ Aidan */
                 timer += (float)gameTime.ElapsedGameTime.TotalSeconds;
-                if (timer > 0.3f)
+                if (timer > FireBallConstants.timeToFinishExplosion)
                 {
                     FinishedExplosionAnimation = true;
                 }
@@ -111,10 +111,6 @@ namespace Sprint_2.GameObjects
 
         public string GetCollisionType()
         {
-            if (EnteredExplosionState)
-            {
-                return "exploding";
-            }
             return typeof(IProjectile).Name;
         }
 

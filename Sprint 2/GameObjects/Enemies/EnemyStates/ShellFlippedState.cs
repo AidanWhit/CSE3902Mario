@@ -22,7 +22,7 @@ namespace Sprint_2.GameObjects.Enemies.EnemyStates
 
         public override void Update(GameTime gameTime)
         {
-            if (shell.YPos > EnemyConstants.despawnHeight)
+            if (shell.YPos > MiscConstants.despawnHeight)
             {
                 GameObjectManager.Instance.Movers.Remove(shell);
                 GameObjectManager.Instance.Updateables.Remove(shell);

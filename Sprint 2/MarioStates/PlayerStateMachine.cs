@@ -34,7 +34,7 @@ namespace Sprint_2.MarioStates
             poseState = new PoseState(mario);
             facing = Facing.Right;
             
-            key = "RightMarioIdle";
+            key = MarioPhysicsConstants.startingMarioState;
             currentSprite = UniversalSpriteFactory.Instance.GetMarioSprite(key);
         }
 
@@ -55,7 +55,7 @@ namespace Sprint_2.MarioStates
                 flashSpeed -= (float)gameTime.ElapsedGameTime.TotalSeconds;
                 if (flashSpeed < 0)
                 {
-                    opacity = (opacity + 1) % 2;
+                    opacity = (++opacity) % 2;
                     flashSpeed = MarioPhysicsConstants.flashSpeed;
                 }
                 if (damagedTime < 0)
@@ -74,8 +74,6 @@ namespace Sprint_2.MarioStates
             GameObjectManager.Instance.Movers.Remove(mario);
 
             mario.PhysicsState = new DeadMario(mario);
-
-            
 
             mario.RemainingLives--;
         }
@@ -111,12 +109,10 @@ namespace Sprint_2.MarioStates
 
         public void Crouch()
         {
-            
             if (!healthState.health.Equals(HealthState.HealthEnum.Mario))
             {
                 poseState.Crouch();
             }
-
         }
 
         public void MoveLeft()
@@ -210,7 +206,7 @@ namespace Sprint_2.MarioStates
         public void Draw(SpriteBatch spritebatch, Color color)
         {
             
-            if (key.Contains("Shoot"))
+            if (key.Contains(PoseState.PoseEnum.Shoot.ToString()))
             {
                 currentSprite.Draw(spritebatch, new Vector2(mario.XPos, mario.YPos), color * opacity);
                 currentSprite = oldSprite;

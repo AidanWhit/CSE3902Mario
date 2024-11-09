@@ -17,7 +17,7 @@ namespace Sprint_2.GameObjects.ItemSprites
         public float YPos { get; set; }
 
 
-        private int heightIncrease = -2;
+        private int heightIncrease = ItemPhysicsConstants.coinHeightChange;
         private bool moveDown = false;
 
         private float originalHeight;

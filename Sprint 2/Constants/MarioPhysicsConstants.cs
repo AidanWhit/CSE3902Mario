@@ -50,5 +50,9 @@ namespace Sprint_2.Constants
 
         public static int minTransitionToFallState = -5;
         public static float initialJumpVelocity = -50;
+
+        public const string startingMarioState = "RightMarioIdle";
+
+        public readonly static int[] marioBounceScores = new int[] { 100, 200, 400, 500, 800, 1000, 2000, 4000, 5000, 8000 };
     }
 }

@@ -60,7 +60,6 @@ namespace Sprint_2.MarioStates
         {
             if (pose != PoseEnum.Jump && pose != PoseEnum.Fall)
             {
-                //Debug.WriteLine("Entered change pose to crouch: " + System.DateTime.Now);
                 mario.isCrouching = true;
                 int bottomPositionOfSprite = mario.GetHitBox().Bottom;
                 pose = PoseEnum.Crouch;

@@ -71,7 +71,7 @@ namespace Sprint_2.GameObjects.Enemies.EnemyStates
                 koopa.Velocity = new Vector2(koopa.Velocity.X, koopa.Velocity.Y * MarioPhysicsConstants.velocityDecay);
 
                 /* if the koopa falls out of the map */
-                if (koopa.YPos > EnemyConstants.despawnHeight)
+                if (koopa.YPos > MiscConstants.despawnHeight)
                 {
                     GameObjectManager.Instance.Movers.Remove(koopa);
                     GameObjectManager.Instance.Updateables.Remove(koopa);

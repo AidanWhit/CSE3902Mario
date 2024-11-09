@@ -20,10 +20,10 @@ namespace Sprint_2.GameObjects.BlockStates
         private ISprite bottomLeftSprite;
         private ISprite bottomRightSprite;
 
-        private Vector2 topLeftVelocity = new Vector2(-50, -150);
-        private Vector2 topRightVelocity = new Vector2(50, -150);
-        private Vector2 bottomLeftVelocity = new Vector2(-50, -50);
-        private Vector2 bottomRightVelocity = new Vector2(50, -50);
+        private Vector2 topLeftVelocity = new Vector2(-MiscConstants.brokenBlockXVelocity, -MiscConstants.brokenBlockTopYVelocity);
+        private Vector2 topRightVelocity = new Vector2(MiscConstants.brokenBlockXVelocity, -MiscConstants.brokenBlockTopYVelocity);
+        private Vector2 bottomLeftVelocity = new Vector2(-MiscConstants.brokenBlockXVelocity, -MiscConstants.brokenBlockBottomYVelocity);
+        private Vector2 bottomRightVelocity = new Vector2(MiscConstants.brokenBlockXVelocity, -MiscConstants.brokenBlockBottomYVelocity);
 
         private Vector2 topLeftPosition;
         private Vector2 topRightPosition;
@@ -60,7 +60,7 @@ namespace Sprint_2.GameObjects.BlockStates
             bottomLeftPosition += new Vector2(bottomLeftVelocity.X * elpasedTime, bottomLeftVelocity.Y * elpasedTime);
             bottomRightPosition += new Vector2(bottomRightVelocity.X * elpasedTime, bottomRightVelocity.Y * elpasedTime);
 
-            if (topLeftPosition.Y > 448)
+            if (topLeftPosition.Y > MiscConstants.despawnHeight)
             {
                 GameObjectManager.Instance.ForeDrawables.Remove(block);
                 GameObjectManager.Instance.Updateables.Remove(block);

@@ -3,6 +3,7 @@ using Sprint_2.Constants;
 using Sprint_2.GameObjects;
 using Sprint_2.GameObjects.Enemies.EnemySprites;
 using Sprint_2.Interfaces;
+using Sprint_2.Sound;
 using Sprint_2.Sprites;
 using System;
 using System.Collections.Generic;
@@ -30,6 +31,7 @@ namespace Sprint_2.Commands.CollisionCommands.EnemyCollisionCommands
             if (collider is StarMario)
             {
                 HUD.Instance.AddScorePopUp(EnemyConstants.pointsFromStarMario, new Vector2(enemy.XPos, enemy.YPos));
+                SoundManager.Instance.PlaySoundEffect("stomp");
             }
             else if (collider is FireBall)
             {
