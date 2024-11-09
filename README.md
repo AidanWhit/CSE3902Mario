@@ -68,7 +68,8 @@ The project progress management was also better than last time, we created diffe
    - First we used Microsoft Excel to fill in the level data, the reason we used Excel is that it's easy to modify and generate whole rows and columns of data with it and most of the blocks in the levels have some of the same attributes such as height, name etc. We then wrote an external program in python to read the data from the Excel sheet and use it to generate XML files.
 4. **.NET Type system**
    - This allows us to use Reflections to create new ICommands objects during runtime that are then executed to resolve detected collisions. 
-
+5. **Singletons**
+   - Various singletons are used to ensure easy global access to classes that are utilized in a wide range of areas within the code. A few examples are the UniversalSpriteFactory, the HUD, and the Game1 class.
 ## Known Bugs
 
 * Mario can clip out of bounds if he kicks the shell near a wall. The collision with the shell will cause mario to be push out of bounds.
