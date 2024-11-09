@@ -31,6 +31,7 @@ adventure that brings joy to gamers of all ages. Get ready to jump, run, and sav
 - S/Left Arrow: crouch
 - Z: throw the fireball
 - 3: power up
+- P: Pause the game
 - Q: Quit the game
 - R: Reset
 - E: Force the Player to take damage
