@@ -10,9 +10,9 @@ Here is the Sprint Planner that will be used to document our plans, design chang
 |------:|--------------|----------------|--------------------|----------------------|---------------|
 | Gun Powerup | 10 hrs | 10 hrs | Aidan Whitlatch | 11/23 | |
 | Boss Level (XML file) | 5 hrs | 5 hrs | Jingyu Fu | 11/23
-| Bowser |5 hrs | 5 hrs | Jingyu Fu +  | 11/23
-| Bowser Fireball Attack |5 hrs | 5 hrs | Jingyu Fu +  | 11/23
-| Bowser Hammer Attack |5 hrs | 5 hrs | Jingyu Fu+  | 11/23
+| Bowser //we already have sprites and class for bowser, but further features need to be implemented|
+| Bowser Fireball Attack //we already have sprites and class for bowser fireball, but further features need to be implemented|
+| Bowser Hammer Attack |
 | New Blocks |
 | Moveable Platform | 2 hrs | 2 hrs | Aidan Whitlatch | 11/17 |
 | New Enemy (Can be simple, maybe bullet bill?)|
