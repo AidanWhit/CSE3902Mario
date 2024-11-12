@@ -10,14 +10,14 @@ Here is the Sprint Planner that will be used to document our plans, design chang
 |------:|--------------|----------------|--------------------|----------------------|---------------|
 | Gun Powerup | 10 hrs | 10 hrs | Aidan Whitlatch | 11/23 | |
 | Boss Level (XML file) | 5 hrs | 5 hrs | Jingyu Fu | 11/23
-| Bowser //we already have sprites and class for bowser, but further features need to be implemented|
-| Bowser Fireball Attack //we already have sprites and class for bowser fireball, but further features need to be implemented|
-| Bowser Hammer Attack |
-| New Blocks |
-| Moveable Platform | 2 hrs | 2 hrs | Aidan Whitlatch | 11/17 |
-| New Enemy (Can be simple, maybe bullet bill?)|
-| New Levels (XMLFiles, aim for 2-3)|
-| Podoboos (fireballs that jump out of lava, used in castle level) |
+| Bowser //we already have sprites and class for bowser, but further features need to be implemented| 4 hrs | 4 hrs | Zhuoyang Li + Aidan Whitlatch | 11/25 |
+| Bowser Fireball Attack //we already have sprites and class for bowser fireball, but further features need to be implemented| 2 hrs | 2 hrs| Hahn Choi + Christian Blue |11/25 |
+| Bowser Hammer Attack | 4 hrs | 4 hrs | Zhouyang Li + Aidan Whitlatch| 11/25 |
+| New Blocks | 2hrs | 2 hrs | Christian Blue | 11/17 |
+| Moveable Platform | 2 hrs | 2 hrs | Christian Blue | 11/17 |
+| New Enemy (Can be simple, maybe bullet bill?)| 4 hrs | 4 hrs | Hahn Choi | 11/23 |
+| New Levels (XMLFiles, aim for 2-3)| 6 hrs | 6 hrs | Zhuoyang Li | 11/25 |
+| Podoboos (fireballs that jump out of lava, used in castle level) | 3 hrs | 3 hrs | Hahn Choi | 11/25 |
 | Main Menu |5 hrs | 5 hrs | Jingyu Fu +  | 11/23
 | Spawner |5 hrs | 5 hrs | Jingyu Fu +  | 11/23
 
