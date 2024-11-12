@@ -44,3 +44,12 @@ Strikethrough implies that the item has been completed
       * Hammer Attack Behavior
 * New Block classes (new block states in the context of our project)
   - Includes a moveable platform
+
+* Main Menu
+   - Play
+   - Credits
+   - Quit
+* Spawner
+   - Fall detection(reset Mario's location when he fell)
+   - a "from-to" spawner/teleporter (from 1-1 to underworld, from 1-1 to 1-2, from main menu to 1-1), setting Mario's location after a specific trigger event
+   - has a method like teleport(x,y){}. setting Mario to any location in the current game world for testing
