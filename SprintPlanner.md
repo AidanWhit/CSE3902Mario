@@ -8,13 +8,13 @@ Here is the Sprint Planner that will be used to document our plans, design chang
 
 | Tasks | Time(Effort) | Time Remaining | In Progress (Name) | Expected Finish Date | Finished Date |
 |------:|--------------|----------------|--------------------|----------------------|---------------|
-| Gun Powerup | 8 hrs | 8 hrs | Aidan Whitlatch | 11/23 | |
+| Gun Powerup | 10 hrs | 10 hrs | Aidan Whitlatch | 11/23 | |
 | Boss Level (XML file) |
 | Bowser |
 | Bowser Fireball Attack |
 | Bowser Hammer Attack |
 | New Blocks |
-| Moveable Platform |
+| Moveable Platform | 2 hrs | 2 hrs | Aidan Whitlatch | 11/17 |
 | New Enemy (Can be simple, maybe bullet bill?)|
 | New Levels (XMLFiles, aim for 2-3)|
 | Podoboos (fireballs that jump out of lava, used in castle level) |
