@@ -9,15 +9,17 @@ Here is the Sprint Planner that will be used to document our plans, design chang
 | Tasks | Time(Effort) | Time Remaining | In Progress (Name) | Expected Finish Date | Finished Date |
 |------:|--------------|----------------|--------------------|----------------------|---------------|
 | Gun Powerup | 10 hrs | 10 hrs | Aidan Whitlatch | 11/23 | |
-| Boss Level (XML file) |
-| Bowser |
-| Bowser Fireball Attack |
-| Bowser Hammer Attack |
+| Boss Level (XML file) | 5 hrs | 5 hrs | Jingyu Fu | 11/23
+| Bowser |5 hrs | 5 hrs | Jingyu Fu +  | 11/23
+| Bowser Fireball Attack |5 hrs | 5 hrs | Jingyu Fu +  | 11/23
+| Bowser Hammer Attack |5 hrs | 5 hrs | Jingyu Fu+  | 11/23
 | New Blocks |
 | Moveable Platform | 2 hrs | 2 hrs | Aidan Whitlatch | 11/17 |
 | New Enemy (Can be simple, maybe bullet bill?)|
 | New Levels (XMLFiles, aim for 2-3)|
 | Podoboos (fireballs that jump out of lava, used in castle level) |
+| Main Menu |5 hrs | 5 hrs | Jingyu Fu +  | 11/23
+| Spawner |5 hrs | 5 hrs | Jingyu Fu +  | 11/23
 
 ## BackLog tasks from Sprint4
 ### Not required for this sprint but would improve the quality of our code
