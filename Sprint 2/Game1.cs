@@ -84,6 +84,7 @@ namespace Sprint_2
 
             levelLoader = new LevelLoader();
             levelLoader.LoadLevel(@"LevelManager\level-1_data_pretty.xml");
+            //levelLoader.LoadLevel(@"LevelManager\testing-level.xml");
 
             gameState = new PlayableState(keyControl);
         }
@@ -96,7 +97,9 @@ namespace Sprint_2
         protected override void Update(GameTime gameTime)
         {
             gameState.Update(gameTime);
+            Spawner.Instance.Update(gameTime); // Update spawner logic
             base.Update(gameTime);
+            
         }
 
         protected override void Draw(GameTime gameTime)
@@ -119,6 +122,7 @@ namespace Sprint_2
             mario = new Player(Vector2.Zero, mario.RemainingLives);
             InitControls.initializeControls(keyControl, mario);
             levelLoader.LoadLevel(@"LevelManager\level-1_data_pretty.xml");
+            //levelLoader.LoadLevel(@"LevelManager\testing-level.xml");
             camera.Reset();
             SoundManager.Instance.Reset();
             HUD.Instance.ResetTime();
@@ -132,6 +136,7 @@ namespace Sprint_2
 
             InitControls.initializeControls(keyControl, mario);
             levelLoader.LoadLevel(@"LevelManager\level-1_data_pretty.xml");
+            //levelLoader.LoadLevel(@"LevelManager\testing-level.xml");
 
             camera.Reset();
             SoundManager.Instance.Reset();
