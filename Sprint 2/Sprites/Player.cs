@@ -39,6 +39,10 @@ namespace Sprint_2.Sprites
 
         private int[] score = MarioPhysicsConstants.marioBounceScores;
         private int scoreIndex = 0;
+
+        private float fallTimer;
+        private bool Falling;
+
         public Player(Vector2 StartingLocation, int lives)
         {
             XPos = (int)StartingLocation.X;
@@ -54,30 +58,28 @@ namespace Sprint_2.Sprites
             /* Quick and easy way to reset player after falling out of bounds. */
             if (YPos > EnemyConstants.despawnHeight)
             {
+                // Initiate fall detection
+                isFalling = true;
 
-                if (!Spawner.Instance.IsHolding())
-                {
-                    SoundManager.Instance.StopBackgroundMusic();
-                    SoundManager.Instance.PlaySoundEffect("marioDie");
+                SoundManager.Instance.StopBackgroundMusic();
+                SoundManager.Instance.PlaySoundEffect("marioDie");
 
-                    Spawner.Instance.Hold(6.0f); // Hold for 6 seconds
-                }
+                ICommands reset = new ResetCommand();
+                reset.Execute();
+                Game1.Instance.mario.RemainingLives--;
 
-                if (!Spawner.Instance.IsHolding())
-                {
-                    ICommands reset = new ResetCommand();
-                    reset.Execute();
-                    Game1.Instance.mario.RemainingLives--;
+                // Respawn Mario at default spawn location, but this is included in reset.Execute(); since the level is reloaded (Mario's data is in xml file)
+                //Spawner.Instance.Spawn(this); 
 
-                    // Respawn Mario at default spawn location, but this is included in reset.Execute(); since the level is reloaded (Mario's data is in xml file)
-                    //Spawner.Instance.Spawn(this); 
-
-                }
+                
             }
 
-            UpdateFireballs(gameTime);
-            PlayerState.Update(gameTime);
-            PhysicsState.Update(gameTime);
+
+                // Continue regular updates if not falling
+                UpdateFireballs(gameTime);
+                PlayerState.Update(gameTime);
+                PhysicsState.Update(gameTime);
+
 
             //Debug.WriteLine("isJumping: " + isJumping);
         }

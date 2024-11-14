@@ -34,6 +34,7 @@ namespace Sprint_2.GameStates
 
             Spawner.Instance.Update(gameTime); // Update spawner
 
+
             foreach (Interfaces.IUpdateable obj in GameObjectManager.Instance.Updateables.ToList())
             {
                 obj.Update(gameTime);
