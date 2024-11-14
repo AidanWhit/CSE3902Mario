@@ -18,10 +18,10 @@ Here is the Sprint Planner that will be used to document our plans, design chang
 | New Enemy (Can be simple, maybe bullet bill?)| 4 hrs | 4 hrs | Hahn Choi | 11/23 |
 | New Levels (XMLFiles, aim for 2-3)| 6 hrs | 6 hrs | Zhuoyang Li | 11/25 |
 | Podoboos (fireballs that jump out of lava, used in castle level) | 3 hrs | 3 hrs | Hahn Choi | 11/25 |
-| Main Menu |5 hrs | 5 hrs | Jingyu Fu  | 11/13
-| Spawner(teleporter) |5 hrs | 5 hrs | Jingyu Fu  | 11/13
-| Level transition |5 hrs | 5 hrs | Jingyu Fu  | 11/13
-| Fall detection |5 hrs | 5 hrs | Jingyu Fu  | 11/13
+| Main Menu |5 hrs | 5 hrs | Jingyu Fu  | 11/23 | 11/13
+| Spawner(teleporter) |5 hrs | 5 hrs | Jingyu Fu  | 11/23 | 11/13
+| Level transition |5 hrs | 5 hrs | Jingyu Fu  | 11/23 | 11/13
+| Fall detection |5 hrs | 5 hrs | Jingyu Fu  | 11/23 | 11/13
 
 ## BackLog tasks from Sprint4
 ### Not required for this sprint but would improve the quality of our code
