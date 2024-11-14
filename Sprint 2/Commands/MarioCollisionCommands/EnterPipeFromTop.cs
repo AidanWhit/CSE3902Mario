@@ -56,19 +56,38 @@ namespace Sprint_2.Commands.MarioCollisionCommands
             }
             else
             {
-                Debug.WriteLine("Entered Underground: " + System.DateTime.Now);
+                //Debug.WriteLine("Entered Underground: " + System.DateTime.Now);
                 player.PlayerVelocity = Vector2.Zero;
-                LevelLoader leveLoader = new LevelLoader();
-                GameObjectManager.Instance.Reset();
-                leveLoader.LoadLevel(@"LevelManager\XMLFiles\UndergroundXML.xml");
-                Game1.Instance.GetCamera().Reset();
-                Game1.Instance.GetCamera().SetLevelBounds(new Vector2(0, MiscConstants.levelBounds.Y));
+                //LevelLoader leveLoader = new LevelLoader();
+                //GameObjectManager.Instance.Reset();
+                //leveLoader.LoadLevel(@"LevelManager\XMLFiles\UndergroundXML.xml");
+                //Game1.Instance.GetCamera().Reset();
+                //Game1.Instance.GetCamera().SetLevelBounds(new Vector2(0, MiscConstants.levelBounds.Y));
 
-                SoundManager.Instance.StopBackgroundMusic();
-                SoundManager.Instance.PlayBackgroundMusic("underworld");
+                //SoundManager.Instance.StopBackgroundMusic();
+                //SoundManager.Instance.PlayBackgroundMusic("underworld");
 
                 /* TODO: Teleport mario to underground section*/
                 timer.Dispose();
+
+                // Determine next world using Spawner
+                switch (GameWorldManager.CurrentGameWorld)
+                {
+                    case "main-menu":
+                        Spawner.Instance.TeleportToLevel("level-1_data_pretty", new Vector2(64, 432), "mainTheme");
+                        break;
+
+                    //case "1-1":
+                    //    Spawner.Instance.TeleportToLevel("Underworld", new Vector2(128, 500), "underworld");
+                    //    break;
+
+                    //case "Underworld":
+                    //    Spawner.Instance.TeleportToLevel("1-1", new Vector2(2624, 400), "mainTheme");
+                    //    break;
+
+                    default:
+                        throw new InvalidOperationException("Unknown game world");
+                }
             }
         }
     }
