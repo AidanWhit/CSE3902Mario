@@ -26,15 +26,21 @@ namespace Sprint_2.Collision
                 
                 int column = mover.GetColumn();
                 List<ICollideable> nearbyBlocks = GameObjectManager.Instance.GetNearbyBlocks(column);
-                foreach(ICollideable nonmover in GameObjectManager.Instance.Static.ToList())
-                {
-                    if (mover.GetHitBox().Intersects(nonmover.GetHitBox()))
-                    {
-                        Rectangle collisionRect;
-                        CollisionSideDetector.side side;
-                        (collisionRect, side) = CollisionSideDetector.DetermineCollisionSide(mover.GetHitBox(), nonmover.GetHitBox());
 
-                        collisionResponse.ResolveCollision(mover, nonmover, side.ToString(), collisionRect);
+
+                var staticObjects = GameObjectManager.Instance.Static?.ToList();
+                if (staticObjects != null && staticObjects.Any())
+                {
+                    foreach (ICollideable nonmover in GameObjectManager.Instance.Static.ToList())
+                    {
+                        if (mover.GetHitBox().Intersects(nonmover.GetHitBox()))
+                        {
+                            Rectangle collisionRect;
+                            CollisionSideDetector.side side;
+                            (collisionRect, side) = CollisionSideDetector.DetermineCollisionSide(mover.GetHitBox(), nonmover.GetHitBox());
+
+                            collisionResponse.ResolveCollision(mover, nonmover, side.ToString(), collisionRect);
+                        }
                     }
                 }
                 GameObjectManager.Instance.RemoveBlocksFromStatic(nearbyBlocks);

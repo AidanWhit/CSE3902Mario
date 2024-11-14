@@ -20,12 +20,8 @@
       <SizeX>6</SizeX>
       <SizeY>150</SizeY>
     </Item>
-    
-    <Item>
-      <ObjectType>Block</ObjectType>
-      <ObjectName>BrownGround</ObjectName>
-      <Location>0 448</Location>
-    </Item>
+
+
 	  <Item>
 		  <ObjectType>Background</ObjectType>
 		  <ObjectName>Bush1</ObjectName>
@@ -57,31 +53,19 @@
 		  <ObjectName>Cloud2</ObjectName>
 		  <Location>224 320</Location>
 	  </Item>
-    <Item>
+    
+    <!-- <Item>
       <ObjectType>Block</ObjectType>
       <ObjectName>BrownGround</ObjectName>
       <Location>0 464</Location>
-    </Item>
-    <Item>
-      <ObjectType>Block</ObjectType>
-      <ObjectName>BrownGround</ObjectName>
-      <Location>16 448</Location>
-    </Item>
+    </Item>-->
+
     <Item>
       <ObjectType>Block</ObjectType>
       <ObjectName>BrownGround</ObjectName>
       <Location>16 464</Location>
     </Item>
-    <Item>
-      <ObjectType>Block</ObjectType>
-      <ObjectName>BrownGround</ObjectName>
-      <Location>0 464</Location>
-    </Item>
-    <Item>
-      <ObjectType>Block</ObjectType>
-      <ObjectName>BrownGround</ObjectName>
-      <Location>16 464</Location>
-    </Item>
+
     <Item>
       <ObjectType>Block</ObjectType>
       <ObjectName>BrownGround</ObjectName>
@@ -172,11 +156,11 @@
       <ObjectName>BrownGround</ObjectName>
       <Location>304 464</Location>
     </Item>
-    <Item>
+    <!--<Item>
       <ObjectType>Block</ObjectType>
       <ObjectName>BrownGround</ObjectName>
       <Location>0 448</Location>
-    </Item>
+    </Item> -->
     <Item>
       <ObjectType>Block</ObjectType>
       <ObjectName>BrownGround</ObjectName>
@@ -274,11 +258,7 @@
     </Item>
 
     
-    <Item>
-      <ObjectType>Player</ObjectType>
-      <ObjectName>Mario</ObjectName>
-      <Location>32 432</Location>
-    </Item>
+
 
 
     <Item>
@@ -307,5 +287,11 @@
 		  <SizeY>16</SizeY>
 	  </Item>
 
+    <Item>
+      <ObjectType>Player</ObjectType>
+      <ObjectName>Mario</ObjectName>
+      <Location>32 432</Location>
+    </Item>
+    
   </Asset>
 </XnaContent>

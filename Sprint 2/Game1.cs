@@ -124,8 +124,9 @@ namespace Sprint_2
             InitControls.initializeControls(keyControl, mario);
 
             //levelLoader.LoadLevel(@"LevelManager\level-1_data_pretty.xml");
-            levelLoader.LoadLevel(@"LevelManager\main-menu.xml");
-            GameWorldManager.CurrentGameWorld = "main-menu";
+            //levelLoader.LoadLevel(@"LevelManager\main-menu.xml");
+            levelLoader.LoadLevel($"LevelManager\\{GameWorldManager.CurrentGameWorld}.xml");
+            //GameWorldManager.CurrentGameWorld = "main-menu";
 
             camera.Reset();
             SoundManager.Instance.Reset();
@@ -142,6 +143,7 @@ namespace Sprint_2
 
             //levelLoader.LoadLevel(@"LevelManager\level-1_data_pretty.xml");
             levelLoader.LoadLevel(@"LevelManager\main-menu.xml");
+            //levelLoader.LoadLevel($"LevelManager\\{GameWorldManager.CurrentGameWorld}.xml");
             GameWorldManager.CurrentGameWorld = "main-menu";
 
             camera.Reset();
