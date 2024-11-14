@@ -29,6 +29,8 @@ namespace Sprint_2.GameObjects.Items
         private Vector2 originOfRotation = Vector2.Zero;
         private Vector2 originToFirePoint;
         private Vector2 firePoint;
+
+        private const float heightScale = 0.375f;
         
         public Gun(IPlayer player, Vector2 location)
         {
@@ -92,18 +94,19 @@ namespace Sprint_2.GameObjects.Items
         private void UpdateFacing()
         {
             playerFacing = player.GetFacing();
+            Rectangle playerHitBox = player.GetHitBox();
             if (playerFacing.Equals(PlayerStateMachine.Facing.Left))
             {
                 spriteEffect = SpriteEffects.FlipHorizontally;
                 originOfRotation = new Vector2(hitBox.Width, 0);
-                offset = new Vector2(-8, 6);
+                offset = new Vector2(-hitBox.Width, playerHitBox.Height * heightScale);
                 originToFirePoint = new Vector2(-hitBox.Width, 0);
             }
             else
             {
                 originOfRotation = Vector2.Zero;
                 spriteEffect = SpriteEffects.None;
-                offset = new Vector2(8, 6);
+                offset = new Vector2(hitBox.Width, playerHitBox.Height * heightScale);
                 originToFirePoint = new Vector2(hitBox.Width, 0);
             }
         }
@@ -121,9 +124,9 @@ namespace Sprint_2.GameObjects.Items
         public void Draw(SpriteBatch spriteBatch, Color color)
         {
             UpdateRotation();
-            firePoint = UpdateFirePoint();
+            //firePoint = UpdateFirePoint();
             gunSprite.Draw(spriteBatch, position, color, rotation, originOfRotation, spriteEffect);
-            HitBoxRectangle.DrawRectangle(spriteBatch, new Rectangle((int)firePoint.X, (int)firePoint.Y, 1, 1),Color.Red, 1);
+            //HitBoxRectangle.DrawRectangle(spriteBatch, new Rectangle((int)firePoint.X, (int)firePoint.Y, 1, 1),Color.Red, 1);
         }
 
         public void SetPosition(Vector2 position)
