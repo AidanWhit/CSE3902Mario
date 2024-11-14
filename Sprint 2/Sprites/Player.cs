@@ -51,17 +51,9 @@ namespace Sprint_2.Sprites
         }
         public void Update(GameTime gameTime)
         {
-            /* Quick and easy way to reset player after falling out of bounds. Will be changed next sprint to be more robust */
+            /* Quick and easy way to reset player after falling out of bounds. */
             if (YPos > EnemyConstants.despawnHeight)
             {
-                //SoundManager.Instance.StopBackgroundMusic();
-                ////SoundManager.Instance.PlayBackgroundMusic("youAreDead");
-                //SoundManager.Instance.PlaySoundEffect("marioDie");
-
-
-                //ICommands reset = new ResetCommand();
-                //reset.Execute();
-                //Game1.Instance.mario.RemainingLives--;
 
                 if (!Spawner.Instance.IsHolding())
                 {
@@ -75,7 +67,11 @@ namespace Sprint_2.Sprites
                 {
                     ICommands reset = new ResetCommand();
                     reset.Execute();
-                    //Spawner.Instance.Spawn(this); // Respawn Mario at spawn location
+                    Game1.Instance.mario.RemainingLives--;
+
+                    // Respawn Mario at default spawn location, but this is included in reset.Execute(); since the level is reloaded (Mario's data is in xml file)
+                    //Spawner.Instance.Spawn(this); 
+
                 }
             }
 

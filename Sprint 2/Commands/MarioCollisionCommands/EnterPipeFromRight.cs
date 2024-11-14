@@ -60,9 +60,12 @@ namespace Sprint_2.Commands.MarioCollisionCommands
                 SoundManager.Instance.StopBackgroundMusic();
                 SoundManager.Instance.PlayBGM("mainTheme");
 
-                player.XPos = (int)marioExitPosition.X;
-                player.YPos = (int)marioExitPosition.Y;
-                
+                //player.XPos = (int)marioExitPosition.X;
+                //player.YPos = (int)marioExitPosition.Y;
+
+                // Use Tp
+                Spawner.Instance.Teleport(player, marioExitPosition);
+
 
                 timer.Dispose();
             }
