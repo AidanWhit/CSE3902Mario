@@ -77,11 +77,13 @@ namespace Sprint_2.Commands.MarioCollisionCommands
                         Spawner.Instance.TeleportToLevel("level-1_data_pretty", new Vector2(64, 432), "mainTheme");
                         break;
 
-                    //case "1-1":
-                    //    Spawner.Instance.TeleportToLevel("Underworld", new Vector2(128, 500), "underworld");
-                    //    break;
+                    case "level-1_data_pretty":
+                        Spawner.Instance.TeleportToLevel("UndergroundXML", new Vector2(128, 500), "underworld");
+                        Game1.Instance.GetCamera().Reset();
+                        Game1.Instance.GetCamera().SetLevelBounds(new Vector2(0, MiscConstants.levelBounds.Y));
+                        break;
 
-                    //case "Underworld":
+                    //case "UndergroundXML":
                     //    Spawner.Instance.TeleportToLevel("1-1", new Vector2(2624, 400), "mainTheme");
                     //    break;
 

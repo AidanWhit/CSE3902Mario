@@ -2,6 +2,26 @@
 <XnaContent>
   <Asset Type="MyDataTypes.LevelObjectData[]">
     <Item>
+      <ObjectType>Background</ObjectType>
+      <ObjectName>MainMenuImage</ObjectName>
+      <Location>0 240</Location>
+    </Item>
+
+    <Item>
+      <ObjectType>Background</ObjectType>
+      <ObjectName>Flag</ObjectName>
+      <Location>103 288</Location>
+    </Item>
+
+    <Item>
+      <ObjectType>Collider</ObjectType>
+      <ObjectName>FlagCollider</ObjectName>
+      <Location>115 282</Location>
+      <SizeX>6</SizeX>
+      <SizeY>150</SizeY>
+    </Item>
+    
+    <Item>
       <ObjectType>Block</ObjectType>
       <ObjectName>BrownGround</ObjectName>
       <Location>0 448</Location>
@@ -276,8 +296,7 @@
     </Item>
 
 
-
-
+    
 
 
     <Item>

@@ -158,6 +158,11 @@ namespace Sprint_2.LevelManager
                 case "LevelImage":
                     GameObjectManager.Instance.BackDrawables.Add(UniversalSpriteFactory.Instance.GetLevelImageSprite(location));
                     break;
+
+                case "MainMenuImage":
+                    GameObjectManager.Instance.BackDrawables.Add(UniversalSpriteFactory.Instance.GetMainMenuImageSprite(location));
+                    break;
+
                 case "Flag":
                     GameObjectManager.Instance.BackDrawables.Add(new Flag(new Vector2(locationX, locationY)));
                     break;

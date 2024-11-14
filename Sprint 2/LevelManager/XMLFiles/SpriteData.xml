@@ -850,6 +850,16 @@
 			<Height>240</Height>
 		</Rectangle>
 	</Sprite>
+  <Sprite>
+    <Name>MainMenuImage</Name>
+    <NumOfFrames>1</NumOfFrames>
+    <Rectangle>
+      <XPos>0</XPos>
+      <YPos>0</YPos>
+      <Width>320</Width>
+      <Height>480</Height>
+    </Rectangle>
+  </Sprite>
 	<Sprite>
 		<Name>Goomba</Name>
 		<NumOfFrames>2</NumOfFrames>
