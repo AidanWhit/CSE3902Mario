@@ -32,7 +32,7 @@ namespace Sprint_2.GameStates
             HUD.Instance.Update(gameTime);
             camera.Update(gameTime);
 
-            Spawner.Instance.Update(gameTime); // Update spawner
+            //Spawner.Instance.Update(gameTime); // Update spawner
 
 
             foreach (Interfaces.IUpdateable obj in GameObjectManager.Instance.Updateables.ToList())

@@ -4,6 +4,7 @@ using Sprint_2.Interfaces;
 using Sprint_2.GameObjects;
 using Sprint_2.MarioPhysicsStates;
 using Sprint_2.MarioStates;
+using Sprint_2.GameStates;
 using Sprint_2.Sound;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -40,8 +41,8 @@ namespace Sprint_2.Sprites
         private int[] score = MarioPhysicsConstants.marioBounceScores;
         private int scoreIndex = 0;
 
-        private float fallTimer;
-        private bool Falling;
+        private float fallTimer = 0.0f; // Timer to track elapsed time after falling
+        private bool fallDeath = false; // Flag to indicate falling state
 
         public Player(Vector2 StartingLocation, int lives)
         {
@@ -55,32 +56,47 @@ namespace Sprint_2.Sprites
         }
         public void Update(GameTime gameTime)
         {
-            /* Quick and easy way to reset player after falling out of bounds. */
-            if (YPos > EnemyConstants.despawnHeight)
+            if (YPos > EnemyConstants.despawnHeight && !fallDeath)
             {
-                // Initiate fall detection
-                isFalling = true;
+                // Trigger falling state
+                fallDeath = true;
+                fallTimer = 0.0f;
 
                 SoundManager.Instance.StopBackgroundMusic();
                 SoundManager.Instance.PlaySoundEffect("marioDie");
 
-                ICommands reset = new ResetCommand();
-                reset.Execute();
-                Game1.Instance.mario.RemainingLives--;
-
-                // Respawn Mario at default spawn location, but this is included in reset.Execute(); since the level is reloaded (Mario's data is in xml file)
-                //Spawner.Instance.Spawn(this); 
-
-                
+                if (Game1.Instance.mario.RemainingLives == 0)
+                {
+                    Game1.Instance.gameState = new GameOverScreen();
+                }
             }
 
+            if (fallDeath)
+            {
+                // Accumulate elapsed time
+                fallTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
 
+                if (fallTimer >= 4.0f) // Check if 4 seconds have passed
+                {
+                    fallDeath = false; // Reset falling state
+
+                    if (Game1.Instance.mario.RemainingLives > 0)
+                    {
+                        
+                        ICommands reset = new ResetCommand();
+                        reset.Execute();
+
+                        Game1.Instance.mario.RemainingLives--;
+                    }
+                }
+            }
+            else
+            {
                 // Continue regular updates if not falling
                 UpdateFireballs(gameTime);
                 PlayerState.Update(gameTime);
                 PhysicsState.Update(gameTime);
-
-
+            }
             //Debug.WriteLine("isJumping: " + isJumping);
         }
 
