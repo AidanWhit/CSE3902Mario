@@ -1004,5 +1004,43 @@
 			<Height>16</Height>
 		</Rectangle>
 	</Sprite>
+	<Sprite>
+		<Name>Gun</Name>
+		<NumOfFrames>1</NumOfFrames>
+		<Rectangle>
+			<XPos>0</XPos>
+			<YPos>0</YPos>
+			<Width>12</Width>
+			<Height>10</Height>
+		</Rectangle>
+	</Sprite>
+	<Sprite>
+		<Name>Bullet</Name>
+		<NumOfFrames>4</NumOfFrames>
+		<Rectangle>
+			<XPos>4</XPos>
+			<YPos>0</YPos>
+			<Width>5</Width>
+			<Height>3</Height>
+		</Rectangle>
+		<Rectangle>
+			<XPos>20</XPos>
+			<YPos>0</YPos>
+			<Width>5</Width>
+			<Height>3</Height>
+		</Rectangle>
+		<Rectangle>
+			<XPos>36</XPos>
+			<YPos>0</YPos>
+			<Width>5</Width>
+			<Height>3</Height>
+		</Rectangle>
+		<Rectangle>
+			<XPos>52</XPos>
+			<YPos>0</YPos>
+			<Width>5</Width>
+			<Height>3</Height>
+		</Rectangle>
+	</Sprite>
 	
 </XNAContent>

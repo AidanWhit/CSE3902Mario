@@ -33,7 +33,7 @@ namespace Sprint_2.Commands.CollisionCommands.EnemyCollisionCommands
                 HUD.Instance.AddScorePopUp(EnemyConstants.pointsFromStarMario, new Vector2(enemy.XPos, enemy.YPos));
                 SoundManager.Instance.PlaySoundEffect("stomp");
             }
-            else if (collider is FireBall)
+            else if (collider is FireBall || collider is Bullet)
             {
                 HUD.Instance.AddScorePopUp(EnemyConstants.pointsFromFireball, new Vector2(enemy.XPos, enemy.YPos));
             }

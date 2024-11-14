@@ -12,6 +12,7 @@ using System;
 using Sprint_2.LevelManager;
 using Sprint_2.Commands.ProgramCommands;
 using System.Threading;
+using Sprint_2.GameObjects.Items;
 
 
 namespace Sprint_2.Sprites
@@ -39,6 +40,7 @@ namespace Sprint_2.Sprites
 
         private int[] score = MarioPhysicsConstants.marioBounceScores;
         private int scoreIndex = 0;
+
         public Player(Vector2 StartingLocation, int lives)
         {
             XPos = (int)StartingLocation.X;

@@ -39,6 +39,8 @@ namespace Sprint_2.Factories
         private Texture2D backgroundSprites;
         private Texture2D flagSprite;
 
+        private Texture2D gunSprite;
+        private Texture2D bulletSprite;
         private Rectangle[] frames;
 
         private UniversalSpriteFactory() 
@@ -127,6 +129,8 @@ namespace Sprint_2.Factories
             levelImageTexture = content.Load<Texture2D>("levelimage"); //sprite for the whole level image  
             backgroundSprites = content.Load<Texture2D>("backgroundSprites");
             flagSprite = content.Load<Texture2D>("flag");
+            gunSprite = content.Load<Texture2D>("gunSprite");
+            bulletSprite = content.Load<Texture2D>("bulletSprite");
         }
 
         public void AddEntry(string key, Rectangle[] frames)
@@ -209,5 +213,16 @@ namespace Sprint_2.Factories
             return new StaticSprite(levelImageTexture, frames, location);
         }
 
+        public ISprite GetGunSprite()
+        {
+            spriteData.TryGetValue("Gun", out frames);
+            return new FrameArrayFormattedSprite(gunSprite, frames, 0.75f);
+        }
+
+        public ISprite GetBulletSprite()
+        {
+            spriteData.TryGetValue("Bullet", out frames);
+            return new FrameArrayFormattedSprite(bulletSprite, frames, defaultScale);
+        }
     }
 }

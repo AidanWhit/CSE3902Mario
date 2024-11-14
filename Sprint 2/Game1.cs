@@ -49,6 +49,7 @@ namespace Sprint_2
         public CollisionDetection CollisionDetection { get; private set; }
 
         private SpriteFont hudFont;
+        public MouseController mouseController { get; private set; }
 
         private Game1()
         {
@@ -60,6 +61,7 @@ namespace Sprint_2
         protected override void Initialize()
         {
             keyControl = new KeyboardControl();
+            mouseController = new MouseController();
             
             // Set the level bounds (adjust these values to match your level size)
             levelBounds = MiscConstants.levelBounds;
@@ -86,6 +88,8 @@ namespace Sprint_2
             levelLoader.LoadLevel(@"LevelManager\level-1_data_pretty.xml");
 
             gameState = new PlayableState(keyControl);
+
+            mario = new GunMarioDecorator(mario);
         }
         protected override void UnloadContent()
         {
@@ -96,6 +100,7 @@ namespace Sprint_2
         protected override void Update(GameTime gameTime)
         {
             gameState.Update(gameTime);
+            mouseController.Update();
             base.Update(gameTime);
         }
 
