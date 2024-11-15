@@ -75,6 +75,8 @@ namespace Sprint_2.Commands.MarioCollisionCommands
                 {
                     case "main-menu":
                         Spawner.Instance.TeleportToLevel("level-1_data_pretty", new Vector2(64, 432), "mainTheme");
+                        Game1.Instance.GetCamera().Reset();
+                        //Game1.Instance.GetCamera().SetLevelBounds(new Vector2(0, MiscConstants.levelBounds.Y));
                         break;
 
                     case "level-1_data_pretty":
