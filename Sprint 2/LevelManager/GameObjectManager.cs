@@ -34,7 +34,7 @@ namespace Sprint_2.LevelManager
                 return instance;
             }
         }
-                
+
 
         public List<ICollideable>[] Blocks = new List<ICollideable>[225];
         public List<Interfaces.IUpdateable> Updateables { get; set; } = new List<Interfaces.IUpdateable>();
@@ -85,6 +85,7 @@ namespace Sprint_2.LevelManager
                 Static.Remove(block);
             }
         }
+
         public void Reset()
         {
             Static.Clear();

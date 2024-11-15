@@ -83,7 +83,9 @@ namespace Sprint_2
             camera = new Camera(GraphicsDevice.Viewport, levelBounds);
 
             levelLoader = new LevelLoader();
-            levelLoader.LoadLevel(@"LevelManager\level-1_data_pretty.xml");
+            //levelLoader.LoadLevel(@"LevelManager\level-1_data_pretty.xml");
+            levelLoader.LoadLevel(@"LevelManager\main-menu.xml");
+            GameWorldManager.CurrentGameWorld = "main-menu";
 
             gameState = new PlayableState(keyControl);
         }
@@ -96,7 +98,9 @@ namespace Sprint_2
         protected override void Update(GameTime gameTime)
         {
             gameState.Update(gameTime);
+
             base.Update(gameTime);
+            
         }
 
         protected override void Draw(GameTime gameTime)
@@ -118,7 +122,12 @@ namespace Sprint_2
             GameObjectManager.Instance.Reset();
             mario = new Player(Vector2.Zero, mario.RemainingLives);
             InitControls.initializeControls(keyControl, mario);
-            levelLoader.LoadLevel(@"LevelManager\level-1_data_pretty.xml");
+
+            //levelLoader.LoadLevel(@"LevelManager\level-1_data_pretty.xml");
+            //levelLoader.LoadLevel(@"LevelManager\main-menu.xml");
+            levelLoader.LoadLevel($"LevelManager\\{GameWorldManager.CurrentGameWorld}.xml");
+            //GameWorldManager.CurrentGameWorld = "main-menu";
+
             camera.Reset();
             SoundManager.Instance.Reset();
             HUD.Instance.ResetTime();
@@ -131,7 +140,11 @@ namespace Sprint_2
             mario = new Player(Vector2.Zero, MarioPhysicsConstants.startingLives);
 
             InitControls.initializeControls(keyControl, mario);
-            levelLoader.LoadLevel(@"LevelManager\level-1_data_pretty.xml");
+
+            //levelLoader.LoadLevel(@"LevelManager\level-1_data_pretty.xml");
+            levelLoader.LoadLevel(@"LevelManager\main-menu.xml");
+            //levelLoader.LoadLevel($"LevelManager\\{GameWorldManager.CurrentGameWorld}.xml");
+            GameWorldManager.CurrentGameWorld = "main-menu";
 
             camera.Reset();
             SoundManager.Instance.Reset();

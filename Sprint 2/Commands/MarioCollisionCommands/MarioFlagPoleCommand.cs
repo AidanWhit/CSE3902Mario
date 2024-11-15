@@ -41,8 +41,9 @@ namespace Sprint_2.Commands.MarioCollisionCommands
             }
             CalculatePointsEarned(collisionRect.Bottom, collideable.GetHitBox().Top);
 
-            
+            //
             Game1.Instance.gameState = new WinState(Game1.Instance.GetKeyboardControl());
+            //
             /* Only need to collide with it once */
             GameObjectManager.Instance.Static.Remove(collideable);
 

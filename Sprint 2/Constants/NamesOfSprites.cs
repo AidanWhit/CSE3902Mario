@@ -10,6 +10,6 @@ namespace Sprint_2.Constants
     {
         public enum SpriteNames { DeadMario, Fireball, FireballExplosion, BlueBrick, Hit,  BlueGround, BrokenPiece, BrownBrick, BrownGround,
         Chiseled, Invisible, Question, Goomba, FlippedGoomba, StompedGoomba, LeftFacingKoopa, RightFacingKoopa, KoopaShell, FlippedKoopaShell,
-        RedMushroom, GreenMushroom, Coin, StaticCoin, Star, UndergroundPipe, Bush1, Bush2, Hill1, Hill2, Cloud1, Cloud2, LevelImage};
+        RedMushroom, GreenMushroom, Coin, StaticCoin, Star, UndergroundPipe, Bush1, Bush2, Hill1, Hill2, Cloud1, Cloud2, LevelImage, MainMenuImage};
     }
 }
