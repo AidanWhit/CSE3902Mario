@@ -70,8 +70,39 @@ namespace Sprint_2.MarioPhysicsStates
         private static void OnTimedEvent(Object source, ElapsedEventArgs e, IPlayer player, Timer moveRightTimer)
         {
             GameObjectManager.Instance.BackDrawables.Remove(player);
-            Game1.Instance.gameState = new WinScreen();
+
+            //Game1.Instance.gameState = new WinScreen();
+
             moveRightTimer.Dispose();
+
+            switch (GameWorldManager.CurrentGameWorld)
+            {
+                case "main-menu":
+                    Game1.Instance.gameState = new WinScreen();
+                    break;
+
+                case "level-1_data_pretty":
+                    Spawner.Instance.TeleportToLevel("level-2", new Vector2(100, 100), "mainTheme");
+                    Game1.Instance.gameState = new PlayableState(Game1.Instance.GetKeyboardControl());
+                    Game1.Instance.GetCamera().Reset();
+                    //Game1.Instance.GetCamera().SetLevelBounds(new Vector2(0, MiscConstants.levelBounds.Y));
+                    
+                    break;
+
+
+                //case "1-2":
+                //    Spawner.Instance.TeleportToLevel("1-3", new Vector2(100, 400), "mainTheme");
+                //    break;
+
+                //case "1-3":
+                //    Game1.Instance.gameState = new WinScreen();
+                //    break;
+
+                default:
+                    // Handle unknown world (fallback logic)
+                    Game1.Instance.gameState = new WinScreen();
+                    break;
+            }
         }
 
         private static void MoveRight(Object source, ElapsedEventArgs e, IPlayer player)

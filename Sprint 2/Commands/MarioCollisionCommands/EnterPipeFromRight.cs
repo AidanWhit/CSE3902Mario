@@ -6,6 +6,7 @@ using Sprint_2.Sound;
 using System;
 using System.Diagnostics;
 using System.Timers;
+using Sprint_2.GameStates;
 
 
 namespace Sprint_2.Commands.MarioCollisionCommands
@@ -54,6 +55,8 @@ namespace Sprint_2.Commands.MarioCollisionCommands
                 GameObjectManager.Instance.Reset();
 
                 levelLoader.LoadLevel(@"LevelManager\level-1_data_pretty.xml");
+                GameWorldManager.CurrentGameWorld = "level-1_data_pretty";
+
                 Game1.Instance.camera.Reset();
                 Game1.Instance.GetCamera().SetLevelBounds(MiscConstants.levelBounds);
 
