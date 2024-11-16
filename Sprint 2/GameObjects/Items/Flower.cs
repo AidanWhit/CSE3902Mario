@@ -4,7 +4,6 @@ using Sprint_2.Constants;
 using Sprint_2.Factories;
 using Sprint_2.Interfaces;
 using Sprint_2.LevelManager;
-using System.Security;
 
 namespace Sprint_2.GameObjects.ItemSprites
 {
@@ -34,7 +33,6 @@ namespace Sprint_2.GameObjects.ItemSprites
         {
             if (OnSpawn)
             {
-
                 YPos--;
                 if (GetHitBox().Bottom < topOfSourceBlock)
                 {

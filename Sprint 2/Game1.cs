@@ -11,6 +11,7 @@ using Sprint_2.LevelManager;
 using Sprint_2.Collision;
 using Sprint_2.GameStates;
 using Sprint_2.Constants;
+using Sprint_2.GameObjects.Items;
 
 
 namespace Sprint_2
@@ -88,8 +89,7 @@ namespace Sprint_2
             levelLoader.LoadLevel(@"LevelManager\level-1_data_pretty.xml");
 
             gameState = new PlayableState(keyControl);
-
-            mario = new GunMarioDecorator(mario);
+            
         }
         protected override void UnloadContent()
         {
