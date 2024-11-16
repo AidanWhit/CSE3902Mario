@@ -223,6 +223,18 @@
 /processorParam:TextureFormat=Color
 /build:bowserFireballSpriteSheet.png
 
+#begin bulletSprite.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:bulletSprite.png
+
 #begin bush.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -349,6 +361,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:goombaWalkingSpriteSheet.png
+
+#begin gunSprite.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:gunSprite.png
 
 #begin hill1.png
 /importer:TextureImporter

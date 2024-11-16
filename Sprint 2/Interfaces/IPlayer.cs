@@ -49,5 +49,7 @@ namespace Sprint_2.Interfaces
 
         public void Die();
         public void Bounce();
+
+        public int GetScore();
     }
 }

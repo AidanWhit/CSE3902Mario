@@ -1,92 +1,60 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Sprint_2.GameObjects.Items;
 using Sprint_2.Interfaces;
 using Sprint_2.LevelManager;
-using Sprint_2.Sound;
 using Sprint_2.MarioStates;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
-using System.Text;
-using System.Threading;
-using Sprint_2.Constants;
-
 
 namespace Sprint_2.Sprites
 {
-    public class StarMario : IPlayer
+    public class GunMarioDecorator : IPlayer
     {
+        private IPlayer decoratedPlayer;
+            
         public int XPos { get { return decoratedPlayer.XPos; } set { decoratedPlayer.XPos = value; } }
         public int YPos { get { return decoratedPlayer.YPos; } set { decoratedPlayer.YPos = value; } }
 
         public List<IProjectile> fireballs { get { return decoratedPlayer.fireballs; } set { decoratedPlayer.fireballs = value; } }
-        public bool IsDamaged { get { return decoratedPlayer.IsDamaged; }  set { decoratedPlayer.IsDamaged = value; } }
+        public bool IsDamaged { get { return decoratedPlayer.IsDamaged; } set { decoratedPlayer.IsDamaged = value; } }
         public bool isJumping { get { return decoratedPlayer.isJumping; } set { decoratedPlayer.isJumping = value; } }
         public bool isCrouching { get { return decoratedPlayer.isCrouching; } set { decoratedPlayer.isCrouching = value; } }
         public bool isFalling { get { return decoratedPlayer.isFalling; } set { decoratedPlayer.isFalling = value; } }
         public IMarioPhysicsStates PhysicsState { get { return decoratedPlayer.PhysicsState; } set { decoratedPlayer.PhysicsState = value; } }
         public Vector2 PlayerVelocity { get { return decoratedPlayer.PlayerVelocity; } set { decoratedPlayer.PlayerVelocity = value; } }
-
         public int RemainingLives { get { return decoratedPlayer.RemainingLives; } set { decoratedPlayer.RemainingLives = value; } }
 
-
-        private IPlayer decoratedPlayer;
-        private int remainingStarTime = MarioPhysicsConstants.starDuration;
-        private Color[] colors = new Color[] { Color.Red, Color.Orange, Color.Yellow, Color.LightGreen, Color.LightBlue, Color.Salmon};
-        private int colorIndex = 0;
-
-        private bool isStarmanPlaying;
-        public StarMario (IPlayer decoratedPlayer)
+        private Gun gun;
+        public GunMarioDecorator(IPlayer decoratedPlayer)
         {
             this.decoratedPlayer = decoratedPlayer;
-            isStarmanPlaying = true;
-            SoundManager.Instance.PlayBackgroundMusic("starman");
+           
+            gun = new Gun(this, new Vector2(XPos, YPos));
         }
+
         public void Update(GameTime gameTime)
         {
-            remainingStarTime--;
-            if (remainingStarTime < 0)
-            {
-                /* Remove star somehow */
-                RemoveStar();
-
-                SoundManager.Instance.StopBackgroundMusic();
-                SoundManager.Instance.PlayBGM("mainTheme");
-            }
-            
             decoratedPlayer.Update(gameTime);
+            gun.Update(gameTime);
         }
 
         public void Draw(SpriteBatch spriteBatch, Color color)
         {
-            decoratedPlayer.Draw(spriteBatch, colors[(remainingStarTime / MarioPhysicsConstants.timeBetweenColorsScaleFactor) % colors.Length]);
-        }
-
-        public void RemoveStar()
-        {
-            GameObjectManager.Instance.BackDrawables.Remove(this);
-            GameObjectManager.Instance.Updateables.Remove(this);
-            GameObjectManager.Instance.Movers.Remove(this);
-            Game1.Instance.mario = decoratedPlayer;
-            GameObjectManager.Instance.BackDrawables.Add(decoratedPlayer);
-            GameObjectManager.Instance.Updateables.Add(decoratedPlayer);
-            GameObjectManager.Instance.Movers.Add(decoratedPlayer);
-
+            decoratedPlayer.Draw(spriteBatch, color);
+            gun.Draw(spriteBatch, color);
         }
 
         public void MoveLeft()
         {
             decoratedPlayer.MoveLeft();
         }
+
         public void MoveRight()
         {
             decoratedPlayer.MoveRight();
         }
-        public void Jump()
-        {
-            decoratedPlayer.Jump();
-        }
+
         public void Crouch()
         {
             decoratedPlayer.Crouch();
@@ -101,26 +69,49 @@ namespace Sprint_2.Sprites
         {
             decoratedPlayer.ShootFireball();
         }
+        public void ShootGun()
+        {
+            gun.Shoot();
+        }
+        public void Jump()
+        {
+            decoratedPlayer.Jump();
+        }
         public void Fall()
         {
             decoratedPlayer.Fall();
         }
+
         public void Idle()
         {
             decoratedPlayer.Idle();
         }
+
         public void Damage()
         {
-            //Do Nothing
+            
+            IsDamaged = true;
+            GameObjectManager.Instance.BackDrawables.Remove(this);
+            GameObjectManager.Instance.Updateables.Remove(this);
+            GameObjectManager.Instance.Movers.Remove(this);
+
+            Game1.Instance.mario = decoratedPlayer;
+
+            GameObjectManager.Instance.BackDrawables.Add(decoratedPlayer);
+            GameObjectManager.Instance.Updateables.Add(decoratedPlayer);
+            GameObjectManager.Instance.Movers.Add(decoratedPlayer);
         }
+
         public void PowerUp()
         {
             decoratedPlayer.PowerUp();
         }
+
         public void OnCrouch()
         {
             decoratedPlayer.OnCrouch();
         }
+
         public void ReleaseCrouch()
         {
             decoratedPlayer.ReleaseCrouch();
@@ -141,7 +132,7 @@ namespace Sprint_2.Sprites
 
         public string GetCollisionType()
         {
-            return typeof(StarMario).Name;
+            return decoratedPlayer.GetCollisionType();
         }
 
         public int GetColumn()
@@ -153,14 +144,15 @@ namespace Sprint_2.Sprites
         {
             return decoratedPlayer.GetFacing();
         }
+
         public void Die()
         {
-            // Do Nothing
+            decoratedPlayer.Die();
         }
 
         public void Bounce()
         {
-            // Star Mario can not bounce on enemies
+            decoratedPlayer.Bounce();
         }
 
         public int GetScore()

@@ -21,6 +21,7 @@ namespace Sprint_2.Commands.MarioAttackCommands
 
         public void Execute()
         {
+            mario = Game1.Instance.mario;
             mario.ShootFireball();
         }
     }
