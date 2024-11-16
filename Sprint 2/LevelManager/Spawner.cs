@@ -14,6 +14,7 @@ using System.Threading.Tasks;
 using Sprint_2.Interfaces;
 using Sprint_2.Sound;
 using System;
+using System.Diagnostics;
 
 namespace Sprint_2.LevelManager
 {
@@ -54,10 +55,13 @@ namespace Sprint_2.LevelManager
 
         public void TeleportToLevel(string newWorld, Vector2 spawnLocation, string bgm)
         {
+            /* I think this game state change fixes that weird crashing bug. It just prevents objects from being updated/drawn
+             when the lists are being modified. ~Aidan */
+            Game1.Instance.gameState = new TransitionGameState();
             GameWorldManager.CurrentGameWorld = newWorld;
 
-            GameObjectManager.Instance.Reset();
             LevelLoader levelLoader = new LevelLoader();
+            GameObjectManager.Instance.Reset();
             levelLoader.LoadLevel($"LevelManager\\{newWorld}.xml");
 
             //Game1.Instance.GetCamera().Reset();
@@ -69,6 +73,8 @@ namespace Sprint_2.LevelManager
 
             SoundManager.Instance.StopBackgroundMusic();
             SoundManager.Instance.PlayBackgroundMusic(bgm);
+
+            Game1.Instance.gameState = new PlayableState(Game1.Instance.GetKeyboardControl());
         }
 
 

@@ -63,7 +63,6 @@ namespace Sprint_2.Collision
                     Type command2 = Type.GetType(receiverCommand);
 
                     collisionDict.Add(key, (command1, command2));
-                    Debug.WriteLine("Source Type: " + command1);
                 }
             }
         }

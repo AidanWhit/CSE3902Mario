@@ -12,6 +12,7 @@ using Sprint_2.Constants;
 using System;
 using Sprint_2.LevelManager;
 using Sprint_2.Commands.ProgramCommands;
+using System.Linq.Expressions;
 
 
 namespace Sprint_2.Sprites
@@ -210,6 +211,7 @@ namespace Sprint_2.Sprites
             {
                 int bottomOfSprite = GetHitBox().Bottom;
                 Idle();
+                isFalling = true;
                 YPos = bottomOfSprite - GetHitBox().Height;
             }
         }

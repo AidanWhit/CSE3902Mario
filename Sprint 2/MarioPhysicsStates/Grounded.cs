@@ -29,7 +29,6 @@ namespace Sprint_2.MarioPhysicsStates
                 }
 
             }
-            /* Potential source of crouching bug. Fixed when commented out but mario can not fall*/
             if (mario.PlayerVelocity.Y < MarioPhysicsConstants.maxFallVelocity)
             {
                 mario.PlayerVelocity += MarioPhysicsConstants.marioFallVelocity;

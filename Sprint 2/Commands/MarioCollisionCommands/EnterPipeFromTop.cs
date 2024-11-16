@@ -78,7 +78,7 @@ namespace Sprint_2.Commands.MarioCollisionCommands
                         Game1.Instance.GetCamera().Reset();
                         //Game1.Instance.GetCamera().SetLevelBounds(new Vector2(0, MiscConstants.levelBounds.Y));
                         break;
-
+                        
                     case "level-1_data_pretty":
                         Spawner.Instance.TeleportToLevel("UndergroundXML", new Vector2(128, 500), "underworld");
                         Game1.Instance.GetCamera().Reset();
