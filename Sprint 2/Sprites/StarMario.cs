@@ -162,5 +162,10 @@ namespace Sprint_2.Sprites
         {
             // Star Mario can not bounce on enemies
         }
+
+        public int GetScore()
+        {
+            return decoratedPlayer.GetScore();
+        }
     }
 }

@@ -36,8 +36,6 @@ namespace Sprint_2.Commands.MarioCollisionCommands
 
                 player.isFalling = false;
                 player.Bounce();
-                
-                //HUD.Instance.AddScorePopUp(((Player)player).GetScore(), new Vector2(enemy.XPos, enemy.YPos));
             }
         }
     }

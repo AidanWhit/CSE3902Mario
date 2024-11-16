@@ -11,8 +11,6 @@ using Sprint_2.Constants;
 using System;
 using Sprint_2.LevelManager;
 using Sprint_2.Commands.ProgramCommands;
-using System.Threading;
-using Sprint_2.GameObjects.Items;
 
 
 namespace Sprint_2.Sprites
@@ -146,6 +144,8 @@ namespace Sprint_2.Sprites
                 isJumping = true;
                 PhysicsState = new BounceState(this);
                 PlayerState.Jump();
+
+                HUD.Instance.AddScorePopUp(GetScore(), new Vector2(XPos, YPos));
             }
         }
         public void Fall()

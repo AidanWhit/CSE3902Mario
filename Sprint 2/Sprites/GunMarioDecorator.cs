@@ -31,8 +31,6 @@ namespace Sprint_2.Sprites
             this.decoratedPlayer = decoratedPlayer;
            
             gun = new Gun(this, new Vector2(XPos, YPos));
-
-            Debug.WriteLine("Entered GunMarioDecorator Constructor!!! " + System.DateTime.Now);
         }
 
         public void Update(GameTime gameTime)
@@ -155,6 +153,11 @@ namespace Sprint_2.Sprites
         public void Bounce()
         {
             decoratedPlayer.Bounce();
+        }
+
+        public int GetScore()
+        {
+            return decoratedPlayer.GetScore();
         }
     }
 }

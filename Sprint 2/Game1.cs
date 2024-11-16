@@ -89,7 +89,6 @@ namespace Sprint_2
             levelLoader.LoadLevel(@"LevelManager\level-1_data_pretty.xml");
 
             gameState = new PlayableState(keyControl);
-            
         }
         protected override void UnloadContent()
         {
