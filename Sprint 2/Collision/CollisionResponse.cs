@@ -54,7 +54,7 @@ namespace Sprint_2.Collision
 
                     collisionReader.Read();
                     sourceCommand = collisionReader.ReadElementContentAsString();
-
+                    
                     collisionReader.Read();
                     receiverCommand = collisionReader.ReadElementContentAsString();
 

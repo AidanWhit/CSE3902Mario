@@ -16,6 +16,8 @@ using System.Reflection;
 using System.Data.Common;
 using System.Diagnostics.CodeAnalysis;
 using Sprint_2.GameObjects.Misc;
+using Sprint_2.GameObjects.Enemies;
+using Sprint_2.GameObjects.Enemies.BowserClasses;
 
 namespace Sprint_2.LevelManager
 {
@@ -296,8 +298,10 @@ namespace Sprint_2.LevelManager
             {
                 
                 case "Bowser":
-                    //TODO: FIX BOWSER CONSTRUCTOR
-                    // To be implemented for Sprint5
+                    enemy = new Bowser(new Vector2(locationX, locationY));
+                    GameObjectManager.Instance.Updateables.Add(enemy);
+                    GameObjectManager.Instance.BackDrawables.Add(enemy);
+                    GameObjectManager.Instance.Movers.Add(enemy);
                     break;
                 case "Goomba":
                     enemy = new Goomba(new Vector2(locationX, locationY));

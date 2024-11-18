@@ -252,262 +252,68 @@
       <ObjectName>BrownGround</ObjectName>
       <Location>304 448</Location>
     </Item>
-    <Item>
+	<Item>
       <ObjectType>Block</ObjectType>
       <ObjectName>BrownGround</ObjectName>
-      <Location>0 432</Location>
+      <Location>320 448</Location>
     </Item>
-    <Item>
-      <ObjectType>Block</ObjectType>
-      <ObjectName>BrownGround</ObjectName>
-      <Location>0 416</Location>
-    </Item>
-    <Item>
-      <ObjectType>Block</ObjectType>
-      <ObjectName>BrownGround</ObjectName>
-      <Location>0 400</Location>
-    </Item>
-    <Item>
-      <ObjectType>Block</ObjectType>
-      <ObjectName>BrownGround</ObjectName>
-      <Location>0 384</Location>
-    </Item>
-    <Item>
-      <ObjectType>Block</ObjectType>
-      <ObjectName>BrownGround</ObjectName>
-      <Location>0 368</Location>
-    </Item>
-    <Item>
-      <ObjectType>Block</ObjectType>
-      <ObjectName>BrownGround</ObjectName>
-      <Location>0 352</Location>
-    </Item>
-    <Item>
-      <ObjectType>Block</ObjectType>
-      <ObjectName>BrownGround</ObjectName>
-      <Location>0 336</Location>
-    </Item>
-    <Item>
-      <ObjectType>Block</ObjectType>
-      <ObjectName>BrownGround</ObjectName>
-      <Location>0 320</Location>
-    </Item>
-    <Item>
-      <ObjectType>Block</ObjectType>
-      <ObjectName>BrownGround</ObjectName>
-      <Location>0 304</Location>
-    </Item>
-    <Item>
-      <ObjectType>Block</ObjectType>
-      <ObjectName>BrownGround</ObjectName>
-      <Location>304 432</Location>
-    </Item>
-    <Item>
-      <ObjectType>Block</ObjectType>
-      <ObjectName>BrownGround</ObjectName>
-      <Location>304 416</Location>
-    </Item>
-    <Item>
-      <ObjectType>Block</ObjectType>
-      <ObjectName>BrownGround</ObjectName>
-      <Location>304 400</Location>
-    </Item>
-    <Item>
-      <ObjectType>Block</ObjectType>
-      <ObjectName>BrownGround</ObjectName>
-      <Location>304 384</Location>
-    </Item>
-    <Item>
-      <ObjectType>Block</ObjectType>
-      <ObjectName>BrownGround</ObjectName>
-      <Location>304 368</Location>
-    </Item>
-    <Item>
-      <ObjectType>Block</ObjectType>
-      <ObjectName>BrownGround</ObjectName>
-      <Location>304 352</Location>
-    </Item>
-    <Item>
-      <ObjectType>Block</ObjectType>
-      <ObjectName>BrownGround</ObjectName>
-      <Location>304 336</Location>
-    </Item>
-    <Item>
-      <ObjectType>Block</ObjectType>
-      <ObjectName>BrownGround</ObjectName>
-      <Location>304 320</Location>
-    </Item>
-    <Item>
-      <ObjectType>Block</ObjectType>
-      <ObjectName>BrownGround</ObjectName>
-      <Location>304 304</Location>
-    </Item>
-    <Item>
-      <ObjectType>Block</ObjectType>
-      <ObjectName>BrownGround</ObjectName>
-      <Location>16 304</Location>
-    </Item>
-    <Item>
-      <ObjectType>Block</ObjectType>
-      <ObjectName>BrownGround</ObjectName>
-      <Location>32 304</Location>
-    </Item>
-    <Item>
-      <ObjectType>Block</ObjectType>
-      <ObjectName>BrownGround</ObjectName>
-      <Location>48 304</Location>
-    </Item>
-    <Item>
-      <ObjectType>Block</ObjectType>
-      <ObjectName>BrownGround</ObjectName>
-      <Location>64 304</Location>
-    </Item>
-    <Item>
-      <ObjectType>Block</ObjectType>
-      <ObjectName>BrownGround</ObjectName>
-      <Location>80 304</Location>
-    </Item>
-    <Item>
-      <ObjectType>Block</ObjectType>
-      <ObjectName>BrownGround</ObjectName>
-      <Location>96 304</Location>
-    </Item>
-    <Item>
-      <ObjectType>Block</ObjectType>
-      <ObjectName>BrownGround</ObjectName>
-      <Location>112 304</Location>
-    </Item>
-    <Item>
-      <ObjectType>Block</ObjectType>
-      <ObjectName>BrownGround</ObjectName>
-      <Location>128 304</Location>
-    </Item>
-    <Item>
-      <ObjectType>Block</ObjectType>
-      <ObjectName>BrownGround</ObjectName>
-      <Location>144 304</Location>
-    </Item>
-    <Item>
-      <ObjectType>Block</ObjectType>
-      <ObjectName>BrownGround</ObjectName>
-      <Location>160 304</Location>
-    </Item>
-    <Item>
-      <ObjectType>Block</ObjectType>
-      <ObjectName>BrownGround</ObjectName>
-      <Location>176 304</Location>
-    </Item>
-    <Item>
-      <ObjectType>Block</ObjectType>
-      <ObjectName>BrownGround</ObjectName>
-      <Location>192 304</Location>
-    </Item>
-    <Item>
-      <ObjectType>Block</ObjectType>
-      <ObjectName>BrownGround</ObjectName>
-      <Location>208 304</Location>
-    </Item>
-    <Item>
-      <ObjectType>Block</ObjectType>
-      <ObjectName>BrownGround</ObjectName>
-      <Location>224 304</Location>
-    </Item>
-    <Item>
-      <ObjectType>Block</ObjectType>
-      <ObjectName>BrownGround</ObjectName>
-      <Location>240 304</Location>
-    </Item>
-    <Item>
-      <ObjectType>Block</ObjectType>
-      <ObjectName>BrownGround</ObjectName>
-      <Location>256 304</Location>
-    </Item>
-    <Item>
-      <ObjectType>Block</ObjectType>
-      <ObjectName>BrownGround</ObjectName>
-      <Location>272 304</Location>
-    </Item>
-    <Item>
-      <ObjectType>Block</ObjectType>
-      <ObjectName>BrownGround</ObjectName>
-      <Location>288 304</Location>
-    </Item>
-    <Item>
-      <ObjectType>Block</ObjectType>
-      <ObjectName>ItemWithPowerUp</ObjectName>
-      <Location>48 384</Location>
-    </Item>
-    <Item>
-      <ObjectType>Block</ObjectType>
-      <ObjectName>BrownBrick</ObjectName>
-      <Location>96 384</Location>
-    </Item>
-    <Item>
-      <ObjectType>Block</ObjectType>
-      <ObjectName>Invisible</ObjectName>
-      <Location>144 384</Location>
-    </Item>
-    <Item>
-      <ObjectType>Block</ObjectType>
-      <ObjectName>BrownGround</ObjectName>
-      <Location>192 384</Location>
-    </Item>
-    <Item>
-      <ObjectType>Block</ObjectType>
-      <ObjectName>BrownBrickWithStar</ObjectName>
-      <Location>240 384</Location>
-    </Item>
-    <Item>
-      <ObjectType>Enemy</ObjectType>
-      <ObjectName>Goomba</ObjectName>
-      <Location>224 432</Location>
-    </Item>
-    <Item>
-      <ObjectType>Enemy</ObjectType>
-      <ObjectName>Koopa</ObjectName>
-      <Location>288 432</Location>
-    </Item>
-    
+	  <Item>
+		  <ObjectType>Block</ObjectType>
+		  <ObjectName>BrownGround</ObjectName>
+		  <Location>320 464</Location>
+	  </Item>
+	  <Item>
+		  <ObjectType>Block</ObjectType>
+		  <ObjectName>BrownGround</ObjectName>
+		  <Location>336 448</Location>
+	  </Item>
+	  <Item>
+		  <ObjectType>Block</ObjectType>
+		  <ObjectName>BrownGround</ObjectName>
+		  <Location>336 464</Location>
+	  </Item>
+
+	  <Item>
+		  <ObjectType>Block</ObjectType>
+		  <ObjectName>BrownGround</ObjectName>
+		  <Location>352 448</Location>
+	  </Item>
+	  <Item>
+		  <ObjectType>Block</ObjectType>
+		  <ObjectName>BrownGround</ObjectName>
+		  <Location>352 464</Location>
+	  </Item>
+
+	  <Item>
+		  <ObjectType>Block</ObjectType>
+		  <ObjectName>BrownGround</ObjectName>
+		  <Location>368 448</Location>
+	  </Item>
+	  <Item>
+		  <ObjectType>Block</ObjectType>
+		  <ObjectName>BrownGround</ObjectName>
+		  <Location>368 464</Location>
+	  </Item>
+
+	  <Item>
+		  <ObjectType>Block</ObjectType>
+		  <ObjectName>BrownGround</ObjectName>
+		  <Location>384 448</Location>
+	  </Item>
+	  <Item>
+		  <ObjectType>Block</ObjectType>
+		  <ObjectName>BrownGround</ObjectName>
+		  <Location>384 464</Location>
+	  </Item>
+	  <Item>
+		  <ObjectType>Enemy</ObjectType>
+		  <ObjectName>Bowser</ObjectName>
+		  <Location>288 416</Location>
+	  </Item>
     <Item>
       <ObjectType>Player</ObjectType>
       <ObjectName>Mario</ObjectName>
       <Location>32 432</Location>
     </Item>
-	  <Item>
-		  <ObjectType>Block</ObjectType>
-		  <ObjectName>BrownBrickWithCoins</ObjectName>
-		  <Location>16 384</Location>
-	  </Item>
-	  <Item>
-		  <ObjectType>Item</ObjectType>
-		  <ObjectName>Flower</ObjectName>
-		  <Location>32 352</Location>
-	  </Item>
-	  <Item>
-		  <ObjectType>Block</ObjectType>
-		  <ObjectName>ItemWithCoin</ObjectName>
-		  <Location>128 384</Location>
-	  </Item>
-	  <Item>
-		  <ObjectType>Collider</ObjectType>
-		  <ObjectName></ObjectName>
-		  <Location>0 448</Location>
-		  <SizeX>320</SizeX>
-		  <SizeY>16</SizeY>
-	  </Item>
-	  <Item>
-		  <ObjectType>Collider</ObjectType>
-		  <ObjectName></ObjectName>
-		  <Location>0 304</Location>
-		  <SizeX>16</SizeX>
-		  <SizeY>144</SizeY>
-	  </Item>
-	  <Item>
-		  <ObjectType>Collider</ObjectType>
-		  <ObjectName></ObjectName>
-		  <Location>304 304</Location>
-		  <SizeX>16</SizeX>
-		  <SizeY>144</SizeY>
-	  </Item>
   </Asset>
 </XnaContent>

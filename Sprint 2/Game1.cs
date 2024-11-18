@@ -87,8 +87,9 @@ namespace Sprint_2
 
             levelLoader = new LevelLoader();
             //levelLoader.LoadLevel(@"LevelManager\level-1_data_pretty.xml");
-            levelLoader.LoadLevel(@"LevelManager\main-menu.xml");
-            GameWorldManager.CurrentGameWorld = "main-menu";
+            levelLoader.LoadLevel(@"LevelManager\testing-level.xml");
+            GameWorldManager.CurrentGameWorld = "testing-level";
+            camera.SetLevelBounds(new Vector2(0, MiscConstants.levelBounds.Y));
 
             gameState = new PlayableState(keyControl);
         }
@@ -108,7 +109,7 @@ namespace Sprint_2
 
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.Black);
+            GraphicsDevice.Clear(Color.CornflowerBlue);
             // Begin the sprite batch with the camera's transformation matrix
             spriteBatch.Begin(transformMatrix: camera.Transform);
 
@@ -145,9 +146,9 @@ namespace Sprint_2
             InitControls.initializeControls(keyControl, mario);
 
             //levelLoader.LoadLevel(@"LevelManager\level-1_data_pretty.xml");
-            levelLoader.LoadLevel(@"LevelManager\main-menu.xml");
+            levelLoader.LoadLevel(@"LevelManager\testing-level.xml");
             //levelLoader.LoadLevel($"LevelManager\\{GameWorldManager.CurrentGameWorld}.xml");
-            GameWorldManager.CurrentGameWorld = "main-menu";
+            GameWorldManager.CurrentGameWorld = "testing-level.xml";
 
             camera.Reset();
             SoundManager.Instance.Reset();
