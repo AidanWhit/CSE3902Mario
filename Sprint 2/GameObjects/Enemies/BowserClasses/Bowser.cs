@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint_2.Constants;
 using Sprint_2.Factories;
@@ -6,6 +7,7 @@ using Sprint_2.Interfaces;
 using Sprint_2.LevelManager;
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.Diagnostics;
 using System.Security.AccessControl;
 using System.Timers;
 
@@ -20,18 +22,22 @@ namespace Sprint_2.GameObjects.Enemies.BowserClasses
         public float YPos { get; set; }
         public Vector2 Velocity { get; set; }
         public bool Flipped { get; set; }
-
         private float leftMostXPos;
         private float rightMostXPos;
         private const int patrolRange = 32;
-        private bool movingLeft = true;
 
-
+        private float timeForMouthClosed = 2f;
+        private float initialTimeForMouthCloser = 2f;
         private bool isJumping = false;
+
+        private Interfaces.IUpdateable bowserBehavior;
+        private Interfaces.IUpdateable initialBowserBehavior;
+        private Random rand;
         public Bowser(Vector2 location)
         {
             XPos = location.X;
             YPos = location.Y;
+            
             leftMostXPos = XPos - patrolRange;
             rightMostXPos = XPos + patrolRange;
 
@@ -40,76 +46,57 @@ namespace Sprint_2.GameObjects.Enemies.BowserClasses
             //Assume bowser starts facing left
             sprite = UniversalSpriteFactory.Instance.CreateEnemy("LeftBowser");
 
-            Timer timer = new Timer(5000);
-            timer.AutoReset = true;
+            bowserBehavior = new BowserPatrolBehavior(this);
+            initialBowserBehavior = bowserBehavior;
+
+            /* Instead of using a random number use a timer class that once the time has elapsed, a random behavior will be chosen from 
+             an array of preexisting behaviors*/
+            rand = new Random();
+            Timer timer = new Timer(1000);
             timer.Enabled = true;
-            timer.Elapsed += (source, e) => OnTimerEvent(source, e);
+            timer.Elapsed += (source, e) => OnTimedEvent(source, e);
+            timer.AutoReset = true;
         }
-        private void OnTimerEvent(Object source, ElapsedEventArgs e)
+        private void OnTimedEvent(Object source, EventArgs e)
         {
-            CreateFireball();
+
+            /* May want to have a system that will tell when the behavior has been completed so that it can revert back to the patrol behavior */
+            int randInt = rand.Next(7);
+            Debug.WriteLine("RandomInt: " + randInt);
+            if (randInt == 0)
+            {
+                bowserBehavior = new BowserJumpBehavior(this);
+            }
+            else if (randInt == 1)
+            {
+                bowserBehavior = new BowserStandingFireball(this, facingLeft, mario);
+            }
+            else if (randInt == 2)
+            {
+                bowserBehavior = new BowserJumpingFireball(this, facingLeft, mario);
+            }
+            else if (randInt == 3)
+            {
+                bowserBehavior = new BowserHammerAttack(this, facingLeft);
+            }
+            else
+            {
+                bowserBehavior = new BowserPatrolBehavior(this);
+            }
         }
         public void Update(GameTime gameTime)
         {
+            //int randomInt = rand.Next(100);
+            bowserBehavior.Update(gameTime);
             ChangeDirection();
-            Patrol();
-            JumpBehavior();
+            
 
-            XPos += (float)(Velocity.X * gameTime.ElapsedGameTime.TotalSeconds);
-            if (Velocity.Y < EnemyConstants.maxFallVelocity)
-            {
-                Velocity += EnemyConstants.fallVelocity;
-            }
-            YPos += (float)(Velocity.Y * gameTime.ElapsedGameTime.TotalSeconds);
             sprite.Update(gameTime);
         }
 
         public void Draw(SpriteBatch spriteBatch, Color color)
         {
             sprite.Draw(spriteBatch, new Vector2(XPos, YPos), color);
-        }
-        private void Patrol()
-        {
-            //if(XPos > leftMostXPos && movingLeft)
-            //{
-            //    //XPos -= Velocity.X;
-            //}
-            //else if (XPos < rightMostXPos && !movingLeft)
-            //{
-            //    //XPos += Velocity.X;
-            //}
-            UpdateMovingLeft();
-        }
-        private void UpdateMovingLeft()
-        {
-            if (XPos <= leftMostXPos)
-            {
-                XPos = leftMostXPos;
-                movingLeft = false;
-                Velocity *= new Vector2(-1, 1);
-            }
-            else if (XPos >= rightMostXPos)
-            {
-                XPos = rightMostXPos;
-                movingLeft = true;
-                Velocity *= new Vector2(-1, 1);
-            }
-        }
-        private void CreateFireball()
-        {
-            BowserFireball fireball = new BowserFireball(new Vector2(XPos, YPos), mario.GetHitBox().Bottom, facingLeft);
-
-            GameObjectManager.Instance.Updateables.Add(fireball);
-            GameObjectManager.Instance.ForeDrawables.Add(fireball);
-            GameObjectManager.Instance.Movers.Add(fireball);
-        }
-        private void JumpBehavior()
-        {
-            if (!isJumping)
-            {
-                Velocity = new Vector2(Velocity.X, ItemPhysicsConstants.bounceVelocity);
-                isJumping = true;
-            }
         }
         public void TakeFireballDamage()
         {
@@ -135,12 +122,10 @@ namespace Sprint_2.GameObjects.Enemies.BowserClasses
                 facingLeft = !facingLeft;
             }
         }
-
         public string GetCollisionType()
         {
             return nameof(Bowser);
         }
-
         public Rectangle GetHitBox()
         {
             return sprite.GetHitBox(new Vector2(XPos, YPos));
@@ -149,11 +134,21 @@ namespace Sprint_2.GameObjects.Enemies.BowserClasses
         {
             return (int)XPos / CollisionConstants.blockWidth;
         }
-
         public void SetIsJumping(bool jumping)
         {
             isJumping = jumping;
         }
-
+        public void SetSprite(ISprite newSprite)
+        {
+            sprite = newSprite;
+        }
+        public ISprite GetSprite()
+        {
+            return sprite;
+        }
+        public (float, float) GetMaxPatrolBounds()
+        {
+            return (leftMostXPos, rightMostXPos);
+        }
     }
 }

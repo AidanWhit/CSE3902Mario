@@ -1055,19 +1055,7 @@
 	
 	<Sprite>
 		<Name>LeftBowser</Name>
-		<NumOfFrames>4</NumOfFrames>
-		<Rectangle>
-			<XPos>123</XPos>
-			<YPos>212</YPos>
-			<Width>32</Width>
-			<Height>32</Height>
-		</Rectangle>
-		<Rectangle>
-			<XPos>83</XPos>
-			<YPos>212</YPos>
-			<Width>32</Width>
-			<Height>32</Height>
-		</Rectangle>
+		<NumOfFrames>2</NumOfFrames>
 		<Rectangle>
 			<XPos>43</XPos>
 			<YPos>212</YPos>
@@ -1084,19 +1072,7 @@
 
 	<Sprite>
 		<Name>RightBowser</Name>
-		<NumOfFrames>4</NumOfFrames>
-		<Rectangle>
-			<XPos>163</XPos>
-			<YPos>212</YPos>
-			<Width>32</Width>
-			<Height>32</Height>
-		</Rectangle>
-		<Rectangle>
-			<XPos>203</XPos>
-			<YPos>212</YPos>
-			<Width>32</Width>
-			<Height>32</Height>
-		</Rectangle>
+		<NumOfFrames>2</NumOfFrames>
 		<Rectangle>
 			<XPos>243</XPos>
 			<YPos>212</YPos>
@@ -1144,4 +1120,68 @@
 			<Height>8</Height>
 		</Rectangle>
 	</Sprite>
+
+	<Sprite>
+		<Name>RightMouthClosedBowser</Name>
+		<NumOfFrames>2</NumOfFrames>
+		<Rectangle>
+			<XPos>163</XPos>
+			<YPos>212</YPos>
+			<Width>32</Width>
+			<Height>32</Height>
+		</Rectangle>
+		<Rectangle>
+			<XPos>203</XPos>
+			<YPos>212</YPos>
+			<Width>32</Width>
+			<Height>32</Height>
+		</Rectangle>
+	</Sprite>
+
+	<Sprite>
+		<Name>LeftMouthClosedBowser</Name>
+		<NumOfFrames>2</NumOfFrames>
+		<Rectangle>
+			<XPos>123</XPos>
+			<YPos>212</YPos>
+			<Width>32</Width>
+			<Height>32</Height>
+		</Rectangle>
+		<Rectangle>
+			<XPos>83</XPos>
+			<YPos>212</YPos>
+			<Width>32</Width>
+			<Height>32</Height>
+		</Rectangle>
+	</Sprite>
+
+	<Sprite>
+		<Name>BowserHammer</Name>
+		<NumOfFrames>4</NumOfFrames>
+		<Rectangle>
+			<XPos>265</XPos>
+			<YPos>101</YPos>
+			<Width>8</Width>
+			<Height>16</Height>
+		</Rectangle>
+		<Rectangle>
+			<XPos>265</XPos>
+			<YPos>88</YPos>
+			<Width>14</Width>
+			<Height>8</Height>
+		</Rectangle>
+		<Rectangle>
+			<XPos>285</XPos>
+			<YPos>88</YPos>
+			<Width>8</Width>
+			<Height>16</Height>
+		</Rectangle>
+		<Rectangle>
+			<XPos>279</XPos>
+			<YPos>109</YPos>
+			<Width>14</Width>
+			<Height>8</Height>
+		</Rectangle>
+	</Sprite>
+	
 </XNAContent>
