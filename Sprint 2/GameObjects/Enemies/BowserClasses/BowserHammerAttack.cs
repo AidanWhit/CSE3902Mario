@@ -11,8 +11,8 @@ namespace Sprint_2.GameObjects.Enemies.BowserClasses
 
         private Interfaces.IUpdateable bowserBehavior;
 
-        private float timeToSpawnNextHammer = 0.25f;
-        private float initialTimeToSpawnHammer = 0.25f;
+        private float timeToSpawnNextHammer;
+        private const float initialTimeToSpawnHammer = 0.25f;
 
         public BowserHammerAttack(Bowser bowser, bool facingLeft)
         {
@@ -20,6 +20,8 @@ namespace Sprint_2.GameObjects.Enemies.BowserClasses
 
             this.facingLeft = facingLeft;
 
+
+            timeToSpawnNextHammer = initialTimeToSpawnHammer;
             bowserBehavior = new BowserJumpBehavior(bowser);
         }
 

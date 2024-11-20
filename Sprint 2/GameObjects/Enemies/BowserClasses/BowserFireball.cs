@@ -27,8 +27,6 @@ namespace Sprint_2.GameObjects.Enemies.BowserClasses
         {
             XPos = spawnLocation.X;
             YPos = spawnLocation.Y;
-
-            Debug.WriteLine("Entered Create Fireball");
             
             if (goingLeft)
             {

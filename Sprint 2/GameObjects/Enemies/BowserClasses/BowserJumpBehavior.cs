@@ -29,7 +29,7 @@ namespace Sprint_2.GameObjects.Enemies.BowserClasses
         {
             if (velocity.Y < EnemyConstants.maxFallVelocity)
             {
-                velocity += EnemyConstants.fallVelocity;
+                velocity += EnemyConstants.fallVelocity / 1.3f;
             }
             //bowser.XPos += (float)(velocity.X * gameTime.ElapsedGameTime.TotalSeconds);
             patrolBehavior.Update(gameTime);

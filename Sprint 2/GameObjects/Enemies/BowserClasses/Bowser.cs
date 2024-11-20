@@ -26,13 +26,14 @@ namespace Sprint_2.GameObjects.Enemies.BowserClasses
         private float rightMostXPos;
         private const int patrolRange = 32;
 
-        private float timeForMouthClosed = 2f;
-        private float initialTimeForMouthCloser = 2f;
+        private int health = 1;
         private bool isJumping = false;
 
         private Interfaces.IUpdateable bowserBehavior;
-        private Interfaces.IUpdateable initialBowserBehavior;
         private Random rand;
+        private Timer attackTimer;
+        private bool startBehavior = false;
+        private SpriteEffects spriteEffect = SpriteEffects.None;
         public Bowser(Vector2 location)
         {
             XPos = location.X;
@@ -47,22 +48,17 @@ namespace Sprint_2.GameObjects.Enemies.BowserClasses
             sprite = UniversalSpriteFactory.Instance.CreateEnemy("LeftBowser");
 
             bowserBehavior = new BowserPatrolBehavior(this);
-            initialBowserBehavior = bowserBehavior;
 
-            /* Instead of using a random number use a timer class that once the time has elapsed, a random behavior will be chosen from 
-             an array of preexisting behaviors*/
             rand = new Random();
-            Timer timer = new Timer(1000);
-            timer.Enabled = true;
-            timer.Elapsed += (source, e) => OnTimedEvent(source, e);
-            timer.AutoReset = true;
+            attackTimer = new Timer(1000);
+            attackTimer.Enabled = true;
+            attackTimer.Elapsed += (source, e) => OnTimedEvent(source, e);
+            attackTimer.AutoReset = true;
         }
         private void OnTimedEvent(Object source, EventArgs e)
         {
-
-            /* May want to have a system that will tell when the behavior has been completed so that it can revert back to the patrol behavior */
             int randInt = rand.Next(7);
-            Debug.WriteLine("RandomInt: " + randInt);
+            //Debug.WriteLine("RandomInt: " + randInt);
             if (randInt == 0)
             {
                 bowserBehavior = new BowserJumpBehavior(this);
@@ -86,21 +82,33 @@ namespace Sprint_2.GameObjects.Enemies.BowserClasses
         }
         public void Update(GameTime gameTime)
         {
-            //int randomInt = rand.Next(100);
-            bowserBehavior.Update(gameTime);
-            ChangeDirection();
-            
+            startBehavior = UpdateStartBehavior();
+            if (startBehavior)
+            {
+                bowserBehavior.Update(gameTime);
+                ChangeDirection();
 
-            sprite.Update(gameTime);
+                sprite.Update(gameTime);
+            }
+            
         }
 
         public void Draw(SpriteBatch spriteBatch, Color color)
         {
-            sprite.Draw(spriteBatch, new Vector2(XPos, YPos), color);
+            sprite.Draw(spriteBatch, new Vector2(XPos, YPos), color, 0f, Vector2.Zero, spriteEffect);
         }
         public void TakeFireballDamage()
         {
             /* Subtract health by 1 */
+            health--;
+            if (health == 0)
+            {
+                attackTimer.Dispose();
+                bowserBehavior = new BowserFlippedBehavior(this);
+                spriteEffect = SpriteEffects.FlipVertically;
+
+                HUD.Instance.AddScorePopUp(5000, new Vector2(XPos, YPos));
+            }
         }
 
         public void TakeStompDamage()
@@ -149,6 +157,15 @@ namespace Sprint_2.GameObjects.Enemies.BowserClasses
         public (float, float) GetMaxPatrolBounds()
         {
             return (leftMostXPos, rightMostXPos);
+        }
+        private bool UpdateStartBehavior()
+        {
+            float distToPlayer = Math.Abs(Game1.Instance.mario.XPos - XPos);
+            if (distToPlayer < EnemyConstants.distUntilBehaviorStarts)
+            {
+                startBehavior = true;
+            }
+            return startBehavior;
         }
     }
 }
