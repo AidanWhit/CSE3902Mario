@@ -29,13 +29,13 @@ namespace Sprint_2.Sprites.EnemySprites
             YPos = initialPosition.Y;
 
             LavaState = new LavabubbleStateMachine(this);
-            Velocity = new Vector2(0, EnemyConstants.fallVelocity.Y);
+            Velocity = new Vector2(0, -100);
         }
 
 
         public void Update(GameTime gameTime)
         {
-            LavaState.Update(gameTime);
+            LavaState.Update(gameTime, YPos);
             //LavaState.Update(gameTime);
         }
 
@@ -66,8 +66,7 @@ namespace Sprint_2.Sprites.EnemySprites
 
         public string GetCollisionType()
         {
-            //TODO: Look into
-            return null;
+            return nameof(LavaBubble);
         }
 
         public int GetColumn()

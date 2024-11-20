@@ -33,28 +33,14 @@ namespace Sprint_2.GameObjects.Enemies.EnemyStates
             sprite = UniversalSpriteFactory.Instance.CreateEnemy(NamesOfSprites.SpriteNames.LavaBubbleMovingUp.ToString());
         }
 
-        public void ChangeDirection()
-        {
-
-            movingUp = !movingUp;
-            if (movingUp)
-            {
-                sprite = UniversalSpriteFactory.Instance.CreateEnemy(NamesOfSprites.SpriteNames.LavaBubbleMovingUp.ToString());
-            }
-            else
-            {
-                sprite = UniversalSpriteFactory.Instance.CreateEnemy(NamesOfSprites.SpriteNames.LavaBubbleMovingDown.ToString());
-            }
-        }
-
-        public void Update(GameTime gameTime)
+        public void Update(GameTime gameTime, float yPos)
         {
             startBehavior = UpdateStartBehavior();
             if (startBehavior)
             {
-                /* Move Position*/
-                lavaBubble.YPos += (float)(lavaBubble.Velocity.Y * gameTime.ElapsedGameTime.TotalSeconds);
-                lavaBubble.Velocity = new Vector2(lavaBubble.Velocity.X, lavaBubble.Velocity.Y * MarioPhysicsConstants.velocityDecay);
+                Move(gameTime);
+
+                ChangeMovement(yPos);
             }
             sprite.Update(gameTime);
         }
@@ -73,17 +59,23 @@ namespace Sprint_2.GameObjects.Enemies.EnemyStates
             sprite.Draw(spriteBatch, location, color);
         }
 
-        public void Move()
+        public void Move(GameTime gameTime)
         {
-            if (movingUp)
+            lavaBubble.YPos += (float) (lavaBubble.Velocity.Y * gameTime.ElapsedGameTime.TotalSeconds);
+        }
+
+        public void ChangeMovement(float Ypos)
+        {
+            if (Ypos < 300 && lavaBubble.Velocity.Y < 0)
             {
-                lavaBubble.Velocity = new Vector2(0, EnemyConstants.moveSpeed);
+                lavaBubble.Velocity = new Vector2(0, -lavaBubble.Velocity.Y);
+                sprite = UniversalSpriteFactory.Instance.CreateEnemy(NamesOfSprites.SpriteNames.LavaBubbleMovingDown.ToString());
             }
-            else
+            else if (Ypos > 432 && lavaBubble.Velocity.Y > 0)
             {
-                lavaBubble.Velocity = new Vector2(0, -EnemyConstants.moveSpeed);
+                lavaBubble.Velocity = new Vector2(0, -lavaBubble.Velocity.Y);
+                sprite = UniversalSpriteFactory.Instance.CreateEnemy(NamesOfSprites.SpriteNames.LavaBubbleMovingUp.ToString());
             }
-            lavaBubble.YPos += lavaBubble.Velocity.Y;
         }
 
         public Rectangle GetHitBox(Vector2 location)
