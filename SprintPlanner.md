@@ -10,9 +10,9 @@ Here is the Sprint Planner that will be used to document our plans, design chang
 |------:|--------------|----------------|--------------------|----------------------|---------------|
 | Gun Powerup | 0 hrs | 0 hrs | Aidan Whitlatch | 11/23 | 11/16 |
 | Boss Level (XML file) | 5 hrs | 5 hrs | Jingyu Fu | 11/23
-| Bowser (we already have sprites and class for bowser, but further features need to be implemented)| 4 hrs | 4 hrs | Zhuoyang Li + Aidan Whitlatch | 11/25 |
-| Bowser Fireball Attack (we already have sprites and class for bowser fireball, but further features need to be implemented)| 2 hrs | 2 hrs| Hahn Choi + Christian Blue |11/25 |
-| Bowser Hammer Attack | 4 hrs | 4 hrs | Zhouyang Li + Aidan Whitlatch| 11/25 |
+| Bowser (we already have sprites and class for bowser, but further features need to be implemented)| 0 hrs | 0 hrs | Zhuoyang Li + Aidan Whitlatch | 11/25 | 11/20|
+| Bowser Fireball Attack (we already have sprites and class for bowser fireball, but further features need to be implemented)| 0 hrs | 0 hrs| Hahn Choi + Christian Blue |11/25 | 11/20|
+| Bowser Hammer Attack | 0 hrs | 0 hrs | Zhouyang Li + Aidan Whitlatch| 11/25 | 11/20 |
 | New Blocks | 2hrs | 2 hrs | Christian Blue | 11/17 |
 | Moveable Platform | 2 hrs | 2 hrs | Christian Blue | 11/17 |
 | New Enemy (Can be simple, maybe bullet bill?)| 4 hrs | 4 hrs | Hahn Choi | 11/23 |
