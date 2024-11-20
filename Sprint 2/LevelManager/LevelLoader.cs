@@ -304,8 +304,26 @@ namespace Sprint_2.LevelManager
                     GameObjectManager.Instance.Updateables.Add(enemy);
                     GameObjectManager.Instance.BackDrawables.Add(enemy);
                     break;
-                case "Shell":
-                    enemy = new Shell(new Vector2(locationX, locationY));
+                case "Buzzy":
+                    enemy = new Buzzy(new Vector2(locationX, locationY));
+                    GameObjectManager.Instance.Movers.Add(enemy);
+                    GameObjectManager.Instance.Updateables.Add(enemy);
+                    GameObjectManager.Instance.BackDrawables.Add(enemy);
+                    break;
+                case "LavaBubble":
+                    enemy = new LavaBubble(new Vector2(locationX, locationY));
+                    GameObjectManager.Instance.Movers.Add(enemy);
+                    GameObjectManager.Instance.Updateables.Add(enemy);
+                    GameObjectManager.Instance.BackDrawables.Add(enemy);
+                    break;
+                case "KoopaShell":
+                    enemy = new Shell(new Vector2(locationX, locationY), "Koopa");
+                    GameObjectManager.Instance.Movers.Add(enemy);
+                    GameObjectManager.Instance.Updateables.Add(enemy);
+                    GameObjectManager.Instance.BackDrawables.Add(enemy);
+                    break;
+                case "BuzzyShell":
+                    enemy = new Shell(new Vector2(locationX, locationY), "Buzzy");
                     GameObjectManager.Instance.Movers.Add(enemy);
                     GameObjectManager.Instance.Updateables.Add(enemy);
                     GameObjectManager.Instance.BackDrawables.Add(enemy);

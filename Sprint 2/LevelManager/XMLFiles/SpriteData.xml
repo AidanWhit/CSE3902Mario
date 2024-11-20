@@ -479,6 +479,26 @@
 		</Rectangle>
 	</Sprite>
 	<Sprite>
+		<Name>LavaBubbleMovingUp</Name>
+		<NumOfFrames>1</NumOfFrames>
+		<Rectangle>
+			<XPos>62</XPos>
+			<YPos>155</YPos>
+			<Width>14</Width>
+			<Height>16</Height>
+		</Rectangle>
+	</Sprite>
+	<Sprite>
+		<Name>LavaBubbleMovingDown</Name>
+		<NumOfFrames>1</NumOfFrames>
+		<Rectangle>
+			<XPos>2</XPos>
+			<YPos>155</YPos>
+			<Width>14</Width>
+			<Height>16</Height>
+		</Rectangle>
+	</Sprite>
+	<Sprite>
 		<Name>SmallPipe</Name>
 		<NumFrames>1</NumFrames>
 		<Rectangle>
@@ -952,6 +972,58 @@
 			<YPos>5</YPos>
 			<Width>16</Width>
 			<Height>15</Height>
+		</Rectangle>
+	</Sprite>
+	<Sprite>
+		<Name>LeftFacingBuzzy</Name>
+		<NumOfFrames>2</NumOfFrames>
+		<Rectangle>
+			<XPos>301</XPos>
+			<YPos>95</YPos>
+			<Width>16</Width>
+			<Height>16</Height>
+		</Rectangle>
+		<Rectangle>
+			<XPos>331</XPos>
+			<YPos>95</YPos>
+			<Width>16</Width>
+			<Height>15</Height>
+		</Rectangle>
+	</Sprite>
+	<Sprite>
+		<Name>RightFacingBuzzy</Name>
+		<NumOfFrames>2</NumOfFrames>
+		<Rectangle>
+			<XPos>391</XPos>
+			<YPos>95</YPos>
+			<Width>16</Width>
+			<Height>15</Height>
+		</Rectangle>
+		<Rectangle>
+			<XPos>421</XPos>
+			<YPos>95</YPos>
+			<Width>16</Width>
+			<Height>16</Height>
+		</Rectangle>
+	</Sprite>
+	<Sprite>
+		<Name>BuzzyShell</Name>
+		<NumOfFrames>1</NumOfFrames>
+		<Rectangle>
+			<XPos>361</XPos>
+			<YPos>95</YPos>
+			<Width>16</Width>
+			<Height>15</Height>
+		</Rectangle>
+	</Sprite>
+	<Sprite>
+		<Name>FlippedBuzzyShell</Name>
+		<NumOfFrames>1</NumOfFrames>
+		<Rectangle>
+			<XPos>60</XPos>
+			<YPos>262</YPos>
+			<Width>17</Width>
+			<Height>17</Height>
 		</Rectangle>
 	</Sprite>
 	<Sprite>

@@ -459,7 +459,7 @@
     </Item>
     <Item>
       <ObjectType>Enemy</ObjectType>
-      <ObjectName>Goomba</ObjectName>
+      <ObjectName>Buzzy</ObjectName>
       <Location>224 432</Location>
     </Item>
     <Item>

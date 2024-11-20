@@ -17,9 +17,9 @@ using System.Threading.Tasks;
 
 namespace Sprint_2.GameObjects.Enemies.EnemyStates
 {
-    public class KoopaStateMachine
+    public class BuzzyStateMachine
     {
-        private Koopa koopa;
+        private Buzzy buzzy;
         private ISprite sprite;
 
         private bool facingLeft = true;
@@ -28,12 +28,12 @@ namespace Sprint_2.GameObjects.Enemies.EnemyStates
 
         private bool startBehavior = false;
 
-        public KoopaStateMachine(Koopa koopa)
+        public BuzzyStateMachine(Buzzy buzzy)
         {
-            this.koopa = koopa;
+            this.buzzy = buzzy;
 
-            /* Assume Koopa starts facing left*/
-            sprite = UniversalSpriteFactory.Instance.CreateEnemy(NamesOfSprites.SpriteNames.LeftFacingKoopa.ToString());
+            /* Assume buzzy starts facing left*/
+            sprite = UniversalSpriteFactory.Instance.CreateEnemy(NamesOfSprites.SpriteNames.LeftFacingBuzzy.ToString());
         }
 
         public void ChangeDirection()
@@ -42,11 +42,11 @@ namespace Sprint_2.GameObjects.Enemies.EnemyStates
             facingLeft = !facingLeft;
             if (facingLeft)
             {
-                sprite = UniversalSpriteFactory.Instance.CreateEnemy(NamesOfSprites.SpriteNames.LeftFacingKoopa.ToString());
+                sprite = UniversalSpriteFactory.Instance.CreateEnemy(NamesOfSprites.SpriteNames.LeftFacingBuzzy.ToString());
             }
             else
             {
-                sprite = UniversalSpriteFactory.Instance.CreateEnemy(NamesOfSprites.SpriteNames.RightFacingKoopa.ToString());
+                sprite = UniversalSpriteFactory.Instance.CreateEnemy(NamesOfSprites.SpriteNames.RightFacingBuzzy.ToString());
             }
         }
 
@@ -56,9 +56,9 @@ namespace Sprint_2.GameObjects.Enemies.EnemyStates
             if (startBehavior)
             {
                 /* Apply Gravity*/
-                if (koopa.Velocity.Y < EnemyConstants.maxFallVelocity)
+                if (buzzy.Velocity.Y < EnemyConstants.maxFallVelocity)
                 {
-                    koopa.Velocity += EnemyConstants.fallVelocity;
+                    buzzy.Velocity += EnemyConstants.fallVelocity;
                 }
 
                 if (health == Health.Normal)
@@ -67,15 +67,15 @@ namespace Sprint_2.GameObjects.Enemies.EnemyStates
                 }
 
                 /* Move Position*/
-                koopa.YPos += (float)(koopa.Velocity.Y * gameTime.ElapsedGameTime.TotalSeconds);
-                koopa.Velocity = new Vector2(koopa.Velocity.X, koopa.Velocity.Y * MarioPhysicsConstants.velocityDecay);
+                buzzy.YPos += (float)(buzzy.Velocity.Y * gameTime.ElapsedGameTime.TotalSeconds);
+                buzzy.Velocity = new Vector2(buzzy.Velocity.X, buzzy.Velocity.Y * MarioPhysicsConstants.velocityDecay);
 
-                /* if the koopa falls out of the map */
-                if (koopa.YPos > MiscConstants.despawnHeight)
+                /* if the buzzy falls out of the map */
+                if (buzzy.YPos > MiscConstants.despawnHeight)
                 {
-                    GameObjectManager.Instance.Movers.Remove(koopa);
-                    GameObjectManager.Instance.Updateables.Remove(koopa);
-                    GameObjectManager.Instance.BackDrawables.Remove(koopa);
+                    GameObjectManager.Instance.Movers.Remove(buzzy);
+                    GameObjectManager.Instance.Updateables.Remove(buzzy);
+                    GameObjectManager.Instance.BackDrawables.Remove(buzzy);
                 }
 
             }
@@ -83,7 +83,7 @@ namespace Sprint_2.GameObjects.Enemies.EnemyStates
         }
         private bool UpdateStartBehavior()
         {
-            float distToPlayer = Math.Abs(Game1.Instance.mario.XPos - koopa.XPos);
+            float distToPlayer = Math.Abs(Game1.Instance.mario.XPos - buzzy.XPos);
             if (distToPlayer < EnemyConstants.distUntilBehaviorStarts)
             {
                 startBehavior = true;
@@ -100,13 +100,13 @@ namespace Sprint_2.GameObjects.Enemies.EnemyStates
         {
             if (facingLeft)
             {
-                koopa.Velocity = new Vector2(-EnemyConstants.moveSpeed, koopa.Velocity.Y);
+                buzzy.Velocity = new Vector2(-EnemyConstants.moveSpeed, buzzy.Velocity.Y);
             }
             else
             {
-                koopa.Velocity = new Vector2(EnemyConstants.moveSpeed, koopa.Velocity.Y);
+                buzzy.Velocity = new Vector2(EnemyConstants.moveSpeed, buzzy.Velocity.Y);
             }
-            koopa.XPos += koopa.Velocity.X;
+            buzzy.XPos += buzzy.Velocity.X;
         }
 
         public void BeStomped()
@@ -114,15 +114,15 @@ namespace Sprint_2.GameObjects.Enemies.EnemyStates
             if (health != Health.Shell)
             {
                 health = Health.Shell;
-                int bottomPos = koopa.GetHitBox().Bottom;
-                sprite = UniversalSpriteFactory.Instance.CreateEnemy(NamesOfSprites.SpriteNames.KoopaShell.ToString());
-                bottomPos -= sprite.GetHitBox(new Vector2(koopa.XPos, koopa.YPos)).Height; 
+                int bottomPos = buzzy.GetHitBox().Bottom;
+                sprite = UniversalSpriteFactory.Instance.CreateEnemy(NamesOfSprites.SpriteNames.BuzzyShell.ToString());
+                bottomPos -= sprite.GetHitBox(new Vector2(buzzy.XPos, buzzy.YPos)).Height; 
 
-                GameObjectManager.Instance.Movers.Remove(koopa);
-                GameObjectManager.Instance.Updateables.Remove(koopa);
-                GameObjectManager.Instance.BackDrawables.Remove(koopa);
+                GameObjectManager.Instance.Movers.Remove(buzzy);
+                GameObjectManager.Instance.Updateables.Remove(buzzy);
+                GameObjectManager.Instance.BackDrawables.Remove(buzzy);
 
-                Shell shell = new Shell(new Vector2(koopa.XPos, bottomPos), "Koopa");
+                Shell shell = new Shell(new Vector2(buzzy.XPos, bottomPos), "Buzzy");
                 GameObjectManager.Instance.Movers.Add(shell);
                 GameObjectManager.Instance.Updateables.Add(shell);
                 GameObjectManager.Instance.BackDrawables.Add(shell);
@@ -135,8 +135,8 @@ namespace Sprint_2.GameObjects.Enemies.EnemyStates
             if (health != Health.Flipped)
             {
                 health = Health.Flipped;
-                sprite = UniversalSpriteFactory.Instance.CreateEnemy(NamesOfSprites.SpriteNames.FlippedKoopaShell.ToString());
-                koopa.Velocity = EnemyConstants.flippedVelocity;
+                sprite = UniversalSpriteFactory.Instance.CreateEnemy(NamesOfSprites.SpriteNames.FlippedBuzzyShell.ToString());
+                buzzy.Velocity = EnemyConstants.flippedVelocity;
             }
         }
         public Rectangle GetHitBox(Vector2 location)

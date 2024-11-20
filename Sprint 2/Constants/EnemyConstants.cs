@@ -22,7 +22,7 @@ namespace Sprint_2.Constants
 
         public static float distUntilBehaviorStarts = 300;
 
-        public static float timeUntilShellBecomesKoopa = 5f;
+        public static float timeUntilShellBecomesAlive = 5f;
 
         public static float stompTimer = 0.75f;
 
