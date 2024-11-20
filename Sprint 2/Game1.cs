@@ -144,7 +144,9 @@ namespace Sprint_2
 
             InitControls.initializeControls(keyControl, mario);
 
-            //levelLoader.LoadLevel(@"LevelManager\level-1_data_pretty.xml");
+            //levelLoader.LoadLevel(@"LevelManager\level-1_data_pretty
+            //
+            //");
             levelLoader.LoadLevel(@"LevelManager\main-menu.xml");
             //levelLoader.LoadLevel($"LevelManager\\{GameWorldManager.CurrentGameWorld}.xml");
             GameWorldManager.CurrentGameWorld = "main-menu";
