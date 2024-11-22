@@ -2311,6 +2311,16 @@
 	  </Item>
 	  <Item>
 		  <ObjectType>Enemy</ObjectType>
+		  <ObjectName>Buzzy</ObjectName>
+		  <Location>400 432</Location>
+	  </Item>
+	  <Item>
+		  <ObjectType>Enemy</ObjectType>
+		  <ObjectName>LavaBubble</ObjectName>
+		  <Location>250 432</Location>
+	  </Item>
+	  <Item>
+		  <ObjectType>Enemy</ObjectType>
 		  <ObjectName>Goomba</ObjectName>
 		  <Location>640 432</Location>
 	  </Item>
