@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint_2.Constants;
 using Sprint_2.GameObjects;
+using Sprint_2.GameObjects.Items;
 using Sprint_2.GameObjects.ItemSprites;
 using Sprint_2.GameObjects.Misc;
 using Sprint_2.Interfaces;

@@ -29,7 +29,6 @@ namespace Sprint_2.Commands.MarioCollisionCommands
             
             if (mario.isFalling)
             {
-                
                 mario.YPos -= height;
                 mario.Idle();
                 mario.PhysicsState = new Grounded(mario);

@@ -21,8 +21,8 @@ namespace Sprint_2.Sprites
     {
 
         private PlayerStateMachine PlayerState;
-        public int XPos { get; set; }
-        public int YPos { get; set; }
+        public float XPos { get; set; }
+        public float YPos { get; set; }
 
         public bool IsDamaged { get; set; } = false;
         public Vector2 PlayerVelocity { get; set; }

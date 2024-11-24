@@ -15,7 +15,7 @@ namespace Sprint_2.MarioPhysicsStates
     public class Jumping : IMarioPhysicsStates
     {
         private IPlayer mario;
-        private int originalMarioY;
+        private float originalMarioY;
 
         public Jumping(IPlayer mario)
         {

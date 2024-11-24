@@ -14,8 +14,8 @@ namespace Sprint_2.Interfaces
 {
     public interface IPlayer : ICollideable, IUpdateable, IDrawable
     {
-        public int XPos { get; set; }
-        public int YPos { get; set; }
+        public float XPos { get; set; }
+        public float YPos { get; set; }
         public bool isJumping { get; set; }
         public bool isCrouching { get; set; }
         public bool isFalling { get; set; }

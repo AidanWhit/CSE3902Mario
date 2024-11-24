@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Sprint_2.Constants;
+using Sprint_2.GameObjects.Items;
 using Sprint_2.GameObjects.ItemSprites;
 using Sprint_2.Interfaces;
 using Sprint_2.Sound;

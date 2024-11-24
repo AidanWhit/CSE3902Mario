@@ -16,7 +16,7 @@ namespace Sprint_2.Commands.MarioAttackCommands
     {
         private IPlayer mario;
 
-        public MarioHurtCommand(IPlayer mario, IEnemy enemy, Rectangle collisionRect)
+        public MarioHurtCommand(IPlayer mario, ICollideable enemy, Rectangle collisionRect)
         {
             this.mario = mario;
         }
