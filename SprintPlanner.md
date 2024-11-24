@@ -14,7 +14,7 @@ Here is the Sprint Planner that will be used to document our plans, design chang
 | Bowser Fireball Attack (we already have sprites and class for bowser fireball, but further features need to be implemented)| 0 hrs | 0 hrs| Hahn Choi + Christian Blue |11/25 | 11/20|
 | Bowser Hammer Attack | 0 hrs | 0 hrs | Zhouyang Li + Aidan Whitlatch| 11/25 | 11/20 |
 | New Blocks | 2hrs | 2 hrs | Christian Blue | 11/17 |
-| Moveable Platform | 2 hrs | 2 hrs | Christian Blue | 11/17 |
+| Moveable Platform | 0 hrs | 0 hrs | Christian Blue | 11/17 | 11/24 |
 | New Enemy (Can be simple, maybe bullet bill?)| 4 hrs | 4 hrs | Hahn Choi | 11/23 |
 | New Levels (XMLFiles, aim for 2-3)| 6 hrs | 6 hrs | Zhuoyang Li | 11/25 |
 | Podoboos (fireballs that jump out of lava, used in castle level) | 3 hrs | 3 hrs | Hahn Choi | 11/25 |
