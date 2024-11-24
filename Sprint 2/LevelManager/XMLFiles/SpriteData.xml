@@ -659,23 +659,33 @@
 		</Rectangle>
 	</Sprite>
 	<Sprite>
-		<Name>RedMushroom</Name>
+		<Name>BulletBlock</Name>
 		<NumOfFrames>1</NumOfFrames>
 		<Rectangle>
-			<XPos>184</XPos>
-			<YPos>34</YPos>
+			<XPos>31</XPos>
+			<YPos>117</YPos>
 			<Width>16</Width>
-			<Height>16</Height>
+			<Height>32</Height>
 		</Rectangle>
 	</Sprite>
 	<Sprite>
-		<Name>GreenMushroom</Name>
+		<Name>LeftBullet</Name>
 		<NumOfFrames>1</NumOfFrames>
 		<Rectangle>
-			<XPos>214</XPos>
-			<YPos>34</YPos>
+			<XPos>1</XPos>
+			<YPos>126</YPos>
 			<Width>16</Width>
-			<Height>16</Height>
+			<Height>14</Height>
+		</Rectangle>
+	</Sprite>
+	<Sprite>
+		<Name>RightBullet</Name>
+		<NumOfFrames>1</NumOfFrames>
+		<Rectangle>
+			<XPos>61</XPos>
+			<YPos>126</YPos>
+			<Width>16</Width>
+			<Height>14</Height>
 		</Rectangle>
 	</Sprite>
 	<Sprite>

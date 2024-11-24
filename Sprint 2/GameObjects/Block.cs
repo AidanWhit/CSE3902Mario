@@ -40,7 +40,6 @@ namespace Sprint_2.GameObjects
             blockState = newBlockState;
         }
 
-        /* TODO: Implement actual hitbox */
         public Rectangle GetHitBox()
         {
             return blockState.GetHitBox(Position);
@@ -67,7 +66,8 @@ namespace Sprint_2.GameObjects
                 {"BlueBrick", new BlueBrickState(this) },
                 {"BrownGround", new BrownGroundState(this) },
                 {"BrownBrickWithStar", new BrickWithAStar(this) },
-                {"Invisible", new InvisibleState(this) }
+                {"Invisible", new InvisibleState(this) },
+                {"BulletBlock", new BulletBlockState(this) }
 
             };
 
