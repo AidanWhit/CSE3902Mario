@@ -10,7 +10,7 @@ namespace Sprint_2.MarioPhysicsStates
     public class Grounded : IMarioPhysicsStates
     {
         private IPlayer mario;
-        private int originalYPos;
+        private float originalYPos;
         public Grounded(IPlayer mario)
         {
             this.mario = mario;

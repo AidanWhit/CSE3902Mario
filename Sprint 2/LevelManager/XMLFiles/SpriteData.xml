@@ -1183,5 +1183,15 @@
 			<Height>8</Height>
 		</Rectangle>
 	</Sprite>
+	<Sprite>
+		<Name>MoveablePlatform</Name>
+		<NumOfFrames>1</NumOfFrames>
+		<Rectangle>
+			<XPos>38</XPos>
+			<YPos>54</YPos>
+			<Width>48</Width>
+			<Height>8</Height>
+		</Rectangle>
+	</Sprite>
 	
 </XNAContent>

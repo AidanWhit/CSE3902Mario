@@ -1118,4 +1118,11 @@
 		<SourceCommandType>Sprint_2.Commands.CollisionCommands.RemoveBulletCommand</SourceCommandType>
 		<ReceiverCommandType>Sprint_2.Commands.CollisionCommands.EnemyCollisionCommands.BowserHurtCommand</ReceiverCommandType>
 	</Entry>
+	<Entry>
+		<SourceType>IPlayer</SourceType>
+		<ReceiverType>MoveablePlatform</ReceiverType>
+		<CollisionSide>Top</CollisionSide>
+		<SourceCommandType>Sprint_2.Commands.MarioCollisionCommands.MarioCollideTopMovingPlatform</SourceCommandType>
+		<ReceiverCommandType></ReceiverCommandType>
+	</Entry>
 </XnaContent>

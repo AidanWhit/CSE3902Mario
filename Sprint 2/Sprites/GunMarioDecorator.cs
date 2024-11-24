@@ -13,8 +13,8 @@ namespace Sprint_2.Sprites
     {
         private IPlayer decoratedPlayer;
             
-        public int XPos { get { return decoratedPlayer.XPos; } set { decoratedPlayer.XPos = value; } }
-        public int YPos { get { return decoratedPlayer.YPos; } set { decoratedPlayer.YPos = value; } }
+        public float XPos { get { return decoratedPlayer.XPos; } set { decoratedPlayer.XPos = value; } }
+        public float YPos { get { return decoratedPlayer.YPos; } set { decoratedPlayer.YPos = value; } }
 
         public List<IProjectile> fireballs { get { return decoratedPlayer.fireballs; } set { decoratedPlayer.fireballs = value; } }
         public bool IsDamaged { get { return decoratedPlayer.IsDamaged; } set { decoratedPlayer.IsDamaged = value; } }

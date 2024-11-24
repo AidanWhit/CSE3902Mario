@@ -8,6 +8,7 @@ using Sprint_2.LevelManager;
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
+using System.Runtime.CompilerServices;
 using System.Security.AccessControl;
 using System.Timers;
 
@@ -26,7 +27,7 @@ namespace Sprint_2.GameObjects.Enemies.BowserClasses
         private float rightMostXPos;
         private const int patrolRange = 32;
 
-        private int health = 1;
+        private int health = 10;
         private bool isJumping = false;
 
         private Interfaces.IUpdateable bowserBehavior;
@@ -34,6 +35,9 @@ namespace Sprint_2.GameObjects.Enemies.BowserClasses
         private Timer attackTimer;
         private bool startBehavior = false;
         private SpriteEffects spriteEffect = SpriteEffects.None;
+
+        private Interfaces.IUpdateable previousBowserBehavior;
+        private int repeatBehavior = 0;
         public Bowser(Vector2 location)
         {
             XPos = location.X;
@@ -48,38 +52,71 @@ namespace Sprint_2.GameObjects.Enemies.BowserClasses
             sprite = UniversalSpriteFactory.Instance.CreateEnemy("LeftBowser");
 
             bowserBehavior = new BowserPatrolBehavior(this);
-
+            previousBowserBehavior = bowserBehavior;
             rand = new Random();
             attackTimer = new Timer(1000);
             attackTimer.Enabled = true;
             attackTimer.Elapsed += (source, e) => OnTimedEvent(source, e);
             attackTimer.AutoReset = true;
         }
+
         private void OnTimedEvent(Object source, EventArgs e)
         {
-            int randInt = rand.Next(7);
-            //Debug.WriteLine("RandomInt: " + randInt);
-            if (randInt == 0)
+
+            Interfaces.IUpdateable newBowserBehavior = GetBowserBehavior();
+
+            /* If the new attack is the same as the old one */
+            if (previousBowserBehavior.GetType().Equals(newBowserBehavior.GetType()))
             {
-                bowserBehavior = new BowserJumpBehavior(this);
-            }
-            else if (randInt == 1)
-            {
-                bowserBehavior = new BowserStandingFireball(this, facingLeft, mario);
-            }
-            else if (randInt == 2)
-            {
-                bowserBehavior = new BowserJumpingFireball(this, facingLeft, mario);
-            }
-            else if (randInt == 3)
-            {
-                bowserBehavior = new BowserHammerAttack(this, facingLeft);
+                repeatBehavior++;
+                /* Generate a new attack as many times as the attack has been repeated*/
+                for (int i = 0; i < repeatBehavior; i++)
+                {
+                    newBowserBehavior = GetBowserBehavior();
+                    /* If a new attack was generated */
+                    if (!newBowserBehavior.GetType().Equals(previousBowserBehavior.GetType()))
+                    {
+                        repeatBehavior = 0;
+                        break;
+                    }
+                }
+
             }
             else
             {
-                bowserBehavior = new BowserPatrolBehavior(this);
+                repeatBehavior = 0;
             }
+            bowserBehavior = newBowserBehavior;
+            previousBowserBehavior = newBowserBehavior;
         }
+        private Interfaces.IUpdateable GetBowserBehavior()
+        {
+            Interfaces.IUpdateable newBowserBehavior;
+            int randInt = rand.Next(5);
+            if (randInt == 0)
+            {
+                newBowserBehavior = new BowserJumpBehavior(this);
+            }
+            else if (randInt == 1)
+            {
+                newBowserBehavior = new BowserStandingFireball(this, facingLeft, mario);
+            }
+            else if (randInt == 2)
+            {
+                newBowserBehavior = new BowserJumpingFireball(this, facingLeft, mario);
+            }
+            else if (randInt == 3)
+            {
+                newBowserBehavior = new BowserHammerAttack(this, facingLeft);
+            }
+            else
+            {
+                newBowserBehavior = new BowserPatrolBehavior(this);
+            }
+
+            return newBowserBehavior;
+        }
+
         public void Update(GameTime gameTime)
         {
             startBehavior = UpdateStartBehavior();

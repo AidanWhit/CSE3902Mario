@@ -14,7 +14,6 @@ namespace Sprint_2.Collision
     public class CollisionDetection
     {
         private CollisionResponse collisionResponse;
-        private IPlayer player;
         public CollisionDetection()
         {
             collisionResponse = new CollisionResponse();

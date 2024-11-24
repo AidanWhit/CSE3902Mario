@@ -18,6 +18,8 @@ using System.Diagnostics.CodeAnalysis;
 using Sprint_2.GameObjects.Misc;
 using Sprint_2.GameObjects.Enemies;
 using Sprint_2.GameObjects.Enemies.BowserClasses;
+using Sprint_2.Commands.CollisionCommands.EnemyCollisionCommands;
+using Sprint_2.GameObjects.Items;
 
 namespace Sprint_2.LevelManager
 {
@@ -61,6 +63,70 @@ namespace Sprint_2.LevelManager
                     }
                     LoadObject(name, type, location, sizeX, sizeY);
                 }
+                else if((LevelReader.NodeType == XmlNodeType.Element) && (LevelReader.Name == "NonStandardItem"))
+                {
+                    string numOfParams;
+                    string collisionType;
+                    Debug.WriteLine("Start of reader name: " + LevelReader.Name);
+                    LevelReader.ReadToDescendant("ObjectType");
+                    type = LevelReader.ReadElementContentAsString();
+
+                    LevelReader.ReadToNextSibling("CollisionType");
+                    collisionType = LevelReader.ReadElementContentAsString();
+
+                    LevelReader.ReadToNextSibling("NumberOfParams");
+                    numOfParams = LevelReader.ReadElementContentAsString();
+                    string[] args = new string[Convert.ToInt32(numOfParams)];
+                    //Read in values for each constructor parameter and store it as a string
+                    for(int i = 0; i < Convert.ToInt32(numOfParams); i++)
+                    {
+                        LevelReader.Read();
+                        args[i] = LevelReader.ReadElementContentAsString();
+                    }
+
+                    Type gameObjectType = Type.GetType(type);
+                    if (gameObjectType == null)
+                    {
+                        Debug.WriteLine("Type: " + type);
+                    }
+                    //Assume each object only as one constructor
+                    ConstructorInfo[] constructorInfos = gameObjectType.GetConstructors();
+                    ParameterInfo[] paramInfos = constructorInfos[0].GetParameters();
+                   
+                    object[] constructorParams = new object[paramInfos.Length];
+                    //Convert the string into the proper types needed for each parameter
+                    for (int i = 0; i <  paramInfos.Length; i++)
+                    {
+                        if (args[i].Contains(" "))
+                        {
+                            args[i].Trim();
+                            string[] tokens = args[i].Split(new char[] { ' ' });
+                            object vector = new Vector2((float)Convert.ChangeType(tokens[0], typeof(Single)), (float)Convert.ChangeType(tokens[1], typeof(Single)));
+                            constructorParams[i] = vector;
+                        }
+                        else
+                        {
+                            constructorParams[i] = Convert.ChangeType(args[i], paramInfos[i].ParameterType);
+                        }
+                    }
+                    object createdObject = constructorInfos[0].Invoke(constructorParams);
+                    
+                    if (collisionType.Equals("Mover"))
+                    {
+                        GameObjectManager.Instance.AddMover(createdObject);
+                    }
+                    else if (collisionType.Equals("Static"))
+                    {
+                        GameObjectManager.Instance.AddStatic(createdObject);
+                    }
+                    else
+                    {
+                        GameObjectManager.Instance.AddNonCollideable(createdObject);
+                    }
+                    //Discard end tag
+                    LevelReader.Read();
+                    
+                }
             }
         }
         private void LoadObject(string name, string type, string location, string sizeX, string sizeY)
@@ -69,7 +135,6 @@ namespace Sprint_2.LevelManager
             string[] tokens = location.Split(new char[] { ' ' });
             int locationX = Convert.ToInt32(tokens[0]);
             int locationY = Convert.ToInt32(tokens[1]);
-
             switch (type)
             {
                 case "Player":
@@ -91,7 +156,6 @@ namespace Sprint_2.LevelManager
                     MakePipe(name, locationX, locationY);
                     break;
                 case "Collider":
-                    
                     Vector2 size = new Vector2(Convert.ToInt32(sizeX), Convert.ToInt32(sizeY));
                     MakeCollider(name, locationX, locationY, size);
                     break;
@@ -240,6 +304,12 @@ namespace Sprint_2.LevelManager
                     GameObjectManager.Instance.Updateables.Add(block);
                     GameObjectManager.Instance.Blocks[column].Add(block);
                     GameObjectManager.Instance.ForeDrawables.Add(block);
+                    break;
+                case "MoveablePlatform":
+                    MoveablePlatform plat = new MoveablePlatform(new Vector2(locationX, locationY), 25);
+                    GameObjectManager.Instance.Updateables.Add(plat);
+                    GameObjectManager.Instance.ForeDrawables.Add(plat);
+                    GameObjectManager.Instance.Movers.Add(plat);
                     break;
                 default:
                     throw new InvalidOperationException("Block type: \"" + name + "\" doesn't exist");

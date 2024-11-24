@@ -7,7 +7,7 @@ using Sprint_2.Sound;
 using Sprint_2.LevelManager;
 using System.ComponentModel;
 
-namespace Sprint_2.GameObjects.ItemSprites
+namespace Sprint_2.GameObjects.Items
 {
     public class StaticCoin : IItem
     {

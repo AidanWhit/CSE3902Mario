@@ -305,15 +305,44 @@
 		  <ObjectName>BrownGround</ObjectName>
 		  <Location>384 464</Location>
 	  </Item>
+	  <!-->
 	  <Item>
 		  <ObjectType>Enemy</ObjectType>
 		  <ObjectName>Bowser</ObjectName>
 		  <Location>288 416</Location>
 	  </Item>
+	  -->
     <Item>
       <ObjectType>Player</ObjectType>
       <ObjectName>Mario</ObjectName>
       <Location>32 432</Location>
     </Item>
+	<NonStandardItem>
+		<ObjectType>Sprint_2.GameObjects.Misc.MoveablePlatform</ObjectType>
+		<CollisionType>Mover</CollisionType>
+		<NumberOfParams>2</NumberOfParams>
+		<Location>64 300</Location>
+		<Range>100</Range>
+	</NonStandardItem>
+	  <NonStandardItem>
+		  <ObjectType>Sprint_2.GameObjects.Misc.MoveablePlatform</ObjectType>
+		  <CollisionType>Mover</CollisionType>
+		  <NumberOfParams>2</NumberOfParams>
+		  <Location>64 390</Location>
+		  <Range>50</Range>
+	  </NonStandardItem>
+	  <NonStandardItem>
+		  <ObjectType>Sprint_2.GameObjects.Items.GunPickup</ObjectType>
+		  <CollisionType>Static</CollisionType>
+		  <NumberOfParams>1</NumberOfParams>
+		  <Location>128 432</Location>
+	  </NonStandardItem>
+	  <NonStandardItem>
+		  <ObjectType>Sprint_2.GameObjects.Block</ObjectType>
+		  <CollisionType>Static</CollisionType>
+		  <NumberOfParams>2</NumberOfParams>
+		  <Sprite>BrownBrick</Sprite>
+		  <Location>256 400</Location>
+	  </NonStandardItem>
   </Asset>
 </XnaContent>
