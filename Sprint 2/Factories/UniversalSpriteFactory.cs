@@ -169,6 +169,9 @@ namespace Sprint_2.Factories
             if (id.Equals(NamesOfSprites.SpriteNames.UndergroundPipe.ToString()))
             {
                 return new FrameArrayFormattedSprite(undergroundPipe, frames, defaultScale);
+            } else if (id.Equals(NamesOfSprites.SpriteNames.BulletBlock.ToString()))
+            {
+                return new FrameArrayFormattedSprite(enemies, frames, defaultScale);
             }
             return new FrameArrayFormattedSprite(blockSpriteSheet, frames, defaultScale);
         }

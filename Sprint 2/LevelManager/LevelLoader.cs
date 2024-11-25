@@ -335,7 +335,7 @@ namespace Sprint_2.LevelManager
                     GameObjectManager.Instance.BackDrawables.Add(enemy);
                     break;
                 case "Bullet":
-                    Bullet bullet = new Bullet(new Vector2(locationX, locationY));
+                    Bullet bullet = new Bullet(new Vector2(locationX, locationY), Bullet.Direction.Left);
                     GameObjectManager.Instance.Movers.Add(bullet);
                     GameObjectManager.Instance.Updateables.Add(bullet);
                     GameObjectManager.Instance.BackDrawables.Add(bullet);

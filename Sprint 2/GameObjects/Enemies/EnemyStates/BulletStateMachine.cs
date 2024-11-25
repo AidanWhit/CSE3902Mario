@@ -29,10 +29,17 @@ namespace Sprint_2.GameObjects.Enemies.EnemyStates
         private bool movingLeft = true;
         private bool startBehavior = false;
 
-        public BulletStateMachine(Bullet bullet)
+        public BulletStateMachine(Bullet bullet, Bullet.Direction direction)
         {
             this.bullet = bullet;
-            sprite = UniversalSpriteFactory.Instance.CreateEnemy(NamesOfSprites.SpriteNames.LeftBullet.ToString());
+            if (direction == Bullet.Direction.Left)
+            {
+                sprite = UniversalSpriteFactory.Instance.CreateEnemy(NamesOfSprites.SpriteNames.LeftBullet.ToString());
+            } else
+            {
+                movingLeft = false;
+                sprite = UniversalSpriteFactory.Instance.CreateEnemy(NamesOfSprites.SpriteNames.RightBullet.ToString());
+            }
         }
 
         public void Update(GameTime gameTime)

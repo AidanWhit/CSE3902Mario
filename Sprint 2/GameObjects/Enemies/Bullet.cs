@@ -14,6 +14,7 @@ namespace Sprint_2.GameObjects.Enemies.EnemySprites
     {
         public float XPos { get; set; }
         public float YPos { get; set; }
+        public enum Direction {Left, Right }
         public bool Flipped { get; set; }
         private BulletStateMachine bulletState;
         public Vector2 Velocity { get; set; }
@@ -21,12 +22,12 @@ namespace Sprint_2.GameObjects.Enemies.EnemySprites
 
         //private int[] score = EnemyConstants.bullet;
         private int index = 0;
-        public Bullet(Vector2 initialPosition)
+        public Bullet(Vector2 initialPosition, Direction direction)
         {
             XPos = initialPosition.X;
             YPos = initialPosition.Y;
-            bulletState = new BulletStateMachine(this);
             Velocity = new Vector2(0, EnemyConstants.fallVelocity.Y);
+            bulletState = new BulletStateMachine(this, direction);
         }
 
 
