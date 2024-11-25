@@ -689,6 +689,16 @@
 		</Rectangle>
 	</Sprite>
 	<Sprite>
+		<Name>FlippedBullet</Name>
+		<NumOfFrames>1</NumOfFrames>
+		<Rectangle>
+			<XPos>83</XPos>
+			<YPos>263</YPos>
+			<Width>18</Width>
+			<Height>16</Height>
+		</Rectangle>
+	</Sprite>
+	<Sprite>
 		<Name>Flower</Name>
 		<NumOfFrames>4</NumOfFrames>
 		<Rectangle>

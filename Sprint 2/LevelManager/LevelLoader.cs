@@ -335,10 +335,10 @@ namespace Sprint_2.LevelManager
                     GameObjectManager.Instance.BackDrawables.Add(enemy);
                     break;
                 case "Bullet":
-                    enemy = new Bullet(new Vector2(locationX, locationY));
-                    GameObjectManager.Instance.Movers.Add(enemy);
-                    GameObjectManager.Instance.Updateables.Add(enemy);
-                    GameObjectManager.Instance.BackDrawables.Add(enemy);
+                    Bullet bullet = new Bullet(new Vector2(locationX, locationY));
+                    GameObjectManager.Instance.Movers.Add(bullet);
+                    GameObjectManager.Instance.Updateables.Add(bullet);
+                    GameObjectManager.Instance.BackDrawables.Add(bullet);
                     break;
                 default:
                     throw new InvalidOperationException("Item type: \"" + name + "\" doesn't exist");

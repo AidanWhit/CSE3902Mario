@@ -2321,6 +2321,11 @@
 	  </Item>
 	  <Item>
 		  <ObjectType>Enemy</ObjectType>
+		  <ObjectName>Bullet</ObjectName>
+		  <Location>200 430</Location>
+	  </Item>
+	  <Item>
+		  <ObjectType>Enemy</ObjectType>
 		  <ObjectName>Goomba</ObjectName>
 		  <Location>640 432</Location>
 	  </Item>

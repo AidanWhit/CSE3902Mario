@@ -1,5 +1,4 @@
 ﻿using Microsoft.Xna.Framework;
-using Sprint_2.Constants;
 using Sprint_2.GameObjects.Enemies.EnemySprites;
 using Sprint_2.Interfaces;
 using Sprint_2.Sprites.EnemySprites;
@@ -11,18 +10,20 @@ using System.Threading.Tasks;
 
 namespace Sprint_2.GameObjects.Enemies.EnemyStates
 {
-    public class BulletMovingState : AbstractBulletState
+    public abstract class AbstractBulletState : IBulletBehavior
     {
         private Bullet bullet;
-       
-        public BulletMovingState(Bullet bullet) : base(bullet)
+
+        public AbstractBulletState(Bullet bullet)
         {
             this.bullet = bullet;
         }
 
-        public override void RunBehavior(GameTime gameTime)
+        public void Update(GameTime gameTime)
         {
-            bullet.Move();
+            RunBehavior(gameTime);
         }
+
+        public abstract void RunBehavior(GameTime gameTime);
     }
 }

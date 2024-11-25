@@ -20,33 +20,33 @@ namespace Sprint_2.GameObjects.Enemies.EnemyStates
 {
     public class BulletStateMachine
     {
-        private LavaBubble lavaBubble;
+        private Bullet bullet;
         private ISprite sprite;
+        private enum BulletHealth {Normal, Flipped};
+        BulletHealth health = BulletHealth.Normal;
+        private IBulletBehavior bulletBehavior;
 
-        private bool movingUp = true;
+        private bool movingLeft = true;
         private bool startBehavior = false;
 
-        public BulletStateMachine(LavaBubble lavaBubble)
+        public BulletStateMachine(Bullet bullet)
         {
-            this.lavaBubble = lavaBubble;
-
-            sprite = UniversalSpriteFactory.Instance.CreateEnemy(NamesOfSprites.SpriteNames.LavaBubbleMovingUp.ToString());
+            this.bullet = bullet;
+            sprite = UniversalSpriteFactory.Instance.CreateEnemy(NamesOfSprites.SpriteNames.LeftBullet.ToString());
         }
 
-        public void Update(GameTime gameTime, float yPos)
+        public void Update(GameTime gameTime)
         {
             startBehavior = UpdateStartBehavior();
             if (startBehavior)
             {
-                Move(gameTime);
-
-                ChangeMovement(yPos);
+                Move();
             }
             sprite.Update(gameTime);
         }
         private bool UpdateStartBehavior()
         {
-            float distToPlayer = Math.Abs(Game1.Instance.mario.XPos - lavaBubble.XPos);
+            float distToPlayer = Math.Abs(Game1.Instance.mario.XPos - bullet.XPos);
             if (distToPlayer < EnemyConstants.distUntilBehaviorStarts)
             {
                 startBehavior = true;
@@ -59,23 +59,28 @@ namespace Sprint_2.GameObjects.Enemies.EnemyStates
             sprite.Draw(spriteBatch, location, color);
         }
 
-        public void Move(GameTime gameTime)
+        public void BeFlipped()
         {
-            lavaBubble.YPos += (float) (lavaBubble.Velocity.Y * gameTime.ElapsedGameTime.TotalSeconds);
+            if (health != BulletHealth.Flipped)
+            {
+                health = BulletHealth.Flipped;
+                sprite = UniversalSpriteFactory.Instance.CreateEnemy(NamesOfSprites.SpriteNames.FlippedBullet.ToString());
+
+                bulletBehavior = new BulletFlippedState(bullet);
+            }
         }
 
-        public void ChangeMovement(float Ypos)
+        public void Move()
         {
-            if (Ypos < 300 && lavaBubble.Velocity.Y < 0)
+            if (movingLeft)
             {
-                lavaBubble.Velocity = new Vector2(0, -lavaBubble.Velocity.Y);
-                sprite = UniversalSpriteFactory.Instance.CreateEnemy(NamesOfSprites.SpriteNames.LavaBubbleMovingDown.ToString());
+                bullet.Velocity = new Vector2(-EnemyConstants.moveSpeed, 0);
             }
-            else if (Ypos > 432 && lavaBubble.Velocity.Y > 0)
+            else
             {
-                lavaBubble.Velocity = new Vector2(0, -lavaBubble.Velocity.Y);
-                sprite = UniversalSpriteFactory.Instance.CreateEnemy(NamesOfSprites.SpriteNames.LavaBubbleMovingUp.ToString());
+                bullet.Velocity = new Vector2(EnemyConstants.moveSpeed, 0);
             }
+            bullet.XPos += bullet.Velocity.X;
         }
 
         public Rectangle GetHitBox(Vector2 location)

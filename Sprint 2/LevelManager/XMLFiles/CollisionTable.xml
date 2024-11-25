@@ -491,7 +491,7 @@
 		<ReceiverType>Bullet</ReceiverType>
 		<CollisionSide>Top</CollisionSide>
 		<SourceCommandType>Sprint_2.Commands.MarioCollisionCommands.MarioBounceOnEnemy</SourceCommandType>
-		<ReceiverCommandType>Sprint_2.Commands.CollisionCommands.EnemyCollisionCommands.EnemyTakeStompDamageCommand</ReceiverCommandType>
+		<ReceiverCommandType>Sprint_2.Commands.CollisionCommands.EnemyCollisionCommands.FlipBulletCommand</ReceiverCommandType>
 	</Entry>
 	<Entry>
 		<SourceType>IPlayer</SourceType>

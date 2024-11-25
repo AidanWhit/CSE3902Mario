@@ -12,16 +12,16 @@ using System.Threading.Tasks;
 
 namespace Sprint_2.GameObjects.Enemies.EnemyStates
 {
-    public class BulletFlippedState
+    public class BulletFlippedState : AbstractBulletState
     {
         private Bullet bullet;
 
-        public BulletFlippedState(Bullet bullet)
+        public BulletFlippedState(Bullet bullet) : base(bullet)
         {
             this.bullet = bullet;
         }
 
-        public void RunBehavior(GameTime gameTime)
+        public override void RunBehavior(GameTime gameTime)
         {
             bullet.YPos += (float)(bullet.Velocity.Y * gameTime.ElapsedGameTime.TotalSeconds);
             bullet.Velocity = new Vector2(bullet.Velocity.X, bullet.Velocity.Y * MarioPhysicsConstants.velocityDecay);
