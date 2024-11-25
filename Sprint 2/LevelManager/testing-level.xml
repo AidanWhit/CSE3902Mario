@@ -338,11 +338,18 @@
 		  <Location>128 432</Location>
 	  </NonStandardItem>
 	  <NonStandardItem>
+		  <ObjectType>Sprint_2.GameObjects.Misc.Axe</ObjectType>
+		  <CollisionType>Static</CollisionType>
+		  <NumberOfParams>1</NumberOfParams>
+		  <Location>256 432</Location>
+	  </NonStandardItem>
+	  <NonStandardItem>
 		  <ObjectType>Sprint_2.GameObjects.Block</ObjectType>
 		  <CollisionType>Static</CollisionType>
-		  <NumberOfParams>2</NumberOfParams>
-		  <Sprite>BrownBrick</Sprite>
+		  <NumberOfParams>3</NumberOfParams>
+		  <Sprite>BrickWithAStar</Sprite>
 		  <Location>256 400</Location>
+		  <Color>DarkGray</Color>
 	  </NonStandardItem>
   </Asset>
 </XnaContent>

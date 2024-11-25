@@ -6,7 +6,9 @@ using Sprint_2.Interfaces;
 using Sprint_2.LevelManager;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -30,13 +32,10 @@ namespace Sprint_2.GameObjects.BlockStates
         private Vector2 bottomLeftPosition;
         private Vector2 bottomRightPosition;
 
-        public BrokenBlockState(IBlock block)
+        public BrokenBlockState(IBlock block, string color)
         {
             this.block = block;
-            topLeftSprite = UniversalSpriteFactory.Instance.GetBlock(NamesOfSprites.SpriteNames.BrokenPiece.ToString());
-            topRightSprite = UniversalSpriteFactory.Instance.GetBlock(NamesOfSprites.SpriteNames.BrokenPiece.ToString());
-            bottomLeftSprite = UniversalSpriteFactory.Instance.GetBlock(NamesOfSprites.SpriteNames.BrokenPiece.ToString());
-            bottomRightSprite = UniversalSpriteFactory.Instance.GetBlock(NamesOfSprites.SpriteNames.BrokenPiece.ToString());
+            AssignSprite(color);
 
             topLeftPosition = block.Position;
             bottomLeftPosition = block.Position;
@@ -70,6 +69,11 @@ namespace Sprint_2.GameObjects.BlockStates
             topRightVelocity *= MarioPhysicsConstants.velocityDecay;
             bottomLeftVelocity *= MarioPhysicsConstants.velocityDecay;
             bottomRightVelocity *= MarioPhysicsConstants.velocityDecay;
+
+            topLeftSprite.Update(gameTime);
+            topRightSprite.Update(gameTime);
+            bottomLeftSprite.Update(gameTime);
+            bottomRightSprite.Update(gameTime);
         }
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location, Color color)
@@ -83,5 +87,45 @@ namespace Sprint_2.GameObjects.BlockStates
         public void BeHit(IPlayer player) { }
         public Rectangle GetHitBox(Vector2 position) { return Rectangle.Empty; }
 
+        private void AssignSprite(string color)
+        {
+            if (color.Equals(System.Drawing.KnownColor.Blue.ToString()))
+            {
+                topLeftSprite = UniversalSpriteFactory.Instance.GetBlock(NamesOfSprites.SpriteNames.BlueBroken.ToString());
+                topRightSprite = UniversalSpriteFactory.Instance.GetBlock(NamesOfSprites.SpriteNames.BlueBroken.ToString());
+                bottomLeftSprite = UniversalSpriteFactory.Instance.GetBlock(NamesOfSprites.SpriteNames.BlueBroken.ToString());
+                bottomRightSprite = UniversalSpriteFactory.Instance.GetBlock(NamesOfSprites.SpriteNames.BlueBroken.ToString());
+            }
+            else if (color.Equals(System.Drawing.KnownColor.Green.ToString()))
+            {
+                Debug.WriteLine("Entered Green broken");
+                topLeftSprite = UniversalSpriteFactory.Instance.GetBlock(NamesOfSprites.SpriteNames.GreenBroken.ToString());
+                topRightSprite = UniversalSpriteFactory.Instance.GetBlock(NamesOfSprites.SpriteNames.GreenBroken.ToString());
+                bottomLeftSprite = UniversalSpriteFactory.Instance.GetBlock(NamesOfSprites.SpriteNames.GreenBroken.ToString());
+                bottomRightSprite = UniversalSpriteFactory.Instance.GetBlock(NamesOfSprites.SpriteNames.GreenBroken.ToString());
+            }
+            else if (color.Equals(System.Drawing.KnownColor.DarkGray.ToString()))
+            {
+                topLeftSprite = UniversalSpriteFactory.Instance.GetBlock(NamesOfSprites.SpriteNames.DarkGrayBroken.ToString());
+                topRightSprite = UniversalSpriteFactory.Instance.GetBlock(NamesOfSprites.SpriteNames.DarkGrayBroken.ToString());
+                bottomLeftSprite = UniversalSpriteFactory.Instance.GetBlock(NamesOfSprites.SpriteNames.DarkGrayBroken.ToString());
+                bottomRightSprite = UniversalSpriteFactory.Instance.GetBlock(NamesOfSprites.SpriteNames.DarkGrayBroken.ToString());
+            }
+            else if (color.Equals(System.Drawing.KnownColor.Gray.ToString()))
+            {
+                topLeftSprite = UniversalSpriteFactory.Instance.GetBlock(NamesOfSprites.SpriteNames.GrayBroken.ToString());
+                topRightSprite = UniversalSpriteFactory.Instance.GetBlock(NamesOfSprites.SpriteNames.GrayBroken.ToString());
+                bottomLeftSprite = UniversalSpriteFactory.Instance.GetBlock(NamesOfSprites.SpriteNames.GrayBroken.ToString());
+                bottomRightSprite = UniversalSpriteFactory.Instance.GetBlock(NamesOfSprites.SpriteNames.GrayBroken.ToString());
+            }
+            else
+            {
+                topLeftSprite = UniversalSpriteFactory.Instance.GetBlock(NamesOfSprites.SpriteNames.BrokenPiece.ToString());
+                topRightSprite = UniversalSpriteFactory.Instance.GetBlock(NamesOfSprites.SpriteNames.BrokenPiece.ToString());
+                bottomLeftSprite = UniversalSpriteFactory.Instance.GetBlock(NamesOfSprites.SpriteNames.BrokenPiece.ToString());
+                bottomRightSprite = UniversalSpriteFactory.Instance.GetBlock(NamesOfSprites.SpriteNames.BrokenPiece.ToString());
+            }
+        
+        }
     }
 }

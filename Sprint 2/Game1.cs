@@ -87,9 +87,10 @@ namespace Sprint_2
 
             levelLoader = new LevelLoader();
             //levelLoader.LoadLevel(@"LevelManager\level-1_data_pretty.xml");
-            levelLoader.LoadLevel(@"LevelManager\testing-level.xml");
-            GameWorldManager.CurrentGameWorld = "testing-level";
-            camera.SetLevelBounds(new Vector2(0, MiscConstants.levelBounds.Y));
+            //levelLoader.LoadLevel(@"LevelManager\testing-level.xml");
+            levelLoader.LoadLevel(@"LevelManager\main-menu.xml");
+            GameWorldManager.CurrentGameWorld = "main-menu";
+            camera.SetLevelBounds(new Vector2(MiscConstants.levelBounds.X, MiscConstants.levelBounds.Y));
 
             gameState = new PlayableState(keyControl);
         }
@@ -148,9 +149,10 @@ namespace Sprint_2
             //levelLoader.LoadLevel(@"LevelManager\level-1_data_pretty
             //
             //");
-            levelLoader.LoadLevel(@"LevelManager\main-menu.xml");
-            //levelLoader.LoadLevel($"LevelManager\\{GameWorldManager.CurrentGameWorld}.xml");
-            GameWorldManager.CurrentGameWorld = "testing-level.xml";
+            //levelLoader.LoadLevel(@"LevelManager\main-menu.xml");
+            GameWorldManager.CurrentGameWorld = "main-menu";
+            levelLoader.LoadLevel($"LevelManager\\{GameWorldManager.CurrentGameWorld}.xml");
+            
 
             camera.Reset();
             SoundManager.Instance.Reset();

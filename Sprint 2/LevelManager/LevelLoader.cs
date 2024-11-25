@@ -67,7 +67,6 @@ namespace Sprint_2.LevelManager
                 {
                     string numOfParams;
                     string collisionType;
-                    Debug.WriteLine("Start of reader name: " + LevelReader.Name);
                     LevelReader.ReadToDescendant("ObjectType");
                     type = LevelReader.ReadElementContentAsString();
 
@@ -85,10 +84,6 @@ namespace Sprint_2.LevelManager
                     }
 
                     Type gameObjectType = Type.GetType(type);
-                    if (gameObjectType == null)
-                    {
-                        Debug.WriteLine("Type: " + type);
-                    }
                     //Assume each object only as one constructor
                     ConstructorInfo[] constructorInfos = gameObjectType.GetConstructors();
                     ParameterInfo[] paramInfos = constructorInfos[0].GetParameters();
