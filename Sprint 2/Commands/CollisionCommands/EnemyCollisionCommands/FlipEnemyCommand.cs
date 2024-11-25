@@ -28,23 +28,33 @@ namespace Sprint_2.Commands.CollisionCommands.EnemyCollisionCommands
         }
         public void Execute()
         {
-            if (collider is StarMario)
+            if (enemy is not Buzzy && !(enemy is Shell && ((Shell)enemy).GetEnemyType() == "Buzzy"))
             {
-                HUD.Instance.AddScorePopUp(EnemyConstants.pointsFromStarMario, new Vector2(enemy.XPos, enemy.YPos));
-                SoundManager.Instance.PlaySoundEffect("stomp");
+                if (collider is StarMario)
+                {
+                    HUD.Instance.AddScorePopUp(EnemyConstants.pointsFromStarMario, new Vector2(enemy.XPos, enemy.YPos));
+                    SoundManager.Instance.PlaySoundEffect("stomp");
+                }
+                else if (collider is FireBall)
+                {
+                    if (enemy is Buzzy || (enemy is Shell && ((Shell)enemy).GetEnemyType() == "Buzzy"))
+                    {
+                        return;
+                    }
+                    HUD.Instance.AddScorePopUp(EnemyConstants.pointsFromFireball, new Vector2(enemy.XPos, enemy.YPos));
+                }
+                else if (collider is Shell)
+                {
+                    // Collider is a moving shell
+                    Shell shell = (Shell)collider;
+                    if (shell.GetEnemyType() is "Koopa")
+                    {
+                        HUD.Instance.AddScorePopUp(shell.GetScore(), new Vector2(enemy.XPos, enemy.YPos));
+                    }
+
+                }
+                enemy.TakeFireballDamage();
             }
-            else if (collider is FireBall)
-            {
-                HUD.Instance.AddScorePopUp(EnemyConstants.pointsFromFireball, new Vector2(enemy.XPos, enemy.YPos));
-            }
-            else
-            {
-                // Collider is a moving shell
-                Shell shell = (Shell) collider;
-                HUD.Instance.AddScorePopUp(shell.GetScore(), new Vector2(enemy.XPos, enemy.YPos));
-                
-            }
-            enemy.TakeFireballDamage();
         }
     }
 }

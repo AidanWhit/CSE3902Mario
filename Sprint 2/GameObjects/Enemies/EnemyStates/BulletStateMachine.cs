@@ -38,10 +38,15 @@ namespace Sprint_2.GameObjects.Enemies.EnemyStates
         public void Update(GameTime gameTime)
         {
             startBehavior = UpdateStartBehavior();
-            if (startBehavior)
+            if (startBehavior && !bullet.Flipped)
             {
                 Move();
             }
+            else if (bullet.Flipped)
+            {
+                bulletBehavior.Update(gameTime);
+            }
+
             sprite.Update(gameTime);
         }
         private bool UpdateStartBehavior()
@@ -61,6 +66,7 @@ namespace Sprint_2.GameObjects.Enemies.EnemyStates
 
         public void BeFlipped()
         {
+
             if (health != BulletHealth.Flipped)
             {
                 health = BulletHealth.Flipped;
@@ -68,6 +74,8 @@ namespace Sprint_2.GameObjects.Enemies.EnemyStates
 
                 bulletBehavior = new BulletFlippedState(bullet);
             }
+            //bullet.Velocity = new Vector2(0, ItemPhysicsConstants.bounceVelocity);
+            ////bullet.YPos += bullet.Velocity.Y;
         }
 
         public void Move()

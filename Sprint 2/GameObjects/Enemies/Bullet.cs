@@ -38,6 +38,7 @@ namespace Sprint_2.GameObjects.Enemies.EnemySprites
         public void Draw(SpriteBatch spriteBatch, Color color)
         {
             bulletState.Draw(spriteBatch, new Vector2(XPos, YPos), color);
+            HitBoxRectangle.DrawRectangle(spriteBatch, GetHitBox(), color, 1);
         }
 
         /* TODO: Implement actual hitbox */

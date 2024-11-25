@@ -699,6 +699,26 @@
 		</Rectangle>
 	</Sprite>
 	<Sprite>
+		<Name>RedMushroom</Name>
+		<NumOfFrames>1</NumOfFrames>
+		<Rectangle>
+			<XPos>184</XPos>
+			<YPos>34</YPos>
+			<Width>16</Width>
+			<Height>16</Height>
+		</Rectangle>
+	</Sprite>
+	<Sprite>
+		<Name>GreenMushroom</Name>
+		<NumOfFrames>1</NumOfFrames>
+		<Rectangle>
+			<XPos>214</XPos>
+			<YPos>34</YPos>
+			<Width>16</Width>
+			<Height>16</Height>
+		</Rectangle>
+	</Sprite>
+	<Sprite>
 		<Name>Flower</Name>
 		<NumOfFrames>4</NumOfFrames>
 		<Rectangle>

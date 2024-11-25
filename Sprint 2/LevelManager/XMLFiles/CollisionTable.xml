@@ -465,33 +465,60 @@
 		<ReceiverCommandType>Sprint_2.Commands.MarioAttackCommands.MarioHurtCommand</ReceiverCommandType>
 	</Entry>
 	<Entry>
-		<SourceType>Bullet</SourceType>
+		<SourceType>MovingBullet</SourceType>
 		<ReceiverType>IPlayer</ReceiverType>
 		<CollisionSide>Left</CollisionSide>
 		<SourceCommandType></SourceCommandType>
 		<ReceiverCommandType>Sprint_2.Commands.MarioAttackCommands.MarioHurtCommand</ReceiverCommandType>
 	</Entry>
 	<Entry>
-		<SourceType>Bullet</SourceType>
+		<SourceType>MovingBullet</SourceType>
 		<ReceiverType>IPlayer</ReceiverType>
 		<CollisionSide>Right</CollisionSide>
 		<SourceCommandType></SourceCommandType>
 		<ReceiverCommandType>Sprint_2.Commands.MarioAttackCommands.MarioHurtCommand</ReceiverCommandType>
 	</Entry>
-
 	<Entry>
-		<SourceType>Bullet</SourceType>
+		<SourceType>MovingBullet</SourceType>
 		<ReceiverType>IPlayer</ReceiverType>
-		<CollisionSide>Bottom</CollisionSide>
+		<CollisionSide>Top</CollisionSide>
 		<SourceCommandType></SourceCommandType>
 		<ReceiverCommandType>Sprint_2.Commands.MarioAttackCommands.MarioHurtCommand</ReceiverCommandType>
 	</Entry>
 	<Entry>
 		<SourceType>IPlayer</SourceType>
-		<ReceiverType>Bullet</ReceiverType>
+		<ReceiverType>MovingBullet</ReceiverType>
 		<CollisionSide>Top</CollisionSide>
-		<SourceCommandType>Sprint_2.Commands.MarioCollisionCommands.MarioBounceOnEnemy</SourceCommandType>
+		<SourceCommandType>Sprint_2.Commands.MarioCollisionCommands.MarioBounceOnBullet</SourceCommandType>
 		<ReceiverCommandType>Sprint_2.Commands.CollisionCommands.EnemyCollisionCommands.FlipBulletCommand</ReceiverCommandType>
+	</Entry>
+	<Entry>
+		<SourceType>IProjectile</SourceType>
+		<ReceiverType>MovingBullet</ReceiverType>
+		<CollisionSide>Left</CollisionSide>
+		<SourceCommandType>Sprint_2.Commands.CollisionCommands.Fireball.FireballExplodeCommand</SourceCommandType>
+		<ReceiverCommandType></ReceiverCommandType>
+	</Entry>
+	<Entry>
+		<SourceType>IProjectile</SourceType>
+		<ReceiverType>MovingBullet</ReceiverType>
+		<CollisionSide>Right</CollisionSide>
+		<SourceCommandType>Sprint_2.Commands.CollisionCommands.Fireball.FireballExplodeCommand</SourceCommandType>
+		<ReceiverCommandType></ReceiverCommandType>
+	</Entry>
+	<Entry>
+		<SourceType>IProjectile</SourceType>
+		<ReceiverType>MovingBullet</ReceiverType>
+		<CollisionSide>Bottom</CollisionSide>
+		<SourceCommandType>Sprint_2.Commands.CollisionCommands.Fireball.FireballExplodeCommand</SourceCommandType>
+		<ReceiverCommandType></ReceiverCommandType>
+	</Entry>
+	<Entry>
+		<SourceType>IProjectile</SourceType>
+		<ReceiverType>MovingBullet</ReceiverType>
+		<CollisionSide>Top</CollisionSide>
+		<SourceCommandType>Sprint_2.Commands.CollisionCommands.Fireball.FireballExplodeCommand</SourceCommandType>
+		<ReceiverCommandType></ReceiverCommandType>
 	</Entry>
 	<Entry>
 		<SourceType>IPlayer</SourceType>
