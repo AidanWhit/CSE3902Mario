@@ -304,6 +304,12 @@ namespace Sprint_2.LevelManager
                     GameObjectManager.Instance.Blocks[column].Add(block);
                     GameObjectManager.Instance.ForeDrawables.Add(block);
                     break;
+                case "BulletBlock":
+                    block = new Block("BulletBlock", new Vector2(locationX, locationY));
+                    GameObjectManager.Instance.Updateables.Add(block);
+                    GameObjectManager.Instance.Blocks[column].Add(block);
+                    GameObjectManager.Instance.ForeDrawables.Add(block);
+                    break;
                 default:
                     throw new InvalidOperationException("Block type: \"" + name + "\" doesn't exist");
             }
@@ -401,6 +407,12 @@ namespace Sprint_2.LevelManager
                     GameObjectManager.Instance.Movers.Add(enemy);
                     GameObjectManager.Instance.Updateables.Add(enemy);
                     GameObjectManager.Instance.BackDrawables.Add(enemy);
+                    break;
+                case "Bullet":
+                    Bullet bullet = new Bullet(new Vector2(locationX, locationY), Bullet.Direction.Left);
+                    GameObjectManager.Instance.Movers.Add(bullet);
+                    GameObjectManager.Instance.Updateables.Add(bullet);
+                    GameObjectManager.Instance.BackDrawables.Add(bullet);
                     break;
                 default:
                     throw new InvalidOperationException("Item type: \"" + name + "\" doesn't exist");

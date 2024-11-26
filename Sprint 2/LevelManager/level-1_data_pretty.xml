@@ -11,7 +11,16 @@
 		  <ObjectName>Flag</ObjectName>
 		  <Location>3160 288</Location>
 	  </Item>
-	  
+	  <Item>
+		  <ObjectType>Block</ObjectType>
+		  <ObjectName>BulletBlock</ObjectName>
+		  <Location>200 430</Location>
+	  </Item>
+	  <Item>
+		  <ObjectType>Block</ObjectType>
+		  <ObjectName>BulletBlock</ObjectName>
+		  <Location>200 380</Location>
+	  </Item>
     <Item>
       <ObjectType>Block</ObjectType>
       <ObjectName>BrownGround</ObjectName>
@@ -2308,16 +2317,6 @@
 		  <ObjectType>Enemy</ObjectType>
 		  <ObjectName>Goomba</ObjectName>
 		  <Location>352 432</Location>
-	  </Item>
-	  <Item>
-		  <ObjectType>Enemy</ObjectType>
-		  <ObjectName>Buzzy</ObjectName>
-		  <Location>400 432</Location>
-	  </Item>
-	  <Item>
-		  <ObjectType>Enemy</ObjectType>
-		  <ObjectName>LavaBubble</ObjectName>
-		  <Location>250 432</Location>
 	  </Item>
 	  <Item>
 		  <ObjectType>Enemy</ObjectType>
