@@ -105,10 +105,11 @@ namespace Sprint_2.LevelManager
                         }
                     }
                     object createdObject = constructorInfos[0].Invoke(constructorParams);
-                    foreach (object obj in constructorParams)
-                    {
-                        Debug.WriteLine("Value: {0}, Type: {1}", obj, obj.GetType());
-                    }
+
+                    //foreach (object obj in constructorParams)
+                    //{
+                    //    Debug.WriteLine("Value: {0}, Type: {1}", obj, obj.GetType());
+                    //}
                     if (collisionType.Equals("Mover"))
                     {
                         GameObjectManager.Instance.AddMover(createdObject);
