@@ -16,7 +16,7 @@ namespace Sprint_2.GameObjects
     {
         private ISprite bulletSprite;
         private Vector2 location;
-        private Vector2 velocity = new Vector2(2, 0);
+        private Vector2 velocity = new Vector2(4, 0);
         private Vector2 direction;
         private Vector2 origin;
         private float rotation;
@@ -59,6 +59,7 @@ namespace Sprint_2.GameObjects
         public Rectangle GetHitBox()
         {
             Rectangle hitBox = bulletSprite.GetHitBox(location);
+            //Need to make hitbox smaller because the hitbox can not be rotated
             Rectangle adjustedHitBox;
             if (Math.Floor(velocity.X) <= 0 && facing == PlayerStateMachine.Facing.Left)
             {

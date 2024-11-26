@@ -1439,7 +1439,7 @@
 	</Sprite>
 	<Sprite>
 		<Name>GreenBroken</Name>
-		<NumOfFrame>4</NumOfFrame>
+		<NumOfFrames>4</NumOfFrames>
 		<Rectangle>
 			<XPos>90</XPos>
 			<YPos>52</YPos>
@@ -1463,6 +1463,16 @@
 			<YPos>60</YPos>
 			<Width>8</Width>
 			<Height>8</Height>
+		</Rectangle>
+	</Sprite>
+	<Sprite>
+		<Name>Target</Name>
+		<NumOfFrames>1</NumOfFrames>
+		<Rectangle>
+			<XPos>18</XPos>
+			<YPos>120</YPos>
+			<Width>16</Width>
+			<Height>16</Height>
 		</Rectangle>
 	</Sprite>
 	

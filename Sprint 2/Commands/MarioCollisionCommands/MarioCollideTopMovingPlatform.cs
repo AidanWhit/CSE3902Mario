@@ -43,6 +43,7 @@ namespace Sprint_2.Commands.MarioCollisionCommands
             {
                 // Moves mario along with the platform
                 mario.XPos += platform.GetSpeed();
+
                 mario.YPos -= height;
                 mario.PlayerVelocity = new Vector2(mario.PlayerVelocity.X, MarioPhysicsConstants.gravity);
             }

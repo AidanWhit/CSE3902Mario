@@ -14,6 +14,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.Diagnostics.Metrics;
 using System.Linq;
 using System.Reflection.Metadata;
 using System.Runtime.InteropServices.ObjectiveC;
@@ -116,6 +117,13 @@ namespace Sprint_2.LevelManager
         {
             Updateables.Add((Interfaces.IUpdateable)obj);
             ForeDrawables.Add((Interfaces.IDrawable)obj);
+        }
+
+        public void RemoveStatic(object obj)
+        {
+            Updateables.Remove((Interfaces.IUpdateable)obj);
+            ForeDrawables.Remove((Interfaces.IDrawable)obj);
+            Static.Remove((ICollideable)obj);
         }
     }
 }

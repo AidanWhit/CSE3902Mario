@@ -90,8 +90,8 @@ namespace Sprint_2
             //levelLoader.LoadLevel(@"LevelManager\testing-level.xml");
             levelLoader.LoadLevel(@"LevelManager\main-menu.xml");
             GameWorldManager.CurrentGameWorld = "main-menu";
-            //camera.SetLevelBounds(new Vector2(MiscConstants.levelBounds.X, MiscConstants.levelBounds.Y));
-            camera.SetLevelBounds(new Vector2(0, MiscConstants.levelBounds.Y));
+            camera.SetLevelBounds(new Vector2(MiscConstants.levelBounds.X, MiscConstants.levelBounds.Y));
+            //camera.SetLevelBounds(new Vector2(0, MiscConstants.levelBounds.Y));
 
             gameState = new PlayableState(keyControl);
         }

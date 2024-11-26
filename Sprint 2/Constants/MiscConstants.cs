@@ -53,5 +53,7 @@ namespace Sprint_2.Constants
         public readonly static Vector2 resetTextLocation = new Vector2(50, 440);
         public readonly static Vector2 quitTextLocation = new Vector2(250, 440);
         public readonly static Vector2 endingTextLocation = new Vector2(150, 340);
+
+        public const float movingPlatformSpeed = -0.5f;
     }
 }

@@ -20,7 +20,7 @@ namespace Sprint_2.GameObjects.Misc
         private float YPos;
         private float leftMostXPos;
         private float rightMostXPos;
-        private float speed = -0.50f;
+        private float speed = MiscConstants.movingPlatformSpeed;
 
         public MoveablePlatform(Vector2 location, float range)
         {
