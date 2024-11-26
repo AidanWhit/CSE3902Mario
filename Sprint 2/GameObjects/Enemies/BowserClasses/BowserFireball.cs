@@ -27,18 +27,18 @@ namespace Sprint_2.GameObjects.Enemies.BowserClasses
         public BowserFireball(Vector2 spawnLocation, int targetYPos, bool goingLeft)
         {
             rand = new Random();
-            speed = rand.Next(50, 100);
+            speed = rand.Next(EnemyConstants.minBowserFireballSpeed, EnemyConstants.maxBowserFireballSpeed);
             XPos = spawnLocation.X;
             YPos = spawnLocation.Y;
             
             if (goingLeft)
             {
-                sprite = UniversalSpriteFactory.Instance.CreateEnemy("LeftBowserFireball");
+                sprite = UniversalSpriteFactory.Instance.CreateEnemy(NamesOfSprites.SpriteNames.LeftBowserFireball.ToString());
                 speed = -speed;
             }
             else
             {
-                sprite = UniversalSpriteFactory.Instance.CreateEnemy("RightBowserFireball");
+                sprite = UniversalSpriteFactory.Instance.CreateEnemy(NamesOfSprites.SpriteNames.RightBowserFireball.ToString());
             }
 
             this.targetYPos = targetYPos - GetHitBox().Height;

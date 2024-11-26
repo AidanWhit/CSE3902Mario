@@ -44,7 +44,7 @@ namespace Sprint_2.GameObjects.Items
         public void DeleteItem()
         {
             GameObjectManager.Instance.Updateables.Remove(this);
-            GameObjectManager.Instance.BackDrawables.Remove(this);
+            GameObjectManager.Instance.ForeDrawables.Remove(this);
             GameObjectManager.Instance.Static.Remove(this);
         }
 

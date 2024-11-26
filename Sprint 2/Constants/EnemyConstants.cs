@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
 using Sprint_2.GameObjects.ItemSprites;
 using System;
 using System.Collections.Generic;
@@ -31,5 +32,13 @@ namespace Sprint_2.Constants
         public static int kickShellPoints = 400;
 
         public static readonly int[] shellScoreValues = new int[] { 500, 800, 1000, 2000, 4000, 5000, 8000 };
+        public const int initialBowserHealth = 10;
+        public const int bowserXMoveSpeed = -20;
+
+        public const int minBowserFireballSpeed = 50;
+        public const int maxBowserFireballSpeed = 100;
+
+        public static readonly Vector2 hammerVelocity = new Vector2(-100, -200);
+        public static readonly Vector2 bowserFallVelocity = fallVelocity / 1.3f;
     }
 }

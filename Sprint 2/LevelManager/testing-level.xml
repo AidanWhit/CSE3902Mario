@@ -305,13 +305,11 @@
 		  <ObjectName>BrownGround</ObjectName>
 		  <Location>384 464</Location>
 	  </Item>
-	  <!-->
 	  <Item>
 		  <ObjectType>Enemy</ObjectType>
 		  <ObjectName>Bowser</ObjectName>
 		  <Location>288 416</Location>
 	  </Item>
-	  -->
     <Item>
       <ObjectType>Player</ObjectType>
       <ObjectName>Mario</ObjectName>
@@ -336,20 +334,6 @@
 		  <CollisionType>Static</CollisionType>
 		  <NumberOfParams>1</NumberOfParams>
 		  <Location>128 432</Location>
-	  </NonStandardItem>
-	  <NonStandardItem>
-		  <ObjectType>Sprint_2.GameObjects.Misc.Axe</ObjectType>
-		  <CollisionType>Static</CollisionType>
-		  <NumberOfParams>1</NumberOfParams>
-		  <Location>256 432</Location>
-	  </NonStandardItem>
-	  <NonStandardItem>
-		  <ObjectType>Sprint_2.GameObjects.Block</ObjectType>
-		  <CollisionType>Static</CollisionType>
-		  <NumberOfParams>3</NumberOfParams>
-		  <Sprite>BrickWithAStar</Sprite>
-		  <Location>256 400</Location>
-		  <Color>DarkGray</Color>
 	  </NonStandardItem>
   </Asset>
 </XnaContent>

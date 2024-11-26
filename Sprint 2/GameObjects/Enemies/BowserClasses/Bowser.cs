@@ -8,6 +8,7 @@ using Sprint_2.LevelManager;
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
+using System.Linq.Expressions;
 using System.Runtime.CompilerServices;
 using System.Security.AccessControl;
 using System.Timers;
@@ -27,7 +28,7 @@ namespace Sprint_2.GameObjects.Enemies.BowserClasses
         private float rightMostXPos;
         private const int patrolRange = 32;
 
-        private int health = 10;
+        private int health = EnemyConstants.initialBowserHealth;
         private bool isJumping = false;
 
         private Interfaces.IUpdateable bowserBehavior;
@@ -46,10 +47,10 @@ namespace Sprint_2.GameObjects.Enemies.BowserClasses
             leftMostXPos = XPos - patrolRange;
             rightMostXPos = XPos + patrolRange;
 
-            Velocity = new Vector2(-20f, 0f);
+            Velocity = new Vector2(EnemyConstants.bowserXMoveSpeed, 0f);
             mario = Game1.Instance.mario;
             //Assume bowser starts facing left
-            sprite = UniversalSpriteFactory.Instance.CreateEnemy("LeftBowser");
+            sprite = UniversalSpriteFactory.Instance.CreateEnemy(NamesOfSprites.SpriteNames.LeftBowser.ToString());
 
             bowserBehavior = new BowserPatrolBehavior(this);
             previousBowserBehavior = bowserBehavior;
@@ -158,13 +159,26 @@ namespace Sprint_2.GameObjects.Enemies.BowserClasses
             /* Always needs to look at mario */
             if (mario.XPos > XPos && facingLeft)
             {
-                sprite = UniversalSpriteFactory.Instance.CreateEnemy("RightBowser");
+                sprite = UniversalSpriteFactory.Instance.CreateEnemy(NamesOfSprites.SpriteNames.RightBowser.ToString());
                 facingLeft = !facingLeft;
             }
             else if (XPos > mario.XPos && !facingLeft)
             {
-                sprite = UniversalSpriteFactory.Instance.CreateEnemy("LeftBowser");
+                sprite = UniversalSpriteFactory.Instance.CreateEnemy(NamesOfSprites.SpriteNames.LeftBowser.ToString());
                 facingLeft = !facingLeft;
+            }
+        }
+        public void LookAtMario()
+        {
+            if (mario.XPos < XPos)
+            {
+                sprite = UniversalSpriteFactory.Instance.CreateEnemy(NamesOfSprites.SpriteNames.LeftBowser.ToString());
+                facingLeft = true;
+            }
+            else
+            {
+                sprite = UniversalSpriteFactory.Instance.CreateEnemy(NamesOfSprites.SpriteNames.RightBowser.ToString());
+                facingLeft = false;
             }
         }
         public string GetCollisionType()

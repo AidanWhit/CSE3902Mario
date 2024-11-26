@@ -26,15 +26,11 @@ namespace Sprint_2.GameObjects.Enemies.BowserClasses
             XPos = location.X;
             YPos = location.Y;
 
-            sprite = UniversalSpriteFactory.Instance.CreateEnemy("BowserHammer");
-
-            if (facingLeft)
+            sprite = UniversalSpriteFactory.Instance.CreateEnemy(NamesOfSprites.SpriteNames.BowserHammer.ToString());
+            velocity = EnemyConstants.hammerVelocity;
+            if (!facingLeft)
             {
-                velocity = new Vector2(-100, -200);
-            }
-            else
-            {
-                velocity = new Vector2(100, -200);
+                velocity *= new Vector2(-1, 1);
             }
         }
 

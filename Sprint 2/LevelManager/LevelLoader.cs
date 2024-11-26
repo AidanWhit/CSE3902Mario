@@ -300,12 +300,6 @@ namespace Sprint_2.LevelManager
                     GameObjectManager.Instance.Blocks[column].Add(block);
                     GameObjectManager.Instance.ForeDrawables.Add(block);
                     break;
-                case "MoveablePlatform":
-                    MoveablePlatform plat = new MoveablePlatform(new Vector2(locationX, locationY), 25);
-                    GameObjectManager.Instance.Updateables.Add(plat);
-                    GameObjectManager.Instance.ForeDrawables.Add(plat);
-                    GameObjectManager.Instance.Movers.Add(plat);
-                    break;
                 default:
                     throw new InvalidOperationException("Block type: \"" + name + "\" doesn't exist");
             }

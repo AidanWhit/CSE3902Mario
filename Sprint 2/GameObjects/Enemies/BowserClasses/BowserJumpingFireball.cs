@@ -25,7 +25,7 @@ namespace Sprint_2.GameObjects.Enemies.BowserClasses
         {
             if (velocity.Y < EnemyConstants.maxFallVelocity)
             {
-                velocity += EnemyConstants.fallVelocity / 1.3f;
+                velocity += EnemyConstants.bowserFallVelocity;
             }
             bowser.YPos += (float)(velocity.Y * gameTime.ElapsedGameTime.TotalSeconds);
 

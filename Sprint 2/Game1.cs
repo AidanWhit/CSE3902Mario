@@ -90,7 +90,8 @@ namespace Sprint_2
             //levelLoader.LoadLevel(@"LevelManager\testing-level.xml");
             levelLoader.LoadLevel(@"LevelManager\main-menu.xml");
             GameWorldManager.CurrentGameWorld = "main-menu";
-            camera.SetLevelBounds(new Vector2(MiscConstants.levelBounds.X, MiscConstants.levelBounds.Y));
+            //camera.SetLevelBounds(new Vector2(MiscConstants.levelBounds.X, MiscConstants.levelBounds.Y));
+            camera.SetLevelBounds(new Vector2(0, MiscConstants.levelBounds.Y));
 
             gameState = new PlayableState(keyControl);
         }
@@ -110,13 +111,11 @@ namespace Sprint_2
 
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.Black);
             // Begin the sprite batch with the camera's transformation matrix
             spriteBatch.Begin(transformMatrix: camera.Transform);
 
             gameState.Draw(spriteBatch, Color.White);
-
-            
             spriteBatch.End();
 
             base.Draw(gameTime);

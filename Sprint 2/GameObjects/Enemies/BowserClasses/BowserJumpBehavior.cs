@@ -13,7 +13,6 @@ namespace Sprint_2.GameObjects.Enemies.BowserClasses
         private Bowser bowser;
         private Vector2 velocity;
         private Interfaces.IUpdateable patrolBehavior;
-
         public BowserJumpBehavior(Bowser bowser)
         {
             this.bowser = bowser;
@@ -29,9 +28,8 @@ namespace Sprint_2.GameObjects.Enemies.BowserClasses
         {
             if (velocity.Y < EnemyConstants.maxFallVelocity)
             {
-                velocity += EnemyConstants.fallVelocity / 1.3f;
+                velocity += EnemyConstants.bowserFallVelocity;
             }
-            //bowser.XPos += (float)(velocity.X * gameTime.ElapsedGameTime.TotalSeconds);
             patrolBehavior.Update(gameTime);
             bowser.YPos += (float)(velocity.Y * gameTime.ElapsedGameTime.TotalSeconds);
         }

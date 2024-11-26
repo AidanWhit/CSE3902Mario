@@ -12,7 +12,8 @@ namespace Sprint_2.Constants
         Chiseled, Invisible, Question, Goomba, FlippedGoomba, StompedGoomba, LeftFacingKoopa, RightFacingKoopa, KoopaShell, FlippedKoopaShell, 
         LeftFacingBuzzy, RightFacingBuzzy, BuzzyShell, FlippedBuzzyShell, LavaBubbleMovingUp, LavaBubbleMovingDown, RedMushroom, GreenMushroom, Coin, StaticCoin, Star, UndergroundPipe, 
         Bush1, Bush2, Hill1, Hill2, Cloud1, Cloud2, LevelImage, MainMenuImage, GreenBrick, GrayBrick, GrayHit, GreenHit, BlueHit, DarkGrayBrick,
-        DarkGrayBroken, GrayBroken, BlueBroken, Axe, GreenBroken
+        DarkGrayBroken, GrayBroken, BlueBroken, Axe, GreenBroken, LeftBowser, RightBowser, LeftMouthClosedBowser, RightMouthClosedBowser, BowserHammer,
+        LeftBowserFireball, RightBowserFireball
         };
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Sprint_2.Constants;
 using Sprint_2.Factories;
 using Sprint_2.Interfaces;
 using Sprint_2.LevelManager;
@@ -13,27 +14,25 @@ namespace Sprint_2.GameObjects.Enemies.BowserClasses
     public class BowserStandingFireball : Interfaces.IUpdateable
     {
         private Bowser bowser;
-        private ISprite initialSprite;
         private IPlayer mario;
         private bool facingLeft;
-        private float timeForMouthClosed = 0.60f;
-        private float initialTimeForMouthClosed = 0.60f;
+        private float timeForMouthClosed;
+        private const float initialTimeForMouthClosed = 0.60f;
 
         public BowserStandingFireball(Bowser bowser, bool facingLeft, IPlayer mario)
         {
             this.bowser = bowser;
             this.mario = mario;
             this.facingLeft = facingLeft;
-
-            initialSprite = bowser.GetSprite();
+            timeForMouthClosed = initialTimeForMouthClosed;
 
             if (facingLeft)
             {
-                bowser.SetSprite(UniversalSpriteFactory.Instance.CreateEnemy("LeftMouthClosedBowser"));
+                bowser.SetSprite(UniversalSpriteFactory.Instance.CreateEnemy(NamesOfSprites.SpriteNames.LeftMouthClosedBowser.ToString()));
             }
             else
             {
-                bowser.SetSprite(UniversalSpriteFactory.Instance.CreateEnemy("RightMouthClosedBowser"));
+                bowser.SetSprite(UniversalSpriteFactory.Instance.CreateEnemy(NamesOfSprites.SpriteNames.RightMouthClosedBowser.ToString()));
             }
 
             
@@ -51,7 +50,8 @@ namespace Sprint_2.GameObjects.Enemies.BowserClasses
                 GameObjectManager.Instance.ForeDrawables.Add(fireball);
                 GameObjectManager.Instance.Movers.Add(fireball);
 
-                bowser.SetSprite(initialSprite);
+                //Set the bowser sprite to be facing mario
+                bowser.LookAtMario();
 
                 timeForMouthClosed = initialTimeForMouthClosed;
             }
