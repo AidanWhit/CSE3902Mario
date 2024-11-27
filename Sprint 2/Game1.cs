@@ -90,8 +90,6 @@ namespace Sprint_2
             //levelLoader.LoadLevel(@"LevelManager\testing-level.xml");
             levelLoader.LoadLevel(@"LevelManager\main-menu.xml");
             GameWorldManager.CurrentGameWorld = @"main-menu";
-            camera.SetLevelBounds(new Vector2(MiscConstants.levelBounds.X, MiscConstants.levelBounds.Y));
-            //camera.SetLevelBounds(new Vector2(0, MiscConstants.levelBounds.Y));
 
             gameState = new PlayableState(keyControl);
         }
@@ -127,11 +125,7 @@ namespace Sprint_2
             mario = new Player(Vector2.Zero, mario.RemainingLives);
             InitControls.initializeControls(keyControl, mario);
 
-            //levelLoader.LoadLevel(@"LevelManager\level-1_data_pretty.xml");
-            //levelLoader.LoadLevel(@"LevelManager\main-menu.xml");
             levelLoader.LoadLevel($"LevelManager\\{GameWorldManager.CurrentGameWorld}.xml");
-            //GameWorldManager.CurrentGameWorld = "main-menu";
-
             camera.Reset();
             SoundManager.Instance.Reset();
             HUD.Instance.ResetTime();
@@ -145,10 +139,6 @@ namespace Sprint_2
 
             InitControls.initializeControls(keyControl, mario);
 
-            //levelLoader.LoadLevel(@"LevelManager\level-1_data_pretty
-            //
-            //");
-            //levelLoader.LoadLevel(@"LevelManager\main-menu.xml");
             GameWorldManager.CurrentGameWorld = @"main-menu";
             levelLoader.LoadLevel($"LevelManager\\{GameWorldManager.CurrentGameWorld}.xml");
             

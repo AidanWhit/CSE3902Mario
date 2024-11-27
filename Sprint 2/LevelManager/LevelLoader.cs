@@ -223,6 +223,7 @@ namespace Sprint_2.LevelManager
                     break;
                 case "LevelImage":
                     GameObjectManager.Instance.BackDrawables.Add(UniversalSpriteFactory.Instance.GetLevelImageSprite(location));
+                    Game1.Instance.GetCamera().SetLevelBounds(MiscConstants.levelBounds);
                     break;
                 case "Level2Background":
                     GameObjectManager.Instance.BackDrawables.Add(UniversalSpriteFactory.Instance.GetLevel2ImageSprite(location));
@@ -231,6 +232,7 @@ namespace Sprint_2.LevelManager
                 case "MainMenuImage":
                     Debug.WriteLine("Entered Main Menu bg");
                     GameObjectManager.Instance.BackDrawables.Add(UniversalSpriteFactory.Instance.GetMainMenuImageSprite(location));
+                    Game1.Instance.GetCamera().SetLevelBounds(MiscConstants.levelBounds);
                     break;
                 
                 case "Flag":

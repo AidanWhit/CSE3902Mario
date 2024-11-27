@@ -19,7 +19,7 @@ namespace Sprint_2.Commands.MarioCollisionCommands
         private int rightSide;
         private Timer enterPipeTimer;
 
-        private static Vector2 marioExitPosition = new Vector2(2624, 400);
+        private readonly Vector2 marioExitPosition = new Vector2(2624, 400);
         public EnterPipeFromRight(IPlayer player, ICollideable collideable, Rectangle collisionRect)
         {
             this.player = player;

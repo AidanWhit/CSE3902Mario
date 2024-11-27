@@ -67,7 +67,8 @@ namespace Sprint_2.GameObjects
                 {"BrownGround", new BrownGroundState(this) },
                 {"BrownBrickWithStar", new BrickWithAStar(this) },
                 {"Invisible", new InvisibleState(this) },
-                {"BulletBlock", new BulletBlockState(this) }
+                {"BulletBlock", new BulletBlockState(this) },
+                {"Hit", new UsedBlockState(this) }
 
             };
             /* if a brick with a different color than brown is needed 

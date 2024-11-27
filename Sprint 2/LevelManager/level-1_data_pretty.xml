@@ -11,16 +11,6 @@
 		  <ObjectName>Flag</ObjectName>
 		  <Location>3160 288</Location>
 	  </Item>
-	  <Item>
-		  <ObjectType>Block</ObjectType>
-		  <ObjectName>BulletBlock</ObjectName>
-		  <Location>200 430</Location>
-	  </Item>
-	  <Item>
-		  <ObjectType>Block</ObjectType>
-		  <ObjectName>BulletBlock</ObjectName>
-		  <Location>200 380</Location>
-	  </Item>
     <Item>
       <ObjectType>Block</ObjectType>
       <ObjectName>BrownGround</ObjectName>

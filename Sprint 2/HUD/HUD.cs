@@ -109,7 +109,6 @@ namespace Sprint_2
         {
             return score;
         }
-
     }
 
     

@@ -82,11 +82,10 @@ namespace Sprint_2.MarioPhysicsStates
                     break;
 
                 case "level-1_data_pretty":
-                    Spawner.Instance.TeleportToLevel("level-2", new Vector2(100, 100), "underworld");
+                    Spawner.Instance.TeleportToLevel(@"XMLFiles\level-2", Vector2.Zero, "underworld");
                     Game1.Instance.gameState = new PlayableState(Game1.Instance.GetKeyboardControl());
-                    Game1.Instance.GetCamera().Reset();
-                    //Game1.Instance.GetCamera().SetLevelBounds(new Vector2(0, MiscConstants.levelBounds.Y));
-                    
+                    HUD.Instance.ResetTime();
+                    Game1.Instance.GetCamera().Reset(); 
                     break;
 
 

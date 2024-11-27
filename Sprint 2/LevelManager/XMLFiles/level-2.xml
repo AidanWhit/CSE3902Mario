@@ -1460,10 +1460,10 @@
       <SizeX>16</SizeX>
       <SizeY>96</SizeY>
     </Item>
+    <Item>
+      <ObjectType>Player</ObjectType>
+      <ObjectName>Mario</ObjectName>
+      <Location>16 432</Location>
+    </Item>
   </Asset>
-  <Item>
-    <ObjectType>Player</ObjectType>
-    <ObjectName>Mario</ObjectName>
-    <Location>2032 304</Location>
-  </Item>
 </XnaContent>
