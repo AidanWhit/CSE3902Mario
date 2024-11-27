@@ -624,8 +624,8 @@
 		<Name>Invisible</Name>
 		<NumOfFrames>1</NumOfFrames>
 		<Rectangle>
-			<XPos>71</XPos>
-			<YPos>85</YPos>
+			<XPos>150</XPos>
+			<YPos>124</YPos>
 			<Width>16</Width>
 			<Height>16</Height>
 		</Rectangle>
@@ -907,6 +907,16 @@
 			<XPos>0</XPos>
 			<YPos>0</YPos>
 			<Width>3584</Width>
+			<Height>240</Height>
+		</Rectangle>
+	</Sprite>
+	<Sprite>
+		<Name>Level2Background</Name>
+		<NumOfFrames>1</NumOfFrames>
+		<Rectangle>
+			<XPos>0</XPos>
+			<YPos>0</YPos>
+			<Width>2936</Width>
 			<Height>240</Height>
 		</Rectangle>
 	</Sprite>

@@ -40,6 +40,7 @@ namespace Sprint_2.Factories
         private Texture2D backgroundSprites;
 
         private Texture2D mainMenuImageTexture;
+        private Texture2D level2Texture;
 
         private Texture2D flagSprite;
 
@@ -131,7 +132,8 @@ namespace Sprint_2.Factories
             staticCoin = content.Load<Texture2D>("staticCoin");
 
             levelImageTexture = content.Load<Texture2D>("levelimage"); //sprite for the whole level image
-            mainMenuImageTexture = content.Load<Texture2D>("mainmenuimage");                                                          //
+            mainMenuImageTexture = content.Load<Texture2D>("mainmenuimage");
+            level2Texture = content.Load<Texture2D>("Level1-2Background");
             backgroundSprites = content.Load<Texture2D>("backgroundSprites");
             flagSprite = content.Load<Texture2D>("flag");
             gunSprite = content.Load<Texture2D>("gunSprite");
@@ -226,7 +228,11 @@ namespace Sprint_2.Factories
             spriteData.TryGetValue(NamesOfSprites.SpriteNames.MainMenuImage.ToString(), out frames);
             return new StaticSprite(mainMenuImageTexture, frames, location);
         }
-
+        public IStaticSprite GetLevel2ImageSprite(Vector2 location)
+        {
+            spriteData.TryGetValue(NamesOfSprites.SpriteNames.Level2Background.ToString(), out frames);
+            return new StaticSprite(level2Texture, frames, location);
+        }
         public ISprite GetGunSprite()
         {
             spriteData.TryGetValue("Gun", out frames);

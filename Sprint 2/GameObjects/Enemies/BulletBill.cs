@@ -10,7 +10,7 @@ using System.Diagnostics;
 
 namespace Sprint_2.GameObjects.Enemies.EnemySprites
 {
-    public class Bullet : ICollideable, Interfaces.IUpdateable, Interfaces.IDrawable
+    public class BulletBill : ICollideable, Interfaces.IUpdateable, Interfaces.IDrawable
     {
         public float XPos { get; set; }
         public float YPos { get; set; }
@@ -22,7 +22,7 @@ namespace Sprint_2.GameObjects.Enemies.EnemySprites
 
         //private int[] score = EnemyConstants.bullet;
         private int index = 0;
-        public Bullet(Vector2 initialPosition, Direction direction)
+        public BulletBill(Vector2 initialPosition, Direction direction)
         {
             XPos = initialPosition.X;
             YPos = initialPosition.Y;
@@ -33,6 +33,10 @@ namespace Sprint_2.GameObjects.Enemies.EnemySprites
 
         public void Update(GameTime gameTime)
         {
+            if (XPos < Game1.Instance.GetCamera().GetLeftScreenBound().X)
+            {
+                GameObjectManager.Instance.RemoveMover(this);
+            }
             bulletState.Update(gameTime);
         }
 
@@ -58,10 +62,6 @@ namespace Sprint_2.GameObjects.Enemies.EnemySprites
 
         public string GetCollisionType()
         {
-            if (Flipped)
-            {
-                return "FlippedBullet";
-            }
             return "MovingBullet";
         }
         public void Move()
@@ -73,6 +73,5 @@ namespace Sprint_2.GameObjects.Enemies.EnemySprites
         {
             return (int)(XPos / CollisionConstants.blockWidth);
         }
-        //TODO: Score
     }
 }

@@ -20,7 +20,7 @@ namespace Sprint_2.GameObjects.Enemies.EnemyStates
 {
     public class BulletStateMachine
     {
-        private Bullet bullet;
+        private BulletBill bullet;
         private ISprite sprite;
         private enum BulletHealth {Normal, Flipped};
         BulletHealth health = BulletHealth.Normal;
@@ -29,10 +29,10 @@ namespace Sprint_2.GameObjects.Enemies.EnemyStates
         private bool movingLeft = true;
         private bool startBehavior = false;
 
-        public BulletStateMachine(Bullet bullet, Bullet.Direction direction)
+        public BulletStateMachine(BulletBill bullet, BulletBill.Direction direction)
         {
             this.bullet = bullet;
-            if (direction == Bullet.Direction.Left)
+            if (direction == BulletBill.Direction.Left)
             {
                 sprite = UniversalSpriteFactory.Instance.CreateEnemy(NamesOfSprites.SpriteNames.LeftBullet.ToString());
             } else
@@ -44,8 +44,7 @@ namespace Sprint_2.GameObjects.Enemies.EnemyStates
 
         public void Update(GameTime gameTime)
         {
-            startBehavior = UpdateStartBehavior();
-            if (startBehavior && !bullet.Flipped)
+            if (!bullet.Flipped)
             {
                 Move();
             }
@@ -56,15 +55,7 @@ namespace Sprint_2.GameObjects.Enemies.EnemyStates
 
             sprite.Update(gameTime);
         }
-        private bool UpdateStartBehavior()
-        {
-            float distToPlayer = Math.Abs(Game1.Instance.mario.XPos - bullet.XPos);
-            if (distToPlayer < EnemyConstants.distUntilBehaviorStarts)
-            {
-                startBehavior = true;
-            }
-            return startBehavior;
-        }
+
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location, Color color)
         {

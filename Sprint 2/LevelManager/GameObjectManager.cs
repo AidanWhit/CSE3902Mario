@@ -125,5 +125,11 @@ namespace Sprint_2.LevelManager
             ForeDrawables.Remove((Interfaces.IDrawable)obj);
             Static.Remove((ICollideable)obj);
         }
+        public void RemoveMover(object obj)
+        {
+            Updateables.Remove((Interfaces.IUpdateable)obj);
+            ForeDrawables.Remove((Interfaces.IDrawable)obj);
+            Movers.Remove((ICollideable)obj);
+        }
     }
 }

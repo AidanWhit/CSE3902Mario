@@ -15,9 +15,9 @@ namespace Sprint_2.GameObjects.Enemies.EnemyStates
 {
     public class BulletFlippedState : AbstractBulletState
     {
-        private Bullet bullet;
+        private BulletBill bullet;
 
-        public BulletFlippedState(Bullet bullet) : base(bullet)
+        public BulletFlippedState(BulletBill bullet) : base(bullet)
         {
             this.bullet = bullet;
         }

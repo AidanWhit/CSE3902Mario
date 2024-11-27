@@ -17,11 +17,11 @@ namespace Sprint_2.Commands.CollisionCommands.EnemyCollisionCommands
 {
     public class FlipBulletCommand : ICommands
     {
-        private Bullet bullet;
+        private BulletBill bullet;
         private ICollideable collider;
         private Rectangle collisionRect;
 
-        public FlipBulletCommand(Bullet bullet, ICollideable collider, Rectangle collisionRect)
+        public FlipBulletCommand(BulletBill bullet, ICollideable collider, Rectangle collisionRect)
         {
             this.bullet = bullet;
             this.collider = collider;

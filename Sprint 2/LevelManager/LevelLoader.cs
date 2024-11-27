@@ -127,6 +127,7 @@ namespace Sprint_2.LevelManager
                     
                 }
             }
+            LevelReader.Close();
         }
         private void LoadObject(string name, string type, string location, string sizeX, string sizeY)
         {
@@ -223,11 +224,15 @@ namespace Sprint_2.LevelManager
                 case "LevelImage":
                     GameObjectManager.Instance.BackDrawables.Add(UniversalSpriteFactory.Instance.GetLevelImageSprite(location));
                     break;
-
+                case "Level2Background":
+                    GameObjectManager.Instance.BackDrawables.Add(UniversalSpriteFactory.Instance.GetLevel2ImageSprite(location));
+                    Game1.Instance.camera.SetLevelBounds(MiscConstants.sizeOfLevel2);
+                    break;
                 case "MainMenuImage":
+                    Debug.WriteLine("Entered Main Menu bg");
                     GameObjectManager.Instance.BackDrawables.Add(UniversalSpriteFactory.Instance.GetMainMenuImageSprite(location));
                     break;
-
+                
                 case "Flag":
                     GameObjectManager.Instance.BackDrawables.Add(new Flag(new Vector2(locationX, locationY)));
                     break;
@@ -409,7 +414,7 @@ namespace Sprint_2.LevelManager
                     GameObjectManager.Instance.BackDrawables.Add(enemy);
                     break;
                 case "Bullet":
-                    Bullet bullet = new Bullet(new Vector2(locationX, locationY), Bullet.Direction.Left);
+                    BulletBill bullet = new BulletBill(new Vector2(locationX, locationY), BulletBill.Direction.Left);
                     GameObjectManager.Instance.Movers.Add(bullet);
                     GameObjectManager.Instance.Updateables.Add(bullet);
                     GameObjectManager.Instance.BackDrawables.Add(bullet);

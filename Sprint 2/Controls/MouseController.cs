@@ -1,7 +1,9 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using Sprint_2.Commands.MarioAttackCommands;
+using Sprint_2.Commands.ProgramCommands;
 using Sprint_2.Interfaces;
+using Sprint_2.Sprites;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Transactions;
@@ -15,7 +17,7 @@ namespace Sprint_2.Controls
 
         /* Potentially will only have one mouse command */
         private ICommands shoot = new MarioShootCommand(Game1.Instance.mario);
-
+        private ICommands addBlockDebug = new WriteBlocksToFile();
         private ICommands currentCommand;
         private bool pressedFlag = false;
         public MouseController()
@@ -30,7 +32,15 @@ namespace Sprint_2.Controls
             /* Only executes shoot on a left click */
             if (mouseState.LeftButton == ButtonState.Pressed && previousState.LeftButton == ButtonState.Released) 
             {
-                shoot.Execute();
+                if (Game1.Instance.mario is GunMarioDecorator)
+                {
+                    shoot.Execute();
+                }
+                else
+                {
+                    addBlockDebug.Execute();
+                }
+                
             }
             previousState = mouseState;
             

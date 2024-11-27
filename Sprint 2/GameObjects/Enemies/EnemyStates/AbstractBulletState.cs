@@ -12,9 +12,9 @@ namespace Sprint_2.GameObjects.Enemies.EnemyStates
 {
     public abstract class AbstractBulletState : IBulletBehavior
     {
-        private Bullet bullet;
+        private BulletBill bullet;
 
-        public AbstractBulletState(Bullet bullet)
+        public AbstractBulletState(BulletBill bullet)
         {
             this.bullet = bullet;
         }

@@ -17,10 +17,10 @@ namespace Sprint_2.Commands.MarioCollisionCommands
     public class MarioBounceOnBullet : ICommands
     {
         private IPlayer player;
-        private Bullet enemy;
+        private BulletBill enemy;
         private Rectangle collisionRect;
 
-        public MarioBounceOnBullet(IPlayer player, Bullet enemy, Rectangle collisionRect)
+        public MarioBounceOnBullet(IPlayer player, BulletBill enemy, Rectangle collisionRect)
         {
             this.player = player;
             this.enemy = enemy;
@@ -34,11 +34,9 @@ namespace Sprint_2.Commands.MarioCollisionCommands
             {
                 player.PlayerVelocity = new Vector2(player.PlayerVelocity.X, MarioPhysicsConstants.bounceVelocity);
                 SoundManager.Instance.PlaySoundEffect("stomp");
-
+                player.YPos -= collisionRect.Height;
                 player.isFalling = false;
                 player.Bounce();
-                
-                HUD.Instance.AddScorePopUp(((Player)player).GetScore(), new Vector2(enemy.XPos, enemy.YPos));
             }
         }
     }
