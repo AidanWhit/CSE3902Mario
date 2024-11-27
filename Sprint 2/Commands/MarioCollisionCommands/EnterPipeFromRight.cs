@@ -54,9 +54,7 @@ namespace Sprint_2.Commands.MarioCollisionCommands
                 LevelLoader levelLoader = new LevelLoader();
                 GameObjectManager.Instance.Reset();
 
-                levelLoader.LoadLevel(@"LevelManager\level-1_data_pretty
-
-");
+                levelLoader.LoadLevel(@"LevelManager\level-1_data_pretty.xml");
                 GameWorldManager.CurrentGameWorld = "level-1_data_pretty";
 
                 Game1.Instance.camera.Reset();
