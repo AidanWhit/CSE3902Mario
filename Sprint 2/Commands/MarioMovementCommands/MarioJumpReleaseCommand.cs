@@ -19,9 +19,14 @@ namespace Sprint_2.Commands.MarioMovementCommands
 
         public void Execute() 
         {
+            
             if (!player.isFalling && player.PhysicsState is not Grounded)
             {
-                player.Fall();
+                if (player.isJumping)
+                {
+                    player.Fall();
+                }
+               
             }
             
         }

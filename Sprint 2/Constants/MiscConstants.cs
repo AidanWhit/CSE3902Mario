@@ -55,5 +55,6 @@ namespace Sprint_2.Constants
         public readonly static Vector2 endingTextLocation = new Vector2(150, 340);
 
         public const float movingPlatformSpeed = -0.5f;
+        public readonly static Vector2 sizeOfLevel2 = new Vector2(3336, 240);
     }
 }

@@ -105,10 +105,11 @@ namespace Sprint_2.LevelManager
                         }
                     }
                     object createdObject = constructorInfos[0].Invoke(constructorParams);
-                    foreach (object obj in constructorParams)
-                    {
-                        Debug.WriteLine("Value: {0}, Type: {1}", obj, obj.GetType());
-                    }
+
+                    //foreach (object obj in constructorParams)
+                    //{
+                    //    Debug.WriteLine("Value: {0}, Type: {1}", obj, obj.GetType());
+                    //}
                     if (collisionType.Equals("Mover"))
                     {
                         GameObjectManager.Instance.AddMover(createdObject);
@@ -126,6 +127,7 @@ namespace Sprint_2.LevelManager
                     
                 }
             }
+            LevelReader.Close();
         }
         private void LoadObject(string name, string type, string location, string sizeX, string sizeY)
         {
@@ -222,11 +224,15 @@ namespace Sprint_2.LevelManager
                 case "LevelImage":
                     GameObjectManager.Instance.BackDrawables.Add(UniversalSpriteFactory.Instance.GetLevelImageSprite(location));
                     break;
-
+                case "Level2Background":
+                    GameObjectManager.Instance.BackDrawables.Add(UniversalSpriteFactory.Instance.GetLevel2ImageSprite(location));
+                    Game1.Instance.camera.SetLevelBounds(MiscConstants.sizeOfLevel2);
+                    break;
                 case "MainMenuImage":
+                    Debug.WriteLine("Entered Main Menu bg");
                     GameObjectManager.Instance.BackDrawables.Add(UniversalSpriteFactory.Instance.GetMainMenuImageSprite(location));
                     break;
-
+                
                 case "Flag":
                     GameObjectManager.Instance.BackDrawables.Add(new Flag(new Vector2(locationX, locationY)));
                     break;
@@ -299,6 +305,12 @@ namespace Sprint_2.LevelManager
                     break;
                 case "Invisible":
                     block = new Block("Invisible", new Vector2(locationX, locationY));
+                    GameObjectManager.Instance.Updateables.Add(block);
+                    GameObjectManager.Instance.Blocks[column].Add(block);
+                    GameObjectManager.Instance.ForeDrawables.Add(block);
+                    break;
+                case "BulletBlock":
+                    block = new Block("BulletBlock", new Vector2(locationX, locationY));
                     GameObjectManager.Instance.Updateables.Add(block);
                     GameObjectManager.Instance.Blocks[column].Add(block);
                     GameObjectManager.Instance.ForeDrawables.Add(block);
@@ -400,6 +412,12 @@ namespace Sprint_2.LevelManager
                     GameObjectManager.Instance.Movers.Add(enemy);
                     GameObjectManager.Instance.Updateables.Add(enemy);
                     GameObjectManager.Instance.BackDrawables.Add(enemy);
+                    break;
+                case "Bullet":
+                    BulletBill bullet = new BulletBill(new Vector2(locationX, locationY), BulletBill.Direction.Left);
+                    GameObjectManager.Instance.Movers.Add(bullet);
+                    GameObjectManager.Instance.Updateables.Add(bullet);
+                    GameObjectManager.Instance.BackDrawables.Add(bullet);
                     break;
                 default:
                     throw new InvalidOperationException("Item type: \"" + name + "\" doesn't exist");

@@ -26,7 +26,14 @@ namespace Sprint_2.Commands.MarioCollisionCommands
 
         public void Execute()
         {
-            
+            /* This check is needed for when mario shoots a target while jumping to prevent him from being stuck in the jump sprite
+             when colliding with the ground */
+            if (!mario.isFalling && !mario.isJumping && mario.PhysicsState is not Grounded)
+            {
+                mario.YPos -= height;
+                mario.Idle();
+                mario.PhysicsState = new Grounded(mario);
+            }
             if (mario.isFalling)
             {
                 mario.YPos -= height;

@@ -26,16 +26,20 @@ namespace Sprint_2.Commands.MarioCollisionCommands
 
         public void Execute()
         {
-            GameObjectManager.Instance.BackDrawables.Remove(player);
-            GameObjectManager.Instance.Updateables.Remove(player);
-            GameObjectManager.Instance.Movers.Remove(player);
+            if (player is not GunMarioDecorator)
+            {
+                GameObjectManager.Instance.BackDrawables.Remove(player);
+                GameObjectManager.Instance.Updateables.Remove(player);
+                GameObjectManager.Instance.Movers.Remove(player);
 
-            player = new GunMarioDecorator(player);
-            Game1.Instance.mario = player;
+                player = new GunMarioDecorator(player);
+                Game1.Instance.mario = player;
+
+                GameObjectManager.Instance.BackDrawables.Add(player);
+                GameObjectManager.Instance.Updateables.Add(player);
+                GameObjectManager.Instance.Movers.Add(player);
+            }
             
-            GameObjectManager.Instance.BackDrawables.Add(player);
-            GameObjectManager.Instance.Updateables.Add(player);
-            GameObjectManager.Instance.Movers.Add(player);
             
         }
     }

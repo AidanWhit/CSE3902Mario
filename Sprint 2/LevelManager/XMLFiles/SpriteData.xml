@@ -624,8 +624,8 @@
 		<Name>Invisible</Name>
 		<NumOfFrames>1</NumOfFrames>
 		<Rectangle>
-			<XPos>71</XPos>
-			<YPos>85</YPos>
+			<XPos>150</XPos>
+			<YPos>124</YPos>
 			<Width>16</Width>
 			<Height>16</Height>
 		</Rectangle>
@@ -656,6 +656,46 @@
 			<YPos>93</YPos>
 			<Width>8</Width>
 			<Height>8</Height>
+		</Rectangle>
+	</Sprite>
+	<Sprite>
+		<Name>BulletBlock</Name>
+		<NumOfFrames>1</NumOfFrames>
+		<Rectangle>
+			<XPos>31</XPos>
+			<YPos>117</YPos>
+			<Width>16</Width>
+			<Height>32</Height>
+		</Rectangle>
+	</Sprite>
+	<Sprite>
+		<Name>LeftBullet</Name>
+		<NumOfFrames>1</NumOfFrames>
+		<Rectangle>
+			<XPos>1</XPos>
+			<YPos>126</YPos>
+			<Width>16</Width>
+			<Height>14</Height>
+		</Rectangle>
+	</Sprite>
+	<Sprite>
+		<Name>RightBullet</Name>
+		<NumOfFrames>1</NumOfFrames>
+		<Rectangle>
+			<XPos>61</XPos>
+			<YPos>126</YPos>
+			<Width>16</Width>
+			<Height>14</Height>
+		</Rectangle>
+	</Sprite>
+	<Sprite>
+		<Name>FlippedBullet</Name>
+		<NumOfFrames>1</NumOfFrames>
+		<Rectangle>
+			<XPos>83</XPos>
+			<YPos>263</YPos>
+			<Width>18</Width>
+			<Height>16</Height>
 		</Rectangle>
 	</Sprite>
 	<Sprite>
@@ -867,6 +907,16 @@
 			<XPos>0</XPos>
 			<YPos>0</YPos>
 			<Width>3584</Width>
+			<Height>240</Height>
+		</Rectangle>
+	</Sprite>
+	<Sprite>
+		<Name>Level2Background</Name>
+		<NumOfFrames>1</NumOfFrames>
+		<Rectangle>
+			<XPos>0</XPos>
+			<YPos>0</YPos>
+			<Width>2936</Width>
 			<Height>240</Height>
 		</Rectangle>
 	</Sprite>
