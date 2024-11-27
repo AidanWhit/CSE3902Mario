@@ -26,7 +26,7 @@ namespace Sprint_2.Commands.ProgramCommands
             directory = AppDomain.CurrentDomain.BaseDirectory;
             int index = directory.IndexOf(@"\bin");
             directory = directory.Substring(0, index + 1);
-            directory = directory + @"LevelManager\XMLFiles\level-2.xml";
+            directory = directory + @"LevelManager\XMLFiles\boss-level.xml";
             xmlDoc = XDocument.Load(directory);
 
             //Debug.WriteLine(xmlDoc.ToString());
@@ -43,25 +43,26 @@ namespace Sprint_2.Commands.ProgramCommands
             mouseYPos -= 16;
             Debug.WriteLine("Mouse Pos: " + new Vector2(mouseXPos, mouseYPos));
             XNode rootElement = xmlDoc.Root.Element("Asset");
-            xmlDoc.Save(directory);
-            return;
+            //xmlDoc.Save(directory);
+            //return;
 
-            //XElement parentElement = new XElement("Item");
-            //XElement objTypeElement = new XElement("ObjectType", "Item");
-            //XElement objNameElement = new XElement("ObjectName", "StaticCoin");
 
-            XElement parentElement = new XElement("Item");
-            XElement objTypeElement = new XElement("ObjectType", "Block");
-            XElement objNameElement = new XElement("ObjectName", "BrownGround");
+            XElement parentElement = new XElement("NonStandardItem");
+            XElement objTypeElement = new XElement("ObjectType", "Sprint_2.GameObjects.FireBar");
+            XElement objCollisionElement = new XElement("CollisionType", "None");
+            XElement objParamsElement = new XElement("NumberOfParams", "2");
             XElement locElement = new XElement("Location", mouseXPos + " " + mouseYPos);
+            XElement objBalls = new XElement("Color", "6");
 
             parentElement.Add(objTypeElement);
-            parentElement.Add(objNameElement);
+            parentElement.Add(objCollisionElement);
+            parentElement.Add(objParamsElement);
             parentElement.Add(locElement);
+            parentElement.Add(objBalls);
 
             rootElement.AddBeforeSelf(parentElement);
             //StaticCoin block = new StaticCoin(new Vector2(mouseXPos, mouseYPos));
-            Block block = new Block("BrownGround", new Vector2(mouseXPos, mouseYPos));
+            Block block = new Block("Hit", new Vector2(mouseXPos, mouseYPos), "Green");
             GameObjectManager.Instance.AddStatic(block);
 
             xmlDoc.Save(directory);

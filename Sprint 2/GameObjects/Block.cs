@@ -68,12 +68,12 @@ namespace Sprint_2.GameObjects
                 {"BrownBrickWithStar", new BrickWithAStar(this) },
                 {"Invisible", new InvisibleState(this) },
                 {"BulletBlock", new BulletBlockState(this) },
-                {"Hit", new UsedBlockState(this) }
+                {"Hit", new UsedBlockState(this, color) }
 
             };
             /* if a brick with a different color than brown is needed 
              Kept as separate methods to ensure that the block states used to build level 1-1 will still function properly*/
-            if (color != null)
+            if (color != null && color != NamesOfSprites.SpriteNames.CastleBrick.ToString())
             {
                 blockStates.Add("Brick", new BrickState(this, color));
                 blockStates.Add("BrickWithCoins", new BrickWithCoins(this, MiscConstants.defaultNumberOfCoins, color));

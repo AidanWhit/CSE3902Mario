@@ -13,7 +13,7 @@ namespace Sprint_2.Constants
         LeftFacingBuzzy, RightFacingBuzzy, BuzzyShell, FlippedBuzzyShell, LavaBubbleMovingUp, LavaBubbleMovingDown, RedMushroom, GreenMushroom, Coin, StaticCoin, Star, UndergroundPipe, 
         Bush1, Bush2, Hill1, Hill2, Cloud1, Cloud2, LevelImage, MainMenuImage, GreenBrick, GrayBrick, GrayHit, GreenHit, BlueHit, DarkGrayBrick,
         DarkGrayBroken, GrayBroken, BlueBroken, Axe, GreenBroken, LeftBowser, RightBowser, LeftMouthClosedBowser, RightMouthClosedBowser, BowserHammer,
-        LeftBowserFireball, RightBowserFireball, Target, Level2Background
+        LeftBowserFireball, RightBowserFireball, Target, Level2Background, CastleBrick, BossLevelBackground
         };
     }
 }

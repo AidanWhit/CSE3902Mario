@@ -1525,5 +1525,25 @@
 			<Height>16</Height>
 		</Rectangle>
 	</Sprite>
+	<Sprite>
+		<Name>CastleBrick</Name>
+		<NumOfFrames>1</NumOfFrames>
+		<Rectangle>
+			<XPos>1</XPos>
+			<YPos>121</YPos>
+			<Width>16</Width>
+			<Height>16</Height>
+		</Rectangle>
+	</Sprite>
+	<Sprite>
+		<Name>BossLevelBackground</Name>
+		<NumOfFrames>1</NumOfFrames>
+		<Rectangle>
+			<XPos>0</XPos>
+			<YPos>0</YPos>
+			<Width>2560</Width>
+			<Height>240</Height>
+		</Rectangle>
+	</Sprite>
 	
 </XNAContent>

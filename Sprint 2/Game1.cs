@@ -89,6 +89,7 @@ namespace Sprint_2
             //levelLoader.LoadLevel(@"LevelManager\level-1_data_pretty.xml");
             //levelLoader.LoadLevel(@"LevelManager\testing-level.xml");
             levelLoader.LoadLevel(@"LevelManager\main-menu.xml");
+            //levelLoader.LoadLevel(@"LevelManager\XMLFiles\boss-level.xml");
             GameWorldManager.CurrentGameWorld = @"main-menu";
 
             gameState = new PlayableState(keyControl);
@@ -139,7 +140,8 @@ namespace Sprint_2
 
             InitControls.initializeControls(keyControl, mario);
 
-            GameWorldManager.CurrentGameWorld = @"main-menu";
+            //GameWorldManager.CurrentGameWorld = @"XMLFiles\boss-level";
+            GameWorldManager.CurrentGameWorld = "main-menu";
             levelLoader.LoadLevel($"LevelManager\\{GameWorldManager.CurrentGameWorld}.xml");
             
 

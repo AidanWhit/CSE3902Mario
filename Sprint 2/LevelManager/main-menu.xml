@@ -265,11 +265,6 @@
       <SizeX>2</SizeX>
       <SizeY>16</SizeY>
     </Item>
-
-
-    
-
-
     <Item>
 		  <ObjectType>Collider</ObjectType>
 		  <ObjectName></ObjectName>
@@ -277,7 +272,6 @@
 		  <SizeX>320</SizeX>
 		  <SizeY>16</SizeY>
 	  </Item>
-
     <Item>
       <ObjectType>Player</ObjectType>
       <ObjectName>Mario</ObjectName>

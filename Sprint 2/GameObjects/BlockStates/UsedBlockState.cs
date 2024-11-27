@@ -22,7 +22,11 @@ namespace Sprint_2.GameObjects.BlockStates
 
             this.block = block;
             AssignSprite(color);
-            Hit = true;
+            if (color != NamesOfSprites.SpriteNames.CastleBrick.ToString())
+            {
+                Hit = true;
+            }
+            
         }
 
         public override void BeHit(IPlayer player)
@@ -46,6 +50,10 @@ namespace Sprint_2.GameObjects.BlockStates
             else if (color.Equals(System.Drawing.KnownColor.Gray.ToString()) || color.Equals(System.Drawing.KnownColor.DarkGray.ToString()))
             {
                 sprite = UniversalSpriteFactory.Instance.GetBlock(NamesOfSprites.SpriteNames.GrayHit.ToString());
+            }
+            else if (color.Equals(NamesOfSprites.SpriteNames.CastleBrick.ToString()))
+            {
+                sprite = UniversalSpriteFactory.Instance.GetBlock(color);
             }
             else
             {

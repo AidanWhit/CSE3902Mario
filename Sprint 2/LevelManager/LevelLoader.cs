@@ -230,11 +230,13 @@ namespace Sprint_2.LevelManager
                     Game1.Instance.camera.SetLevelBounds(MiscConstants.sizeOfLevel2);
                     break;
                 case "MainMenuImage":
-                    Debug.WriteLine("Entered Main Menu bg");
                     GameObjectManager.Instance.BackDrawables.Add(UniversalSpriteFactory.Instance.GetMainMenuImageSprite(location));
                     Game1.Instance.GetCamera().SetLevelBounds(MiscConstants.levelBounds);
                     break;
-                
+                case "BossLevelBackground":
+                    GameObjectManager.Instance.BackDrawables.Add(UniversalSpriteFactory.Instance.GetBossLevelSprite(location));
+                    Game1.Instance.GetCamera().SetLevelBounds(MiscConstants.bossLevelSize);
+                    break;
                 case "Flag":
                     GameObjectManager.Instance.BackDrawables.Add(new Flag(new Vector2(locationX, locationY)));
                     break;

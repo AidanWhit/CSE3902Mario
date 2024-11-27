@@ -38,7 +38,7 @@ namespace Sprint_2.Controls
                 }
                 else
                 {
-                    addBlockDebug.Execute();
+                    //addBlockDebug.Execute();
                 }
                 
             }
