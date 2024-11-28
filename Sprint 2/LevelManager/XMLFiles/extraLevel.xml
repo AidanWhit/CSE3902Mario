@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <XnaContent>
 	<Asset Type="MyDataTypes.LevelObjectData[]">
-		<Item>
-			<ObjectType>Player</ObjectType>
-			<ObjectName>Mario</ObjectName>
-			<Location>16 400</Location>
-		</Item>
+		
 		<Item>
 			<ObjectType>Block</ObjectType>
 			<ObjectName>BrownGround</ObjectName>
@@ -771,11 +767,21 @@
 			<ObjectName>MediumPipe</ObjectName>
 			<Location>816 384</Location>
 		</Item>
+		<!-->
 		<Item>
 			<ObjectType>Item</ObjectType>
 			<ObjectName>Star</ObjectName>
 			<Location>848 368</Location>
 		</Item>
+		-->
+		<NonStandardItem>
+			<ObjectType>Sprint_2.GameObjects.Block</ObjectType>
+			<CollisionType>Static</CollisionType>
+			<NumberOfParams>3</NumberOfParams>
+			<Sprite>BrickWithAStar</Sprite>
+			<Location>880 368</Location>
+			<Color>Blue</Color>
+		</NonStandardItem>
 		<Item>
 			<ObjectType>Block</ObjectType>
 			<ObjectName>BrownGround</ObjectName>
@@ -838,12 +844,12 @@
 		</Item>
 		<Item>
 			<ObjectType>Item</ObjectType>
-			<ObjectName>Coin</ObjectName>
+			<ObjectName>StaticCoin</ObjectName>
 			<Location>912 400</Location>
 		</Item>
 		<Item>
 			<ObjectType>Item</ObjectType>
-			<ObjectName>Coin</ObjectName>
+			<ObjectName>StaticCoin</ObjectName>
 			<Location>928 400</Location>
 		</Item>
 		<Item>
@@ -1748,27 +1754,27 @@
 		</Item>
 		<Item>
 			<ObjectType>Item</ObjectType>
-			<ObjectName>Coin</ObjectName>
+			<ObjectName>StaticCoin</ObjectName>
 			<Location>1376 352</Location>
 		</Item>
 		<Item>
 			<ObjectType>Item</ObjectType>
-			<ObjectName>Coin</ObjectName>
+			<ObjectName>StaticCoin</ObjectName>
 			<Location>1376 336</Location>
 		</Item>
 		<Item>
 			<ObjectType>Item</ObjectType>
-			<ObjectName>Coin</ObjectName>
+			<ObjectName>StaticCoin</ObjectName>
 			<Location>1424 320</Location>
 		</Item>
 		<Item>
 			<ObjectType>Item</ObjectType>
-			<ObjectName>Coin</ObjectName>
+			<ObjectName>StaticCoin</ObjectName>
 			<Location>1440 320</Location>
 		</Item>
 		<Item>
 			<ObjectType>Item</ObjectType>
-			<ObjectName>Coin</ObjectName>
+			<ObjectName>StaticCoin</ObjectName>
 			<Location>1456 320</Location>
 		</Item>
 		<Item>
@@ -1811,10 +1817,17 @@
 			<ObjectName>Chiseled</ObjectName>
 			<Location>1680 384</Location>
 		</Item>
+		<!--
 		<Item>
 			<ObjectType>Item</ObjectType>
 			<ObjectName>Star</ObjectName>
 			<Location>1632 352</Location>
+		</Item>
+		-->
+		<Item>
+			<ObjectType>Block</ObjectType>
+			<ObjectName>BrownBrickWithStar</ObjectName>
+			<Location>1680 336</Location>
 		</Item>
 		<Item>
 			<ObjectType>Pipe</ObjectType>
@@ -1829,7 +1842,7 @@
 		</Item>
 		<Item>
 			<ObjectType>Item</ObjectType>
-			<ObjectName>Coin</ObjectName>
+			<ObjectName>StaticCoin</ObjectName>
 			<Location>1792 352</Location>
 		</Item>
 		<Item>
@@ -2342,5 +2355,150 @@
 			<ObjectName>Chiseled</ObjectName>
 			<Location>2144 336</Location>
 		</Item>
+		<Item>
+			<ObjectType>Collider</ObjectType>
+			<ObjectName>Collider</ObjectName>
+			<Location>0 432</Location>
+			<SizeX>192</SizeX>
+			<SizeY>48</SizeY>
+		</Item>
+		<Item>
+			<ObjectType>Collider</ObjectType>
+			<ObjectName>Collider</ObjectName>
+			<Location>224 416</Location>
+			<SizeX>32</SizeX>
+			<SizeY>64</SizeY>
+		</Item>
+		<Item>
+			<ObjectType>Collider</ObjectType>
+			<ObjectName>Collider</ObjectName>
+			<Location>272 416</Location>
+			<SizeX>16</SizeX>
+			<SizeY>64</SizeY>
+		</Item>
+		<Item>
+			<ObjectType>Collider</ObjectType>
+			<ObjectName>Collider</ObjectName>
+			<Location>304 432</Location>
+			<SizeX>144</SizeX>
+			<SizeY>48</SizeY>
+		</Item>
+		<Item>
+			<ObjectType>Collider</ObjectType>
+			<ObjectName>Collider</ObjectName>
+			<Location>448 416</Location>
+			<SizeX>16</SizeX>
+			<SizeY>64</SizeY>
+		</Item>
+		<Item>
+			<ObjectType>Collider</ObjectType>
+			<ObjectName>Collider</ObjectName>
+			<Location>496 448</Location>
+			<SizeX>16</SizeX>
+			<SizeY>32</SizeY>
+		</Item>
+		<Item>
+			<ObjectType>Collider</ObjectType>
+			<ObjectName>Collider</ObjectName>
+			<Location>544 416</Location>
+			<SizeX>48</SizeX>
+			<SizeY>64</SizeY>
+		</Item>
+		<Item>
+			<ObjectType>Collider</ObjectType>
+			<ObjectName>Collider</ObjectName>
+			<Location>640 368</Location>
+			<SizeX>16</SizeX>
+			<SizeY>112</SizeY>
+		</Item>
+		<Item>
+			<ObjectType>Collider</ObjectType>
+			<ObjectName>Collider</ObjectName>
+			<Location>672 432</Location>
+			<SizeX>144</SizeX>
+			<SizeY>16</SizeY>
+		</Item>
+		<Item>
+			<ObjectType>Collider</ObjectType>
+			<ObjectName>Collider</ObjectName>
+			<Location>832 384</Location>
+			<SizeX>16</SizeX>
+			<SizeY>96</SizeY>
+		</Item>
+		<Item>
+			<ObjectType>Collider</ObjectType>
+			<ObjectName>Collider</ObjectName>
+			<Location>864 432</Location>
+			<SizeX>32</SizeX>
+			<SizeY>48</SizeY>
+		</Item>
+		<Item>
+			<ObjectType>Collider</ObjectType>
+			<ObjectName>Collider</ObjectName>
+			<Location>912 432</Location>
+			<SizeX>32</SizeX>
+			<SizeY>48</SizeY>
+		</Item>
+		<Item>
+			<ObjectType>Collider</ObjectType>
+			<ObjectName>Collider</ObjectName>
+			<Location>960 432</Location>
+			<SizeX>816</SizeX>
+			<SizeY>48</SizeY>
+		</Item>
+		<Item>
+			<ObjectType>Collider</ObjectType>
+			<ObjectName>Collider</ObjectName>
+			<Location>1296 400</Location>
+			<SizeX>48</SizeX>
+			<SizeY>32</SizeY>
+		</Item>
+		<Item>
+			<ObjectType>Collider</ObjectType>
+			<ObjectName>Collider</ObjectName>
+			<Location>1360 368</Location>
+			<SizeX>48</SizeX>
+			<SizeY>32</SizeY>
+		</Item>
+		<Item>
+			<ObjectType>Collider</ObjectType>
+			<ObjectName>Collider</ObjectName>
+			<Location>1424 336</Location>
+			<SizeX>48</SizeX>
+			<SizeY>32</SizeY>
+		</Item>
+		<Item>
+			<ObjectType>Collider</ObjectType>
+			<ObjectName>Collider</ObjectName>
+			<Location>1632 400</Location>
+			<SizeX>16</SizeX>
+			<SizeY>32</SizeY>
+		</Item>
+		<Item>
+			<ObjectType>Collider</ObjectType>
+			<ObjectName>Collider</ObjectName>
+			<Location>1792 368</Location>
+			<SizeX>16</SizeX>
+			<SizeY>112</SizeY>
+		</Item>
+		<Item>
+			<ObjectType>Collider</ObjectType>
+			<ObjectName>Collider</ObjectName>
+			<Location>1808 432</Location>
+			<SizeX>384</SizeX>
+			<SizeY>48</SizeY>
+		</Item>
+		<Item>
+			<ObjectType>Collider</ObjectType>
+			<ObjectName>Collider</ObjectName>
+			<Location>2144 336</Location>
+			<SizeX>16</SizeX>
+			<SizeY>96</SizeY>
+		</Item>
 	</Asset>
+	<Item>
+		<ObjectType>Player</ObjectType>
+		<ObjectName>Mario</ObjectName>
+		<Location>16 400</Location>
+	</Item>
 </XnaContent>

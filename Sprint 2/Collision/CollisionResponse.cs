@@ -75,11 +75,11 @@ namespace Sprint_2.Collision
             
             if (commands.Item2 != null)
             {
+                //Debug.WriteLine(commands.Item2.Name);
                 Type[] constructorTypes = new Type[] { Type.GetType(receiver.ToString()), Type.GetType(source.ToString()), typeof(Rectangle) };
                 ConstructorInfo constructorInfo = commands.Item2.GetConstructor(constructorTypes);
 
                 object[] constructorParameters = new object[] { receiver, source, collisionIntersection };
-
                 ICommands command = (ICommands)constructorInfo.Invoke(constructorParameters);
                 command.Execute();
             }

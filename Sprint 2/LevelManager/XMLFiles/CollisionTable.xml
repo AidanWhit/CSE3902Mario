@@ -932,6 +932,38 @@
 		<ReceiverCommandType>Sprint_2.Commands.CollisionCommands.ItemCollisionCommands.ItemCollidesWithPlayer</ReceiverCommandType>
 	</Entry>
 
+
+
+	<Entry>
+		<SourceType>StarMario</SourceType>
+		<ReceiverType>StaticCoin</ReceiverType>
+		<CollisionSide>Top</CollisionSide>
+		<SourceCommandType>Sprint_2.Commands.CollisionCommands.ItemCollisionCommands.StaticCoinCollectCommand</SourceCommandType>
+		<ReceiverCommandType>Sprint_2.Commands.CollisionCommands.ItemCollisionCommands.ItemCollidesWithPlayer</ReceiverCommandType>
+	</Entry>
+	<Entry>
+		<SourceType>StarMario</SourceType>
+		<ReceiverType>StaticCoin</ReceiverType>
+		<CollisionSide>Right</CollisionSide>
+		<SourceCommandType>Sprint_2.Commands.CollisionCommands.ItemCollisionCommands.StaticCoinCollectCommand</SourceCommandType>
+		<ReceiverCommandType>Sprint_2.Commands.CollisionCommands.ItemCollisionCommands.ItemCollidesWithPlayer</ReceiverCommandType>
+	</Entry>
+	<Entry>
+		<SourceType>StarMario</SourceType>
+		<ReceiverType>StaticCoin</ReceiverType>
+		<CollisionSide>Left</CollisionSide>
+		<SourceCommandType>Sprint_2.Commands.CollisionCommands.ItemCollisionCommands.StaticCoinCollectCommand</SourceCommandType>
+		<ReceiverCommandType>Sprint_2.Commands.CollisionCommands.ItemCollisionCommands.ItemCollidesWithPlayer</ReceiverCommandType>
+	</Entry>
+	<Entry>
+		<SourceType>StarMario</SourceType>
+		<ReceiverType>StaticCoin</ReceiverType>
+		<CollisionSide>Bottom</CollisionSide>
+		<SourceCommandType>Sprint_2.Commands.CollisionCommands.ItemCollisionCommands.StaticCoinCollectCommand</SourceCommandType>
+		<ReceiverCommandType>Sprint_2.Commands.CollisionCommands.ItemCollisionCommands.ItemCollidesWithPlayer</ReceiverCommandType>
+	</Entry>
+	
+	
 	<Entry>
 		<SourceType>Bullet</SourceType>
 		<ReceiverType>IEnemy</ReceiverType>
@@ -1016,6 +1048,36 @@
 	<Entry>
 		<SourceType>Bullet</SourceType>
 		<ReceiverType>IBlock</ReceiverType>
+		<CollisionSide>Top</CollisionSide>
+		<SourceCommandType>Sprint_2.Commands.CollisionCommands.RemoveBulletCommand</SourceCommandType>
+		<ReceiverCommandType></ReceiverCommandType>
+	</Entry>
+
+
+	<Entry>
+		<SourceType>Bullet</SourceType>
+		<ReceiverType>MovingBullet</ReceiverType>
+		<CollisionSide>Bottom</CollisionSide>
+		<SourceCommandType>Sprint_2.Commands.CollisionCommands.RemoveBulletCommand</SourceCommandType>
+		<ReceiverCommandType></ReceiverCommandType>
+	</Entry>
+	<Entry>
+		<SourceType>Bullet</SourceType>
+		<ReceiverType>MovingBullet</ReceiverType>
+		<CollisionSide>Left</CollisionSide>
+		<SourceCommandType>Sprint_2.Commands.CollisionCommands.RemoveBulletCommand</SourceCommandType>
+		<ReceiverCommandType></ReceiverCommandType>
+	</Entry>
+	<Entry>
+		<SourceType>Bullet</SourceType>
+		<ReceiverType>MovingBullet</ReceiverType>
+		<CollisionSide>Right</CollisionSide>
+		<SourceCommandType>Sprint_2.Commands.CollisionCommands.RemoveBulletCommand</SourceCommandType>
+		<ReceiverCommandType></ReceiverCommandType>
+	</Entry>
+	<Entry>
+		<SourceType>Bullet</SourceType>
+		<ReceiverType>MovingBullet</ReceiverType>
 		<CollisionSide>Top</CollisionSide>
 		<SourceCommandType>Sprint_2.Commands.CollisionCommands.RemoveBulletCommand</SourceCommandType>
 		<ReceiverCommandType></ReceiverCommandType>
