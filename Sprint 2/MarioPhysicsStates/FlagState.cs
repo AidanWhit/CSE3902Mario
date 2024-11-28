@@ -82,20 +82,30 @@ namespace Sprint_2.MarioPhysicsStates
                     break;
 
                 case "level-1_data_pretty":
-                    Spawner.Instance.TeleportToLevel(@"XMLFiles\level-2", Vector2.Zero, "underworld");
+                    Spawner.Instance.TeleportToLevel(@"XMLFiles\level-2", Vector2.Zero, "mainTheme");
                     Game1.Instance.gameState = new PlayableState(Game1.Instance.GetKeyboardControl());
                     HUD.Instance.ResetTime();
-                    Game1.Instance.GetCamera().Reset(); 
+                    Game1.Instance.GetCamera().Reset();
+                    HUD.Instance.IncrementLevel();
                     break;
 
 
-                //case "1-2":
-                //    Spawner.Instance.TeleportToLevel("1-3", new Vector2(100, 400), "mainTheme");
-                //    break;
+                case @"XMLFiles\level-2":
+                    Spawner.Instance.TeleportToLevel(@"XMLFiles\extraLevel", new Vector2(100, 400), "mainTheme");
+                    Game1.Instance.gameState = new PlayableState(Game1.Instance.GetKeyboardControl());
+                    HUD.Instance.ResetTime();
+                    Game1.Instance.GetCamera().Reset();
+                    HUD.Instance.IncrementLevel();
+                    break;
 
-                //case "1-3":
-                //    Game1.Instance.gameState = new WinScreen();
-                //    break;
+                case @"XMLFiles\extraLevel":
+                    Debug.WriteLine("Entered level 3 case");
+                    Spawner.Instance.TeleportToLevel(@"XMLFiles\boss-level", Vector2.Zero, "underworld");
+                    Game1.Instance.gameState = new PlayableState(Game1.Instance.GetKeyboardControl());
+                    HUD.Instance.ResetTime();
+                    Game1.Instance.GetCamera().Reset();
+                    HUD.Instance.IncrementLevel();
+                    break;
 
                 default:
                     // Handle unknown world (fallback logic)

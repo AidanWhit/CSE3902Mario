@@ -29,6 +29,7 @@ namespace Sprint_2.Commands.MarioCollisionCommands
             this.player = player;
             this.collideable = collideable;
             this.collisionRect = collisionRect;
+            
         }
 
         public void Execute()
@@ -38,6 +39,10 @@ namespace Sprint_2.Commands.MarioCollisionCommands
                 StarMario starMario = (StarMario)player;
                 starMario.RemoveStar();
 
+            }
+            else if (player is GunMarioDecorator)
+            {
+                ((GunMarioDecorator)player).RemoveGun();
             }
             CalculatePointsEarned(collisionRect.Bottom, collideable.GetHitBox().Top);
 

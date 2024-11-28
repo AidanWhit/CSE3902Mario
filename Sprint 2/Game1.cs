@@ -88,8 +88,9 @@ namespace Sprint_2
             levelLoader = new LevelLoader();
             //levelLoader.LoadLevel(@"LevelManager\level-1_data_pretty.xml");
             //levelLoader.LoadLevel(@"LevelManager\XMlFiles\level-2.xml");
-            //levelLoader.LoadLevel(@"LevelManager\main-menu.xml");
-            levelLoader.LoadLevel(@"LevelManager\XMLFiles\extraLevel.xml");
+            levelLoader.LoadLevel(@"LevelManager\main-menu.xml");
+            //levelLoader.LoadLevel(@"LevelManager\XMLFiles\extraLevel.xml");
+            //levelLoader.LoadLevel(@"LevelManager\testing-level.xml");
             GameWorldManager.CurrentGameWorld = "main-menu";
             //levelLoader.LoadLevel(@"LevelManager\XMLFiles\boss-level.xml");
             //GameWorldManager.CurrentGameWorld = @"XMLFiles/boss-level";

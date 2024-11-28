@@ -239,6 +239,10 @@ namespace Sprint_2.LevelManager
                     GameObjectManager.Instance.BackDrawables.Add(UniversalSpriteFactory.Instance.GetBossLevelSprite(location));
                     Game1.Instance.GetCamera().SetLevelBounds(MiscConstants.bossLevelSize);
                     break;
+                case "ExtraLevelBackground":
+                    GameObjectManager.Instance.BackDrawables.Add(UniversalSpriteFactory.Instance.GetExtraLevelSprite(location));
+                    Game1.Instance.GetCamera().SetLevelBounds(MiscConstants.sizeOfLevel3);
+                    break;
                 case "Flag":
                     GameObjectManager.Instance.BackDrawables.Add(new Flag(new Vector2(locationX, locationY)));
                     break;

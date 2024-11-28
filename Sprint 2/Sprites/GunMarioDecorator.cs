@@ -159,5 +159,18 @@ namespace Sprint_2.Sprites
         {
             return decoratedPlayer.GetScore();
         }
+
+        public void RemoveGun()
+        {
+            GameObjectManager.Instance.BackDrawables.Remove(this);
+            GameObjectManager.Instance.Updateables.Remove(this);
+            GameObjectManager.Instance.Movers.Remove(this);
+
+            Game1.Instance.mario = decoratedPlayer;
+
+            GameObjectManager.Instance.BackDrawables.Add(decoratedPlayer);
+            GameObjectManager.Instance.Updateables.Add(decoratedPlayer);
+            GameObjectManager.Instance.Movers.Add(decoratedPlayer);
+        }
     }
 }

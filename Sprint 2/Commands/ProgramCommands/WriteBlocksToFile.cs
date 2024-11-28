@@ -27,7 +27,7 @@ namespace Sprint_2.Commands.ProgramCommands
             int index = directory.IndexOf(@"\bin");
             directory = directory.Substring(0, index + 1);
             //directory = directory + @"LevelManager\XMLFiles\boss-level.xml";
-            directory = directory + @"LevelManager\testing-level.xml";
+            directory = directory + @"LevelManager\XMLFiles\extraLevel.xml";
             xmlDoc = XDocument.Load(directory);
 
             //Debug.WriteLine(xmlDoc.ToString());
@@ -59,7 +59,7 @@ namespace Sprint_2.Commands.ProgramCommands
 
             XElement parentElement = new XElement("Item");
             XElement objTypeElement = new XElement("ObjectType", "Block");
-            XElement objNameElement = new XElement("ObjectName", "CastleBlock");
+            XElement objNameElement = new XElement("ObjectName", "BrownGround");
             XElement locElement = new XElement("Location", mouseXPos + " " + mouseYPos);
 
             parentElement.Add(objTypeElement);

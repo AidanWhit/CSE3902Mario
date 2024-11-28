@@ -1546,6 +1546,16 @@
 		</Rectangle>
 	</Sprite>
 	<Sprite>
+		<Name>ExtraLevelBackground</Name>
+		<NumOfFrames>1</NumOfFrames>
+		<Rectangle>
+			<XPos>0</XPos>
+			<YPos>0</YPos>
+			<Width>2585</Width>
+			<Height>240</Height>
+		</Rectangle>
+	</Sprite>
+	<Sprite>
 		<Name>Bridge</Name>
 		<NumOfFrames>1</NumOfFrames>
 		<Rectangle>

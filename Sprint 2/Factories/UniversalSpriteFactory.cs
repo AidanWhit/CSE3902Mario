@@ -42,6 +42,7 @@ namespace Sprint_2.Factories
         private Texture2D mainMenuImageTexture;
         private Texture2D level2Texture;
         private Texture2D bossLevelTexture;
+        private Texture2D extraLevelTexture;
 
         private Texture2D flagSprite;
 
@@ -140,6 +141,8 @@ namespace Sprint_2.Factories
             flagSprite = content.Load<Texture2D>("flag");
             gunSprite = content.Load<Texture2D>("gunSprite");
             bulletSprite = content.Load<Texture2D>("bulletSprite");
+
+            extraLevelTexture = content.Load<Texture2D>("extraLevelBackground");
         }
 
         public void AddEntry(string key, Rectangle[] frames)
@@ -239,6 +242,11 @@ namespace Sprint_2.Factories
         {
             spriteData.TryGetValue(NamesOfSprites.SpriteNames.BossLevelBackground.ToString(), out frames);
             return new StaticSprite(bossLevelTexture, frames, location);
+        }
+        public IStaticSprite GetExtraLevelSprite(Vector2 location)
+        {
+            spriteData.TryGetValue(NamesOfSprites.SpriteNames.ExtraLevelBackground.ToString(), out frames);
+            return new StaticSprite(extraLevelTexture, frames, location);
         }
         public ISprite GetGunSprite()
         {
