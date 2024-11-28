@@ -33,7 +33,6 @@ namespace Sprint_2.GameObjects.Misc
         public void Draw(SpriteBatch spriteBatch, Color color)
         {
             sprite.Draw(spriteBatch, new Vector2(xPos, yPos), color);
-            HitBoxRectangle.DrawRectangle(spriteBatch, GetHitBox(), Color.Blue, 1);
         }
 
         public Rectangle GetHitBox()

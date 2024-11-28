@@ -40,5 +40,6 @@ namespace Sprint_2.Constants
 
         public static readonly Vector2 hammerVelocity = new Vector2(-100, -200);
         public static readonly Vector2 bowserFallVelocity = (fallVelocity / 1.3f);
+        public const int lavaBubbleYSpeed = -150;
     }
 }

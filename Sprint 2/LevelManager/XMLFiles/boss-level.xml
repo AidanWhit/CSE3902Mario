@@ -8452,6 +8452,21 @@
 			<SizeX>48</SizeX>
 			<SizeY>16</SizeY>
 		</Item>
+		<NonStandardItem>
+			<ObjectType>Sprint_2.GameObjects.Enemies.LavaBubble</ObjectType>
+			<CollisionType>Mover</CollisionType>
+			<NumberOfParams>2</NumberOfParams>
+			<Location>432 640</Location>
+			<MaxHeight>336</MaxHeight>
+		</NonStandardItem>
+
+		<NonStandardItem>
+			<ObjectType>Sprint_2.GameObjects.Enemies.LavaBubble</ObjectType>
+			<CollisionType>Mover</CollisionType>
+			<NumberOfParams>2</NumberOfParams>
+			<Location>528 640</Location>
+			<MaxHeight>336</MaxHeight>
+		</NonStandardItem>
 	</Asset>
 	<Item>
 		<ObjectType>Player</ObjectType>

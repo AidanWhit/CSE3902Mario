@@ -11,7 +11,7 @@ using System;
 using Sprint_2.GameObjects.Enemies.EnemySprites;
 using Sprint_2.LevelManager;
 
-namespace Sprint_2.Sprites.EnemySprites
+namespace Sprint_2.GameObjects.Enemies
 {
     public class LavaBubble : IEnemy
     {
@@ -21,15 +21,13 @@ namespace Sprint_2.Sprites.EnemySprites
         public Vector2 Velocity { get; set; }
         private ISprite sprite;
         public LavabubbleStateMachine LavaState { get; set; }
-
-        private int index = 0;
-        public LavaBubble(Vector2 initialPosition)
+        public LavaBubble(Vector2 initialPosition, int maxHeight)
         {
             XPos = initialPosition.X;
             YPos = initialPosition.Y;
 
-            LavaState = new LavabubbleStateMachine(this);
-            Velocity = new Vector2(0, -100);
+            LavaState = new LavabubbleStateMachine(this, maxHeight);
+            Velocity = new Vector2(0, EnemyConstants.lavaBubbleYSpeed);
         }
 
 
@@ -72,11 +70,6 @@ namespace Sprint_2.Sprites.EnemySprites
         public int GetColumn()
         {
             return (int)(XPos / CollisionConstants.blockWidth);
-        }
-
-        public void ResetIndex()
-        {
-            index = 0;
         }
     }
 }

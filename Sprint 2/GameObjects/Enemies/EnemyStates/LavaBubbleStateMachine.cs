@@ -25,10 +25,14 @@ namespace Sprint_2.GameObjects.Enemies.EnemyStates
 
         private bool movingUp = true;
         private bool startBehavior = false;
+        private int maxHeight;
+        private int minHeight;
 
-        public LavabubbleStateMachine(LavaBubble lavaBubble)
+        public LavabubbleStateMachine(LavaBubble lavaBubble, int maxHeight)
         {
             this.lavaBubble = lavaBubble;
+            this.maxHeight = maxHeight;
+            minHeight = (int)lavaBubble.YPos;
 
             sprite = UniversalSpriteFactory.Instance.CreateEnemy(NamesOfSprites.SpriteNames.LavaBubbleMovingUp.ToString());
         }
@@ -66,12 +70,12 @@ namespace Sprint_2.GameObjects.Enemies.EnemyStates
 
         public void ChangeMovement(float Ypos)
         {
-            if (Ypos < 300 && lavaBubble.Velocity.Y < 0)
+            if (Ypos < maxHeight && lavaBubble.Velocity.Y < 0)
             {
                 lavaBubble.Velocity = new Vector2(0, -lavaBubble.Velocity.Y);
                 sprite = UniversalSpriteFactory.Instance.CreateEnemy(NamesOfSprites.SpriteNames.LavaBubbleMovingDown.ToString());
             }
-            else if (Ypos > 432 && lavaBubble.Velocity.Y > 0)
+            else if (Ypos > minHeight && lavaBubble.Velocity.Y > 0)
             {
                 lavaBubble.Velocity = new Vector2(0, -lavaBubble.Velocity.Y);
                 sprite = UniversalSpriteFactory.Instance.CreateEnemy(NamesOfSprites.SpriteNames.LavaBubbleMovingUp.ToString());

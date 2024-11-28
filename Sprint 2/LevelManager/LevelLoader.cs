@@ -84,6 +84,8 @@ namespace Sprint_2.LevelManager
                     }
 
                     Type gameObjectType = Type.GetType(type);
+                    Debug.WriteLine("Type: " + type);
+                    Debug.WriteLine("typeof(LavaBubble): " + typeof(LavaBubble));
                     //Assume each object only as one constructor
                     ConstructorInfo[] constructorInfos = gameObjectType.GetConstructors();
                     ParameterInfo[] paramInfos = constructorInfos[0].GetParameters();
@@ -401,12 +403,6 @@ namespace Sprint_2.LevelManager
                     break;
                 case "Buzzy":
                     enemy = new Buzzy(new Vector2(locationX, locationY));
-                    GameObjectManager.Instance.Movers.Add(enemy);
-                    GameObjectManager.Instance.Updateables.Add(enemy);
-                    GameObjectManager.Instance.BackDrawables.Add(enemy);
-                    break;
-                case "LavaBubble":
-                    enemy = new LavaBubble(new Vector2(locationX, locationY));
                     GameObjectManager.Instance.Movers.Add(enemy);
                     GameObjectManager.Instance.Updateables.Add(enemy);
                     GameObjectManager.Instance.BackDrawables.Add(enemy);
