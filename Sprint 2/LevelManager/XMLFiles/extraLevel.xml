@@ -4,7 +4,7 @@
     <Item>
       <ObjectType>Player</ObjectType>
       <ObjectName>Mario</ObjectName>
-      <Location>64 432</Location>
+      <Location>16 384</Location>
     </Item>
     <Item>
       <ObjectType>Block</ObjectType>
@@ -764,7 +764,7 @@
     <Item>
       <ObjectType>Pipe</ObjectType>
       <ObjectName>MediumPipe</ObjectName>
-      <Location>832 416</Location>
+      <Location>832 400</Location>
     </Item>
     <Item>
       <ObjectType>Item</ObjectType>
@@ -1614,7 +1614,7 @@
     <Item>
       <ObjectType>Pipe</ObjectType>
       <ObjectName>SmallPipe</ObjectName>
-      <Location>992 416</Location>
+      <Location>992 400</Location>
     </Item>
     <Item>
       <ObjectType>Enemy</ObjectType>
@@ -1814,17 +1814,17 @@
     <Item>
       <ObjectType>Pipe</ObjectType>
       <ObjectName>SmallPipe</ObjectName>
-      <Location>1712 416</Location>
+      <Location>1712 400</Location>
     </Item>
     <Item>
       <ObjectType>Pipe</ObjectType>
       <ObjectName>MediumPipe</ObjectName>
-      <Location>1760 416</Location>
+      <Location>1760 400</Location>
     </Item>
     <Item>
       <ObjectType>Pipe</ObjectType>
       <ObjectName>LargePipe</ObjectName>
-      <Location>1792 416</Location>
+      <Location>1792 400</Location>
     </Item>
     <Item>
       <ObjectType>Item</ObjectType>
