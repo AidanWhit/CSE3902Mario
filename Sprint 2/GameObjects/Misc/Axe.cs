@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Sprint_2.Constants;
 using Sprint_2.Factories;
 using Sprint_2.Interfaces;
+using Sprint_2.Sprites;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,11 +33,18 @@ namespace Sprint_2.GameObjects.Misc
         public void Draw(SpriteBatch spriteBatch, Color color)
         {
             sprite.Draw(spriteBatch, new Vector2(xPos, yPos), color);
+            HitBoxRectangle.DrawRectangle(spriteBatch, GetHitBox(), Color.Blue, 1);
         }
 
         public Rectangle GetHitBox()
         {
-            return sprite.GetHitBox(new Vector2(xPos, yPos));
+            Rectangle hitBox = sprite.GetHitBox(new Vector2(xPos, yPos));
+            float scaleFactor = MiscConstants.axeHitBoxScaleFactor;
+            /*Makes Hitbox smaller so mario can only collide with the axe when he will land on the block 
+             underneath the axe */
+            Rectangle adjustedHitBox = new Rectangle(hitBox.X + (int)(CollisionConstants.blockWidth / scaleFactor), (int)yPos, hitBox.Width - 
+                (int)(CollisionConstants.blockWidth / scaleFactor), hitBox.Height);
+            return adjustedHitBox;
         }
         public int GetColumn()
         {

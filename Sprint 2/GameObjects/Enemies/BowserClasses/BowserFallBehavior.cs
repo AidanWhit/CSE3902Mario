@@ -10,17 +10,17 @@ using System.Threading.Tasks;
 
 namespace Sprint_2.GameObjects.Enemies.BowserClasses
 {
-    public class BowserFlippedBehavior : Interfaces.IUpdateable
+    internal class BowserFallBehavior : Interfaces.IUpdateable
     {
         private Bowser bowser;
         private Vector2 velocity;
 
-        public BowserFlippedBehavior(Bowser bowser)
+        public BowserFallBehavior(Bowser bowser)
         {
             this.bowser = bowser;
             velocity = bowser.Velocity;
             GameObjectManager.Instance.Movers.Remove(bowser);
-            velocity = new Vector2(0, ItemPhysicsConstants.bounceVelocity);
+            velocity = Vector2.Zero;
         }
 
         public void Update(GameTime gameTime)
@@ -39,6 +39,7 @@ namespace Sprint_2.GameObjects.Enemies.BowserClasses
 
         private void DeleteBowser()
         {
+            Debug.WriteLine("Entered Delete Bowser");
             GameObjectManager.Instance.ForeDrawables.Remove(bowser);
             GameObjectManager.Instance.Updateables.Remove(bowser);
         }

@@ -319,6 +319,12 @@ namespace Sprint_2.LevelManager
                     GameObjectManager.Instance.Blocks[column].Add(block);
                     GameObjectManager.Instance.ForeDrawables.Add(block);
                     break;
+                case "CastleBlock":
+                    block = new Block("CastleBlock", new Vector2(locationX, locationY));
+                    GameObjectManager.Instance.Updateables.Add(block);
+                    GameObjectManager.Instance.Blocks[column].Add(block);
+                    GameObjectManager.Instance.ForeDrawables.Add(block);
+                    break;
                 default:
                     throw new InvalidOperationException("Block type: \"" + name + "\" doesn't exist");
             }

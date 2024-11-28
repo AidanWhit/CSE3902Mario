@@ -624,8 +624,8 @@
 		<Name>Invisible</Name>
 		<NumOfFrames>1</NumOfFrames>
 		<Rectangle>
-			<XPos>150</XPos>
-			<YPos>124</YPos>
+			<XPos>284</XPos>
+			<YPos>5</YPos>
 			<Width>16</Width>
 			<Height>16</Height>
 		</Rectangle>
@@ -1543,6 +1543,16 @@
 			<YPos>0</YPos>
 			<Width>2560</Width>
 			<Height>240</Height>
+		</Rectangle>
+	</Sprite>
+	<Sprite>
+		<Name>Bridge</Name>
+		<NumOfFrames>1</NumOfFrames>
+		<Rectangle>
+			<XPos>37</XPos>
+			<YPos>121</YPos>
+			<Width>208</Width>
+			<Height>16</Height>
 		</Rectangle>
 	</Sprite>
 	

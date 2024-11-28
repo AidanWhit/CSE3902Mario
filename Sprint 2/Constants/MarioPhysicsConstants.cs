@@ -54,5 +54,7 @@ namespace Sprint_2.Constants
         public const string startingMarioState = "RightMarioIdle";
 
         public readonly static int[] marioBounceScores = new int[] { 100, 200, 400, 500, 800, 1000, 2000, 4000, 5000, 8000 };
+
+        public const int timeToWalkToEndScreen = 4000;
     }
 }

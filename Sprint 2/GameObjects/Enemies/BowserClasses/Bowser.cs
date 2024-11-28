@@ -55,10 +55,7 @@ namespace Sprint_2.GameObjects.Enemies.BowserClasses
             bowserBehavior = new BowserPatrolBehavior(this);
             previousBowserBehavior = bowserBehavior;
             rand = new Random();
-            attackTimer = new Timer(1000);
-            attackTimer.Enabled = true;
-            attackTimer.Elapsed += (source, e) => OnTimedEvent(source, e);
-            attackTimer.AutoReset = true;
+
         }
 
         private void OnTimedEvent(Object source, EventArgs e)
@@ -148,7 +145,11 @@ namespace Sprint_2.GameObjects.Enemies.BowserClasses
                 HUD.Instance.AddScorePopUp(5000, new Vector2(XPos, YPos));
             }
         }
-
+        public void SetBowserBehaviorToFall()
+        {
+            attackTimer.Dispose();
+            bowserBehavior = new BowserFallBehavior(this);
+        }
         public void TakeStompDamage()
         {
             //Bowser can not take stomp damage
@@ -212,9 +213,13 @@ namespace Sprint_2.GameObjects.Enemies.BowserClasses
         private bool UpdateStartBehavior()
         {
             float distToPlayer = Math.Abs(Game1.Instance.mario.XPos - XPos);
-            if (distToPlayer < EnemyConstants.distUntilBehaviorStarts)
+            if (distToPlayer < EnemyConstants.distUntilBehaviorStarts && !startBehavior)
             {
                 startBehavior = true;
+                attackTimer = new Timer(1000);
+                attackTimer.Enabled = true;
+                attackTimer.Elapsed += (source, e) => OnTimedEvent(source, e);
+                attackTimer.AutoReset = true;
             }
             return startBehavior;
         }

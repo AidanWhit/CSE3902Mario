@@ -1238,4 +1238,57 @@
 		<SourceCommandType>Sprint_2.Commands.CollisionCommands.RemoveBulletCommand</SourceCommandType>
 		<ReceiverCommandType>Sprint_2.Commands.CollisionCommands.Misc.DeleteTargetCommand</ReceiverCommandType>
 	</Entry>
+	<Entry>
+		<SourceType>IPlayer</SourceType>
+		<ReceiverType>Axe</ReceiverType>
+		<CollisionSide>Left</CollisionSide>
+		<SourceCommandType>Sprint_2.Commands.MarioCollisionCommands.MarioCollidesWithAxe</SourceCommandType>
+		<ReceiverCommandType>Sprint_2.Commands.CollisionCommands.Misc.DeleteAxeCommand</ReceiverCommandType>
+	</Entry>
+	<Entry>
+		<SourceType>IPlayer</SourceType>
+		<ReceiverType>Axe</ReceiverType>
+		<CollisionSide>Top</CollisionSide>
+		<SourceCommandType>Sprint_2.Commands.MarioCollisionCommands.MarioCollidesWithAxe</SourceCommandType>
+		<ReceiverCommandType>Sprint_2.Commands.CollisionCommands.Misc.DeleteAxeCommand</ReceiverCommandType>
+	</Entry>
+	<Entry>
+		<SourceType>IPlayer</SourceType>
+		<ReceiverType>Axe</ReceiverType>
+		<CollisionSide>Bottom</CollisionSide>
+		<SourceCommandType>Sprint_2.Commands.MarioCollisionCommands.MarioCollidesWithAxe</SourceCommandType>
+		<ReceiverCommandType>Sprint_2.Commands.CollisionCommands.Misc.DeleteAxeCommand</ReceiverCommandType>
+	</Entry>
+	<Entry>
+		<SourceType>IPlayer</SourceType>
+		<ReceiverType>Axe</ReceiverType>
+		<CollisionSide>Right</CollisionSide>
+		<SourceCommandType>Sprint_2.Commands.MarioCollisionCommands.MarioCollidesWithAxe</SourceCommandType>
+		<ReceiverCommandType>Sprint_2.Commands.CollisionCommands.Misc.DeleteAxeCommand</ReceiverCommandType>
+	</Entry>
+
+	<Entry>
+		<SourceType>IPlayer</SourceType>
+		<ReceiverType>StopCameraCollider</ReceiverType>
+		<CollisionSide>Right</CollisionSide>
+		<SourceCommandType>Sprint_2.Commands.MarioCollisionCommands.MarioCollidesWithCameraCollider</SourceCommandType>
+		<ReceiverCommandType></ReceiverCommandType>
+	</Entry>
+
+	<Entry>
+		<SourceType>IPlayer</SourceType>
+		<ReceiverType>Barrier</ReceiverType>
+		<CollisionSide>Right</CollisionSide>
+		<SourceCommandType>Sprint_2.Commands.MarioCollisionCommands.MarioCollideRightCommand</SourceCommandType>
+		<ReceiverCommandType></ReceiverCommandType>
+	</Entry>
+
+	<Entry>
+		<SourceType>IPlayer</SourceType>
+		<ReceiverType>LavaCollider</ReceiverType>
+		<CollisionSide>Top</CollisionSide>
+		<SourceCommandType>Sprint_2.Commands.MarioCollisionCommands.MarioDieCommand</SourceCommandType>
+		<ReceiverCommandType></ReceiverCommandType>
+	</Entry>
+	
 </XnaContent>

@@ -22,9 +22,10 @@ namespace Sprint_2.GameObjects.BlockStates
 
             this.block = block;
             AssignSprite(color);
-            if (color != NamesOfSprites.SpriteNames.CastleBrick.ToString())
+            Hit = true;
+            if (color == NamesOfSprites.SpriteNames.CastleBrick.ToString())
             {
-                Hit = true;
+                Hit = false;
             }
             
         }

@@ -151,6 +151,7 @@ namespace Sprint_2.MarioStates
             
             if (poseState.pose.Equals(PoseState.PoseEnum.Jump) || poseState.pose.Equals(PoseState.PoseEnum.Fall))
             {
+
                 if (mario.PlayerVelocity.X < MarioPhysicsConstants.maxXVelocity)
                 {
                     mario.PlayerVelocity += MarioPhysicsConstants.marioXVelocity;

@@ -56,6 +56,7 @@ namespace Sprint_2.Constants
 
         public const float movingPlatformSpeed = -0.5f;
         public readonly static Vector2 sizeOfLevel2 = new Vector2(3336, 240);
-        public readonly static Vector2 bossLevelSize = new Vector2(2960, 240);
+        public readonly static Vector2 bossLevelSize = new Vector2(3060, 240);
+        public const float axeHitBoxScaleFactor = 3f;
     }
 }

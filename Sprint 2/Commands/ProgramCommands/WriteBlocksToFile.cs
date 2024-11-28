@@ -26,7 +26,8 @@ namespace Sprint_2.Commands.ProgramCommands
             directory = AppDomain.CurrentDomain.BaseDirectory;
             int index = directory.IndexOf(@"\bin");
             directory = directory.Substring(0, index + 1);
-            directory = directory + @"LevelManager\XMLFiles\boss-level.xml";
+            //directory = directory + @"LevelManager\XMLFiles\boss-level.xml";
+            directory = directory + @"LevelManager\testing-level.xml";
             xmlDoc = XDocument.Load(directory);
 
             //Debug.WriteLine(xmlDoc.ToString());
@@ -43,22 +44,32 @@ namespace Sprint_2.Commands.ProgramCommands
             mouseYPos -= 16;
             Debug.WriteLine("Mouse Pos: " + new Vector2(mouseXPos, mouseYPos));
             XNode rootElement = xmlDoc.Root.Element("Asset");
-            //xmlDoc.Save(directory);
-            //return;
+            xmlDoc.Save(directory);
+            return;
 
 
-            XElement parentElement = new XElement("NonStandardItem");
-            XElement objTypeElement = new XElement("ObjectType", "Sprint_2.GameObjects.FireBar");
-            XElement objCollisionElement = new XElement("CollisionType", "None");
-            XElement objParamsElement = new XElement("NumberOfParams", "2");
+            //XElement parentElement = new XElement("NonStandardItem");
+            //XElement objTypeElement = new XElement("ObjectType", "Sprint_2.GameObjects.Block");
+            //XElement objCollisionElement = new XElement("CollisionType", "Static");
+            //XElement objParamsElement = new XElement("NumberOfParams", "2");
+            //XElement objSprite = new XElement("Sprite", "CastleBlock");
+            //XElement locElement = new XElement("Location", mouseXPos + " " + mouseYPos);
+            //XElement colorElement = new XElement("Color", null);
+            //XElement objBalls = new XElement("Color", "6");
+
+            XElement parentElement = new XElement("Item");
+            XElement objTypeElement = new XElement("ObjectType", "Block");
+            XElement objNameElement = new XElement("ObjectName", "CastleBlock");
             XElement locElement = new XElement("Location", mouseXPos + " " + mouseYPos);
-            XElement objBalls = new XElement("Color", "6");
 
             parentElement.Add(objTypeElement);
-            parentElement.Add(objCollisionElement);
-            parentElement.Add(objParamsElement);
+            parentElement.Add(objNameElement);
+            //parentElement.Add(objCollisionElement);
+            //parentElement.Add(objParamsElement);
+            //parentElement.Add(objSprite);
             parentElement.Add(locElement);
-            parentElement.Add(objBalls);
+            //parentElement.Add(colorElement);
+            //parentElement.Add(objBalls);
 
             rootElement.AddBeforeSelf(parentElement);
             //StaticCoin block = new StaticCoin(new Vector2(mouseXPos, mouseYPos));

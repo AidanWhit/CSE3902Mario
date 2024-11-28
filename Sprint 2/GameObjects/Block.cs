@@ -68,7 +68,10 @@ namespace Sprint_2.GameObjects
                 {"BrownBrickWithStar", new BrickWithAStar(this) },
                 {"Invisible", new InvisibleState(this) },
                 {"BulletBlock", new BulletBlockState(this) },
-                {"Hit", new UsedBlockState(this, color) }
+                {"Hit", new UsedBlockState(this, color) },
+                {"NonMovingHitBlock", new NonMovingHitBlock(this, color) },
+                {"InvisibleWithCoin", new InvisibleBlockWithCoin(this, color) },
+                {"CastleBlock", new CastleBlock(this) }
 
             };
             /* if a brick with a different color than brown is needed 
@@ -93,7 +96,7 @@ namespace Sprint_2.GameObjects
 
         public string GetCollisionType()
         {
-            if (blockState.GetType() == typeof(InvisibleState))
+            if (blockState.GetType() == typeof(InvisibleState) || blockState.GetType() == typeof(InvisibleBlockWithCoin))
             {
                 return typeof(InvisibleState).Name;
             }

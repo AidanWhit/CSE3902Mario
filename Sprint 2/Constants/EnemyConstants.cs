@@ -39,6 +39,6 @@ namespace Sprint_2.Constants
         public const int maxBowserFireballSpeed = 100;
 
         public static readonly Vector2 hammerVelocity = new Vector2(-100, -200);
-        public static readonly Vector2 bowserFallVelocity = fallVelocity / 1.3f;
+        public static readonly Vector2 bowserFallVelocity = (fallVelocity / 1.3f);
     }
 }
