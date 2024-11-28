@@ -1,9 +1,18 @@
 Author: Aidan Whitlatch
 Date: 11/27/2024
-Name of file being reviewed:
-Author of file being reviewed:
-Time taken to review:
+Name of file being reviewed: Spawner.cs
+Author of file being reviewed: Jin Fu
+Time taken to review: 20 mins
 
-What is readable:
+What is readable: 
+Most of the variable names used within this class cleary describe what the variable is going to be used for. Most of the function names are
+very descriptive which allows new readers of this code to understand the purpose of the function at a glance. Comments are also
+provided above functions or certain critical sections of code which further adds to the interpretability of the code
 
 What is not readable:
+When the Spawner Instance is declared, the operator ?? is used. Personally, I had to look up the meaning of this operator because just by
+looking at it, there is no way to understand what it is doing. A comment could be provided to describe the function of the ?? operator 
+to allow views to understand the purpose of the operator, especially in the context of the code. Another aspect of the code that is 
+slightly undereadble is the function name Spawn. It is not clear what object's spawn this is refering to but there is a comment provided
+above the header to aid in the understanding. To improve the readability, the Spawn method could be given a more descriptive name such as
+DefaultSpawnForPlayer.
