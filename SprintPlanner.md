@@ -16,7 +16,7 @@ Here is the Sprint Planner that will be used to document our plans, design chang
 | New Blocks | 0 hrs | 0 hrs | Christian Blue | 11/17 | 11/25 |
 | Moveable Platform | 0 hrs | 0 hrs | Christian Blue | 11/17 | 11/24 |
 | New Enemy (Can be simple, maybe bullet bill?)| 0 hrs | 0 hrs | Hahn Choi | 11/23 | 11/25 |
-| New Levels (XMLFiles, aim for 2-3)| 6 hrs | 6 hrs | Zhuoyang Li | 11/25 |
+| New Levels (XMLFiles, aim for 2-3)| 6 hrs | 6 hrs | Zhuoyang Li | 11/25 | 11/27 |
 | Podoboos (fireballs that jump out of lava, used in castle level) | 0 hrs | 0 hrs | Hahn Choi | 11/25 | 11/25 |
 | Main Menu |0 hrs | 0 hrs | Jingyu Fu  | 11/23 | 11/13
 | Spawner(teleporter) |0 hrs | 0 hrs | Jingyu Fu  | 11/23 | 11/13
