@@ -63,6 +63,8 @@ namespace Sprint_2.LevelManager
                     }
                     LoadObject(name, type, location, sizeX, sizeY);
                 }
+                /* New system of adding objects to a file which is more dynamic. Did not remove the old system
+                 to allow the level-1 xml to still be functional ~ Aidan W*/
                 else if((LevelReader.NodeType == XmlNodeType.Element) && (LevelReader.Name == "NonStandardItem"))
                 {
                     string numOfParams;
@@ -84,8 +86,6 @@ namespace Sprint_2.LevelManager
                     }
 
                     Type gameObjectType = Type.GetType(type);
-                    Debug.WriteLine("Type: " + type);
-                    Debug.WriteLine("typeof(LavaBubble): " + typeof(LavaBubble));
                     //Assume each object only as one constructor
                     ConstructorInfo[] constructorInfos = gameObjectType.GetConstructors();
                     ParameterInfo[] paramInfos = constructorInfos[0].GetParameters();

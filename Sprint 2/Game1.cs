@@ -87,11 +87,11 @@ namespace Sprint_2
 
             levelLoader = new LevelLoader();
             //levelLoader.LoadLevel(@"LevelManager\level-1_data_pretty.xml");
-            //levelLoader.LoadLevel(@"LevelManager\testing-level.xml");
-            //levelLoader.LoadLevel(@"LevelManager\main-menu.xml");
-            //GameWorldManager.CurrentGameWorld = "main-menu";
-            levelLoader.LoadLevel(@"LevelManager\XMLFiles\boss-level.xml");
-            GameWorldManager.CurrentGameWorld = @"XMLFiles/boss-level";
+            //levelLoader.LoadLevel(@"LevelManager\XMlFiles\level-2.xml");
+            levelLoader.LoadLevel(@"LevelManager\main-menu.xml");
+            GameWorldManager.CurrentGameWorld = "main-menu";
+            //levelLoader.LoadLevel(@"LevelManager\XMLFiles\boss-level.xml");
+            //GameWorldManager.CurrentGameWorld = @"XMLFiles/boss-level";
             //GameWorldManager.CurrentGameWorld = @"testing-level";
 
             gameState = new PlayableState(keyControl);
@@ -112,7 +112,7 @@ namespace Sprint_2
 
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.Black);
             // Begin the sprite batch with the camera's transformation matrix
             spriteBatch.Begin(transformMatrix: camera.Transform);
 

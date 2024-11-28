@@ -1181,12 +1181,6 @@
       <Location>656 368</Location>
     </Item>
     <NonStandardItem>
-      <ObjectType>Sprint_2.GameObjects.Items.GunPickup</ObjectType>
-      <CollisionType>Static</CollisionType>
-      <NumberOfParams>1</NumberOfParams>
-      <Location>656 336</Location>
-    </NonStandardItem>
-    <NonStandardItem>
       <ObjectType>Sprint_2.GameObjects.Misc.MoveablePlatform</ObjectType>
       <CollisionType>Mover</CollisionType>
       <NumberOfParams>2</NumberOfParams>
