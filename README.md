@@ -41,49 +41,67 @@ adventure that brings joy to gamers of all ages. Get ready to jump, run, and sav
 Features Implemented
 
 1. Main Menu
-Description: The main menu is treated as a playable level, allowing Mario to move and interact before starting the actual game. This unique approach makes the main menu more engaging than a static screen and there are tutorial texts on the main menu screen.
-Mario spawns at a designated location within the main menu level.
-Players can interact with elements like pipes to transition to the first level.
+   
+   Description: The main menu is treated as a playable level, allowing Mario to move and interact before starting the actual game. This unique approach makes the main menu more engaging than a static screen and there are tutorial texts on the main menu screen.
+   
+   Mario spawns at a designated location within the main menu level. 
+   Players can interact with elements like pipes to transition to the first level.
 
-2. Spawner/Teleporter
-Description: A Spawner class manages Mario's spawn and teleportation across levels. It ensures consistency and reduces redundant code.
-Functionality:
-Tracks the spawn location for Mario at the start of each level.
-Teleports Mario to a specific (x, y) location, especially useful for transitions like entering/exiting pipes or starting a new level.
-Ensures Mario always spawns at the correct location.
+3. Spawner/Teleporter
+   
+   Description: A Spawner class manages Mario's spawn and teleportation across levels. It ensures consistency and reduces redundant code.
+   
+   Functionality:
+   
+   Tracks the spawn location for Mario at the start of each level.
+   Teleports Mario to a specific (x, y) location, especially useful for transitions like entering/exiting pipes or starting a new level.
+   Ensures Mario always spawns at the correct location.
 
-3. Level Transition
-Description: A system for transitioning between levels after specific events, such as flag capture or entering a pipe.
-Functionality:
-Switches between levels using a combination of Spawner and GameWorldManager.
-Plays a transition animation or video when Mario clears a level.
-Handles different game states, such as moving from the main menu to Level 1-1, 1-1 to 1-2, and so on.
-Teleports Mario to the correct starting location in the next level.
-A switch-case logic determines the destination level based on the current game world.
-Integrated with the sound system to play appropriate BGM for each level.
+5. Level Transition
+   
+   Description: A system for transitioning between levels after specific events, such as flag capture or entering a pipe.
+   
+   Functionality:
+   
+   Switches between levels using a combination of Spawner and GameWorldManager.
+   Plays a transition animation or video when Mario clears a level.
+   Handles different game states, such as moving from the main menu to Level 1-1, 1-1 to 1-2, and so on.
+   Teleports Mario to the correct starting location in the next level.
+   A switch-case logic determines the destination level based on the current game world.
+   Integrated with the sound system to play appropriate BGM for each level.
 
-4. Fall Detection
-Description: Detects when Mario falls out of the playable bounds and handles the respawn or game-over process.
-Functionality:
-Monitors Mario's YPos to detect falls beyond the despawn height.
-Triggers a delay using a timer before resetting the game world or decrementing lives.
-Plays the "You Are Dead" sound effect during the delay.
-Integrates seamlessly with the spawner to respawn Mario at the correct location after a fall.
-Ensures a robust fail-safe mechanism for player falls.
-Improves player experience with smooth transitions after falls.
+7. Fall Detection
+   
+   Description: Detects when Mario falls out of the playable bounds and handles the respawn or game-over process.
+   
+   Functionality:
+   
+   Monitors Mario's YPos to detect falls beyond the despawn height.
+   Triggers a delay using a timer before resetting the game world or decrementing lives.
+   Plays the "You Are Dead" sound effect during the delay.
+   Integrates seamlessly with the spawner to respawn Mario at the correct location after a fall.
+   Ensures a robust fail-safe mechanism for player falls.
+   Improves player experience with smooth transitions after falls.
 
-5. Sound Effects and Background Music
-Description: A sound system for managing background music and sound effects in the game.
-Functionality:
-SoundManager:
-Manages all sound-related operations, including loading, playing, pausing, stopping, and resuming sounds.
-Handles both SFX and BGM through dictionaries for easy access and extensibility.
-BGM:
-Includes background music for all 3 new levels.
-SFX:
-Includes sound effects for new enemies like bulletbill and bowser, and new items like gun.
-Supports simultaneous playback of multiple sound effects using the SoundEffectInstance system.
-Ensures smooth transitions between sounds based on game events.
+9. Sound Effects and Background Music
+   
+   Description: A sound system for managing background music and sound effects in the game.
+   
+   Functionality:
+   
+   SoundManager:
+   
+   Manages all sound-related operations, including loading, playing, pausing, stopping, and resuming sounds.
+   Handles both SFX and BGM through dictionaries for easy access and extensibility.
+   BGM:
+   
+   Includes background music for all 3 new levels.
+   
+   SFX:
+   
+   Includes sound effects for new enemies like bulletbill and bowser, and new items like gun.
+   Supports simultaneous playback of multiple sound effects using the SoundEffectInstance system.
+   Ensures smooth transitions between sounds based on game events.
 
 
 Extensibility
