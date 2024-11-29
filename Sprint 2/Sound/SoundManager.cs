@@ -49,6 +49,8 @@ namespace Sprint_2.Sound
             LoadBackgroundMusic("levelComplete", content.Load<Song>("06-level-complete"));
             LoadBackgroundMusic("youAreDead", content.Load<Song>("08-you-re-dead"));
             LoadBackgroundMusic("underworld", content.Load<Song>("02-underworld"));
+            LoadBackgroundMusic("castle", content.Load<Song>("04-castle"));
+            LoadBackgroundMusic("castleComplete", content.Load<Song>("07-castle-complete"));
         }
 
         // Load all sound effects for now, this will become a load-from-xml-file thing later
@@ -71,6 +73,10 @@ namespace Sprint_2.Sound
             LoadSoundEffect("powerUp", content.Load<SoundEffect>("smb_powerup"));
             LoadSoundEffect("powerUpAppears", content.Load<SoundEffect>("smb_powerup_appears"));
             LoadSoundEffect("pipe", content.Load<SoundEffect>("smb_pipe"));
+            //
+            LoadSoundEffect("fireworks", content.Load<SoundEffect>("smb_fireworks"));
+            LoadSoundEffect("bowserfire", content.Load<SoundEffect>("smb_bowserfire"));
+            LoadSoundEffect("bowserfall", content.Load<SoundEffect>("smb_bowserfall"));
 
         }
         // Play the background music by the key in the dictionary ("main theme" is default)

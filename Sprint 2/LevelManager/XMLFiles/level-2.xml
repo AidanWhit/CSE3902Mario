@@ -1160,6 +1160,54 @@
       <Location>288 352</Location>
       <Range>10</Range>
     </NonStandardItem>
+
+    
+    
+    <NonStandardItem>
+      <ObjectType>Sprint_2.GameObjects.Misc.MoveablePlatform</ObjectType>
+      <CollisionType>Mover</CollisionType>
+      <NumberOfParams>2</NumberOfParams>
+      <Location>220 390</Location>
+      <Range>10</Range>
+    </NonStandardItem>
+    <NonStandardItem>
+      <ObjectType>Sprint_2.GameObjects.Misc.MoveablePlatform</ObjectType>
+      <CollisionType>Mover</CollisionType>
+      <NumberOfParams>2</NumberOfParams>
+      <Location>280 440</Location>
+      <Range>10</Range>
+    </NonStandardItem>
+    <NonStandardItem>
+      <ObjectType>Sprint_2.GameObjects.Misc.MoveablePlatform</ObjectType>
+      <CollisionType>Mover</CollisionType>
+      <NumberOfParams>2</NumberOfParams>
+      <Location>360 440</Location>
+      <Range>10</Range>
+    </NonStandardItem>
+    <NonStandardItem>
+      <ObjectType>Sprint_2.GameObjects.Misc.MoveablePlatform</ObjectType>
+      <CollisionType>Mover</CollisionType>
+      <NumberOfParams>2</NumberOfParams>
+      <Location>440 440</Location>
+      <Range>10</Range>
+    </NonStandardItem>
+    <NonStandardItem>
+      <ObjectType>Sprint_2.GameObjects.Misc.MoveablePlatform</ObjectType>
+      <CollisionType>Mover</CollisionType>
+      <NumberOfParams>2</NumberOfParams>
+      <Location>520 400</Location>
+      <Range>10</Range>
+    </NonStandardItem>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <Item>
       <ObjectType>Block</ObjectType>
       <ObjectName>Chiseled</ObjectName>
@@ -1187,6 +1235,38 @@
       <Location>1068 352</Location>
       <Range>20</Range>
     </NonStandardItem>
+
+    <NonStandardItem>
+      <ObjectType>Sprint_2.GameObjects.Misc.MoveablePlatform</ObjectType>
+      <CollisionType>Mover</CollisionType>
+      <NumberOfParams>2</NumberOfParams>
+      <Location>1000 400</Location>
+      <Range>20</Range>
+    </NonStandardItem>
+    <NonStandardItem>
+      <ObjectType>Sprint_2.GameObjects.Misc.MoveablePlatform</ObjectType>
+      <CollisionType>Mover</CollisionType>
+      <NumberOfParams>2</NumberOfParams>
+      <Location>900 400</Location>
+      <Range>20</Range>
+    </NonStandardItem>
+    <NonStandardItem>
+      <ObjectType>Sprint_2.GameObjects.Misc.MoveablePlatform</ObjectType>
+      <CollisionType>Mover</CollisionType>
+      <NumberOfParams>2</NumberOfParams>
+      <Location>800 400</Location>
+      <Range>20</Range>
+    </NonStandardItem>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <NonStandardItem>
       <ObjectType>Sprint_2.GameObjects.Misc.Target</ObjectType>
       <CollisionType>Static</CollisionType>
@@ -1313,12 +1393,34 @@
       <ObjectName>BrownGround</ObjectName>
       <Location>1296 464</Location>
     </Item>
+    
+    <NonStandardItem>
+      <ObjectType>Sprint_2.GameObjects.Items.GunPickup</ObjectType>
+      <CollisionType>Static</CollisionType>
+      <NumberOfParams>1</NumberOfParams>
+      <Location>1296 432</Location>
+    </NonStandardItem>
+    
+    
     <NonStandardItem>
       <ObjectType>Sprint_2.GameObjects.Misc.Target</ObjectType>
       <CollisionType>Static</CollisionType>
       <NumberOfParams>1</NumberOfParams>
       <Location>1536 300</Location>
     </NonStandardItem>
+
+
+
+    <NonStandardItem>
+      <ObjectType>Sprint_2.GameObjects.Misc.MoveablePlatform</ObjectType>
+      <CollisionType>Mover</CollisionType>
+      <NumberOfParams>2</NumberOfParams>
+      <Location>1536 412</Location>
+      <Range>10</Range>
+    </NonStandardItem>
+    
+    
+    
     <Item>
       <ObjectType>Block</ObjectType>
       <ObjectName>BulletBlock</ObjectName>

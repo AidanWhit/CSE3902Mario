@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint_2.Constants;
 using Sprint_2.Factories;
+using Sprint_2.Sound;
 using Sprint_2.Interfaces;
 using Sprint_2.LevelManager;
 using System;
@@ -94,18 +95,22 @@ namespace Sprint_2.GameObjects.Enemies.BowserClasses
             if (randInt == 0)
             {
                 newBowserBehavior = new BowserJumpBehavior(this);
+                SoundManager.Instance.PlaySoundEffect("jump");
             }
             else if (randInt == 1)
             {
                 newBowserBehavior = new BowserStandingFireball(this, facingLeft, mario);
+                SoundManager.Instance.PlaySoundEffect("bowserfire");
             }
             else if (randInt == 2)
             {
                 newBowserBehavior = new BowserJumpingFireball(this, facingLeft, mario);
+                SoundManager.Instance.PlaySoundEffect("bowserfire");
             }
             else if (randInt == 3)
             {
                 newBowserBehavior = new BowserHammerAttack(this, facingLeft);
+                SoundManager.Instance.PlaySoundEffect("fireworks");
             }
             else
             {

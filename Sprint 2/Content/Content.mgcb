@@ -25,6 +25,12 @@
 /processorParam:Quality=Best
 /build:02-underworld.mp3
 
+#begin 04-castle.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:04-castle.mp3
+
 #begin 05-starman.mp3
 /importer:Mp3Importer
 /processor:SongProcessor
@@ -36,6 +42,12 @@
 /processor:SongProcessor
 /processorParam:Quality=Best
 /build:06-level-complete.mp3
+
+#begin 07-castle-complete.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:07-castle-complete.mp3
 
 #begin 08-you-re-dead.mp3
 /importer:Mp3Importer
@@ -351,6 +363,18 @@
 /processorParam:Quality=Best
 /build:smb_1-up.wav
 
+#begin smb_bowserfall.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:smb_bowserfall.wav
+
+#begin smb_bowserfire.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:smb_bowserfire.wav
+
 #begin smb_breakblock.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
@@ -374,6 +398,12 @@
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
 /build:smb_fireball.wav
+
+#begin smb_fireworks.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:smb_fireworks.wav
 
 #begin smb_flagpole.wav
 /importer:WavImporter

@@ -91,7 +91,7 @@ namespace Sprint_2.MarioPhysicsStates
 
 
                 case @"XMLFiles\level-2":
-                    Spawner.Instance.TeleportToLevel(@"XMLFiles\extraLevel", new Vector2(100, 400), "mainTheme");
+                    Spawner.Instance.TeleportToLevel(@"XMLFiles\extraLevel", new Vector2(100, 400), "underworld");
                     Game1.Instance.gameState = new PlayableState(Game1.Instance.GetKeyboardControl());
                     HUD.Instance.ResetTime();
                     Game1.Instance.GetCamera().Reset();
@@ -100,7 +100,7 @@ namespace Sprint_2.MarioPhysicsStates
 
                 case @"XMLFiles\extraLevel":
                     Debug.WriteLine("Entered level 3 case");
-                    Spawner.Instance.TeleportToLevel(@"XMLFiles\boss-level", Vector2.Zero, "underworld");
+                    Spawner.Instance.TeleportToLevel(@"XMLFiles\boss-level", Vector2.Zero, "castle");
                     Game1.Instance.gameState = new PlayableState(Game1.Instance.GetKeyboardControl());
                     HUD.Instance.ResetTime();
                     Game1.Instance.GetCamera().Reset();

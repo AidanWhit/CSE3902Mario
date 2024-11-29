@@ -2,6 +2,7 @@
 using Sprint_2.Sprites;
 using System;
 using System.Collections.Generic;
+using Sprint_2.Sound;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,6 +23,9 @@ namespace Sprint_2.Commands.MarioAttackCommands
             player = Game1.Instance.mario;
             if (player is GunMarioDecorator)
             {
+
+                SoundManager.Instance.PlaySoundEffect("fireball");
+
                 GunMarioDecorator gunMario = (GunMarioDecorator)player;
                 gunMario.ShootGun();
             }

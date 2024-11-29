@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Sprint_2.LevelManager;
+using Sprint_2.Sound;
 
 
 namespace Sprint_2.GameObjects.Enemies.BowserClasses
@@ -34,6 +35,8 @@ namespace Sprint_2.GameObjects.Enemies.BowserClasses
             if (timeToSpawnNextHammer < 0)
             {
                 BowserHammer bowserHammer = new BowserHammer(new Vector2(bowser.XPos, bowser.YPos), facingLeft);
+
+                //SoundManager.Instance.PlaySoundEffect("fireworks");
 
                 GameObjectManager.Instance.BackDrawables.Add(bowserHammer);
                 GameObjectManager.Instance.Updateables.Add(bowserHammer);

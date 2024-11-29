@@ -5,6 +5,7 @@ using Sprint_2.GameObjects.Misc;
 using Sprint_2.GameStates;
 using Sprint_2.Interfaces;
 using Sprint_2.LevelManager;
+using Sprint_2.Sound;
 using Sprint_2.MarioPhysicsStates;
 using System.Diagnostics;
 using System.Security.AccessControl;
@@ -30,7 +31,10 @@ namespace Sprint_2.Commands.MarioCollisionCommands
             Bridge bridge = (Bridge)GameObjectManager.Instance.ForeDrawables.Find((x => x.GetType() == typeof(Bridge)));
             bridge.DeleteBridge();
             Game1.Instance.gameState = new WinState(Game1.Instance.GetKeyboardControl());
+            //
+            SoundManager.Instance.PlayBGM("levelComplete");
 
+            //
             Bowser bowser = (Bowser)GameObjectManager.Instance.ForeDrawables.Find((x => x.GetType() == typeof(Bowser)));
             if (bowser != null)
             {

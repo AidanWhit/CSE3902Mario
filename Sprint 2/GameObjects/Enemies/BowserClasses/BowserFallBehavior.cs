@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Sprint_2.Constants;
+using Sprint_2.Sound;
 using Sprint_2.LevelManager;
 using System;
 using System.Collections.Generic;
@@ -39,6 +40,7 @@ namespace Sprint_2.GameObjects.Enemies.BowserClasses
 
         private void DeleteBowser()
         {
+            SoundManager.Instance.PlaySoundEffect("bowserfall");
             Debug.WriteLine("Entered Delete Bowser");
             GameObjectManager.Instance.ForeDrawables.Remove(bowser);
             GameObjectManager.Instance.Updateables.Remove(bowser);

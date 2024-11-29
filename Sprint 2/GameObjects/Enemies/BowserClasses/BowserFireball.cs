@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Sprint_2.Constants;
 using Sprint_2.Factories;
 using Sprint_2.Interfaces;
+using Sprint_2.Sound;
 using Sprint_2.LevelManager;
 using Sprint_2.Sprites;
 using System;

@@ -724,7 +724,7 @@
     <Item>
       <ObjectType>Item</ObjectType>
       <ObjectName>Flower</ObjectName>
-      <Location>608 352</Location>
+      <Location>608 368</Location>
     </Item>
     <Item>
       <ObjectType>Block</ObjectType>
@@ -2696,6 +2696,6 @@
   <Item>
     <ObjectType>Player</ObjectType>
     <ObjectName>Mario</ObjectName>
-    <Location>2064 400</Location>
+    <Location>100 400</Location>
   </Item>
 </XnaContent>
