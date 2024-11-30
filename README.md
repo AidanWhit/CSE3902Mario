@@ -150,7 +150,10 @@ The project progress management was also better than last time, we created diffe
 4. **.NET Type system**
    - This allows us to use Reflections to create new ICommands objects during runtime that are then executed to resolve detected collisions. 
 5. **Singletons**
-   - Various singletons are used to ensure easy global access to classes that are utilized in a wide range of areas within the code. A few examples are the UniversalSpriteFactory, the HUD, and the Game1 class.
+   - Various singletons are used to ensure easy global access to classes that are utilized in a wide range of areas within the code. A few examples are the UniversalSpriteFactory, the HUD, and the Game1 cla
+## Notes
+* The bullet bills are meant to pass through blocks
+* The gun power up is designed to be removed when the level is completed. It is not a bug when the powerup disappears after touching the flag pole
 ## Known Bugs
 
 * Mario can clip out of bounds if he kicks the shell near a wall. The collision with the shell will cause mario to be push out of bounds.
