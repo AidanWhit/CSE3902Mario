@@ -52,7 +52,6 @@ namespace Sprint_2.GameObjects.Enemies.EnemySprites
             sprite.Draw(spriteBatch, new Vector2(XPos, YPos), color);
         }
 
-        /* TODO: Implement actual hitbox */
         public Rectangle GetHitBox()
         {
             return sprite.GetHitBox(new Vector2(XPos, YPos));

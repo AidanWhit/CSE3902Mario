@@ -54,7 +54,6 @@ namespace Sprint_2.GameObjects
         public void Draw(SpriteBatch spriteBatch, Color color)
         {
             bulletSprite.Draw(spriteBatch, location, color, rotation, Vector2.Zero, SpriteEffects.None);
-            //HitBoxRectangle.DrawRectangle(spriteBatch, GetHitBox(), Color.Blue, 1);
         }
 
         public Rectangle GetHitBox()

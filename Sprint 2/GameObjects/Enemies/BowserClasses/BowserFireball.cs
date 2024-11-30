@@ -56,7 +56,6 @@ namespace Sprint_2.GameObjects.Enemies.BowserClasses
                 YPos--;
             }
             XPos += (float)(speed * gameTime.ElapsedGameTime.TotalSeconds);
-            /* Temporary will be made better */
             if (Game1.Instance.camera.GetLeftScreenBound().X > XPos)
             {
                 DeleteObject();

@@ -20,7 +20,6 @@ namespace Sprint_2.MarioPhysicsStates
 
         public void Update(GameTime gameTime)
         {
-            //Debug.WriteLine("Entered Grounded Update !: " + System.DateTime.Now);
             if (mario.PlayerVelocity.X > -MarioPhysicsConstants.maxSlideVelocity && mario.PlayerVelocity.X < MarioPhysicsConstants.maxSlideVelocity)
             {
                 if (!mario.isCrouching)

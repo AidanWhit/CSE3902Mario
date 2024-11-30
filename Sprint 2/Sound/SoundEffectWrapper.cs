@@ -22,26 +22,8 @@ namespace Sprint_2.Sound
             return soundEffect.CreateInstance();
         }
 
-
-        // TODO: implement the followings after we have pause/win/gameover state
-        public void Stop()
-        {
-            //soundEffectInstance.Stop();
-        }
-
-        public void Pause()
-        {
-            //soundEffectInstance.Pause();
-        }
-
-        public void Resume()
-        {
-            //soundEffectInstance.Resume();
-        }
-
         public void SetVolume(float volume)
         {
-            //soundEffectInstance.Volume = volume;
         }
     }
 }

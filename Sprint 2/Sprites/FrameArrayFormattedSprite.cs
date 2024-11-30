@@ -29,7 +29,6 @@ namespace Sprint_2.Sprites
             size = new Vector2(frames[currentFrame].Width, frames[currentFrame].Height);
             size *= scale;
 
-            /* TODO : move the magic number to one of the constant files */
             animationSpeed = MiscConstants.animationSpeed;
             initialAnimationSpeed = animationSpeed;
         }

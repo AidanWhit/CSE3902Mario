@@ -36,7 +36,6 @@ namespace Sprint_2.MarioPhysicsStates
 
         public void Update(GameTime gameTime)
         {
-            /* Feels like a workaround to a simpler solution but I am not sure */
             Flag flag = (Flag)GameObjectManager.Instance.BackDrawables.Find((x => x.GetType() == typeof(Flag)));
 
             if (player.GetHitBox().Bottom != bottomOfFlagPole)
@@ -52,7 +51,6 @@ namespace Sprint_2.MarioPhysicsStates
                 player.Jump();
                 player.PhysicsState = new Grounded(player);
 
-                /* Might be a better way to do this but it works */
                 Timer timer = new Timer(MarioPhysicsConstants.timeToReachCastle);
                 moveRightTimer = new Timer(MarioPhysicsConstants.timeBetweenMovementForAnimations);
 
@@ -70,8 +68,6 @@ namespace Sprint_2.MarioPhysicsStates
         private static void OnTimedEvent(Object source, ElapsedEventArgs e, IPlayer player, Timer moveRightTimer)
         {
             GameObjectManager.Instance.BackDrawables.Remove(player);
-
-            //Game1.Instance.gameState = new WinScreen();
 
             moveRightTimer.Dispose();
 

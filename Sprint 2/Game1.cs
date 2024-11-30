@@ -32,7 +32,6 @@ namespace Sprint_2
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
 
-        //TODO: Make this singular IPlayer into a list and have level loader create the player
         public IPlayer mario { get; set; }
         private KeyboardControl keyControl;
 
@@ -86,22 +85,9 @@ namespace Sprint_2
             camera = new Camera(GraphicsDevice.Viewport, levelBounds);
 
             levelLoader = new LevelLoader();
-            //levelLoader.LoadLevel(@"LevelManager\level-1_data_pretty.xml");
 
             levelLoader.LoadLevel(@"LevelManager\main-menu.xml");
             GameWorldManager.CurrentGameWorld = "main-menu";
-
-            //levelLoader.LoadLevel(@"LevelManager\XMLFiles\extraLevel.xml");
-
-
-            //levelLoader.LoadLevel(@"LevelManager\testing-level.xml");
-            //GameWorldManager.CurrentGameWorld = @"testing-level";
-
-            //levelLoader.LoadLevel(@"LevelManager\XMLFiles\boss-level.xml");
-            //GameWorldManager.CurrentGameWorld = @"XMLFiles/boss-level";
-
-            //levelLoader.LoadLevel(@"LevelManager\XMlFiles\level-2.xml");
-            //GameWorldManager.CurrentGameWorld = @"XMLFiles\level-2";
 
             gameState = new PlayableState(keyControl);
         }
@@ -153,7 +139,6 @@ namespace Sprint_2
 
             GameWorldManager.CurrentGameWorld = @"XMLFiles\boss-level";
             GameWorldManager.CurrentGameWorld = "main-menu";
-            //GameWorldManager.CurrentGameWorld = @"testing-level";
             levelLoader.LoadLevel($"LevelManager\\{GameWorldManager.CurrentGameWorld}.xml");
             
 

@@ -38,7 +38,6 @@ namespace Sprint_2.GameObjects.Items
         public void Draw(SpriteBatch spriteBatch, Color color)
         {
             sprite.Draw(spriteBatch, new Vector2(XPos, YPos), color);
-            //HitBoxRectangle.DrawRectangle(spriteBatch, GetHitBox(), Color.White, 1);
         }
 
         public void DeleteItem()

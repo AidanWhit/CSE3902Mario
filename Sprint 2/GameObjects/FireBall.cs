@@ -71,8 +71,6 @@ namespace Sprint_2.GameObjects
             
             if (EnteredExplosionState)
             {
-                
-                /* TODO : Currently hardcoded need to find a better solution but it works for now ~ Aidan */
                 timer += (float)gameTime.ElapsedGameTime.TotalSeconds;
                 if (timer > FireBallConstants.timeToFinishExplosion)
                 {

@@ -36,8 +36,6 @@ namespace Sprint_2.GameObjects.Enemies.BowserClasses
             {
                 BowserHammer bowserHammer = new BowserHammer(new Vector2(bowser.XPos, bowser.YPos), facingLeft);
 
-                //SoundManager.Instance.PlaySoundEffect("fireworks");
-
                 GameObjectManager.Instance.BackDrawables.Add(bowserHammer);
                 GameObjectManager.Instance.Updateables.Add(bowserHammer);
                 GameObjectManager.Instance.Movers.Add(bowserHammer);
