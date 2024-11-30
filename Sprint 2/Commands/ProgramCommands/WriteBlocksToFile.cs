@@ -32,6 +32,8 @@ namespace Sprint_2.Commands.ProgramCommands
 
             //Debug.WriteLine(xmlDoc.ToString());
         }
+        /* Used to write block data to an xml file based on mouse location. This was only used to create our levels so "magic strings" are prevalent
+         in this code. Only used as a toold to create our levels*/
 
         public void Execute()
         {
@@ -40,8 +42,8 @@ namespace Sprint_2.Commands.ProgramCommands
             Vector2 mouseInWorldSpace = Vector2.Transform(new Vector2(mousePos.X, mousePos.Y), inverseTransform);
             int mouseXPos = (int)(Math.Ceiling((decimal)(mouseInWorldSpace.X / CollisionConstants.blockWidth)) * CollisionConstants.blockWidth);
             int mouseYPos = (int)(Math.Ceiling((decimal)(mouseInWorldSpace.Y / CollisionConstants.blockWidth)) * CollisionConstants.blockWidth);
-            mouseXPos -= 16;
-            mouseYPos -= 16;
+            mouseXPos -= CollisionConstants.blockWidth;
+            mouseYPos -= CollisionConstants.blockWidth;
             Debug.WriteLine("Mouse Pos: " + new Vector2(mouseXPos, mouseYPos));
             XNode rootElement = xmlDoc.Root.Element("Asset");
             xmlDoc.Save(directory);

@@ -17,13 +17,9 @@ namespace Sprint_2.Controls
 
         /* Potentially will only have one mouse command */
         private ICommands shoot = new MarioShootCommand(Game1.Instance.mario);
-        private ICommands addBlockDebug = new WriteBlocksToFile();
-        private ICommands currentCommand;
-        private bool pressedFlag = false;
         public MouseController()
         {
             previousState = Mouse.GetState();
-            currentCommand = null;
         }
 
         public void Update()
@@ -35,10 +31,6 @@ namespace Sprint_2.Controls
                 if (Game1.Instance.mario is GunMarioDecorator)
                 {
                     shoot.Execute();
-                }
-                else
-                {
-                    addBlockDebug.Execute();
                 }
                 
             }
