@@ -35,6 +35,7 @@ adventure that brings joy to gamers of all ages. Get ready to jump, run, and sav
 - Q: Quit the game
 - R: Reset
 - E: Force the Player to take damage
+- Left mouse button: To shoot when mario has the gun mario power-up
 
 ## Sprint5 Content
 
@@ -103,6 +104,18 @@ Features Implemented
    Supports simultaneous playback of multiple sound effects using the SoundEffectInstance system.
    Ensures smooth transitions between sounds based on game events.
 
+6. Gun Powerup:
+   
+   Allows mario to pick up and hold the gun powerup. The gun will rotate to follow the direction of the mouse
+   as it moves across the screen. However it can not rotate behind the direction mario is looking so it careful movement
+   is required if you need to shoot behind you when playing through the levels.
+7. Bowser Enemy
+
+   Bowser stands as the final boss of the 4th level within our project. Bowser has multiple behavior's that he can choose from
+   to attack the player at any given instant. Bowser can throw fireballs, throw hammers, jump, and patrol a given area. There is
+   a system in place to ensure that there is a lower chance for bowser to repeat any given behavior which leads to more varied
+   gameplay during the boss fight.
+
 
 Extensibility
 
@@ -141,6 +154,7 @@ The project progress management was also better than last time, we created diffe
 ## Known Bugs
 
 * Mario can clip out of bounds if he kicks the shell near a wall. The collision with the shell will cause mario to be push out of bounds.
+* When little mario is running and crouch is held, mario will be stuck in the run animation even though he is not moving.
 * xml file from the XMLgenerator might generates a file start with:
   ```xml
    line1: <?xml version="1.0" encoding="utf-8" ?>
