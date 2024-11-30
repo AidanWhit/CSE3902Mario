@@ -8420,7 +8420,7 @@
 		<Item>
 			<ObjectType>Collider</ObjectType>
 			<ObjectName>Collider</ObjectName>
-			<Location>592 288</Location>
+			<Location>590 288</Location>
 			<SizeX>16</SizeX>
 			<SizeY>64</SizeY>
 		</Item>

@@ -34,7 +34,6 @@ namespace Sprint_2.GameObjects.Enemies
         public void Update(GameTime gameTime)
         {
             LavaState.Update(gameTime, YPos);
-            //LavaState.Update(gameTime);
         }
 
         public void Draw(SpriteBatch spriteBatch, Color color)
@@ -42,7 +41,6 @@ namespace Sprint_2.GameObjects.Enemies
             LavaState.Draw(spriteBatch, new Vector2(XPos, YPos), color);
         }
 
-        /* TODO: Implement actual hitbox */
         public Rectangle GetHitBox()
         {
             return LavaState.GetHitBox(new Vector2(XPos, YPos));
@@ -59,7 +57,6 @@ namespace Sprint_2.GameObjects.Enemies
 
         public void ChangeDirection()
         {
-            //Velocity = new Vector2(Velocity.X, Velocity.Y * -1);
         }
 
         public string GetCollisionType()

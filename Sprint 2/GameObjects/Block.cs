@@ -17,7 +17,6 @@ namespace Sprint_2.GameObjects
 
         private IBlockState blockState;
 
-        /* Needs to take in something representing a blockState without it being the actual block state. */
         public Block(string name, Vector2 position, string color = null)
         {
             Position = position;
@@ -47,8 +46,6 @@ namespace Sprint_2.GameObjects
 
         public void BeHit(IPlayer player)
         {
-            //SoundManager.Instance.PlaySoundEffect("bump");
-
             blockState.BeHit(player);
             
         }

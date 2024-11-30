@@ -207,10 +207,6 @@ namespace Sprint_2.GameObjects.Enemies.BowserClasses
         {
             sprite = newSprite;
         }
-        public ISprite GetSprite()
-        {
-            return sprite;
-        }
         public (float, float) GetMaxPatrolBounds()
         {
             return (leftMostXPos, rightMostXPos);

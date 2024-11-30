@@ -35,7 +35,6 @@ namespace Sprint_2.GameObjects.ItemSprites
             OnSpawn = true;
             spawnedYPosition = initialPosition.Y;
 
-            //sourceBlock = block;
             this.topOfSourceBlock = topOfSourceBlock;
         }
 

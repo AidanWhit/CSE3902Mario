@@ -31,7 +31,6 @@ namespace Sprint_2.LevelManager
         }
         public void LoadLevel(string level)
         {
-            //TODO: Find a way to avoid having to do this
             string directory = AppDomain.CurrentDomain.BaseDirectory;
             int index = directory.IndexOf(@"\bin");
             directory = directory.Substring(0, index + 1);
@@ -108,10 +107,6 @@ namespace Sprint_2.LevelManager
                     }
                     object createdObject = constructorInfos[0].Invoke(constructorParams);
 
-                    //foreach (object obj in constructorParams)
-                    //{
-                    //    Debug.WriteLine("Value: {0}, Type: {1}", obj, obj.GetType());
-                    //}
                     if (collisionType.Equals("Mover"))
                     {
                         GameObjectManager.Instance.AddMover(createdObject);

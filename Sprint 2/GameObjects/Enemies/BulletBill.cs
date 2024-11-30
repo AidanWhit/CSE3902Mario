@@ -19,8 +19,6 @@ namespace Sprint_2.GameObjects.Enemies.EnemySprites
         private BulletStateMachine bulletState;
         public Vector2 Velocity { get; set; }
 
-
-        //private int[] score = EnemyConstants.bullet;
         private int index = 0;
         public BulletBill(Vector2 initialPosition, Direction direction)
         {

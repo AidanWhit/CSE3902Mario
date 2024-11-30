@@ -53,7 +53,6 @@ namespace Sprint_2
 
         public void Update(GameTime gameTime)
         {
-            /* Need a better way to do this but it works for now */
             if (time < 0)
             {
                 time = 0;

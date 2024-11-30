@@ -41,18 +41,6 @@ namespace Sprint_2.LevelManager
             spawnLocation = location;
         }
 
-        public Vector2 GetSpawnLocation()
-        {
-            return spawnLocation;
-        }
-
-        // Default spawn location, may vary based on the level
-        public void Spawn(IPlayer player)
-        {
-            player.XPos = (int)spawnLocation.X;
-            player.YPos = (int)spawnLocation.Y;
-        }
-
         public void TeleportToLevel(string newWorld, Vector2 spawnLocation, string bgm)
         {
             /* I think this game state change fixes that weird crashing bug. It just prevents objects from being updated/drawn
@@ -63,12 +51,6 @@ namespace Sprint_2.LevelManager
             LevelLoader levelLoader = new LevelLoader();
             GameObjectManager.Instance.Reset();
             levelLoader.LoadLevel($"LevelManager\\{newWorld}.xml");
-            //Game1.Instance.GetCamera().Reset();
-            //Game1.Instance.GetCamera().SetLevelBounds(new Vector2(0, MiscConstants.levelBounds.Y));
-
-            //SetSpawnLocation(spawnLocation);
-            //Spawn(Game1.Instance.mario);
-            //Teleport(Game1.Instance.mario, spawnLocation);
 
             SoundManager.Instance.StopBackgroundMusic();
             SoundManager.Instance.PlayBackgroundMusic(bgm);

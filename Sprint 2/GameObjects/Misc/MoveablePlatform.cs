@@ -24,8 +24,8 @@ namespace Sprint_2.GameObjects.Misc
 
         public MoveablePlatform(Vector2 location, float range)
         {
-            this.XPos = location.X;
-            this.YPos = location.Y;
+            XPos = location.X;
+            YPos = location.Y;
             leftMostXPos = XPos - range;
             rightMostXPos = XPos + range;
 
