@@ -24,8 +24,6 @@ namespace Sprint_2.GameObjects
         public void Draw(SpriteBatch spriteBatch, Color color)
         {
             collider = new Rectangle((int)location.X, (int)location.Y, (int)size.X, (int)size.Y);
-            /* Used to see where the invisible collision rectangles are located */
-            HitBoxRectangle.DrawRectangle(spriteBatch, collider, Color.White, 1);
         }
         public string GetCollisionType()
         {
