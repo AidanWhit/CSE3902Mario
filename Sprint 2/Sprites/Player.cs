@@ -4,6 +4,7 @@ using Sprint_2.Interfaces;
 using Sprint_2.GameObjects;
 using Sprint_2.MarioPhysicsStates;
 using Sprint_2.MarioStates;
+using Sprint_2.GameStates;
 using Sprint_2.Sound;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -11,7 +12,7 @@ using Sprint_2.Constants;
 using System;
 using Sprint_2.LevelManager;
 using Sprint_2.Commands.ProgramCommands;
-using System.Threading;
+using System.Linq.Expressions;
 
 
 namespace Sprint_2.Sprites
@@ -20,8 +21,8 @@ namespace Sprint_2.Sprites
     {
 
         private PlayerStateMachine PlayerState;
-        public int XPos { get; set; }
-        public int YPos { get; set; }
+        public float XPos { get; set; }
+        public float YPos { get; set; }
 
         public bool IsDamaged { get; set; } = false;
         public Vector2 PlayerVelocity { get; set; }
@@ -39,6 +40,10 @@ namespace Sprint_2.Sprites
 
         private int[] score = MarioPhysicsConstants.marioBounceScores;
         private int scoreIndex = 0;
+
+        private float fallTimer = 0.0f; // Timer to track elapsed time after falling
+        private bool fallDeath = false; // Flag to indicate falling state
+
         public Player(Vector2 StartingLocation, int lives)
         {
             XPos = (int)StartingLocation.X;
@@ -51,24 +56,47 @@ namespace Sprint_2.Sprites
         }
         public void Update(GameTime gameTime)
         {
-            /* Quick and easy way to reset player after falling out of bounds. Will be changed next sprint to be more robust */
-            if (YPos > EnemyConstants.despawnHeight)
+            if (YPos > EnemyConstants.despawnHeight && !fallDeath)
             {
+                // Trigger falling state
+                fallDeath = true;
+                fallTimer = 0.0f;
+
                 SoundManager.Instance.StopBackgroundMusic();
-                //SoundManager.Instance.PlayBackgroundMusic("youAreDead");
                 SoundManager.Instance.PlaySoundEffect("marioDie");
 
-
-                ICommands reset = new ResetCommand();
-                reset.Execute();
-                Game1.Instance.mario.RemainingLives--;
-
+                if (Game1.Instance.mario.RemainingLives == 0)
+                {
+                    Game1.Instance.gameState = new GameOverScreen();
+                }
             }
 
-            UpdateFireballs(gameTime);
-            PlayerState.Update(gameTime);
-            PhysicsState.Update(gameTime);
+            if (fallDeath)
+            {
+                // Accumulate elapsed time
+                fallTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
 
+                if (fallTimer >= 4.0f) // Check if 4 seconds have passed
+                {
+                    fallDeath = false; // Reset falling state
+
+                    if (Game1.Instance.mario.RemainingLives > 0)
+                    {
+                        
+                        ICommands reset = new ResetCommand();
+                        reset.Execute();
+
+                        Game1.Instance.mario.RemainingLives--;
+                    }
+                }
+            }
+            else
+            {
+                // Continue regular updates if not falling
+                UpdateFireballs(gameTime);
+                PlayerState.Update(gameTime);
+                PhysicsState.Update(gameTime);
+            }
             //Debug.WriteLine("isJumping: " + isJumping);
         }
 
@@ -144,6 +172,8 @@ namespace Sprint_2.Sprites
                 isJumping = true;
                 PhysicsState = new BounceState(this);
                 PlayerState.Jump();
+
+                HUD.Instance.AddScorePopUp(GetScore(), new Vector2(XPos, YPos));
             }
         }
         public void Fall()
@@ -181,6 +211,7 @@ namespace Sprint_2.Sprites
             {
                 int bottomOfSprite = GetHitBox().Bottom;
                 Idle();
+                isFalling = true;
                 YPos = bottomOfSprite - GetHitBox().Height;
             }
         }

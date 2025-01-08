@@ -17,8 +17,8 @@ namespace Sprint_2.Sprites
 {
     public class StarMario : IPlayer
     {
-        public int XPos { get { return decoratedPlayer.XPos; } set { decoratedPlayer.XPos = value; } }
-        public int YPos { get { return decoratedPlayer.YPos; } set { decoratedPlayer.YPos = value; } }
+        public float XPos { get { return decoratedPlayer.XPos; } set { decoratedPlayer.XPos = value; } }
+        public float YPos { get { return decoratedPlayer.YPos; } set { decoratedPlayer.YPos = value; } }
 
         public List<IProjectile> fireballs { get { return decoratedPlayer.fireballs; } set { decoratedPlayer.fireballs = value; } }
         public bool IsDamaged { get { return decoratedPlayer.IsDamaged; }  set { decoratedPlayer.IsDamaged = value; } }
@@ -161,6 +161,11 @@ namespace Sprint_2.Sprites
         public void Bounce()
         {
             // Star Mario can not bounce on enemies
+        }
+
+        public int GetScore()
+        {
+            return decoratedPlayer.GetScore();
         }
     }
 }

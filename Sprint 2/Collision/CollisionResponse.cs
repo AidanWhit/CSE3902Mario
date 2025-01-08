@@ -54,7 +54,7 @@ namespace Sprint_2.Collision
 
                     collisionReader.Read();
                     sourceCommand = collisionReader.ReadElementContentAsString();
-
+                    
                     collisionReader.Read();
                     receiverCommand = collisionReader.ReadElementContentAsString();
 
@@ -79,13 +79,11 @@ namespace Sprint_2.Collision
                 ConstructorInfo constructorInfo = commands.Item2.GetConstructor(constructorTypes);
 
                 object[] constructorParameters = new object[] { receiver, source, collisionIntersection };
-
                 ICommands command = (ICommands)constructorInfo.Invoke(constructorParameters);
                 command.Execute();
             }
             if (commands.Item1 != null)  
             {
-                //Debug.WriteLine(commands.Item1.Name);
                 Type[] constructorTypes = new Type[] { Type.GetType(source.ToString()), Type.GetType(receiver.ToString()), typeof(Rectangle) };
                 ConstructorInfo constructorInfo = commands.Item1.GetConstructor(constructorTypes);
                 object[] constructorParameters = new object[] {source, receiver, collisionIntersection};

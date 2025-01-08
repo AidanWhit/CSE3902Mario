@@ -10,7 +10,7 @@ namespace Sprint_2.MarioPhysicsStates
     public class Grounded : IMarioPhysicsStates
     {
         private IPlayer mario;
-        private int originalYPos;
+        private float originalYPos;
         public Grounded(IPlayer mario)
         {
             this.mario = mario;
@@ -20,7 +20,6 @@ namespace Sprint_2.MarioPhysicsStates
 
         public void Update(GameTime gameTime)
         {
-
             if (mario.PlayerVelocity.X > -MarioPhysicsConstants.maxSlideVelocity && mario.PlayerVelocity.X < MarioPhysicsConstants.maxSlideVelocity)
             {
                 if (!mario.isCrouching)
@@ -29,7 +28,6 @@ namespace Sprint_2.MarioPhysicsStates
                 }
 
             }
-            /* Potential source of crouching bug. Fixed when commented out but mario can not fall*/
             if (mario.PlayerVelocity.Y < MarioPhysicsConstants.maxFallVelocity)
             {
                 mario.PlayerVelocity += MarioPhysicsConstants.marioFallVelocity;

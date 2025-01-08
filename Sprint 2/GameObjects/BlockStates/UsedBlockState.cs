@@ -17,18 +17,49 @@ namespace Sprint_2.GameObjects.BlockStates
     public class UsedBlockState : BlockState
     {
         private IBlock block;
-        public UsedBlockState(IBlock block) : base(block)
+        public UsedBlockState(IBlock block, string color = null) : base(block)
         {
-           
-            this.block = block;
-            sprite = UniversalSpriteFactory.Instance.GetBlock(NamesOfSprites.SpriteNames.Hit.ToString());
 
+            this.block = block;
+            AssignSprite(color);
             Hit = true;
+            if (color == NamesOfSprites.SpriteNames.CastleBrick.ToString())
+            {
+                Hit = false;
+            }
+            
         }
 
         public override void BeHit(IPlayer player)
         {
             // Do nothing
+        }
+
+        private void AssignSprite(string color)
+        {
+            if (color == null)
+            {
+                sprite = UniversalSpriteFactory.Instance.GetBlock(NamesOfSprites.SpriteNames.Hit.ToString());
+            }
+            else if (color.Equals(System.Drawing.KnownColor.Blue.ToString()))
+            {
+                sprite = UniversalSpriteFactory.Instance.GetBlock(NamesOfSprites.SpriteNames.BlueHit.ToString());
+            }
+            else if (color.Equals(System.Drawing.KnownColor.Green.ToString())){
+                sprite = UniversalSpriteFactory.Instance.GetBlock(NamesOfSprites.SpriteNames.GreenHit.ToString());
+            }
+            else if (color.Equals(System.Drawing.KnownColor.Gray.ToString()) || color.Equals(System.Drawing.KnownColor.DarkGray.ToString()))
+            {
+                sprite = UniversalSpriteFactory.Instance.GetBlock(NamesOfSprites.SpriteNames.GrayHit.ToString());
+            }
+            else if (color.Equals(NamesOfSprites.SpriteNames.CastleBrick.ToString()))
+            {
+                sprite = UniversalSpriteFactory.Instance.GetBlock(color);
+            }
+            else
+            {
+                sprite = UniversalSpriteFactory.Instance.GetBlock(NamesOfSprites.SpriteNames.Hit.ToString());
+            }
         }
 
     }

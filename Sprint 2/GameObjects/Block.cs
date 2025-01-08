@@ -17,11 +17,10 @@ namespace Sprint_2.GameObjects
 
         private IBlockState blockState;
 
-        /* Needs to take in something representing a blockState without it being the actual block state. */
-        public Block(string name, Vector2 position)
+        public Block(string name, Vector2 position, string color = null)
         {
             Position = position;
-            blockState = GetBlockState(name);
+            blockState = GetBlockState(name, color);
         }
 
 
@@ -40,7 +39,6 @@ namespace Sprint_2.GameObjects
             blockState = newBlockState;
         }
 
-        /* TODO: Implement actual hitbox */
         public Rectangle GetHitBox()
         {
             return blockState.GetHitBox(Position);
@@ -48,13 +46,11 @@ namespace Sprint_2.GameObjects
 
         public void BeHit(IPlayer player)
         {
-            //SoundManager.Instance.PlaySoundEffect("bump");
-
             blockState.BeHit(player);
             
         }
 
-        private IBlockState GetBlockState(string name)
+        private IBlockState GetBlockState(string name, string color)
         {
             Dictionary<string, IBlockState> blockStates = new Dictionary<string, IBlockState>()
             {
@@ -67,9 +63,22 @@ namespace Sprint_2.GameObjects
                 {"BlueBrick", new BlueBrickState(this) },
                 {"BrownGround", new BrownGroundState(this) },
                 {"BrownBrickWithStar", new BrickWithAStar(this) },
-                {"Invisible", new InvisibleState(this) }
+                {"Invisible", new InvisibleState(this) },
+                {"BulletBlock", new BulletBlockState(this) },
+                {"Hit", new UsedBlockState(this, color) },
+                {"NonMovingHitBlock", new NonMovingHitBlock(this, color) },
+                {"InvisibleWithCoin", new InvisibleBlockWithCoin(this, color) },
+                {"CastleBlock", new CastleBlock(this) }
 
             };
+            /* if a brick with a different color than brown is needed 
+             Kept as separate methods to ensure that the block states used to build level 1-1 will still function properly*/
+            if (color != null && color != NamesOfSprites.SpriteNames.CastleBrick.ToString())
+            {
+                blockStates.Add("Brick", new BrickState(this, color));
+                blockStates.Add("BrickWithCoins", new BrickWithCoins(this, MiscConstants.defaultNumberOfCoins, color));
+                blockStates.Add("BrickWithAStar", new ColoredBrickWithAStar(this, color));
+            }
 
 
             blockStates.TryGetValue(name, out IBlockState blockState);
@@ -84,7 +93,7 @@ namespace Sprint_2.GameObjects
 
         public string GetCollisionType()
         {
-            if (blockState.GetType() == typeof(InvisibleState))
+            if (blockState.GetType() == typeof(InvisibleState) || blockState.GetType() == typeof(InvisibleBlockWithCoin))
             {
                 return typeof(InvisibleState).Name;
             }

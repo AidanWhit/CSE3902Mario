@@ -19,6 +19,7 @@ namespace Sprint_2.GameObjects.BlockStates
     public class ItemBlockWithPowerUp : BlockState
     {
         private IBlock block;
+        private string color;
 
         public ItemBlockWithPowerUp(IBlock block) : base(block)
         {
@@ -45,7 +46,7 @@ namespace Sprint_2.GameObjects.BlockStates
                 GameObjectManager.Instance.Static.Add(flower);
             }
             SoundManager.Instance.PlaySoundEffect("powerUpAppears");
-            block.ChangeState(new UsedBlockState(block));
+            block.ChangeState(new UsedBlockState(block, ""));
 
         }
     }

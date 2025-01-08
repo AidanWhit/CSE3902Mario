@@ -18,9 +18,9 @@ namespace Sprint_2.Sprites
         private int currentFrame = 0;
 
         private Vector2 size;
-        private int scale;
+        private float scale;
 
-        public FrameArrayFormattedSprite(Texture2D texture, Rectangle[] frames, int scale)
+        public FrameArrayFormattedSprite(Texture2D texture, Rectangle[] frames, float scale)
         {
             this.texture = texture;
             this.frames = frames;
@@ -29,7 +29,6 @@ namespace Sprint_2.Sprites
             size = new Vector2(frames[currentFrame].Width, frames[currentFrame].Height);
             size *= scale;
 
-            /* TODO : move the magic number to one of the constant files */
             animationSpeed = MiscConstants.animationSpeed;
             initialAnimationSpeed = animationSpeed;
         }
@@ -55,6 +54,12 @@ namespace Sprint_2.Sprites
         {
             Rectangle destinationRectangle = new Rectangle((int)location.X, (int)location.Y, (int)size.X, (int)size.Y);
             spriteBatch.Draw(texture, destinationRectangle, frames[currentFrame], color);
+        }
+
+        public void Draw(SpriteBatch spriteBatch, Vector2 location, Color color, float rotation, Vector2 origin, SpriteEffects effect)
+        {
+            Rectangle destinationRectangle = new Rectangle((int)location.X, (int)location.Y, (int)size.X, (int)size.Y);
+            spriteBatch.Draw(texture, destinationRectangle, frames[currentFrame], color, rotation, origin, effect, 0);
         }
 
         public Rectangle GetHitBox(Vector2 location)

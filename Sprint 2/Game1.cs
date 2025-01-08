@@ -11,6 +11,7 @@ using Sprint_2.LevelManager;
 using Sprint_2.Collision;
 using Sprint_2.GameStates;
 using Sprint_2.Constants;
+using Sprint_2.GameObjects.Items;
 
 
 namespace Sprint_2
@@ -31,7 +32,6 @@ namespace Sprint_2
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
 
-        //TODO: Make this singular IPlayer into a list and have level loader create the player
         public IPlayer mario { get; set; }
         private KeyboardControl keyControl;
 
@@ -49,6 +49,7 @@ namespace Sprint_2
         public CollisionDetection CollisionDetection { get; private set; }
 
         private SpriteFont hudFont;
+        public MouseController mouseController { get; private set; }
 
         private Game1()
         {
@@ -60,6 +61,7 @@ namespace Sprint_2
         protected override void Initialize()
         {
             keyControl = new KeyboardControl();
+            mouseController = new MouseController();
             
             // Set the level bounds (adjust these values to match your level size)
             levelBounds = MiscConstants.levelBounds;
@@ -83,7 +85,9 @@ namespace Sprint_2
             camera = new Camera(GraphicsDevice.Viewport, levelBounds);
 
             levelLoader = new LevelLoader();
-            levelLoader.LoadLevel(@"LevelManager\level-1_data_pretty.xml");
+
+            levelLoader.LoadLevel(@"LevelManager\main-menu.xml");
+            GameWorldManager.CurrentGameWorld = "main-menu";
 
             gameState = new PlayableState(keyControl);
         }
@@ -96,7 +100,9 @@ namespace Sprint_2
         protected override void Update(GameTime gameTime)
         {
             gameState.Update(gameTime);
+            mouseController.Update();
             base.Update(gameTime);
+            
         }
 
         protected override void Draw(GameTime gameTime)
@@ -106,8 +112,6 @@ namespace Sprint_2
             spriteBatch.Begin(transformMatrix: camera.Transform);
 
             gameState.Draw(spriteBatch, Color.White);
-
-            
             spriteBatch.End();
 
             base.Draw(gameTime);
@@ -118,7 +122,8 @@ namespace Sprint_2
             GameObjectManager.Instance.Reset();
             mario = new Player(Vector2.Zero, mario.RemainingLives);
             InitControls.initializeControls(keyControl, mario);
-            levelLoader.LoadLevel(@"LevelManager\level-1_data_pretty.xml");
+
+            levelLoader.LoadLevel($"LevelManager\\{GameWorldManager.CurrentGameWorld}.xml");
             camera.Reset();
             SoundManager.Instance.Reset();
             HUD.Instance.ResetTime();
@@ -131,7 +136,11 @@ namespace Sprint_2
             mario = new Player(Vector2.Zero, MarioPhysicsConstants.startingLives);
 
             InitControls.initializeControls(keyControl, mario);
-            levelLoader.LoadLevel(@"LevelManager\level-1_data_pretty.xml");
+
+            GameWorldManager.CurrentGameWorld = @"XMLFiles\boss-level";
+            GameWorldManager.CurrentGameWorld = "main-menu";
+            levelLoader.LoadLevel($"LevelManager\\{GameWorldManager.CurrentGameWorld}.xml");
+            
 
             camera.Reset();
             SoundManager.Instance.Reset();

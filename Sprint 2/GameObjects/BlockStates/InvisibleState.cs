@@ -27,7 +27,7 @@ namespace Sprint_2.GameObjects.BlockStates
             block.ChangeState(new UsedBlockState(block));
             IItem mushroom = new GreenMushroom(block.Position, block.GetHitBox().Top);
 
-
+            
             GameObjectManager.Instance.Updateables.Add(mushroom);
             GameObjectManager.Instance.BackDrawables.Add(mushroom);
             GameObjectManager.Instance.Movers.Add(mushroom);

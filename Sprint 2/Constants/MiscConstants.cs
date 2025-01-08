@@ -54,5 +54,12 @@ namespace Sprint_2.Constants
         public readonly static Vector2 quitTextLocation = new Vector2(250, 440);
         public readonly static Vector2 endingTextLocation = new Vector2(150, 340);
 
+        public const float movingPlatformSpeed = -0.5f;
+        public readonly static Vector2 sizeOfLevel2 = new Vector2(3336, 240);
+        public readonly static Vector2 bossLevelSize = new Vector2(3060, 240);
+        public const float axeHitBoxScaleFactor = 3f;
+        public const int bottomOfScreen = 480;
+
+        public readonly static Vector2 sizeOfLevel3 = new Vector2(2840, 240);
     }
 }

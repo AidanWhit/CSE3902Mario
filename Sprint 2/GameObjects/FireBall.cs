@@ -42,8 +42,7 @@ namespace Sprint_2.GameObjects
             Speed = speed;
             fireball = UniversalSpriteFactory.Instance.MarioFireball();
 
-            fireballSpawn = (int)YPos;
-            
+            fireballSpawn = (int)YPos;  
         }
         public void Update(GameTime gameTime) 
         {
@@ -72,8 +71,6 @@ namespace Sprint_2.GameObjects
             
             if (EnteredExplosionState)
             {
-                
-                /* TODO : Currently hardcoded need to find a better solution but it works for now ~ Aidan */
                 timer += (float)gameTime.ElapsedGameTime.TotalSeconds;
                 if (timer > FireBallConstants.timeToFinishExplosion)
                 {
@@ -81,12 +78,10 @@ namespace Sprint_2.GameObjects
                 }
             }
             fireball.Update(gameTime);
-
         }
         public void Draw(SpriteBatch spriteBatch, Color color)
         {
-            fireball.Draw(spriteBatch, new Vector2(XPos, YPos), color);
-            
+            fireball.Draw(spriteBatch, new Vector2(XPos, YPos), color);  
         }
 
         public bool isExploded()
@@ -100,8 +95,6 @@ namespace Sprint_2.GameObjects
             {
                 fireball = sprite;
             }
-            
-            
         }
 
         public Rectangle GetHitBox()
@@ -111,6 +104,10 @@ namespace Sprint_2.GameObjects
 
         public string GetCollisionType()
         {
+            if (EnteredExplosionState)
+            {
+                return "";
+            }
             return typeof(IProjectile).Name;
         }
 

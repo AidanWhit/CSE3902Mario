@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Sprint_2.GameObjects;
 using Sprint_2.Interfaces;
 using Sprint_2.Sound;
 using System;
@@ -12,10 +13,10 @@ namespace Sprint_2.Commands.CollisionCommands
 {
     public class BlockHitCommand : ICommands
     {
-        private IBlock block;
+        private ICollideable block;
         private IPlayer player;
 
-        public BlockHitCommand(IBlock block, IPlayer player, Rectangle rect)
+        public BlockHitCommand(ICollideable block, IPlayer player, Rectangle rect)
         {
             this.block = block;
             this.player = player;
@@ -23,9 +24,10 @@ namespace Sprint_2.Commands.CollisionCommands
 
         public void Execute() 
         {
-            if (player.isJumping)
+            if (player.isJumping && block.GetType().Equals(typeof(Block)))
             {
-                block.BeHit(player);
+
+                ((Block)block).BeHit(player);
             }
         }
     }

@@ -16,6 +16,10 @@ using System.Reflection;
 using System.Data.Common;
 using System.Diagnostics.CodeAnalysis;
 using Sprint_2.GameObjects.Misc;
+using Sprint_2.GameObjects.Enemies;
+using Sprint_2.GameObjects.Enemies.BowserClasses;
+using Sprint_2.Commands.CollisionCommands.EnemyCollisionCommands;
+using Sprint_2.GameObjects.Items;
 
 namespace Sprint_2.LevelManager
 {
@@ -27,7 +31,6 @@ namespace Sprint_2.LevelManager
         }
         public void LoadLevel(string level)
         {
-            //TODO: Find a way to avoid having to do this
             string directory = AppDomain.CurrentDomain.BaseDirectory;
             int index = directory.IndexOf(@"\bin");
             directory = directory.Substring(0, index + 1);
@@ -59,7 +62,69 @@ namespace Sprint_2.LevelManager
                     }
                     LoadObject(name, type, location, sizeX, sizeY);
                 }
+                /* New system of adding objects to a file which is more dynamic. Did not remove the old system
+                 to allow the level-1 xml to still be functional ~ Aidan W*/
+                else if((LevelReader.NodeType == XmlNodeType.Element) && (LevelReader.Name == "NonStandardItem"))
+                {
+                    string numOfParams;
+                    string collisionType;
+                    LevelReader.ReadToDescendant("ObjectType");
+                    type = LevelReader.ReadElementContentAsString();
+
+                    LevelReader.ReadToNextSibling("CollisionType");
+                    collisionType = LevelReader.ReadElementContentAsString();
+
+                    LevelReader.ReadToNextSibling("NumberOfParams");
+                    numOfParams = LevelReader.ReadElementContentAsString();
+                    string[] args = new string[Convert.ToInt32(numOfParams)];
+                    //Read in values for each constructor parameter and store it as a string
+                    for(int i = 0; i < Convert.ToInt32(numOfParams); i++)
+                    {
+                        LevelReader.Read();
+                        args[i] = LevelReader.ReadElementContentAsString();
+                    }
+
+                    Type gameObjectType = Type.GetType(type);
+                    //Assume each object only as one constructor
+                    ConstructorInfo[] constructorInfos = gameObjectType.GetConstructors();
+                    ParameterInfo[] paramInfos = constructorInfos[0].GetParameters();
+                   
+                    object[] constructorParams = new object[paramInfos.Length];
+                    //Convert the string into the proper types needed for each parameter
+                    for (int i = 0; i <  paramInfos.Length; i++)
+                    {
+                        if (args[i].Contains(" "))
+                        {
+                            args[i].Trim();
+                            string[] tokens = args[i].Split(new char[] { ' ' });
+                            object vector = new Vector2((float)Convert.ChangeType(tokens[0], typeof(Single)), (float)Convert.ChangeType(tokens[1], typeof(Single)));
+                            constructorParams[i] = vector;
+                        }
+                        else
+                        {
+                            constructorParams[i] = Convert.ChangeType(args[i], paramInfos[i].ParameterType);
+                        }
+                    }
+                    object createdObject = constructorInfos[0].Invoke(constructorParams);
+
+                    if (collisionType.Equals("Mover"))
+                    {
+                        GameObjectManager.Instance.AddMover(createdObject);
+                    }
+                    else if (collisionType.Equals("Static"))
+                    {
+                        GameObjectManager.Instance.AddStatic(createdObject);
+                    }
+                    else
+                    {
+                        GameObjectManager.Instance.AddNonCollideable(createdObject);
+                    }
+                    //Discard end tag
+                    LevelReader.Read();
+                    
+                }
             }
+            LevelReader.Close();
         }
         private void LoadObject(string name, string type, string location, string sizeX, string sizeY)
         {
@@ -67,7 +132,6 @@ namespace Sprint_2.LevelManager
             string[] tokens = location.Split(new char[] { ' ' });
             int locationX = Convert.ToInt32(tokens[0]);
             int locationY = Convert.ToInt32(tokens[1]);
-
             switch (type)
             {
                 case "Player":
@@ -89,7 +153,6 @@ namespace Sprint_2.LevelManager
                     MakePipe(name, locationX, locationY);
                     break;
                 case "Collider":
-                    
                     Vector2 size = new Vector2(Convert.ToInt32(sizeX), Convert.ToInt32(sizeY));
                     MakeCollider(name, locationX, locationY, size);
                     break;
@@ -119,6 +182,8 @@ namespace Sprint_2.LevelManager
                     IPlayer mario = Game1.Instance.mario;
                     Game1.Instance.mario.XPos = locationX;
                     Game1.Instance.mario.YPos = locationY;
+
+                    Spawner.Instance.SetSpawnLocation(new Vector2(locationX, locationY)); // Set spawn location
 
                     GameObjectManager.Instance.BackDrawables.Add(mario);
                     GameObjectManager.Instance.Updateables.Add(mario);
@@ -155,6 +220,23 @@ namespace Sprint_2.LevelManager
                     break;
                 case "LevelImage":
                     GameObjectManager.Instance.BackDrawables.Add(UniversalSpriteFactory.Instance.GetLevelImageSprite(location));
+                    Game1.Instance.GetCamera().SetLevelBounds(MiscConstants.levelBounds);
+                    break;
+                case "Level2Background":
+                    GameObjectManager.Instance.BackDrawables.Add(UniversalSpriteFactory.Instance.GetLevel2ImageSprite(location));
+                    Game1.Instance.camera.SetLevelBounds(MiscConstants.sizeOfLevel2);
+                    break;
+                case "MainMenuImage":
+                    GameObjectManager.Instance.BackDrawables.Add(UniversalSpriteFactory.Instance.GetMainMenuImageSprite(location));
+                    Game1.Instance.GetCamera().SetLevelBounds(MiscConstants.levelBounds);
+                    break;
+                case "BossLevelBackground":
+                    GameObjectManager.Instance.BackDrawables.Add(UniversalSpriteFactory.Instance.GetBossLevelSprite(location));
+                    Game1.Instance.GetCamera().SetLevelBounds(MiscConstants.bossLevelSize);
+                    break;
+                case "ExtraLevelBackground":
+                    GameObjectManager.Instance.BackDrawables.Add(UniversalSpriteFactory.Instance.GetExtraLevelSprite(location));
+                    Game1.Instance.GetCamera().SetLevelBounds(MiscConstants.sizeOfLevel3);
                     break;
                 case "Flag":
                     GameObjectManager.Instance.BackDrawables.Add(new Flag(new Vector2(locationX, locationY)));
@@ -232,6 +314,18 @@ namespace Sprint_2.LevelManager
                     GameObjectManager.Instance.Blocks[column].Add(block);
                     GameObjectManager.Instance.ForeDrawables.Add(block);
                     break;
+                case "BulletBlock":
+                    block = new Block("BulletBlock", new Vector2(locationX, locationY));
+                    GameObjectManager.Instance.Updateables.Add(block);
+                    GameObjectManager.Instance.Blocks[column].Add(block);
+                    GameObjectManager.Instance.ForeDrawables.Add(block);
+                    break;
+                case "CastleBlock":
+                    block = new Block("CastleBlock", new Vector2(locationX, locationY));
+                    GameObjectManager.Instance.Updateables.Add(block);
+                    GameObjectManager.Instance.Blocks[column].Add(block);
+                    GameObjectManager.Instance.ForeDrawables.Add(block);
+                    break;
                 default:
                     throw new InvalidOperationException("Block type: \"" + name + "\" doesn't exist");
             }
@@ -289,8 +383,10 @@ namespace Sprint_2.LevelManager
             {
                 
                 case "Bowser":
-                    //TODO: FIX BOWSER CONSTRUCTOR
-                    // To be implemented for Sprint5
+                    enemy = new Bowser(new Vector2(locationX, locationY));
+                    GameObjectManager.Instance.Updateables.Add(enemy);
+                    GameObjectManager.Instance.BackDrawables.Add(enemy);
+                    GameObjectManager.Instance.Movers.Add(enemy);
                     break;
                 case "Goomba":
                     enemy = new Goomba(new Vector2(locationX, locationY));
@@ -304,11 +400,29 @@ namespace Sprint_2.LevelManager
                     GameObjectManager.Instance.Updateables.Add(enemy);
                     GameObjectManager.Instance.BackDrawables.Add(enemy);
                     break;
-                case "Shell":
-                    enemy = new Shell(new Vector2(locationX, locationY));
+                case "Buzzy":
+                    enemy = new Buzzy(new Vector2(locationX, locationY));
                     GameObjectManager.Instance.Movers.Add(enemy);
                     GameObjectManager.Instance.Updateables.Add(enemy);
                     GameObjectManager.Instance.BackDrawables.Add(enemy);
+                    break;
+                case "KoopaShell":
+                    enemy = new Shell(new Vector2(locationX, locationY), "Koopa");
+                    GameObjectManager.Instance.Movers.Add(enemy);
+                    GameObjectManager.Instance.Updateables.Add(enemy);
+                    GameObjectManager.Instance.BackDrawables.Add(enemy);
+                    break;
+                case "BuzzyShell":
+                    enemy = new Shell(new Vector2(locationX, locationY), "Buzzy");
+                    GameObjectManager.Instance.Movers.Add(enemy);
+                    GameObjectManager.Instance.Updateables.Add(enemy);
+                    GameObjectManager.Instance.BackDrawables.Add(enemy);
+                    break;
+                case "Bullet":
+                    BulletBill bullet = new BulletBill(new Vector2(locationX, locationY), BulletBill.Direction.Left);
+                    GameObjectManager.Instance.Movers.Add(bullet);
+                    GameObjectManager.Instance.Updateables.Add(bullet);
+                    GameObjectManager.Instance.BackDrawables.Add(bullet);
                     break;
                 default:
                     throw new InvalidOperationException("Item type: \"" + name + "\" doesn't exist");

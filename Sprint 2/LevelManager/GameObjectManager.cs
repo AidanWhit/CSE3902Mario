@@ -14,8 +14,10 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.Diagnostics.Metrics;
 using System.Linq;
 using System.Reflection.Metadata;
+using System.Runtime.InteropServices.ObjectiveC;
 using System.Text.Json.Serialization;
 
 namespace Sprint_2.LevelManager
@@ -34,7 +36,7 @@ namespace Sprint_2.LevelManager
                 return instance;
             }
         }
-                
+
 
         public List<ICollideable>[] Blocks = new List<ICollideable>[225];
         public List<Interfaces.IUpdateable> Updateables { get; set; } = new List<Interfaces.IUpdateable>();
@@ -85,6 +87,7 @@ namespace Sprint_2.LevelManager
                 Static.Remove(block);
             }
         }
+
         public void Reset()
         {
             Static.Clear();
@@ -98,5 +101,41 @@ namespace Sprint_2.LevelManager
             }
         }
 
+        public void AddMover(object mover)
+        {
+            Updateables.Add((Interfaces.IUpdateable)mover);
+            ForeDrawables.Add((Interfaces.IDrawable)mover);
+            Movers.Add((ICollideable)mover);
+        }
+        public void AddStatic(object obj)
+        {
+            Updateables.Add((Interfaces.IUpdateable)obj);
+            ForeDrawables.Add((Interfaces.IDrawable)obj);
+            Static.Add((ICollideable)obj);
+        }
+        public void AddNonCollideable(object obj)
+        {
+            Updateables.Add((Interfaces.IUpdateable)obj);
+            ForeDrawables.Add((Interfaces.IDrawable)obj);
+        }
+
+        public void RemoveStatic(object obj)
+        {
+            Updateables.Remove((Interfaces.IUpdateable)obj);
+            ForeDrawables.Remove((Interfaces.IDrawable)obj);
+            Static.Remove((ICollideable)obj);
+        }
+        public void RemoveMover(object obj)
+        {
+            Updateables.Remove((Interfaces.IUpdateable)obj);
+            ForeDrawables.Remove((Interfaces.IDrawable)obj);
+            Movers.Remove((ICollideable)obj);
+        }
+
+        public void RemoveNonUpdatingStatic(object obj)
+        {
+            ForeDrawables.Remove((Interfaces.IDrawable)obj);
+            Static.Remove((ICollideable)obj);
+        }
     }
 }

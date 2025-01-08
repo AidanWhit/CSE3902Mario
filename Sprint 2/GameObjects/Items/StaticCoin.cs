@@ -7,7 +7,7 @@ using Sprint_2.Sound;
 using Sprint_2.LevelManager;
 using System.ComponentModel;
 
-namespace Sprint_2.GameObjects.ItemSprites
+namespace Sprint_2.GameObjects.Items
 {
     public class StaticCoin : IItem
     {
@@ -39,7 +39,6 @@ namespace Sprint_2.GameObjects.ItemSprites
             GameObjectManager.Instance.Updateables.Remove(this);
             GameObjectManager.Instance.ForeDrawables.Remove(this);
             GameObjectManager.Instance.Static.Remove(this);
-            //SoundManager.Instance.PlaySoundEffect("coin");
         }
 
         public Rectangle GetHitBox()

@@ -20,6 +20,7 @@ namespace Sprint_2
         private string world;
         private float time;
         private int lives;
+        private int level = 1;
         private List<ScorePopup> scorePopups;
 
         public HUD()
@@ -27,7 +28,7 @@ namespace Sprint_2
             font = Game1.Instance.Content.Load<SpriteFont>("HUDFont");
             score = 0;
             coins = 0;
-            world = "1-1";
+            world = "1-" + level;
             time = MiscConstants.defaultLevelTime;
             lives = MarioPhysicsConstants.startingLives;
             scorePopups = new List<ScorePopup>();
@@ -52,7 +53,6 @@ namespace Sprint_2
 
         public void Update(GameTime gameTime)
         {
-            /* Need a better way to do this but it works for now */
             if (time < 0)
             {
                 time = 0;
@@ -103,13 +103,18 @@ namespace Sprint_2
             coins = 0;
             score = 0;
             time = MiscConstants.defaultLevelTime;
+            level = 1;
+            world = "1-" + level;
         }
 
         public int GetScore()
         {
             return score;
         }
-
+        public void IncrementLevel()
+        {
+            world = "1-" + ++level;
+        }
     }
 
     

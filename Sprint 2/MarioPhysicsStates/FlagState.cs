@@ -36,7 +36,6 @@ namespace Sprint_2.MarioPhysicsStates
 
         public void Update(GameTime gameTime)
         {
-            /* Feels like a workaround to a simpler solution but I am not sure */
             Flag flag = (Flag)GameObjectManager.Instance.BackDrawables.Find((x => x.GetType() == typeof(Flag)));
 
             if (player.GetHitBox().Bottom != bottomOfFlagPole)
@@ -52,7 +51,6 @@ namespace Sprint_2.MarioPhysicsStates
                 player.Jump();
                 player.PhysicsState = new Grounded(player);
 
-                /* Might be a better way to do this but it works */
                 Timer timer = new Timer(MarioPhysicsConstants.timeToReachCastle);
                 moveRightTimer = new Timer(MarioPhysicsConstants.timeBetweenMovementForAnimations);
 
@@ -70,8 +68,46 @@ namespace Sprint_2.MarioPhysicsStates
         private static void OnTimedEvent(Object source, ElapsedEventArgs e, IPlayer player, Timer moveRightTimer)
         {
             GameObjectManager.Instance.BackDrawables.Remove(player);
-            Game1.Instance.gameState = new WinScreen();
+
             moveRightTimer.Dispose();
+
+            switch (GameWorldManager.CurrentGameWorld)
+            {
+                case "main-menu":
+                    Game1.Instance.gameState = new WinScreen();
+                    break;
+
+                case "level-1_data_pretty":
+                    Spawner.Instance.TeleportToLevel(@"XMLFiles\level-2", Vector2.Zero, "mainTheme");
+                    Game1.Instance.gameState = new PlayableState(Game1.Instance.GetKeyboardControl());
+                    HUD.Instance.ResetTime();
+                    Game1.Instance.GetCamera().Reset();
+                    HUD.Instance.IncrementLevel();
+                    break;
+
+
+                case @"XMLFiles\level-2":
+                    Spawner.Instance.TeleportToLevel(@"XMLFiles\extraLevel", new Vector2(100, 400), "underworld");
+                    Game1.Instance.gameState = new PlayableState(Game1.Instance.GetKeyboardControl());
+                    HUD.Instance.ResetTime();
+                    Game1.Instance.GetCamera().Reset();
+                    HUD.Instance.IncrementLevel();
+                    break;
+
+                case @"XMLFiles\extraLevel":
+                    Debug.WriteLine("Entered level 3 case");
+                    Spawner.Instance.TeleportToLevel(@"XMLFiles\boss-level", Vector2.Zero, "castle");
+                    Game1.Instance.gameState = new PlayableState(Game1.Instance.GetKeyboardControl());
+                    HUD.Instance.ResetTime();
+                    Game1.Instance.GetCamera().Reset();
+                    HUD.Instance.IncrementLevel();
+                    break;
+
+                default:
+                    // Handle unknown world (fallback logic)
+                    Game1.Instance.gameState = new WinScreen();
+                    break;
+            }
         }
 
         private static void MoveRight(Object source, ElapsedEventArgs e, IPlayer player)

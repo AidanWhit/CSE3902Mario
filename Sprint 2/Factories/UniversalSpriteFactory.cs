@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint_2.Constants;
 using Sprint_2.GameObjects;
+using Sprint_2.GameObjects.Items;
 using Sprint_2.GameObjects.ItemSprites;
 using Sprint_2.GameObjects.Misc;
 using Sprint_2.Interfaces;
@@ -37,8 +38,16 @@ namespace Sprint_2.Factories
 
         private Texture2D levelImageTexture;  // The whole level image (blocks and background only)
         private Texture2D backgroundSprites;
+
+        private Texture2D mainMenuImageTexture;
+        private Texture2D level2Texture;
+        private Texture2D bossLevelTexture;
+        private Texture2D extraLevelTexture;
+
         private Texture2D flagSprite;
 
+        private Texture2D gunSprite;
+        private Texture2D bulletSprite;
         private Rectangle[] frames;
 
         private UniversalSpriteFactory() 
@@ -124,9 +133,16 @@ namespace Sprint_2.Factories
             items = content.Load<Texture2D>("items");
             staticCoin = content.Load<Texture2D>("staticCoin");
 
-            levelImageTexture = content.Load<Texture2D>("levelimage"); //sprite for the whole level image  
+            levelImageTexture = content.Load<Texture2D>("levelimage"); //sprite for the whole level image
+            mainMenuImageTexture = content.Load<Texture2D>("mainmenuimage");
+            bossLevelTexture = content.Load<Texture2D>("bossLevelBackground");
+            level2Texture = content.Load<Texture2D>("Level1-2Background");
             backgroundSprites = content.Load<Texture2D>("backgroundSprites");
             flagSprite = content.Load<Texture2D>("flag");
+            gunSprite = content.Load<Texture2D>("gunSprite");
+            bulletSprite = content.Load<Texture2D>("bulletSprite");
+
+            extraLevelTexture = content.Load<Texture2D>("extraLevelBackground");
         }
 
         public void AddEntry(string key, Rectangle[] frames)
@@ -169,6 +185,9 @@ namespace Sprint_2.Factories
             if (id.Equals(NamesOfSprites.SpriteNames.UndergroundPipe.ToString()))
             {
                 return new FrameArrayFormattedSprite(undergroundPipe, frames, defaultScale);
+            } else if (id.Equals(NamesOfSprites.SpriteNames.BulletBlock.ToString()))
+            {
+                return new FrameArrayFormattedSprite(enemies, frames, defaultScale);
             }
             return new FrameArrayFormattedSprite(blockSpriteSheet, frames, defaultScale);
         }
@@ -209,5 +228,36 @@ namespace Sprint_2.Factories
             return new StaticSprite(levelImageTexture, frames, location);
         }
 
+        public IStaticSprite GetMainMenuImageSprite(Vector2 location)
+        {
+            spriteData.TryGetValue(NamesOfSprites.SpriteNames.MainMenuImage.ToString(), out frames);
+            return new StaticSprite(mainMenuImageTexture, frames, location);
+        }
+        public IStaticSprite GetLevel2ImageSprite(Vector2 location)
+        {
+            spriteData.TryGetValue(NamesOfSprites.SpriteNames.Level2Background.ToString(), out frames);
+            return new StaticSprite(level2Texture, frames, location);
+        }
+        public IStaticSprite GetBossLevelSprite(Vector2 location)
+        {
+            spriteData.TryGetValue(NamesOfSprites.SpriteNames.BossLevelBackground.ToString(), out frames);
+            return new StaticSprite(bossLevelTexture, frames, location);
+        }
+        public IStaticSprite GetExtraLevelSprite(Vector2 location)
+        {
+            spriteData.TryGetValue(NamesOfSprites.SpriteNames.ExtraLevelBackground.ToString(), out frames);
+            return new StaticSprite(extraLevelTexture, frames, location);
+        }
+        public ISprite GetGunSprite()
+        {
+            spriteData.TryGetValue("Gun", out frames);
+            return new FrameArrayFormattedSprite(gunSprite, frames, 0.75f);
+        }
+
+        public ISprite GetBulletSprite()
+        {
+            spriteData.TryGetValue("Bullet", out frames);
+            return new FrameArrayFormattedSprite(bulletSprite, frames, defaultScale);
+        }
     }
 }

@@ -122,7 +122,7 @@ namespace Sprint_2.GameObjects.Enemies.EnemyStates
                 GameObjectManager.Instance.Updateables.Remove(koopa);
                 GameObjectManager.Instance.BackDrawables.Remove(koopa);
 
-                Shell shell = new Shell(new Vector2(koopa.XPos, bottomPos));
+                Shell shell = new Shell(new Vector2(koopa.XPos, bottomPos), "Koopa");
                 GameObjectManager.Instance.Movers.Add(shell);
                 GameObjectManager.Instance.Updateables.Add(shell);
                 GameObjectManager.Instance.BackDrawables.Add(shell);

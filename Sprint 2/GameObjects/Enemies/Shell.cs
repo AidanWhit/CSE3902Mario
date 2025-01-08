@@ -17,19 +17,25 @@ namespace Sprint_2.GameObjects.Enemies.EnemySprites
         public bool Flipped { get; set; }
         public bool Kicked { get; set; }
         public Vector2 Velocity { get; set; }
+        private string type;
         private ISprite sprite;
 
-        private float timeUntilShellBecomesKoopa = EnemyConstants.timeUntilShellBecomesKoopa;
+        private float timeUntilShellBecomesAlive = EnemyConstants.timeUntilShellBecomesAlive;
         public IShellState ShellState { get; set; }
 
         private int[] score = EnemyConstants.shellScoreValues;
         private int index = 0;
-        public Shell(Vector2 initialPosition)
+        public Shell(Vector2 initialPosition, string Enemytype)
         {
             XPos = initialPosition.X;
             YPos = initialPosition.Y;
-
-            sprite = UniversalSpriteFactory.Instance.CreateEnemy(NamesOfSprites.SpriteNames.KoopaShell.ToString());
+            type = Enemytype;
+            if (type.Equals("Koopa")) {
+                sprite = UniversalSpriteFactory.Instance.CreateEnemy(NamesOfSprites.SpriteNames.KoopaShell.ToString());
+            }
+            else {
+                sprite = UniversalSpriteFactory.Instance.CreateEnemy(NamesOfSprites.SpriteNames.BuzzyShell.ToString());
+            }
             ShellState = new ShellStateIdle(this);
             Velocity = new Vector2(0, EnemyConstants.fallVelocity.Y);
         }
@@ -46,15 +52,21 @@ namespace Sprint_2.GameObjects.Enemies.EnemySprites
             sprite.Draw(spriteBatch, new Vector2(XPos, YPos), color);
         }
 
-        /* TODO: Implement actual hitbox */
         public Rectangle GetHitBox()
         {
             return sprite.GetHitBox(new Vector2(XPos, YPos));
         }
 
+        public string GetEnemyType()
+        {
+            return type;
+        }
+
         public void TakeFireballDamage()
         {
-            sprite = UniversalSpriteFactory.Instance.CreateEnemy(NamesOfSprites.SpriteNames.FlippedKoopaShell.ToString());
+            if (sprite.Equals("Koopa")){
+                sprite = UniversalSpriteFactory.Instance.CreateEnemy(NamesOfSprites.SpriteNames.FlippedKoopaShell.ToString());
+            } 
             Flipped = true;
             Velocity = EnemyConstants.flippedVelocity;
             ShellState = new ShellFlippedState(this);
