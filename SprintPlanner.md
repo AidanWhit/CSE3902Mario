@@ -28,7 +28,7 @@ Here is the Sprint Planner that will be used to document our plans, design chang
 
 | Tasks | Time(Effort) | Time Remaining | In Progress (Name) | Expected Finish Date | Finished Date |
 |------:|--------------|----------------|--------------------|----------------------|---------------|
-| Privatize public variables within GameObject classes | 8 hrs | 8 hrs| Will only be done if there is time | 11/27 |
+| Privatize public variables within GameObject classes | 8 hrs | 8 hrs| Will only be done if there is time | 11/27 | Did not have time |
 
 ## List of new Features (classes)
 Strikethrough implies that the item has been completed
@@ -59,3 +59,12 @@ Strikethrough implies that the item has been completed
   - ~~Gameworld manager: keeps track of the current gameworld(1-1,1-1under ...) so that it can work with pipes~~
   - ~~intermediate state: similar to "win" but not exactly win, just "stage-clear" and then move to the next level~~
   - ~~Rewrite how the level is loaded so that transition can work smoothly~~
+
+ ## Design changes
+ There were no design changes related to our Sprint 5 content but our level loader class was given more modularity this sprint. The level loader can now take in a 
+ differnent format of xml that leads to a created object without having to overly rely on switch cases when determing what kind of object to create. This is done with
+ reflections in c# that allow objects to be essintially created just from the string containing their full assembly name as long as they are given the correct parameters during
+ construction. The new xml format supplies all of the needed parameters and reflection allows these strings to be converted to their respective types. All together this allows
+ creation of a new object without having to overly rely on the switch case structure of our older level loader.
+
+ Note: that the old level loader design is still in use throughout the code so it could not be deleted due to technical debt.
