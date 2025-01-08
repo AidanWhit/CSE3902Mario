@@ -14,17 +14,18 @@ namespace Sprint_2.GameObjects
 {
     public class Pipe : IPipe, ICollideable
     {
-        public float XPos { get; set; }
-        public float YPos { get; set; }
+        private float XPos;
+        private float YPos;
 
         private ISprite sprite;
-
+        private string pipeSize;
 
         public Pipe(Vector2 location, string pipeSize)
         {
             XPos = location.X;
             YPos = location.Y;
-            sprite = BlockFactory.Instance.GetBlock(pipeSize);
+            this.pipeSize = pipeSize;
+            sprite = UniversalSpriteFactory.Instance.GetBlock(pipeSize);
         }
 
         public void Update(GameTime gameTime)
@@ -44,6 +45,10 @@ namespace Sprint_2.GameObjects
 
         public string GetCollisionType()
         {
+            if (pipeSize.Equals(NamesOfSprites.SpriteNames.UndergroundPipe.ToString()))
+            {
+                return pipeSize;
+            }
             return typeof(IBlock).Name;
         }
 

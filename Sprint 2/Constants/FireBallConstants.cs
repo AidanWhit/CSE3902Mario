@@ -23,5 +23,7 @@ namespace Sprint_2.Constants
         public static float animationDelay = 0.1f;
         public static int explosionRange = 350;
 
+        public const float timeToFinishExplosion = 0.3f;
+
     }
 }

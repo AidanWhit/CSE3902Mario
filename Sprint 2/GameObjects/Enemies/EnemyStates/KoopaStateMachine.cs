@@ -33,7 +33,7 @@ namespace Sprint_2.GameObjects.Enemies.EnemyStates
             this.koopa = koopa;
 
             /* Assume Koopa starts facing left*/
-            sprite = EnemyFactory.Instance.CreateLeftFacingKoopa();
+            sprite = UniversalSpriteFactory.Instance.CreateEnemy(NamesOfSprites.SpriteNames.LeftFacingKoopa.ToString());
         }
 
         public void ChangeDirection()
@@ -42,11 +42,11 @@ namespace Sprint_2.GameObjects.Enemies.EnemyStates
             facingLeft = !facingLeft;
             if (facingLeft)
             {
-                sprite = EnemyFactory.Instance.CreateLeftFacingKoopa();
+                sprite = UniversalSpriteFactory.Instance.CreateEnemy(NamesOfSprites.SpriteNames.LeftFacingKoopa.ToString());
             }
             else
             {
-                sprite = EnemyFactory.Instance.CreateRightFacingKoopa();
+                sprite = UniversalSpriteFactory.Instance.CreateEnemy(NamesOfSprites.SpriteNames.RightFacingKoopa.ToString());
             }
         }
 
@@ -71,11 +71,11 @@ namespace Sprint_2.GameObjects.Enemies.EnemyStates
                 koopa.Velocity = new Vector2(koopa.Velocity.X, koopa.Velocity.Y * MarioPhysicsConstants.velocityDecay);
 
                 /* if the koopa falls out of the map */
-                if (koopa.YPos > EnemyConstants.despawnHeight)
+                if (koopa.YPos > MiscConstants.despawnHeight)
                 {
                     GameObjectManager.Instance.Movers.Remove(koopa);
                     GameObjectManager.Instance.Updateables.Remove(koopa);
-                    GameObjectManager.Instance.Drawables.Remove(koopa);
+                    GameObjectManager.Instance.BackDrawables.Remove(koopa);
                 }
 
             }
@@ -115,17 +115,17 @@ namespace Sprint_2.GameObjects.Enemies.EnemyStates
             {
                 health = Health.Shell;
                 int bottomPos = koopa.GetHitBox().Bottom;
-                sprite = EnemyFactory.Instance.CreateKoopaShell();
+                sprite = UniversalSpriteFactory.Instance.CreateEnemy(NamesOfSprites.SpriteNames.KoopaShell.ToString());
                 bottomPos -= sprite.GetHitBox(new Vector2(koopa.XPos, koopa.YPos)).Height; 
 
                 GameObjectManager.Instance.Movers.Remove(koopa);
                 GameObjectManager.Instance.Updateables.Remove(koopa);
-                GameObjectManager.Instance.Drawables.Remove(koopa);
+                GameObjectManager.Instance.BackDrawables.Remove(koopa);
 
                 Shell shell = new Shell(new Vector2(koopa.XPos, bottomPos));
                 GameObjectManager.Instance.Movers.Add(shell);
                 GameObjectManager.Instance.Updateables.Add(shell);
-                GameObjectManager.Instance.Drawables.Add(shell);
+                GameObjectManager.Instance.BackDrawables.Add(shell);
                 
             }
         }
@@ -135,7 +135,7 @@ namespace Sprint_2.GameObjects.Enemies.EnemyStates
             if (health != Health.Flipped)
             {
                 health = Health.Flipped;
-                sprite = EnemyFactory.Instance.CreateFlippedKoopaShell();
+                sprite = UniversalSpriteFactory.Instance.CreateEnemy(NamesOfSprites.SpriteNames.FlippedKoopaShell.ToString());
                 koopa.Velocity = EnemyConstants.flippedVelocity;
             }
         }

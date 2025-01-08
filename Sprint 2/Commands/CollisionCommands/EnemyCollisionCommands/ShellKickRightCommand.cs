@@ -3,6 +3,7 @@ using Sprint_2.Constants;
 using Sprint_2.GameObjects.Enemies.EnemySprites;
 using Sprint_2.GameObjects.Enemies.EnemyStates;
 using Sprint_2.Interfaces;
+using Sprint_2.Sound;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,6 +31,9 @@ namespace Sprint_2.Commands.CollisionCommands.EnemyCollisionCommands
                 shell.Velocity = new Vector2(EnemyConstants.shellMoveSpeed, shell.Velocity.Y);
                 player.XPos -= collisionIntersection.Width;
                 shell.ShellState = new MovingShellState(shell);
+
+                HUD.Instance.AddScorePopUp(EnemyConstants.kickShellPoints, new Vector2(shell.XPos, shell.YPos));
+                SoundManager.Instance.PlaySoundEffect("stomp");
             }
         }
     }

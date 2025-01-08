@@ -19,8 +19,6 @@ namespace Sprint_2.Interfaces
         public void TakeFireballDamage();
         public void TakeStompDamage();
 
-        public Rectangle GetHitBox();
-
         public void ChangeDirection();
 
         public bool Flipped { get; set; }

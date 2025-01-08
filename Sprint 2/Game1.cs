@@ -1,21 +1,16 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
-using Sprint_2.Commands.MarioItemCommands;
-using Sprint_2.Commands.MarioMovementCommands;
-using Sprint_2.Commands.MarioAttackCommands;
-using Sprint_2.Commands.ProgramCommands;
 using Sprint_2.Controls;
 using Sprint_2.Factories;
 using Sprint_2.Interfaces;
 using Sprint_2.Sprites;
+using Sprint_2.Sound;
 using Sprint_2.ScreenCamera;
 using Sprint_2.LevelManager;
-using System.Diagnostics;
-using System;
 using Sprint_2.Collision;
-using System.Linq;
+using Sprint_2.GameStates;
+using Sprint_2.Constants;
 
 
 namespace Sprint_2
@@ -46,10 +41,14 @@ namespace Sprint_2
         private List<IBlock> collisionTest;
 
 
-        private Camera camera;
+        public Camera camera { get; private set; }
         private Vector2 levelBounds;
         private LevelLoader levelLoader;
         private CollisionDetection collisionDetection;
+        public IGameState gameState { get; set; }
+        public CollisionDetection CollisionDetection { get; private set; }
+
+        private SpriteFont hudFont;
 
         private Game1()
         {
@@ -63,66 +62,30 @@ namespace Sprint_2
             keyControl = new KeyboardControl();
             
             // Set the level bounds (adjust these values to match your level size)
-            levelBounds = new Vector2(3744, 240);
+            levelBounds = MiscConstants.levelBounds;
             base.Initialize();
         }
 
         protected override void LoadContent()
         {
-
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-           
+            UniversalSpriteFactory.Instance.LoadAllContent(Content);
+
+            SoundManager.Instance.Initialize(Content);
+
+            SoundManager.Instance.PlayBGM("mainTheme");
+
+            mario = new Player(Vector2.Zero, MarioPhysicsConstants.startingLives);
+            CollisionDetection = new CollisionDetection();
             
-
-            MarioSpriteFactory.Instance.LoadAllContent(Content);
-            EnemyFactory.Instance.LoadAllContent(Content);
-            ItemFactory.Instance.LoadItemContent(Content);
-            BlockFactory.Instance.LoadAllContent(Content);
-            BackgroundFactory.Instance.LoadAllContent(Content);
-
-            mario = new Player(new Vector2(100, 400));
-            collisionDetection = new CollisionDetection();
 
             camera = new Camera(GraphicsDevice.Viewport, levelBounds);
-            
-
-            ItemFactory.Instance.SetGameObjectManager(GameObjectManager.Instance);
-            BlockFactory.Instance.SetGameObjectManager(GameObjectManager.Instance);
-            EnemyFactory.Instance.SetGameObjectManager(GameObjectManager.Instance);
-
-            Texture2D texture = Content.Load<Texture2D>("marioSpriteSheet");
-
-            
-
-
-            //Will eventually be moved somewhere else
-            keyControl.RegisterCommand(Keys.W, new MarioFacingUpCommand(mario));
-            keyControl.RegisterCommand(Keys.S, new MarioFacingDownCommand(mario));
-            keyControl.RegisterCommand(Keys.D, new MarioFacingRightCommand(mario));
-            keyControl.RegisterCommand(Keys.A, new MarioFacingLeftCommand(mario));
-
-            keyControl.RegisterCommand(Keys.Up, new MarioFacingUpCommand(mario));
-            keyControl.RegisterCommand(Keys.Down, new MarioFacingDownCommand(mario));
-            keyControl.RegisterCommand(Keys.Left, new MarioFacingRightCommand(mario));
-            keyControl.RegisterCommand(Keys.Right, new MarioFacingLeftCommand(mario));
-
-
-
-            keyControl.RegisterOnPressCommand(Keys.Z, new MarioAttackNormalCommand(mario));
-            keyControl.RegisterOnPressCommand(Keys.D3, new MarioPowerUpCommand(mario, null, Rectangle.Empty));
-            keyControl.RegisterOnPressCommand(Keys.E, new MarioHurtCommand(mario, null, Rectangle.Empty));
-            keyControl.RegisterCommand(Keys.Q, new QuitCommand(this));
-            keyControl.RegisterCommand(Keys.R, new ResetCommand());
-
-            keyControl.RegisterOnReleaseCommand(Keys.S, new MarioOnCrouchRelease(mario));
-            keyControl.RegisterOnPressCommand(Keys.S, new MarioOnCrouchPress(mario));
-            keyControl.RegisterOnReleaseCommand(Keys.W, new MarioJumpReleaseCommand(mario));
-
 
             levelLoader = new LevelLoader();
             levelLoader.LoadLevel(@"LevelManager\level-1_data_pretty.xml");
-            //levelLoader.LoadLevel(@"LevelManager\testing-level.xml");
+
+            gameState = new PlayableState(keyControl);
         }
         protected override void UnloadContent()
         {
@@ -132,45 +95,58 @@ namespace Sprint_2
 
         protected override void Update(GameTime gameTime)
         {
-
-            keyControl.Update();
-
-            // Update camera based on Mario's position
-            camera.Update(gameTime, new Vector2(mario.XPos, mario.YPos));
-
-            mario.Update(gameTime);
-            foreach (Interfaces.IUpdateable obj in GameObjectManager.Instance.Updateables.ToList())
-            {
-                obj.Update(gameTime);
-            }
-            collisionDetection.DetectCollision();
-
+            gameState.Update(gameTime);
             base.Update(gameTime);
         }
 
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.Black);
             // Begin the sprite batch with the camera's transformation matrix
             spriteBatch.Begin(transformMatrix: camera.Transform);
-           
-            foreach (Interfaces.IDrawable obj in GameObjectManager.Instance.Drawables.ToList())
-            {
-                obj.Draw(spriteBatch, Color.White);
-            }
-            mario.Draw(spriteBatch, Color.White);
 
+            gameState.Draw(spriteBatch, Color.White);
+
+            
             spriteBatch.End();
+
             base.Draw(gameTime);
         }
 
         public void Reload()
         {
             GameObjectManager.Instance.Reset();
-            this.UnloadContent();
-            this.LoadContent();
-            
-            
+            mario = new Player(Vector2.Zero, mario.RemainingLives);
+            InitControls.initializeControls(keyControl, mario);
+            levelLoader.LoadLevel(@"LevelManager\level-1_data_pretty.xml");
+            camera.Reset();
+            SoundManager.Instance.Reset();
+            HUD.Instance.ResetTime();
+        }
+
+        public void TotalReset()
+        {
+            GameObjectManager.Instance.Reset();
+
+            mario = new Player(Vector2.Zero, MarioPhysicsConstants.startingLives);
+
+            InitControls.initializeControls(keyControl, mario);
+            levelLoader.LoadLevel(@"LevelManager\level-1_data_pretty.xml");
+
+            camera.Reset();
+            SoundManager.Instance.Reset();
+            HUD.Instance.CompleteReset();
+
+            gameState = new PlayableState(keyControl);
+        }
+
+        public Camera GetCamera()
+        {
+            return camera;
+        }
+        public KeyboardControl GetKeyboardControl()
+        {
+            return keyControl;
         }
     }
 }

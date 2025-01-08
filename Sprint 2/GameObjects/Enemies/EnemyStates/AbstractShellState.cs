@@ -34,11 +34,11 @@ namespace Sprint_2.GameObjects.Enemies.EnemyStates
             shell.XPos += (float)(shell.Velocity.X * gameTime.ElapsedGameTime.TotalSeconds);
             shell.YPos += (float)(shell.Velocity.Y * gameTime.ElapsedGameTime.TotalSeconds);
 
-            if (shell.YPos > EnemyConstants.despawnHeight)
+            if (shell.YPos > MiscConstants.despawnHeight)
             {
                 GameObjectManager.Instance.Movers.Remove(shell);
                 GameObjectManager.Instance.Updateables.Remove(shell);
-                GameObjectManager.Instance.Drawables.Remove(shell);
+                GameObjectManager.Instance.BackDrawables.Remove(shell);
             }
         }
     }

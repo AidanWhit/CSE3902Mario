@@ -30,10 +30,10 @@ namespace Sprint_2.GameObjects.Enemies.EnemyStates
                 goomba.Velocity += EnemyConstants.fallVelocity;
             }
 
-            if (goomba.YPos > 650)
+            if (goomba.YPos > MiscConstants.despawnHeight)
             {
                 GameObjectManager.Instance.Updateables.Remove(goomba);
-                GameObjectManager.Instance.Drawables.Remove(goomba);
+                GameObjectManager.Instance.BackDrawables.Remove(goomba);
             }
         }
     }

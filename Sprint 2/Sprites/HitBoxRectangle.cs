@@ -11,6 +11,7 @@ namespace Sprint_2.Sprites
     public class HitBoxRectangle
     {
         static Texture2D pointTexture;
+        /* Helper method used to draw the bounding box for invisible colliders */
         public static void DrawRectangle(SpriteBatch spriteBatch, Rectangle rectangle, Color color, int lineWidth)
         {
             if (pointTexture == null)

@@ -1,12 +1,16 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint_2.Interfaces;
+using Sprint_2.LevelManager;
+using Sprint_2.Sound;
+using Sprint_2.MarioStates;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
 using System.Text;
 using System.Threading;
+using Sprint_2.Constants;
 
 
 namespace Sprint_2.Sprites
@@ -28,21 +32,27 @@ namespace Sprint_2.Sprites
 
 
         private IPlayer decoratedPlayer;
-        private int remainingStarTime = 1000;
+        private int remainingStarTime = MarioPhysicsConstants.starDuration;
         private Color[] colors = new Color[] { Color.Red, Color.Orange, Color.Yellow, Color.LightGreen, Color.LightBlue, Color.Salmon};
         private int colorIndex = 0;
 
+        private bool isStarmanPlaying;
         public StarMario (IPlayer decoratedPlayer)
         {
             this.decoratedPlayer = decoratedPlayer;
+            isStarmanPlaying = true;
+            SoundManager.Instance.PlayBackgroundMusic("starman");
         }
         public void Update(GameTime gameTime)
-        { 
+        {
             remainingStarTime--;
             if (remainingStarTime < 0)
             {
                 /* Remove star somehow */
                 RemoveStar();
+
+                SoundManager.Instance.StopBackgroundMusic();
+                SoundManager.Instance.PlayBGM("mainTheme");
             }
             
             decoratedPlayer.Update(gameTime);
@@ -50,12 +60,19 @@ namespace Sprint_2.Sprites
 
         public void Draw(SpriteBatch spriteBatch, Color color)
         {
-            decoratedPlayer.Draw(spriteBatch, colors[(remainingStarTime / 4) % colors.Length]);
+            decoratedPlayer.Draw(spriteBatch, colors[(remainingStarTime / MarioPhysicsConstants.timeBetweenColorsScaleFactor) % colors.Length]);
         }
 
         public void RemoveStar()
         {
+            GameObjectManager.Instance.BackDrawables.Remove(this);
+            GameObjectManager.Instance.Updateables.Remove(this);
+            GameObjectManager.Instance.Movers.Remove(this);
             Game1.Instance.mario = decoratedPlayer;
+            GameObjectManager.Instance.BackDrawables.Add(decoratedPlayer);
+            GameObjectManager.Instance.Updateables.Add(decoratedPlayer);
+            GameObjectManager.Instance.Movers.Add(decoratedPlayer);
+
         }
 
         public void MoveLeft()
@@ -108,6 +125,11 @@ namespace Sprint_2.Sprites
         {
             decoratedPlayer.ReleaseCrouch();
         }
+
+        public void Climb()
+        {
+            decoratedPlayer.Climb();
+        }
         public Rectangle GetHitBox()
         {
             return decoratedPlayer.GetHitBox();
@@ -125,6 +147,20 @@ namespace Sprint_2.Sprites
         public int GetColumn()
         {
             return decoratedPlayer.GetColumn();
+        }
+
+        public PlayerStateMachine.Facing GetFacing()
+        {
+            return decoratedPlayer.GetFacing();
+        }
+        public void Die()
+        {
+            // Do Nothing
+        }
+
+        public void Bounce()
+        {
+            // Star Mario can not bounce on enemies
         }
     }
 }

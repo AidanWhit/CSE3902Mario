@@ -28,11 +28,11 @@ namespace Sprint_2.GameObjects.Enemies.EnemyStates
                 Koopa koopa = new Koopa(new Vector2(shell.XPos, shell.YPos - shell.GetHitBox().Height));
                 GameObjectManager.Instance.Movers.Add(koopa);
                 GameObjectManager.Instance.Updateables.Add(koopa);
-                GameObjectManager.Instance.Drawables.Add(koopa);
+                GameObjectManager.Instance.BackDrawables.Add(koopa);
 
                 GameObjectManager.Instance.Movers.Remove(shell);
                 GameObjectManager.Instance.Updateables.Remove(shell);
-                GameObjectManager.Instance.Drawables.Remove(shell);
+                GameObjectManager.Instance.BackDrawables.Remove(shell);
             }
             UpdatePosition(gameTime);
         }

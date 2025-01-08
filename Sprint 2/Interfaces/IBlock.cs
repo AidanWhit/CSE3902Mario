@@ -13,8 +13,6 @@ namespace Sprint_2.Interfaces
     {
         Vector2 Position { get; set; }
 
-        public Rectangle GetHitBox();
-
         public void BeHit(IPlayer player);
 
         public void ChangeState(IBlockState blockState);

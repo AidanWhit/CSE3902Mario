@@ -19,15 +19,17 @@ namespace Sprint_2.GameObjects.Enemies.EnemySprites
         public Vector2 Velocity { get; set; }
         private ISprite sprite;
 
-        private float timeUntilShellBecomesKoopa = 5f;
+        private float timeUntilShellBecomesKoopa = EnemyConstants.timeUntilShellBecomesKoopa;
         public IShellState ShellState { get; set; }
 
+        private int[] score = EnemyConstants.shellScoreValues;
+        private int index = 0;
         public Shell(Vector2 initialPosition)
         {
             XPos = initialPosition.X;
             YPos = initialPosition.Y;
 
-            sprite = EnemyFactory.Instance.CreateKoopaShell();
+            sprite = UniversalSpriteFactory.Instance.CreateEnemy(NamesOfSprites.SpriteNames.KoopaShell.ToString());
             ShellState = new ShellStateIdle(this);
             Velocity = new Vector2(0, EnemyConstants.fallVelocity.Y);
         }
@@ -52,7 +54,7 @@ namespace Sprint_2.GameObjects.Enemies.EnemySprites
 
         public void TakeFireballDamage()
         {
-            sprite = EnemyFactory.Instance.CreateFlippedKoopaShell();
+            sprite = UniversalSpriteFactory.Instance.CreateEnemy(NamesOfSprites.SpriteNames.FlippedKoopaShell.ToString());
             Flipped = true;
             Velocity = EnemyConstants.flippedVelocity;
             ShellState = new ShellFlippedState(this);
@@ -85,6 +87,16 @@ namespace Sprint_2.GameObjects.Enemies.EnemySprites
         public int GetColumn()
         {
             return (int)(XPos / CollisionConstants.blockWidth);
+        }
+
+        public int GetScore()
+        {
+            return score[index++];
+        }
+
+        public void ResetIndex()
+        {
+            index = 0;
         }
     }
 }

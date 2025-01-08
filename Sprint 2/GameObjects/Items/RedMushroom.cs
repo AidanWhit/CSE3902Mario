@@ -22,16 +22,16 @@ namespace Sprint_2.GameObjects.ItemSprites
         private float spawnedYPosition;
         private IBlock sourceBlock;
 
-        private float speed = 1f;
+        private float speed = ItemPhysicsConstants.defaultMoveSpeed;
         private int topOfSourceBlock;
 
         public RedMushroom(Vector2 initialPosition, int topOfSourceBlock)
         {
             XPos = initialPosition.X;
             YPos = initialPosition.Y;
-            Velocity = new Vector2(1, 0); // Starts moving rigjt
+            Velocity = new Vector2(speed, 0); // Starts moving right
 
-            sprite = ItemFactory.Instance.CreateRedMushroom();
+            sprite = UniversalSpriteFactory.Instance.GetItemSprite(nameof(RedMushroom));
             OnSpawn = true;
             spawnedYPosition = initialPosition.Y;
 
@@ -64,7 +64,7 @@ namespace Sprint_2.GameObjects.ItemSprites
                 Velocity *= MarioPhysicsConstants.velocityDecay;
                 XPos += speed;
             }
-            if (YPos > EnemyConstants.despawnHeight)
+            if (YPos > MiscConstants.despawnHeight)
             {
                 DeleteItem();
             }
@@ -82,7 +82,7 @@ namespace Sprint_2.GameObjects.ItemSprites
         {
             GameObjectManager.Instance.Movers.Remove(this);
             GameObjectManager.Instance.Updateables.Remove(this);
-            GameObjectManager.Instance.Drawables.Remove(this);
+            GameObjectManager.Instance.BackDrawables.Remove(this);
         }
 
         public Rectangle GetHitBox()

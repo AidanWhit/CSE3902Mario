@@ -16,38 +16,31 @@ namespace Sprint_2.MarioPhysicsStates
     {
         private IPlayer mario;
         private int originalMarioY;
-        private bool isFalling;
 
         public Jumping(IPlayer mario)
         {
             this.mario = mario;
             originalMarioY = mario.YPos;
-            //this.mario.PlayerVelocity = new Vector2(this.mario.PlayerVelocity.X, 0);
         }
 
         public void Update(GameTime gameTime)
         {
-            if (!isFalling)
+            /* Makes mario move upwards until the max jump velocity is achieved */
+            if (mario.PlayerVelocity.Y > MarioPhysicsConstants.maxJumpVelocity)
             {
-                /* Makes mario move upwards until the max jump velocity is achieved */
-                if (mario.PlayerVelocity.Y > MarioPhysicsConstants.maxJumpVelocity)
-                {
-                    mario.PlayerVelocity += MarioPhysicsConstants.marioJumpVelocity;
-                }
-                mario.YPos += (int)(mario.PlayerVelocity.Y * gameTime.ElapsedGameTime.TotalSeconds);
-                mario.XPos += (int)(mario.PlayerVelocity.X * gameTime.ElapsedGameTime.TotalSeconds);
-
-                mario.PlayerVelocity *= MarioPhysicsConstants.velocityDecay;
-
-                /* If max Jump height is reached, make mario fall */
-                if (Math.Abs(mario.YPos - originalMarioY) > MarioPhysicsConstants.maxJumpHeight)
-                {
-                    mario.PlayerVelocity = new Vector2(mario.PlayerVelocity.X, 0);
-                    mario.Fall();
-                    mario.PhysicsState = new Falling(mario);
-                }
+                mario.PlayerVelocity += MarioPhysicsConstants.marioJumpVelocity;
             }
 
+            mario.YPos += (int)(mario.PlayerVelocity.Y * gameTime.ElapsedGameTime.TotalSeconds);
+            mario.XPos += (int)(mario.PlayerVelocity.X * gameTime.ElapsedGameTime.TotalSeconds);
+
+            mario.PlayerVelocity *= MarioPhysicsConstants.velocityDecay;
+
+            /* If max Jump height is reached, make mario fall */
+            if (Math.Abs(mario.YPos - originalMarioY) > MarioPhysicsConstants.maxJumpHeight)
+            {
+                mario.Fall();
+            }
         }
     }
 }

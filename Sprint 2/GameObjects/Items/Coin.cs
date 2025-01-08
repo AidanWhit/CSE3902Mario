@@ -17,7 +17,7 @@ namespace Sprint_2.GameObjects.ItemSprites
         public float YPos { get; set; }
 
 
-        private int heightIncrease = -2;
+        private int heightIncrease = ItemPhysicsConstants.coinHeightChange;
         private bool moveDown = false;
 
         private float originalHeight;
@@ -25,7 +25,7 @@ namespace Sprint_2.GameObjects.ItemSprites
 
         public Coin(Vector2 location, bool fromBlock)
         {
-            sprite = ItemFactory.Instance.CreateCoin();
+            sprite = UniversalSpriteFactory.Instance.GetItemSprite(nameof(Coin));
             XPos = location.X;
             YPos = location.Y;
             originalHeight = YPos;
@@ -58,7 +58,7 @@ namespace Sprint_2.GameObjects.ItemSprites
         public void DeleteItem() 
         {
             GameObjectManager.Instance.Updateables.Remove(this);
-            GameObjectManager.Instance.Drawables.Remove(this);
+            GameObjectManager.Instance.BackDrawables.Remove(this);
         }
 
         public Rectangle GetHitBox()

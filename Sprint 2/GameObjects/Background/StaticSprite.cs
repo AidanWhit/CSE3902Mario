@@ -19,11 +19,6 @@ namespace Sprint_2.GameObjects
             this.Position = position;  
         }
 
-        public void Update(GameTime gameTime)
-        {
-           
-        }
-
         public void Draw(SpriteBatch spriteBatch, Color color)
         {
             spriteBatch.Draw(texture, Position, sourceRectangles[0], color);

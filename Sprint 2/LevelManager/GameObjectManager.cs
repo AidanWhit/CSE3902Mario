@@ -20,11 +20,9 @@ using System.Text.Json.Serialization;
 
 namespace Sprint_2.LevelManager
 {
-    /* TODO: Will need to change gameObject Manager to only store the lists and not do all of the drawing/updating/collision checking
-     * Also need to find a way to draw the items behind the blocks the spawn the items*/
     public class GameObjectManager
     {
-        private static GameObjectManager instance = null;
+        private static GameObjectManager instance;
         public static GameObjectManager Instance
         {
             get
@@ -38,13 +36,13 @@ namespace Sprint_2.LevelManager
         }
                 
 
-        public List<ICollideable>[] Blocks = new List<ICollideable>[210];
+        public List<ICollideable>[] Blocks = new List<ICollideable>[225];
         public List<Interfaces.IUpdateable> Updateables { get; set; } = new List<Interfaces.IUpdateable>();
-        public List<Interfaces.IDrawable> Drawables { get; set; } = new List<Interfaces.IDrawable>();
+        public List<Interfaces.IDrawable> ForeDrawables { get; set; } = new List<Interfaces.IDrawable>();
+        public List<Interfaces.IDrawable> BackDrawables { get; set; } = new List<Interfaces.IDrawable>();
+
         public List<ICollideable> Movers { get; set; } = new List<ICollideable>();
         public List<ICollideable> Static { get; set; } = new List<ICollideable>();
-
-        private Dictionary<string, (Type, Type)> collisionCommandMap = new Dictionary<string, (Type, Type)>();
 
         private GameObjectManager()
         {   
@@ -52,20 +50,6 @@ namespace Sprint_2.LevelManager
             {
                 Blocks[i] = new List<ICollideable>();
             }
-        }
-
-        public void AddCommandMapping(string entry, Type sourceCommand, Type receiverCommand)
-        {
-            collisionCommandMap.Add(entry, (sourceCommand, receiverCommand));
-        }
-        public Dictionary<string, (Type, Type)> GetCollisionDictionary()
-        {
-            return collisionCommandMap;
-        }
-        
-        private void UnloadObjects()
-        {
-
         }
         
         public List<ICollideable> GetNearbyBlocks(int column)
@@ -103,15 +87,16 @@ namespace Sprint_2.LevelManager
         }
         public void Reset()
         {
-            collisionCommandMap.Clear();
             Static.Clear();
             Movers.Clear();
             Updateables.Clear();
-            Drawables.Clear();
+            ForeDrawables.Clear();
+            BackDrawables.Clear();
             foreach (List<ICollideable> list in Blocks)
             {
                 list.Clear();
             }
         }
+
     }
 }

@@ -1,6 +1,9 @@
 ﻿using Microsoft.Xna.Framework;
 using Sprint_2.Constants;
 using Sprint_2.Interfaces;
+using Sprint_2.MarioPhysicsStates;
+using Sprint_2.Sound;
+using Sprint_2.Sprites;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -25,12 +28,16 @@ namespace Sprint_2.Commands.MarioCollisionCommands
 
         public void Execute()
         {
+            
             if (player.isFalling)
             {
                 player.PlayerVelocity = new Vector2(player.PlayerVelocity.X, MarioPhysicsConstants.bounceVelocity);
-                player.isJumping = true;
-                player.Jump();
+                SoundManager.Instance.PlaySoundEffect("stomp");
+
+                player.isFalling = false;
+                player.Bounce();
                 
+                HUD.Instance.AddScorePopUp(((Player)player).GetScore(), new Vector2(enemy.XPos, enemy.YPos));
             }
         }
     }

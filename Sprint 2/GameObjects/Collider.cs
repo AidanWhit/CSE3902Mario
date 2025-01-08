@@ -10,25 +10,31 @@ namespace Sprint_2.GameObjects
     public class Collider : ICollideable, Interfaces.IDrawable
     {
         private Rectangle collider;
-        private Vector2 location;
-        public Collider(Vector2 location, Vector2 size)
+        public Vector2 location { get; set; }
+        private string type;
+        private Vector2 size;
+        public Collider(Vector2 location, Vector2 size, string type)
         {
             this.location = location;
+            this.size = size;
             collider = new Rectangle((int)location.X, (int)location.Y, (int)size.X, (int)size.Y);
+            this.type = type;
             
         }
         public void Draw(SpriteBatch spriteBatch, Color color)
         {
+            collider = new Rectangle((int)location.X, (int)location.Y, (int)size.X, (int)size.Y);
+            /* Used to see where the invisible collision rectangles are located */
             HitBoxRectangle.DrawRectangle(spriteBatch, collider, Color.White, 1);
         }
         public string GetCollisionType()
         {
-            return typeof(Collider).Name;
+            return type;
         }
 
         public Rectangle GetHitBox()
         {
-            return collider;
+            return new Rectangle((int)location.X, (int)location.Y, (int)size.X, (int)size.Y);
         }
 
         public int GetColumn()

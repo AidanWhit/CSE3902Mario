@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Sprint_2.GameObjects.ItemSprites;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,5 +25,11 @@ namespace Sprint_2.Constants
         public static float timeUntilShellBecomesKoopa = 5f;
 
         public static float stompTimer = 0.75f;
+
+        public static int pointsFromFireball = 200;
+        public static int pointsFromStarMario = 100;
+        public static int kickShellPoints = 400;
+
+        public static readonly int[] shellScoreValues = new int[] { 500, 800, 1000, 2000, 4000, 5000, 8000 };
     }
 }

@@ -23,7 +23,7 @@ namespace Sprint_2.Commands.MarioMovementCommands
             if (!mario.isJumping)
             {
                 mario.ReleaseCrouch();
-                mario.Idle();
+                //mario.Idle();
             }
             
         }

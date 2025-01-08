@@ -4,7 +4,6 @@ using Sprint_2.Constants;
 using Sprint_2.Factories;
 using Sprint_2.GameObjects.Enemies.EnemyStates;
 using Sprint_2.Interfaces;
-using Sprint_2.Interfaces;
 using Sprint_2.LevelManager;
 using System;
 using System.Linq.Expressions;
@@ -25,7 +24,7 @@ namespace Sprint_2.GameObjects.Enemies.EnemySprites
         {
             XPos = initialPosition.X;
             YPos = initialPosition.Y;
-            Velocity = new Vector2(-3, 0); // Moving left by default
+            Velocity = new Vector2(-EnemyConstants.moveSpeed, 0); // Moving left by default
 
             koopaState = new KoopaStateMachine(this);
         }

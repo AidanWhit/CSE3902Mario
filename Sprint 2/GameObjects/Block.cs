@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Sprint_2.Constants;
+using Sprint_2.Sound;
 using Sprint_2.Factories;
 using Sprint_2.GameObjects.BlockStates;
 using Sprint_2.Interfaces;
@@ -13,8 +14,6 @@ namespace Sprint_2.GameObjects
     public class Block : IBlock
     {
         public Vector2 Position { get; set; }
-        public bool containsItem { get; set; }
-        public bool breakable { get; set; }
 
         private IBlockState blockState;
 
@@ -49,7 +48,10 @@ namespace Sprint_2.GameObjects
 
         public void BeHit(IPlayer player)
         {
+            //SoundManager.Instance.PlaySoundEffect("bump");
+
             blockState.BeHit(player);
+            
         }
 
         private IBlockState GetBlockState(string name)
@@ -57,7 +59,7 @@ namespace Sprint_2.GameObjects
             Dictionary<string, IBlockState> blockStates = new Dictionary<string, IBlockState>()
             {
                 {"BrownBrick", new BrownBrickState(this) },
-                {"BrownBrickWithCoins", new BrownBrickWithCoins(this, 6) },
+                {"BrownBrickWithCoins", new BrownBrickWithCoins(this, MiscConstants.defaultNumberOfCoins) },
                 {"ItemWithCoin", new ItemBlockWithCoin(this) },
                 {"ItemWithPowerUp", new ItemBlockWithPowerUp(this) },
                 {"Chiseled", new ChiseledBlockState(this) },

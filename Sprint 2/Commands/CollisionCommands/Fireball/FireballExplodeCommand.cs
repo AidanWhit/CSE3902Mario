@@ -24,7 +24,7 @@ namespace Sprint_2.Commands.CollisionCommands.Fireball
 
         public void Execute() 
         {
-            fireball.ChangeSprite(MarioSpriteFactory.Instance.FireballExplosion());
+            fireball.ChangeSprite(UniversalSpriteFactory.Instance.MarioFireballExplosion());
             fireball.EnteredExplosionState = true;
         }
     }

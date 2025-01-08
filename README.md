@@ -31,25 +31,22 @@ adventure that brings joy to gamers of all ages. Get ready to jump, run, and sav
 - S/Left Arrow: crouch
 - Z: throw the fireball
 - 3: power up
+- P: Pause the game
 - Q: Quit the game
 - R: Reset
 - E: Force the Player to take damage
 
-## Sprint3 Content
+## Sprint4 Content
 
-- **Camera:** Camera will manages the player’s view by smoothly following their horizontal movement while keeping the vertical position fixed. It uses interpolation for smooth transitions, clamps movement within level boundaries, and applies scaling to ensure the game world is rendered correctly on the screen.
-- **Background:** Backgrounds can be drawn in two ways: by giving the similar data as other blocks and items, given their sprite location; or by directly generating a background image for the entire level.
-- **XML files:** We have 2 XML files for testing level and SMB 1-1, the xml files contain all the properties of the objects in the level.
-- **LevelLoader:** Given an xml file of object data, the level loader reads through all of these items and then creates objects from that data based on what the data represents. These created objects are then added into specific lists in GameObjectManager based on what kind of object they are. 
-- **Game Object Manager:** GameObjectManager categorizes all the objects needed in the game and stores them as collections.
-- **Collision Detection:** Collision Detection uses a list of all moveable collideables and static collideables from GameObjectManager to detect collisions. If two items are intersecting, the ResolveCollision from the CollisionResponse class is called to deal with that specific collision
-- **Collision Response:** Using a dictionary of keys and their associted commands, commands are instantiated and then executed during runtime to resolve collisions. The key consists of the collision type of the source object, the collision type of the receiver object, as well as the side that the collison was detected on in reference to the source. 
+- **Sound:** The sound system is designed to handle background music (BGM) and sound effects (SFX) in a clean, reusable, and scalable way. It ensures that:
+- Multiple sound effects can play simultaneously.
+- Background music can transition seamlessly between states.
+- Sounds can be paused, resumed, stopped, or adjusted in volume dynamically
+- SpriteData for the SpriteFactory is loaded into a dictionary from an xml file.
+- Mario can transition between levels (overworld and the underworld) via the pipes located in the levels
+- Working HUD that displays remaining time, the player's score and coins, and the player's remaining lives
+- Different GameStates such as Paused, Playable, and Win that dictate how the game is updated as well as what keyboard controls are accepted in each state
 
-
-## How to Load Different Levels
-
-In this sprint, we have created two levels, and the data are stored in two XML files, and we need to let LevelLoader read the two files separately to enter different levels.
-The test level be loaded instead of level 1-1 by commenting out line 123 in Game1.cs and the uncommenting line 124. This will then have level loader load the xml file associated with the test level.
 
 ## Team Management
 
@@ -72,12 +69,11 @@ The project progress management was also better than last time, we created diffe
    - First we used Microsoft Excel to fill in the level data, the reason we used Excel is that it's easy to modify and generate whole rows and columns of data with it and most of the blocks in the levels have some of the same attributes such as height, name etc. We then wrote an external program in python to read the data from the Excel sheet and use it to generate XML files.
 4. **.NET Type system**
    - This allows us to use Reflections to create new ICommands objects during runtime that are then executed to resolve detected collisions. 
-
+5. **Singletons**
+   - Various singletons are used to ensure easy global access to classes that are utilized in a wide range of areas within the code. A few examples are the UniversalSpriteFactory, the HUD, and the Game1 class.
 ## Known Bugs
 
-* Sometimes when holding crouch during a jump and then landing, mario will move up and down really quickly
 * Mario can clip out of bounds if he kicks the shell near a wall. The collision with the shell will cause mario to be push out of bounds.
-* Collision with the bottom of blocks after bouncing on an enemy can produce weird results sometimes
 * xml file from the XMLgenerator might generates a file start with:
   ```xml
    line1: <?xml version="1.0" encoding="utf-8" ?>

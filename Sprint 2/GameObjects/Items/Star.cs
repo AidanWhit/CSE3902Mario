@@ -20,7 +20,7 @@ namespace Sprint_2.GameObjects.ItemSprites
         public Vector2 Velocity { get; set; }
         private ISprite sprite;
 
-        private float XSpeed = 1f;
+        private float XSpeed = ItemPhysicsConstants.defaultMoveSpeed;
         private IBlock block;
 
         private int topOfSourceBlock;
@@ -30,7 +30,7 @@ namespace Sprint_2.GameObjects.ItemSprites
             YPos = initialPosition.Y;
             Velocity = Vector2.Zero; 
 
-            sprite = ItemFactory.Instance.CreateStar();
+            sprite = UniversalSpriteFactory.Instance.GetItemSprite(nameof(Star));
             OnSpawn = true;
             this.topOfSourceBlock = topOfSourceBlock;
         }
@@ -71,7 +71,7 @@ namespace Sprint_2.GameObjects.ItemSprites
         {
             GameObjectManager.Instance.Movers.Remove(this);
             GameObjectManager.Instance.Updateables.Remove(this);
-            GameObjectManager.Instance.Drawables.Remove(this);
+            GameObjectManager.Instance.BackDrawables.Remove(this);
         }
 
         public Rectangle GetHitBox()
@@ -90,10 +90,6 @@ namespace Sprint_2.GameObjects.ItemSprites
 
         public int GetColumn()
         {
-            if (OnSpawn)
-            {
-                return -1;
-            }
             return (int)(XPos / CollisionConstants.blockWidth);
         }
     }

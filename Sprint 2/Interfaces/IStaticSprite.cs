@@ -12,9 +12,6 @@ namespace Sprint_2.Interfaces
     public interface IStaticSprite  : IDrawable
     {
         Vector2 Position { get; set; }
-        //public void Update(GameTime gameTime);
-        //public void Draw(SpriteBatch spriteBatch, Vector2 vector2, Color color);
-        //public void Draw(SpriteBatch spriteBatch, Color color);
     }
 
 }

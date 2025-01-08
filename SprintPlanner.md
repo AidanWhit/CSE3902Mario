@@ -1,51 +1,60 @@
 # Sprint Planner
 Here is the Sprint Planner that will be used to document our plans, design changes, and so forth for the sprints within this class.
 
-## Sprint 3 Plan
+## Sprint 4 Plan
 
-### Start Date: 09/30/24 
-### End Date: 10/19/24 @ noon
+### Start Date: 10/21/24 
+### End Date: 11/9/24 @ noon
 
 | Tasks | Time(Effort) | Time Remaining | In Progress (Name) | Expected Finish Date | Finished Date |
 |------:|--------------|----------------|--------------------|----------------------|---------------|
-| Camera class | 2-4 hours| 0 hours | Jin Fu & Zhuoyang | 10/9 | 10/11 |
-| XML/JSON files | 6 hours | 0 hours | Zhuoyang | 10/12 | 10/16 |
-| LevelLoader | ~8 hours | 0 hours | Hahn | 10/12 | 10/16| |
-| Collision Detection | 6 hours | 0 hours | Aidan & Christian | 10/14 | 10/14 |
-| Collision Response  | 10 hours | 0 hours | Aidan & Christian | 10/14 | 10/14 |
-| Game Object Manager | 6 hours | 0 hours | Jin Fu | 10/9 | 10/13 |
-| Grader Meeting | 1 hour | 0 hour | Everyone that can attend | 10/14 or 10/15 | 10/17 |
+| HUD | 8hrs |0hrs|Zhuoyang Li| 10/30| 11/04|
+| Sounds |8hrs|0hrs| Jingyu Fu| 10/27| 10/24 |
+| Flag Collison + Animation | 3-4 hours | 0 hours | Chirstian + Aidan | 10/26 | 10/24 |
+| Underground XML | 1-2 hours | 0 hours | Zhuoyang Li| 10/28 | 10/29|
+| Collision on entering/leaving underground  | 2 hours | 0 hours | Aidan | 10/28 | 10/30|
+| Score points appear on screen | 1-2 hrs| 0hrs | Zhuoyang Li | 10/28| 11/04 |
+| Remove magic numbers/strings | 6 hrs| 0 hrs | Everyone | 11/4 | 11/9 |
+| Create stationary coin for underground | 2 hours |  0 hours | Christian | 10/30 | 10/23 |
+| Pausing the Game |2hrs|0hrs | Jingyu Fu|10/27| 10/24 |
+| Win State | 2hrs| 0hrs |Jinguy Fu|10/27| 10/27 |
+| Game Over state | 2hrs|0hrs  |Jingyu Fu|10/27|10/27 |
+| Grader Meeting | 1 hour | 0 hour | Everyone | Sometime during the last week | 11/6 & 11/8
 
-### BackLog tasks from Sprint2 
+### BackLog tasks from Sprint3
 | Tasks | Time(Effort) | Time Remaining | In Progress (Name) | Expected Finish Date | Finished Date |
 |------:|--------------|----------------|--------------------|----------------------|---------------|
-| Star Mario Decorator | 2 hours | 0 hours | Aidan | 10/7 | 10/12 |
-|  Enemy Damage Functions | 2 hours | 0 hours | Zhuoyang | 10/9| 10/12 |
-| Block States | 4 hours | 0 hours | Christian | 10/9 | 10/12|
-| Align all of mario's sprites on the bottom of the sprite | 2 hours | 0 hours| Aidan | 10/7 | 10/2 |
+| Move Keyboard instantiation to a different class | 2hours | 0hrs | Hahn | 10/28 | 10/25 |
+| Brick break effect | 2 hours| 0hours | Aidan | 10/28 | 10/25 |
+| Refactor GameObjectManager | 2hrs | 0hrs | Hahn | 10/28| 10/26 |
+| Figure out to enter underground via different levels or teleportation | 4hrs | 0hrs | Hahn | 10/30| 10/30|
+| Add the ability to add sprite data to factories through a file | 2hrs| 0hrs| Hahn | 10/30| 11/04 |
+| Possibly refactor the player class | 4 hours | 0 hours | Aidan | 11/4 | 11/08 |
 
 
-## List of features to be added
+## List of features(classes)
 Strikethrough implies the items have been completed
-* ~~ICamera~~
-* ~~Camera Class~~
-* ~~GameObject manager class~~
-    - ~~void AddObj(IGameObject)~~
-    - ~~void RemoveObj(IGameObject)~~
-    - ~~List <IGameObject> for enemies, items, blocks~~
-    - ~~Potentially Draw(), Update()~~
-* ~~IGameObject~~
-* ~~Collison Handler Class(es)~~
-* ~~Collison Response Class(es)~~
-
-### Backlog of tasks for Sprint3
-* Refactor how GameObjectManager stores lists of drawables so newly created items will not be drawn on top of the block they spawn from
-* Fix crouching bug that sometimes occurs when the player jumps and the holds crouch while jumping. This can cause the player to move up and down extremely quickly
-* Move keyboard commands out of Game and into level loader or a different class
-* Have level loader (or some other class) populate the sprite factories with the data they need to create sprites
-* Possibly refactor player to privatize some of its public properties
-* Add a way to change between different levels while the game is running through commands
-
+* ~~HUD~~
+  - Text Class
+  - ~~Timer~~
+  - ~~Lives~~
+  - ~~Score~~
+  - ~~Coin Counter~~
+* ~~Sound Manager~~
+  - ~~ISound interface~~
+  - ~~SoundEffectWrapper~~
+  - ~~SoundManager~~
+  - ~~SFX~~
+  - ~~BGM~~
+* ~~State Manager~~
+  - ~~Update Game based on current~~
+  - ~~Pause state(command)~~
+  - ~~Win state~~
+  - ~~Game over state~~
+## Backlog tasks for next sprint
+* If there is time, a lot of the GameObject classes should have their XPos, YPos variables privatized to improve code quality. This would take a lot of time as accesses to these variables are strewn out everywhere in the code
 ## Design Changes
-* We initally designed the collision system to rely on multiple response classes but later decided that there should only be one response class. Thus, we had to refactor a lot of our existing collision system.
-* The enemies needed to be refactored from the previous sprint to allow them to support the various behaviors/states they needed to show at different times/collisions.
+* The idea of a state manager was scrapped and instead the states were broken up into distinct classes that would update the game based on its
+  respective state. Game1 has a gameState object that is constantly updating based on whatever IGameState is assigned to it.
+* The text class was never implemented, instead spriteBatch.DrawString() was used to have text displayed on the screen for the HUD as well as the GameOver/Win screens
+* The Player class was not able to be refactored as much as we would have liked during this sprint but it is still something that can be done next sprint if need be.

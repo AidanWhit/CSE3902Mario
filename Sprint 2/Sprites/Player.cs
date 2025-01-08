@@ -4,12 +4,14 @@ using Sprint_2.Interfaces;
 using Sprint_2.GameObjects;
 using Sprint_2.MarioPhysicsStates;
 using Sprint_2.MarioStates;
+using Sprint_2.Sound;
 using System.Collections.Generic;
 using System.Diagnostics;
 using Sprint_2.Constants;
 using System;
 using Sprint_2.LevelManager;
 using Sprint_2.Commands.ProgramCommands;
+using System.Threading;
 
 
 namespace Sprint_2.Sprites
@@ -30,12 +32,14 @@ namespace Sprint_2.Sprites
         public bool isJumping { get; set; } = false;
         public bool isFalling { get; set; } = false;
 
-        private int numberOfFireballsRemaining = 2;
+        private int numberOfFireballsRemaining = MarioPhysicsConstants.maxNumOfFireballs;
         public List<IProjectile> fireballs { get; set; } = new List<IProjectile>();
 
         public int RemainingLives { get; set; }
-        
-        public Player(Vector2 StartingLocation)
+
+        private int[] score = MarioPhysicsConstants.marioBounceScores;
+        private int scoreIndex = 0;
+        public Player(Vector2 StartingLocation, int lives)
         {
             XPos = (int)StartingLocation.X;
             YPos = (int)StartingLocation.Y;
@@ -43,20 +47,29 @@ namespace Sprint_2.Sprites
             PlayerState = new PlayerStateMachine(this);
 
             PhysicsState = new Grounded(this);
-
-            RemainingLives = MarioPhysicsConstants.startingLives;
+            RemainingLives = lives;
         }
         public void Update(GameTime gameTime)
         {
             /* Quick and easy way to reset player after falling out of bounds. Will be changed next sprint to be more robust */
             if (YPos > EnemyConstants.despawnHeight)
             {
+                SoundManager.Instance.StopBackgroundMusic();
+                //SoundManager.Instance.PlayBackgroundMusic("youAreDead");
+                SoundManager.Instance.PlaySoundEffect("marioDie");
+
+
                 ICommands reset = new ResetCommand();
                 reset.Execute();
+                Game1.Instance.mario.RemainingLives--;
+
             }
+
             UpdateFireballs(gameTime);
             PlayerState.Update(gameTime);
             PhysicsState.Update(gameTime);
+
+            //Debug.WriteLine("isJumping: " + isJumping);
         }
 
         public void Draw(SpriteBatch spriteBatch, Color color)
@@ -96,6 +109,9 @@ namespace Sprint_2.Sprites
                     fireballs.Add(fireball);
                     GameObjectManager.Instance.Movers.Add(fireball);
                     numberOfFireballsRemaining--;
+
+                    SoundManager.Instance.PlaySoundEffect("fireball");
+
                 }
 
             }
@@ -111,19 +127,31 @@ namespace Sprint_2.Sprites
         }
         public void Jump()
         {
-            
             if (!isJumping && !isFalling)
             {
-                PlayerState.Jump();
                 isJumping = true;
+                PhysicsState = new Jumping(this);
+                PlayerState.Jump();
+                SoundManager.Instance.PlaySoundEffect("jumpSmall");
             } 
             
         }
+
+        public void Bounce()
+        {
+            if (!isJumping && !isFalling)
+            {
+                isJumping = true;
+                PhysicsState = new BounceState(this);
+                PlayerState.Jump();
+            }
+        }
         public void Fall()
         {
-            PlayerState.Fall();
             isFalling = true;
+            isJumping = false;
             PhysicsState = new Falling(this);
+            PlayerState.Fall();
         }
         public void Idle()
         {
@@ -131,7 +159,7 @@ namespace Sprint_2.Sprites
             isCrouching = false;
             isJumping = false;
             isFalling = false;
-            
+            scoreIndex = 0; 
         }
 
         public void Crouch()
@@ -141,22 +169,19 @@ namespace Sprint_2.Sprites
 
         public void OnCrouch()
         {
-            if (!isCrouching && !isJumping)
+            if (!isCrouching && !isJumping && !isFalling)
             {
                 isCrouching = true;
-               
             }
         }
 
         public void ReleaseCrouch()
         {
-            Vector2 playerSize = PlayerState.getSize();
-            if (isCrouching && !playerSize.Equals(new Vector2(16 * 4, 16 * 4)))
+            if (isCrouching)
             {
                 int bottomOfSprite = GetHitBox().Bottom;
                 Idle();
                 YPos = bottomOfSprite - GetHitBox().Height;
-
             }
         }
 
@@ -170,6 +195,20 @@ namespace Sprint_2.Sprites
         public void PowerUp()
         {
             PlayerState.PowerUp();
+            SoundManager.Instance.PlaySoundEffect("powerUp");
+        }
+        public void Climb()
+        {
+            PlayerState.Climb();
+            SoundManager.Instance.StopBackgroundMusic();
+            SoundManager.Instance.PlaySoundEffect("flagpole");
+            SoundManager.Instance.PlaySoundEffect("stageClear");
+            
+        }
+
+        public void Die()
+        {
+            PlayerState.Die();
         }
         public Rectangle GetHitBox()
         {
@@ -189,6 +228,16 @@ namespace Sprint_2.Sprites
         public int GetColumn()
         {
             return (int)(XPos / CollisionConstants.blockWidth);
+        }
+
+        public PlayerStateMachine.Facing GetFacing()
+        {
+            return PlayerState.GetFacing();
+        }
+
+        public int GetScore()
+        {
+            return score[scoreIndex++];
         }
     }
 }

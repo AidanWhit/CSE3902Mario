@@ -1,7 +1,9 @@
-﻿using Sprint_2.Factories;
+﻿using Sprint_2.Constants;
+using Sprint_2.Factories;
 using Sprint_2.GameObjects.ItemSprites;
 using Sprint_2.Interfaces;
 using Sprint_2.LevelManager;
+using Sprint_2.Sound;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +18,7 @@ namespace Sprint_2.GameObjects.BlockStates
         public InvisibleState(IBlock block) : base(block) 
         {
             this.block = block;
-            sprite = BlockFactory.Instance.GetBlock("Invisible");
+            sprite = UniversalSpriteFactory.Instance.GetBlock(NamesOfSprites.SpriteNames.Invisible.ToString());
         }
 
         public override void BeHit(IPlayer player)
@@ -27,8 +29,9 @@ namespace Sprint_2.GameObjects.BlockStates
 
 
             GameObjectManager.Instance.Updateables.Add(mushroom);
-            GameObjectManager.Instance.Drawables.Add(mushroom);
+            GameObjectManager.Instance.BackDrawables.Add(mushroom);
             GameObjectManager.Instance.Movers.Add(mushroom);
+            SoundManager.Instance.PlaySoundEffect("powerUpAppears");
         }
     }
 }

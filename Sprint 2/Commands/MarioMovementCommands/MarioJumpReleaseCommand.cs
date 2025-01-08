@@ -1,4 +1,5 @@
 ﻿using Sprint_2.Interfaces;
+using Sprint_2.MarioPhysicsStates;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +19,7 @@ namespace Sprint_2.Commands.MarioMovementCommands
 
         public void Execute() 
         {
-            if (!player.isFalling)
+            if (!player.isFalling && player.PhysicsState is not Grounded)
             {
                 player.Fall();
             }

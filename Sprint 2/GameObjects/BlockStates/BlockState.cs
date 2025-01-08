@@ -1,8 +1,10 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Sprint_2.Sound;
 using Sprint_2.Interfaces;
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
+using Sprint_2.Constants;
 
 namespace Sprint_2.GameObjects.BlockStates
 {
@@ -12,7 +14,7 @@ namespace Sprint_2.GameObjects.BlockStates
         public ISprite sprite { get; set; }
         private IBlock block;
         public bool Hit { get; set; }
-        private int heightChange = -2;
+        private int heightChange = MiscConstants.blockHeightChange;
         private float originalBlockY;
 
         private int heightChangeIterations;
@@ -32,7 +34,7 @@ namespace Sprint_2.GameObjects.BlockStates
             {
                 
                 block.Position = new Vector2(block.Position.X, block.Position.Y + heightChange);
-                if (block.Position.Y < originalBlockY - 6)
+                if (block.Position.Y < originalBlockY - MiscConstants.blockTotalHeightChange)
                 {
                    
                     heightChange *= -1;

@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace Sprint_2.Controls
 {
-    internal class KeyboardControl : IController
+    public class KeyboardControl : IController
     {
         private Dictionary<Keys, ICommands> controllerMappings;
         private Dictionary<Keys, ICommands> onPressCommandMappings;
@@ -39,7 +39,7 @@ namespace Sprint_2.Controls
             
             foreach (Keys key in pressedKeys)
             {
-                /* Commands that will happens on press and hold will be executed here */
+                /* Commands that will happen when held down will be executed here */
                 if (controllerMappings.ContainsKey(key))
                 {
                     controllerMappings[key].Execute();
@@ -68,6 +68,5 @@ namespace Sprint_2.Controls
             onPressCommandMappings.Clear();
             onReleaseCommandMappings.Clear();
         }
-
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Sprint_2.Constants;
 using Sprint_2.Interfaces;
 using System.Diagnostics;
 using System.Reflection.Metadata.Ecma335;
@@ -29,7 +30,7 @@ namespace Sprint_2.Sprites
             size *= scale;
 
             /* TODO : move the magic number to one of the constant files */
-            animationSpeed = 0.1f;
+            animationSpeed = MiscConstants.animationSpeed;
             initialAnimationSpeed = animationSpeed;
         }
 

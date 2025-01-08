@@ -21,8 +21,6 @@ namespace Sprint_2.Interfaces
         public Vector2 Velocity { get; set; }
         void DeleteItem();
 
-        public Rectangle GetHitBox();
-
         public void ChangeDirection();
     }
 

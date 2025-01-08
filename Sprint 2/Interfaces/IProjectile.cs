@@ -12,8 +12,6 @@ namespace Sprint_2.Interfaces
         public bool EnteredExplosionState { get; set; }
 
         public bool isExploded();
-        public Rectangle GetHitBox();
-
         public void ChangeSprite(ISprite sprite);
 
     }
