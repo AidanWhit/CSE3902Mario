@@ -6,8 +6,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
+using Microsoft.Xna.Framework;
+using System.Diagnostics;
 
 namespace Sprint_2.Commands.MarioItemCommands
 {
@@ -15,7 +15,7 @@ namespace Sprint_2.Commands.MarioItemCommands
     {
         private IPlayer mario;
 
-        public MarioPowerUpCommand(IPlayer mario)
+        public MarioPowerUpCommand(IPlayer mario, IItem item, Rectangle collisionRect)
         {
             this.mario = mario;
         }

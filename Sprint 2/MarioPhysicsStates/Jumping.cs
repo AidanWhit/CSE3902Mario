@@ -22,7 +22,7 @@ namespace Sprint_2.MarioPhysicsStates
         {
             this.mario = mario;
             originalMarioY = mario.YPos;
-            this.mario.PlayerVelocity = new Vector2(this.mario.PlayerVelocity.X, 0);
+            //this.mario.PlayerVelocity = new Vector2(this.mario.PlayerVelocity.X, 0);
         }
 
         public void Update(GameTime gameTime)

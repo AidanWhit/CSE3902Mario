@@ -8,6 +8,8 @@ using System.Linq.Expressions;
 using Sprint_2.Constants;
 using System.Diagnostics;
 using System;
+using Sprint_2.GameObjects.Enemies.EnemySprites;
+using Sprint_2.LevelManager;
 
 namespace Sprint_2.Sprites.EnemySprites
 {
@@ -23,6 +25,7 @@ namespace Sprint_2.Sprites.EnemySprites
         private bool stomped = false;
 
         private bool startBehavior = false;
+        public IGoombaBehavior behavior;
 
         public bool Flipped { get; set; } = false;
         public Goomba(Vector2 initialPosition)
@@ -39,22 +42,6 @@ namespace Sprint_2.Sprites.EnemySprites
             startBehavior = UpdateStartBehavior();
             if (startBehavior)
             {
-                if (stomped)
-                {
-                    stompTimer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
-                    if (stompTimer < 0)
-                    {
-                        //Remove Goomba from enemies list
-                        EnemyFactory.Instance.RemoveEnemyFromObjectList(this);
-                    }
-                }
-                else if (Flipped)
-                {
-                    if (YPos > 650)
-                    {
-                        EnemyFactory.Instance.RemoveEnemyFromObjectList(this);
-                    }
-                }
                 goombaState.Update(gameTime);
             }
             
@@ -81,22 +68,42 @@ namespace Sprint_2.Sprites.EnemySprites
             goombaState.BeFlipped();
             Flipped = true;
             Velocity = EnemyConstants.flippedVelocity;
+            GameObjectManager.Instance.Movers.Remove(this);
         }
 
         public void TakeStompDamage()
         {
             goombaState.BeStomped();
             stomped = true;
+            GameObjectManager.Instance.Movers.Remove(this);
         }
 
         public void ChangeDirection()
         {
             goombaState.ChangeDirection();
         }
-
+        public void Move()
+        {
+            goombaState.Move();
+        }
         public Rectangle GetHitBox()
         {
             return goombaState.GetHitBox(new Vector2(XPos, YPos));
+        }
+
+        public string GetCollisionType()
+        {
+            return typeof(IEnemy).Name;
+        }
+
+        public int GetColumn()
+        {
+            return (int)(XPos / CollisionConstants.blockWidth);
+        }
+
+        public bool GetStomped()
+        {
+            return stomped;
         }
     }
 }

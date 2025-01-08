@@ -76,34 +76,5 @@ namespace Sprint_2.Factories
             this.gameObjectManager  = gameObjectManager;
         }
 
-        public void AddCoinToItemsList(Vector2 location)
-        {
-            gameObjectManager.AddItem(new Coin(location, gameObjectManager));
-        }
-
-        public void AddRedMushroomToItemsList(Vector2 location, IBlock block)
-        {
-            gameObjectManager.AddItem(new RedMushroom(location, block));
-        }
-
-        public void AddGreenMushroomToItemsList(Vector2 location, IBlock block)
-        {
-            gameObjectManager.AddItem(new GreenMushroom(location, block));
-        }
-
-        public void AddStarToItemsList(Vector2 location, IBlock block)
-        {
-            gameObjectManager.AddItem(new Star(location, block));
-        }
-
-        public void RemoveFromItemsList(IItem item)
-        {
-            gameObjectManager.RemoveItem(item);
-        }
-
-        public void AddFireFlowerToItemsList(Vector2 location, IBlock block)
-        {
-            gameObjectManager.AddItem(new Flower(location, block));
-        }
     }
 }

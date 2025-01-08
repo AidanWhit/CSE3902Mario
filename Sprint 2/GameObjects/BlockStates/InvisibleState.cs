@@ -1,5 +1,7 @@
 ﻿using Sprint_2.Factories;
+using Sprint_2.GameObjects.ItemSprites;
 using Sprint_2.Interfaces;
+using Sprint_2.LevelManager;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +23,12 @@ namespace Sprint_2.GameObjects.BlockStates
         {
             Hit = true;
             block.ChangeState(new UsedBlockState(block));
-            ItemFactory.Instance.AddGreenMushroomToItemsList(block.Position, block);
+            IItem mushroom = new GreenMushroom(block.Position, block.GetHitBox().Top);
+
+
+            GameObjectManager.Instance.Updateables.Add(mushroom);
+            GameObjectManager.Instance.Drawables.Add(mushroom);
+            GameObjectManager.Instance.Movers.Add(mushroom);
         }
     }
 }

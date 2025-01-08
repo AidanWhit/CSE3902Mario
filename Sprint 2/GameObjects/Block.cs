@@ -1,10 +1,12 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Sprint_2.Constants;
 using Sprint_2.Factories;
 using Sprint_2.GameObjects.BlockStates;
 using Sprint_2.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace Sprint_2.GameObjects
 {
@@ -21,7 +23,6 @@ namespace Sprint_2.GameObjects
         {
             Position = position;
             blockState = GetBlockState(name);
-            //BlockFactory.Instance.AddBlockToBlocksList(this);
         }
 
 
@@ -56,7 +57,7 @@ namespace Sprint_2.GameObjects
             Dictionary<string, IBlockState> blockStates = new Dictionary<string, IBlockState>()
             {
                 {"BrownBrick", new BrownBrickState(this) },
-                {"BrownBrickWithCoins", new BrownBrickWithCoins(this, 2) },
+                {"BrownBrickWithCoins", new BrownBrickWithCoins(this, 6) },
                 {"ItemWithCoin", new ItemBlockWithCoin(this) },
                 {"ItemWithPowerUp", new ItemBlockWithPowerUp(this) },
                 {"Chiseled", new ChiseledBlockState(this) },
@@ -77,6 +78,20 @@ namespace Sprint_2.GameObjects
         public IBlockState GetBlockState()
         {
             return blockState;
+        }
+
+        public string GetCollisionType()
+        {
+            if (blockState.GetType() == typeof(InvisibleState))
+            {
+                return typeof(InvisibleState).Name;
+            }
+            return typeof(IBlock).Name;
+        }
+
+        public int GetColumn()
+        {
+            return (int)(Position.X / CollisionConstants.blockWidth);
         }
     }
 }

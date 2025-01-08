@@ -22,7 +22,9 @@ namespace Sprint_2.GameObjects.ItemSprites
 
         private float XSpeed = 1f;
         private IBlock block;
-        public Star(Vector2 initialPosition, IBlock sourceBlock)
+
+        private int topOfSourceBlock;
+        public Star(Vector2 initialPosition, int topOfSourceBlock)
         {
             XPos = initialPosition.X;
             YPos = initialPosition.Y;
@@ -30,7 +32,7 @@ namespace Sprint_2.GameObjects.ItemSprites
 
             sprite = ItemFactory.Instance.CreateStar();
             OnSpawn = true;
-            block = sourceBlock;
+            this.topOfSourceBlock = topOfSourceBlock;
         }
 
         public void Update(GameTime gameTime)
@@ -38,9 +40,10 @@ namespace Sprint_2.GameObjects.ItemSprites
             if (OnSpawn)
             {
                 YPos--;
-                if (GetHitBox().Bottom < block.GetHitBox().Top)
+                if (GetHitBox().Bottom < topOfSourceBlock)
                 {
                     OnSpawn = false;
+                    GameObjectManager.Instance.Movers.Add(this);
                 }
             }
             else
@@ -59,14 +62,16 @@ namespace Sprint_2.GameObjects.ItemSprites
             sprite.Update(gameTime);
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch spriteBatch, Color color)
         {
-            sprite.Draw(spriteBatch, new Vector2(XPos, YPos), Color.White);
+            sprite.Draw(spriteBatch, new Vector2(XPos, YPos), color);
         }
 
-        public void DeleteItem(GameObjectManager gameObjectManager) 
+        public void DeleteItem() 
         {
-            ItemFactory.Instance.RemoveFromItemsList(this);
+            GameObjectManager.Instance.Movers.Remove(this);
+            GameObjectManager.Instance.Updateables.Remove(this);
+            GameObjectManager.Instance.Drawables.Remove(this);
         }
 
         public Rectangle GetHitBox()
@@ -77,6 +82,19 @@ namespace Sprint_2.GameObjects.ItemSprites
         public void ChangeDirection() 
         {
             XSpeed *= -1;
+        }
+        public string GetCollisionType()
+        {
+            return typeof(Star).Name;
+        }
+
+        public int GetColumn()
+        {
+            if (OnSpawn)
+            {
+                return -1;
+            }
+            return (int)(XPos / CollisionConstants.blockWidth);
         }
     }
 }

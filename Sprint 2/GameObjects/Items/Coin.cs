@@ -21,38 +21,44 @@ namespace Sprint_2.GameObjects.ItemSprites
         private bool moveDown = false;
 
         private float originalHeight;
+        private bool fromBlock;
 
-        private GameObjectManager gameObjectManager;
-        public Coin(Vector2 location, GameObjectManager gameObjectManager)
+        public Coin(Vector2 location, bool fromBlock)
         {
             sprite = ItemFactory.Instance.CreateCoin();
             XPos = location.X;
             YPos = location.Y;
             originalHeight = YPos;
 
-            this.gameObjectManager = gameObjectManager;
+            this.fromBlock = fromBlock;
         }
 
         public void Update(GameTime gameTime)
         {
-            YPos += heightIncrease;
-            if (YPos < originalHeight - ItemPhysicsConstants.coinHeightIncrease)
+            if (fromBlock)
             {
-                heightIncrease *= -1;
-            } 
-            else if (YPos > originalHeight)
-            {
-                DeleteItem(gameObjectManager);
+                YPos += heightIncrease;
+                if (YPos < originalHeight - ItemPhysicsConstants.coinHeightIncrease)
+                {
+                    heightIncrease *= -1;
+                }
+                else if (YPos > originalHeight)
+                {
+                    DeleteItem();
+                }
             }
+            
+            
             sprite.Update(gameTime);
         }
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch spriteBatch, Color color)
         {
-            sprite.Draw(spriteBatch, new Vector2(XPos, YPos), Color.White);
+            sprite.Draw(spriteBatch, new Vector2(XPos, YPos), color);
         }
-        public void DeleteItem(GameObjectManager gameObjectManager) 
+        public void DeleteItem() 
         {
-            gameObjectManager.RemoveItem(this);
+            GameObjectManager.Instance.Updateables.Remove(this);
+            GameObjectManager.Instance.Drawables.Remove(this);
         }
 
         public Rectangle GetHitBox()
@@ -61,5 +67,15 @@ namespace Sprint_2.GameObjects.ItemSprites
         }
 
         public void ChangeDirection() { }
+
+        public string GetCollisionType()
+        {
+            return typeof(Coin).Name;
+        }
+
+        public int GetColumn()
+        {
+            return (int)(XPos / CollisionConstants.blockWidth);
+        }
     }
 }

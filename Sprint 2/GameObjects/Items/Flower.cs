@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Sprint_2.Constants;
 using Sprint_2.Factories;
 using Sprint_2.Interfaces;
 using Sprint_2.LevelManager;
@@ -15,13 +16,14 @@ namespace Sprint_2.GameObjects.ItemSprites
         private ISprite sprite;
 
         private IBlock sourceBlock;
+        private int topOfSourceBlock;
 
-        public Flower(Vector2 initialPosition, IBlock block)
+        public Flower(Vector2 initialPosition, int topOfSourceBlock)
         {
             XPos = initialPosition.X;
             YPos = initialPosition.Y;
 
-            sourceBlock = block;
+            this.topOfSourceBlock = topOfSourceBlock;
             OnSpawn = true;
 
             sprite = ItemFactory.Instance.CreateFlower();
@@ -33,7 +35,7 @@ namespace Sprint_2.GameObjects.ItemSprites
             {
 
                 YPos--;
-                if (GetHitBox().Bottom < sourceBlock.GetHitBox().Top)
+                if (GetHitBox().Bottom < topOfSourceBlock)
                 {
                     OnSpawn = false;
                 }
@@ -41,14 +43,16 @@ namespace Sprint_2.GameObjects.ItemSprites
             sprite.Update(gameTime);
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch spriteBatch, Color color)
         {
-            sprite.Draw(spriteBatch, new Vector2(XPos, YPos), Color.White);
+            sprite.Draw(spriteBatch, new Vector2(XPos, YPos), color);
         }
 
-        public void DeleteItem(GameObjectManager gameObjectManager) 
+        public void DeleteItem() 
         {
-            ItemFactory.Instance.RemoveFromItemsList(this);
+            GameObjectManager.Instance.Static.Remove(this);
+            GameObjectManager.Instance.Updateables.Remove(this);
+            GameObjectManager.Instance.Drawables.Remove(this);
         }
 
         public Rectangle GetHitBox()
@@ -57,5 +61,15 @@ namespace Sprint_2.GameObjects.ItemSprites
         }
 
         public void ChangeDirection() { }
+
+        public string GetCollisionType()
+        {
+            return typeof(IItem).Name;
+        }
+
+        public int GetColumn()
+        {
+            return (int)(XPos / CollisionConstants.blockWidth);
+        }
     }
 }

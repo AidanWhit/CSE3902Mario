@@ -8,6 +8,8 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using Sprint_2.Constants;
 using System;
+using Sprint_2.LevelManager;
+using Sprint_2.Commands.ProgramCommands;
 
 
 namespace Sprint_2.Sprites
@@ -32,12 +34,7 @@ namespace Sprint_2.Sprites
         public List<IProjectile> fireballs { get; set; } = new List<IProjectile>();
 
         public int RemainingLives { get; set; }
-
-        private float opacity = 1f;
-        private float flashSpeed = MarioPhysicsConstants.flashSpeed;
-        private float damagedTime = MarioPhysicsConstants.damagedTime;
         
-
         public Player(Vector2 StartingLocation)
         {
             XPos = (int)StartingLocation.X;
@@ -51,21 +48,11 @@ namespace Sprint_2.Sprites
         }
         public void Update(GameTime gameTime)
         {
-            if (IsDamaged)
+            /* Quick and easy way to reset player after falling out of bounds. Will be changed next sprint to be more robust */
+            if (YPos > EnemyConstants.despawnHeight)
             {
-                damagedTime -= (float)gameTime.ElapsedGameTime.TotalSeconds;
-                flashSpeed -= (float)gameTime.ElapsedGameTime.TotalSeconds;
-                if (flashSpeed < 0)
-                {
-                    opacity = (opacity + 1) % 2;
-                    flashSpeed = MarioPhysicsConstants.flashSpeed;
-                }
-                if (damagedTime < 0)
-                {
-                    damagedTime = MarioPhysicsConstants.damagedTime;
-                    IsDamaged = false;
-                }
-               
+                ICommands reset = new ResetCommand();
+                reset.Execute();
             }
             UpdateFireballs(gameTime);
             PlayerState.Update(gameTime);
@@ -76,9 +63,9 @@ namespace Sprint_2.Sprites
         {
             for (int i = 0; i < fireballs.Count; i++)
             {
-                fireballs[i].Draw(spriteBatch);
+                fireballs[i].Draw(spriteBatch, Color.White);
             }
-            PlayerState.Draw(spriteBatch, color * opacity);
+            PlayerState.Draw(spriteBatch, color);
         }
 
         public void UpdateFireballs(GameTime gameTime)
@@ -87,7 +74,9 @@ namespace Sprint_2.Sprites
             {
                 if (fireballs[i].isExploded())
                 {
+                    GameObjectManager.Instance.Movers.Remove(fireballs[i]);
                     fireballs.Remove(fireballs[i]);
+                    
                     numberOfFireballsRemaining++;
                 }
                 else
@@ -105,6 +94,7 @@ namespace Sprint_2.Sprites
                 if (fireball != null)
                 {
                     fireballs.Add(fireball);
+                    GameObjectManager.Instance.Movers.Add(fireball);
                     numberOfFireballsRemaining--;
                 }
 
@@ -137,10 +127,11 @@ namespace Sprint_2.Sprites
         }
         public void Idle()
         {
+            PlayerState.Idle();
             isCrouching = false;
             isJumping = false;
             isFalling = false;
-            PlayerState.Idle();
+            
         }
 
         public void Crouch()
@@ -150,8 +141,7 @@ namespace Sprint_2.Sprites
 
         public void OnCrouch()
         {
-            Vector2 playerSize = PlayerState.getSize();
-            if (!isCrouching && !playerSize.Equals(new Vector2(16 *4, 16 *4)) && !isJumping)
+            if (!isCrouching && !isJumping)
             {
                 isCrouching = true;
                
@@ -189,6 +179,16 @@ namespace Sprint_2.Sprites
         public string GetHealth()
         {
             return PlayerState.GetHealth();
+        }
+
+        public string GetCollisionType()
+        {
+            return typeof(IPlayer).Name;
+        }
+
+        public int GetColumn()
+        {
+            return (int)(XPos / CollisionConstants.blockWidth);
         }
     }
 }

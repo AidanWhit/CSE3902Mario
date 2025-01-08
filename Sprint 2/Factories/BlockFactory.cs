@@ -26,16 +26,16 @@ namespace Sprint_2.Factories
         //TODO : To be moved out of here for a later sprint
         private Dictionary<string, Rectangle[]> blockDictionary = new Dictionary<string, Rectangle[]> {
             {"SmallPipe", new Rectangle[]{new Rectangle(69, 1, 32, 32)} },
-            {"MediumPipe", new Rectangle[]{new Rectangle(35, 1, 32, 47)} },
-            {"LargePipe", new Rectangle[]{new Rectangle(1, 1, 32, 62)} },
+            {"MediumPipe", new Rectangle[]{new Rectangle(35, 1, 32, 48)} },
+            {"LargePipe", new Rectangle[]{new Rectangle(1, 1, 32, 64)} },
             {"BlueBrick", new Rectangle[]{new Rectangle(69, 35, 16, 16)} },
-            {"BlueGround", new Rectangle[]{new Rectangle(1, 65, 16, 16) } },
-            {"BrownBrick", new Rectangle[]{new Rectangle(19, 65, 16, 16)} },
-            {"Chiseled", new Rectangle[]{new Rectangle(37, 65, 16, 16)} },
-            {"BrownGround", new Rectangle[]{new Rectangle(55, 65, 16, 16) } },
-            {"Hit", new Rectangle[]{new Rectangle(73, 65,16, 16) } },
-            {"Question", new Rectangle[]{new Rectangle(1, 83, 16, 16), new Rectangle(19, 83, 16, 16), new Rectangle(37, 83, 16, 16)} },
-            {"Invisible", new Rectangle[]{new Rectangle(55, 83, 16, 16)} }
+            {"BlueGround", new Rectangle[]{new Rectangle(1, 67, 16, 16) } },
+            {"BrownBrick", new Rectangle[]{new Rectangle(19, 67, 16, 16)} },
+            {"Chiseled", new Rectangle[]{new Rectangle(37, 67, 16, 16)} },
+            {"BrownGround", new Rectangle[]{new Rectangle(55, 67, 16, 16) } },
+            {"Hit", new Rectangle[]{new Rectangle(73, 67,16, 16) } },
+            {"Question", new Rectangle[]{new Rectangle(1, 85, 16, 16), new Rectangle(19, 85, 16, 16), new Rectangle(37, 85, 16, 16)} },
+            {"Invisible", new Rectangle[]{new Rectangle(55, 85, 16, 16)} }
 
         };
 
@@ -59,24 +59,6 @@ namespace Sprint_2.Factories
         public void SetGameObjectManager(GameObjectManager gameObjectManager)
         {
             this.gameObjectManager = gameObjectManager;
-        }
-        public void AddBlockToBlocksList(IBlock block)
-        {
-            gameObjectManager.AddBlock(block);
-        }
-
-        public void RemoveBlockFromList(IBlock block, int column)
-        {
-            gameObjectManager.RemoveBlock(block, column);
-        }
-
-        public void AddPipeToPipesList(IPipe pipe)
-        {
-            gameObjectManager.AddPipe(pipe);
-        }
-        public void RemovePipeFromPipesList(IPipe pipe)
-        {
-            gameObjectManager.RemovePipe(pipe);
         }
 
     }

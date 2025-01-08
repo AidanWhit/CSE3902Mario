@@ -8,12 +8,10 @@ using System.Threading.Tasks;
 
 namespace Sprint_2.Interfaces
 {
-    public interface IPipe
+    public interface IPipe: ICollideable, IUpdateable, IDrawable
     {
         public float XPos { get; set; }
         public float YPos { get; set; }
-        public void Update(GameTime gameTime);
-        public void Draw(SpriteBatch spriteBatch, Color color);
         public Rectangle GetHitBox();
     }
 }

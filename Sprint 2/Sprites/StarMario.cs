@@ -116,5 +116,15 @@ namespace Sprint_2.Sprites
         {
             return decoratedPlayer.GetHealth();
         }
+
+        public string GetCollisionType()
+        {
+            return typeof(StarMario).Name;
+        }
+
+        public int GetColumn()
+        {
+            return decoratedPlayer.GetColumn();
+        }
     }
 }

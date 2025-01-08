@@ -23,8 +23,9 @@ namespace Sprint_2.GameObjects.ItemSprites
         private IBlock sourceBlock;
 
         private float speed = 1f;
+        private int topOfSourceBlock;
 
-        public RedMushroom(Vector2 initialPosition, IBlock block)
+        public RedMushroom(Vector2 initialPosition, int topOfSourceBlock)
         {
             XPos = initialPosition.X;
             YPos = initialPosition.Y;
@@ -34,7 +35,8 @@ namespace Sprint_2.GameObjects.ItemSprites
             OnSpawn = true;
             spawnedYPosition = initialPosition.Y;
 
-            sourceBlock = block;
+            //sourceBlock = block;
+            this.topOfSourceBlock = topOfSourceBlock;
         }
 
 
@@ -44,9 +46,10 @@ namespace Sprint_2.GameObjects.ItemSprites
             {
                 
                 YPos--;
-                if (GetHitBox().Bottom < sourceBlock.GetHitBox().Top)
+                if (GetHitBox().Bottom < topOfSourceBlock)
                 {
                     OnSpawn = false;
+                    GameObjectManager.Instance.Movers.Add(this);
                 }
             }
             else
@@ -63,21 +66,23 @@ namespace Sprint_2.GameObjects.ItemSprites
             }
             if (YPos > EnemyConstants.despawnHeight)
             {
-                ItemFactory.Instance.RemoveFromItemsList(this);
+                DeleteItem();
             }
             
             sprite.Update(gameTime);
         }
 
 
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch spriteBatch, Color color)
         {
-            sprite.Draw(spriteBatch, new Vector2(XPos, YPos), Color.White);
+            sprite.Draw(spriteBatch, new Vector2(XPos, YPos), color);
         }
 
-        public void DeleteItem(GameObjectManager gameObjectManager) 
+        public void DeleteItem() 
         {
-            ItemFactory.Instance.RemoveFromItemsList(this);
+            GameObjectManager.Instance.Movers.Remove(this);
+            GameObjectManager.Instance.Updateables.Remove(this);
+            GameObjectManager.Instance.Drawables.Remove(this);
         }
 
         public Rectangle GetHitBox()
@@ -87,6 +92,20 @@ namespace Sprint_2.GameObjects.ItemSprites
 
         public void ChangeDirection() {
             speed *= -1;
+        }
+
+        public string GetCollisionType()
+        {
+            return typeof(IItem).Name;
+        }
+
+        public int GetColumn()
+        {
+            if (OnSpawn)
+            {
+                return -1;
+            }
+            return (int)(XPos / CollisionConstants.blockWidth);
         }
     }
 }

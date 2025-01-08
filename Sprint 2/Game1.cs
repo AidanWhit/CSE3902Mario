@@ -14,6 +14,8 @@ using Sprint_2.ScreenCamera;
 using Sprint_2.LevelManager;
 using System.Diagnostics;
 using System;
+using Sprint_2.Collision;
+using System.Linq;
 
 
 namespace Sprint_2
@@ -34,11 +36,10 @@ namespace Sprint_2
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
 
+        //TODO: Make this singular IPlayer into a list and have level loader create the player
         public IPlayer mario { get; set; }
         private KeyboardControl keyControl;
 
-
-        private GameObjectManager objectManager;
 
         private List<IBlock> blocks;
 
@@ -48,6 +49,7 @@ namespace Sprint_2
         private Camera camera;
         private Vector2 levelBounds;
         private LevelLoader levelLoader;
+        private CollisionDetection collisionDetection;
 
         private Game1()
         {
@@ -61,11 +63,7 @@ namespace Sprint_2
             keyControl = new KeyboardControl();
             
             // Set the level bounds (adjust these values to match your level size)
-            levelBounds = new Vector2(5000, 1080);
-
-            // Initialize the camera with the current viewport and level bounds
-            
-
+            levelBounds = new Vector2(3744, 240);
             base.Initialize();
         }
 
@@ -84,19 +82,14 @@ namespace Sprint_2
             BackgroundFactory.Instance.LoadAllContent(Content);
 
             mario = new Player(new Vector2(100, 400));
+            collisionDetection = new CollisionDetection();
 
             camera = new Camera(GraphicsDevice.Viewport, levelBounds);
-
-            objectManager = new GameObjectManager(mario);
-
-            levelLoader = new LevelLoader(@"LevelManager\level-1_data_pretty.xml", objectManager);
-            levelLoader.LoadCommandDictionary(@"LevelManager\XMLFiles\CollisionTable.xml");
             
 
-            ItemFactory.Instance.SetGameObjectManager(objectManager);
-            BlockFactory.Instance.SetGameObjectManager(objectManager);
-            EnemyFactory.Instance.SetGameObjectManager(objectManager);
-            BackgroundFactory.Instance.SetGameObjectManager(objectManager);
+            ItemFactory.Instance.SetGameObjectManager(GameObjectManager.Instance);
+            BlockFactory.Instance.SetGameObjectManager(GameObjectManager.Instance);
+            EnemyFactory.Instance.SetGameObjectManager(GameObjectManager.Instance);
 
             Texture2D texture = Content.Load<Texture2D>("marioSpriteSheet");
 
@@ -109,22 +102,27 @@ namespace Sprint_2
             keyControl.RegisterCommand(Keys.D, new MarioFacingRightCommand(mario));
             keyControl.RegisterCommand(Keys.A, new MarioFacingLeftCommand(mario));
 
+            keyControl.RegisterCommand(Keys.Up, new MarioFacingUpCommand(mario));
+            keyControl.RegisterCommand(Keys.Down, new MarioFacingDownCommand(mario));
+            keyControl.RegisterCommand(Keys.Left, new MarioFacingRightCommand(mario));
+            keyControl.RegisterCommand(Keys.Right, new MarioFacingLeftCommand(mario));
+
 
 
             keyControl.RegisterOnPressCommand(Keys.Z, new MarioAttackNormalCommand(mario));
-            keyControl.RegisterOnPressCommand(Keys.D3, new MarioPowerUpCommand(mario));
-            keyControl.RegisterOnPressCommand(Keys.E, new MarioHurtCommand(mario));
+            keyControl.RegisterOnPressCommand(Keys.D3, new MarioPowerUpCommand(mario, null, Rectangle.Empty));
+            keyControl.RegisterOnPressCommand(Keys.E, new MarioHurtCommand(mario, null, Rectangle.Empty));
             keyControl.RegisterCommand(Keys.Q, new QuitCommand(this));
-            keyControl.RegisterCommand(Keys.R, new ResetCommand(this));
+            keyControl.RegisterCommand(Keys.R, new ResetCommand());
 
             keyControl.RegisterOnReleaseCommand(Keys.S, new MarioOnCrouchRelease(mario));
             keyControl.RegisterOnPressCommand(Keys.S, new MarioOnCrouchPress(mario));
             keyControl.RegisterOnReleaseCommand(Keys.W, new MarioJumpReleaseCommand(mario));
 
 
-           
-            levelLoader.LoadLevel();
-
+            levelLoader = new LevelLoader();
+            levelLoader.LoadLevel(@"LevelManager\level-1_data_pretty.xml");
+            //levelLoader.LoadLevel(@"LevelManager\testing-level.xml");
         }
         protected override void UnloadContent()
         {
@@ -140,7 +138,12 @@ namespace Sprint_2
             // Update camera based on Mario's position
             camera.Update(gameTime, new Vector2(mario.XPos, mario.YPos));
 
-            objectManager.Update(gameTime);
+            mario.Update(gameTime);
+            foreach (Interfaces.IUpdateable obj in GameObjectManager.Instance.Updateables.ToList())
+            {
+                obj.Update(gameTime);
+            }
+            collisionDetection.DetectCollision();
 
             base.Update(gameTime);
         }
@@ -150,8 +153,12 @@ namespace Sprint_2
             GraphicsDevice.Clear(Color.CornflowerBlue);
             // Begin the sprite batch with the camera's transformation matrix
             spriteBatch.Begin(transformMatrix: camera.Transform);
-            
-            objectManager.Draw(spriteBatch, null, Color.White);
+           
+            foreach (Interfaces.IDrawable obj in GameObjectManager.Instance.Drawables.ToList())
+            {
+                obj.Draw(spriteBatch, Color.White);
+            }
+            mario.Draw(spriteBatch, Color.White);
 
             spriteBatch.End();
             base.Draw(gameTime);
@@ -159,8 +166,11 @@ namespace Sprint_2
 
         public void Reload()
         {
+            GameObjectManager.Instance.Reset();
             this.UnloadContent();
             this.LoadContent();
+            
+            
         }
     }
 }

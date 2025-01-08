@@ -5,6 +5,7 @@ using Sprint_2.Factories;
 using Sprint_2.GameObjects.Enemies.EnemyStates;
 using Sprint_2.Interfaces;
 using Sprint_2.Interfaces;
+using Sprint_2.LevelManager;
 using System;
 using System.Linq.Expressions;
 
@@ -20,7 +21,6 @@ namespace Sprint_2.GameObjects.Enemies.EnemySprites
 
         private KoopaStateMachine koopaState;
 
-        private bool startBehavior = false;
         public Koopa(Vector2 initialPosition)
         {
             XPos = initialPosition.X;
@@ -32,16 +32,7 @@ namespace Sprint_2.GameObjects.Enemies.EnemySprites
 
         public void Update(GameTime gameTime)
         {
-            startBehavior = UpdateStartBehavior();
-            if (startBehavior)
-            {
-                if (YPos > EnemyConstants.despawnHeight)
-                {
-                    EnemyFactory.Instance.RemoveEnemyFromObjectList(this);
-                }
-                koopaState.Update(gameTime);
-            }
-            
+            koopaState.Update(gameTime);
         }
 
         public void Draw(SpriteBatch spriteBatch, Color color)
@@ -53,19 +44,12 @@ namespace Sprint_2.GameObjects.Enemies.EnemySprites
         {
             return koopaState.GetHitBox(new Vector2(XPos, YPos));
         }
-        public bool UpdateStartBehavior()
-        {
-            float distToPlayer = Math.Abs(Game1.Instance.mario.XPos - XPos);
-            if (distToPlayer < EnemyConstants.distUntilBehaviorStarts)
-            {
-                startBehavior = true;
-            }
-            return startBehavior;
-        }
+
         public void TakeFireballDamage()
         {
             Flipped = true;
             koopaState.BeFlipped();
+            GameObjectManager.Instance.Movers.Remove(this);
         }
 
         public void TakeStompDamage()
@@ -75,6 +59,16 @@ namespace Sprint_2.GameObjects.Enemies.EnemySprites
         public void ChangeDirection()
         {
             koopaState.ChangeDirection();
+        }
+
+        public string GetCollisionType()
+        {
+            return typeof(IEnemy).Name;
+        }
+
+        public int GetColumn()
+        {
+            return (int)(XPos / CollisionConstants.blockWidth);
         }
     }
 }

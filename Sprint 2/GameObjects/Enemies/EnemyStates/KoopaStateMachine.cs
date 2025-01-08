@@ -6,6 +6,7 @@ using Sprint_2.Constants;
 using Sprint_2.Factories;
 using Sprint_2.GameObjects.Enemies.EnemySprites;
 using Sprint_2.Interfaces;
+using Sprint_2.LevelManager;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -24,6 +25,8 @@ namespace Sprint_2.GameObjects.Enemies.EnemyStates
         private bool facingLeft = true;
         private enum Health { Normal, Shell, Flipped};
         private Health health = Health.Normal;
+
+        private bool startBehavior = false;
 
         public KoopaStateMachine(Koopa koopa)
         {
@@ -49,20 +52,43 @@ namespace Sprint_2.GameObjects.Enemies.EnemyStates
 
         public void Update(GameTime gameTime)
         {
-            if (koopa.Velocity.Y < EnemyConstants.maxFallVelocity)
+            startBehavior = UpdateStartBehavior();
+            if (startBehavior)
             {
-                koopa.Velocity += EnemyConstants.fallVelocity;
-            }
+                /* Apply Gravity*/
+                if (koopa.Velocity.Y < EnemyConstants.maxFallVelocity)
+                {
+                    koopa.Velocity += EnemyConstants.fallVelocity;
+                }
 
-            if (health == Health.Normal)
-            {
-                Move();
-            }
-            
-            koopa.YPos += (float)(koopa.Velocity.Y * gameTime.ElapsedGameTime.TotalSeconds);
+                if (health == Health.Normal)
+                {
+                    Move();
+                }
 
-            koopa.Velocity = new Vector2(koopa.Velocity.X, koopa.Velocity.Y * MarioPhysicsConstants.velocityDecay);
+                /* Move Position*/
+                koopa.YPos += (float)(koopa.Velocity.Y * gameTime.ElapsedGameTime.TotalSeconds);
+                koopa.Velocity = new Vector2(koopa.Velocity.X, koopa.Velocity.Y * MarioPhysicsConstants.velocityDecay);
+
+                /* if the koopa falls out of the map */
+                if (koopa.YPos > EnemyConstants.despawnHeight)
+                {
+                    GameObjectManager.Instance.Movers.Remove(koopa);
+                    GameObjectManager.Instance.Updateables.Remove(koopa);
+                    GameObjectManager.Instance.Drawables.Remove(koopa);
+                }
+
+            }
             sprite.Update(gameTime);
+        }
+        private bool UpdateStartBehavior()
+        {
+            float distToPlayer = Math.Abs(Game1.Instance.mario.XPos - koopa.XPos);
+            if (distToPlayer < EnemyConstants.distUntilBehaviorStarts)
+            {
+                startBehavior = true;
+            }
+            return startBehavior;
         }
 
         public void Draw(SpriteBatch spriteBatch, Vector2 location, Color color)
@@ -92,8 +118,14 @@ namespace Sprint_2.GameObjects.Enemies.EnemyStates
                 sprite = EnemyFactory.Instance.CreateKoopaShell();
                 bottomPos -= sprite.GetHitBox(new Vector2(koopa.XPos, koopa.YPos)).Height; 
 
-                EnemyFactory.Instance.RemoveEnemyFromObjectList(koopa);
-                EnemyFactory.Instance.AddEnemy(new Shell(new Vector2(koopa.XPos, bottomPos)));
+                GameObjectManager.Instance.Movers.Remove(koopa);
+                GameObjectManager.Instance.Updateables.Remove(koopa);
+                GameObjectManager.Instance.Drawables.Remove(koopa);
+
+                Shell shell = new Shell(new Vector2(koopa.XPos, bottomPos));
+                GameObjectManager.Instance.Movers.Add(shell);
+                GameObjectManager.Instance.Updateables.Add(shell);
+                GameObjectManager.Instance.Drawables.Add(shell);
                 
             }
         }

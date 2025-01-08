@@ -37,9 +37,11 @@ namespace Sprint_2.GameObjects.BlockStates
             else
             {
                 int column = (int)block.Position.X / 16;
-                
+
                 /* Call remove object on gameobject manager to remove the block from being able to be drawn/updated */
-                BlockFactory.Instance.RemoveBlockFromList(block, column);
+                GameObjectManager.Instance.Blocks[column].Remove(block);
+                GameObjectManager.Instance.Drawables.Remove(block);
+                GameObjectManager.Instance.Updateables.Remove(block);
 
             }
         }
